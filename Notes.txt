@@ -1,0 +1,34 @@
+Research and Expected output:
+
+JPA(EJB) - App that manages database transactions, CRUD for all transactions
+Apache Tomcat - load sample jsps
+Java Server Pages - sample jsps
+JasperForgeReports? - app that prints to pdf and excel all forms
+how to import Excel file - app that reads contents of excel file and outputs these to html
+HTML - all ui
+
+
+Issues:
+
+system log - 
+transactions must be atomic - hibernate
+disallow multiple logging - java code
+system back-up and recovery - mysql dump (ask te flor), 
+User authentication - apache shiro?? or jaas?
+searching - Hibernate
+headfirst servlet and jsp (Book)
+
+
+Objectives:
+
+save using files->save to sql
+crud, 
+
+Exclude: 
+Purchase Process, include PO and PR only
+revise and update other documentation
+
+Implement Status:
+Pending and Approved
+
+Person to Account Relationship: one-to-one

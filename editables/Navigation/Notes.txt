@@ -1,0 +1,2 @@
+Refer to the use cases for the complete functionalities.
+Mimic the Inventory and APPSAM Manual Processes.
