@@ -1,0 +1,62 @@
+package com.iappsam.entities.forms;
+
+public class RequisitionAndIssueSlipLine {
+	private int risLineID;
+	private int itemID;
+	private int quantityRequested;
+	private int quantityIssued;
+	private int risNumber;
+
+	private String remarks;
+
+	private void init(int risLineID, int itemID, int quantityRequested,
+			int quantityIssued, int risNumber, String remarks) {
+		this.remarks = remarks;
+		this.risLineID = risLineID;
+		this.itemID = itemID;
+		this.risNumber = risNumber;
+		this.quantityIssued = quantityIssued;
+		this.quantityRequested = quantityRequested;
+	}
+
+	public RequisitionAndIssueSlipLine(int risLineID, int itemID,
+			int quantityRequested, int quantityIssued, int risNumber) {
+		init(risLineID, itemID, quantityRequested, quantityIssued, risNumber,
+				"");
+	}
+
+	public RequisitionAndIssueSlipLine(int risLineID, int itemID,
+			int quantityRequested, int quantityIssued, int risNumber,
+			String remarks) {
+		init(risLineID, itemID, quantityRequested, quantityIssued, risNumber,
+				remarks);
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public int getRisLineID() {
+		return risLineID;
+	}
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public int getQuantityRequested() {
+		return quantityRequested;
+	}
+
+	public int getQuantityIssued() {
+		return quantityIssued;
+	}
+
+	public int getRisNumber() {
+		return risNumber;
+	}
+}
