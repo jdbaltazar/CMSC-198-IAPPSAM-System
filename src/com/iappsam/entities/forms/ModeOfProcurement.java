@@ -1,4 +1,4 @@
-package com.iappsam.entities;
+package com.iappsam.entities.forms;
 
 public class ModeOfProcurement {
 

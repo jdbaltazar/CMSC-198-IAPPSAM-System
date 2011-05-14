@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+#personalInfo {
+	position:absolute;
+	width:578px;
+	height:25px;
+	z-index:1;
+	left: 353px;
+	top: 176px;
+}
+#titleDiv {
+	position:absolute;
+	width:469px;
+	height:580px;
+	z-index:3;
+	left: 445px;
+	top: 207px;
+}
+#nameDiv {
+	position:absolute;
+	width:462px;
+	height:24px;
+	z-index:3;
+	left: 437px;
+	top: 270px;
+}
+#background {
+	position:absolute;
+	width:578px;
+	height:500px;
+	z-index:3;
+	left: 353px;
+	top: 202px;
+}
+
+#designationDiv {
+	position:absolute;
+	width:455px;
+	height:24px;
+	z-index:3;
+	left: 384px;
+	top: 314px;
+}
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:4;
+}
+#empNumDiv {
+	position:absolute;
+	width:447px;
+	height:25px;
+	z-index:4;
+	left: 359px;
+	top: 360px;
+}
+#Division {
+	position:absolute;
+	width:496px;
+	height:28px;
+	z-index:5;
+	left: 416px;
+	top: 401px;
+}
+#officeDiv {
+	position:absolute;
+	width:426px;
+	height:25px;
+	z-index:6;
+	left: 433px;
+	top: 443px;
+}
+#accountInfoHeader {
+	position:absolute;
+	width:578px;
+	height:25px;
+	z-index:7;
+	left: 353px;
+	top: 492px;
+}
+#apDiv2 {
+	position:absolute;
+	width:397px;
+	height:23px;
+	z-index:8;
+}
+#userNameDiv {
+	position:absolute;
+	width:483px;
+	height:25px;
+	z-index:8;
+	left: 435px;
+	top: 545px;
+}
+#passwordDiv {
+	position:absolute;
+	width:462px;
+	height:24px;
+	z-index:9;
+	left: 439px;
+	top: 590px;
+}
+#reenterpassword {
+	position:absolute;
+	width:469px;
+	height:24px;
+	z-index:10;
+	left: 362px;
+	top: 634px;
+}
+#sumbmitDivBtn {
+	position:absolute;
+	width:129px;
+	height:31px;
+	z-index:11;
+	left: 601px;
+	top: 710px;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0">
+  <tr>
+    <td width="19%"><table width="100%" frame="below">
+      <tr>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Create New Account</td>
+      </tr>
+    </table></td>
+    <td width="77%">&nbsp;</td>
+    <td width="4%"><a href="../MenuFrame.html" title="Back to main menu" target="main_frame">Home</a></td>
+  </tr>
+</table>
+<div id="background" style="background-color:#EEE0E5;"></div>
+<div id="accountInfoHeader" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Account Info</div>
+<p>&nbsp;</p>
+<div id="personalInfo" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Personal Info</div>
+<div id="titleDiv">
+  <form id="form1" name="form1" method="post" action="accountUpdate.do">
+    <p>
+      <label for="title" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Title</label>
+      <input name="title" type="text" id="title" size="20" />
+    </p>
+    <p><strong>Design
+      <input name="name" type="text"  id="name"  size="40" />
+    </strong></p>
+    <p>
+      <label for="designation" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Designation</label>
+      <input name="designation" type="text" id="designation" size="25" />
+      <input type="submit" name="addMoreBtn" id="addMoreBtn" value="Add more.." />
+    </p>
+    <p>      
+      <label for="employeeNumber2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Employee Num</label>
+      <input type="text" name="employeeNumber" id="employeeNumber2" />
+</p>
+    <p>
+      <label for="division2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Division</label>
+      <select name="division" id="division2">
+        <option selected="selected">John David Baltazar</option>
+        <option>Warren Anthony</option>
+      </select>
+</p>
+    <p>
+      <label for="office2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Office</label>
+      <select name="office" id="office2">
+        <option>Warren Anthony</option>
+        <option>JD Baltazar</option>
+      </select>
+    </p>
+    <p>&nbsp;</p>
+    <p>
+      <label for="userName2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Username</label>
+      <input name="userName" type="text" id="userName2" size="35" />
+</p>
+    <p>
+      <label for="password2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Password</label>
+      <input name="password" type="password" id="password2" size="30" />
+</p>
+    <p>
+      <label for="reenterPassword2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Re-enter Password</label>
+      <input name="reenterPassword" type="text" id="reenterPassword2" size="30" />
+</p>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <p>&nbsp;</p>
+            <p>
+              <input type="submit" name="submit" id="submit" value="Submit" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;"/>
+              <br />
+            </p>
+</blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </form>
+</div>
+</body>
+</html>

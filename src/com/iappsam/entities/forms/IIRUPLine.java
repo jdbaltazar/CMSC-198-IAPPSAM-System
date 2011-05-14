@@ -1,9 +1,28 @@
 package com.iappsam.entities.forms;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "IIRUP_Line")
 public class IIRUPLine {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "IIRUP_Line_ID")
 	private int iirupLineID;
+	
+	@Column(name = "Quantity")
 	private int quantity;
+	
+	@Column(name = "Years_In_Service")
 	private int yearsInService;
+	
+	
 	private int accumulatedDepreciation;
 	private String disposalType;
 	private String orNumber;
