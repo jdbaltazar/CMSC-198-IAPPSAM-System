@@ -1,31 +1,29 @@
 package com.iappsam.entities;
 
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "Employee")
+@Entity
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Employee_ID", nullable = false)
+	@Column(name = "Employee_ID")
 	private int employeeID;
 	
-	@Column(name = "Designation", nullable = false, length = 45)
+	@Column(name = "Designation")
 	private String designation;
 	
-	@Column(name ="Employee_Number", nullable = true, length = 45)
+	@Column(name ="Employee_Number")
 	private String employeeNumber;
 	
-	@Column(name = "DivisionOffice_ID, nullable = true")
+	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
 	
-	@Column(name = "Person_ID", nullable = false)
+	@Column(name = "Person_ID")
 	private int personID;
 
 	public Employee() {
@@ -35,16 +33,17 @@ public class Employee {
 
 	public Employee(String designation, String employeeNumber, int divisionOfficeID, int personID) {
 		super();
-		setDesignation(designation);
-		setEmployeeNumber(employeeNumber);
-		setDivisionOfficeID(divisionOfficeID);
-		setPersonID(personID);
+		this.designation = designation;
+		this.employeeNumber = employeeNumber;
+		this.divisionOfficeID = divisionOfficeID;
+		this.personID = personID;
 	}
 
-	public Employee(String designation, int personID) {
+	public Employee(int employeeID, String designation, int personID) {
 		super();
-		setDesignation(designation);
-		setPersonID(personID);
+		this.employeeID = employeeID;
+		this.designation = designation;
+		this.personID = personID;
 	}
 
 	public int getEmployeeID() {

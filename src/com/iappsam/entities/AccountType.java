@@ -3,12 +3,14 @@ package com.iappsam.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "Account_Type")
+@Entity
+@Table(name = "Account_Type")
 public class AccountType {
 	
 	@Id
-	@Column(name = "Account_Type", nullable = false, length = 50)
+	@Column(name = "Account_Type")
 	private String accountType;
 
 	public AccountType() {

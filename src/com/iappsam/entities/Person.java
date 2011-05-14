@@ -11,13 +11,13 @@ public class Person {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Person_ID", nullable = false)
+	@Column(name = "Person_ID")
 	private int personID;
 	
 	@Column(name = "Title")
 	private String title;
 	
-	@Column(name = "Name", nullable = false, length = 80)
+	@Column(name = "Name")
 	private String name;
 
 	public Person() {
@@ -27,13 +27,13 @@ public class Person {
 
 	public Person(String title, String name) {
 		super();
-		setTitle(title);
-		setName(name);
+		this.title = title;
+		this.name = name;
 	}
 
 	public Person(String name) {
 		super();
-		setName(name);
+		this.name = name;
 	}
 
 	public int getPersonID() {

@@ -8,42 +8,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "Signatory")
+@Entity
 public class Signatory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Signatory_ID", nullable = false)
+	@Column(name = "Signatory_ID")
 	private int signatoryID;
 	
+	@Column(name = "Description")
 	private String description;
-	private Date signitureDate;
+	
+	@Column (name = "Date")
+	private Date signatureDate;
+	
+	@Column (name = "Employee_ID")
 	private int employeeID;
 
-	private void init(int signatoryID, String description, Date signatureDate,
-			int employeeID) {
-		this.signatoryID = signatoryID;
-		this.employeeID = employeeID;
+	public Signatory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Signatory(String description, Date signatureDate, int employeeID) {
+		super();
 		this.description = description;
-		this.signitureDate = signatureDate;
+		this.signatureDate = signatureDate;
+		this.employeeID = employeeID;
 	}
 
-	public Signatory(int signatoryID, String description, int employeeID) {
-		init(signatoryID, description, null, employeeID);
-	}
-
-	public Signatory(int signatoryID, String description, Date signatureDate,
-			int employeeID) {
-		init(signatoryID, description, signatureDate, employeeID);
-
-	}
-
-	public Date getSignitureDate() {
-		return signitureDate;
-	}
-
-	public void setSignitureDate(Date signitureDate) {
-		this.signitureDate = signitureDate;
+	public Signatory(String description, int employeeID) {
+		super();
+		this.description = description;
+		this.employeeID = employeeID;
 	}
 
 	public int getSignatoryID() {
@@ -54,8 +51,28 @@ public class Signatory {
 		return description;
 	}
 
+	public Date getSignatureDate() {
+		return signatureDate;
+	}
+
 	public int getEmployeeID() {
 		return employeeID;
 	}
-	
+
+	public void setSignatoryID(int signatoryID) {
+		this.signatoryID = signatoryID;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setSignatureDate(Date signatureDate) {
+		this.signatureDate = signatureDate;
+	}
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
+	}
+
 }

@@ -9,29 +9,33 @@ import javax.persistence.Id;
 public class Account {
 	
 	@Id
-	@Column(name = "Username", nullable = false, length = 60)
+	@Column(name = "Username")
 	private String username;
 	
-	@Column(name = "Password", nullable = false, length = 80)
+	@Column(name = "Password")
 	private String password;
 	
-	@Column(name = "Account_Type", nullable = false, length = 50)
+	@Column(name = "Account_Type")
 	private String accountType;
 	
-	@Column(name = "Person_ID", nullable = false)
+	@Column(name = "Person_ID")
 	private int personID;
 
 	public Account() {
 		super();
 	}
 	
+	
+
 	public Account(String username, String password, String accountType, int personID) {
 		super();
-		setUsername(username);
-		setPassword(password);
-		setAccountType(accountType);
-		setPersonID(personID);
+		this.username = username;
+		this.password = password;
+		this.accountType = accountType;
+		this.personID = personID;
 	}
+
+
 
 	public String getUsername() {
 		return username;

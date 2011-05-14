@@ -1,56 +1,70 @@
 package com.iappsam.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class DivisionOffice {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
-	private int buildingID;
+	
+	@Column(name = "Division")
 	private String divisionName;
+	
+	@Column(name = "Office")
 	private String officeName;
 	
-	private void init(int divisionOfficeID, int buildingID, String divisionName,String officeName){
-		this.divisionName=divisionName;
-		this.divisionOfficeID=divisionOfficeID;
-		this.buildingID=buildingID;
-		this.officeName=officeName;
+	@Column(name = "Building_ID")
+	private int buildingID;
+
+	public DivisionOffice() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public DivisionOffice(int divisionOfficeID, int buildingID, String divisionName,String officeName){
-		init(divisionOfficeID, buildingID, divisionName, officeName);
-	}
-	
-	public DivisionOffice(int divisionOfficeID, int buildingID, String divisionName){
-		init(divisionOfficeID, buildingID, divisionName, "");
+
+	public DivisionOffice(String divisionName, String officeName, int buildingID) {
+		super();
+		this.divisionName = divisionName;
+		this.officeName = officeName;
+		this.buildingID = buildingID;
 	}
 
 	public int getDivisionOfficeID() {
 		return divisionOfficeID;
 	}
 
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
-	}
-
-	public int getBuildingID() {
-		return buildingID;
-	}
-
-	public void setBuildingID(int buildingID) {
-		this.buildingID = buildingID;
-	}
-
 	public String getDivisionName() {
 		return divisionName;
-	}
-
-	public void setDivisionName(String divisionName) {
-		this.divisionName = divisionName;
 	}
 
 	public String getOfficeName() {
 		return officeName;
 	}
 
+	public int getBuildingID() {
+		return buildingID;
+	}
+
+	public void setDivisionOfficeID(int divisionOfficeID) {
+		this.divisionOfficeID = divisionOfficeID;
+	}
+
+	public void setDivisionName(String divisionName) {
+		this.divisionName = divisionName;
+	}
+
 	public void setOfficeName(String officeName) {
 		this.officeName = officeName;
 	}
-	
+
+	public void setBuildingID(int buildingID) {
+		this.buildingID = buildingID;
+	}
+		
 }

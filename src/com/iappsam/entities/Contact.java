@@ -11,22 +11,22 @@ public class Contact {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Contact_ID", nullable = false)
+	@Column(name = "Contact_ID")
 	private int contactID;
 	
-	@Column(name = "Data", nullable = false, length = 45)
+	@Column(name = "Data")
 	private String data;
 	
-	@Column(name = "Contact_Type", nullable = false, length = 45)
+	@Column(name = "Contact_Type")
 	private String contactType;
 	
-	@Column(name = "Supplier_ID", nullable = true)
+	@Column(name = "Supplier_ID")
 	private int supplierID;
 	
-	@Column(name = "DivisionOffice_ID", nullable = true)
+	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
 	
-	@Column(name = "Person_ID", nullable = true)
+	@Column(name = "Person_ID")
 	private int personID;
 
 	public Contact() {
@@ -35,11 +35,11 @@ public class Contact {
 
 	public Contact(String data, String contactType, int supplierID, int divisionOfficeID, int personID) {
 		super();
-		setData(data);
-		setContactType(contactType);
-		setSupplierID(supplierID);
-		setDivisionOfficeID(divisionOfficeID);
-		setPersonID(personID);
+		this.data = data;
+		this.contactType = contactType;
+		this.supplierID = supplierID;
+		this.divisionOfficeID = divisionOfficeID;
+		this.personID = personID;
 	}
 
 	public int getContactID() {
@@ -89,8 +89,5 @@ public class Contact {
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}
-	
-	
-	
 	
 }

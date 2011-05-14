@@ -1,65 +1,85 @@
 package com.iappsam.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Supplier {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Supplier_ID")
 	private int supplierID;
+	
+	@Column(name = "Name")
 	private String supplierName;
-	private String supplierAddress;
-	private String TIN;
+	
+	@Column(name = "Address")
+	private String address;
+	
+	@Column (name = "TIN")
+	private String tin;
+	
+	@Column(name = "Contact_Person_ID")
 	private int contactPersonID;
 
-	private void init(int supplierID, String supplierName,
-			String supplierAddress, String TIN, int contactPersonID) {
-		this.supplierID = supplierID;
-		this.supplierAddress = supplierAddress;
+	public Supplier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Supplier(String supplierName, String address, String tin, int contactPersonID) {
+		super();
 		this.supplierName = supplierName;
-		this.TIN = TIN;
+		this.address = address;
+		this.tin = tin;
 		this.contactPersonID = contactPersonID;
 	}
 
-
-	public Supplier(int supplierID, String supplierName,
-			String supplierAddress, int contactPersonID) {
-		init(supplierID, supplierName, supplierAddress, "", contactPersonID);
-	}
-	public Supplier(int supplierID, String supplierName,
-			String supplierAddress, String TIN, int contactPersonID){
-		init(supplierID, supplierName, supplierAddress, TIN, contactPersonID);
+	public Supplier(String supplierName, String address, int contactPersonID) {
+		super();
+		this.supplierName = supplierName;
+		this.address = address;
+		this.contactPersonID = contactPersonID;
 	}
 
 	public int getSupplierID() {
 		return supplierID;
 	}
 
-	public void setSupplierID(int supplierID) {
-		this.supplierID = supplierID;
-	}
-
 	public String getSupplierName() {
 		return supplierName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getTin() {
+		return tin;
+	}
+
+	public int getContactPersonID() {
+		return contactPersonID;
+	}
+
+	public void setSupplierID(int supplierID) {
+		this.supplierID = supplierID;
 	}
 
 	public void setSupplierName(String supplierName) {
 		this.supplierName = supplierName;
 	}
 
-	public String getSupplierAddress() {
-		return supplierAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public void setSupplierAddress(String supplierAddress) {
-		this.supplierAddress = supplierAddress;
-	}
-
-	public String getTIN() {
-		return TIN;
-	}
-
-	public void setTIN(String tIN) {
-		TIN = tIN;
-	}
-
-	public int getContactPersonID() {
-		return contactPersonID;
+	public void setTin(String tin) {
+		this.tin = tin;
 	}
 
 	public void setContactPersonID(int contactPersonID) {
