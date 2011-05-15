@@ -3,8 +3,6 @@ package com.iappsam.managers;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.PersistenceException;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,12 +12,17 @@ import com.iappsam.util.HibernateUtil;
 
 public abstract class Manager {
 
+	Session session = HibernateUtil.startSession();
+
 	public Manager() {
 		super();
 	}
 
+	public void close() {
+		session.close();
+	}
+
 	protected void add(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			session.persist(entity);
@@ -27,13 +30,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
-	
+
 	protected Object save(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			Object o = session.save(entity);
@@ -42,13 +42,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
 
 	protected void update(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			session.update(entity);
@@ -56,13 +53,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
 
 	protected Object get(Class cl, Object primaryKey) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			Object o = session.get(cl, (Serializable) primaryKey);
@@ -71,13 +65,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
 
 	protected void remove(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			session.delete(entity);
@@ -85,13 +76,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
 
 	protected boolean contains(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			boolean b = session.contains(entity);
@@ -100,13 +88,10 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
 
 	protected List getList(String query) throws TransactionException {
-		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
 			List objects = session.createCriteria(Object.class).list();
@@ -115,10 +100,7 @@ public abstract class Manager {
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
 		}
 	}
-
 
 }

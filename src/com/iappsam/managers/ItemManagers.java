@@ -23,7 +23,7 @@ public interface ItemManagers {
 
 	boolean containsItem(String name) throws TransactionException;
 
-	List getAllItems() throws TransactionException;
+	List<Item> getAllItems() throws TransactionException;
 
 	void addUnit(Unit unit) throws TransactionException;
 
@@ -39,7 +39,7 @@ public interface ItemManagers {
 
 	boolean containsUnit(String name) throws TransactionException;
 
-	List getAllUnits() throws TransactionException;
+	List<Item> getAllUnits() throws TransactionException;
 
 	void addItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -51,33 +51,26 @@ public interface ItemManagers {
 
 	void removeItemStatus(ItemStatus itemStatus) throws TransactionException;
 
-	boolean containsItemStatus(ItemStatus itemStatus)
-			throws TransactionException;
+	boolean containsItemStatus(ItemStatus itemStatus) throws TransactionException;
 
 	boolean containsItemStatus(String name) throws TransactionException;
 
-	List getAllItemStatus() throws TransactionException;
+	List<Item> getAllItemStatus() throws TransactionException;
 
-	void addItemCondition(ItemCondition itemCondition)
-			throws TransactionException;
+	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	int saveItemCondition(ItemCondition itemCondition)
-			throws TransactionException;
+	int saveItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	void updateItemCondition(ItemCondition itemCondition)
-			throws TransactionException;
+	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	ItemCondition getItemCondition(int itemConditionId)
-			throws TransactionException;
+	ItemCondition getItemCondition(int itemConditionId) throws TransactionException;
 
-	void removeItemCondition(ItemCondition itemCondition)
-			throws TransactionException;
+	void removeItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	boolean containsItemCondition(ItemCondition itemCondition)
-			throws TransactionException;
+	boolean containsItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	boolean containsItemCondition(String name) throws TransactionException;
 
-	List getAllItemCondition() throws TransactionException;
+	List<Item> getAllItemCondition() throws TransactionException;
 
 }
