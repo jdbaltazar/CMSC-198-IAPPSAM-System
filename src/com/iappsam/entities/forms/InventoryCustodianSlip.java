@@ -26,7 +26,7 @@ public class InventoryCustodianSlip {
 	@Column(name = "Signatory_ID", nullable = false)
 	private int receivedBySignatoryID;
 	
-	@Column(name = "Signatory_ID", nullable = false)
+	@Column(name = "Signatory_ID1", nullable = false)
 	private int receviedFromSignatoryID;
 
 	public InventoryCustodianSlip() {

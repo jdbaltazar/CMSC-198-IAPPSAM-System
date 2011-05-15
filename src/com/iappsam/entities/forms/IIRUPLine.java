@@ -10,30 +10,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "IIRUP_Line")
 public class IIRUPLine {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IIRUP_Line_ID")
-	private int iirupLineID;
-	
+	@Column(name = "Item_ID")
+	private int itemID;
+
 	@Column(name = "Quantity")
 	private int quantity;
-	
+
 	@Column(name = "Years_In_Service")
 	private int yearsInService;
-	
-	
-	private int accumulatedDepreciation;
-	private String disposalType;
-	private String orNumber;
-	private int iirupID;
 
+	@Column(name = "Accumulated_Depreciation")
+	private int accumulatedDepreciation;
+
+	@Column(name = "Disposal_Type")
+	private String disposalType;
+
+	@Column(name = "OR_Number")
+	private String orNumber;
+	@Id
+	@Column(name = "IIRUP_ID")
+	private int iirupID;
+	@Column(name = "Appraisal")
 	private String appraisal;
 
-	private void init(int iirupLineID, int quantity, int yearsInService,
-			int accumulatedDepreciation, String disposalType, String orNumber,
-			int iirupID, String appraisal) {
-		this.iirupLineID = iirupLineID;
+	private void init(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID, String appraisal) {
+		this.itemID = itemID;
 		this.iirupID = iirupID;
 		this.accumulatedDepreciation = accumulatedDepreciation;
 		this.disposalType = disposalType;
@@ -43,19 +46,17 @@ public class IIRUPLine {
 		this.quantity = quantity;
 	}
 
-	public IIRUPLine(int iirupLineID, int quantity, int yearsInService,
-			int accumulatedDepreciation, String disposalType, String orNumber,
-			int iirupID) {
-		init(iirupLineID, quantity, yearsInService, accumulatedDepreciation,
-				disposalType, orNumber, iirupID, "");
+	public IIRUPLine(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
+		init(itemID, quantity, yearsInService, accumulatedDepreciation, disposalType, orNumber, iirupID, "");
 
 	}
 
-	public IIRUPLine(int iirupLineID, int quantity, int yearsInService,
-			int accumulatedDepreciation, String disposalType, String orNumber,
-			int iirupID, String appraisal) {
-		init(iirupLineID, quantity, yearsInService, accumulatedDepreciation,
-				disposalType, orNumber, iirupID, appraisal);
+	public IIRUPLine(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID, String appraisal) {
+		init(itemID, quantity, yearsInService, accumulatedDepreciation, disposalType, orNumber, iirupID, appraisal);
+	}
+
+	public IIRUPLine() {
+
 	}
 
 	public String getAppraisal() {
@@ -67,7 +68,7 @@ public class IIRUPLine {
 	}
 
 	public int getIirupLineID() {
-		return iirupLineID;
+		return itemID;
 	}
 
 	public int getQuantity() {

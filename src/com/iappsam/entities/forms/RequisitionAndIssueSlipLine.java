@@ -1,7 +1,7 @@
 package com.iappsam.entities.forms;
 
 public class RequisitionAndIssueSlipLine {
-	private int risLineID;
+
 	private int itemID;
 	private int quantityRequested;
 	private int quantityIssued;
@@ -12,7 +12,6 @@ public class RequisitionAndIssueSlipLine {
 	private void init(int risLineID, int itemID, int quantityRequested,
 			int quantityIssued, int risNumber, String remarks) {
 		this.remarks = remarks;
-		this.risLineID = risLineID;
 		this.itemID = itemID;
 		this.risNumber = risNumber;
 		this.quantityIssued = quantityIssued;
@@ -40,9 +39,6 @@ public class RequisitionAndIssueSlipLine {
 		this.remarks = remarks;
 	}
 
-	public int getRisLineID() {
-		return risLineID;
-	}
 
 	public int getItemID() {
 		return itemID;

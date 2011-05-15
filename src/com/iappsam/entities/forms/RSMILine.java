@@ -1,27 +1,60 @@
 package com.iappsam.entities.forms;
 
-public class RSMILine {
-	private int rsmiLineID;
-	private int rsmiID;
-	private int risLineID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "RSMI_Line")
+public class RSMILine {
+	@Id
+	@Column(name = "RSMI_ID")
+	private int rsmiID;
+	@Id
+	@Column(name = "RSMI_Number")
+	private String rsmiNumber;
+	@Column(name = "Item_ID")
+	private int itemID;
+	@Column(name = "Responsibility_Center")
 	private String responsibilityCenter;
 
-	private void init(int rsmiLineID, int rsmiID, int risLineID,
-			String responsibilityCenter) {
-		this.rsmiLineID = rsmiLineID;
+	private void init(int itemID, int rsmiID, String rsmiNumber, String responsibilityCenter) {
+		this.itemID = itemID;
 		this.rsmiID = rsmiID;
-		this.risLineID = risLineID;
+		this.rsmiNumber = rsmiNumber;
 		this.responsibilityCenter = responsibilityCenter;
 	}
 
-	public RSMILine(int rsmiLineID, int rsmiID, int risLineID) {
-		init(rsmiLineID, rsmiID, risLineID, "");
+	public RSMILine(int itemID, int rsmiID, String rsmiNumber) {
+		init(itemID, rsmiID, rsmiNumber, "");
 	}
 
-	public RSMILine(int rsmiLineID, int rsmiID, int risLineID,
-			String responsibilityCenter) {
-		init(rsmiLineID, rsmiID, risLineID, responsibilityCenter);
+	public RSMILine(int itemID, int rsmiID, String rsmiNumber, String responsibilityCenter) {
+		init(itemID, rsmiID, rsmiNumber, responsibilityCenter);
+	}
+
+	public RSMILine() {
+	};
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public String getRsmiNumber() {
+		return rsmiNumber;
+	}
+
+	public void setRsmiNumber(String rsmiNumber) {
+		this.rsmiNumber = rsmiNumber;
+	}
+
+	public void setRsmiID(int rsmiID) {
+		this.rsmiID = rsmiID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public String getResponsibilityCenter() {
@@ -32,15 +65,8 @@ public class RSMILine {
 		this.responsibilityCenter = responsibilityCenter;
 	}
 
-	public int getRsmiLineID() {
-		return rsmiLineID;
-	}
-
 	public int getRsmiID() {
 		return rsmiID;
 	}
 
-	public int getRisLineID() {
-		return risLineID;
-	}
 }

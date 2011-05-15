@@ -8,7 +8,10 @@ import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public interface ItemManagers {
+public interface ItemManager {
+	
+	//Item
+	
 	void addItem(Item item) throws TransactionException;
 
 	int saveItem(Item item) throws TransactionException;
@@ -25,13 +28,15 @@ public interface ItemManagers {
 
 	List<Item> getAllItems() throws TransactionException;
 
+	//Unit
+	
 	void addUnit(Unit unit) throws TransactionException;
 
-	int saveUnit(Unit unit) throws TransactionException;
+	String saveUnit(Unit unit) throws TransactionException;
 
 	void updateUnit(Unit unit) throws TransactionException;
 
-	Unit getUnit(int unitId) throws TransactionException;
+	Unit getUnit(String unit) throws TransactionException;
 
 	void removeUnit(Unit unit) throws TransactionException;
 
@@ -40,14 +45,16 @@ public interface ItemManagers {
 	boolean containsUnit(String name) throws TransactionException;
 
 	List<Item> getAllUnits() throws TransactionException;
+	
+	//ItemStatus
 
 	void addItemStatus(ItemStatus itemStatus) throws TransactionException;
 
-	int saveItemStatus(ItemStatus itemStatus) throws TransactionException;
+	String saveItemStatus(ItemStatus itemStatus) throws TransactionException;
 
 	void updateItemStatus(ItemStatus itemStatus) throws TransactionException;
 
-	ItemStatus getItemStatus(int itemStatusId) throws TransactionException;
+	ItemStatus getItemStatus(String itemStatus) throws TransactionException;
 
 	void removeItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -57,13 +64,15 @@ public interface ItemManagers {
 
 	List<Item> getAllItemStatus() throws TransactionException;
 
+	//ItemCodition
+	
 	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	int saveItemCondition(ItemCondition itemCondition) throws TransactionException;
+	String saveItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	ItemCondition getItemCondition(int itemConditionId) throws TransactionException;
+	ItemCondition getItemCondition(String itemCondition) throws TransactionException;
 
 	void removeItemCondition(ItemCondition itemCondition) throws TransactionException;
 

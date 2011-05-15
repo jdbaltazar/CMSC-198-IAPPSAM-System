@@ -2,38 +2,69 @@ package com.iappsam.entities.forms;
 
 import java.sql.Date;
 
-public class PurchaseOrder {
-	private int supplierID;
-	private int poNumber;
-	private Date date;
-	private String modeOfProcurement;
-	private int divisionOfficeID;
-	private Date dateOfDelivery;
-	private String totalAmountInWords;
-	private int[] signatoryID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Purchase_Order")
+public class PurchaseOrder {
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Supplier_ID")
+	private int supplierID;
+
+	@Id
+	@Column(name = "PO_Number")
+	private int poNumber;
+
+	@Column(name = "Date")
+	private Date date;
+
+	@Column(name = "Mode_Of_Procurement")
+	private String modeOfProcurement;
+
+	@Column(name = "DivisionOffice_ID")
+	private int divisionOfficeID;
+
+	@Column(name = "Date_Of_Delivery")
+	private Date dateOfDelivery;
+
+	@Column(name = "Payment_Term")
 	private String paymentTerm;
+
+	@Column(name = "Delivery_Term")
 	private String deliveryTerm;
+
+	@Column(name = "Total_Amount_In_Words")
+	private String totalAmountInWords;
+
+	@Column(name = "Signatory_ID")
+	private int supplierSignatoryID;
+
+	@Column(name = "Signatory_ID1")
+	private int deanSignatoryID;
+
+	@Column(name = "Signatory_ID2")
+	private int accountantSignatoryID;
+
 	private String orNumber;
 	private float amount;
 
-	public PurchaseOrder(int supplierID, int poNumber, Date date,
-			String modeOfProcurement, int divisionOfficeID,
-			Date dateOfDelivery, String totalAmountInWords, int[] signatoryID) {
+	public PurchaseOrder() {
 
-		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID,
-				dateOfDelivery, totalAmountInWords, signatoryID, "", "", "",
-				-0.1f);
 	}
 
-	public PurchaseOrder(int supplierID, int poNumber, Date date,
-			String modeOfProcurement, int divisionOfficeID,
-			Date dateOfDelivery, String totalAmountInWords, int[] signatoryID,
-			String paymentTerm, String deliveryTerm, String orNumber,
-			float amount) {
-		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID,
-				dateOfDelivery, totalAmountInWords, signatoryID, paymentTerm,
-				deliveryTerm, orNumber, amount);
+	public PurchaseOrder(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
+		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID, dateOfDelivery, totalAmountInWords, supplierSignatoryID, deanSignatoryID, accountantSignatoryID, "", "", "", -1);
+
+	}
+
+	public PurchaseOrder(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID,
+			String paymentTerm, String deliveryTerm, String orNumber, float amount) {
+		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID, dateOfDelivery, totalAmountInWords, supplierSignatoryID, deanSignatoryID, accountantSignatoryID, paymentTerm, deliveryTerm, orNumber, amount);
 
 	}
 
@@ -66,6 +97,7 @@ public class PurchaseOrder {
 	}
 
 	public int[] getSignatoryID() {
+		int[] signatoryID = { supplierSignatoryID, deanSignatoryID, accountantSignatoryID };
 		return signatoryID;
 	}
 
@@ -101,11 +133,8 @@ public class PurchaseOrder {
 		this.amount = amount;
 	}
 
-	public void init(int supplierID, int poNumber, Date date,
-			String modeOfProcurement, int divisionOfficeID,
-			Date dateOfDelivery, String totalAmountInWords, int[] signatoryID,
-			String paymentTerm, String deliveryTerm, String orNumber,
-			float amount) {
+	public void init(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID,
+			String paymentTerm, String deliveryTerm, String orNumber, float amount) {
 		this.supplierID = supplierID;
 		this.poNumber = poNumber;
 		this.date = date;
@@ -113,7 +142,9 @@ public class PurchaseOrder {
 		this.divisionOfficeID = divisionOfficeID;
 		this.dateOfDelivery = dateOfDelivery;
 		this.totalAmountInWords = totalAmountInWords;
-		this.signatoryID = signatoryID;
+		this.accountantSignatoryID = accountantSignatoryID;
+		this.deanSignatoryID = deanSignatoryID;
+		this.supplierSignatoryID = supplierSignatoryID;
 		this.paymentTerm = paymentTerm;
 		this.deliveryTerm = deliveryTerm;
 		this.orNumber = orNumber;

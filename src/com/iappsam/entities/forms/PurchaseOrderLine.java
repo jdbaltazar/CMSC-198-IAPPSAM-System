@@ -1,22 +1,36 @@
 package com.iappsam.entities.forms;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PO_Line")
 public class PurchaseOrderLine {
-	private int poLineID;
-	private int poID;
+	@Id
+	@Column(name = "PO_Number")
+	private String poNumber;
+
+	@Id
+	@Column(name = "Item_ID")
 	private int itemID;
 
-	public PurchaseOrderLine(int poLineID, int poID, int itemID) {
-		this.poLineID = poLineID;
-		this.poID = poID;
+	public void setPoNumber(String poNumber) {
+		this.poNumber = poNumber;
+	}
+
+	public void setItemID(int itemID) {
 		this.itemID = itemID;
 	}
 
-	public int getPoLineID() {
-		return poLineID;
+	public PurchaseOrderLine(String poNumber, int itemID) {
+		this.poNumber = poNumber;
+		this.itemID = itemID;
 	}
 
-	public int getPoID() {
-		return poID;
+	public String getPoNumber() {
+		return poNumber;
 	}
 
 	public int getItemID() {

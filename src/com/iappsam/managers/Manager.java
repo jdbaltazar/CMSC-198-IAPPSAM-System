@@ -91,10 +91,11 @@ public abstract class Manager {
 		}
 	}
 
-	protected List getList(String query) throws TransactionException {
+	@SuppressWarnings("unchecked")
+	protected List<Object> getList() throws TransactionException {
 		Transaction tx = session.beginTransaction();
 		try {
-			List objects = session.createCriteria(Object.class).list();
+			List<Object> objects = session.createCriteria(Object.class).list();
 			tx.commit();
 			return objects;
 		} catch (HibernateException ex) {

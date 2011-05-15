@@ -1,59 +1,85 @@
 package com.iappsam.entities.forms;
 
-class InventoryOfEquipmentLine {
-	private int ieID;
-	private int quantity;
-	private int yearAcquired;
-	private int employeeID;
-	private String howAcquired;
-	private String remarks;
-	private int ieLineID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	private void init(int ieID, int quantity, int yearAcquired, int employeeID,
-			String howAcquired, String remarks, int ieLineID) {
+@Entity
+@Table(name = "IE_Line")
+public class InventoryOfEquipmentLine {
+
+	@Id
+	@GeneratedValue
+	@Column(name = "Item_ID")
+	private int itemID;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "Inventory_Of_Equipment_ID")
+	private int ieID;
+
+	@Column(name = "Quantity")
+	private int quantity;
+
+	@Column(name = "Employee_ID")
+	private int employeeID;
+
+	@Column(name = "How_Acquired")
+	private String howAcquired;
+
+	@Column(name = "Remarks")
+	private String remarks;
+
+	private void init(int ieID, int itemID, int quantity, int employeeID, String howAcquired, String remarks) {
 		this.ieID = ieID;
-		this.ieLineID = ieLineID;
+		this.itemID = itemID;
 		this.quantity = quantity;
-		this.yearAcquired = yearAcquired;
 		this.employeeID = employeeID;
 		this.howAcquired = howAcquired;
 		this.remarks = remarks;
 	}
 
-	public InventoryOfEquipmentLine(int ieID, int employeeID,
-			String howAcquired, int ieLineID) {
-		init(ieID, ieID, 0, employeeID, howAcquired, "", ieLineID);
+	public InventoryOfEquipmentLine(int ieID, int employeeID, String howAcquired, int ieLineID) {
+		init(ieID, 0, 0, employeeID, howAcquired, "");
 	}
 
-	public InventoryOfEquipmentLine(int ieID, int yearAcquired, int employeeID,
-			String howAcquired, String remarks, int ieLineID) {
-		init(ieID, ieID, yearAcquired, employeeID, howAcquired, remarks,
-				ieLineID);
+	public InventoryOfEquipmentLine(int ieID, int itemID, int quantity, int employeeID, String howAcquired, String remarks, int ieLineID) {
+		init(ieID, itemID, quantity, employeeID, howAcquired, remarks);
 	}
 
 	public int getIeID() {
 		return ieID;
 	}
 
-	
 	public int getQuantity() {
 		return quantity;
 	}
 
-
-	public int getYearAcquired() {
-		return yearAcquired;
+	public int getItemID() {
+		return itemID;
 	}
 
-	public void setYearAcquired(int yearAcquired) {
-		this.yearAcquired = yearAcquired;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
+	}
+
+	public void setIeID(int ieID) {
+		this.ieID = ieID;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 
 	public int getEmployeeID() {
 		return employeeID;
 	}
-
-	
 
 	public String getHowAcquired() {
 		return howAcquired;
@@ -71,11 +97,4 @@ class InventoryOfEquipmentLine {
 		this.remarks = remarks;
 	}
 
-	public int getIeLineID() {
-		return ieLineID;
-	}
-
-	public void setIeLineID(int ieLineID) {
-		this.ieLineID = ieLineID;
-	}
 }

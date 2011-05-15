@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ICS_Line")
-class InventoryCustodianSlipLine {
+public class InventoryCustodianSlipLine {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -10,27 +10,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "APP_Line")
 public class AnnualProcurementPlanLine {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "APP_LINE_ID")
-	private int appLineID;
 
+	@Id
 	@Column(name = "Item_ID")
 	private int itemID;
-	
+
 	@Column(name = "Quantity_Quarter_1")
 	private int quantityQuarter1;
-	
+
 	@Column(name = "Quantity_Quarter_2")
 	private int quantityQuarter2;
-	
+
 	@Column(name = "Quantity_Quarter_3")
 	private int quantityQuarter3;
-	
+
 	@Column(name = "Quantity_Quarter_4")
 	private int quantityQuarter4;
 	
+	@Id
 	@Column(name = "APP_ID")
 	private int appID;
 
@@ -49,9 +46,6 @@ public class AnnualProcurementPlanLine {
 		this.appID = appID;
 	}
 
-	public int getAppLineID() {
-		return appLineID;
-	}
 
 	public int getItemID() {
 		return itemID;
@@ -77,9 +71,6 @@ public class AnnualProcurementPlanLine {
 		return appID;
 	}
 
-	public void setAppLineID(int appLineID) {
-		this.appLineID = appLineID;
-	}
 
 	public void setItemID(int itemID) {
 		this.itemID = itemID;

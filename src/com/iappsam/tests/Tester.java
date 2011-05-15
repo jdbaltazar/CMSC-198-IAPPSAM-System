@@ -16,8 +16,8 @@ public class Tester {
 	public static void main(String[] args) {
 		try {
 			PersonManager pManager = new PersonManagerSession();
-//			Person person = new Person("Atty.", "bbbbbbbbbbbbbbbbbbbbb");
-//			pManager.addPerson(person);
+			Person person = new Person("Atty.", "sdsdsdsdsd");
+			pManager.addPerson(person);
 ////			// person.setName("Warren");
 ////			// pManager.updatePerson(person);
 ////
@@ -35,12 +35,12 @@ public class Tester {
 ////			System.out.println("id: "+id);
 			
 			//view all
-//			List persons = pManager.getAllPersons();
-//			
-//			for (Iterator iter = persons.iterator(); iter.hasNext();) {
-//				Person p = (Person) (iter.next());
-//				System.out.println(p.getPersonID());
-//			}
+			List persons = pManager.getAllPersons();
+			
+			for (Iterator iter = persons.iterator(); iter.hasNext();) {
+				Person p = (Person) (iter.next());
+				System.out.println(p.getPersonID());
+			}
 //			
 //			
 //			//Account

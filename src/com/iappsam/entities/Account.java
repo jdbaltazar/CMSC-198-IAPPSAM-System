@@ -18,6 +18,7 @@ public class Account {
 	@Column(name = "Account_Type")
 	private String accountType;
 	
+	
 	@Column(name = "Person_ID")
 	private int personID;
 
@@ -41,8 +42,8 @@ public class Account {
 		return username;
 	}
 
-	public String getPassword() {
-		return password;
+	public boolean comparePassword(String word) {
+		return password.equals(word);
 	}
 
 	public String getAccountType() {
