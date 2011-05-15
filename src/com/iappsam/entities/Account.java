@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 
-@Entity(name = "Account")
+@Entity
 public class Account {
 	
 	@Id

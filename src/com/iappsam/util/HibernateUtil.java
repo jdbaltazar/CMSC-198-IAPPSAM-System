@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.hibernate.*;
 import org.hibernate.cfg.*;
 
+import com.iappsam.entities.Account;
 import com.iappsam.entities.Person;
 
 /**
@@ -40,7 +41,13 @@ public class HibernateUtil {
 			p.setProperty("hibernate.connection.username", "root");
 			p.setProperty("hibernate.connection.password", "123456");
 
-			sessionFactory = new Configuration().setProperties(p).addAnnotatedClass(Person.class).buildSessionFactory();
+//			sessionFactory = new Configuration().setProperties(p).addPackage("com.iappsam.entites").addPackage("com.iappsam.entities.forms").buildSessionFactory();
+			
+			Configuration conf = new Configuration();
+			conf.setProperties(p);
+			conf.addAnnotatedClass(Person.class);
+			conf.addAnnotatedClass(Account.class);
+			sessionFactory= conf.buildSessionFactory();
 
 		} catch (Throwable ex) {
 			throw new ExceptionInInitializerError(ex);
