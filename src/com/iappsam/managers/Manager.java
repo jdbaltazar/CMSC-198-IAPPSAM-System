@@ -92,12 +92,12 @@ public abstract class Manager {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected List<Object> getList() throws TransactionException {
+	protected <T> List<T> getList(Class<T> c) throws TransactionException {
 		Transaction tx = session.beginTransaction();
 		try {
-			List<Object> objects = session.createCriteria(Object.class).list();
+			List<T> list = session.createCriteria(c).list();
 			tx.commit();
-			return objects;
+			return list;
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());

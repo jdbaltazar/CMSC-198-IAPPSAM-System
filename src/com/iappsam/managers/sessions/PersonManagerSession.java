@@ -19,7 +19,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 
 	@Override
 	public int savePerson(Person person) throws TransactionException {
-		return (Integer)save(person);
+		return (Integer) save(person);
 	}
 
 	@Override
@@ -44,8 +44,8 @@ public class PersonManagerSession extends Manager implements PersonManager {
 
 	@Override
 	public boolean containsPerson(String name) throws TransactionException {
-		List persons = getList();
-		for (Iterator iter = persons.iterator(); iter.hasNext();) {
+		List<Person> persons = getList(Person.class);
+		for (Iterator<Person> iter = persons.iterator(); iter.hasNext();) {
 			Person p = (Person) (iter.next());
 			if (p.getName().equalsIgnoreCase(name))
 				return true;
@@ -54,15 +54,14 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	}
 
 	@Override
-	public List getAllPersons() throws TransactionException {
-		return getList();
-		// TODO Auto-generated method stub
+	public List<Person> getAllPersons() throws TransactionException {
+		return getList(Person.class);
 	}
 
 	@Override
 	public void addEmployee(Employee employee) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -74,7 +73,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	@Override
 	public void updateEmployee(Employee employee) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	@Override
 	public void removeEmployee(Employee employee) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -116,7 +115,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	@Override
 	public void addSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -128,7 +127,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	@Override
 	public void updateSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -154,6 +153,5 @@ public class PersonManagerSession extends Manager implements PersonManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
