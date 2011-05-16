@@ -21,7 +21,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class CreateAccount
  */
-@WebServlet("/accountUpdate.do")
+@WebServlet("/accounts/accountCreate.do")
 public class CreateAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,8 +39,35 @@ public class CreateAccount extends HttpServlet {
 
 	}
 
-	private void failedResponse() {
-		// TODO Auto-generated method stub
+	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			if (userName == null)
+				request.setAttribute("usernameIsOk", "false");
+			else
+				request.setAttribute("usernameIsOK", "true");
+			if (password == null || reenterPassword == null || !password.equals(reenterPassword))
+				request.setAttribute("passIsOK", "false");
+			else
+				request.setAttribute("passIsOK", "true");
+
+			if (name == null)
+				request.setAttribute("nameIsOK", "false");
+			else
+				request.setAttribute("nameIsOK", "true");
+
+			if (designation == null)
+				request.setAttribute("designationIsOK", "false");
+			else
+				request.setAttribute("designationIsOK", "true");
+			RequestDispatcher view = request.getRequestDispatcher("CreateAccountFail.jsp");
+			view.forward(request, response);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -60,16 +87,30 @@ public class CreateAccount extends HttpServlet {
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 
-		if (password == null || password.equals(reenterPassword) || name == null || designation == null || division == null || userName == null || reenterPassword == null)
-			failedResponse();
-
+		if (password == null || !password.equals(reenterPassword) || name == null || designation == null || division == null || userName == null || reenterPassword == null){
+			failedResponse(request, response);
+			System.out.println("output");
+		}
 		else
-			acceptResponse();
+			acceptResponse(request, response);
 	}
 
-	private void acceptResponse() {
+	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
+		try {
+			PrintWriter out = response.getWriter();
+			out.print("Title:" + title + "<br>");
+			out.print("Name:" + name + "<br>");
+			out.print("Designation:" + designation + "<br>");
+			out.print("Employee Number:" + employeeNumber + "<br>");
+			out.print("Division:" + division + "<br>");
+			out.print("UserName:" + userName + "<br>");
+			out.print("Password:" + password + "<br>");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try {
 			pManager.addPerson(person);
 
