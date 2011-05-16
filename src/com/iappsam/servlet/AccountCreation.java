@@ -1,4 +1,4 @@
-package com;
+package com.iappsam.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,7 +22,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
  * Servlet implementation class CreateAccount
  */
 @WebServlet("/accounts/accountCreate.do")
-public class CreateAccount extends HttpServlet {
+public class AccountCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	String title;
