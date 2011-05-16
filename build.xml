@@ -1,15 +1,38 @@
 <project name="CMSC-198-IAPPSAM" default="all">
 
-	<target name="all" depends="build" />
+	<path id="classpath">
+		<fileset dir="./webapp/WEB-INF/lib/">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<property name="lib" refid="classpath" />
+	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
+	<property name="sql.url" value="jdbc:mysql://localhost/" />
+	<property name="sql.username" value="root" />
+	<property name="sql.password" value="123456" />
+	<property name="sql.schema" value="misc/schema" />
+
+	<target name="all" depends="build, sql-schema" />
 
 	<target name="compile">
-		<javac srcdir="src" destdir="build/classes" />
+
+		<javac srcdir="src" destdir="build/classes">
+			<classpath path="${lib}" />
+		</javac>
 	</target>
 
 	<target name="build" depends="compile">
 		<copy todir="webapp/WEB-INF">
 			<fileset dir="build" />
 		</copy>
+	</target>
+
+	<target name="sql-schema">
+		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.username}" password="${sql.password}">
+			<classpath path="${lib}" />
+			<transaction src="${sql.schema}/create.sql" />
+		</sql>
 	</target>
 
 </project>
