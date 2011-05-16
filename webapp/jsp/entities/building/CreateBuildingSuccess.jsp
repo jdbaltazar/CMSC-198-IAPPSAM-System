@@ -102,27 +102,26 @@
 </table>
 <div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
-  <form id="form1" name="form1" method="post" action="./BuildingCreation.do">
+  <form id="form1" name="form1" method="post" action="">
     <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Name</label>
-    <textarea name="name" cols="30" id="name"></textarea>
+   <%out.print((String)request.getAttribute("name")); %>
   </form>
 </div>
 <div id="apDiv1">
-  <form id="form3" name="form3" method="post" action="./BuildingCreation.do">
+  <form id="form3" name="form3" method="post" action="">
     <label for="address" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Address</label>
-    <textarea name="address" cols="30" id="address"></textarea>
+    <%out.print((String)request.getAttribute("address")); %>
   </form>
 </div>
 <div id="apDiv5">
-  <form id="form7" name="form7" method="post" action="./BuildingCreation.do">
-    <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
- <%out.print("helllllsdlfsldflsdlf"); %> </form>
+  <form id="form7" name="form7" method="post" action="../Building.html">
+    <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Back" /> </form>
 </div>
 <p>&nbsp;</p>
 <div id="divisionIDdiv">
-  <form id="form2" name="form2" method="post" action="./BuildingCreation.do">
+  <form id="form2" name="form2" method="post" action="">
     <label for="buildingID" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Building ID</label>
-    <input type="text" name="buildingID" id="buildingID" />
+    <%out.print((String)request.getAttribute("buildingID")); %>
   </form>
 </div>
 </body>

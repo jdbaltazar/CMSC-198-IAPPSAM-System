@@ -66,8 +66,8 @@ public class HibernateUtil {
 
 			// entities
 			conf.setProperties(p);
-			// conf.addAnnotatedClass(Account.class);
-			// conf.addAnnotatedClass(AccountType.class);
+			 conf.addAnnotatedClass(Account.class);
+			 conf.addAnnotatedClass(AccountType.class);
 			conf.addAnnotatedClass(Building.class);
 			// conf.addAnnotatedClass(Contact.class);
 			// conf.addAnnotatedClass(ContactType.class);

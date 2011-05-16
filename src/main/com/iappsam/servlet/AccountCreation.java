@@ -16,6 +16,7 @@ import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 
 /**
@@ -59,7 +60,7 @@ public class AccountCreation extends HttpServlet {
 				request.setAttribute("designationIsOK", "false");
 			else
 				request.setAttribute("designationIsOK", "true");
-			RequestDispatcher view = request.getRequestDispatcher("CreateAccountFail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountFail.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -76,7 +77,7 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Enumeration<String> s = request.getAttributeNames();
+		
 
 		title = request.getParameter("title");
 		name = request.getParameter("name");
@@ -98,6 +99,7 @@ public class AccountCreation extends HttpServlet {
 	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
+		AccountManager aManager = new AccountManagerSession();
 		try {
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -108,7 +110,7 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("division", division);
 			request.setAttribute("employeeNumber", employeeNumber);
 
-			RequestDispatcher view = request.getRequestDispatcher("CreateAccountSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
 			view.forward(request, response);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -120,8 +122,9 @@ public class AccountCreation extends HttpServlet {
 		try {
 			pManager.addPerson(person);
 
-			// Account account = new Account(username, password,
-			// "SPSO_PERSONNEL", person.getPersonID());
+			 Account account = new Account(userName, password,
+			 "SPSO_PERSONNEL", person.getPersonID());
+			 aManager.addAccount(account);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
