@@ -4,14 +4,14 @@ import java.util.List;
 
 import com.iappsam.entities.Contact;
 import com.iappsam.managers.ContactManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
 /*
  * use unsupported exception
  * */
 
-public class ContactManagerSession extends Manager implements ContactManager {
+public class ContactManagerSession extends AbstractManager implements ContactManager {
 
 	@Override
 	public void addContact(Contact contact) throws TransactionException {

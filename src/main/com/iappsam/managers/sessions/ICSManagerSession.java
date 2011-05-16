@@ -6,10 +6,10 @@ import java.util.List;
 import com.iappsam.entities.forms.InventoryCustodianSlip;
 import com.iappsam.entities.forms.InventoryCustodianSlipLine;
 import com.iappsam.managers.ICSManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class ICSManagerSession extends Manager implements ICSManager {
+public class ICSManagerSession extends AbstractManager implements ICSManager {
 
 	@Override
 	public void addICS(InventoryCustodianSlip inventoryCustodianSlip)

@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.entities.forms.PurchaseRequestLine;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class PRManagerSession extends Manager implements PRManager {
+public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
 	public void addPR(PurchaseRequest purchaseRequest)

@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.iappsam.entities.Account;
 import com.iappsam.managers.AccountManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class AccountManagerSession extends Manager implements AccountManager{
+public class AccountManagerSession extends AbstractManager implements AccountManager{
 
 	@Override
 	public void addAccount(Account account) throws TransactionException {

@@ -6,10 +6,10 @@ import java.util.List;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.AnnualProcurementPlanLine;
 import com.iappsam.managers.APPManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class APPManagerSession extends Manager implements APPManager{
+public class APPManagerSession extends AbstractManager implements APPManager{
 
 	@Override
 	public void addAPP(AnnualProcurementPlan annualProcurementPlan)

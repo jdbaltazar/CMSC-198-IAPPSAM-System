@@ -6,11 +6,11 @@ import java.util.List;
 import com.iappsam.entities.forms.RSMI;
 import com.iappsam.entities.forms.RSMILine;
 import com.iappsam.entities.forms.RecapitulationLine;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.RSMIManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class RSMIManagerSession extends Manager implements RSMIManager {
+public class RSMIManagerSession extends AbstractManager implements RSMIManager {
 
 	@Override
 	public void addRSMI(RSMI rsmi) throws TransactionException {

@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Supplier;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class SupplierManagerSession extends Manager implements SupplierManager{
+public class SupplierManagerSession extends AbstractManager implements SupplierManager{
 
 	@Override
 	public void addSupplier(Supplier supplier) throws TransactionException {

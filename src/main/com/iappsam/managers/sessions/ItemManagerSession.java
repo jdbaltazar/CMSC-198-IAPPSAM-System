@@ -7,10 +7,10 @@ import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class ItemManagerSession extends Manager implements ItemManager {
+public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public void addItem(Item item) throws TransactionException {
