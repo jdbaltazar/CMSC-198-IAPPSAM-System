@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PO_Line")
-public class PurchaseOrderLine {
+public class PurchaseOrderLine implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7312439919136440157L;
+
 	@Id
 	@Column(name = "PO_Number")
 	private String poNumber;

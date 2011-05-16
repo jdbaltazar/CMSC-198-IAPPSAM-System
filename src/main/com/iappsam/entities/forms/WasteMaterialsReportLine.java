@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "WMR_Line")
-public class WasteMaterialsReportLine {
+public class WasteMaterialsReportLine implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -918675709541879390L;
+
 	@Id
 	@Column(name = "Item_ID")
 	private int itemID;

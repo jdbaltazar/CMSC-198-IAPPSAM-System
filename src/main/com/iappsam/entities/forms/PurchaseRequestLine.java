@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PR_Line")
-public class PurchaseRequestLine {
+public class PurchaseRequestLine implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2663270554482089249L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PR_Line_ID")
@@ -34,30 +42,55 @@ public class PurchaseRequestLine {
 	@Column(name = "Purchase_Request_ID")
 	private int prID;
 
-	private void init(int prLineID, int quantity, String unit, String itemDescription, int prID, String stockNumber, float estimatedUnitCost) {
-		this.prLineID = prLineID;
+	public PurchaseRequestLine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PurchaseRequestLine(int quantity, String unit, String itemDescription, String stockNumber, float estimatedUnitCost, int prID) {
+		super();
+		this.quantity = quantity;
+		this.unit = unit;
+		this.itemDescription = itemDescription;
+		this.stockNumber = stockNumber;
+		this.estimatedUnitCost = estimatedUnitCost;
+		this.prID = prID;
+	}
+
+	public PurchaseRequestLine(int quantity, String unit, String itemDescription, int prID) {
+		super();
 		this.quantity = quantity;
 		this.unit = unit;
 		this.itemDescription = itemDescription;
 		this.prID = prID;
-		this.stockNumber = stockNumber;
-		this.estimatedUnitCost = estimatedUnitCost;
-	}
-
-	public PurchaseRequestLine(int prLineID, int quantity, String unit, String itemDescription, int prID) {
-		init(prLineID, quantity, unit, itemDescription, prID, "", -0.1f);
-	}
-
-	public PurchaseRequestLine(int prLineID, int quantity, String unit, String itemDescription, int prID, String stockNumber, float estimatedUnitCost) {
-		init(prLineID, quantity, unit, itemDescription, prID, stockNumber, estimatedUnitCost);
-	}
-
-	public PurchaseRequestLine() {
-
 	}
 
 	public int getPrLineID() {
 		return prLineID;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public String getItemDescription() {
+		return itemDescription;
+	}
+
+	public String getStockNumber() {
+		return stockNumber;
+	}
+
+	public float getEstimatedUnitCost() {
+		return estimatedUnitCost;
+	}
+
+	public int getPrID() {
+		return prID;
 	}
 
 	public void setPrLineID(int prLineID) {
@@ -76,40 +109,16 @@ public class PurchaseRequestLine {
 		this.itemDescription = itemDescription;
 	}
 
-	public void setPrID(int prID) {
-		this.prID = prID;
-	}
-
-	public String getStockNumber() {
-		return stockNumber;
-	}
-
 	public void setStockNumber(String stockNumber) {
 		this.stockNumber = stockNumber;
-	}
-
-	public float getEstimatedUnitCost() {
-		return estimatedUnitCost;
 	}
 
 	public void setEstimatedUnitCost(float estimatedUnitCost) {
 		this.estimatedUnitCost = estimatedUnitCost;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public String getUnit() {
-		return unit;
-	}
-
-	public String getItemDescription() {
-		return itemDescription;
-	}
-
-	public int getPrID() {
-		return prID;
+	public void setPrID(int prID) {
+		this.prID = prID;
 	}
 
 }

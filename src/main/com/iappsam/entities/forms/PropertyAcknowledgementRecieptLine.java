@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PAR_Line")
-public class PropertyAcknowledgementRecieptLine {
+public class PropertyAcknowledgementRecieptLine implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 857324034318525053L;
+
 	@Id
 	@Column(name = "Item_ID")
 	private int itemID;

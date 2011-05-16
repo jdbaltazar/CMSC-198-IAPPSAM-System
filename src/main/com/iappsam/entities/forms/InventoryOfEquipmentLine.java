@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "IE_Line")
-public class InventoryOfEquipmentLine {
+public class InventoryOfEquipmentLine implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3724182303894246727L;
 
 	@Id
 	@GeneratedValue

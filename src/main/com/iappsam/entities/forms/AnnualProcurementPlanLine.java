@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_Line")
-public class AnnualProcurementPlanLine {
+public class AnnualProcurementPlanLine implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2657493265868247131L;
 
 	@Id
 	@Column(name = "Item_ID")

@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ICS_Line")
-public class InventoryCustodianSlipLine {
+public class InventoryCustodianSlipLine implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1882633688697555808L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ICS_Line_ID", nullable = false)

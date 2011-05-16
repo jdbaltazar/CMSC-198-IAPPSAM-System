@@ -81,17 +81,17 @@ public class AccountCreation extends HttpServlet {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameter("designation");
+		office = request.getParameter("office");
 		employeeNumber = request.getParameter("employeeNumber");
 		division = request.getParameter("division");
 		userName = request.getParameter("userName");
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 
-		if (password == null || !password.equals(reenterPassword) || name == null || designation == null || division == null || userName == null || reenterPassword == null){
+		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
 			System.out.println("output");
-		}
-		else
+		} else
 			acceptResponse(request, response);
 	}
 
@@ -99,17 +99,23 @@ public class AccountCreation extends HttpServlet {
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
 		try {
-			PrintWriter out = response.getWriter();
-			out.print("Title:" + title + "<br>");
-			out.print("Name:" + name + "<br>");
-			out.print("Designation:" + designation + "<br>");
-			out.print("Employee Number:" + employeeNumber + "<br>");
-			out.print("Division:" + division + "<br>");
-			out.print("UserName:" + userName + "<br>");
-			out.print("Password:" + password + "<br>");
+			request.setAttribute("title", title);
+			request.setAttribute("name", name);
+			request.setAttribute("designation", designation);
+			request.setAttribute("userName", userName);
+			request.setAttribute("password", password);
+			request.setAttribute("office", office);
+			request.setAttribute("division", division);
+			request.setAttribute("employeeNumber", employeeNumber);
+
+			RequestDispatcher view = request.getRequestDispatcher("CreateAccountSuccess.jsp");
+			view.forward(request, response);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		try {
 			pManager.addPerson(person);

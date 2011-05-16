@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Recapitulation_Line")
-public class RecapitulationLine {
+public class RecapitulationLine implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6962275925598771723L;
+
 	@Id
 	@Column(name = "Item_ID")
 	private int itemID;

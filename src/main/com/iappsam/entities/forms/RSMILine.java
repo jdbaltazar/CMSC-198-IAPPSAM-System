@@ -1,5 +1,7 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RSMI_Line")
-public class RSMILine {
+public class RSMILine implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6680944389292444506L;
 	@Id
 	@Column(name = "RSMI_ID")
 	private int rsmiID;

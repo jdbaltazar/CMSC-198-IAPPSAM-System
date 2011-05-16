@@ -1,7 +1,13 @@
 package com.iappsam.entities.forms;
 
-public class RequisitionAndIssueSlipLine {
+import java.io.Serializable;
 
+public class RequisitionAndIssueSlipLine implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7888860671840670652L;
 	private int itemID;
 	private int quantityRequested;
 	private int quantityIssued;
