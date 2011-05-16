@@ -3,6 +3,8 @@ package com.iappsam.managers;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -29,6 +31,7 @@ public abstract class Manager {
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
+			ex.printStackTrace();
 			throw new TransactionException(ex.getMessage());
 		}
 	}
@@ -50,18 +53,6 @@ public abstract class Manager {
 		try {
 			session.update(entity);
 			tx.commit();
-		} catch (HibernateException ex) {
-			tx.rollback();
-			throw new TransactionException(ex.getMessage());
-		}
-	}
-
-	protected Object get(Class cl, Object primaryKey) throws TransactionException {
-		Transaction tx = session.beginTransaction();
-		try {
-			Object o = session.get(cl, (Serializable) primaryKey);
-			tx.commit();
-			return o;
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
@@ -98,6 +89,20 @@ public abstract class Manager {
 			List<T> list = session.createCriteria(c).list();
 			tx.commit();
 			return list;
+		} catch (HibernateException ex) {
+			tx.rollback();
+			throw new TransactionException(ex.getMessage());
+		}
+	}
+	
+
+	@SuppressWarnings("rawtypes")
+	protected Object get( Class c, Serializable id) throws TransactionException {
+		Transaction tx = session.beginTransaction();
+		try {
+			Object result = session.get(c, id);
+			tx.commit();
+			return result;
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());

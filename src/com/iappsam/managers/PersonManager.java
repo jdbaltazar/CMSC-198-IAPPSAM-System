@@ -38,17 +38,17 @@ public interface PersonManager {
 	
 	void updateEmployee(Employee employee) throws TransactionException;
 	
-	Employee getEmployee(Employee employee) throws TransactionException;
+	Employee getEmployee(int employeeID) throws TransactionException;
 	
 	void removeEmployee(Employee employee) throws TransactionException;
 	
 	boolean containsEmployee(Employee employee) throws TransactionException;
 	
-	boolean containsDesignation(String designation, int divisionOfficeID) throws TransactionException;
+	//	boolean containsDesignation(String designation, int divisionOfficeID) throws TransactionException;
 	
-	boolean getAllEmployee() throws TransactionException;
-	
-	List<Employee> getAllEmployment(int personID) throws TransactionException;
+	//List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
+
+	List<Employee> getAllEmployee() throws TransactionException;
 	
 	//Signatory
 	
@@ -58,12 +58,12 @@ public interface PersonManager {
 	
 	void updateSignatory(Signatory signatory) throws TransactionException;
 	
-	Signatory getSignatory(Signatory signatory) throws TransactionException;
+	Signatory getSignatory(int signatoryID) throws TransactionException;
 	
 	boolean containsSignatory(Signatory signatory) throws TransactionException;
 	
 	List<Signatory> getAllSignatories() throws TransactionException;
 	
-	List<Signatory> getAllSignatoriesByPerson(int personID) throws TransactionException;
+//	List<Signatory> getAllSignatoriesByPerson(int personID) throws TransactionException;
 	
 }

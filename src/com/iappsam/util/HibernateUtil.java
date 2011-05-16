@@ -66,20 +66,20 @@ public class HibernateUtil {
 			
 			//entities
 			conf.setProperties(p);
-//			conf.addAnnotatedClass(Account.class);
+			conf.addAnnotatedClass(Account.class);
 //			conf.addAnnotatedClass(AccountType.class);
 //			conf.addAnnotatedClass(Building.class);
-//			conf.addAnnotatedClass(Contact.class);
-//			conf.addAnnotatedClass(ContactType.class);
+			conf.addAnnotatedClass(Contact.class);
+			conf.addAnnotatedClass(ContactType.class);
 //			conf.addAnnotatedClass(Designation.class);
 //			conf.addAnnotatedClass(DivisionOffice.class);
-//			conf.addAnnotatedClass(Employee.class);
+			conf.addAnnotatedClass(Employee.class);
 //			conf.addAnnotatedClass(Item.class);
 //			conf.addAnnotatedClass(ItemCondition.class);
 //			conf.addAnnotatedClass(ItemStatus.class);
 			conf.addAnnotatedClass(Person.class);
 //			conf.addAnnotatedClass(Signatory.class);
-//			conf.addAnnotatedClass(Supplier.class);
+			conf.addAnnotatedClass(Supplier.class);
 //			conf.addAnnotatedClass(Unit.class);
 			
 //			//form entities
