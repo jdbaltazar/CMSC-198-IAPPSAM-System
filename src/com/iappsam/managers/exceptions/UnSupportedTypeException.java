@@ -1,14 +1,14 @@
 package com.iappsam.managers.exceptions;
 
 @SuppressWarnings("serial")
-public class TransactionException extends Exception{
+public class UnSupportedTypeException extends Exception {
 
-	public TransactionException() {
+	public UnSupportedTypeException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public TransactionException(String msg) {
+
+	public UnSupportedTypeException(String msg) {
 		super(msg);
 		// TODO Auto-generated constructor stub
 	}

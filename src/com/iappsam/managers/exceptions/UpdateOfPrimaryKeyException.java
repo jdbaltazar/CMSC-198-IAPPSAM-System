@@ -1,14 +1,14 @@
 package com.iappsam.managers.exceptions;
 
 @SuppressWarnings("serial")
-public class TransactionException extends Exception{
+public class UpdateOfPrimaryKeyException extends Exception{
 
-	public TransactionException() {
+	public UpdateOfPrimaryKeyException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TransactionException(String msg) {
+	public UpdateOfPrimaryKeyException(String msg) {
 		super(msg);
 		// TODO Auto-generated constructor stub
 	}

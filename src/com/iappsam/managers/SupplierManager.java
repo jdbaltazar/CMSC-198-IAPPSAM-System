@@ -5,7 +5,6 @@ import java.util.List;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.mchange.v2.resourcepool.ResourcePool.Manager;
 
 public interface SupplierManager{
 	

@@ -7,6 +7,9 @@ import com.iappsam.entities.Building;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface DivisionOfficeManager {
+	
+	//DivisionOffice
+	
 	void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
 	int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
@@ -21,7 +24,11 @@ public interface DivisionOfficeManager {
 
 	boolean containsDivisionOffice(String name) throws TransactionException;
 
-	List<DivisionOffice> getAllDivisionOffices() throws TransactionException;
+	List<DivisionOffice> getDivisionOfficeByBuilding(int buildingId) throws TransactionException;
+	
+	List<DivisionOffice> getAllDivisionOffice() throws TransactionException;
+	
+	//Building
 	
 	void addBuilding(Building building) throws TransactionException;
 
@@ -29,7 +36,7 @@ public interface DivisionOfficeManager {
 
 	void updateBuilding(Building building) throws TransactionException;
 
-	Building getBuilding(int divisionOfficeID,int buildingId) throws TransactionException;
+	Building getBuilding(int buildingId) throws TransactionException;
 
 	void removeBuilding(Building building) throws TransactionException;
 

@@ -1,6 +1,5 @@
 package com.iappsam.managers.sessions;
 
-import java.util.Iterator;
 import java.util.List;
 
 import com.iappsam.entities.Employee;

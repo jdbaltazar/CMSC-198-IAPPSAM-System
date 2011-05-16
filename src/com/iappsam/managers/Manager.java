@@ -3,8 +3,6 @@ package com.iappsam.managers;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -94,10 +92,9 @@ public abstract class Manager {
 			throw new TransactionException(ex.getMessage());
 		}
 	}
-	
 
 	@SuppressWarnings("rawtypes")
-	protected Object get( Class c, Serializable id) throws TransactionException {
+	protected Object get(Class c, Serializable id) throws TransactionException {
 		Transaction tx = session.beginTransaction();
 		try {
 			Object result = session.get(c, id);
@@ -107,6 +104,23 @@ public abstract class Manager {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
 		}
+	}
+
+	// used for updating primary keys
+	protected void executeUpdate(String hql, String primaryKey, String newPrimaryKey) throws TransactionException {
+//		Transaction tx = session.beginTransaction();
+//		try {
+//
+//			Query query = session.createQuery(hql);
+//			query.setString("name", primaryKey);
+//			query.setString("newName", newPrimaryKey);
+//			tx.commit();
+//			return;
+//		} catch (HibernateException ex) {
+//			tx.rollback();
+//			throw new TransactionException(ex.getMessage());
+//		}
+
 	}
 
 }

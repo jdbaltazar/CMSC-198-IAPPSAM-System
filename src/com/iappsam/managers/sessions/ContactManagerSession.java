@@ -7,6 +7,10 @@ import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.Manager;
 import com.iappsam.managers.exceptions.TransactionException;
 
+/*
+ * use unsupported exception
+ * */
+
 public class ContactManagerSession extends Manager implements ContactManager {
 
 	@Override

@@ -1,14 +1,14 @@
 package com.iappsam.managers.exceptions;
 
 @SuppressWarnings("serial")
-public class TransactionException extends Exception{
+public class NoMatchFoundException extends Exception{
 
-	public TransactionException() {
+	public NoMatchFoundException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TransactionException(String msg) {
+	public NoMatchFoundException(String msg) {
 		super(msg);
 		// TODO Auto-generated constructor stub
 	}

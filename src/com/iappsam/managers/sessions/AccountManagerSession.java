@@ -55,6 +55,14 @@ public class AccountManagerSession extends Manager implements AccountManager{
 		return getList(Account.class);
 	}
 
+	// @Override
+	// public void updateAccountUsername(String username, String newUsername)
+	// throws TransactionException {
+	// // TODO Auto-generated method stub
+	// executeUpdate("update Account set Username = :newName where name = :name",
+	// username, newUsername);
+	// }
+
 	
 
 }

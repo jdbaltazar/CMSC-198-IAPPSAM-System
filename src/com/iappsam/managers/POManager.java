@@ -13,11 +13,11 @@ public interface POManager {
 
 	void addPO(PurchaseOrder purchaseOrder) throws TransactionException;
 
-	int savePO(PurchaseOrder purchaseOrder) throws TransactionException;
+	String savePO(PurchaseOrder purchaseOrder) throws TransactionException;
 
 	void updatePO(PurchaseOrder purchaseOrder) throws TransactionException;
 
-	PurchaseOrder getPO(int purchaseOrderID) throws TransactionException;
+	PurchaseOrder getPO(String poNumber) throws TransactionException;
 
 	boolean containsPO(PurchaseOrder purchaseOrder) throws TransactionException;
 
@@ -28,10 +28,10 @@ public interface POManager {
 	void addPOLine(PurchaseOrderLine purchaseOrderLine)
 			throws TransactionException;
 
-	int updatePOLine(PurchaseOrderLine purchaseOrderLine)
+	void updatePOLine(PurchaseOrderLine purchaseOrderLine)
 			throws TransactionException;
 
-	List<PurchaseOrderLine> getPOLineByPO(int purchaseOrderID)
+	List<PurchaseOrderLine> getPOLineByPO(String poNumber)
 			throws TransactionException;
 
 	boolean containsPOLine(PurchaseOrderLine purchaseOrderLine)

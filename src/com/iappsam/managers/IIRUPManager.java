@@ -28,7 +28,7 @@ public interface IIRUPManager {
 	
 	void updateIIRUPLine(IIRUPLine iirupLine) throws TransactionException;
 	
-	List<IIRUPLine>getIIRUPLineByIIRUP(int iiruID) throws TransactionException;
+	List<IIRUPLine>getIIRUPLineByIIRUP(int iirupID) throws TransactionException;
 	
 	boolean containsIIRUPLine(IIRUPLine iirupLine) throws TransactionException;
 	

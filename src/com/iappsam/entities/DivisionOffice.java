@@ -35,6 +35,12 @@ public class DivisionOffice {
 		this.buildingID = buildingID;
 	}
 
+	public DivisionOffice(String divisionName, int buildingID) {
+		super();
+		this.divisionName = divisionName;
+		this.buildingID = buildingID;
+	}
+
 	public int getDivisionOfficeID() {
 		return divisionOfficeID;
 	}

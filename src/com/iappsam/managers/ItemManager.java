@@ -36,7 +36,7 @@ public interface ItemManager {
 
 	void updateUnit(Unit unit) throws TransactionException;
 
-	Unit getUnit(String unit) throws TransactionException;
+	Unit getUnit(String unitName) throws TransactionException;
 
 	void removeUnit(Unit unit) throws TransactionException;
 
@@ -44,7 +44,7 @@ public interface ItemManager {
 
 	boolean containsUnit(String name) throws TransactionException;
 
-	List<Item> getAllUnits() throws TransactionException;
+	List<Unit> getAllUnits() throws TransactionException;
 	
 	//ItemStatus
 
@@ -62,7 +62,7 @@ public interface ItemManager {
 
 	boolean containsItemStatus(String name) throws TransactionException;
 
-	List<Item> getAllItemStatus() throws TransactionException;
+	List<ItemStatus> getAllItemStatus() throws TransactionException;
 
 	//ItemCodition
 	
@@ -80,6 +80,6 @@ public interface ItemManager {
 
 	boolean containsItemCondition(String name) throws TransactionException;
 
-	List<Item> getAllItemCondition() throws TransactionException;
+	List<ItemCondition> getAllItemCondition() throws TransactionException;
 
 }

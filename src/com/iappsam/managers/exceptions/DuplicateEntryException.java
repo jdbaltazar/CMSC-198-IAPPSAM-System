@@ -1,14 +1,14 @@
 package com.iappsam.managers.exceptions;
 
 @SuppressWarnings("serial")
-public class TransactionException extends Exception{
+public class DuplicateEntryException extends Exception{
 
-	public TransactionException() {
+	public DuplicateEntryException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TransactionException(String msg) {
+	public DuplicateEntryException(String msg) {
 		super(msg);
 		// TODO Auto-generated constructor stub
 	}
