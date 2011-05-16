@@ -1,7 +1,9 @@
-package com.iappsam.managers.sessions;
+package com.iappsam.search;
 
+import static org.junit.Assert.*;
 
-import org.junit.After;
+import java.util.List;
+
 import org.junit.Test;
 
 import com.iappsam.entities.Item;
@@ -11,13 +13,14 @@ import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.ItemManagerSession;
 
-public class ItemManagerSessionTest {
-
-	ItemManager im = new ItemManagerSession();
+public class SearchingTest {
 
 	@Test
-	public void addItemAndRemove() throws TransactionException {
+	public void searchItemName() throws TransactionException {
+
+		ItemManager im = new ItemManagerSession();
 
 		ItemCondition condition = new ItemCondition("");
 		im.addItemCondition(condition);
@@ -29,17 +32,15 @@ public class ItemManagerSessionTest {
 		im.addUnit(unit);
 
 		Item item = ItemManagerFactory.createItemByName("Item");
-		im.addItem(item);
+
+		Searcher s = new ItemSearcher();
+		List<Item> result = s.search("Item");
+
+		assertTrue(result.contains(item));
 
 		im.removeItem(item);
 		im.removeUnit(unit);
 		im.removeItemCondition(condition);
 		im.removeItemStatus(status);
-	}
-
-	@After
-	public void removeAllAndClose() throws TransactionException {
-
-		im.close();
 	}
 }

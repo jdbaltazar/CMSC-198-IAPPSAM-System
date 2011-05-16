@@ -13,7 +13,7 @@
 	<property name="sql.password" value="123456" />
 	<property name="sql.schema" value="misc/schema" />
 
-	<target name="all" depends="build, sql-schema" />
+	<target name="all" depends="build, sql" />
 
 	<target name="compile">
 
@@ -28,7 +28,7 @@
 		</copy>
 	</target>
 
-	<target name="sql-schema">
+	<target name="sql">
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.username}" password="${sql.password}">
 			<classpath path="${lib}" />
 			<transaction src="${sql.schema}/create.sql" />
