@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.iappsam.entities.forms.PTRPA;
 import com.iappsam.entities.forms.PTRPALine;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PTRPAManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class PTRPAManagerSession extends Manager implements PTRPAManager {
+public class PTRPAManagerSession extends AbstractManager implements PTRPAManager {
 
 	@Override
 	public void addPTRPA(PTRPA ptrpa) throws TransactionException {

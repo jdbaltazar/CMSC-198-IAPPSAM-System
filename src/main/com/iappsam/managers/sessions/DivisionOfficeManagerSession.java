@@ -6,10 +6,10 @@ import java.util.List;
 import com.iappsam.entities.Building;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class DivisionOfficeManagerSession extends Manager implements DivisionOfficeManager{
+public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager{
 
 	@Override
 	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {

@@ -6,11 +6,11 @@ import java.util.List;
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.entities.forms.PurchaseOrder;
 import com.iappsam.entities.forms.PurchaseOrderLine;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class POManagerSession extends Manager implements POManager {
+public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
 	public void addPO(PurchaseOrder purchaseOrder) throws TransactionException {

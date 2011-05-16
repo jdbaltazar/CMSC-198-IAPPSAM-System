@@ -8,10 +8,10 @@ import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public interface ItemManager {
-	
-	//Item
-	
+public interface ItemManager extends Manager {
+
+	// Item
+
 	void addItem(Item item) throws TransactionException;
 
 	int saveItem(Item item) throws TransactionException;
@@ -28,8 +28,8 @@ public interface ItemManager {
 
 	List<Item> getAllItems() throws TransactionException;
 
-	//Unit
-	
+	// Unit
+
 	void addUnit(Unit unit) throws TransactionException;
 
 	String saveUnit(Unit unit) throws TransactionException;
@@ -45,8 +45,8 @@ public interface ItemManager {
 	boolean containsUnit(String name) throws TransactionException;
 
 	List<Unit> getAllUnits() throws TransactionException;
-	
-	//ItemStatus
+
+	// ItemStatus
 
 	void addItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -64,8 +64,8 @@ public interface ItemManager {
 
 	List<ItemStatus> getAllItemStatus() throws TransactionException;
 
-	//ItemCodition
-	
+	// ItemCodition
+
 	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	String saveItemCondition(ItemCondition itemCondition) throws TransactionException;

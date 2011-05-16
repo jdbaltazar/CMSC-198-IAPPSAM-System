@@ -5,11 +5,11 @@ import java.util.List;
 
 import com.iappsam.entities.forms.RequisitionAndIssueSlip;
 import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.RISManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class RISManagerSession extends Manager implements RISManager {
+public class RISManagerSession extends AbstractManager implements RISManager {
 
 	@Override
 	public void addRIS(RequisitionAndIssueSlip requisitionAndIssueSlip)

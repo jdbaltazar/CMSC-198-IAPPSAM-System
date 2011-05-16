@@ -6,10 +6,10 @@ import java.util.List;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.entities.forms.IIRUPLine;
 import com.iappsam.managers.IIRUPManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class IIRUPManagerSession extends Manager implements IIRUPManager {
+public class IIRUPManagerSession extends AbstractManager implements IIRUPManager {
 
 	@Override
 	public void addIIRUP(IIRUP iirup) throws TransactionException {

@@ -6,10 +6,10 @@ import java.util.List;
 import com.iappsam.entities.forms.InventoryOfEquipment;
 import com.iappsam.entities.forms.InventoryOfEquipmentLine;
 import com.iappsam.managers.IEManager;
-import com.iappsam.managers.Manager;
+import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class IEManagerSession extends Manager implements IEManager {
+public class IEManagerSession extends AbstractManager implements IEManager {
 
 	@Override
 	public void addIE(InventoryOfEquipment inventoryOfEquipment)

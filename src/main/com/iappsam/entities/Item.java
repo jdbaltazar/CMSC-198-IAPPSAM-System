@@ -48,7 +48,6 @@ public class Item {
 
 	public Item() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
