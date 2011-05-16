@@ -14,11 +14,11 @@ public interface IEManager {
 
 	void updateIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 
-	InventoryOfEquipment getIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
+	InventoryOfEquipment getIE(int inventoryOfEquipmentID) throws TransactionException;
 
 	boolean containsIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 
-	List<InventoryOfEquipment> getALLIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
+	List<InventoryOfEquipment> getALLIE() throws TransactionException;
 
 	// InventoryOfEquipmentLine
 

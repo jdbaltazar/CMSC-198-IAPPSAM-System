@@ -9,9 +9,12 @@ public interface AccountManager {
 
 	void addAccount(Account account) throws TransactionException;
 
-	int saveAccount(Account account) throws TransactionException;
+	String saveAccount(Account account) throws TransactionException;
 
 	void updateAccount(Account account) throws TransactionException;
+
+	// void updateAccountUsername(String username, String newUsername) throws
+	// TransactionException;
 
 	Account getAccount(String username) throws TransactionException;
 
@@ -22,5 +25,5 @@ public interface AccountManager {
 	boolean containsAccount(String username) throws TransactionException;
 
 	List<Account> getAllAccounts() throws TransactionException;
-	
+
 }

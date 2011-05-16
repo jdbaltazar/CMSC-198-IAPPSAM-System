@@ -41,7 +41,7 @@ public interface ICSManager {
 	boolean containsICSLine(InventoryCustodianSlipLine inventoryCustodianSlipLine)
 			throws TransactionException;
 
-	List<InventoryCustodianSlipLine> getAllICSLine(int inventoryCustodianSlipID)
+	List<InventoryCustodianSlipLine> getAllICSLine()
 			throws TransactionException;
 
 }

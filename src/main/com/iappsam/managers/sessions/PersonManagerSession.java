@@ -1,6 +1,5 @@
 package com.iappsam.managers.sessions;
 
-import java.util.Iterator;
 import java.util.List;
 
 import com.iappsam.entities.Employee;
@@ -45,8 +44,7 @@ public class PersonManagerSession extends Manager implements PersonManager {
 	@Override
 	public boolean containsPerson(String name) throws TransactionException {
 		List<Person> persons = getList(Person.class);
-		for (Iterator<Person> iter = persons.iterator(); iter.hasNext();) {
-			Person p = (Person) (iter.next());
+		for (Person p: persons) {
 			if (p.getName().equalsIgnoreCase(name))
 				return true;
 		}
@@ -60,98 +58,94 @@ public class PersonManagerSession extends Manager implements PersonManager {
 
 	@Override
 	public void addEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
-
+		add(employee);
 	}
 
 	@Override
 	public int saveEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
-		return 0;
+		return (Integer)save(employee);
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
-
+		update(employee);
 	}
 
 	@Override
-	public Employee getEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee getEmployee(int employeeID) throws TransactionException {
+		return (Employee)get(Employee.class, employeeID);
 	}
 
 	@Override
 	public void removeEmployee(Employee employee) throws TransactionException {
 		// TODO Auto-generated method stub
-
+		remove(employee);
 	}
 
 	@Override
 	public boolean containsEmployee(Employee employee) throws TransactionException {
 		// TODO Auto-generated method stub
-		return false;
+		return contains(employee);
 	}
-
+	
+//	@Override
+//	public List<Employee> getEmployeeByPerson(int personID) throws TransactionException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
 	@Override
-	public boolean containsDesignation(String designation, int divisionOfficeID) throws TransactionException {
+	public List<Employee> getAllEmployee() throws TransactionException {
 		// TODO Auto-generated method stub
-		return false;
+		return getList(Employee.class);
 	}
-
-	@Override
-	public boolean getAllEmployee() throws TransactionException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<Employee> getAllEmployment(int personID) throws TransactionException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//
+//	@Override
+//	public boolean containsDesignation(String designation, int divisionOfficeID) throws TransactionException {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	@Override
 	public void addSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-
+		add(signatory);
 	}
 
 	@Override
 	public int saveSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-		return 0;
+		return (Integer)save(signatory);
 	}
 
 	@Override
 	public void updateSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-
+		update(signatory);
 	}
 
 	@Override
-	public Signatory getSignatory(Signatory signatory) throws TransactionException {
+	public Signatory getSignatory(int signatoryID) throws TransactionException {
 		// TODO Auto-generated method stub
-		return null;
+		return (Signatory) get(Signatory.class, signatoryID);
 	}
 
 	@Override
 	public boolean containsSignatory(Signatory signatory) throws TransactionException {
 		// TODO Auto-generated method stub
-		return false;
+		return contains(signatory);
 	}
 
 	@Override
 	public List<Signatory> getAllSignatories() throws TransactionException {
 		// TODO Auto-generated method stub
-		return null;
+		return getList(Signatory.class);
 	}
 
-	@Override
-	public List<Signatory> getAllSignatoriesByPerson(int personID) throws TransactionException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Signatory> getAllSignatoriesByPerson(int personID) throws TransactionException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

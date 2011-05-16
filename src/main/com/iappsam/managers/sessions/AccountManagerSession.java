@@ -11,51 +11,57 @@ public class AccountManagerSession extends Manager implements AccountManager{
 
 	@Override
 	public void addAccount(Account account) throws TransactionException {
-		// TODO Auto-generated method stub
-		
+		add(account);
 	}
 
 	@Override
-	public int saveAccount(Account account) throws TransactionException {
+	public String saveAccount(Account account) throws TransactionException {
 		// TODO Auto-generated method stub
-		return 0;
+		return (String)save(account);
 	}
 
 	@Override
 	public void updateAccount(Account account) throws TransactionException {
 		// TODO Auto-generated method stub
-		
+		update(account);
 	}
 
 	@Override
 	public Account getAccount(String username) throws TransactionException {
 		// TODO Auto-generated method stub
-		return null;
+		return (Account)get(Account.class, username);
 	}
 
 	@Override
 	public void removeAccount(Account account) throws TransactionException {
-		// TODO Auto-generated method stub
-		
+		remove(account);
 	}
 
 	@Override
 	public boolean containsAccount(Account account) throws TransactionException {
 		// TODO Auto-generated method stub
-		return false;
+		return contains(account);
 	}
 
 	@Override
 	public boolean containsAccount(String username) throws TransactionException {
 		// TODO Auto-generated method stub
-		return false;
+		return (getAccount(username)!=null);
 	}
 
 	@Override
-	public List getAllAccounts() throws TransactionException {
+	public List<Account> getAllAccounts() throws TransactionException {
 		// TODO Auto-generated method stub
-		return null;
+		return getList(Account.class);
 	}
+
+	// @Override
+	// public void updateAccountUsername(String username, String newUsername)
+	// throws TransactionException {
+	// // TODO Auto-generated method stub
+	// executeUpdate("update Account set Username = :newName where name = :name",
+	// username, newUsername);
+	// }
 
 	
 

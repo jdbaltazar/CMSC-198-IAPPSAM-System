@@ -1,5 +1,6 @@
 package com.iappsam.managers.exceptions;
 
+@SuppressWarnings("serial")
 public class TransactionException extends Exception{
 
 	public TransactionException() {

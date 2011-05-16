@@ -29,6 +29,7 @@ public abstract class Manager {
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
+			ex.printStackTrace();
 			throw new TransactionException(ex.getMessage());
 		}
 	}
@@ -50,18 +51,6 @@ public abstract class Manager {
 		try {
 			session.update(entity);
 			tx.commit();
-		} catch (HibernateException ex) {
-			tx.rollback();
-			throw new TransactionException(ex.getMessage());
-		}
-	}
-
-	protected Object get(Class cl, Object primaryKey) throws TransactionException {
-		Transaction tx = session.beginTransaction();
-		try {
-			Object o = session.get(cl, (Serializable) primaryKey);
-			tx.commit();
-			return o;
 		} catch (HibernateException ex) {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
@@ -102,6 +91,36 @@ public abstract class Manager {
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
 		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	protected Object get(Class c, Serializable id) throws TransactionException {
+		Transaction tx = session.beginTransaction();
+		try {
+			Object result = session.get(c, id);
+			tx.commit();
+			return result;
+		} catch (HibernateException ex) {
+			tx.rollback();
+			throw new TransactionException(ex.getMessage());
+		}
+	}
+
+	// used for updating primary keys
+	protected void executeUpdate(String hql, String primaryKey, String newPrimaryKey) throws TransactionException {
+//		Transaction tx = session.beginTransaction();
+//		try {
+//
+//			Query query = session.createQuery(hql);
+//			query.setString("name", primaryKey);
+//			query.setString("newName", newPrimaryKey);
+//			tx.commit();
+//			return;
+//		} catch (HibernateException ex) {
+//			tx.rollback();
+//			throw new TransactionException(ex.getMessage());
+//		}
+
 	}
 
 }
