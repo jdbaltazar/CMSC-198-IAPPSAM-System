@@ -1,0 +1,15 @@
+<project name="CMSC-198-IAPPSAM" default="all">
+
+	<target name="all" depends="build" />
+
+	<target name="compile">
+		<javac srcdir="src" destdir="build/classes" />
+	</target>
+
+	<target name="build" depends="compile">
+		<copy todir="webapp/WEB-INF">
+			<fileset dir="build" />
+		</copy>
+	</target>
+
+</project>
