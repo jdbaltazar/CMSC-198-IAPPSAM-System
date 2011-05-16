@@ -39,8 +39,9 @@ public class Employee {
 		this.personID = personID;
 	}
 
-	public Employee(String designation, int personID) {
+	public Employee(int employeeID, String designation, int personID) {
 		super();
+		this.employeeID = employeeID;
 		this.designation = designation;
 		this.personID = personID;
 	}

@@ -41,26 +41,25 @@ public class AccountCreation extends HttpServlet {
 
 	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			if (userName == null||userName.length()==0)
-				request.setAttribute("usernameIsOK", "false");
+			if (userName == null)
+				request.setAttribute("usernameIsOk", "false");
 			else
 				request.setAttribute("usernameIsOK", "true");
-			
-			if (password == null || reenterPassword == null || !password.equals(reenterPassword)||password.equalsIgnoreCase("")||reenterPassword.equalsIgnoreCase(""))
+			if (password == null || reenterPassword == null || !password.equals(reenterPassword))
 				request.setAttribute("passIsOK", "false");
 			else
 				request.setAttribute("passIsOK", "true");
 
-			if (name == null||name.length()==0)
+			if (name == null)
 				request.setAttribute("nameIsOK", "false");
 			else
 				request.setAttribute("nameIsOK", "true");
 
-			if (designation == null||designation.length()==0)
+			if (designation == null)
 				request.setAttribute("designationIsOK", "false");
 			else
 				request.setAttribute("designationIsOK", "true");
-			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountFail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("CreateAccountFail.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -76,7 +75,6 @@ public class AccountCreation extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Enumeration<String> s = request.getAttributeNames();
 
@@ -84,14 +82,14 @@ public class AccountCreation extends HttpServlet {
 		name = request.getParameter("name");
 		designation = request.getParameter("designation");
 		employeeNumber = request.getParameter("employeeNumber");
-		office = request.getParameter("office");
 		division = request.getParameter("division");
 		userName = request.getParameter("userName");
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 
-		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty()|| designation.isEmpty()|| division.isEmpty()|| userName.isEmpty()|| reenterPassword.isEmpty()){
+		if (password == null || !password.equals(reenterPassword) || name == null || designation == null || division == null || userName == null || reenterPassword == null){
 			failedResponse(request, response);
+			System.out.println("output");
 		}
 		else
 			acceptResponse(request, response);
@@ -101,22 +99,17 @@ public class AccountCreation extends HttpServlet {
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
 		try {
-			request.setAttribute("title", title);
-			request.setAttribute("name", name);
-			request.setAttribute("designation", designation);
-			request.setAttribute("employeeNumber", employeeNumber);
-			request.setAttribute("division", division);
-			request.setAttribute("userName", userName);
-			request.setAttribute("password", password);
-			request.setAttribute("office", office);
-			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
-			view.forward(request, response);
+			PrintWriter out = response.getWriter();
+			out.print("Title:" + title + "<br>");
+			out.print("Name:" + name + "<br>");
+			out.print("Designation:" + designation + "<br>");
+			out.print("Employee Number:" + employeeNumber + "<br>");
+			out.print("Division:" + division + "<br>");
+			out.print("UserName:" + userName + "<br>");
+			out.print("Password:" + password + "<br>");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		try {
 			pManager.addPerson(person);

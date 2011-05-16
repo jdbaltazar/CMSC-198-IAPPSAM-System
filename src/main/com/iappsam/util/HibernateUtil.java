@@ -63,53 +63,53 @@ public class HibernateUtil {
 			p.setProperty("hibernate.connection.password", "123456");
 
 			Configuration conf = new Configuration();
-
-			// entities
+			
+			//entities
 			conf.setProperties(p);
-			conf.addAnnotatedClass(Account.class);
-			// conf.addAnnotatedClass(AccountType.class);
-			conf.addAnnotatedClass(Building.class);
-			// conf.addAnnotatedClass(Contact.class);
-			// conf.addAnnotatedClass(ContactType.class);
-			// conf.addAnnotatedClass(Designation.class);
-			conf.addAnnotatedClass(DivisionOffice.class);
-			conf.addAnnotatedClass(Employee.class);
-			conf.addAnnotatedClass(Item.class);
-			conf.addAnnotatedClass(ItemCondition.class);
-			conf.addAnnotatedClass(ItemStatus.class);
+//			conf.addAnnotatedClass(Account.class);
+//			conf.addAnnotatedClass(AccountType.class);
+//			conf.addAnnotatedClass(Building.class);
+//			conf.addAnnotatedClass(Contact.class);
+//			conf.addAnnotatedClass(ContactType.class);
+//			conf.addAnnotatedClass(Designation.class);
+//			conf.addAnnotatedClass(DivisionOffice.class);
+//			conf.addAnnotatedClass(Employee.class);
+//			conf.addAnnotatedClass(Item.class);
+//			conf.addAnnotatedClass(ItemCondition.class);
+//			conf.addAnnotatedClass(ItemStatus.class);
 			conf.addAnnotatedClass(Person.class);
-			// conf.addAnnotatedClass(Signatory.class);
-			conf.addAnnotatedClass(Supplier.class);
-			conf.addAnnotatedClass(Unit.class);
-
-			// //form entities
-			// conf.addAnnotatedClass(AnnualProcurementPlan.class);
-			// conf.addAnnotatedClass(AnnualProcurementPlanLine.class);
-			// conf.addAnnotatedClass(Disposal.class);
-			// conf.addAnnotatedClass(IIRUP.class);
-			// conf.addAnnotatedClass(IIRUPLine.class);
-			// conf.addAnnotatedClass(InventoryCustodianSlip.class);
-			// conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
-			// conf.addAnnotatedClass(InventoryOfEquipment.class);
-			// conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			// conf.addAnnotatedClass(ModeOfProcurement.class);
-			// conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
-			// conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
-			// conf.addAnnotatedClass(PTRPA.class);
-			// conf.addAnnotatedClass(PTRPALine.class);
-			// conf.addAnnotatedClass(PurchaseOrder.class);
-			// conf.addAnnotatedClass(PurchaseOrderLine.class);
-			// conf.addAnnotatedClass(PurchaseRequest.class);
-			// conf.addAnnotatedClass(PurchaseRequestLine.class);
-			// conf.addAnnotatedClass(RecapitulationLine.class);
-			// conf.addAnnotatedClass(RequisitionAndIssueSlip.class);
-			// conf.addAnnotatedClass(RequisitionAndIssueSlipLine.class);
-			// conf.addAnnotatedClass(RSMI.class);
-			// conf.addAnnotatedClass(RSMILine.class);
-			// conf.addAnnotatedClass(WasteMaterialsReport.class);
-			// conf.addAnnotatedClass(WasteMaterialsReportLine.class);
-
-			sessionFactory = conf.buildSessionFactory();
+//			conf.addAnnotatedClass(Signatory.class);
+//			conf.addAnnotatedClass(Supplier.class);
+//			conf.addAnnotatedClass(Unit.class);
+			
+//			//form entities
+//			conf.addAnnotatedClass(AnnualProcurementPlan.class);
+//			conf.addAnnotatedClass(AnnualProcurementPlanLine.class);
+//			conf.addAnnotatedClass(Disposal.class);
+//			conf.addAnnotatedClass(IIRUP.class);
+//			conf.addAnnotatedClass(IIRUPLine.class);
+//			conf.addAnnotatedClass(InventoryCustodianSlip.class);
+//			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
+//			conf.addAnnotatedClass(InventoryOfEquipment.class);
+//			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
+//			conf.addAnnotatedClass(ModeOfProcurement.class);
+//			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
+//			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
+//			conf.addAnnotatedClass(PTRPA.class);
+//			conf.addAnnotatedClass(PTRPALine.class);
+//			conf.addAnnotatedClass(PurchaseOrder.class);
+//			conf.addAnnotatedClass(PurchaseOrderLine.class);
+//			conf.addAnnotatedClass(PurchaseRequest.class);
+//			conf.addAnnotatedClass(PurchaseRequestLine.class);
+//			conf.addAnnotatedClass(RecapitulationLine.class);
+//			conf.addAnnotatedClass(RequisitionAndIssueSlip.class);
+//			conf.addAnnotatedClass(RequisitionAndIssueSlipLine.class);
+//			conf.addAnnotatedClass(RSMI.class);
+//			conf.addAnnotatedClass(RSMILine.class);
+//			conf.addAnnotatedClass(WasteMaterialsReport.class);
+//			conf.addAnnotatedClass(WasteMaterialsReportLine.class);
+			
+			sessionFactory= conf.buildSessionFactory();
 
 		} catch (Throwable ex) {
 			throw new ExceptionInInitializerError(ex);

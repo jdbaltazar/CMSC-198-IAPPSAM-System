@@ -6,13 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity (name = "Contact")
 public class Contact {
-	
-	public static final String FOR_SUPPLIER = "FOR_SUPPLIER";
-	public static final String FOR_DIVISIONOFFICE = "FOR_DIVISIONOFFICE";
-	public static final String FOR_PERSON = "FOR_PERSON";
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,18 +41,6 @@ public class Contact {
 		this.divisionOfficeID = divisionOfficeID;
 		this.personID = personID;
 	}
-
-//	public Contact(String data, String contactType, int idOfOwner, String typeOfOwner) {
-//		super();
-//		this.data = data;
-//		this.contactType = contactType;
-//		if(typeOfOwner.equalsIgnoreCase(Contact.FOR_DIVISIONOFFICE))
-//			this.divisionOfficeID = idOfOwner;
-//		if(typeOfOwner.equalsIgnoreCase(Contact.FOR_PERSON))
-//			this.personID = idOfOwner;
-//		if(typeOfOwner.equalsIgnoreCase(Contact.FOR_SUPPLIER))
-//			this.supplierID = idOfOwner;
-//	}
 
 	public int getContactID() {
 		return contactID;
