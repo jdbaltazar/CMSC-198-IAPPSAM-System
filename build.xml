@@ -1,24 +1,31 @@
 <project name="CMSC-198-IAPPSAM" default="all">
 
 	<path id="classpath">
-		<fileset dir="./webapp/WEB-INF/lib/">
+		<fileset dir="webapp/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="lib2">
+		<fileset dir="lib">
 			<include name="**/*.jar" />
 		</fileset>
 	</path>
 
 	<property name="lib" refid="classpath" />
+	<property name="lib2" refid="lib2" />
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="sql.url" value="jdbc:mysql://localhost/" />
 	<property name="sql.username" value="root" />
 	<property name="sql.password" value="123456" />
-	<property name="sql.schema" value="misc/schema" />
+	<property name="sql.schema" value="week/phase-3" />
 
 	<target name="all" depends="build, sql" />
 
 	<target name="compile">
-
 		<javac srcdir="src" destdir="build/classes">
 			<classpath path="${lib}" />
+			<classpath path="${lib2}" />
 		</javac>
 	</target>
 
@@ -31,7 +38,8 @@
 	<target name="sql">
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.username}" password="${sql.password}">
 			<classpath path="${lib}" />
-			<transaction src="${sql.schema}/create.sql" />
+			<transaction src="${sql.schema}/database.sql" />
+			<transaction src="${sql.schema}/default-values.sql" />
 		</sql>
 	</target>
 
