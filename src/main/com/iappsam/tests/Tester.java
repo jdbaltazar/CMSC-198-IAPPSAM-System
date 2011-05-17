@@ -50,10 +50,10 @@ public class Tester {
 			// Forms
 			PRManager prManager = new PRManagerSession();
 
-			 Person person = new Person("dcfvgbhn", "d fgbncdvfgbhnjm");
-			 pManager.addPerson(person);
-			 // person.setName("Warren");
-			 // pManager.updatePerson(person);
+			Person person = new Person("dcfvgbhn", "d fgbncdvfgbhnjm");
+			pManager.addPerson(person);
+			// person.setName("Warren");
+			// pManager.updatePerson(person);
 			//
 			// Person p = pManager.getPerson(1);
 			//
@@ -126,52 +126,55 @@ public class Tester {
 			// System.out.println(s.getSupplierName());
 			// }
 
-//			// Building
-//
+			// Building
+
 //			Building building = new Building("xdcfvgbhnjmk", "UPTAC Compund");
 //			doMananger.addBuilding(building);
-
-			// List<Building> buildings = doMananger.getAllBuildings();
-			// for (Building b : buildings) {
-			// System.out.println(b.getBuildingName());
-			// }
-			//
+//
+//			List<Building> buildings = doMananger.getAllBuildings();
+//			for (Building b : buildings) {
+//				System.out.println(b.getBuildingName());
+//			}
+//
 //			// DivisionOffice
 //
 //			DivisionOffice divisionOffice = new DivisionOffice("DM", null, building.getBuildingID());
 //			doMananger.addDivisionOffice(divisionOffice);
-			//
-			// List<DivisionOffice> divisionOffices =
-			// doMananger.getAllDivisionOffice();
-			// for (DivisionOffice dO : divisionOffices) {
-			// System.out.println(dO.getDivisionName());
-			// }
-
-			// //Unit
-			// Unit unit = new Unit("PCS");
-			// iManager.addUnit(unit);
-			//
-			// //ItemStatus
-			// ItemStatus itemStatus = new ItemStatus("ON STOCK");
-			// iManager.addItemStatus(itemStatus);
-
-			// //ItemCondition
-			// ItemCondition itemCondition = new
-			// ItemCondition("GOOD CONDITION");
-			// iManager.addItemCondition(itemCondition);
-			// iManager.addItemCondition(itemCondition);
-
-//			// Item
-//			Item item = new Item("Table", "PCS", "Plastic", 100, new Date(2011, 5, 17), "ON STOCK", "GOOD CONDITION");
-//			iManager.addItem(item);
-
-//			// PR
-//			PurchaseRequest pr = new PurchaseRequest(divisionOffice.getDivisionOfficeID(), "Office Purposes", 3, 3);
-//			prManager.addPR(pr);
 //
-//			// PRLine
-//			PurchaseRequestLine prLine = new PurchaseRequestLine(112, "PCS", "Description of Item", pr.getPrID());
-//			prManager.addPRLine(prLine);
+//			List<DivisionOffice> divisionOffices = doMananger.getAllDivisionOffice();
+//			for (DivisionOffice dO : divisionOffices) {
+//				System.out.println(dO.getDivisionName());
+//			}
+
+			 //Unit
+			 Unit unit = new Unit("PCS");
+			 iManager.addUnit(unit);
+			
+			 //ItemStatus
+			 ItemStatus itemStatus = new ItemStatus("ON STOCK");
+			 iManager.addItemStatus(itemStatus);
+
+			 //ItemCondition
+			 ItemCondition itemCondition = new
+			 ItemCondition("GOOD CONDITION");
+			 iManager.addItemCondition(itemCondition);
+			 iManager.addItemCondition(itemCondition);
+
+			 // Item
+			 Item item = new Item("Table", "PCS", "Plastic", 100, new
+			 Date(2011, 5, 17), "ON STOCK", "GOOD CONDITION");
+			 iManager.addItem(item);
+
+			// // PR
+			// PurchaseRequest pr = new
+			// PurchaseRequest(divisionOffice.getDivisionOfficeID(),
+			// "Office Purposes", 3, 3);
+			// prManager.addPR(pr);
+			//
+			// // PRLine
+			// PurchaseRequestLine prLine = new PurchaseRequestLine(112, "PCS",
+			// "Description of Item", pr.getPrID());
+			// prManager.addPRLine(prLine);
 
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block

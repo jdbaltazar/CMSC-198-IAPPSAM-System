@@ -19,27 +19,15 @@ public class Contact {
 	
 	@Column(name = "Contact_Type")
 	private String contactType;
-	
-	@Column(name = "Supplier_ID")
-	private int supplierID;
-	
-	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
-	
-	@Column(name = "Person_ID")
-	private int personID;
 
 	public Contact() {
 		super();
 	}
 
-	public Contact(String data, String contactType, int supplierID, int divisionOfficeID, int personID) {
+	public Contact(String data, String contactType) {
 		super();
 		this.data = data;
 		this.contactType = contactType;
-		this.supplierID = supplierID;
-		this.divisionOfficeID = divisionOfficeID;
-		this.personID = personID;
 	}
 
 	public int getContactID() {
@@ -54,18 +42,6 @@ public class Contact {
 		return contactType;
 	}
 
-	public int getSupplierID() {
-		return supplierID;
-	}
-
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
-	}
-
-	public int getPersonID() {
-		return personID;
-	}
-
 	public void setContactID(int contactID) {
 		this.contactID = contactID;
 	}
@@ -76,18 +52,6 @@ public class Contact {
 
 	public void setContactType(String contactType) {
 		this.contactType = contactType;
-	}
-
-	public void setSupplierID(int supplierID) {
-		this.supplierID = supplierID;
-	}
-
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
-	}
-
-	public void setPersonID(int personID) {
-		this.personID = personID;
 	}
 	
 }

@@ -60,8 +60,21 @@ public class BuildingCreation extends HttpServlet {
 
 	}
 
+		
 	private void failedRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
+		RequestDispatcher view = request.getRequestDispatcher("../../jsp/entities/building/CreateBuildingFail.jsp");
+		request.setAttribute("name", "fail");
+		request.setAttribute("address", address);
+		request.setAttribute("buildingID", buildingID);
+		try {
+			view.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

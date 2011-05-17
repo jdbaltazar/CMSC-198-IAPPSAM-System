@@ -12,13 +12,16 @@ import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Designation;
 import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Person;
+import com.iappsam.entities.PersonContact;
 import com.iappsam.entities.Signatory;
 import com.iappsam.entities.Supplier;
+import com.iappsam.entities.SupplierContact;
 import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.AnnualProcurementPlanLine;
@@ -73,13 +76,16 @@ public class HibernateUtil {
 			// conf.addAnnotatedClass(ContactType.class);
 			// conf.addAnnotatedClass(Designation.class);
 			conf.addAnnotatedClass(DivisionOffice.class);
+			conf.addAnnotatedClass(DivisionOfficeContact.class);
 			// conf.addAnnotatedClass(Employee.class);
 			 conf.addAnnotatedClass(Item.class);
 			 conf.addAnnotatedClass(ItemCondition.class);
 			 conf.addAnnotatedClass(ItemStatus.class);
 			conf.addAnnotatedClass(Person.class);
+			conf.addAnnotatedClass(PersonContact.class);
 			// conf.addAnnotatedClass(Signatory.class);
-			// conf.addAnnotatedClass(Supplier.class);
+			 conf.addAnnotatedClass(Supplier.class);
+			 conf.addAnnotatedClass(SupplierContact.class);
 			 conf.addAnnotatedClass(Unit.class);
 
 			// //form entities

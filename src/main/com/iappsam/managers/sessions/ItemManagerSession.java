@@ -168,7 +168,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public List<ItemStatus> getAllItemStatus() throws TransactionException {
 		// TODO Auto-generated method stub
-		return getAllItemStatus();
+		return getList(ItemStatus.class);
 	}
 
 	@Override

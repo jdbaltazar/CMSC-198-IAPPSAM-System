@@ -31,6 +31,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `IAPPSAM`.`Contact`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`Contact` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Contact` (
+  `Contact_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Data` VARCHAR(45) NOT NULL ,
+  `Contact_Type` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`Contact_ID`) ,
+  INDEX `fk_Contact_Contact_Type1` (`Contact_Type` ASC) ,
+  CONSTRAINT `fk_Contact_Contact_Type1`
+    FOREIGN KEY (`Contact_Type` )
+    REFERENCES `IAPPSAM`.`Contact_Type` (`Contact_Type` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `IAPPSAM`.`Building`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Building` ;
@@ -106,46 +125,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier` (
   CONSTRAINT `fk_Supplier_Employee1`
     FOREIGN KEY (`Contact_Person_ID` )
     REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`Contact`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Contact` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Contact` (
-  `Contact_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Data` VARCHAR(45) NOT NULL ,
-  `Contact_Type` VARCHAR(45) NOT NULL ,
-  `Supplier_ID` INT NULL ,
-  `DivisionOffice_ID` INT NULL ,
-  `Person_ID` INT NULL ,
-  PRIMARY KEY (`Contact_ID`) ,
-  INDEX `fk_Contact_Contact_Type1` (`Contact_Type` ASC) ,
-  INDEX `fk_Contact_Supplier1` (`Supplier_ID` ASC) ,
-  INDEX `fk_Contact_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Contact_Person1` (`Person_ID` ASC) ,
-  CONSTRAINT `fk_Contact_Contact_Type1`
-    FOREIGN KEY (`Contact_Type` )
-    REFERENCES `IAPPSAM`.`Contact_Type` (`Contact_Type` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Contact_Supplier1`
-    FOREIGN KEY (`Supplier_ID` )
-    REFERENCES `IAPPSAM`.`Supplier` (`Supplier_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Contact_DivisionOffice1`
-    FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Contact_Person1`
-    FOREIGN KEY (`Person_ID` )
-    REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -1120,6 +1099,78 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Account` (
   CONSTRAINT `fk_Account_Account_Type1`
     FOREIGN KEY (`Account_Type` )
     REFERENCES `IAPPSAM`.`Account_Type` (`Account_Type` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`PersonContact`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`PersonContact` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PersonContact` (
+  `Person_ID` INT NOT NULL ,
+  `Contact_ID` INT NOT NULL ,
+  PRIMARY KEY (`Contact_ID`, `Person_ID`) ,
+  INDEX `fk_PersonContact_Person1` (`Person_ID` ASC) ,
+  INDEX `fk_PersonContact_Contact1` (`Contact_ID` ASC) ,
+  CONSTRAINT `fk_PersonContact_Person1`
+    FOREIGN KEY (`Person_ID` )
+    REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_PersonContact_Contact1`
+    FOREIGN KEY (`Contact_ID` )
+    REFERENCES `IAPPSAM`.`Contact` (`Contact_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`DivisionOfficeContact`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOfficeContact` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOfficeContact` (
+  `DivisionOffice_ID` INT NOT NULL ,
+  `Contact_ID` INT NOT NULL ,
+  PRIMARY KEY (`Contact_ID`, `DivisionOffice_ID`) ,
+  INDEX `fk_DivisionOfficeContact_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
+  INDEX `fk_DivisionOfficeContact_Contact1` (`Contact_ID` ASC) ,
+  CONSTRAINT `fk_DivisionOfficeContact_DivisionOffice1`
+    FOREIGN KEY (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_DivisionOfficeContact_Contact1`
+    FOREIGN KEY (`Contact_ID` )
+    REFERENCES `IAPPSAM`.`Contact` (`Contact_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`SupplierContact`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`SupplierContact` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`SupplierContact` (
+  `Supplier_ID` INT NOT NULL ,
+  `Contact_ID` INT NOT NULL ,
+  INDEX `fk_SupplierContact_Supplier1` (`Supplier_ID` ASC) ,
+  INDEX `fk_SupplierContact_Contact1` (`Contact_ID` ASC) ,
+  PRIMARY KEY (`Supplier_ID`, `Contact_ID`) ,
+  CONSTRAINT `fk_SupplierContact_Supplier1`
+    FOREIGN KEY (`Supplier_ID` )
+    REFERENCES `IAPPSAM`.`Supplier` (`Supplier_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_SupplierContact_Contact1`
+    FOREIGN KEY (`Contact_ID` )
+    REFERENCES `IAPPSAM`.`Contact` (`Contact_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
