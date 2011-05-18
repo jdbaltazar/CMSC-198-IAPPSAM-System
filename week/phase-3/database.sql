@@ -50,6 +50,47 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `IAPPSAM`.`Employee`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`Employee` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee` (
+  `Employee_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Designation` VARCHAR(45) NOT NULL ,
+  `Employee_Number` VARCHAR(45) NULL ,
+  `Person_ID` INT NOT NULL ,
+  PRIMARY KEY (`Employee_ID`) ,
+  INDEX `fk_Employee_Person1` (`Person_ID` ASC) ,
+  CONSTRAINT `fk_Employee_Person1`
+    FOREIGN KEY (`Person_ID` )
+    REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`Supplier`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`Supplier` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier` (
+  `Supplier_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(80) NOT NULL ,
+  `Address` VARCHAR(100) NOT NULL ,
+  `TIN` VARCHAR(45) NULL ,
+  `Contact_Person_ID` INT NOT NULL ,
+  PRIMARY KEY (`Supplier_ID`) ,
+  INDEX `fk_Supplier_Employee1` (`Contact_Person_ID` ASC) ,
+  CONSTRAINT `fk_Supplier_Employee1`
+    FOREIGN KEY (`Contact_Person_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `IAPPSAM`.`Building`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Building` ;
@@ -77,54 +118,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
   CONSTRAINT `fk_DivisionOffice_Building1`
     FOREIGN KEY (`Building_ID` )
     REFERENCES `IAPPSAM`.`Building` (`Building_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`Employee`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Employee` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee` (
-  `Employee_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Designation` VARCHAR(45) NOT NULL ,
-  `Employee_Number` VARCHAR(45) NULL ,
-  `DivisionOffice_ID` INT NULL ,
-  `Person_ID` INT NOT NULL ,
-  PRIMARY KEY (`Employee_ID`) ,
-  INDEX `fk_Employee_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Employee_Person1` (`Person_ID` ASC) ,
-  CONSTRAINT `fk_Employee_DivisionOffice1`
-    FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Employee_Person1`
-    FOREIGN KEY (`Person_ID` )
-    REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`Supplier`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Supplier` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier` (
-  `Supplier_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Name` VARCHAR(80) NOT NULL ,
-  `Address` VARCHAR(100) NOT NULL ,
-  `TIN` VARCHAR(45) NULL ,
-  `Contact_Person_ID` INT NOT NULL ,
-  PRIMARY KEY (`Supplier_ID`) ,
-  INDEX `fk_Supplier_Employee1` (`Contact_Person_ID` ASC) ,
-  CONSTRAINT `fk_Supplier_Employee1`
-    FOREIGN KEY (`Contact_Person_ID` )
-    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -206,14 +199,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`PR_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PR_Line` (
-  `PR_Line_ID` INT NOT NULL AUTO_INCREMENT ,
   `Quantity` INT NOT NULL ,
   `Unit` VARCHAR(20) NOT NULL ,
   `Item_Description` VARCHAR(500) NOT NULL ,
   `Stock_Number` VARCHAR(45) NULL ,
   `Estimated_Unit_Cost` DECIMAL(50,2) NULL ,
   `Purchase_Request_ID` INT NOT NULL ,
-  PRIMARY KEY (`PR_Line_ID`, `Purchase_Request_ID`) ,
+  PRIMARY KEY (`Purchase_Request_ID`, `Item_Description`) ,
   INDEX `fk_PR_Line_Unit1` (`Unit` ASC) ,
   INDEX `fk_PR_Line_Purchase_Request1` (`Purchase_Request_ID` ASC) ,
   CONSTRAINT `fk_PR_Line_Unit1`
@@ -817,60 +809,11 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Inventory_Of_Equipment` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
   `Inventory_Of_Equipment_ID` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
-  `Signatory_ID2` INT NULL ,
-  `Signatory_ID3` INT NULL ,
-  `Signatory_ID4` INT NOT NULL ,
-  `Signatory_ID5` INT NOT NULL ,
-  `Signatory_ID6` INT NULL ,
   PRIMARY KEY (`Inventory_Of_Equipment_ID`) ,
   INDEX `fk_Inventory_Of_Equipment_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory2` (`Signatory_ID1` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory3` (`Signatory_ID2` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory4` (`Signatory_ID3` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory5` (`Signatory_ID4` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory6` (`Signatory_ID5` ASC) ,
-  INDEX `fk_Inventory_Of_Equipment_Signatory7` (`Signatory_ID6` ASC) ,
   CONSTRAINT `fk_Inventory_Of_Equipment_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory3`
-    FOREIGN KEY (`Signatory_ID2` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory4`
-    FOREIGN KEY (`Signatory_ID3` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory5`
-    FOREIGN KEY (`Signatory_ID4` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory6`
-    FOREIGN KEY (`Signatory_ID5` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Inventory_Of_Equipment_Signatory7`
-    FOREIGN KEY (`Signatory_ID6` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -1086,6 +1029,7 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Account` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Account` (
   `Username` VARCHAR(60) NOT NULL ,
   `Password` VARCHAR(80) NOT NULL ,
+  `Acquainted` TINYINT(1)  NOT NULL ,
   `Account_Type` VARCHAR(50) NOT NULL ,
   `Person_ID` INT NOT NULL ,
   PRIMARY KEY (`Username`) ,
@@ -1105,11 +1049,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`PersonContact`
+-- Table `IAPPSAM`.`Person_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PersonContact` ;
+DROP TABLE IF EXISTS `IAPPSAM`.`Person_Contact` ;
 
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PersonContact` (
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Person_Contact` (
   `Person_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
   PRIMARY KEY (`Contact_ID`, `Person_ID`) ,
@@ -1129,11 +1073,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`DivisionOfficeContact`
+-- Table `IAPPSAM`.`DivisionOffice_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOfficeContact` ;
+DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice_Contact` ;
 
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOfficeContact` (
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice_Contact` (
   `DivisionOffice_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
   PRIMARY KEY (`Contact_ID`, `DivisionOffice_ID`) ,
@@ -1153,11 +1097,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`SupplierContact`
+-- Table `IAPPSAM`.`Supplier_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`SupplierContact` ;
+DROP TABLE IF EXISTS `IAPPSAM`.`Supplier_Contact` ;
 
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`SupplierContact` (
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier_Contact` (
   `Supplier_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
   INDEX `fk_SupplierContact_Supplier1` (`Supplier_ID` ASC) ,
@@ -1171,6 +1115,54 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`SupplierContact` (
   CONSTRAINT `fk_SupplierContact_Contact1`
     FOREIGN KEY (`Contact_ID` )
     REFERENCES `IAPPSAM`.`Contact` (`Contact_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`Employee_DivisionOffice`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`Employee_DivisionOffice` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee_DivisionOffice` (
+  `Employee_ID` INT NOT NULL ,
+  `DivisionOffice_ID` INT NOT NULL ,
+  PRIMARY KEY (`Employee_ID`, `DivisionOffice_ID`) ,
+  INDEX `fk_Employee_DivisionOffice_Employee1` (`Employee_ID` ASC) ,
+  INDEX `fk_Employee_DivisionOffice_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
+  CONSTRAINT `fk_Employee_DivisionOffice_Employee1`
+    FOREIGN KEY (`Employee_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Employee_DivisionOffice_DivisionOffice1`
+    FOREIGN KEY (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`IE_Signatory`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`IE_Signatory` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Signatory` (
+  `Inventory_Of_Equipment_ID` INT NOT NULL ,
+  `Signatory_ID` INT NOT NULL ,
+  PRIMARY KEY (`Inventory_Of_Equipment_ID`, `Signatory_ID`) ,
+  INDEX `fk_IE_Signatory_Inventory_Of_Equipment1` (`Inventory_Of_Equipment_ID` ASC) ,
+  INDEX `fk_IE_Signatory_Signatory1` (`Signatory_ID` ASC) ,
+  CONSTRAINT `fk_IE_Signatory_Inventory_Of_Equipment1`
+    FOREIGN KEY (`Inventory_Of_Equipment_ID` )
+    REFERENCES `IAPPSAM`.`Inventory_Of_Equipment` (`Inventory_Of_Equipment_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IE_Signatory_Signatory1`
+    FOREIGN KEY (`Signatory_ID` )
+    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

@@ -17,6 +17,7 @@ import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
@@ -151,6 +152,9 @@ public class AccountCreation extends HttpServlet {
 			 cManager.addContact(contactEmail);
 			 aManager.addAccount(account);
 		} catch (TransactionException e) {
+			e.printStackTrace();
+		} catch (DuplicateEntryException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

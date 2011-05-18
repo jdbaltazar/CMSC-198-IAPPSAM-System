@@ -27,6 +27,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
@@ -51,8 +52,9 @@ public class Tester {
 			// Forms
 			PRManager prManager = new PRManagerSession();
 
-			Person person = new Person("dcfvgbhn", "d fgbncdvfgbhnjm");
+			Person person = new Person("ASasasasas", "d fgbncdvfgbhnjm");
 			pManager.addPerson(person);
+			
 			// person.setName("Warren");
 			// pManager.updatePerson(person);
 			//
@@ -170,38 +172,48 @@ public class Tester {
 
 			// PR
 
-			Person p = new Person("MARGARITA DE LA CRUZ");
-			pManager.addPerson(p);
-
-			Person p2 = new Person("TELESFORO SALES");
-			pManager.addPerson(p2);
-
-			Employee emp1 = new Employee("Dean", p.getPersonID());
-			pManager.addEmployee(emp1);
-
-			Employee emp2 = new Employee("SAO Head", p2.getPersonID());
-			pManager.addEmployee(emp2);
-
-			Signatory s1 = new Signatory("Noted by", emp1.getEmployeeID());
-			pManager.addSignatory(s1);
-
-			Signatory s2 = new Signatory("Noted by", emp2.getEmployeeID());
-			pManager.addSignatory(s2);
-
-			Building building = new Building("AS Building", "UPVTC Compund");
-			doMananger.addBuilding(building);
-
-			DivisionOffice divisionOffice = new DivisionOffice("DH", null, building.getBuildingID());
-			doMananger.addDivisionOffice(divisionOffice);
-
-			PurchaseRequest pr = new PurchaseRequest(divisionOffice.getDivisionOfficeID(), "Office Use", s1.getSignatoryID(), s2.getSignatoryID());
-			prManager.addPR(pr);
-
-			// PRLine
-			PurchaseRequestLine prLine = new PurchaseRequestLine(1121, "PCS", "Item Description", "12323", 100, pr.getPrID());
-			prManager.addPRLine(prLine);
+//			try {
+//
+//				Person p = pManager.getPerson("MARGARITA DE LA CRUZ 2");
+//				Person p2 = pManager.getPerson("TELESFORO SALES 2");
+//
+//				pManager.addPerson(p);
+//				pManager.addPerson(p2);
+//
+//				Employee emp1 = new Employee("Dean", p.getPersonID());
+//				Employee emp2 = new Employee("Head", p2.getPersonID());
+//
+//				pManager.addEmployee(emp1);
+//				pManager.addEmployee(emp2);
+//
+//				Signatory sign1 = new Signatory("Approved by", emp1.getEmployeeID());
+//				Signatory sign2 = new Signatory("Requested by", emp2.getEmployeeID());
+//
+//				pManager.addSignatory(sign1);
+//				pManager.addSignatory(sign2);
+//
+//				Building b1 = new Building("AS Hall", "UPVTC Compound");
+//				doMananger.addBuilding(b1);
+//
+//				DivisionOffice divisionOffice = new DivisionOffice("DNSM", null, b1.getBuildingID());
+//				doMananger.addDivisionOffice(divisionOffice);
+//
+//				// PR
+//				PurchaseRequest pr = new PurchaseRequest(divisionOffice.getDivisionOfficeID(), "Office use", sign2.getSignatoryID(), sign1.getSignatoryID());
+//				prManager.addPR(pr);
+//
+//				// PRLine
+//				PurchaseRequestLine prLine = new PurchaseRequestLine(1121, "PCS", "Item Description", "12323", 100, pr.getPrID());
+//				prManager.addPRLine(prLine);
+//
+//			} catch (DuplicateEntryException de) {
+//
+//			}
 
 		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DuplicateEntryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
