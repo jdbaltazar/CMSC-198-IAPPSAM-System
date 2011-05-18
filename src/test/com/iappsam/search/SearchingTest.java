@@ -27,6 +27,7 @@ public class SearchingTest {
 	public void searchItemName() {
 		Searcher s = new ItemSearcher();
 		List<Item> result = s.search("Item");
+		assertTrue(result.size() == 1);
 		assertTrue(result.contains(itemEntities.getItem()));
 	}
 
