@@ -12,8 +12,8 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public interface PersonManager {
 
-	//Person
-	
+	// Person
+
 	void addPerson(Person person) throws TransactionException;
 
 	int savePerson(Person person) throws TransactionException;
@@ -30,40 +30,43 @@ public interface PersonManager {
 
 	List<Person> getAllPersons() throws TransactionException;
 
-	//Employee
-	
+	// Employee
+
 	void addEmployee(Employee employee) throws TransactionException;
-	
+
 	int saveEmployee(Employee employee) throws TransactionException;
-	
+
 	void updateEmployee(Employee employee) throws TransactionException;
-	
+
 	Employee getEmployee(int employeeID) throws TransactionException;
-	
+
 	void removeEmployee(Employee employee) throws TransactionException;
-	
+
 	boolean containsEmployee(Employee employee) throws TransactionException;
-	
-	//	boolean containsDesignation(String designation, int divisionOfficeID) throws TransactionException;
-	
-	//List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
+
+	// boolean containsDesignation(String designation, int divisionOfficeID)
+	// throws TransactionException;
+
+	// List<Employee> getEmployeeByPerson(int personID) throws
+	// TransactionException;
 
 	List<Employee> getAllEmployee() throws TransactionException;
-	
-	//Signatory
-	
+
+	// Signatory
+
 	void addSignatory(Signatory signatory) throws TransactionException;
-	
+
 	int saveSignatory(Signatory signatory) throws TransactionException;
-	
+
 	void updateSignatory(Signatory signatory) throws TransactionException;
-	
+
 	Signatory getSignatory(int signatoryID) throws TransactionException;
-	
+
 	boolean containsSignatory(Signatory signatory) throws TransactionException;
-	
+
 	List<Signatory> getAllSignatories() throws TransactionException;
-	
-//	List<Signatory> getAllSignatoriesByPerson(int personID) throws TransactionException;
-	
+
+	// List<Signatory> getAllSignatoriesByPerson(int personID) throws
+	// TransactionException;
+
 }

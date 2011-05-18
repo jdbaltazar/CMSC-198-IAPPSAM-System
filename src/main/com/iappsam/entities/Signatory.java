@@ -1,5 +1,6 @@
 package com.iappsam.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -9,20 +10,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Signatory {
-	
+public class Signatory implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2825516553804809346L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Signatory_ID")
 	private int signatoryID;
-	
+
 	@Column(name = "Description")
 	private String description;
-	
-	@Column (name = "Date")
+
+	@Column(name = "Date")
 	private Date signatureDate;
-	
-	@Column (name = "Employee_ID")
+
+	@Column(name = "Employee_ID")
 	private int employeeID;
 
 	public Signatory() {

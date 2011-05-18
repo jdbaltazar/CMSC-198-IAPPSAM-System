@@ -23,16 +23,37 @@ public interface ContactManager {
 
 	List<Contact> getAllContacts() throws TransactionException;
 
-	List<Contact> getAllContactsBySupplier(int supplierID) throws TransactionException;
+	List<Contact> getAllContactsBySupplier(int supplierID)
+			throws TransactionException;
 
-	List<Contact> getAllContactsByDivisionOffice(int divisionOfficeID) throws TransactionException;
+	List<Contact> getAllContactsByDivisionOffice(int divisionOfficeID)
+			throws TransactionException;
 
-	List<Contact> getAllContactsByPerson(int personID) throws TransactionException;
+	List<Contact> getAllContactsByPerson(int personID)
+			throws TransactionException;
 
 	List<Contact> getAllContactsForSupplier() throws TransactionException;
 
 	List<Contact> getAllContactsForDivisionOffice() throws TransactionException;
 
 	List<Contact> getAllContactsForPerson() throws TransactionException;
+
+	void addContactToPerson(int contactID, int personID)
+			throws TransactionException;
+
+	void addContactToSupplier(int contactID, int supplierID)
+			throws TransactionException;
+
+	void addContactToDivisionOffice(int contactID, int divisionOfficeID)
+			throws TransactionException;
+
+	void removeContactFromPerson(int contactID, int personID)
+			throws TransactionException;
+
+	void addContactFromSupplier(int contactID, int supplierID)
+			throws TransactionException;
+
+	void addContactFromDivisionOffice(int contactID, int divisionOfficeID)
+			throws TransactionException;
 
 }

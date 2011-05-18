@@ -30,7 +30,6 @@ public class ItemManagerSessionTest {
 
 		Item item = ItemManagerFactory.createItemByName("Item");
 		im.addItem(item);
-
 		im.removeItem(item);
 		im.removeUnit(unit);
 		im.removeItemCondition(condition);

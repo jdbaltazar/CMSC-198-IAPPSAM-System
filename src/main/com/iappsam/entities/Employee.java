@@ -1,5 +1,7 @@
 package com.iappsam.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,22 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Employee {
-	
+public class Employee implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7665203460744028855L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Employee_ID")
 	private int employeeID;
-	
+
 	@Column(name = "Designation")
 	private String designation;
-	
-	@Column(name ="Employee_Number")
+
+	@Column(name = "Employee_Number")
 	private String employeeNumber;
-	
-	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
-	
+
 	@Column(name = "Person_ID")
 	private int personID;
 
@@ -31,19 +35,21 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String designation, String employeeNumber, int divisionOfficeID, int personID) {
+	public Employee(String designation, String employeeNumber, int personID) {
 		super();
 		this.designation = designation;
 		this.employeeNumber = employeeNumber;
-		this.divisionOfficeID = divisionOfficeID;
 		this.personID = personID;
 	}
 
-	public Employee(int employeeID, String designation, int personID) {
+	public Employee(String designation, int personID) {
 		super();
-		this.employeeID = employeeID;
 		this.designation = designation;
 		this.personID = personID;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public int getEmployeeID() {
@@ -56,10 +62,6 @@ public class Employee {
 
 	public String getEmployeeNumber() {
 		return employeeNumber;
-	}
-
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
 	}
 
 	public int getPersonID() {
@@ -78,12 +80,7 @@ public class Employee {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
-	}
-
 	public void setPersonID(int personID) {
 		this.personID = personID;
 	}
-
 }

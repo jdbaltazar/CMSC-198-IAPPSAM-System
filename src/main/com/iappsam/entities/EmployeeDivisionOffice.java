@@ -8,47 +8,46 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DivisionOffice_Contact")
-public class DivisionOfficeContact implements Serializable{
+@Table(name = "Employee_DivisionOffice")
+public class EmployeeDivisionOffice implements Serializable{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1601304928203744011L;
+	private static final long serialVersionUID = 5098728539858688842L;
 
 	@Id
+	@Column(name = "Employee_ID")
+	private int employeeID;
+
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
-	
-	@Id
-	@Column(name = "Contact_ID")
-	private int contactID;
 
-	public DivisionOfficeContact() {
+	public EmployeeDivisionOffice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DivisionOfficeContact(int divisionOfficeID, int contactID) {
+	public EmployeeDivisionOffice(int employeeID, int divisionOfficeID) {
 		super();
+		this.employeeID = employeeID;
 		this.divisionOfficeID = divisionOfficeID;
-		this.contactID = contactID;
+	}
+
+	public int getEmployeeID() {
+		return employeeID;
 	}
 
 	public int getDivisionOfficeID() {
 		return divisionOfficeID;
 	}
 
-	public int getContactID() {
-		return contactID;
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 
 	public void setDivisionOfficeID(int divisionOfficeID) {
 		this.divisionOfficeID = divisionOfficeID;
-	}
-
-	public void setContactID(int contactID) {
-		this.contactID = contactID;
 	}
 
 }

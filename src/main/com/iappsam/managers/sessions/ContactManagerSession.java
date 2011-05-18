@@ -75,7 +75,7 @@ public class ContactManagerSession extends AbstractManager implements
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<SupplierContact> scs = getAllSupplierContact();
+		List<SupplierContact> scs = getList(SupplierContact.class);
 		for (SupplierContact sc : scs) {
 			if (sc.getSupplierID() == supplierID)
 				result.add(getContact(sc.getContactID()));
@@ -88,7 +88,7 @@ public class ContactManagerSession extends AbstractManager implements
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<DivisionOfficeContact> pcs = getAllDivisionOfficeContact();
+		List<DivisionOfficeContact> pcs = getList(DivisionOfficeContact.class);
 		for (DivisionOfficeContact pc : pcs) {
 			if (pc.getDivisionOfficeID() == divisionOfficeID)
 				result.add(getContact(pc.getContactID()));
@@ -101,7 +101,7 @@ public class ContactManagerSession extends AbstractManager implements
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<PersonContact> pcs = getAllPersonContact();
+		List<PersonContact> pcs = getList(PersonContact.class);
 		for (PersonContact pc : pcs) {
 			result.add(getContact(pc.getContactID()));
 		}
@@ -113,7 +113,7 @@ public class ContactManagerSession extends AbstractManager implements
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<SupplierContact> scs = getAllSupplierContact();
+		List<SupplierContact> scs = getList(SupplierContact.class);
 		for (SupplierContact sc : scs) {
 			result.add(getContact(sc.getContactID()));
 		}
@@ -125,7 +125,7 @@ public class ContactManagerSession extends AbstractManager implements
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<DivisionOfficeContact> pcs = getAllDivisionOfficeContact();
+		List<DivisionOfficeContact> pcs = getList(DivisionOfficeContact.class);
 		for (DivisionOfficeContact pc : pcs) {
 			result.add(getContact(pc.getContactID()));
 		}
@@ -136,26 +136,63 @@ public class ContactManagerSession extends AbstractManager implements
 	public List<Contact> getAllContactsForPerson() throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Contact> result = new ArrayList<Contact>();
-		List<PersonContact> pcs = getAllPersonContact();
+		List<PersonContact> pcs = getList(PersonContact.class);
 		for (PersonContact pc : pcs) {
 			result.add(getContact(pc.getContactID()));
 		}
 		return result;
 	}
 
-	private List<SupplierContact> getAllSupplierContact()
+	@Override
+	public void addContactToPerson(int contactID, int personID)
 			throws TransactionException {
-		return getList(SupplierContact.class);
+		// TODO Auto-generated method stub
+		PersonContact personContact = new PersonContact(personID, contactID);
+		add(personContact);
 	}
 
-	private List<DivisionOfficeContact> getAllDivisionOfficeContact()
+	@Override
+	public void addContactToSupplier(int contactID, int supplierID)
 			throws TransactionException {
-		return getList(DivisionOfficeContact.class);
+		// TODO Auto-generated method stub
+		SupplierContact supplierContact = new SupplierContact(supplierID,
+				contactID);
+		add(supplierContact);
 	}
 
-	private List<PersonContact> getAllPersonContact()
+	@Override
+	public void addContactToDivisionOffice(int contactID, int divisionOfficeID)
 			throws TransactionException {
-		return getList(PersonContact.class);
-
+		// TODO Auto-generated method stub
+		DivisionOfficeContact divisionOfficeContact = new DivisionOfficeContact(
+				divisionOfficeID, contactID);
+		add(divisionOfficeContact);
 	}
+
+	@Override
+	public void removeContactFromPerson(int contactID, int personID)
+			throws TransactionException {
+		// TODO Auto-generated method stub
+		PersonContact personContact = new PersonContact(personID, contactID);
+		remove(personContact);
+	}
+
+	@Override
+	public void addContactFromSupplier(int contactID, int supplierID)
+			throws TransactionException {
+		// TODO Auto-generated method stub
+		SupplierContact supplierContact = new SupplierContact(supplierID,
+				contactID);
+		remove(supplierContact);
+	}
+
+	@Override
+	public void addContactFromDivisionOffice(int contactID, int divisionOfficeID)
+			throws TransactionException {
+		// TODO Auto-generated method stub
+		DivisionOfficeContact divisionOfficeContact = new DivisionOfficeContact(
+				divisionOfficeID, contactID);
+		remove(divisionOfficeContact);
+	}
+
 }

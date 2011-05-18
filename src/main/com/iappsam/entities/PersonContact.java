@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class PersonContact implements Serializable{
+@Table(name = "PersonContact")
+public class PersonContact implements Serializable {
 
 	/**
 	 * 
@@ -17,7 +19,7 @@ public class PersonContact implements Serializable{
 	@Id
 	@Column(name = "Person_ID")
 	private int personID;
-	
+
 	@Id
 	@Column(name = "Contact_ID")
 	private int contactID;
@@ -48,5 +50,5 @@ public class PersonContact implements Serializable{
 	public void setContactID(int contactID) {
 		this.contactID = contactID;
 	}
-	
+
 }

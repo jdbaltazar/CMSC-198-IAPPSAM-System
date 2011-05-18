@@ -11,17 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PR_Line")
-public class PurchaseRequestLine implements Serializable{
+public class PurchaseRequestLine implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2663270554482089249L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "PR_Line_ID")
-	private int prLineID;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -29,6 +24,7 @@ public class PurchaseRequestLine implements Serializable{
 	@Column(name = "Unit")
 	private String unit;
 
+	@Id
 	@Column(name = "Item_Description")
 	private String itemDescription;
 
@@ -36,7 +32,7 @@ public class PurchaseRequestLine implements Serializable{
 	private String stockNumber;
 
 	@Column(name = "Estimated_Unit_Cost")
-	private float estimatedUnitCost;
+	private long estimatedUnitCost;
 
 	@Id
 	@Column(name = "Purchase_Request_ID")
@@ -47,7 +43,7 @@ public class PurchaseRequestLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public PurchaseRequestLine(int quantity, String unit, String itemDescription, String stockNumber, float estimatedUnitCost, int prID) {
+	public PurchaseRequestLine(int quantity, String unit, String itemDescription, String stockNumber, long estimatedUnitCost, int prID) {
 		super();
 		this.quantity = quantity;
 		this.unit = unit;
@@ -65,8 +61,8 @@ public class PurchaseRequestLine implements Serializable{
 		this.prID = prID;
 	}
 
-	public int getPrLineID() {
-		return prLineID;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public int getQuantity() {
@@ -85,16 +81,12 @@ public class PurchaseRequestLine implements Serializable{
 		return stockNumber;
 	}
 
-	public float getEstimatedUnitCost() {
+	public long getEstimatedUnitCost() {
 		return estimatedUnitCost;
 	}
 
 	public int getPrID() {
 		return prID;
-	}
-
-	public void setPrLineID(int prLineID) {
-		this.prLineID = prLineID;
 	}
 
 	public void setQuantity(int quantity) {
@@ -113,7 +105,7 @@ public class PurchaseRequestLine implements Serializable{
 		this.stockNumber = stockNumber;
 	}
 
-	public void setEstimatedUnitCost(float estimatedUnitCost) {
+	public void setEstimatedUnitCost(long estimatedUnitCost) {
 		this.estimatedUnitCost = estimatedUnitCost;
 	}
 
