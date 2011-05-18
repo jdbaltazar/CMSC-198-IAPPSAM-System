@@ -18,9 +18,6 @@ public abstract class AbstractManager implements Manager {
 		super();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.iappsam.managers.Manager#close()
-	 */
 	@Override
 	public void close() {
 		session.close();

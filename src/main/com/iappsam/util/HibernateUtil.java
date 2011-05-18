@@ -64,6 +64,8 @@ public class HibernateUtil {
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
 			p.setProperty("hibernate.connection.username", "root");
 			p.setProperty("hibernate.connection.password", "123456");
+			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
+			p.setProperty("hibernate.search.default.directory_provider", "filesystem");
 
 			Configuration conf = new Configuration();
 

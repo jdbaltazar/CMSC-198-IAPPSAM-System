@@ -11,27 +11,52 @@ import org.junit.Test;
 
 import com.iappsam.entities.Item;
 import com.iappsam.entities.BasicItemEntities;
+import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
 public class SearchingTest {
 
-	BasicItemEntities itemEntities = new BasicItemEntities(new ItemManagerSession());
+	private ItemManager im = new ItemManagerSession();
+	private BasicItemEntities entities = new BasicItemEntities(im);
 
 	@Before
 	public void init() throws TransactionException {
-		itemEntities.addAll();
+		entities.addAll();
 	}
 
 	@Test
-	public void searchItemName() {
+	public void searchItemName() throws TransactionException {
 		Searcher s = new ItemSearcher();
 		List<Item> result = s.search("Item");
-		assertTrue(result.contains(itemEntities.getItem()));
+
+		assertTrue(result.size() == 1);
+		assertTrue(result.contains(entities.item));
+
+		im.removeItem(entities.item);
+		List<Item> result2 = s.search("Item");
+
+		assertTrue(result2.size() == 0);
+		assertTrue(!result2.contains(entities.item));
+	}
+
+	@Test
+	public void searchItemDescription() throws TransactionException {
+		Searcher s = new ItemSearcher();
+		List<Item> result = s.search("Description");
+
+		assertTrue(result.size() == 1);
+		assertTrue(result.contains(entities.item));
+
+		entities.im.removeItem(entities.item);
+		List<Item> result2 = s.search("Description");
+
+		assertTrue(result2.size() == 0);
+		assertTrue(!result2.contains(entities.item));
 	}
 
 	@After
 	public void removeEntities() throws TransactionException {
-		itemEntities.removeAll();
+		entities.removeAllIfExist();
 	}
 }

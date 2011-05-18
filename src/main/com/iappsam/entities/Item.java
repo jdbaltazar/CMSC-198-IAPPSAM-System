@@ -8,49 +8,56 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 @Entity
+@Indexed
 public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Item_ID")
 	private int itemID;
-	
+
+	@Field(name = "name")
 	@Column(name = "Name")
 	private String name;
-	
-	@Column (name = "Stock_Number")
+
+	@Column(name = "Stock_Number")
 	private String stockNumber;
-	
-	@Column (name = "Unit")
+
+	@Column(name = "Unit")
 	private String unit;
-	
+
+	@Field(name = "description")
 	@Column(name = "Description")
 	private String description;
-	
+
 	@Column(name = "Price")
 	private float price;
-	
-	@Column (name = "Date_Acquired")
+
+	@Column(name = "Date_Acquired")
 	private Date dateAcquired;
-	
-	@Column (name = "Inventory_Item_Number")
+
+	@Column(name = "Inventory_Item_Number")
 	private int inventoryItemNumber;
-	
-	@Column (name = "Property_Number")
+
+	@Column(name = "Property_Number")
 	private String propertyNumber;
-	
-	@Column (name = "Item_Status")
+
+	@Column(name = "Item_Status")
 	private String itemStatus;
-	
-	@Column (name = "Item_Condition")
+
+	@Column(name = "Item_Condition")
 	private String itemCondition;
 
 	public Item() {
 		super();
 	}
 
-	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired,
+			int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
 		super();
 		this.name = name;
 		this.stockNumber = stockNumber;
@@ -64,7 +71,8 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String name, String unit, String description, float price, Date dateAcquired, String itemStatus, String itemCondition) {
+	public Item(String name, String unit, String description, float price, Date dateAcquired, String itemStatus,
+			String itemCondition) {
 		super();
 		this.name = name;
 		this.unit = unit;
@@ -162,5 +170,27 @@ public class Item {
 	public void setItemCondition(String itemCondition) {
 		this.itemCondition = itemCondition;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + itemID;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (itemID != other.itemID)
+			return false;
+		return true;
+	}
+
 }
