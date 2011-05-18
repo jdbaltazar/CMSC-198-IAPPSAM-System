@@ -2,7 +2,10 @@ package com.iappsam.servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.helpers.ParseConversionEventImpl;
 
 import com.iappsam.entities.Item;
+import com.iappsam.entities.ItemCondition;
+import com.iappsam.entities.ItemStatus;
+import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -81,15 +87,82 @@ public class ItemCreation extends HttpServlet {
 		itemStatus = request.getParameter("itemStatus");
 		itemCondition = request.getParameter("itemCondition");
 
-		if (name.isEmpty() || unit.isEmpty() || price.isEmpty() || description.isEmpty() || month.equalsIgnoreCase("MM") || itemStatus.isEmpty() || itemCondition.isEmpty() || day.equalsIgnoreCase("DD") || year.equalsIgnoreCase("YYYY"))
+		if (name.isEmpty() || unit.isEmpty() || price.isEmpty() || description.isEmpty() || month.equalsIgnoreCase("MM") || itemStatus.isEmpty() || itemCondition.isEmpty() || day.equalsIgnoreCase("DD") || year.equalsIgnoreCase("YYYY")){
 			failRequest(request, response);
+			System.out.println("Heyoooo");
+		}
 		else
 			succesfulRequest(request, response);
 
 	}
 
 	private void failRequest(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		if (name.isEmpty())
+			request.setAttribute("nameIsOK", "true");
+		else
+			request.setAttribute("nameIsOK", "false");
+		if (unit.isEmpty())
+			request.setAttribute("unitIsOK", "true");
+		else
+			request.setAttribute("unitIsOK", "false");
+		if (price.isEmpty())
+			request.setAttribute("priceIsOK", "true");
+		else
+			request.setAttribute("priceIsOK", "false");
+		if (description.isEmpty())
+			request.setAttribute("descriptionIsOK", "true");
+		else
+			request.setAttribute("descriptionIsOK", "false");
+		if (date == null)
+			request.setAttribute("dateIsOK", "true");
+		else
+			request.setAttribute("dateIsOK", "true");
+		
+		ItemManager iManager = new ItemManagerSession();
+		
+		try {
+			request.setAttribute("name", name);
+			request.setAttribute("unit", unit);
+			request.setAttribute("price", price);
+			request.setAttribute("description", description);
+			request.setAttribute("propertyNumber", propertyNumber);
+			request.setAttribute("inventoryItemNumber", invItemNumber);
+			List<Unit> units;
+			units = iManager.getAllUnits();
+			List<ItemStatus> itemStatus = iManager.getAllItemStatus();
+			List<ItemCondition> itemCondition = iManager.getAllItemCondition();
+			ArrayList<String> unitList = new ArrayList<String>();
+			ArrayList<String> itemStatusList=new ArrayList<String>();
+			ArrayList<String> itemConditionList = new ArrayList<String>();
+			for (int i = 0; i < units.size(); i++) {
+				unitList.add(units.get(i).getUnit());
+			}
+			for(int i=0;i<itemStatus.size();i++){
+				itemStatusList.add(itemStatus.get(i).getItemStatus());
+			}
+			for(int i=0;i<itemCondition.size();i++){
+				itemConditionList.add(itemCondition.get(i).getItemCondition());
+			}
+
+			request.setAttribute("unitList", unitList);
+			request.setAttribute("itemConditionList", itemConditionList);
+			request.setAttribute("itemStatusList", itemStatusList);
+		} catch (TransactionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		RequestDispatcher view = request.getRequestDispatcher("../jsp/stocks/CreateItemFail.jsp");
+		try {
+			view.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

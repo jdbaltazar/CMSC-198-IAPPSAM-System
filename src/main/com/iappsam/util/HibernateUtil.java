@@ -10,10 +10,10 @@ import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Building;
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
-import com.iappsam.entities.Designation;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
+import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
@@ -69,24 +69,24 @@ public class HibernateUtil {
 
 			// entities
 			conf.setProperties(p);
-			 conf.addAnnotatedClass(Account.class);
-			 conf.addAnnotatedClass(AccountType.class);
+			conf.addAnnotatedClass(Account.class);
+			conf.addAnnotatedClass(AccountType.class);
 			conf.addAnnotatedClass(Building.class);
-			// conf.addAnnotatedClass(Contact.class);
-			// conf.addAnnotatedClass(ContactType.class);
-			// conf.addAnnotatedClass(Designation.class);
+			conf.addAnnotatedClass(Contact.class);
+			conf.addAnnotatedClass(ContactType.class);
 			conf.addAnnotatedClass(DivisionOffice.class);
 			conf.addAnnotatedClass(DivisionOfficeContact.class);
-			// conf.addAnnotatedClass(Employee.class);
-			 conf.addAnnotatedClass(Item.class);
-			 conf.addAnnotatedClass(ItemCondition.class);
-			 conf.addAnnotatedClass(ItemStatus.class);
+			conf.addAnnotatedClass(Employee.class);
+			conf.addAnnotatedClass(EmployeeDivisionOffice.class);
+			conf.addAnnotatedClass(Item.class);
+			conf.addAnnotatedClass(ItemCondition.class);
+			conf.addAnnotatedClass(ItemStatus.class);
 			conf.addAnnotatedClass(Person.class);
 			conf.addAnnotatedClass(PersonContact.class);
-			// conf.addAnnotatedClass(Signatory.class);
-			 conf.addAnnotatedClass(Supplier.class);
-			 conf.addAnnotatedClass(SupplierContact.class);
-			 conf.addAnnotatedClass(Unit.class);
+			conf.addAnnotatedClass(Signatory.class);
+			conf.addAnnotatedClass(Supplier.class);
+			conf.addAnnotatedClass(SupplierContact.class);
+			conf.addAnnotatedClass(Unit.class);
 
 			// //form entities
 			// conf.addAnnotatedClass(AnnualProcurementPlan.class);
@@ -105,8 +105,8 @@ public class HibernateUtil {
 			// conf.addAnnotatedClass(PTRPALine.class);
 			// conf.addAnnotatedClass(PurchaseOrder.class);
 			// conf.addAnnotatedClass(PurchaseOrderLine.class);
-			 conf.addAnnotatedClass(PurchaseRequest.class);
-			 conf.addAnnotatedClass(PurchaseRequestLine.class);
+			conf.addAnnotatedClass(PurchaseRequest.class);
+			conf.addAnnotatedClass(PurchaseRequestLine.class);
 			// conf.addAnnotatedClass(RecapitulationLine.class);
 			// conf.addAnnotatedClass(RequisitionAndIssueSlip.class);
 			// conf.addAnnotatedClass(RequisitionAndIssueSlipLine.class);

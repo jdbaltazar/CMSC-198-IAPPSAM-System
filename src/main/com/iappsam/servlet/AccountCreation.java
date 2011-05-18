@@ -12,11 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
+import com.iappsam.entities.Contact;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
+import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
+import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 
 /**
@@ -35,7 +38,10 @@ public class AccountCreation extends HttpServlet {
 	String userName;
 	String password;
 	String reenterPassword;
-
+	String cellphonNumber;
+	String landline;
+	String emailAdd;
+	String accountType;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
@@ -88,6 +94,11 @@ public class AccountCreation extends HttpServlet {
 		userName = request.getParameter("userName");
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
+		cellphonNumber=request.getParameter("mobileNumber");
+		landline = request.getParameter("landline");
+		emailAdd = request.getParameter("emailad");
+		accountType=request.getParameter("acctType");
+		
 
 		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
@@ -100,6 +111,9 @@ public class AccountCreation extends HttpServlet {
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
+		ContactManager cManager = new ContactManagerSession();
+		System.out.println("JHefsdf");
+		
 		try {
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -109,6 +123,11 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("office", office);
 			request.setAttribute("division", division);
 			request.setAttribute("employeeNumber", employeeNumber);
+			request.setAttribute("mobileNumber", cellphonNumber);
+			request.setAttribute("landline", landline);
+			request.setAttribute("emailad", emailAdd);
+			request.setAttribute("acctType", accountType);
+			
 
 			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
 			view.forward(request, response);
@@ -123,7 +142,13 @@ public class AccountCreation extends HttpServlet {
 			pManager.addPerson(person);
 
 			 Account account = new Account(userName, password,
-			 "SPSO_PERSONNEL", person.getPersonID());
+			 accountType, person.getPersonID());
+			 Contact contactLandLine= new Contact(landline, "LANDLINE");
+			 Contact contactMobile= new Contact(cellphonNumber,"MOBILE");
+			 Contact contactEmail=new Contact(emailAdd, "EMAIL");
+			 cManager.addContact(contactLandLine);
+			 cManager.addContact(contactMobile);
+			 cManager.addContact(contactEmail);
 			 aManager.addAccount(account);
 		} catch (TransactionException e) {
 			e.printStackTrace();
