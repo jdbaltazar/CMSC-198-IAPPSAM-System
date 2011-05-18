@@ -1,5 +1,8 @@
 <project name="CMSC-198-IAPPSAM" default="all">
 
+	<property environment="env" />
+	<property name="JETTY_HOME" value="${env.JETTY_HOME}" />
+
 	<path id="classpath">
 		<fileset dir="webapp/WEB-INF/lib">
 			<include name="**/*.jar" />
@@ -29,6 +32,7 @@
 		</javac>
 	</target>
 
+
 	<target name="build" depends="compile">
 		<copy todir="webapp/WEB-INF">
 			<fileset dir="build" />
@@ -41,6 +45,13 @@
 			<transaction src="${sql.schema}/database.sql" />
 			<transaction src="${sql.schema}/default-values.sql" />
 		</sql>
+	</target>
+
+	<target name="deploy" depends="build, sql">
+		<mkdir dir="${JETTY_HOME}/webapp/iappsam" />
+		<copy todir="${JETTY_HOME}/webapp/iappsam">
+			<fileset dir="webapp" />
+		</copy>
 	</target>
 
 </project>
