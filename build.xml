@@ -1,7 +1,6 @@
 <project name="CMSC-198-IAPPSAM" default="all">
 
 	<property environment="env" />
-	<property name="JETTY_HOME" value="${env.JETTY_HOME}" />
 
 	<path id="classpath">
 		<fileset dir="webapp/WEB-INF/lib">
@@ -25,7 +24,11 @@
 
 	<target name="all" depends="build, sql" />
 
-	<target name="compile">
+	<target name="env.check" unless="env.CONTAINER_HOME">
+		<fail message="Environment variable for the servlet container not set!" />
+	</target>
+
+	<target name="compile" depends="env.check">
 		<javac srcdir="src" destdir="build/classes">
 			<classpath path="${lib}" />
 			<classpath path="${lib2}" />
@@ -48,8 +51,8 @@
 	</target>
 
 	<target name="deploy" depends="build, sql">
-		<mkdir dir="${JETTY_HOME}/webapp/iappsam" />
-		<copy todir="${JETTY_HOME}/webapp/iappsam">
+		<mkdir dir="${env.CONTAINER_HOME}/webapps/iappsam" />
+		<copy todir="${env.CONTAINER_HOME}/webapps/iappsam">
 			<fileset dir="webapp" />
 		</copy>
 	</target>
