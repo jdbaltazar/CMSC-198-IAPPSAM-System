@@ -7,19 +7,15 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public class BasicItemEntities {
 
-	private ItemManager im;
-	private Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
-	private ItemCondition condition = new ItemCondition("");
-	private ItemStatus status = new ItemStatus("");
-	private Unit unit = new Unit("");
+	public ItemManager im;
+	public Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
+	public ItemCondition condition = new ItemCondition("");
+	public ItemStatus status = new ItemStatus("");
+	public Unit unit = new Unit("");
 
 	public BasicItemEntities(ItemManager im) {
 		super();
 		this.im = im;
-	}
-
-	public Item getItem() {
-		return item;
 	}
 
 	public ItemCondition getCondition() {
@@ -44,7 +40,7 @@ public class BasicItemEntities {
 	public void removeAllIfExist() throws TransactionException {
 
 		if (im.containsItem(item))
-			removeItem();
+			im.removeItem(item);
 
 		if (im.containsUnit(unit))
 			removeUnit();
@@ -66,10 +62,6 @@ public class BasicItemEntities {
 
 	public void removeUnit() throws TransactionException {
 		im.removeUnit(unit);
-	}
-
-	public void removeItem() throws TransactionException {
-		im.removeItem(item);
 	}
 
 	public void close() {

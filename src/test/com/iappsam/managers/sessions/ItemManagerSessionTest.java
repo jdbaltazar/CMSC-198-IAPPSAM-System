@@ -21,7 +21,7 @@ public class ItemManagerSessionTest {
 	public void addItemThenRemoveTwice() throws TransactionException {
 		entities.addAll();
 		entities.removeAllIfExist();
-		im.removeItem(entities.getItem());
+		im.removeItem(entities.item);
 	}
 
 	@After
