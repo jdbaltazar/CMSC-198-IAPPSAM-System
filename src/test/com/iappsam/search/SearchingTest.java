@@ -24,15 +24,33 @@ public class SearchingTest {
 	}
 
 	@Test
-	public void searchItemName() {
+	public void searchItemName() throws TransactionException {
 		Searcher s = new ItemSearcher();
 		List<Item> result = s.search("Item");
 		assertTrue(result.size() == 1);
 		assertTrue(result.contains(itemEntities.getItem()));
+
+		itemEntities.removeItem();
+		List<Item> result2 = s.search("Item");
+		assertTrue(result2.size() == 0);
+		assertTrue(!result2.contains(itemEntities.getItem()));
+	}
+
+	@Test
+	public void searchItemDescription() throws TransactionException {
+		Searcher s = new ItemSearcher();
+		List<Item> result = s.search("Description");
+		assertTrue(result.size() == 1);
+		assertTrue(result.contains(itemEntities.getItem()));
+
+		itemEntities.removeItem();
+		List<Item> result2 = s.search("Description");
+		assertTrue(result2.size() == 0);
+		assertTrue(!result2.contains(itemEntities.getItem()));
 	}
 
 	@After
 	public void removeEntities() throws TransactionException {
-		itemEntities.removeAll();
+		itemEntities.removeAllIfExist();
 	}
 }

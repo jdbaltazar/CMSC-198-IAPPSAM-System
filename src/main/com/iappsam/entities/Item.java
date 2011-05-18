@@ -20,8 +20,8 @@ public class Item {
 	@Column(name = "Item_ID")
 	private int itemID;
 
-	@Column(name = "Name")
 	@Field(name = "name")
+	@Column(name = "Name")
 	private String name;
 
 	@Column(name = "Stock_Number")
@@ -30,6 +30,7 @@ public class Item {
 	@Column(name = "Unit")
 	private String unit;
 
+	@Field(name = "description")
 	@Column(name = "Description")
 	private String description;
 

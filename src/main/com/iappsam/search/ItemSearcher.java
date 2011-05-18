@@ -22,8 +22,7 @@ public class ItemSearcher implements Searcher {
 		Session s = HibernateUtil.startSession();
 		fullSession = Search.getFullTextSession(s);
 		builder = fullSession.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
-		onField = builder.keyword().onField("name");
-
+		onField = builder.keyword().onField("name").andField("description");
 	}
 
 	@SuppressWarnings("unchecked")
