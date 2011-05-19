@@ -741,15 +741,16 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`APP` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
-  `APP_ID` INT NOT NULL AUTO_INCREMENT ,
   `Year` YEAR NOT NULL ,
+  `DivisionOffice_ID` INT NOT NULL ,
   `Plan_Control_Number` VARCHAR(45) NULL ,
   `Date_Scheduled` DATE NULL ,
   `Signatory_ID` INT NOT NULL ,
   `Signatory_ID1` INT NOT NULL ,
-  PRIMARY KEY (`APP_ID`) ,
+  PRIMARY KEY (`Year`, `DivisionOffice_ID`) ,
   INDEX `fk_APP_Signatory1` (`Signatory_ID` ASC) ,
   INDEX `fk_APP_Signatory2` (`Signatory_ID1` ASC) ,
+  INDEX `fk_APP_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   CONSTRAINT `fk_APP_Signatory1`
     FOREIGN KEY (`Signatory_ID` )
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
@@ -758,6 +759,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
   CONSTRAINT `fk_APP_Signatory2`
     FOREIGN KEY (`Signatory_ID1` )
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_APP_DivisionOffice1`
+    FOREIGN KEY (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -774,18 +780,19 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
   `Quantity_Quarter_2` INT NOT NULL ,
   `Quantity_Quarter_3` INT NOT NULL ,
   `Quantity_Quarter_4` INT NOT NULL ,
-  `APP_ID` INT NOT NULL ,
-  PRIMARY KEY (`APP_ID`, `Item_Description`) ,
-  INDEX `fk_APP_Line_APP1` (`APP_ID` ASC) ,
+  `Year` YEAR NOT NULL ,
+  `DivisionOffice_ID` INT NOT NULL ,
+  PRIMARY KEY (`Item_Description`, `Year`, `DivisionOffice_ID`) ,
   INDEX `fk_APP_Line_Item1` (`Item_Description` ASC) ,
-  CONSTRAINT `fk_APP_Line_APP1`
-    FOREIGN KEY (`APP_ID` )
-    REFERENCES `IAPPSAM`.`APP` (`APP_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_APP_Line_APP1` (`Year` ASC, `DivisionOffice_ID` ASC) ,
   CONSTRAINT `fk_APP_Line_Item1`
     FOREIGN KEY (`Item_Description` )
     REFERENCES `IAPPSAM`.`Item` (`Description` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_APP_Line_APP1`
+    FOREIGN KEY (`Year` , `DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`APP` (`Year` , `DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
