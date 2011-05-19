@@ -22,14 +22,13 @@ public class ItemSearcher implements Searcher {
 		Session s = HibernateUtil.startSession();
 		fullSession = Search.getFullTextSession(s);
 		builder = fullSession.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
-		onField = builder.keyword().onField("name").andField("description");
+		onField = builder.keyword().onField("name").andField("description").andField("date");
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Item> search(String string) {
-		Query searchQuery = onField.matching(string).createQuery();
-		org.hibernate.Query hibernateQuery = fullSession.createFullTextQuery(searchQuery, Item.class);
-		return hibernateQuery.list();
+		Query searchQuery = onField.ignoreFieldBridge().matching(string).createQuery();
+		return fullSession.createFullTextQuery(searchQuery, Item.class).list();
 	}
 }
