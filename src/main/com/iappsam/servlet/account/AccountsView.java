@@ -25,7 +25,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class AccountView
  */
-@WebServlet("/accounts/viewAccounts.do")
+@WebServlet("/accounts/ViewAccounts.do")
 public class AccountsView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

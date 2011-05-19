@@ -355,8 +355,8 @@
 	width:200px;
 	height:23px;
 	z-index:27;
-	left: 596px;
-	top: 386px;
+	left: 961px;
+	top: 187px;
 }
 
 #divisionOfficeDiv {
@@ -365,7 +365,7 @@
 	height:23px;
 	z-index:28;
 	left: 596px;
-	top: 407px;
+	top: 386px;
 }
 #employeeDiv {
 	position:absolute;
@@ -373,7 +373,7 @@
 	height:24px;
 	z-index:29;
 	left: 596px;
-	top: 428px;
+	top: 408px;
 }
 #apDiv4 {
 	position:absolute;
@@ -386,7 +386,7 @@
 #recordsDiv {
 	position:absolute;
 	width:99px;
-	height:63px;
+	height:43px;
 	z-index:31;
 	left: 496px;
 	top: 386px;
@@ -418,16 +418,15 @@
 <div id="entitiesDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Entities</div>
 <p>&nbsp;</p>
 <div id="createNewAcctDiv">
-  <form id="form1" name="form1" method="post" action="/accounts/CreateAccount.do">
+  <form id="form1" name="form1" method="post" action="accounts/CreateAccount.html">
     <input name="createNewAcctBtn" type="submit" class="button" id="createNewAcctBtn" value="Create New" />
   </form>
 </div>
 <div id="viewAcctDiv">
-<form id="viewAcct" name="viewAcctForm" method="post" action="accounts/viewAccounts.do">
+<form id="viewAcct" name="viewAcctForm" method="post" action="accounts/ViewAccounts.do">
   <input name="viewAcctsBtn" type="submit" class="button" id="viewAcctsBtn" value="View Accounts" />
   </form>
 </div>
-
 <div id="viewSysLogdiv">
   <form id="form2" name="form2" method="post" action="">
     <input name="viewSysLogBtn" type="submit" class="button" id="viewSysLogBtn" value="View System Log" />
@@ -473,20 +472,14 @@
     <input name="stockPropBtn" type="submit" class="button2" id="stockPropBtn" value="Stock Properties" />
   </form>
 </div>
-
-<div id="buildingDiv">
-  <form id="form12" name="form12" method="post" action="">
-    <input name="buildingBtn" type="submit" class="button2" id="buildingBtn" value="Building" />
-  </form>
-</div>
 <div id="divisionOfficeDiv">
-  <form id="form13" name="form13" method="post" action="">
-    <input name="divisionOfficeBtn" type="submit" class="button2" id="divisionOfficeBtn" value="Division/Office" />
+  <form id="form13" name="form13" method="post" action="entities/division/ViewDivisionBldgOffice.html">
+    <input name="divisionOfficeBtn" type="submit" class="button2" id="divisionOfficeBtn" value="Building/Division/Office" />
   </form>
 </div>
 <div id="employeeDiv">
   <form id="form14" name="form14" method="post" action="">
-    <input name="employeeBtn" type="submit" class="button2" id="employeeBtn" value="Employee" />
+    <input name="employeeBtn" type="submit" class="button2" id="employeeBtn" value="Employees" />
   </form>
 </div>
 <div id="apDiv4" class="labels">

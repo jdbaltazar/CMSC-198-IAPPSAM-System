@@ -77,18 +77,21 @@
 <body>
 <table width="100%" border="0">
 	<tr>
-		<td width="16%">
+		<td width="20%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View
-				Accounts</td>
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View/Update
+				Account</td>
 			</tr>
 		</table>
 		</td>
-		<td width="80%">&nbsp;</td>
-		<td width="4%"><a href="../MenuFrame.html"
-			title="Back to main menu" target="main_frame">Home</a></td>
+		<td width="76%">&nbsp;</td>
+		<td width="4%">
+		<form id="form15" name="form15" method="post"
+			action="../MenuFrame.html"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" /></form>
+		</td>
 	</tr>
 </table>
 <table width="100%" border="0">
