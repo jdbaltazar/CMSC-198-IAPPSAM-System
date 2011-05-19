@@ -1,13 +1,15 @@
 package com.iappsam.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Resolution;
 
 @Entity
 @Indexed
@@ -17,16 +19,18 @@ public class Item {
 	@Field(name = "description")
 	@Column(name = "Description")
 	private String description;
-	
+
 	@Column(name = "Stock_Number")
 	private String stockNumber;
 
 	@Column(name = "Unit")
 	private String unit;
-	
+
 	@Column(name = "Price")
 	private float price;
 
+	@Field(name = "date")
+	@DateBridge(resolution = Resolution.DAY)
 	@Column(name = "Date_Acquired")
 	private Date dateAcquired;
 
@@ -46,7 +50,8 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String description, String stockNumber, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber,
+			String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -139,28 +144,28 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		return result;
+	}
 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + itemID;
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Item other = (Item) obj;
-//		if (itemID != other.itemID)
-//			return false;
-//		return true;
-//	}
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		return true;
+	}
 }

@@ -3,7 +3,6 @@ package com.iappsam.search;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -28,22 +27,28 @@ public class SearchingTest {
 	public final ItemStatus status = new ItemStatus("");
 	public final Unit unit = new Unit("");
 
-	public final Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
-	public final Item item2 = new Item("Item Again", "", "Description2", 0.0f, new Date(0), "", "");
-	public final Item itemQuickBrownFox = new Item("Quick Brown Fox", "", "", 0.0f, new Date(0), "", "");
-	public final Item itemTermName = new Item("Second Test", "", "Description2 Test", 0.0f, new Date(0), "", "");
+	public final Item item = new Item("item Description", "", "", "");
+	public final Item item2 = new Item("Description2 item", "", "", "");
+	public final Item itemQuickBrownFox = new Item("Quick Brown Fox", "", "", "");
+	public final Item itemTermName = new Item("Description2 second", "", "", "");
 
 	private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 	{
 		calendar.clear();
 		calendar.set(2010, 00, 01);
 	}
-	public final Item itemDate = new Item("", "", "", 0.0f, calendar.getTime(), "", "");
+
+	public final Item itemDate = new Item("Date1", "", "", "");
 	{
+		itemDate.setDateAcquired(calendar.getTime());
 		calendar.clear();
 		calendar.set(2010, 00, 02);
 	}
-	public final Item itemDate2 = new Item("", "", "", 0.0f, calendar.getTime(), "", "");
+	public final Item itemDate2 = new Item("Date2", "", "", "");
+
+	{
+		itemDate2.setDateAcquired(calendar.getTime());
+	}
 
 	private void addAll() throws TransactionException {
 		im.addItemCondition(condition);
@@ -93,6 +98,24 @@ public class SearchingTest {
 	}
 
 	@Test
+	public void searchItemName() throws TransactionException {
+		List<Item> result = s.search("Item");
+
+		assertEquals(2, result.size());
+		assertTrue(result.contains(item));
+		assertTrue(result.contains(item2));
+
+		im.removeItem(item);
+		im.removeItem(item2);
+
+		List<Item> result2 = s.search("Item");
+
+		assertEquals(0, result2.size());
+		assertTrue(!result2.contains(item));
+		assertTrue(!result2.contains(item2));
+	}
+
+	@Test
 	public void searchNonConsecutiveTerm() {
 		List<Item> result = s.search("Quick Fox");
 
@@ -124,24 +147,6 @@ public class SearchingTest {
 
 		assertEquals(1, result.size());
 		assertTrue(result.contains(itemTermName));
-	}
-
-	@Test
-	public void searchItemName() throws TransactionException {
-		List<Item> result = s.search("Item");
-
-		assertEquals(2, result.size());
-		assertTrue(result.contains(item));
-		assertTrue(result.contains(item2));
-
-		im.removeItem(item);
-		im.removeItem(item2);
-
-		List<Item> result2 = s.search("Item");
-
-		assertEquals(0, result2.size());
-		assertTrue(!result2.contains(item));
-		assertTrue(!result2.contains(item2));
 	}
 
 	@Test
