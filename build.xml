@@ -22,13 +22,31 @@
 	<property name="sql.password" value="123456" />
 	<property name="sql.schema" value="week/phase-3" />
 
-	<target name="all" depends="build, sql" />
+	<target name="all" depends="deploy, sql" />
 
 	<target name="env.check" unless="env.CONTAINER_HOME">
 		<fail message="Environment variable for the servlet container not set!" />
 	</target>
 
-	<target name="compile" depends="env.check">
+	<target name="clean" depends="clean.classes, clean.webapps, clean.index">
+	</target>
+
+	<target name="clean.index">
+		<delete dir="lucene-index">
+		</delete>
+	</target>
+
+	<target name="clean.classes">
+		<delete dir="classes">
+		</delete>
+	</target>
+
+	<target name="clean.webapps">
+		<delete dir="${env.CONTAINER_HOME}/webapps/iappsam">
+		</delete>
+	</target>
+
+	<target name="compile" depends="env.check, clean">
 		<javac srcdir="src" destdir="build/classes">
 			<classpath path="${lib}" />
 			<classpath path="${lib2}" />

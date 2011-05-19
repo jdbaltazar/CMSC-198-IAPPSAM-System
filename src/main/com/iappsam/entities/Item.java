@@ -1,6 +1,7 @@
 package com.iappsam.entities;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Resolution;
 
 @Entity
 @Indexed
@@ -37,6 +40,8 @@ public class Item {
 	@Column(name = "Price")
 	private float price;
 
+	@DateBridge(resolution = Resolution.DAY)
+	@Field(name = "date")
 	@Column(name = "Date_Acquired")
 	private Date dateAcquired;
 
@@ -56,8 +61,8 @@ public class Item {
 		super();
 	}
 
-	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired,
-			int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired, int inventoryItemNumber,
+			String propertyNumber, String itemStatus, String itemCondition) {
 		super();
 		this.name = name;
 		this.stockNumber = stockNumber;
@@ -71,8 +76,7 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String name, String unit, String description, float price, Date dateAcquired, String itemStatus,
-			String itemCondition) {
+	public Item(String name, String unit, String description, float price, Date dateAcquired, String itemStatus, String itemCondition) {
 		super();
 		this.name = name;
 		this.unit = unit;

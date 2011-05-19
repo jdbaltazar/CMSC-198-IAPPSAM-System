@@ -1,20 +1,35 @@
 package com.iappsam.entities;
 
-import java.sql.Date;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class BasicItemEntities {
 
-	public ItemManager im;
-	public Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
-	public Item item2 = new Item("Item Again", "", "Description2", 0.0f, new Date(0), "", "");
-	
-	public Item itemTermName = new Item("Second Test", "", "Description2 Test", 0.0f, new Date(0), "", "");
-	public ItemCondition condition = new ItemCondition("");
-	public ItemStatus status = new ItemStatus("");
-	public Unit unit = new Unit("");
+	private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+	{
+		calendar.clear();
+		calendar.set(2010, 00, 01);
+	}
+	public final ItemManager im;
+	public final Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
+	public final Item item2 = new Item("Item Again", "", "Description2", 0.0f, new Date(0), "", "");
+	public final Item itemQuickBrownFox = new Item("Quick Brown Fox", "", "", 0.0f, new Date(0), "", "");
+	public final Item itemDate = new Item("", "", "", 0.0f, calendar.getTime(), "", "");
+
+	{
+		calendar.clear();
+		calendar.set(2010, 00, 02);
+	}
+	public final Item itemDate2 = new Item("", "", "", 0.0f, calendar.getTime(), "", "");
+
+	public final Item itemTermName = new Item("Second Test", "", "Description2 Test", 0.0f, new Date(0), "", "");
+	public final ItemCondition condition = new ItemCondition("");
+	public final ItemStatus status = new ItemStatus("");
+	public final Unit unit = new Unit("");
 
 	public BasicItemEntities(ItemManager im) {
 		super();
@@ -39,19 +54,31 @@ public class BasicItemEntities {
 		im.addUnit(unit);
 		im.addItem(item);
 		im.addItem(item2);
+		im.addItem(itemDate);
+		im.addItem(itemDate2);
 		im.addItem(itemTermName);
+		im.addItem(itemQuickBrownFox);
 	}
 
 	public void removeAllExisting() throws TransactionException {
 
 		if (im.containsItem(item))
 			im.removeItem(item);
-		
+
 		if (im.containsItem(item2))
 			im.removeItem(item2);
 
+		if (im.containsItem(itemDate))
+			im.removeItem(itemDate);
+
+		if (im.containsItem(itemDate2))
+			im.removeItem(itemDate2);
+
 		if (im.containsItem(itemTermName))
 			im.removeItem(itemTermName);
+		
+		if (im.containsItem(itemQuickBrownFox))
+			im.removeItem(itemQuickBrownFox);
 
 		if (im.containsUnit(unit))
 			removeUnit();
