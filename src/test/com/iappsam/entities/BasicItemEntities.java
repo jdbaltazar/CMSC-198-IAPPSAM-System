@@ -8,7 +8,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class BasicItemEntities {
 
 	public ItemManager im;
-	public Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
+	public Item item = new Item(); //"Item", "", "Description", 0.0f, new Date(0), "", "");
 	public ItemCondition condition = new ItemCondition("");
 	public ItemStatus status = new ItemStatus("");
 	public Unit unit = new Unit("");

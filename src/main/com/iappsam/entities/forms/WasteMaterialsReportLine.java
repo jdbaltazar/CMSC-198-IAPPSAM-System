@@ -16,8 +16,8 @@ public class WasteMaterialsReportLine implements Serializable {
 	private static final long serialVersionUID = -918675709541879390L;
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -28,36 +28,47 @@ public class WasteMaterialsReportLine implements Serializable {
 	@Column(name = "Disposal")
 	private String disposal;
 
+	@Column(name = "Disposed_To")
+	private String disposedTo;
+
 	@Id
 	@Column(name = "Waste_Materials_Report_ID")
 	private int wasteMaterialsReportId;
 
-	@Column(name = "Disposed_To")
-	private String disposedTo;
+	public WasteMaterialsReportLine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	private void init(int itemID, int quantity, String orNumber, String disposal, int wasteMaterialsReportID, String disposedTo) {
-		this.wasteMaterialsReportId = wasteMaterialsReportID;
-		this.itemID = itemID;
-		this.disposal = disposal;
+	public WasteMaterialsReportLine(String itemDescription, int quantity, String orNumber, String disposal, String disposedTo, int wasteMaterialsReportId) {
+		super();
+		this.itemDescription = itemDescription;
 		this.quantity = quantity;
 		this.orNumber = orNumber;
+		this.disposal = disposal;
 		this.disposedTo = disposedTo;
+		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
 
-	public WasteMaterialsReportLine(int itemID, int quantity, String orNumber, String disposal, int wasteMaterialsReportID) {
-		init(itemID, quantity, orNumber, disposal, wasteMaterialsReportID, "");
+	public WasteMaterialsReportLine(String itemDescription, int quantity, String orNumber, String disposal, int wasteMaterialsReportId) {
+		super();
+		this.itemDescription = itemDescription;
+		this.quantity = quantity;
+		this.orNumber = orNumber;
+		this.disposal = disposal;
+		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
 
-	public WasteMaterialsReportLine(int itemID, int quantity, String orNumber, String disposal, int wasteMaterialsReportID, String disposedTo) {
-		init(itemID, quantity, orNumber, disposal, wasteMaterialsReportID, disposedTo);
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
-	public WasteMaterialsReportLine() {
-
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public int getItemID() {
-		return itemID;
+	public String getOrNumber() {
+		return orNumber;
 	}
 
 	public String getDisposal() {
@@ -68,8 +79,12 @@ public class WasteMaterialsReportLine implements Serializable {
 		return disposedTo;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public int getWasteMaterialsReportId() {
+		return wasteMaterialsReportId;
+	}
+
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public void setQuantity(int quantity) {
@@ -84,27 +99,12 @@ public class WasteMaterialsReportLine implements Serializable {
 		this.disposal = disposal;
 	}
 
-	public void setWasteMaterialsReportId(int wasteMaterialsReportId) {
-		this.wasteMaterialsReportId = wasteMaterialsReportId;
-	}
-
 	public void setDisposedTo(String disposedTo) {
 		this.disposedTo = disposedTo;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public void setWasteMaterialsReportId(int wasteMaterialsReportId) {
+		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
-
-	public String getOrNumber() {
-		return orNumber;
-	}
-
-	public String getDisposalDetailID() {
-		return disposal;
-	}
-
-	public int getWasteMaterialsReportId() {
-		return wasteMaterialsReportId;
-	}
+	
 }

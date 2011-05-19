@@ -17,23 +17,19 @@ public class InventoryCustodianSlipLine implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1882633688697555808L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ICS_Line_ID", nullable = false)
-	private int icsLineID;
 	
-	@Column(name = "Quantity", nullable = false)
+	@Column(name = "Quantity")
 	private int quantity;
 	
-	@Column(name = "Item_ID", nullable = false)
-	private int itemID;
+	@Id
+	@Column(name = "Item_Description")
+	private String itemDescription;
 	
-	@Column(name = "Estimated_Useful_Life", nullable = false)
+	@Column(name = "Estimated_Useful_Life")
 	private int estimatedusefulLife;
 	
 	@Id
-	@Column(name = "ICS_ID", nullable = false)
+	@Column(name = "ICS_ID")
 	private int icsID;
 
 	public InventoryCustodianSlipLine() {
@@ -41,25 +37,20 @@ public class InventoryCustodianSlipLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public InventoryCustodianSlipLine(int icsLineID, int quantity, int itemID, int estimatedusefulLife, int icsID) {
+	public InventoryCustodianSlipLine(int quantity, String itemDescription, int estimatedusefulLife, int icsID) {
 		super();
-		setIcsLineID(icsLineID);
-		setQuantity(quantity);
-		setItemID(itemID);
-		setEstimatedusefulLife(estimatedusefulLife);
-		setIcsID(icsID);
-	}
-
-	public int getIcsLineID() {
-		return icsLineID;
+		this.quantity = quantity;
+		this.itemDescription = itemDescription;
+		this.estimatedusefulLife = estimatedusefulLife;
+		this.icsID = icsID;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public int getItemID() {
-		return itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public int getEstimatedusefulLife() {
@@ -70,16 +61,12 @@ public class InventoryCustodianSlipLine implements Serializable{
 		return icsID;
 	}
 
-	public void setIcsLineID(int icsLineID) {
-		this.icsLineID = icsLineID;
-	}
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public void setEstimatedusefulLife(int estimatedusefulLife) {

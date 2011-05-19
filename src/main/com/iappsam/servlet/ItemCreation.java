@@ -167,18 +167,18 @@ public class ItemCreation extends HttpServlet {
 	}
 
 	private void succesfulRequest(HttpServletRequest request, HttpServletResponse response) {
-		Item item;
-		if (stockNumber.isEmpty())
-			item = new Item(name, unit, description, Float.parseFloat(price), date, itemStatus, itemCondition);
-		else
-			item = new Item(name, stockNumber, unit, description, Float.parseFloat(price), date, Integer.parseInt(invItemNumber), propertyNumber, itemStatus, itemCondition);
-		ItemManager manager = new ItemManagerSession();
-		try {
-			manager.addItem(item);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Item item;
+//		if (stockNumber.isEmpty())
+//			item = new Item(name, unit, description, Float.parseFloat(price), date, itemStatus, itemCondition);
+//		else
+//			item = new Item(name, stockNumber, unit, description, Float.parseFloat(price), date, Integer.parseInt(invItemNumber), propertyNumber, itemStatus, itemCondition);
+//		ItemManager manager = new ItemManagerSession();
+//		try {
+//			manager.addItem(item);
+//		} catch (TransactionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 }

@@ -18,8 +18,8 @@ public class InventoryOfEquipmentLine implements Serializable{
 	private static final long serialVersionUID = 3724182303894246727L;
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -42,9 +42,9 @@ public class InventoryOfEquipmentLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public InventoryOfEquipmentLine(int itemID, int quantity, int employeeID, String howAcquired, String remarks, int ieID) {
+	public InventoryOfEquipmentLine(String itemDescription, int quantity, int employeeID, String howAcquired, String remarks, int ieID) {
 		super();
-		this.itemID = itemID;
+		this.itemDescription = itemDescription;
 		this.quantity = quantity;
 		this.employeeID = employeeID;
 		this.howAcquired = howAcquired;
@@ -52,21 +52,17 @@ public class InventoryOfEquipmentLine implements Serializable{
 		this.ieID = ieID;
 	}
 
-	public InventoryOfEquipmentLine(int itemID, int quantity, int employeeID, String howAcquired, int ieID) {
+	public InventoryOfEquipmentLine(String itemDescription, int quantity, int employeeID, String howAcquired, int ieID) {
 		super();
-		this.itemID = itemID;
+		this.itemDescription = itemDescription;
 		this.quantity = quantity;
 		this.employeeID = employeeID;
 		this.howAcquired = howAcquired;
 		this.ieID = ieID;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public int getItemID() {
-		return itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public int getQuantity() {
@@ -89,8 +85,8 @@ public class InventoryOfEquipmentLine implements Serializable{
 		return ieID;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public void setQuantity(int quantity) {
@@ -112,5 +108,4 @@ public class InventoryOfEquipmentLine implements Serializable{
 	public void setIeID(int ieID) {
 		this.ieID = ieID;
 	}
-
 }

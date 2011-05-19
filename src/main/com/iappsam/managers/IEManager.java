@@ -28,7 +28,7 @@ public interface IEManager {
 
 	List<InventoryOfEquipmentLine> getIELineByIE(int invenEquipmentID) throws TransactionException;
 
-	boolean containsIELine(int invenEquipmentID, int itemID) throws TransactionException;
+	boolean containsIELine(int invenEquipmentID, String itemDescription) throws TransactionException;
 
 	List<InventoryOfEquipmentLine> getAllIELine() throws TransactionException;
 }

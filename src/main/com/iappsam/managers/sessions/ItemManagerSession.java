@@ -31,9 +31,9 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public Item getItem(int itemId) throws TransactionException {
+	public Item getItem(String description) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (Item) get(Item.class, itemId);
+		return (Item) get(Item.class, description);
 	}
 
 	@Override
@@ -49,11 +49,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public boolean containsItem(String name) throws TransactionException {
+	public boolean containsItem(String description) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Item> items = getAllItems();
 		for (Item item : items) {
-			if (item.getName().equalsIgnoreCase(name))
+			if (item.getDescription().equalsIgnoreCase(description))
 				return true;
 		}
 		return false;
@@ -127,7 +127,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public String saveItemStatus(ItemStatus itemStatus) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (String)saveItemStatus(itemStatus);
+		return (String) saveItemStatus(itemStatus);
 	}
 
 	@Override
@@ -139,7 +139,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public ItemStatus getItemStatus(String itemStatus) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (ItemStatus)get(Item.class, itemStatus);
+		return (ItemStatus) get(Item.class, itemStatus);
 	}
 
 	@Override
@@ -157,10 +157,10 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public boolean containsItemStatus(String name) throws TransactionException {
 		// TODO Auto-generated method stub
-		List<ItemStatus>itemStatuses = getAllItemStatus();
-		for(ItemStatus itemStatus: itemStatuses){
-			if(itemStatus.getItemStatus().equalsIgnoreCase(name))
-					return true;
+		List<ItemStatus> itemStatuses = getAllItemStatus();
+		for (ItemStatus itemStatus : itemStatuses) {
+			if (itemStatus.getItemStatus().equalsIgnoreCase(name))
+				return true;
 		}
 		return false;
 	}
@@ -180,7 +180,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public String saveItemCondition(ItemCondition itemCondition) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (String)save(itemCondition);
+		return (String) save(itemCondition);
 	}
 
 	@Override
@@ -192,7 +192,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public ItemCondition getItemCondition(String itemCondition) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (ItemCondition)get(ItemCondition.class, itemCondition);
+		return (ItemCondition) get(ItemCondition.class, itemCondition);
 	}
 
 	@Override
@@ -210,9 +210,9 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public boolean containsItemCondition(String name) throws TransactionException {
 		// TODO Auto-generated method stub
-		List<ItemCondition>itemConditions = getAllItemCondition();
-		for(ItemCondition itemCondition: itemConditions){
-			if(itemCondition.getItemCondition().equalsIgnoreCase(name))
+		List<ItemCondition> itemConditions = getAllItemCondition();
+		for (ItemCondition itemCondition : itemConditions) {
+			if (itemCondition.getItemCondition().equalsIgnoreCase(name))
 				return true;
 		}
 		return false;

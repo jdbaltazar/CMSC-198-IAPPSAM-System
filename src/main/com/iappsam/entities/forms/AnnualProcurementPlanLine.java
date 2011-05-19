@@ -17,8 +17,8 @@ public class AnnualProcurementPlanLine implements Serializable{
 	private static final long serialVersionUID = -2657493265868247131L;
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "Quantity_Quarter_1")
 	private int quantityQuarter1;
@@ -41,9 +41,9 @@ public class AnnualProcurementPlanLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlanLine(int itemID, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int appID) {
+	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int appID) {
 		super();
-		this.itemID = itemID;
+		this.itemDescription = itemDescription;
 		this.quantityQuarter1 = quantityQuarter1;
 		this.quantityQuarter2 = quantityQuarter2;
 		this.quantityQuarter3 = quantityQuarter3;
@@ -51,9 +51,8 @@ public class AnnualProcurementPlanLine implements Serializable{
 		this.appID = appID;
 	}
 
-
-	public int getItemID() {
-		return itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public int getQuantityQuarter1() {
@@ -76,9 +75,8 @@ public class AnnualProcurementPlanLine implements Serializable{
 		return appID;
 	}
 
-
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public void setQuantityQuarter1(int quantityQuarter1) {
@@ -100,5 +98,5 @@ public class AnnualProcurementPlanLine implements Serializable{
 	public void setAppID(int appID) {
 		this.appID = appID;
 	}
-
+	
 }

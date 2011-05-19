@@ -16,8 +16,8 @@ public class PTRPALine implements Serializable{
 	private static final long serialVersionUID = -8627208031076638913L;
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "ARE_MR_Number")
 	private String areMRNumber;
@@ -32,25 +32,29 @@ public class PTRPALine implements Serializable{
 	@Column(name = "PTRPA_ID")
 	private int ptrpaID;
 
-	private void init(int itemID, String areMRNumber, int quantity, String remarks, int ptrpaID) {
-		this.itemID = itemID;
+	public PTRPALine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PTRPALine(String itemDescription, String areMRNumber, int quantity, String remarks, int ptrpaID) {
+		super();
+		this.itemDescription = itemDescription;
 		this.areMRNumber = areMRNumber;
 		this.quantity = quantity;
 		this.remarks = remarks;
 		this.ptrpaID = ptrpaID;
 	}
 
-	public PTRPALine(int itemID, String areMRNumber, int quantity, String remarks, int ptrpaID) {
-		init(itemID, areMRNumber, quantity, remarks, ptrpaID);
+	public PTRPALine(String itemDescription, int quantity, int ptrpaID) {
+		super();
+		this.itemDescription = itemDescription;
+		this.quantity = quantity;
+		this.ptrpaID = ptrpaID;
 	}
 
-	public PTRPALine(int itemID, int quantity, int ptrpaID) {
-		init(itemID, "", quantity, "", ptrpaID);
-
-	}
-
-	public int getItemID() {
-		return itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public String getAreMRNumber() {
@@ -69,8 +73,8 @@ public class PTRPALine implements Serializable{
 		return ptrpaID;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public void setAreMRNumber(String areMRNumber) {
@@ -88,4 +92,5 @@ public class PTRPALine implements Serializable{
 	public void setPtrpaID(int ptrpaID) {
 		this.ptrpaID = ptrpaID;
 	}
+	
 }

@@ -17,8 +17,8 @@ public class IIRUPLine implements Serializable{
 	private static final long serialVersionUID = -7906331383568019394L;
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -27,53 +27,51 @@ public class IIRUPLine implements Serializable{
 	private int yearsInService;
 
 	@Column(name = "Accumulated_Depreciation")
-	private int accumulatedDepreciation;
+	private float accumulatedDepreciation;
 
 	@Column(name = "Disposal_Type")
 	private String disposalType;
 
+	@Column(name = "Appraisal")
+	private String appraisal;
+	
 	@Column(name = "OR_Number")
 	private String orNumber;
+	
 	@Id
 	@Column(name = "IIRUP_ID")
 	private int iirupID;
-	@Column(name = "Appraisal")
-	private String appraisal;
 
-	private void init(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID, String appraisal) {
-		this.itemID = itemID;
+	public IIRUPLine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public IIRUPLine(String itemDescription, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
+		super();
+		this.itemDescription = itemDescription;
+		this.quantity = quantity;
+		this.yearsInService = yearsInService;
+		this.accumulatedDepreciation = accumulatedDepreciation;
+		this.disposalType = disposalType;
+		this.appraisal = appraisal;
+		this.orNumber = orNumber;
 		this.iirupID = iirupID;
+	}
+
+	public IIRUPLine(String itemDescription, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
+		super();
+		this.itemDescription = itemDescription;
+		this.quantity = quantity;
+		this.yearsInService = yearsInService;
 		this.accumulatedDepreciation = accumulatedDepreciation;
 		this.disposalType = disposalType;
 		this.orNumber = orNumber;
-		this.yearsInService = yearsInService;
-		this.appraisal = appraisal;
-		this.quantity = quantity;
+		this.iirupID = iirupID;
 	}
 
-	public IIRUPLine(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
-		init(itemID, quantity, yearsInService, accumulatedDepreciation, disposalType, orNumber, iirupID, "");
-
-	}
-
-	public IIRUPLine(int itemID, int quantity, int yearsInService, int accumulatedDepreciation, String disposalType, String orNumber, int iirupID, String appraisal) {
-		init(itemID, quantity, yearsInService, accumulatedDepreciation, disposalType, orNumber, iirupID, appraisal);
-	}
-
-	public IIRUPLine() {
-
-	}
-
-	public String getAppraisal() {
-		return appraisal;
-	}
-
-	public void setAppraisal(String appraisal) {
-		this.appraisal = appraisal;
-	}
-
-	public int getIirupLineID() {
-		return itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public int getQuantity() {
@@ -84,12 +82,16 @@ public class IIRUPLine implements Serializable{
 		return yearsInService;
 	}
 
-	public int getAccumulatedDepreciation() {
+	public float getAccumulatedDepreciation() {
 		return accumulatedDepreciation;
 	}
 
 	public String getDisposalType() {
 		return disposalType;
+	}
+
+	public String getAppraisal() {
+		return appraisal;
 	}
 
 	public String getOrNumber() {
@@ -99,4 +101,37 @@ public class IIRUPLine implements Serializable{
 	public int getIirupID() {
 		return iirupID;
 	}
+
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setYearsInService(int yearsInService) {
+		this.yearsInService = yearsInService;
+	}
+
+	public void setAccumulatedDepreciation(float accumulatedDepreciation) {
+		this.accumulatedDepreciation = accumulatedDepreciation;
+	}
+
+	public void setDisposalType(String disposalType) {
+		this.disposalType = disposalType;
+	}
+
+	public void setAppraisal(String appraisal) {
+		this.appraisal = appraisal;
+	}
+
+	public void setOrNumber(String orNumber) {
+		this.orNumber = orNumber;
+	}
+
+	public void setIirupID(int iirupID) {
+		this.iirupID = iirupID;
+	}
+
 }

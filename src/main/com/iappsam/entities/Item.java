@@ -4,8 +4,6 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.search.annotations.Field;
@@ -16,24 +14,16 @@ import org.hibernate.search.annotations.Indexed;
 public class Item {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Item_ID")
-	private int itemID;
-
-	@Field(name = "name")
-	@Column(name = "Name")
-	private String name;
-
+	@Field(name = "description")
+	@Column(name = "Description")
+	private String description;
+	
 	@Column(name = "Stock_Number")
 	private String stockNumber;
 
 	@Column(name = "Unit")
 	private String unit;
-
-	@Field(name = "description")
-	@Column(name = "Description")
-	private String description;
-
+	
 	@Column(name = "Price")
 	private float price;
 
@@ -56,13 +46,11 @@ public class Item {
 		super();
 	}
 
-	public Item(String name, String stockNumber, String unit, String description, float price, Date dateAcquired,
-			int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String description, String stockNumber, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
 		super();
-		this.name = name;
+		this.description = description;
 		this.stockNumber = stockNumber;
 		this.unit = unit;
-		this.description = description;
 		this.price = price;
 		this.dateAcquired = dateAcquired;
 		this.inventoryItemNumber = inventoryItemNumber;
@@ -71,24 +59,16 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String name, String unit, String description, float price, Date dateAcquired, String itemStatus,
-			String itemCondition) {
+	public Item(String description, String unit, String itemStatus, String itemCondition) {
 		super();
-		this.name = name;
-		this.unit = unit;
 		this.description = description;
-		this.price = price;
-		this.dateAcquired = dateAcquired;
+		this.unit = unit;
 		this.itemStatus = itemStatus;
 		this.itemCondition = itemCondition;
 	}
 
-	public int getItemID() {
-		return itemID;
-	}
-
-	public String getName() {
-		return name;
+	public String getDescription() {
+		return description;
 	}
 
 	public String getStockNumber() {
@@ -97,10 +77,6 @@ public class Item {
 
 	public String getUnit() {
 		return unit;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 
 	public float getPrice() {
@@ -127,12 +103,8 @@ public class Item {
 		return itemCondition;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setStockNumber(String stockNumber) {
@@ -141,10 +113,6 @@ public class Item {
 
 	public void setUnit(String unit) {
 		this.unit = unit;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public void setPrice(float price) {
@@ -171,26 +139,28 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + itemID;
-		return result;
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Item other = (Item) obj;
-		if (itemID != other.itemID)
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + itemID;
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Item other = (Item) obj;
+//		if (itemID != other.itemID)
+//			return false;
+//		return true;
+//	}
 
 }

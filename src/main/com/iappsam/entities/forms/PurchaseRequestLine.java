@@ -21,15 +21,9 @@ public class PurchaseRequestLine implements Serializable {
 	@Column(name = "Quantity")
 	private int quantity;
 
-	@Column(name = "Unit")
-	private String unit;
-
 	@Id
 	@Column(name = "Item_Description")
 	private String itemDescription;
-
-	@Column(name = "Stock_Number")
-	private String stockNumber;
 
 	@Column(name = "Estimated_Unit_Cost")
 	private long estimatedUnitCost;
@@ -42,43 +36,28 @@ public class PurchaseRequestLine implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public PurchaseRequestLine(int quantity, String unit, String itemDescription, String stockNumber, long estimatedUnitCost, int prID) {
+	
+	public PurchaseRequestLine(int quantity, String itemDescription, long estimatedUnitCost, int prID) {
 		super();
 		this.quantity = quantity;
-		this.unit = unit;
 		this.itemDescription = itemDescription;
-		this.stockNumber = stockNumber;
 		this.estimatedUnitCost = estimatedUnitCost;
 		this.prID = prID;
 	}
 
-	public PurchaseRequestLine(int quantity, String unit, String itemDescription, int prID) {
+	public PurchaseRequestLine(int quantity, String itemDescription, int prID) {
 		super();
 		this.quantity = quantity;
-		this.unit = unit;
 		this.itemDescription = itemDescription;
 		this.prID = prID;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public String getUnit() {
-		return unit;
-	}
-
 	public String getItemDescription() {
 		return itemDescription;
-	}
-
-	public String getStockNumber() {
-		return stockNumber;
 	}
 
 	public long getEstimatedUnitCost() {
@@ -93,16 +72,8 @@ public class PurchaseRequestLine implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
-	}
-
-	public void setStockNumber(String stockNumber) {
-		this.stockNumber = stockNumber;
 	}
 
 	public void setEstimatedUnitCost(long estimatedUnitCost) {
@@ -112,5 +83,5 @@ public class PurchaseRequestLine implements Serializable {
 	public void setPrID(int prID) {
 		this.prID = prID;
 	}
-
+	
 }

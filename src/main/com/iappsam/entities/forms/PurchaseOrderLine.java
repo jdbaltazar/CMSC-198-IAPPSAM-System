@@ -16,32 +16,38 @@ public class PurchaseOrderLine implements Serializable{
 	private static final long serialVersionUID = 7312439919136440157L;
 
 	@Id
+	@Column(name = "Item_Description")
+	private String itemDescription;
+
+	@Id
 	@Column(name = "PO_Number")
 	private String poNumber;
 
-	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	public PurchaseOrderLine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	public void setPoNumber(String poNumber) {
+	public PurchaseOrderLine(String itemDescription, String poNumber) {
+		super();
+		this.itemDescription = itemDescription;
 		this.poNumber = poNumber;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
-	}
-
-	public PurchaseOrderLine(String poNumber, int itemID) {
-		this.poNumber = poNumber;
-		this.itemID = itemID;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 
 	public String getPoNumber() {
 		return poNumber;
 	}
 
-	public int getItemID() {
-		return itemID;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+
+	public void setPoNumber(String poNumber) {
+		this.poNumber = poNumber;
 	}
 
 }

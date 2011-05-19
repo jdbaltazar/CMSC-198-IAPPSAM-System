@@ -67,7 +67,7 @@ public class RSMIManagerSession extends AbstractManager implements RSMIManager {
 		List<RSMILine> rsmiLines = getAllRSMILine();
 		List<RSMILine> result = new ArrayList<RSMILine>();
 		for (RSMILine rsmiLine : rsmiLines) {
-			if (rsmiLine.getRsmiID() == rsmiID)
+			if (rsmiLine.getRsmiID()== rsmiID)
 				result.add(rsmiLine);
 		}
 		return result;
