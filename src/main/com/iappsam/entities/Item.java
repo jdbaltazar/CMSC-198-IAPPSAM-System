@@ -1,16 +1,13 @@
 package com.iappsam.entities;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Resolution;
 
 @Entity
 @Indexed
@@ -30,8 +27,6 @@ public class Item {
 	@Column(name = "Price")
 	private float price;
 
-	@DateBridge(resolution = Resolution.DAY)
-	@Field(name = "date")
 	@Column(name = "Date_Acquired")
 	private Date dateAcquired;
 
