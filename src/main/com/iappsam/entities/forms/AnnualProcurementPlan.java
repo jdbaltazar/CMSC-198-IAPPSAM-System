@@ -12,25 +12,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "APP")
 public class AnnualProcurementPlan {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "APP_ID")
 	private int appID;
-	
+
 	@Column(name = "Year")
 	private int year;
-	
+
 	@Column(name = "Plan_Control_Number")
 	private String planControlNumber;
-	
+
 	@Column(name = "Date_Scheduled")
 	private Date dateScheduled;
-	
-	@Column (name = "Signatory_ID")
+
+	@Column(name = "Signatory_ID")
 	private int preparedBySignatoryID;
-	
-	@Column (name = "Signatory_ID1")
+
+	@Column(name = "Signatory_ID1")
 	private int recommendedBySignatoryID;
 
 	public AnnualProcurementPlan() {
@@ -101,6 +101,5 @@ public class AnnualProcurementPlan {
 	public void setRecommendedBySignatoryID(int recommendedBySignatoryID) {
 		this.recommendedBySignatoryID = recommendedBySignatoryID;
 	}
-	
-	
+
 }
