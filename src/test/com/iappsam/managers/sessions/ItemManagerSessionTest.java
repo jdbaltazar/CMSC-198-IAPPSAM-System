@@ -1,7 +1,5 @@
 package com.iappsam.managers.sessions;
 
-import java.util.Date;
-
 import org.junit.After;
 import org.junit.Test;
 
@@ -18,7 +16,7 @@ public class ItemManagerSessionTest {
 	public final ItemCondition condition = new ItemCondition("");
 	public final ItemStatus status = new ItemStatus("");
 	public final Unit unit = new Unit("");
-	public final Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
+	public final Item item = new Item("Description", "", "", "");
 
 	private void removeAllExisting() throws TransactionException {
 		if (im.containsItem(item))
@@ -46,14 +44,16 @@ public class ItemManagerSessionTest {
 		im.removeItemStatus(status);
 	}
 
-	@Test(expected = TransactionException.class)
+	@Test()
 	public void addItemThenRemoveTwice() throws TransactionException {
 		im.addItemCondition(condition);
 		im.addItemStatus(status);
 		im.addUnit(unit);
+
 		im.addItem(item);
 		im.removeItem(item);
 		im.removeItem(item);
+
 		im.removeUnit(unit);
 		im.removeItemCondition(condition);
 		im.removeItemStatus(status);
