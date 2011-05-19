@@ -29,7 +29,7 @@
 #name {
 	position:absolute;
 	width:434px;
-	height:551px;
+	height:55px;
 	z-index:3;
 	left: 491px;
 	top: 229px;
@@ -188,127 +188,44 @@
 <div id="background" style="background-color:#EEE0E5;"></div>
 <div id="name">
   <form action="" method="post" name="form1" id="form1">
-    <p>
-      <label for="itemName" class="texts">Name:</label>
-      <textarea name="itemName" id="itemName"></textarea>
-    </p>
-    <p>
-      <label for="itemUnit" class="texts">Unit:</label>
-      <select name="itemUnit" id="itemUnit">
-      </select>
-    </p>
-    <p>
-      <label for="itemDescription2" class="texts">Description:</label>
-      <textarea name="itemDescription" cols="30" id="itemDescription2"></textarea>
-    </p>
-    <p>
-      <label for="itemPrice2" class="texts">Price:</label>
-      <input name="itemPrice" type="text" id="itemPrice2" size="10" />
-    </p>
-    <p>
-      <label for="month2" class="texts">Date Acquired:</label>
-      <select name="month" id="month2">
-        <option selected="selected">MM</option>
-        <option>Jan</option>
-        <option>Feb</option>
-        <option>Mar</option>
-        <option>Apr</option>
-        <option>May</option>
-        <option>Jun</option>
-        <option>Jul</option>
-        <option>Aug</option>
-        <option>Sep</option>
-        <option>Oct</option>
-        <option>Nov</option>
-        <option>Dec</option>
-      </select>
-      <select name="dayAcquired" id="dayAcquired">
-        <option selected="selected">DD</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        <option>16</option>
-        <option>17</option>
-        <option>18</option>
-        <option>19</option>
-        <option>20</option>
-        <option>21</option>
-        <option>22</option>
-        <option>23</option>
-        <option>24</option>
-        <option>25</option>
-        <option>26</option>
-        <option>27</option>
-        <option>28</option>
-        <option>29</option>
-        <option>30</option>
-        <option>31</option>
-      </select>
-      <select name="yearAcquired" id="yearAcquired">
-        <option>YYYY</option>
-        <option>2000</option>
-        <option>2001</option>
-        <option>2002</option>
-        <option>2003</option>
-        <option>2004</option>
-        <option>2005</option>
-        <option>2006</option>
-        <option>2007</option>
-        <option>2008</option>
-        <option>2009</option>
-        <option>2010</option>
-        <option>2011</option>
-        <option>2012</option>
-        <option>2013</option>
-        <option>2015</option>
-        <option>2016</option>
-      </select>
-    </p>
-    <p>
-      <label for="stockNumber2" class="texts">Stock Number:</label>
-      <input name="stockNumber" type="text" id="stockNumber2" size="20" />
-    </p>
-    <p>
-      <label for="inventoryItemNum2" class="texts">Inv. Item Number:</label>
-      <input type="text" name="inventoryItemNum" id="inventoryItemNum2" />
-    </p>
-    <p>
-      <label for="itemPropertyNumber2" class="texts">Property Number:</label>
-      <input type="text" name="itemPropertyNumber" id="itemPropertyNumber2" />
-    </p>
-    <p>
-      <label for="itemStatus2" class="texts">Item Status:</label>
-      <select name="itemStatus" id="itemStatus2">
-      </select>
-    </p>
-    <p>
-      <label for="itemCondition2" class="texts">Item Condition:</label>
-      <select name="itemCondition" id="itemCondition2">
-      </select>
-    </p>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <p>
-              <input type="submit" name="addItemBtn" id="addItemBtn" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
-            </p>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
+    <label for="itemName" class="texts">Name:</label>
+    <textarea name="itemName" id="itemName"></textarea>
+  </form>
+</div>
+<div id="stockNum">
+  <form action="" method="post" name="form2" id="form2">
+    <label for="stockNumber" class="texts">Stock Number:</label>
+    <input name="stockNumber" type="text" id="stockNumber" size="20" />
+  </form>
+</div>
+<div id="apDiv1">
+  <form id="form5" name="form5" method="post" action="">
+    <label for="itemPrice" class="texts">Price:</label>
+    <input name="itemPrice" type="text" id="itemPrice" size="10" />
+  </form>
+</div>
+<div id="apDiv3">
+  <form id="form6" name="form6" method="post" action="">
+    <label for="inventoryItemNum" class="texts">Inv. Item Number:</label>
+    <input type="text" name="inventoryItemNum" id="inventoryItemNum" />
+  </form>
+</div>
+<div id="apDiv4">
+  <form id="form7" name="form7" method="post" action="">
+    <label for="itemPropertyNumber" class="texts">Property Number:</label>
+    <input type="text" name="itemPropertyNumber" id="itemPropertyNumber" />
+  </form>
+</div>
+<div id="apDiv6">
+  <form id="form9" name="form9" method="post" action="">
+    <label for="itemCondition" class="texts">Item Condition:</label>
+    <select name="itemCondition" id="itemCondition">
+    </select>
+  </form>
+</div>
+<div id="addDiv">
+  <form id="form10" name="form10" method="post" action="">
+    <input type="submit" name="addItemBtn" id="addItemBtn" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
   </form>
 </div>
 <div id="apDiv7">
@@ -319,6 +236,108 @@
   </table>
 </div>
 <div id="footer"></div>
+<div id="apDiv10">
+  <form id="form11" name="form11" method="post" action="">
+    <label for="month" class="texts">Date Acquired:</label>
+    <select name="month" id="month">
+      <option selected="selected">MM</option>
+      <option>Jan</option>
+      <option>Feb</option>
+      <option>Mar</option>
+      <option>Apr</option>
+      <option>May</option>
+      <option>Jun</option>
+      <option>Jul</option>
+      <option>Aug</option>
+      <option>Sep</option>
+      <option>Oct</option>
+      <option>Nov</option>
+      <option>Dec</option>
+    </select>
+  </form>
+</div>
+<div id="dayDiv">
+  <form id="form12" name="form12" method="post" action="">
+    <select name="dayAcquired" id="dayAcquired">
+      <option selected="selected">DD</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+  </form>
+</div>
+<div id="yearDiv">
+  <form id="form13" name="form13" method="post" action="">
+    <label for="yearAcquired"></label>
+    <select name="yearAcquired" id="yearAcquired">
+      <option selected="selected">YYYY</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+  </form>
+</div>
 <p>&nbsp;</p>
+<div id="apDiv5">
+  <form id="form8" name="form8" method="post" action="">
+    <label for="itemStatus" class="texts">Item Status:</label>
+    <select name="itemStatus" id="itemStatus">
+    </select>
+  </form>
+</div>
+<div id="unit">
+  <form id="form3" name="form3" method="post" action="">
+    <label for="itemUnit" class="texts">Unit:</label>
+    <select name="itemUnit" id="itemUnit">
+    </select>
+  </form>
+</div>
+<div id="description">
+  <form id="form4" name="form4" method="post" action="">
+    <label for="itemDescription" class="texts">Description:</label>
+    <textarea name="itemDescription" cols="30" id="itemDescription"></textarea>
+  </form>
+</div>
 </body>
 </html>

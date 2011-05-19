@@ -14,12 +14,12 @@ import javax.persistence.Table;
 public class AnnualProcurementPlan {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "APP_ID")
-	private int appID;
-
 	@Column(name = "Year")
 	private int year;
+	
+	@Id
+	@Column(name = "DivisionOffice_ID")
+	private int divisionOfficeID;
 
 	@Column(name = "Plan_Control_Number")
 	private String planControlNumber;
@@ -38,28 +38,30 @@ public class AnnualProcurementPlan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlan(int year, String planControlNumber, Date dateScheduled, int preparedBySignatoryID, int recommendedBySignatoryID) {
+	public AnnualProcurementPlan(int year, int divisionOfficeID, String planControlNumber, Date dateScheduled, int preparedBySignatoryID, int recommendedBySignatoryID) {
 		super();
 		this.year = year;
+		this.divisionOfficeID = divisionOfficeID;
 		this.planControlNumber = planControlNumber;
 		this.dateScheduled = dateScheduled;
 		this.preparedBySignatoryID = preparedBySignatoryID;
 		this.recommendedBySignatoryID = recommendedBySignatoryID;
 	}
 
-	public AnnualProcurementPlan(int year, int preparedBySignatoryID, int recommendedBySignatoryID) {
+	public AnnualProcurementPlan(int year, int divisionOfficeID, int preparedBySignatoryID, int recommendedBySignatoryID) {
 		super();
 		this.year = year;
+		this.divisionOfficeID = divisionOfficeID;
 		this.preparedBySignatoryID = preparedBySignatoryID;
 		this.recommendedBySignatoryID = recommendedBySignatoryID;
 	}
 
-	public int getAppID() {
-		return appID;
-	}
-
 	public int getYear() {
 		return year;
+	}
+
+	public int getDivisionOfficeID() {
+		return divisionOfficeID;
 	}
 
 	public String getPlanControlNumber() {
@@ -78,12 +80,12 @@ public class AnnualProcurementPlan {
 		return recommendedBySignatoryID;
 	}
 
-	public void setAppID(int appID) {
-		this.appID = appID;
-	}
-
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public void setDivisionOfficeID(int divisionOfficeID) {
+		this.divisionOfficeID = divisionOfficeID;
 	}
 
 	public void setPlanControlNumber(String planControlNumber) {
@@ -101,5 +103,5 @@ public class AnnualProcurementPlan {
 	public void setRecommendedBySignatoryID(int recommendedBySignatoryID) {
 		this.recommendedBySignatoryID = recommendedBySignatoryID;
 	}
-
+	
 }

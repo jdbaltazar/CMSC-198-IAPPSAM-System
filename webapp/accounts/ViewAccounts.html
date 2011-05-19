@@ -4,6 +4,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.button2{
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:white;
+	color:#7B1113;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.button2:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
 .button{
 	font-family:"Courier New", Courier, monospace;
 	background-color:white;
@@ -74,7 +94,9 @@
       </tr>
     </table></td>
     <td width="80%">&nbsp;</td>
-    <td width="4%"><a href="../MenuFrame.html" title="Back to main menu" target="main_frame">Home</a></td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.html">
+      <input name="backBtn" type="submit" class="button2" id="backBtn" value="Back" />
+    </form></td>
   </tr>
 </table>
 <table width="100%" border="0">

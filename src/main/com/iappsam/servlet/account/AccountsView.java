@@ -1,6 +1,10 @@
 package com.iappsam.servlet.account;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
-import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -22,7 +25,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class AccountView
  */
-@WebServlet("/AccountsView")
+@WebServlet("/accounts/viewAccounts.do")
 public class AccountsView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +49,7 @@ public class AccountsView extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 
@@ -61,16 +64,23 @@ public class AccountsView extends HttpServlet {
 				acctType.add(accounts.get(i).getAccountType());
 				name.add(pManager.getPerson(accounts.get(i).getPersonID()).getName());
 			}
+		} catch (org.hibernate.TransactionException e) {
+			e.printStackTrace();
 		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		request.setAttribute("userName", userName);
 		request.setAttribute("acctType", acctType);
 		request.setAttribute("name", name);
+		request.setAttribute("listSize", "" + userName.size());
 
-		RequestDispatcher view = request.getRequestDispatcher("../ViewAccounts.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/viewing/ViewAccounts.jsp");
 		view.forward(request, response);
+//		OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
+//		out.write("fuck");
+//		out.flush();
 	}
 
 }

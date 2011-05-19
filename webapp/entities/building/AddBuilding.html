@@ -15,15 +15,15 @@
 #background {
 	position:absolute;
 	width:578px;
-	height:197px;
+	height:198px;
 	z-index:3;
 	left: 353px;
-	top: 202px;
+	top: 203px;
 }
 #nameDiv {
 	position:absolute;
 	width:462px;
-	height:234px;
+	height:24px;
 	z-index:3;
 	left: 460px;
 	top: 223px;
@@ -41,8 +41,8 @@
 	width:385px;
 	height:25px;
 	z-index:5;
-	left: 436px;
-	top: 335px;
+	left: 439px;
+	top: 289px;
 }
 #apDiv2 {
 	position:absolute;
@@ -70,11 +70,11 @@
 }
 #apDiv5 {
 	position:absolute;
-	width:200px;
-	height:115px;
+	width:69px;
+	height:41px;
 	z-index:9;
-	left: 601px;
-	top: 431px;
+	left: 620px;
+	top: 351px;
 }
 #apDiv6 {
 	position:absolute;
@@ -83,6 +83,31 @@
 	z-index:10;
 	left: 444px;
 	top: 440px;
+}
+#footer {
+	background-color:#7B1113;
+	position:absolute;
+	width:578px;
+	height:9px;
+	z-index:10;
+	left: 354px;
+	top: 403px;
+}
+#border {
+	position:absolute;
+	width:859px;
+	height:216px;
+	z-index:1;
+	left: 139px;
+	top: 90px;
+}
+#apDiv7 {
+	position:absolute;
+	width:585px;
+	height:247px;
+	z-index:1;
+	left: 350px;
+	top: 173px;
 }
 </style>
 </head>
@@ -100,34 +125,31 @@
     <td width="4%"><a href="../Building.html" title="Back" target="main_frame">Back</a></td>
   </tr>
 </table>
-<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
+<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Building Info</div>
 <div id="nameDiv">
-  <form id="form1" name="form1" method="post" action="./buildingCreate.do">
-    <p>
-      <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Name</label>
-      <textarea name="name" cols="30" id="name"></textarea>
-    </p>
-    <p>
-      <label for="buildingID" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Building ID</label>
-      <input type="text" name="buildingID" id="buildingID" />
-    </p>
-    <p>
-      <label for="address2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Address</label>
-      <textarea name="address" cols="30" id="address2"></textarea>
-    </p>
-    <p>&nbsp;</p>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <p>
-              <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
-            </p>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
+  <form id="form1" name="form1" method="post" action="">
+    <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Name:</label>
+    <textarea name="name" cols="30" id="name"></textarea>
   </form>
+</div>
+<div id="apDiv1">
+  <form id="form3" name="form3" method="post" action="">
+    <label for="address" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Address:</label>
+    <textarea name="address" cols="30" id="address"></textarea>
+  </form>
+</div>
+<div id="apDiv5">
+  <form id="form7" name="form7" method="post" action="">
+    <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
+  </form>
+</div>
+<div id="footer"></div>
+<div id="apDiv7">
+  <table width="100%" border="1">
+    <tr>
+      <td height="232">&nbsp;</td>
+    </tr>
+  </table>
 </div>
 <p>&nbsp;</p>
 </body>

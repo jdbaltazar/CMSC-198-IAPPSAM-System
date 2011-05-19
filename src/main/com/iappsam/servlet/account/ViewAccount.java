@@ -2,6 +2,7 @@ package com.iappsam.servlet.account;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,7 +29,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class ViewAccount
  */
-@WebServlet("/ViewAccount")
+@WebServlet("/accounts/viewing/ViewAccount.do")
 public class ViewAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -101,8 +102,17 @@ public class ViewAccount extends HttpServlet {
 			for (int i = 0; i < employee.size(); i++) {
 				designation.add(employee.get(i).getDesignation());
 				employeeNumber.add("" + employee.get(i).getEmployeeID());
+				
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID())!=null)
 				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getDivisionName());
+				else
+				division.add(".");
+				
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID())!=null)
 				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getOfficeName());
+				else
+				office.add(".");
+				
 			}
 
 			request.setAttribute("title", title);
@@ -120,7 +130,7 @@ public class ViewAccount extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher view = request.getRequestDispatcher("./ViewAccount.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../viewing/ViewAccount.jsp");
 		view.forward(request, response);
 
 	}

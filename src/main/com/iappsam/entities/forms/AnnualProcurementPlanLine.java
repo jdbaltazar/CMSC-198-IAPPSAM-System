@@ -33,22 +33,27 @@ public class AnnualProcurementPlanLine implements Serializable{
 	private int quantityQuarter4;
 	
 	@Id
-	@Column(name = "APP_ID")
-	private int appID;
+	@Column(name = "Year")
+	private int year;
+	
+	@Id
+	@Column(name = "DivisionOffice_ID")
+	private int divisionOfficeID;
 
 	public AnnualProcurementPlanLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int appID) {
+	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int year, int divisionOfficeID) {
 		super();
 		this.itemDescription = itemDescription;
 		this.quantityQuarter1 = quantityQuarter1;
 		this.quantityQuarter2 = quantityQuarter2;
 		this.quantityQuarter3 = quantityQuarter3;
 		this.quantityQuarter4 = quantityQuarter4;
-		this.appID = appID;
+		this.year = year;
+		this.divisionOfficeID = divisionOfficeID;
 	}
 
 	public String getItemDescription() {
@@ -71,8 +76,12 @@ public class AnnualProcurementPlanLine implements Serializable{
 		return quantityQuarter4;
 	}
 
-	public int getAppID() {
-		return appID;
+	public int getYear() {
+		return year;
+	}
+
+	public int getDivisionOfficeID() {
+		return divisionOfficeID;
 	}
 
 	public void setItemDescription(String itemDescription) {
@@ -95,8 +104,12 @@ public class AnnualProcurementPlanLine implements Serializable{
 		this.quantityQuarter4 = quantityQuarter4;
 	}
 
-	public void setAppID(int appID) {
-		this.appID = appID;
+	public void setYear(int year) {
+		this.year = year;
 	}
+
+	public void setDivisionOfficeID(int divisionOfficeID) {
+		this.divisionOfficeID = divisionOfficeID;
+	}	
 	
 }

@@ -741,7 +741,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`APP` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
-  `Year` YEAR NOT NULL ,
+  `Year` INT NOT NULL ,
   `DivisionOffice_ID` INT NOT NULL ,
   `Plan_Control_Number` VARCHAR(45) NULL ,
   `Date_Scheduled` DATE NULL ,
@@ -780,7 +780,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
   `Quantity_Quarter_2` INT NOT NULL ,
   `Quantity_Quarter_3` INT NOT NULL ,
   `Quantity_Quarter_4` INT NOT NULL ,
-  `Year` YEAR NOT NULL ,
+  `Year` INT NOT NULL ,
   `DivisionOffice_ID` INT NOT NULL ,
   PRIMARY KEY (`Item_Description`, `Year`, `DivisionOffice_ID`) ,
   INDEX `fk_APP_Line_Item1` (`Item_Description` ASC) ,

@@ -4,21 +4,72 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.button{
+	height:20px;
+	width:405px;
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:#EEE0E5;
+	color:#030;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.button:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+.button2{
+	height:20px;
+	width:305px;
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:#EEE0E5;
+	color:#030;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.labels{
+	 background-color:#CCC;
+	 font-family:Lucida Grande; 
+	 font-size:14px;
+	 text-align:center;
+}
+
+.button2:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
 #formsDiv {
 	position:absolute;
 	width:405px;
 	height:23px;
 	z-index:1;
-	left: 457px;
-	top: 101px;
+	left: 494px;
+	top: 112px;
 }
 #formsMenuDiv {
 	position:absolute;
 	width:405px;
 	height:30px;
 	z-index:2;
-	left: 457px;
-	top: 126px;
+	left: 1006px;
+	top: 222px;
 }
 #formsMenuDiv a{
 	text-decoration: none;
@@ -38,24 +89,24 @@
 	width:405px;
 	height:23px;
 	z-index:3;
-	left: 457px;
-	top: 169px;
+	left: 496px;
+	top: 223px;
 }
 #entitiesDiv {
 	position:absolute;
 	width:405px;
 	height:23px;
 	z-index:4;
-	left: 457px;
-	top: 254px;
+	left: 496px;
+	top: 313px;
 }
 #entitiesMenuDiv {
 	position:absolute;
 	width:405px;
-	height:78px;
+	height:55px;
 	z-index:5;
-	left: 457px;
-	top: 277px;
+	left: 482px;
+	top: 456px;
 }
 #entitiesMenuDiv a{
 	text-decoration: none;
@@ -75,16 +126,16 @@
 	width:405px;
 	height:23px;
 	z-index:6;
-	left: 457px;
-	top: 356px;
+	left: 498px;
+	top: 487px;
 }
 #stocksMenuDiv {
 	position:absolute;
 	width:405px;
-	height:58px;
+	height:45px;
 	z-index:7;
-	left: 457px;
-	top: 194px;
+	left: 489px;
+	top: 133px;
 }
 #stocksMenuDiv a{
 	text-decoration: none;
@@ -102,7 +153,7 @@
 #accountMenuDiv {
 	position:absolute;
 	width:405px;
-	height:58px;
+	height:42px;
 	z-index:8;
 	left: 457px;
 	top: 381px;
@@ -126,16 +177,16 @@
 	width:405px;
 	height:23px;
 	z-index:9;
-	left: 457px;
-	top: 439px;
+	left: 499px;
+	top: 587px;
 }
 #databaseMenuDiv {
 	position:absolute;
 	width:405px;
-	height:58px;
+	height:43px;
 	z-index:10;
 	left: 457px;
-	top: 463px;
+	top: 470px;
 }
 #databaseMenuDiv a{
 	text-decoration: none;
@@ -163,16 +214,16 @@
 	width:405px;
 	height:23px;
 	z-index:12;
-	left: 457px;
-	top: 520px;
+	left: 83px;
+	top: 363px;
 }
 #logout {
 	position:absolute;
 	width:405px;
 	height:20px;
 	z-index:13;
-	left: 457px;
-	top: 545px;
+	left: 25px;
+	top: 440px;
 }
 #logout a{
 	text-decoration: none;
@@ -187,17 +238,172 @@
 	font-size:14px; 
 	background-color:transparent; 
 }
+#createNewAcctDiv {
+	position:absolute;
+	width:385px;
+	height:23px;
+	z-index:14;
+	left: 498px;
+	top: 511px;
+}
+#viewAcctDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:15;
+	left: 498px;
+	top: 532px;
+}
+#viewSysLogdiv {
+	position:absolute;
+	width:200px;
+	height:24px;
+	z-index:16;
+	left: 499px;
+	top: 611px;
+}
+#backupDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:17;
+	left: 499px;
+	top: 632px;
+}
+#recoverdbDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:18;
+	left: 499px;
+	top: 653px;
+}
+#itemDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:19;
+	left: 494px;
+	top: 136px;
+}
+#appDiv {
+	position:absolute;
+	width:200px;
+	height:24px;
+	z-index:20;
+	left: 494px;
+	top: 157px;
+}
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:21;
+}
+#inventoryDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:21;
+	left: 494px;
+	top: 178px;
+}
+#stockLabelDiv {
+	position:absolute;
+	width:406px;
+	height:74px;
+	z-index:22;
+	left: 497px;
+	top: 337px;
+}
+#fillupDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:23;
+	left: 496px;
+	top: 247px;
+}
+#viewFormDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:24;
+	left: 496px;
+	top: 268px;
+}
+
+#apDiv3 {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:25;
+	left: 596px;
+	top: 338px;
+}
+
+#supplierDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:26;
+	left: 596px;
+	top: 359px;
+}
+#buildingDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:27;
+	left: 596px;
+	top: 386px;
+}
+
+#divisionOfficeDiv {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:28;
+	left: 596px;
+	top: 407px;
+}
+#employeeDiv {
+	position:absolute;
+	width:200px;
+	height:24px;
+	z-index:29;
+	left: 596px;
+	top: 428px;
+}
+#apDiv4 {
+	position:absolute;
+	width:99px;
+	height:41px;
+	z-index:30;
+	left: 496px;
+	top: 338px;
+}
+#recordsDiv {
+	position:absolute;
+	width:99px;
+	height:63px;
+	z-index:31;
+	left: 496px;
+	top: 386px;
+}
+#generalBorder {
+	position:absolute;
+	width:1301px;
+	height:591px;
+	z-index:0;
+}
 </style>
 </head>
 
 <body>
 <div id="databaseDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Database</div>
 <div id="accountDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Account</div>
-<div id="databaseMenuDiv">
-  <div align="center" style="background-color:#EEE0E5;"><a href="#" title="viewLogLink">View System Log</a><br />
-  <a href="#" title="backup">Back-up</a> <br />
-  <a href="#" title="restore">Restore</a> </div>
-</div>
+
 <div id="welcomeDiv">
   <table width="100%" frame="below" style="color:#003300; font-family:Lucida Grande; font-size:22px; font-weight:bold">
     <tr>
@@ -207,35 +413,94 @@
 </div>
 <p>&nbsp;</p>
 <div id="formsDiv" style="background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">
-  <div align="center">Forms</div>
+  <div align="center">Stocks</div>
 </div>
 <div id="entitiesDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Entities</div>
-<div id="entitiesMenuDiv">
-  <div align="center" style="background-color:#EEE0E5;"><a href="#" title="employeeLink">Employee</a><br />
-  <a href="#" title="divisionLink">Division</a> <br />
-  <a href="#" title="supplierLink">Supplier</a> <br />
-  <a href="#" title="bldgLink">Building</a> </div>
-</div>
-<div id="accountMenuDiv">
-  <div align="center" style="background-color:#EEE0E5;"><a href="accounts/CreateAccount.html" title="createNewLink" target="main_frame">Create New</a><br />
-  <a href="#" title="searchLink">Search</a> <br />
-  <a href="#" title="editAcctLink">Edit Account</a> </div>
-</div>
 <p>&nbsp;</p>
-<div id="gap" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
+<div id="createNewAcctDiv">
+  <form id="form1" name="form1" method="post" action="/accounts/CreateAccount.do">
+    <input name="createNewAcctBtn" type="submit" class="button" id="createNewAcctBtn" value="Create New" />
+  </form>
+</div>
+<div id="viewAcctDiv">
+<form id="viewAcct" name="viewAcctForm" method="post" action="accounts/viewAccounts.do">
+  <input name="viewAcctsBtn" type="submit" class="button" id="viewAcctsBtn" value="View Accounts" />
+  </form>
+</div>
+
+<div id="viewSysLogdiv">
+  <form id="form2" name="form2" method="post" action="">
+    <input name="viewSysLogBtn" type="submit" class="button" id="viewSysLogBtn" value="View System Log" />
+  </form>
+</div>
+<div id="backupDiv">
+  <form id="form3" name="form3" method="post" action="">
+    <input name="backupBtn" type="submit" class="button" id="backupBtn" value="Backup" />
+  </form>
+</div>
+<div id="recoverdbDiv">
+  <form id="form4" name="form4" method="post" action="">
+    <input name="recoverdbBtn" type="submit" class="button" id="recoverdbBtn" value="Recover" />
+  </form>
+</div>
+<div id="itemDiv">
+  <form id="form5" name="form5" method="post" action="">
+    <input name="itemBtn" type="submit" class="button" id="itemBtn" value="Item" />
+  </form>
+</div>
+<div id="appDiv">
+  <form id="form6" name="form6" method="post" action="">
+    <input name="appBtn" type="submit" class="button" id="appBtn" value="APP" />
+  </form>
+</div>
+<div id="inventoryDiv">
+  <form id="form7" name="form7" method="post" action="">
+    <input name="inventoryBtn" type="submit" class="button" id="inventoryBtn" value="Inventory" />
+  </form>
+</div>
+<div id="fillupDiv">
+  <form id="form8" name="form8" method="post" action="">
+    <input name="fillupBtn" type="submit" class="button" id="fillupBtn" value="Fillup" />
+  </form>
+</div>
+<div id="viewFormDiv">
+  <form id="form9" name="form9" method="post" action="">
+    <input name="viewFormBtn" type="submit" class="button" id="viewFormBtn" value="View" />
+  </form>
+</div>
+<div id="apDiv3">
+  <form id="form10" name="form10" method="post" action="">
+    <input name="stockPropBtn" type="submit" class="button2" id="stockPropBtn" value="Stock Properties" />
+  </form>
+</div>
+
+<div id="buildingDiv">
+  <form id="form12" name="form12" method="post" action="">
+    <input name="buildingBtn" type="submit" class="button2" id="buildingBtn" value="Building" />
+  </form>
+</div>
+<div id="divisionOfficeDiv">
+  <form id="form13" name="form13" method="post" action="">
+    <input name="divisionOfficeBtn" type="submit" class="button2" id="divisionOfficeBtn" value="Division/Office" />
+  </form>
+</div>
+<div id="employeeDiv">
+  <form id="form14" name="form14" method="post" action="">
+    <input name="employeeBtn" type="submit" class="button2" id="employeeBtn" value="Employee" />
+  </form>
+</div>
+<div id="apDiv4" class="labels">
+ <br />
+Stocks: </div>
+<div class="labels" id="recordsDiv"><br />
+Records:</div>
+<div id="generalBorder"></div>
 <p>&nbsp;</p>
-<div id="stocksDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Stocks</div>
-<div id="formsMenuDiv" align="center" style="background-color:#EEE0E5;"><a href="forms/Fillup.html" title="fillup" target="main_frame">Fill-up</a><br />
-  <a href="#" title="viewForms" target="_self">View</a>
-</div>
-<div id="stocksMenuDiv">
-  <div align="center" style="background-color:#EEE0E5;"><a href="#" title="manageItemsLink">Manage Items</a><br />
-    <a href="#" title="manProdCatLink">Manage Product Categories</a><br />
-    <a href="#" title="manageUnitsLink">Manage Units</a> <br />
-  </div>
-</div>
-<div id="logout">
-  <div align="center" style="background-color:#EEE0E5;"><a href="#" title="logout">Logout</a></div>
+<div id="stocksDiv" style="text-align:center; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Forms</div>
+<div id="supplierDiv">
+  <form id="form11" name="form11" method="post" action="">
+    <input name="supplierBtn" type="submit" class="button2" id="supplierBtn" value="Supplier" />
+  </form>
 </div>
 </body>
 </html>

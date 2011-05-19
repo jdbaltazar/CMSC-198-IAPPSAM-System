@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -107,25 +108,17 @@ Accounts</div>
 		<td width="16%" class="header">Action</td>
 	</tr>
 	<%
-		//List<String> userName =(List<String>) request.getAttribute("userName");
-		//List<String> acctType = (List<String>) request.getAttribute("acctType");
-		//List<String> name = (List<String>) request.getAttribute("name");
-		//int listSize = Integer.parseInt((String)request.getAttribute("listSize"));
-		int listSize = 10;
-		ArrayList<String> userName = new ArrayList<String>();
-		ArrayList<String> acctType = new ArrayList<String>();
-		ArrayList<String> name = new ArrayList<String>();
-		for (int j = 0; j < 10; j++) {
-			userName.add("user" + j);
-			acctType.add("acctType" + j);
-			name.add("name" + j);
-
-		}
+		List<String> userName = (List<String>) request.getAttribute("userName");
+		List<String> acctType = (List<String>) request.getAttribute("acctType");
+		List<String> name = (List<String>) request.getAttribute("name");
+		int listSize = Integer.parseInt((String) request.getAttribute("listSize"));
 
 		for (int i = 0; i < listSize; i++) {
 			out.print("<tr><td>" + userName.get(i) + "</td>" + "<td>" + acctType.get(i) + "</td>" + "<td>" + name.get(i) + "</td>" + "<td align=" + '"' + "center" + '"' + ">" + "<form id=" + '"' + "form1" + '"' + " name=+" + '"' + "form1" + '"'
-					+ " method=" + '"' + "post" + '"' + " action=" + '"' + "./ViewAccount.do" + '"' + "><input type=" + '"' + "submit" + '"' + " name=" + '"' + "viewAccoutnBtn" + i + '"' + " id=" + '"' + "viewAccoutnBtn" + i + '"' + " class="
-					+ '"' + "button" + '"' + " value=" + '"' + "View" + '"' + "/>" + "<%" + "request.setAttribute(" + '"' + "acctID" + '"' + "," + '"' + userName.get(i) + '"' + ")" + '%' + ">" + "</form></td></tr>");
+					+ " method=" + '"' + "post" + '"' + " action=" + '"' + "../accounts/viewing/ViewAccount.do" + '"' + "><input type=" + '"' + "submit" + '"' + " name=" + '"' + "viewAccountBtn" + i + '"' + " id=" + '"' + "viewAccoutnBtn" + i
+					+ '"' + " class=" + '"' + "button" + '"' + " value=" + '"' + "View" + '"' + "/>");
+			out.print("<input type=" + '"' + "hidden" + '"' + " name=" + '"' + "userName" + '"' + " value=" + '"' + userName.get(i)+'"'+"/>");
+			out.print("</form></td>" + "</tr>");
 		}
 	%>
 
