@@ -1,4 +1,4 @@
-package com.iappsam.servlet;
+package com.iappsam.servlet.account;
 
 import java.io.IOException;
 import java.io.PrintWriter;
