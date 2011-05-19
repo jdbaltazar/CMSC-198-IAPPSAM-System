@@ -91,6 +91,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `IAPPSAM`.`DivisionOffice`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
+  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Division` VARCHAR(80) NOT NULL ,
+  `Office` VARCHAR(80) NULL ,
+  PRIMARY KEY (`DivisionOffice_ID`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `IAPPSAM`.`Building`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Building` ;
@@ -100,26 +113,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Building` (
   `Name` VARCHAR(80) NOT NULL ,
   `Address` VARCHAR(200) NULL ,
   PRIMARY KEY (`Building_ID`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`DivisionOffice`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
-  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Division` VARCHAR(80) NOT NULL ,
-  `Office` VARCHAR(80) NULL ,
-  `Building_ID` INT NOT NULL ,
-  PRIMARY KEY (`DivisionOffice_ID`) ,
-  INDEX `fk_DivisionOffice_Building1` (`Building_ID` ASC) ,
-  CONSTRAINT `fk_DivisionOffice_Building1`
-    FOREIGN KEY (`Building_ID` )
-    REFERENCES `IAPPSAM`.`Building` (`Building_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -806,11 +799,18 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Inventory_Of_Equipment` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
   `Inventory_Of_Equipment_ID` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
+  `Building_ID` INT NOT NULL ,
   PRIMARY KEY (`Inventory_Of_Equipment_ID`) ,
   INDEX `fk_Inventory_Of_Equipment_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
+  INDEX `fk_Inventory_Of_Equipment_Building1` (`Building_ID` ASC) ,
   CONSTRAINT `fk_Inventory_Of_Equipment_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Inventory_Of_Equipment_Building1`
+    FOREIGN KEY (`Building_ID` )
+    REFERENCES `IAPPSAM`.`Building` (`Building_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

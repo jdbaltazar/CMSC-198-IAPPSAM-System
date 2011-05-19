@@ -27,8 +27,6 @@ public interface DivisionOfficeManager {
 
 	boolean containsDivisionOffice(String name) throws TransactionException;
 
-	List<DivisionOffice> getDivisionOfficeByBuilding(int buildingId) throws TransactionException;
-
 	List<DivisionOffice> getAllDivisionOffice() throws TransactionException;
 
 	// Building

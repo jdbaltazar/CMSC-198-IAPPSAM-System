@@ -60,18 +60,6 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public List<DivisionOffice> getDivisionOfficeByBuilding(int buildingId) throws TransactionException {
-		// TODO Auto-generated method stub
-		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
-		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
-		for (DivisionOffice divisionOffice : divisionOffices) {
-			if (divisionOffice.getBuildingID() == buildingId)
-				result.add(divisionOffice);
-		}
-		return result;
-	}
-
-	@Override
 	public DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<EmployeeDivisionOffice> emDivisionOffices = getAllEmployeeDivisionOffice();

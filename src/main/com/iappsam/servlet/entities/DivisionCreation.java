@@ -58,13 +58,13 @@ public class DivisionCreation extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			doManager.addDivisionOffice(new DivisionOffice(name, "", divisionID));
-
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			doManager.addDivisionOffice(new DivisionOffice(name, "", divisionID));
+//
+//		} catch (TransactionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 

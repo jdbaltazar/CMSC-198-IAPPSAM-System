@@ -19,20 +19,16 @@ public class DivisionOffice {
 	
 	@Column(name = "Office")
 	private String officeName;
-	
-	@Column(name = "Building_ID")
-	private int buildingID;
 
 	public DivisionOffice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public DivisionOffice(String divisionName, String officeName, int buildingID) {
+	public DivisionOffice(String divisionName, String officeName) {
 		super();
 		this.divisionName = divisionName;
 		this.officeName = officeName;
-		this.buildingID = buildingID;
 	}
 
 	public int getDivisionOfficeID() {
@@ -47,10 +43,6 @@ public class DivisionOffice {
 		return officeName;
 	}
 
-	public int getBuildingID() {
-		return buildingID;
-	}
-
 	public void setDivisionOfficeID(int divisionOfficeID) {
 		this.divisionOfficeID = divisionOfficeID;
 	}
@@ -61,10 +53,6 @@ public class DivisionOffice {
 
 	public void setOfficeName(String officeName) {
 		this.officeName = officeName;
-	}
-
-	public void setBuildingID(int buildingID) {
-		this.buildingID = buildingID;
 	}
 		
 }

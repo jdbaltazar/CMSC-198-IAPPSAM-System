@@ -1,17 +1,21 @@
 package com.iappsam.entities.forms;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP")
-public class AnnualProcurementPlan {
+public class AnnualProcurementPlan implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6436021267469992187L;
 
 	@Id
 	@Column(name = "Year")

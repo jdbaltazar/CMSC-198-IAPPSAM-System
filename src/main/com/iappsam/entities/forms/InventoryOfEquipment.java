@@ -16,16 +16,20 @@ public class InventoryOfEquipment {
 
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
+	
+	@Column(name = "Building_ID")
+	private int buildingID;
 
 	public InventoryOfEquipment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public InventoryOfEquipment(int ieID, int divisionOfficeID) {
+	public InventoryOfEquipment(int ieID, int divisionOfficeID, int buildingID) {
 		super();
 		this.ieID = ieID;
 		this.divisionOfficeID = divisionOfficeID;
+		this.buildingID = buildingID;
 	}
 
 	public int getIeID() {
@@ -36,12 +40,20 @@ public class InventoryOfEquipment {
 		return divisionOfficeID;
 	}
 
+	public int getBuildingID() {
+		return buildingID;
+	}
+
 	public void setIeID(int ieID) {
 		this.ieID = ieID;
 	}
 
 	public void setDivisionOfficeID(int divisionOfficeID) {
 		this.divisionOfficeID = divisionOfficeID;
+	}
+
+	public void setBuildingID(int buildingID) {
+		this.buildingID = buildingID;
 	}
 
 }

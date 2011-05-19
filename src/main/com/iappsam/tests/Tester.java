@@ -138,7 +138,7 @@ public class Tester {
 
 			// // DivisionOffice
 			//
-			DivisionOffice divisionOffice = new DivisionOffice("DNSM", null, building.getBuildingID());
+			DivisionOffice divisionOffice = new DivisionOffice("DNSM", null);
 			doMananger.addDivisionOffice(divisionOffice);
 
 			List<DivisionOffice> divisionOffices = doMananger.getAllDivisionOffice();
