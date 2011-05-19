@@ -57,9 +57,9 @@ public class ViewAccount extends HttpServlet {
 		String title;
 		String name;
 
-		ArrayList<String> mobileNumber =new ArrayList<String>();
-		String landline;
-		String emailad;
+		ArrayList<String> mobileNumber = new ArrayList<String>();
+		ArrayList<String> landline = new ArrayList<String>();
+		ArrayList<String> emailad = new ArrayList<String>();
 
 		String designation;
 		String employeeNumber;
@@ -73,11 +73,20 @@ public class ViewAccount extends HttpServlet {
 			Account account = aManager.getAccount(userName);
 			Person person = pManager.getPerson(account.getPersonID());
 			List<Contact> contact = cManager.getAllContactsByPerson(person.getPersonID());
-			
+
 			username = account.getUsername();
 			acctType = account.getAccountType();
 			title = person.getTitle();
 			name = person.getName();
+
+			for (int i = 0; i < contact.size(); i++) {
+				if (contact.get(i).getContactType().equalsIgnoreCase("mobileNumber"))
+					mobileNumber.add(contact.get(i).getData());
+			}
+			for(int i=0;i<contact.size();i++){
+				if (contact.get(i).getContactType().equalsIgnoreCase("landline"))
+					mobileNumber.add(contact.get(i).getData());
+			}
 
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
