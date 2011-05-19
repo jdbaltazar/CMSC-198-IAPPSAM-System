@@ -2,7 +2,6 @@ package com.iappsam.search;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.junit.After;
@@ -30,14 +29,18 @@ public class SearchingTest {
 		Searcher s = new ItemSearcher();
 		List<Item> result = s.search("Item");
 
-		assertTrue(result.size() == 1);
+		assertTrue(result.size() == 2);
 		assertTrue(result.contains(entities.item));
+		assertTrue(result.contains(entities.item2));
 
 		im.removeItem(entities.item);
+		im.removeItem(entities.item2);
+		
 		List<Item> result2 = s.search("Item");
 
 		assertTrue(result2.size() == 0);
 		assertTrue(!result2.contains(entities.item));
+		assertTrue(!result2.contains(entities.item2));
 	}
 
 	@Test
@@ -57,6 +60,6 @@ public class SearchingTest {
 
 	@After
 	public void removeEntities() throws TransactionException {
-		entities.removeAllIfExist();
+		entities.removeAllExisting();
 	}
 }

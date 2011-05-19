@@ -14,13 +14,13 @@ public class ItemManagerSessionTest {
 	@Test
 	public void addItemAndRemove() throws TransactionException {
 		entities.addAll();
-		entities.removeAllIfExist();
+		entities.removeAllExisting();
 	}
 
 	@Test(expected = TransactionException.class)
 	public void addItemThenRemoveTwice() throws TransactionException {
 		entities.addAll();
-		entities.removeAllIfExist();
+		entities.removeAllExisting();
 		im.removeItem(entities.item);
 	}
 

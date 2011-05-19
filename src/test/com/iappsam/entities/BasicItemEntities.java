@@ -9,6 +9,9 @@ public class BasicItemEntities {
 
 	public ItemManager im;
 	public Item item = new Item("Item", "", "Description", 0.0f, new Date(0), "", "");
+	public Item item2 = new Item("Item Again", "", "Description2", 0.0f, new Date(0), "", "");
+	
+	public Item itemTermName = new Item("Second Test", "", "Description2 Test", 0.0f, new Date(0), "", "");
 	public ItemCondition condition = new ItemCondition("");
 	public ItemStatus status = new ItemStatus("");
 	public Unit unit = new Unit("");
@@ -35,12 +38,20 @@ public class BasicItemEntities {
 		im.addItemStatus(status);
 		im.addUnit(unit);
 		im.addItem(item);
+		im.addItem(item2);
+		im.addItem(itemTermName);
 	}
 
-	public void removeAllIfExist() throws TransactionException {
+	public void removeAllExisting() throws TransactionException {
 
 		if (im.containsItem(item))
 			im.removeItem(item);
+		
+		if (im.containsItem(item2))
+			im.removeItem(item2);
+
+		if (im.containsItem(itemTermName))
+			im.removeItem(itemTermName);
 
 		if (im.containsUnit(unit))
 			removeUnit();
