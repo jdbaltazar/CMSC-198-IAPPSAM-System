@@ -1,4 +1,4 @@
-package com.iappsam.servlet;
+package com.iappsam.servlet.entities;
 
 import java.io.IOException;
 

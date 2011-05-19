@@ -1,4 +1,4 @@
-package com.iappsam.servlet;
+package com.iappsam.servlet.employee;
 
 import java.io.IOException;
 

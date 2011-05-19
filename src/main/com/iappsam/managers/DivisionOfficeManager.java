@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Building;
+import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface DivisionOfficeManager {
-	
-	//DivisionOffice
-	
+
+	// DivisionOffice
+
 	void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
 	int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
@@ -17,6 +18,8 @@ public interface DivisionOfficeManager {
 	void updateDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
 	DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException;
+	
+	DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException;
 
 	void removeDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
@@ -25,11 +28,11 @@ public interface DivisionOfficeManager {
 	boolean containsDivisionOffice(String name) throws TransactionException;
 
 	List<DivisionOffice> getDivisionOfficeByBuilding(int buildingId) throws TransactionException;
-	
+
 	List<DivisionOffice> getAllDivisionOffice() throws TransactionException;
-	
-	//Building
-	
+
+	// Building
+
 	void addBuilding(Building building) throws TransactionException;
 
 	int saveBuilding(Building building) throws TransactionException;
@@ -45,5 +48,9 @@ public interface DivisionOfficeManager {
 	boolean containsBuilding(String name) throws TransactionException;
 
 	List<Building> getAllBuildings() throws TransactionException;
-	
+
+	// EmployeeDivisionOffice
+
+	List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException;
+
 }

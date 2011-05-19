@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
 import com.iappsam.entities.Contact;
+import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
+import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
+import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 
 /**
@@ -52,6 +56,7 @@ public class ViewAccount extends HttpServlet {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 		ContactManager cManager = new ContactManagerSession();
+		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		String userName = (String) request.getParameter("userName");
 
 		String title;
@@ -61,10 +66,10 @@ public class ViewAccount extends HttpServlet {
 		ArrayList<String> landline = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 
-		String designation;
-		String employeeNumber;
-		String division;
-		String office;
+		ArrayList<String> designation = new ArrayList<String>();
+		ArrayList<String> employeeNumber = new ArrayList<String>();
+		ArrayList<String> division = new ArrayList<String>();
+		ArrayList<String> office = new ArrayList<String>();
 
 		String username;
 		String acctType;
@@ -72,6 +77,7 @@ public class ViewAccount extends HttpServlet {
 		try {
 			Account account = aManager.getAccount(userName);
 			Person person = pManager.getPerson(account.getPersonID());
+			List<Employee> employee = pManager.getEmployeeByPerson(person.getPersonID());
 			List<Contact> contact = cManager.getAllContactsByPerson(person.getPersonID());
 
 			username = account.getUsername();
@@ -83,15 +89,40 @@ public class ViewAccount extends HttpServlet {
 				if (contact.get(i).getContactType().equalsIgnoreCase("mobileNumber"))
 					mobileNumber.add(contact.get(i).getData());
 			}
-			for(int i=0;i<contact.size();i++){
+			for (int i = 0; i < contact.size(); i++) {
 				if (contact.get(i).getContactType().equalsIgnoreCase("landline"))
-					mobileNumber.add(contact.get(i).getData());
+					landline.add(contact.get(i).getData());
 			}
 
+			for (int i = 0; i < contact.size(); i++) {
+				if (contact.get(i).getContactType().equalsIgnoreCase("emailad"))
+					emailad.add(contact.get(i).getData());
+			}
+			for (int i = 0; i < employee.size(); i++) {
+				designation.add(employee.get(i).getDesignation());
+				employeeNumber.add("" + employee.get(i).getEmployeeID());
+				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getDivisionName());
+				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getOfficeName());
+			}
+
+			request.setAttribute("title", title);
+			request.setAttribute("name", name);
+			request.setAttribute("designation", designation);
+			request.setAttribute("employeeNum", employeeNumber);
+			request.setAttribute("division", division);
+			request.setAttribute("office", office);
+			request.setAttribute("mobileNumber", mobileNumber);
+			request.setAttribute("landline", landline);
+			request.setAttribute("emailad", emailad);
+			request.setAttribute("userName", username);
+			request.setAttribute("acctType", acctType);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		RequestDispatcher view = request.getRequestDispatcher("./ViewAccount.jsp");
+		view.forward(request, response);
+
 	}
 
 }

@@ -5,11 +5,12 @@ import java.util.List;
 
 import com.iappsam.entities.Building;
 import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager{
+public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager {
 
 	@Override
 	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
@@ -20,7 +21,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (Integer)save(divisionOffice);
+		return (Integer) save(divisionOffice);
 	}
 
 	@Override
@@ -32,7 +33,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (DivisionOffice)get(DivisionOffice.class, divisionOfficeId);
+		return (DivisionOffice) get(DivisionOffice.class, divisionOfficeId);
 	}
 
 	@Override
@@ -50,9 +51,9 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public boolean containsDivisionOffice(String name) throws TransactionException {
 		// TODO Auto-generated method stub
-		List<DivisionOffice>divisionOffices = getAllDivisionOffice();
-		for(DivisionOffice divisionOffice: divisionOffices){
-			if(divisionOffice.getDivisionName().equalsIgnoreCase(name))
+		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
+		for (DivisionOffice divisionOffice : divisionOffices) {
+			if (divisionOffice.getDivisionName().equalsIgnoreCase(name))
 				return true;
 		}
 		return false;
@@ -61,13 +62,24 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public List<DivisionOffice> getDivisionOfficeByBuilding(int buildingId) throws TransactionException {
 		// TODO Auto-generated method stub
-		List<DivisionOffice>result = new ArrayList<DivisionOffice>();
-		List<DivisionOffice>divisionOffices = getAllDivisionOffice();
-		for(DivisionOffice divisionOffice: divisionOffices){
-			if(divisionOffice.getBuildingID()==buildingId)
+		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
+		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
+		for (DivisionOffice divisionOffice : divisionOffices) {
+			if (divisionOffice.getBuildingID() == buildingId)
 				result.add(divisionOffice);
 		}
 		return result;
+	}
+
+	@Override
+	public DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException {
+		// TODO Auto-generated method stub
+		List<EmployeeDivisionOffice> emDivisionOffices = getAllEmployeeDivisionOffice();
+		for (EmployeeDivisionOffice emDivisionOffice : emDivisionOffices) {
+			if (emDivisionOffice.getEmployeeID() == employeeId)
+				return getDivisionOffice(emDivisionOffice.getDivisionOfficeID());
+		}
+		return null;
 	}
 
 	@Override
@@ -85,7 +97,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public int saveBuilding(Building building) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (Integer)save(building);
+		return (Integer) save(building);
 	}
 
 	@Override
@@ -115,9 +127,9 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public boolean containsBuilding(String name) throws TransactionException {
 		// TODO Auto-generated method stub
-		List<Building>buildings = getAllBuildings();
-		for(Building building: buildings){
-			if(building.getBuildingName().equalsIgnoreCase(name))
+		List<Building> buildings = getAllBuildings();
+		for (Building building : buildings) {
+			if (building.getBuildingName().equalsIgnoreCase(name))
 				return true;
 		}
 		return false;
@@ -127,6 +139,12 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	public List<Building> getAllBuildings() throws TransactionException {
 		// TODO Auto-generated method stub
 		return getList(Building.class);
+	}
+
+	@Override
+	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException {
+		// TODO Auto-generated method stub
+		return getList(EmployeeDivisionOffice.class);
 	}
 
 }
