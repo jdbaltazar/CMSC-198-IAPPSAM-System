@@ -15,6 +15,9 @@ public class Account {
 	@Column(name = "Password")
 	private String password;
 	
+	@Column(name = "Acquainted")
+	private boolean acquainted;
+	
 	@Column(name = "Account_Type")
 	private String accountType;
 	
@@ -68,6 +71,14 @@ public class Account {
 
 	public void setPersonID(int personID) {
 		this.personID = personID;
+	}
+
+	public boolean isAcquainted() {
+		return acquainted;
+	}
+
+	public void setAcquainted(boolean acquainted) {
+		this.acquainted = acquainted;
 	}
 
 }
