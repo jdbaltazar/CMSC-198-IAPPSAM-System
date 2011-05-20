@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_Line")
-public class AnnualProcurementPlanLine implements Serializable{
+public class AnnualProcurementPlanLine implements Serializable {
 
 	/**
 	 * 
@@ -31,11 +31,11 @@ public class AnnualProcurementPlanLine implements Serializable{
 
 	@Column(name = "Quantity_Quarter_4")
 	private int quantityQuarter4;
-	
+
 	@Id
 	@Column(name = "Year")
 	private int year;
-	
+
 	@Id
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
@@ -45,7 +45,8 @@ public class AnnualProcurementPlanLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int year, int divisionOfficeID) {
+	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4,
+			int year, int divisionOfficeID) {
 		super();
 		this.itemDescription = itemDescription;
 		this.quantityQuarter1 = quantityQuarter1;
@@ -110,6 +111,6 @@ public class AnnualProcurementPlanLine implements Serializable{
 
 	public void setDivisionOfficeID(int divisionOfficeID) {
 		this.divisionOfficeID = divisionOfficeID;
-	}	
-	
+	}
+
 }

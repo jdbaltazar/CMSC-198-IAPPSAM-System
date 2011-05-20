@@ -91,31 +91,31 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(Unit.class);
 
 			// //form entities
-			// conf.addAnnotatedClass(AnnualProcurementPlan.class);
-			// conf.addAnnotatedClass(AnnualProcurementPlanLine.class);
-			// conf.addAnnotatedClass(Disposal.class);
-			// conf.addAnnotatedClass(IIRUP.class);
-			// conf.addAnnotatedClass(IIRUPLine.class);
-			// conf.addAnnotatedClass(InventoryCustodianSlip.class);
-			// conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
-			// conf.addAnnotatedClass(InventoryOfEquipment.class);
-			// conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			// conf.addAnnotatedClass(ModeOfProcurement.class);
-			// conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
-			// conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
-			// conf.addAnnotatedClass(PTRPA.class);
-			// conf.addAnnotatedClass(PTRPALine.class);
-			// conf.addAnnotatedClass(PurchaseOrder.class);
-			// conf.addAnnotatedClass(PurchaseOrderLine.class);
+			conf.addAnnotatedClass(AnnualProcurementPlan.class);
+			conf.addAnnotatedClass(AnnualProcurementPlanLine.class);
+			conf.addAnnotatedClass(Disposal.class);
+			conf.addAnnotatedClass(IIRUP.class);
+			conf.addAnnotatedClass(IIRUPLine.class);
+			conf.addAnnotatedClass(InventoryCustodianSlip.class);
+			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
+			conf.addAnnotatedClass(InventoryOfEquipment.class);
+			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
+			conf.addAnnotatedClass(ModeOfProcurement.class);
+			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
+			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
+			conf.addAnnotatedClass(PTRPA.class);
+			conf.addAnnotatedClass(PTRPALine.class);
+			conf.addAnnotatedClass(PurchaseOrder.class);
+			conf.addAnnotatedClass(PurchaseOrderLine.class);
 			conf.addAnnotatedClass(PurchaseRequest.class);
 			conf.addAnnotatedClass(PurchaseRequestLine.class);
-			// conf.addAnnotatedClass(RecapitulationLine.class);
-			// conf.addAnnotatedClass(RequisitionAndIssueSlip.class);
-			// conf.addAnnotatedClass(RequisitionAndIssueSlipLine.class);
-			// conf.addAnnotatedClass(RSMI.class);
-			// conf.addAnnotatedClass(RSMILine.class);
-			// conf.addAnnotatedClass(WasteMaterialsReport.class);
-			// conf.addAnnotatedClass(WasteMaterialsReportLine.class);
+			conf.addAnnotatedClass(RecapitulationLine.class);
+			conf.addAnnotatedClass(RequisitionAndIssueSlip.class);
+			conf.addAnnotatedClass(RequisitionAndIssueSlipLine.class);
+			conf.addAnnotatedClass(RSMI.class);
+			conf.addAnnotatedClass(RSMILine.class);
+			conf.addAnnotatedClass(WasteMaterialsReport.class);
+			conf.addAnnotatedClass(WasteMaterialsReportLine.class);
 
 			sessionFactory = conf.buildSessionFactory();
 
