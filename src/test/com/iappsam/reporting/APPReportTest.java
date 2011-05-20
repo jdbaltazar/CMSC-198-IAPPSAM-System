@@ -20,9 +20,9 @@ public class APPReportTest {
 
 		AnnualProcurementPlan app = new AnnualProcurementPlan(id, "CTR-001", new Date(), 0, 0);
 
-		AAPReport report = new AAPReport(app);
+		APPReport report = new APPReport(app);
 		File pdf = report.toPDF();
 
-		assertTrue(pdf.canRead());
+		assertTrue(pdf.exists());
 	}
 }
