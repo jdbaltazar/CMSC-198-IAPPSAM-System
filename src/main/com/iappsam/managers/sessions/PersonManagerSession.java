@@ -16,7 +16,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void addPerson(Person person) throws TransactionException, DuplicateEntryException {
-		// TODO Auto-generated method stub
 		if (!contains(person.getName()))
 			add(person);
 		else
@@ -25,7 +24,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public int savePerson(Person person) throws TransactionException, DuplicateEntryException {
-		// TODO Auto-generated method stub
 		if (!contains(person.getName()))
 			return (Integer) save(person);
 		else
@@ -34,7 +32,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void updatePerson(Person person) throws TransactionException, DuplicateEntryException {
-		// TODO Auto-generated method stub
 		if (!containsPerson(person.getName()))
 			update(person);
 		else
@@ -43,13 +40,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public Person getPerson(int personId) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (Person) get(Person.class, personId);
 	}
 
 	@Override
 	public Person getPerson(String name) throws TransactionException {
-		// TODO Auto-generated method stub
 		List<Person> persons = getAllPersons();
 		for (Person p : persons) {
 			if (p.getName().equalsIgnoreCase(name))
@@ -66,13 +61,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public boolean containsPerson(Person person) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(person);
 	}
 
 	@Override
 	public boolean containsPerson(String name) throws TransactionException {
-		// TODO Auto-generated method stub
 		if (getPerson(name) != null) {
 			return true;
 		}
@@ -81,13 +74,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Person> getAllPersons() throws TransactionException {
-		// TODO Auto-generated method stub
 		return getList(Person.class);
 	}
 
 	@Override
 	public List<Person> getPersonByDivisionOffice(int divisionOfficeId) throws TransactionException {
-		// TODO Auto-generated method stub
 		List<Person> result = new ArrayList<Person>();
 		List<EmployeeDivisionOffice> employeeDivisionOffices = getAllEmployeeDivisionOffice();
 		for (EmployeeDivisionOffice emDivisionOffice : employeeDivisionOffices) {
@@ -103,13 +94,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException {
-		// TODO Auto-generated method stub
 		return getList(EmployeeDivisionOffice.class);
 	}
 
 	@Override
 	public void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException {
-		// TODO Auto-generated method stub
 		if (!contains(employee))
 			add(employee);
 		else
@@ -118,7 +107,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public int saveEmployee(Employee employee) throws TransactionException, DuplicateEntryException {
-		// TODO Auto-generated method stub
 		if (!contains(employee))
 			return (Integer) save(employee);
 		else
@@ -127,31 +115,26 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void updateEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
 		updateEmployee(employee);
 	}
 
 	@Override
 	public Employee getEmployee(int employeeID) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (Employee) get(Employee.class, employeeID);
 	}
 
 	@Override
 	public void removeEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
-		removeEmployee(employee);
+		remove(employee);
 	}
 
 	@Override
 	public boolean containsEmployee(Employee employee) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(employee);
 	}
 
 	@Override
 	public List<Employee> getAllEmployee() throws TransactionException {
-		// TODO Auto-generated method stub
 		return getList(Employee.class);
 	}
 
@@ -239,7 +222,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getEmployeeByPerson(person.getPersonID());
 		for (Signatory signatory : signatories) {
 			for (Employee emp : employees) {
-				if (signatory.getEmployeeID() == emp.getEmployeeID())
+				if (signatory.getEmployeeID() == emp.getId())
 					result.add(signatory);
 			}
 		}

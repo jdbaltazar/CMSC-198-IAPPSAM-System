@@ -121,7 +121,7 @@ public class Tester {
 			Employee employee = new Employee("CEO", 1);
 			pManager.addEmployee(employee);
 
-			Supplier supplier = new Supplier("ABC Supplier", "Tacloban City", employee.getEmployeeID());
+			Supplier supplier = new Supplier("ABC Supplier", "Tacloban City", employee.getId());
 			sManager.addSupplier(supplier);
 
 			List<Supplier> suppliers = sManager.getAllSuppliers();

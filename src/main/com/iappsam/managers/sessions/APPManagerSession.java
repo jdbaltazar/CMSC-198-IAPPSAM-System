@@ -13,64 +13,42 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
 	public void addAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		// TODO Auto-generated method stub
 		add(annualProcurementPlan);
 	}
 
 	@Override
 	public int saveAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (Integer) save(annualProcurementPlan);
 	}
 
 	@Override
 	public void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		// TODO Auto-generated method stub
 		update(annualProcurementPlan);
 	}
 
 	@Override
 	public AnnualProcurementPlan getAPP(int appID) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (AnnualProcurementPlan) get(AnnualProcurementPlan.class, appID);
 	}
 
 	@Override
-	public boolean containsAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		// TODO Auto-generated method stub
-		return contains(annualProcurementPlan);
+	public boolean containsAPP(AnnualProcurementPlan app) throws TransactionException {
+		return contains(app);
 	}
 
 	@Override
 	public List<AnnualProcurementPlan> getAllAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		// TODO Auto-generated method stub
 		return getList(AnnualProcurementPlan.class);
 	}
 
 	@Override
-	public void addAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException {
-		// TODO Auto-generated method stub
-		add(annualProcurementPlanLine);
+	public void addAPPLine(AnnualProcurementPlanLine appLine) throws TransactionException {
+		add(appLine);
 	}
 
 	@Override
-	public void updateAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException {
-		// TODO Auto-generated method stub
-		update(annualProcurementPlanLine);
-	}
-
-	@Override
-	public List<AnnualProcurementPlanLine> getAPPLineByAPP(int appID) throws TransactionException {
-		// TODO Auto-generated method stub
-
-		List<AnnualProcurementPlanLine> appLines = getAllAPPLine();
-		List<AnnualProcurementPlanLine> result = new ArrayList<AnnualProcurementPlanLine>();
-		for (AnnualProcurementPlanLine appLine : appLines) {
-			if (appLine.getAppID() == appID) {
-				result.add(appLine);
-			}
-		}
-		return result;
+	public void updateAPPLine(AnnualProcurementPlanLine appLine) throws TransactionException {
+		update(appLine);
 	}
 
 	@Override

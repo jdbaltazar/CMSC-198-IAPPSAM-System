@@ -101,15 +101,15 @@ public class ViewAccount extends HttpServlet {
 			}
 			for (int i = 0; i < employee.size(); i++) {
 				designation.add(employee.get(i).getDesignation());
-				employeeNumber.add("" + employee.get(i).getEmployeeID());
+				employeeNumber.add("" + employee.get(i).getId());
 				
-				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID())!=null)
-				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getDivisionName());
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getId())!=null)
+				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getDivisionName());
 				else
 				division.add(".");
 				
-				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID())!=null)
-				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getEmployeeID()).getOfficeName());
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getId())!=null)
+				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getOfficeName());
 				else
 				office.add(".");
 				

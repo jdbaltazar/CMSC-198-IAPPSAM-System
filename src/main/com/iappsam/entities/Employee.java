@@ -7,19 +7,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7665203460744028855L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Employee_ID")
-	private int employeeID;
+	private int id;
 
 	@Column(name = "Designation")
 	private String designation;
@@ -27,33 +26,33 @@ public class Employee implements Serializable {
 	@Column(name = "Employee_Number")
 	private String employeeNumber;
 
-	@Column(name = "Person_ID")
-	private int personID;
+	@ManyToOne
+	@JoinColumn(name = "Person_ID")
+	private Person person;
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String designation, String employeeNumber, int personID) {
+	public Employee(String designation, String employeeNumber, Person p) {
 		super();
 		this.designation = designation;
 		this.employeeNumber = employeeNumber;
-		this.personID = personID;
+		this.person = p;
 	}
 
-	public Employee(String designation, int personID) {
+	public Employee(String designation, Person p) {
 		super();
 		this.designation = designation;
-		this.personID = personID;
+		this.person = p;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	public int getEmployeeID() {
-		return employeeID;
+	public int getId() {
+		return id;
 	}
 
 	public String getDesignation() {
@@ -64,12 +63,16 @@ public class Employee implements Serializable {
 		return employeeNumber;
 	}
 
-	public int getPersonID() {
-		return personID;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public void setId(int employeeID) {
+		this.id = employeeID;
 	}
 
 	public void setDesignation(String designation) {
@@ -80,7 +83,25 @@ public class Employee implements Serializable {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public void setPersonID(int personID) {
-		this.personID = personID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }
