@@ -35,7 +35,7 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getPersonID() {
+	public int getId() {
 		return id;
 	}
 

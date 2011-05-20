@@ -87,7 +87,7 @@ public class Tester {
 
 			// Account
 
-			Account a = new Account("hellow", "sxdcfvgbhn", AccountType.NON_SPSO_PERSONNEL_HEAD, person.getPersonID());
+			Account a = new Account("hellow", "sxdcfvgbhn", AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
 			aManager.addAccount(a);
 			List<Account> accounts = aManager.getAllAccounts();
 

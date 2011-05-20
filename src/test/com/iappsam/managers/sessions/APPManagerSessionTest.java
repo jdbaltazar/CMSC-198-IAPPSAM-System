@@ -36,7 +36,7 @@ public class APPManagerSessionTest {
 		pm = new PersonManagerSession();
 		pm.addPerson(p);
 
-		e = new Employee("Mayor", p.getPersonID());
+		e = new Employee("Mayor", p);
 		pm.addEmployee(e);
 
 		s = new Signatory("Signatory", e.getId());

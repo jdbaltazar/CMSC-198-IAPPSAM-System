@@ -2,6 +2,8 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
@@ -14,59 +16,36 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public class PersonManagerSessionTest {
 
+	private PersonManager pm;
+	private Person p;
+	private Employee e;
+	private DivisionOfficeManager dom;
+	private DivisionOffice office;
+
+	@Before
+	public void initPersonManager() {
+		pm = new PersonManagerSession();
+	}
+
 	@Test
 	public void addThenRemovePerson() throws TransactionException, DuplicateEntryException {
-		PersonManager pm = new PersonManagerSession();
-
-		Person p = new Person("John");
-
-		pm.addPerson(p);
-		assertTrue(pm.containsPerson(p));
-
-		pm.removePerson(p);
-		assertFalse(pm.containsPerson(p));
+		addPersonThenAssert();
+		removePersonThenAssert();
 	}
 
 	@Test
 	public void addThenRemoveEmployee() throws TransactionException, DuplicateEntryException {
-		PersonManager pm = new PersonManagerSession();
-
-		Person p = new Person("John");
-
-		pm.addPerson(p);
-		assertTrue(pm.containsPerson(p));
-
-		Employee e = new Employee("Designation", p);
-
-		pm.addEmployee(e);
-
-		Employee employeeFromDb = pm.getEmployee(e.getId());
-
-		assertEquals(e, employeeFromDb);
-		assertEquals(p, employeeFromDb.getPerson());
-
-		pm.removeEmployee(e);
-		assertFalse(pm.containsEmployee(e));
-
-		pm.removePerson(p);
-		assertFalse(pm.containsPerson(p));
+		addPersonThenAssert();
+		addEmployeeThenAssert();
+		removeEmployeeThenAssert();
+		removePersonThenAssert();
 	}
 
 	@Test
 	public void addThenRemoveEmployeeWithDivision() throws TransactionException, DuplicateEntryException {
 
-		PersonManager pm = new PersonManagerSession();
-
-		Person p = new Person("John");
-
-		pm.addPerson(p);
-		assertTrue(pm.containsPerson(p));
-
-		DivisionOffice office = new DivisionOffice("Division", "Office");
-		DivisionOfficeManager dom = new DivisionOfficeManagerSession();
-
-		dom.addDivisionOffice(office);
-		assertTrue(dom.containsDivisionOffice(office));
+		addPersonThenAssert();
+		addOfficeThenAssert();
 
 		Employee e = new Employee("Designation", p);
 		e.setDivisionOffice(office);
@@ -82,11 +61,50 @@ public class PersonManagerSessionTest {
 		pm.removeEmployee(e);
 		assertFalse(pm.containsEmployee(e));
 
+		removeDivisionThenAssert();
+		removePersonThenAssert();
+	}
+
+	@After
+	public void closeManager() {
+		pm.close();
+	}
+
+	private void removeDivisionThenAssert() throws TransactionException {
 		dom.removeDivisionOffice(office);
 		assertFalse(dom.containsDivisionOffice(office));
+	}
 
+	private void addOfficeThenAssert() throws TransactionException {
+		office = new DivisionOffice("Division", "Office");
+		dom = new DivisionOfficeManagerSession();
+		dom.addDivisionOffice(office);
+		assertTrue(dom.containsDivisionOffice(office));
+	}
+
+	private void addPersonThenAssert() throws TransactionException, DuplicateEntryException {
+		p = new Person("John");
+		pm.addPerson(p);
+		Person personFromDb = pm.getPerson(p.getId());
+		assertEquals(p, personFromDb);
+	}
+
+	private void addEmployeeThenAssert() throws TransactionException, DuplicateEntryException {
+		e = new Employee("Designation", p);
+		pm.addEmployee(e);
+		Employee employeeFromDb = pm.getEmployee(e.getId());
+		assertEquals(e, employeeFromDb);
+		assertEquals(p, employeeFromDb.getPerson());
+		assertNull(employeeFromDb.getDivisionOffice());
+	}
+
+	private void removePersonThenAssert() throws TransactionException {
 		pm.removePerson(p);
 		assertFalse(pm.containsPerson(p));
+	}
 
+	private void removeEmployeeThenAssert() throws TransactionException {
+		pm.removeEmployee(e);
+		assertFalse(pm.containsEmployee(e));
 	}
 }

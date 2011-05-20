@@ -78,8 +78,8 @@ public class ViewAccount extends HttpServlet {
 		try {
 			Account account = aManager.getAccount(userName);
 			Person person = pManager.getPerson(account.getPersonID());
-			List<Employee> employee = pManager.getEmployeeByPerson(person.getPersonID());
-			List<Contact> contact = cManager.getAllContactsByPerson(person.getPersonID());
+			List<Employee> employee = pManager.getEmployeeByPerson(person.getId());
+			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
 
 			username = account.getUsername();
 			acctType = account.getAccountType();

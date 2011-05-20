@@ -13,13 +13,13 @@ import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.SearchingTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ItemManagerSessionTest.class, //
-		SearchingTest.class, //
-		APPReportTest.class, //
+@SuiteClasses({ PersonTest.class, //
+		EmployeeTest.class,//
 		AnnualProcurementPlanTest.class, //
 		PersonManagerSessionTest.class, //
-		PersonTest.class, //
-		EmployeeTest.class })
+		ItemManagerSessionTest.class, //
+		SearchingTest.class, //
+		APPReportTest.class })
 public class TestSuite {
 
 }
