@@ -1,6 +1,6 @@
 package com.iappsam.entities.forms;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,11 +29,13 @@ public class PurchaseRequest {
 
 	@Column(name = "SAI_Number")
 	private String saiNumber;
+	
 	@Column(name = "SAI_Date")
 	private Date saiDate;
 
 	@Column(name = "ALOBS_Number")
 	private String alobsNumber;
+	
 	@Column(name = "ALOBS_DATE")
 	private Date alobsDate;
 
@@ -48,7 +50,6 @@ public class PurchaseRequest {
 
 	public PurchaseRequest() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public PurchaseRequest(int divisionOfficeID, String prNumber, Date prDate, String saiNumber, Date saiDate, String alobsNumber, Date alobsDate, String purpose, int requestedBySignatoryID, int approvedBySignatoryID) {

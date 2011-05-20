@@ -9,7 +9,7 @@ import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.SearchingTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ItemManagerSessionTest.class, SearchingTest.class, APPReportTest.class })
+@SuiteClasses({ ItemManagerSessionTest.class, SearchingTest.class, APPReportTest.class, AnnualProcurementPlanTest.class })
 public class TestSuite {
 
 }

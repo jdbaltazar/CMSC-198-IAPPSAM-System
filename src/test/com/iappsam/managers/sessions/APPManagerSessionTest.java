@@ -17,29 +17,40 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public class APPManagerSessionTest {
 
+	private PersonManager pm;
+	private DivisionOfficeManager dom;
+
+	private Person p;
+	private Employee e;
+	private Signatory s;
+	private DivisionOffice office;
+
 	@Test
 	public void addAPP() throws TransactionException, DuplicateEntryException {
 
-		Person p = new Person("John");
-		PersonManager pm = new PersonManagerSession();
-		pm.addPerson(p);
+		addAPPDepedencies();
 
-		Employee e = new Employee("Mayor", p.getPersonID());
-		pm.addEmployee(e);
-
-		Signatory s = new Signatory("Signatory", e.getEmployeeID());
-		pm.addSignatory(s);
-
-		DivisionOffice office = new DivisionOffice("Division", "Office");
-		DivisionOfficeManager dom = new DivisionOfficeManagerSession();
-		dom.addDivisionOffice(office);
-
-		AnnualProcurementPlan.Id appId = new AnnualProcurementPlan.Id(2011, office.getDivisionOfficeID());
-		AnnualProcurementPlan app = new AnnualProcurementPlan(appId, s.getSignatoryID(), s.getSignatoryID());
+		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, s, s);
 
 		APPManager appManager = new APPManagerSession();
 		appManager.addAPP(app);
 
 		assertTrue(appManager.containsAPP(app));
+	}
+
+	private void addAPPDepedencies() throws TransactionException, DuplicateEntryException {
+		p = new Person("John");
+		pm = new PersonManagerSession();
+		pm.addPerson(p);
+
+		e = new Employee("Mayor", p.getPersonID());
+		pm.addEmployee(e);
+
+		s = new Signatory("Signatory", e.getEmployeeID());
+		pm.addSignatory(s);
+
+		office = new DivisionOffice("Division", "Office");
+		dom = new DivisionOfficeManagerSession();
+		dom.addDivisionOffice(office);
 	}
 }

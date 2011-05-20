@@ -3,15 +3,20 @@ package com.iappsam.entities.forms;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.iappsam.entities.Item;
 
 @Entity
 @Table(name = "APP_Line")
 public class AnnualProcurementPlanLine {
 
 	@Id
-	@Column(name = "Item_ID")
-	private int itemID;
+	@Column(name = "Item_Description")
+	private String itemDescription;
 
 	@Column(name = "Quantity_Quarter_1")
 	private int quantityQuarter1;
@@ -29,21 +34,26 @@ public class AnnualProcurementPlanLine {
 	@Column(name = "APP_ID")
 	private int appID;
 
+	@OneToOne
+	@MapsId("Item_Description")
+	@JoinColumn(name = "Item_Description")
+	private Item item;
+
 	public AnnualProcurementPlanLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlanLine(int itemID, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int appID) {
+	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4,
+			int appID) {
 		super();
-		this.itemID = itemID;
+		this.itemDescription = itemDescription;
 		this.quantityQuarter1 = quantityQuarter1;
 		this.quantityQuarter2 = quantityQuarter2;
 		this.quantityQuarter3 = quantityQuarter3;
 		this.quantityQuarter4 = quantityQuarter4;
 		this.appID = appID;
 	}
-
 
 	public int getItemID() {
 		return itemID;
@@ -68,7 +78,6 @@ public class AnnualProcurementPlanLine {
 	public int getAppID() {
 		return appID;
 	}
-
 
 	public void setItemID(int itemID) {
 		this.itemID = itemID;
