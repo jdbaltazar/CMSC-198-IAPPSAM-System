@@ -39,8 +39,11 @@ public class PersonManagerSessionTest {
 		Employee e = new Employee("Designation", p);
 
 		pm.addEmployee(e);
-		assertTrue(pm.containsEmployee(e));
-		assertEquals(p, e.getPerson());
+
+		Employee employeeFromDb = pm.getEmployee(e.getId());
+
+		assertEquals(e, employeeFromDb);
+		assertEquals(p, employeeFromDb.getPerson());
 
 		pm.removeEmployee(e);
 		assertFalse(pm.containsEmployee(e));
@@ -70,9 +73,11 @@ public class PersonManagerSessionTest {
 
 		pm.addEmployee(e);
 
-		assertTrue(pm.containsEmployee(e));
-		assertEquals(p, e.getPerson());
-		assertEquals(office, e.getDivisionOffice());
+		Employee employeeFromDb = pm.getEmployee(e.getId());
+
+		assertEquals(e, employeeFromDb);
+		assertEquals(p, employeeFromDb.getPerson());
+		assertEquals(office, employeeFromDb.getDivisionOffice());
 
 		pm.removeEmployee(e);
 		assertFalse(pm.containsEmployee(e));
