@@ -30,11 +30,9 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public AnnualProcurementPlan getAPP(int year, int divisionOfficeID) throws TransactionException {
+	public AnnualProcurementPlan getAPP(int appID) throws TransactionException {
 		// TODO Auto-generated method stub
-		// return (AnnualProcurementPlan)get(AnnualProcurementPlan.class,
-		// annualProcurementPlanID);
-		throw new TransactionException();
+		return (AnnualProcurementPlan) get(AnnualProcurementPlan.class, appID);
 	}
 
 	@Override
@@ -62,18 +60,17 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public List<AnnualProcurementPlanLine> getAPPLineByAPP(int year, int divisionOfficeID) throws TransactionException {
+	public List<AnnualProcurementPlanLine> getAPPLineByAPP(int appID) throws TransactionException {
 		// TODO Auto-generated method stub
 
 		List<AnnualProcurementPlanLine> appLines = getAllAPPLine();
 		List<AnnualProcurementPlanLine> result = new ArrayList<AnnualProcurementPlanLine>();
-		// for(AnnualProcurementPlanLine appLine: appLines){
-		// if(appLine.getAppID()==appID){
-		// result.add(appLine);
-		// }
-		// }
-		throw new TransactionException();
-		// return result;
+		for (AnnualProcurementPlanLine appLine : appLines) {
+			if (appLine.getAppID() == appID) {
+				result.add(appLine);
+			}
+		}
+		return result;
 	}
 
 	@Override

@@ -9,10 +9,10 @@ import javax.persistence.Table;
 @Table(name = "Account_Type")
 public class AccountType {
 	
-	public static final String SYSTEM_ADMIN = "SYSTEM_ADMIN";
-	public static final String SPSO_PERSONNEL = "SPSO_PERSONNEL";
-	public static final String NON_SPSO_PERSONNEL_HEAD = "NON_SPSO_PERSONNEL_HEAD";
-	public static final String NON_SPSO_PERSONNEL_EMPLOYEE = "NON_SPSO_PERSONNEL_EMPLOYEE";
+	public static final String SYSTEM_ADMIN = "System Administrator";
+	public static final String SPSO_PERSONNEL = "SPSO Personnel";
+	public static final String NON_SPSO_PERSONNEL_HEAD = "Non-SPSO Personnel (Head)";
+	public static final String NON_SPSO_PERSONNEL_EMPLOYEE = "Non-SPSO Personnel (Employee)";
 	
 	@Id
 	@Column(name = "Account_Type")

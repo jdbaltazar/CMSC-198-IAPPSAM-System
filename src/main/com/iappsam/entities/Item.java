@@ -22,6 +22,9 @@ public class Item {
 
 	@Column(name = "Stock_Number")
 	private String stockNumber;
+	
+	@Column(name = "Item_Category")
+	private String itemCategory;
 
 	@Column(name = "Unit")
 	private String unit;
@@ -50,11 +53,11 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber,
-			String itemStatus, String itemCondition) {
+	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
+		this.itemCategory = itemCategory;
 		this.unit = unit;
 		this.price = price;
 		this.dateAcquired = dateAcquired;
@@ -64,9 +67,10 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String description, String unit, String itemStatus, String itemCondition) {
+	public Item(String description, String itemCategory, String unit, String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
+		this.itemCategory = itemCategory;
 		this.unit = unit;
 		this.itemStatus = itemStatus;
 		this.itemCondition = itemCondition;
@@ -78,6 +82,10 @@ public class Item {
 
 	public String getStockNumber() {
 		return stockNumber;
+	}
+
+	public String getItemCategory() {
+		return itemCategory;
 	}
 
 	public String getUnit() {
@@ -116,6 +124,10 @@ public class Item {
 		this.stockNumber = stockNumber;
 	}
 
+	public void setItemCategory(String itemCategory) {
+		this.itemCategory = itemCategory;
+	}
+
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
@@ -142,30 +154,5 @@ public class Item {
 
 	public void setItemCondition(String itemCondition) {
 		this.itemCondition = itemCondition;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Item other = (Item) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		return true;
 	}
 }

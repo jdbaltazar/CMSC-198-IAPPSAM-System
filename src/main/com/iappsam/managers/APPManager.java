@@ -16,7 +16,7 @@ public interface APPManager {
 
 	void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
-	AnnualProcurementPlan getAPP(int year, int divisionOfficeID) throws TransactionException;
+	AnnualProcurementPlan getAPP(int appID) throws TransactionException;
 
 	boolean containsAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
@@ -28,7 +28,7 @@ public interface APPManager {
 
 	void updateAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
 
-	List<AnnualProcurementPlanLine> getAPPLineByAPP(int year, int divisionOfficeID) throws TransactionException;
+	List<AnnualProcurementPlanLine> getAPPLineByAPP(int appID) throws TransactionException;
 
 	boolean containsAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
 
