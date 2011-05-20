@@ -12,36 +12,31 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
-	public void addPR(PurchaseRequest purchaseRequest)
-			throws TransactionException {
+	public void addPR(PurchaseRequest purchaseRequest) throws TransactionException {
 		// TODO Auto-generated method stub
 		add(purchaseRequest);
 	}
 
 	@Override
-	public int savePR(PurchaseRequest purchaseRequest)
-			throws TransactionException {
+	public int savePR(PurchaseRequest purchaseRequest) throws TransactionException {
 		// TODO Auto-generated method stub
 		return (Integer) save(purchaseRequest);
 	}
 
 	@Override
-	public void updatePR(PurchaseRequest purchaseRequest)
-			throws TransactionException {
+	public void updatePR(PurchaseRequest purchaseRequest) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(purchaseRequest);
 	}
 
 	@Override
-	public PurchaseRequest getPR(int purchaseRequestID)
-			throws TransactionException {
+	public PurchaseRequest getPR(int purchaseRequestID) throws TransactionException {
 		// TODO Auto-generated method stub
 		return (PurchaseRequest) get(PurchaseRequest.class, purchaseRequestID);
 	}
 
 	@Override
-	public boolean containsPR(PurchaseRequest purchaseRequest)
-			throws TransactionException {
+	public boolean containsPR(PurchaseRequest purchaseRequest) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(purchaseRequest);
 	}
@@ -53,22 +48,19 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 	}
 
 	@Override
-	public void addPRLine(PurchaseRequestLine purchaseRequestLine)
-			throws TransactionException {
+	public void addPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		add(purchaseRequestLine);
 	}
 
 	@Override
-	public void updatePRLine(PurchaseRequestLine purchaseRequestLine)
-			throws TransactionException {
+	public void updatePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(purchaseRequestLine);
 	}
 
 	@Override
-	public List<PurchaseRequestLine> getPRLineByPR(int purchaseRequestID)
-			throws TransactionException {
+	public List<PurchaseRequestLine> getPRLineByPR(int purchaseRequestID) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<PurchaseRequestLine> prLines = getAllPRLine();
 		List<PurchaseRequestLine> result = new ArrayList<PurchaseRequestLine>();
@@ -80,10 +72,15 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 	}
 
 	@Override
-	public boolean containsPRLine(PurchaseRequestLine purchaseRequestLine)
-			throws TransactionException {
+	public boolean containsPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(purchaseRequestLine);
+	}
+
+	@Override
+	public void removePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
+		// TODO Auto-generated method stub
+		remove(purchaseRequestLine);
 	}
 
 	@Override
