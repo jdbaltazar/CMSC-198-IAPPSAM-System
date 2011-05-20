@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
+import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
@@ -26,7 +27,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class CreateAccount
  */
-@WebServlet("/accounts/accountCreate.do")
+@WebServlet("/accounts/AccountCreate.do")
 public class AccountCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,6 +44,7 @@ public class AccountCreation extends HttpServlet {
 	String landline;
 	String emailAdd;
 	String accountType;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
@@ -67,6 +69,20 @@ public class AccountCreation extends HttpServlet {
 				request.setAttribute("designationIsOK", "false");
 			else
 				request.setAttribute("designationIsOK", "true");
+
+			request.setAttribute("title", title);
+			request.setAttribute("name", name);
+			request.setAttribute("designation", designation);
+			request.setAttribute("userName", userName);
+			request.setAttribute("password", password);
+			request.setAttribute("office", office);
+			request.setAttribute("division", division);
+			request.setAttribute("employeeNumber", employeeNumber);
+			request.setAttribute("mobileNumber", cellphonNumber);
+			request.setAttribute("landline", landline);
+			request.setAttribute("emailad", emailAdd);
+			request.setAttribute("acctType", accountType);
+
 			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountFail.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
@@ -84,7 +100,6 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 
 		title = request.getParameter("title");
 		name = request.getParameter("name");
@@ -95,11 +110,10 @@ public class AccountCreation extends HttpServlet {
 		userName = request.getParameter("userName");
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
-		cellphonNumber=request.getParameter("mobileNumber");
+		cellphonNumber = request.getParameter("mobileNumber");
 		landline = request.getParameter("landline");
 		emailAdd = request.getParameter("emailad");
-		accountType=request.getParameter("acctType");
-		
+		accountType = request.getParameter("acctType");
 
 		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
@@ -114,7 +128,7 @@ public class AccountCreation extends HttpServlet {
 		AccountManager aManager = new AccountManagerSession();
 		ContactManager cManager = new ContactManagerSession();
 		System.out.println("JHefsdf");
-		
+
 		try {
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -128,7 +142,6 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailAdd);
 			request.setAttribute("acctType", accountType);
-			
 
 			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
 			view.forward(request, response);
@@ -141,16 +154,23 @@ public class AccountCreation extends HttpServlet {
 		}
 		try {
 			pManager.addPerson(person);
-
-			 Account account = new Account(userName, password,
-			 accountType, person.getPersonID());
-			 Contact contactLandLine= new Contact(landline, "LANDLINE");
-			 Contact contactMobile= new Contact(cellphonNumber,"MOBILE");
-			 Contact contactEmail=new Contact(emailAdd, "EMAIL");
-			 cManager.addContact(contactLandLine);
-			 cManager.addContact(contactMobile);
-			 cManager.addContact(contactEmail);
-			 aManager.addAccount(account);
+			if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Employee)"))
+				accountType = AccountType.NON_SPSO_PERSONNEL_EMPLOYEE;
+			else if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Head)"))
+				accountType = AccountType.NON_SPSO_PERSONNEL_HEAD;
+			else if (accountType.equalsIgnoreCase("SPSO Personnel"))
+				accountType = AccountType.SPSO_PERSONNEL;
+			else if (accountType.equalsIgnoreCase("System Admin"))
+				accountType = AccountType.SYSTEM_ADMIN;
+			
+			Account account = new Account(userName, password, accountType, person.getPersonID());
+			Contact contactLandLine = new Contact(landline, "LANDLINE");
+			Contact contactMobile = new Contact(cellphonNumber, "MOBILE");
+			Contact contactEmail = new Contact(emailAdd, "EMAIL");
+			cManager.addContact(contactLandLine);
+			cManager.addContact(contactMobile);
+			cManager.addContact(contactEmail);
+			aManager.addAccount(account);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		} catch (DuplicateEntryException e) {
