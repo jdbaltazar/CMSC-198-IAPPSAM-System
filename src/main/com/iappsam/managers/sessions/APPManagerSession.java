@@ -30,7 +30,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public AnnualProcurementPlan getAPP(int year, int divisionOfficeID) throws TransactionException {
+	public AnnualProcurementPlan getAPP(int appID) throws TransactionException {
 		// TODO Auto-generated method stub
 		// return (AnnualProcurementPlan)get(AnnualProcurementPlan.class,
 		// annualProcurementPlanID);
@@ -62,7 +62,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public List<AnnualProcurementPlanLine> getAPPLineByAPP(int year, int divisionOfficeID) throws TransactionException {
+	public List<AnnualProcurementPlanLine> getAPPLineByAPP(int appID) throws TransactionException {
 		// TODO Auto-generated method stub
 
 		List<AnnualProcurementPlanLine> appLines = getAllAPPLine();
