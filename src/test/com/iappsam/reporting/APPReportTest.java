@@ -23,7 +23,5 @@ public class APPReportTest {
 		File pdf = report.toPDF();
 
 		assertTrue(pdf.exists());
-
-		pdf.delete();
 	}
 }
