@@ -30,6 +30,10 @@ public class Employee implements Serializable {
 	@JoinColumn(name = "Person_ID")
 	private Person person;
 
+	@ManyToOne
+	@JoinColumn(name = "DivisionOffice_ID")
+	private DivisionOffice divisionOffice;
+
 	public Employee() {
 		super();
 	}
@@ -65,6 +69,14 @@ public class Employee implements Serializable {
 
 	public Person getPerson() {
 		return person;
+	}
+
+	public DivisionOffice getDivisionOffice() {
+		return divisionOffice;
+	}
+
+	public void setDivisionOffice(DivisionOffice office) {
+		this.divisionOffice = office;
 	}
 
 	public void setPerson(Person person) {

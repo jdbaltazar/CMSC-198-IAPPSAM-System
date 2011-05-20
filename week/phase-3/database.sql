@@ -50,6 +50,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `IAPPSAM`.`DivisionOffice`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
+  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Division` VARCHAR(80) NOT NULL ,
+  `Office` VARCHAR(80) NULL ,
+  PRIMARY KEY (`DivisionOffice_ID`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `IAPPSAM`.`Employee`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Employee` ;
@@ -59,11 +72,18 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee` (
   `Designation` VARCHAR(45) NOT NULL ,
   `Employee_Number` VARCHAR(45) NULL ,
   `Person_ID` INT NOT NULL ,
+  `DivisionOffice_ID` INT NULL ,
   PRIMARY KEY (`Employee_ID`) ,
   INDEX `fk_Employee_Person1` (`Person_ID` ASC) ,
+  INDEX `fk_Employee_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   CONSTRAINT `fk_Employee_Person1`
     FOREIGN KEY (`Person_ID` )
     REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Employee_DivisionOffice1`
+    FOREIGN KEY (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -87,19 +107,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier` (
     REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`DivisionOffice`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
-  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Division` VARCHAR(80) NOT NULL ,
-  `Office` VARCHAR(80) NULL ,
-  PRIMARY KEY (`DivisionOffice_ID`) )
 ENGINE = InnoDB;
 
 
@@ -1130,30 +1137,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier_Contact` (
   CONSTRAINT `fk_SupplierContact_Contact1`
     FOREIGN KEY (`Contact_ID` )
     REFERENCES `IAPPSAM`.`Contact` (`Contact_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`Employee_DivisionOffice`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Employee_DivisionOffice` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee_DivisionOffice` (
-  `Employee_ID` INT NOT NULL ,
-  `DivisionOffice_ID` INT NOT NULL ,
-  PRIMARY KEY (`Employee_ID`, `DivisionOffice_ID`) ,
-  INDEX `fk_Employee_DivisionOffice_Employee1` (`Employee_ID` ASC) ,
-  INDEX `fk_Employee_DivisionOffice_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  CONSTRAINT `fk_Employee_DivisionOffice_Employee1`
-    FOREIGN KEY (`Employee_ID` )
-    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Employee_DivisionOffice_DivisionOffice1`
-    FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

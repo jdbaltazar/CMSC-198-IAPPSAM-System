@@ -180,19 +180,16 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void addSignatory(Signatory signatory) throws TransactionException {
-		// TODO Auto-generated method stub
 		add(signatory);
 	}
 
 	@Override
 	public int saveSignatory(Signatory signatory) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (Integer) save(signatory);
 	}
 
 	@Override
 	public void updateSignatory(Signatory signatory) throws TransactionException {
-		// TODO Auto-generated method stub
 		update(signatory);
 	}
 
