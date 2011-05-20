@@ -20,6 +20,7 @@ import com.iappsam.entities.Supplier;
 import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.entities.forms.PurchaseRequestLine;
+import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
@@ -29,6 +30,7 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
@@ -50,6 +52,7 @@ public class Tester {
 			ItemManager iManager = new ItemManagerSession();
 
 			// Forms
+			APPManager appManager = new APPManagerSession();
 			PRManager prManager = new PRManagerSession();
 
 			Person person = new Person("ASasasasas", "d fgbncdvfgbhnjm");
