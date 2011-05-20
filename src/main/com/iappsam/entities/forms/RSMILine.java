@@ -19,8 +19,8 @@ public class RSMILine implements Serializable {
 	@Column(name = "RIS_Number")
 	private int risNumber;
 
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Responsibility_Center")
 	private String responsibilityCenter;
@@ -34,18 +34,18 @@ public class RSMILine implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RSMILine(int risNumber, String itemDescription, String responsibilityCenter, int rsmiID) {
+	public RSMILine(int risNumber, int itemID, String responsibilityCenter, int rsmiID) {
 		super();
 		this.risNumber = risNumber;
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.responsibilityCenter = responsibilityCenter;
 		this.rsmiID = rsmiID;
 	}
 
-	public RSMILine(int risNumber, String itemDescription, int rsmiID) {
+	public RSMILine(int risNumber, int itemID, int rsmiID) {
 		super();
 		this.risNumber = risNumber;
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.rsmiID = rsmiID;
 	}
 
@@ -53,8 +53,8 @@ public class RSMILine implements Serializable {
 		return risNumber;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public String getResponsibilityCenter() {
@@ -69,8 +69,8 @@ public class RSMILine implements Serializable {
 		this.risNumber = risNumber;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setResponsibilityCenter(String responsibilityCenter) {

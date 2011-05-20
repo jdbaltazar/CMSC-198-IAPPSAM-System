@@ -16,8 +16,8 @@ public class RecapitulationLine implements Serializable{
 	private static final long serialVersionUID = -6962275925598771723L;
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -34,16 +34,16 @@ public class RecapitulationLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public RecapitulationLine(String itemDescription, int quantity, String accountCode, int rsmiID) {
+	public RecapitulationLine(int itemID, int quantity, String accountCode, int rsmiID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.accountCode = accountCode;
 		this.rsmiID = rsmiID;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantity() {
@@ -58,8 +58,8 @@ public class RecapitulationLine implements Serializable{
 		return rsmiID;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantity(int quantity) {

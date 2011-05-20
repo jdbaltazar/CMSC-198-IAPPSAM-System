@@ -17,7 +17,7 @@ public class PurchaseOrderLine implements Serializable{
 
 	@Id
 	@Column(name = "Item_Description")
-	private String itemDescription;
+	private int itemID;
 
 	@Id
 	@Column(name = "PO_Number")
@@ -28,22 +28,22 @@ public class PurchaseOrderLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public PurchaseOrderLine(String itemDescription, String poNumber) {
+	public PurchaseOrderLine(int itemID, String poNumber) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.poNumber = poNumber;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public String getPoNumber() {
 		return poNumber;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setPoNumber(String poNumber) {

@@ -18,8 +18,8 @@ public class InventoryOfEquipmentLine implements Serializable{
 	private static final long serialVersionUID = 3724182303894246727L;
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -42,9 +42,9 @@ public class InventoryOfEquipmentLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public InventoryOfEquipmentLine(String itemDescription, int quantity, int employeeID, String howAcquired, String remarks, int ieID) {
+	public InventoryOfEquipmentLine(int itemID, int quantity, int employeeID, String howAcquired, String remarks, int ieID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.employeeID = employeeID;
 		this.howAcquired = howAcquired;
@@ -52,17 +52,17 @@ public class InventoryOfEquipmentLine implements Serializable{
 		this.ieID = ieID;
 	}
 
-	public InventoryOfEquipmentLine(String itemDescription, int quantity, int employeeID, String howAcquired, int ieID) {
+	public InventoryOfEquipmentLine(int itemID, int quantity, int employeeID, String howAcquired, int ieID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.employeeID = employeeID;
 		this.howAcquired = howAcquired;
 		this.ieID = ieID;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantity() {
@@ -85,8 +85,8 @@ public class InventoryOfEquipmentLine implements Serializable{
 		return ieID;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantity(int quantity) {

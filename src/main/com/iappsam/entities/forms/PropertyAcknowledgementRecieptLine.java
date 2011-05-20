@@ -16,8 +16,8 @@ public class PropertyAcknowledgementRecieptLine implements Serializable{
 	private static final long serialVersionUID = 857324034318525053L;
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Property_Number")
 	private String propertyNumber;
@@ -30,15 +30,15 @@ public class PropertyAcknowledgementRecieptLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public PropertyAcknowledgementRecieptLine(String itemDescription, String propertyNumber, int parID) {
+	public PropertyAcknowledgementRecieptLine(int itemID, String propertyNumber, int parID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.propertyNumber = propertyNumber;
 		this.parID = parID;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public String getPropertyNumber() {
@@ -49,8 +49,8 @@ public class PropertyAcknowledgementRecieptLine implements Serializable{
 		return parID;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void ssetItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setPropertyNumber(String propertyNumber) {

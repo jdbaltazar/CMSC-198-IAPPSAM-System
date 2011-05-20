@@ -17,8 +17,8 @@ public class IIRUPLine implements Serializable{
 	private static final long serialVersionUID = -7906331383568019394L;
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -47,9 +47,9 @@ public class IIRUPLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public IIRUPLine(String itemDescription, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
+	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.yearsInService = yearsInService;
 		this.accumulatedDepreciation = accumulatedDepreciation;
@@ -59,9 +59,9 @@ public class IIRUPLine implements Serializable{
 		this.iirupID = iirupID;
 	}
 
-	public IIRUPLine(String itemDescription, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
+	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.yearsInService = yearsInService;
 		this.accumulatedDepreciation = accumulatedDepreciation;
@@ -70,8 +70,8 @@ public class IIRUPLine implements Serializable{
 		this.iirupID = iirupID;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantity() {
@@ -102,8 +102,8 @@ public class IIRUPLine implements Serializable{
 		return iirupID;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantity(int quantity) {

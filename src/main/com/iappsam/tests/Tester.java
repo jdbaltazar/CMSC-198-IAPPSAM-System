@@ -61,11 +61,11 @@ public class Tester {
 			// Account a = new Account("hellow", "sxdcfvgbhn",
 			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
 			// aManager.addAccount(a);
-			List<Account> accounts = aManager.getAllAccounts();
-
-			for (Account ac : accounts) {
-				System.out.println(ac.getUsername());
-			}
+//			List<Account> accounts = aManager.getAllAccounts();
+//
+//			for (Account ac : accounts) {
+//				System.out.println(ac.getUsername());
+//			}
 
 			// Account a2 = aManager.getAccount("hellow");
 			// a2.setPassword("password");
@@ -73,17 +73,17 @@ public class Tester {
 
 			// Contact
 
-			Contact c = new Contact("1232-2323", ContactType.LANDLINE);
-			cManager.addContact(c);
-			Contact c2 = new Contact("asasasasas", ContactType.LANDLINE);
-			cManager.addContact(c2);
-
-			cManager.addContactToPerson(c.getContactID(), 1);
-
-			List<Contact> contacts = cManager.getAllContactsByPerson(1);
-			for (Contact c1 : contacts) {
-				System.out.println(c1.getData());
-			}
+			// Contact c = new Contact("1232-2323", ContactType.LANDLINE);
+			// cManager.addContact(c);
+			// Contact c2 = new Contact("asasasasas", ContactType.LANDLINE);
+			// cManager.addContact(c2);
+			//
+			// cManager.addContactToPerson(c.getContactID(), 1);
+			//
+			// List<Contact> contacts = cManager.getAllContactsByPerson(1);
+			// for (Contact c1 : contacts) {
+			// System.out.println(c1.getData());
+			// }
 
 			// Supplier
 
@@ -104,13 +104,13 @@ public class Tester {
 
 			// Building
 
-			Building building = new Building("Building 1223", "UPTAC Compund");
-			doMananger.addBuilding(building);
-
-			List<Building> buildings = doMananger.getAllBuildings();
-			for (Building b : buildings) {
-				System.out.println(b.getBuildingName());
-			}
+//			Building building = new Building("Building 1223", "UPTAC Compund");
+//			doMananger.addBuilding(building);
+//
+//			List<Building> buildings = doMananger.getAllBuildings();
+//			for (Building b : buildings) {
+//				System.out.println(b.getBuildingName());
+//			}
 
 			// // DivisionOffice
 
@@ -194,51 +194,56 @@ public class Tester {
 			// 5, 17), 10,"hello", "ON SHELF", "FAIR CONDITION" );
 			// iManager.addItem(item);
 
+			//---------------------------------------------------->
+			
 			// Purchase Request
 
-			// Person p = new Person("John Michael");
-			// Person p2 = new Person("Jayson");
-			// pManager.addPerson(p);
-			// pManager.addPerson(p2);
-			//
-			// Employee emp1 = new Employee("Head", p.getPersonID());
-			// Employee emp2 = new Employee("Dean", p2.getPersonID());
-			// pManager.addEmployee(emp1);
-			// pManager.addEmployee(emp2);
-			//
-			// Signatory sig1 = new Signatory("Requested by",
-			// emp1.getEmployeeID());
-			// Signatory sig2 = new Signatory("Approved by",
-			// emp2.getEmployeeID());
-			// pManager.addSignatory(sig1);
-			// pManager.addSignatory(sig2);
-			//
-			// DivisionOffice dOffice = new DivisionOffice("DNSM", null);
-			// doMananger.addDivisionOffice(dOffice);
-			//
-			// PurchaseRequest pr = new
-			// PurchaseRequest(dOffice.getDivisionOfficeID(), "Office Use",
-			// sig1.getSignatoryID(), sig2.getSignatoryID());
-			// prManager.addPR(pr);
-			//
-			// //name should be unique
-			// Item item = new Item("Item " + Math.random(),
-			// ItemCategory.COMMON_COMPUTER_SUPPLIES, "PCS", "Available",
-			// "Good Condition");
-			// iManager.addItem(item);
-			//
-			// PurchaseRequestLine prLine = new PurchaseRequestLine(10,
-			// item.getDescription(), 100, pr.getPrID());
-			// prManager.addPRLine(prLine);
-			//
-			// //removing a line from pr
-			// PurchaseRequestLine prLine2 = new PurchaseRequestLine(10,
-			// "ABC Item", 1);
-			// prManager.removePRLine(prLine2);
+			Person p = new Person("John Michael");
+			Person p2 = new Person("Jayson");
+			pManager.addPerson(p);
+			pManager.addPerson(p2);
+
+			Employee emp1 = new Employee("Head", p.getPersonID());
+			Employee emp2 = new Employee("Dean", p2.getPersonID());
+			pManager.addEmployee(emp1);
+			pManager.addEmployee(emp2);
+
+			Signatory sig1 = new Signatory("Requested by", emp1.getEmployeeID());
+			Signatory sig2 = new Signatory("Approved by", emp2.getEmployeeID());
+			pManager.addSignatory(sig1);
+			pManager.addSignatory(sig2);
+
+			DivisionOffice dOffice = new DivisionOffice("DNSM", null);
+			doMananger.addDivisionOffice(dOffice);
+
+			PurchaseRequest pr = new PurchaseRequest(
+					dOffice.getDivisionOfficeID(), "Office Use",
+					sig1.getSignatoryID(), sig2.getSignatoryID());
+			prManager.addPR(pr);
+
+			// name should be unique
+			Item item = new Item("Item " + Math.random(),
+					ItemCategory.COMMON_COMPUTER_SUPPLIES, "PCS", "Available",
+					"Good Condition");
+			iManager.addItem(item);
+
+			PurchaseRequestLine prLine = new PurchaseRequestLine(10,
+					item.getDescription(), 100, pr.getPrID());
+			prManager.addPRLine(prLine);
+
+			// removing a line from pr
+			PurchaseRequestLine prLine2 = new PurchaseRequestLine(10,
+					"ABC Item", 1);
+			prManager.removePRLine(prLine2);
+			
+			//---------------------------------------------------->
 
 			System.out.println("Success!");
 
 		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DuplicateEntryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

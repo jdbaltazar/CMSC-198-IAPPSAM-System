@@ -81,13 +81,13 @@ public class IEManagerSession extends AbstractManager implements IEManager {
 	}
 
 	@Override
-	public boolean containsIELine(int invenEquipmentID, String itemDescription)
+	public boolean containsIELine(int invenEquipmentID, int itemID)
 			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<InventoryOfEquipmentLine> ieLines = getAllIELine();
 		for (InventoryOfEquipmentLine ieLine : ieLines) {
 			if (ieLine.getIeID() == invenEquipmentID
-					&& ieLine.getItemDescription().equalsIgnoreCase(itemDescription))
+					&& ieLine.getItemID() == itemID)
 				return true;
 		}
 		return false;

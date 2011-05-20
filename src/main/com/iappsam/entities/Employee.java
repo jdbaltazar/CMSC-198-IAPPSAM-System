@@ -18,7 +18,7 @@ public class Employee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Employee_ID")
-	private int id;
+	private int employeeID;
 
 	@Column(name = "Designation")
 	private String designation;
@@ -26,37 +26,32 @@ public class Employee implements Serializable {
 	@Column(name = "Employee_Number")
 	private String employeeNumber;
 
-	@ManyToOne
-	@JoinColumn(name = "Person_ID")
-	private Person person;
-
-	@ManyToOne
-	@JoinColumn(name = "DivisionOffice_ID")
-	private DivisionOffice divisionOffice;
+	@Column(name = "Person_ID")
+	private int personID;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(String designation, String employeeNumber, Person p) {
+	public Employee(String designation, String employeeNumber, int personID) {
 		super();
 		this.designation = designation;
 		this.employeeNumber = employeeNumber;
-		this.person = p;
+		this.personID = personID;
 	}
 
-	public Employee(String designation, Person p) {
+	public Employee(String designation, int personID) {
 		super();
 		this.designation = designation;
-		this.person = p;
+		this.personID = personID;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	public int getId() {
-		return id;
+	public int getEmployeeID() {
+		return employeeID;
 	}
 
 	public String getDesignation() {
@@ -67,24 +62,16 @@ public class Employee implements Serializable {
 		return employeeNumber;
 	}
 
-	public Person getPerson() {
-		return person;
+	public int getPersonID() {
+		return personID;
 	}
 
-	public DivisionOffice getDivisionOffice() {
-		return divisionOffice;
+	public void setPersonID(int personID) {
+		this.personID = personID;
 	}
 
-	public void setDivisionOffice(DivisionOffice office) {
-		this.divisionOffice = office;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
-
-	public void setId(int employeeID) {
-		this.id = employeeID;
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 
 	public void setDesignation(String designation) {
@@ -99,7 +86,7 @@ public class Employee implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + employeeID;
 		return result;
 	}
 
@@ -112,7 +99,7 @@ public class Employee implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (id != other.id)
+		if (employeeID != other.employeeID)
 			return false;
 		return true;
 	}

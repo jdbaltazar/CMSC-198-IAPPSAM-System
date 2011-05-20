@@ -13,8 +13,8 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 	private static final long serialVersionUID = 7888860671840670652L;
 	
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 	
 	@Column(name = "Quantity_Requested")
 	private int quantityRequested;
@@ -34,25 +34,25 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public RequisitionAndIssueSlipLine(String itemDescription, int quantityRequested, int quantityIssued, String remarks, int risNumber) {
+	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, String remarks, int risNumber) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantityRequested = quantityRequested;
 		this.quantityIssued = quantityIssued;
 		this.remarks = remarks;
 		this.risNumber = risNumber;
 	}
 
-	public RequisitionAndIssueSlipLine(String itemDescription, int quantityRequested, int quantityIssued, int risNumber) {
+	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, int risNumber) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantityRequested = quantityRequested;
 		this.quantityIssued = quantityIssued;
 		this.risNumber = risNumber;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantityRequested() {
@@ -71,8 +71,8 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 		return risNumber;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantityRequested(int quantityRequested) {

@@ -9,10 +9,10 @@ public class PersonTest {
 	@Test
 	public void samePerson() {
 		Person p = new Person();
-		p.setId(1);
+		p.setPersonID(1);
 
 		Person p2 = new Person();
-		p2.setId(1);
+		p2.setPersonID(1);
 
 		assertEquals(p, p2);
 	}

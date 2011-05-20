@@ -84,7 +84,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		for (EmployeeDivisionOffice emDivisionOffice : employeeDivisionOffices) {
 			if (emDivisionOffice.getDivisionOfficeID() == divisionOfficeId) {
 				Employee emp = getEmployee(emDivisionOffice.getEmployeeID());
-				Person p = getPerson(emp.getId());
+				Person p = getPerson(emp.getEmployeeID());
 				if (!result.contains(p))
 					result.add(p);
 			}
@@ -144,7 +144,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getAllEmployee();
 		List<Employee> results = new ArrayList<Employee>();
 		for (Employee emp : employees) {
-			if (emp.getId() == personID)
+			if (emp.getEmployeeID()== personID)
 				results.add(emp);
 		}
 		return results;
@@ -216,10 +216,10 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		// TODO Auto-generated method stub
 		List<Signatory> signatories = getAllSignatories();
 		List<Signatory> result = new ArrayList<Signatory>();
-		List<Employee> employees = getEmployeeByPerson(person.getId());
+		List<Employee> employees = getEmployeeByPerson(person.getPersonID());
 		for (Signatory signatory : signatories) {
 			for (Employee emp : employees) {
-				if (signatory.getEmployeeID() == emp.getId())
+				if (signatory.getEmployeeID() == emp.getEmployeeID())
 					result.add(signatory);
 			}
 		}

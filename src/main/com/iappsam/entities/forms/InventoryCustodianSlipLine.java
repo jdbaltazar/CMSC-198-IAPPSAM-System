@@ -22,8 +22,8 @@ public class InventoryCustodianSlipLine implements Serializable{
 	private int quantity;
 	
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 	
 	@Column(name = "Estimated_Useful_Life")
 	private int estimatedusefulLife;
@@ -37,10 +37,10 @@ public class InventoryCustodianSlipLine implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public InventoryCustodianSlipLine(int quantity, String itemDescription, int estimatedusefulLife, int icsID) {
+	public InventoryCustodianSlipLine(int quantity, int itemID, int estimatedusefulLife, int icsID) {
 		super();
 		this.quantity = quantity;
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.estimatedusefulLife = estimatedusefulLife;
 		this.icsID = icsID;
 	}
@@ -49,8 +49,8 @@ public class InventoryCustodianSlipLine implements Serializable{
 		return quantity;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getEstimatedusefulLife() {
@@ -65,8 +65,8 @@ public class InventoryCustodianSlipLine implements Serializable{
 		this.quantity = quantity;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setEstimatedusefulLife(int estimatedusefulLife) {

@@ -18,13 +18,13 @@ public interface ItemManager extends Manager {
 
 	void updateItem(Item item) throws TransactionException;
 
-	Item getItem(String description) throws TransactionException;
+	Item getItem(int itemID) throws TransactionException;
 
 	void removeItem(Item item) throws TransactionException;
 
 	boolean containsItem(Item item) throws TransactionException;
 
-	boolean containsItem(String description) throws TransactionException;
+	boolean containsItem(int itemID) throws TransactionException;
 
 	List<Item> getAllItems() throws TransactionException;
 

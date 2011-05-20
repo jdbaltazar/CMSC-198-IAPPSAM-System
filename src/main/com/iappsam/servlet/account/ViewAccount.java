@@ -78,8 +78,8 @@ public class ViewAccount extends HttpServlet {
 		try {
 			Account account = aManager.getAccount(userName);
 			Person person = pManager.getPerson(account.getPersonID());
-			List<Employee> employee = pManager.getEmployeeByPerson(person.getId());
-			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
+			List<Employee> employee = pManager.getEmployeeByPerson(person.getPersonID());
+			List<Contact> contact = cManager.getAllContactsByPerson(person.getPersonID());
 
 			username = account.getUsername();
 			acctType = account.getAccountType();
@@ -101,15 +101,15 @@ public class ViewAccount extends HttpServlet {
 			}
 			for (int i = 0; i < employee.size(); i++) {
 				designation.add(employee.get(i).getDesignation());
-				employeeNumber.add("" + employee.get(i).getId());
+				employeeNumber.add("" + employee.get(i).getPersonID());
 				
-				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getId())!=null)
-				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getDivisionName());
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getPersonID())!=null)
+				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getPersonID()).getDivisionName());
 				else
 				division.add(".");
 				
-				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getId())!=null)
-				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getOfficeName());
+				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getPersonID())!=null)
+				office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getPersonID()).getOfficeName());
 				else
 				office.add(".");
 				

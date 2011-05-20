@@ -31,9 +31,9 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public Item getItem(String description) throws TransactionException {
+	public Item getItem(int itemID) throws TransactionException {
 		// TODO Auto-generated method stub
-		return (Item) get(Item.class, description);
+		return (Item) get(Item.class, itemID);
 	}
 
 	@Override
@@ -49,11 +49,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public boolean containsItem(String description) throws TransactionException {
+	public boolean containsItem(int itemID) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Item> items = getAllItems();
 		for (Item item : items) {
-			if (item.getDescription().equalsIgnoreCase(description))
+			if (item.getItemID() == itemID)
 				return true;
 		}
 		return false;
@@ -119,37 +119,43 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void addItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		add(itemStatus);
 	}
 
 	@Override
-	public String saveItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public String saveItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return (String) saveItemStatus(itemStatus);
 	}
 
 	@Override
-	public void updateItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void updateItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		update(itemStatus);
 	}
 
 	@Override
-	public ItemStatus getItemStatus(String itemStatus) throws TransactionException {
+	public ItemStatus getItemStatus(String itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return (ItemStatus) get(Item.class, itemStatus);
 	}
 
 	@Override
-	public void removeItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void removeItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		remove(itemStatus);
 	}
 
 	@Override
-	public boolean containsItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public boolean containsItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(itemStatus);
 	}
@@ -172,43 +178,50 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void addItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		add(itemCondition);
 	}
 
 	@Override
-	public String saveItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public String saveItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return (String) save(itemCondition);
 	}
 
 	@Override
-	public void updateItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void updateItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		update(itemCondition);
 	}
 
 	@Override
-	public ItemCondition getItemCondition(String itemCondition) throws TransactionException {
+	public ItemCondition getItemCondition(String itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return (ItemCondition) get(ItemCondition.class, itemCondition);
 	}
 
 	@Override
-	public void removeItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void removeItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		remove(itemCondition);
 	}
 
 	@Override
-	public boolean containsItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public boolean containsItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(itemCondition);
 	}
 
 	@Override
-	public boolean containsItemCondition(String name) throws TransactionException {
+	public boolean containsItemCondition(String name)
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		List<ItemCondition> itemConditions = getAllItemCondition();
 		for (ItemCondition itemCondition : itemConditions) {
@@ -219,7 +232,8 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public List<ItemCondition> getAllItemCondition() throws TransactionException {
+	public List<ItemCondition> getAllItemCondition()
+			throws TransactionException {
 		// TODO Auto-generated method stub
 		return getList(ItemCondition.class);
 	}

@@ -16,8 +16,8 @@ public class WasteMaterialsReportLine implements Serializable {
 	private static final long serialVersionUID = -918675709541879390L;
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -40,9 +40,9 @@ public class WasteMaterialsReportLine implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public WasteMaterialsReportLine(String itemDescription, int quantity, String orNumber, String disposal, String disposedTo, int wasteMaterialsReportId) {
+	public WasteMaterialsReportLine(int itemID, int quantity, String orNumber, String disposal, String disposedTo, int wasteMaterialsReportId) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.orNumber = orNumber;
 		this.disposal = disposal;
@@ -50,17 +50,17 @@ public class WasteMaterialsReportLine implements Serializable {
 		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
 
-	public WasteMaterialsReportLine(String itemDescription, int quantity, String orNumber, String disposal, int wasteMaterialsReportId) {
+	public WasteMaterialsReportLine(int itemID, int quantity, String orNumber, String disposal, int wasteMaterialsReportId) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantity = quantity;
 		this.orNumber = orNumber;
 		this.disposal = disposal;
 		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantity() {
@@ -83,8 +83,8 @@ public class WasteMaterialsReportLine implements Serializable {
 		return wasteMaterialsReportId;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantity(int quantity) {

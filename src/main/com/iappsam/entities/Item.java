@@ -2,8 +2,11 @@ package com.iappsam.entities;
 
 import java.util.Date;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.search.annotations.DateBridge;
@@ -16,13 +19,17 @@ import org.hibernate.search.annotations.Resolution;
 public class Item {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Item_ID")
+	private int itemID;
+
 	@Field(name = "description")
 	@Column(name = "Description")
 	private String description;
 
 	@Column(name = "Stock_Number")
 	private String stockNumber;
-	
+
 	@Column(name = "Item_Category")
 	private String itemCategory;
 
@@ -53,7 +60,10 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, int inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String description, String stockNumber, String itemCategory,
+			String unit, float price, Date dateAcquired,
+			int inventoryItemNumber, String propertyNumber, String itemStatus,
+			String itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -67,7 +77,8 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String description, String itemCategory, String unit, String itemStatus, String itemCondition) {
+	public Item(String description, String itemCategory, String unit,
+			String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
 		this.itemCategory = itemCategory;
@@ -154,5 +165,13 @@ public class Item {
 
 	public void setItemCondition(String itemCondition) {
 		this.itemCondition = itemCondition;
+	}
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 }
