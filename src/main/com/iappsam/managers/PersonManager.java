@@ -79,5 +79,5 @@ public interface PersonManager {
 	List<Signatory> getAllSignatories() throws TransactionException;
 
 	List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException;
-
+	
 }
