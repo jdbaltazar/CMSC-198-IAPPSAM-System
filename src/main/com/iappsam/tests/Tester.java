@@ -61,11 +61,11 @@ public class Tester {
 			// Account a = new Account("hellow", "sxdcfvgbhn",
 			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
 			// aManager.addAccount(a);
-//			List<Account> accounts = aManager.getAllAccounts();
-//
-//			for (Account ac : accounts) {
-//				System.out.println(ac.getUsername());
-//			}
+			// List<Account> accounts = aManager.getAllAccounts();
+			//
+			// for (Account ac : accounts) {
+			// System.out.println(ac.getUsername());
+			// }
 
 			// Account a2 = aManager.getAccount("hellow");
 			// a2.setPassword("password");
@@ -104,13 +104,14 @@ public class Tester {
 
 			// Building
 
-//			Building building = new Building("Building 1223", "UPTAC Compund");
-//			doMananger.addBuilding(building);
-//
-//			List<Building> buildings = doMananger.getAllBuildings();
-//			for (Building b : buildings) {
-//				System.out.println(b.getBuildingName());
-//			}
+			// Building building = new Building("Building 1223",
+			// "UPTAC Compund");
+			// doMananger.addBuilding(building);
+			//
+			// List<Building> buildings = doMananger.getAllBuildings();
+			// for (Building b : buildings) {
+			// System.out.println(b.getBuildingName());
+			// }
 
 			// // DivisionOffice
 
@@ -194,8 +195,8 @@ public class Tester {
 			// 5, 17), 10,"hello", "ON SHELF", "FAIR CONDITION" );
 			// iManager.addItem(item);
 
-			//---------------------------------------------------->
-			
+			// ---------------------------------------------------->
+
 			// Purchase Request
 
 			Person p = new Person("John Michael");
@@ -216,27 +217,21 @@ public class Tester {
 			DivisionOffice dOffice = new DivisionOffice("DNSM", null);
 			doMananger.addDivisionOffice(dOffice);
 
-			PurchaseRequest pr = new PurchaseRequest(
-					dOffice.getDivisionOfficeID(), "Office Use",
-					sig1.getSignatoryID(), sig2.getSignatoryID());
+			PurchaseRequest pr = new PurchaseRequest(dOffice.getDivisionOfficeID(), "Office Use", sig1.getSignatoryID(), sig2.getSignatoryID());
 			prManager.addPR(pr);
 
 			// name should be unique
-			Item item = new Item("Item " + Math.random(),
-					ItemCategory.COMMON_COMPUTER_SUPPLIES, "PCS", "Available",
-					"Good Condition");
+			Item item = new Item("Item " + Math.random(), ItemCategory.COMMON_COMPUTER_SUPPLIES, "PCS", "Available", "Good Condition");
 			iManager.addItem(item);
 
-			PurchaseRequestLine prLine = new PurchaseRequestLine(10,
-					item.getDescription(), 100, pr.getPrID());
+			PurchaseRequestLine prLine = new PurchaseRequestLine(10, item.getDescription(), 100, pr.getPrID());
 			prManager.addPRLine(prLine);
 
 			// removing a line from pr
-			PurchaseRequestLine prLine2 = new PurchaseRequestLine(10,
-					"ABC Item", 1);
+			PurchaseRequestLine prLine2 = new PurchaseRequestLine(10, "ABC Item", 1);
 			prManager.removePRLine(prLine2);
-			
-			//---------------------------------------------------->
+
+			// ---------------------------------------------------->
 
 			System.out.println("Success!");
 
