@@ -17,7 +17,6 @@ public class APPReportTest {
 	public void exportAPPtoPDF() throws JRException {
 
 		AnnualProcurementPlan.Id id = new AnnualProcurementPlan.Id(2010, 1);
-
 		AnnualProcurementPlan app = new AnnualProcurementPlan(id, "CTR-001", new Date(), 0, 0);
 
 		APPReport report = new APPReport(app);
