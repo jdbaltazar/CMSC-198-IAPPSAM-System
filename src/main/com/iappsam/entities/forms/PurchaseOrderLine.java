@@ -16,7 +16,7 @@ public class PurchaseOrderLine implements Serializable{
 	private static final long serialVersionUID = 7312439919136440157L;
 
 	@Id
-	@Column(name = "Item_Description")
+	@Column(name = "Item_ID")
 	private int itemID;
 
 	@Id

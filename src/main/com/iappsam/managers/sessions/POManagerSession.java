@@ -19,15 +19,13 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public String savePO(PurchaseOrder purchaseOrder)
-			throws TransactionException {
+	public String savePO(PurchaseOrder purchaseOrder) throws TransactionException {
 		// TODO Auto-generated method stub
 		return (String) save(purchaseOrder);
 	}
 
 	@Override
-	public void updatePO(PurchaseOrder purchaseOrder)
-			throws TransactionException {
+	public void updatePO(PurchaseOrder purchaseOrder) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(purchaseOrder);
 	}
@@ -39,8 +37,7 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public boolean containsPO(PurchaseOrder purchaseOrder)
-			throws TransactionException {
+	public boolean containsPO(PurchaseOrder purchaseOrder) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(purchaseOrder);
 	}
@@ -52,22 +49,25 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public void addPOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException {
+	public void addPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		add(purchaseOrderLine);
 	}
 
 	@Override
-	public void updatePOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException {
+	public void updatePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(purchaseOrderLine);
 	}
 
 	@Override
-	public List<PurchaseOrderLine> getPOLineByPO(String poNumber)
-			throws TransactionException {
+	public void removePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException {
+		// TODO Auto-generated method stub
+		remove(purchaseOrderLine);
+	}
+
+	@Override
+	public List<PurchaseOrderLine> getPOLineByPO(String poNumber) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<PurchaseOrderLine> poLines = getAllPOLine();
 		List<PurchaseOrderLine> result = new ArrayList<PurchaseOrderLine>();
@@ -80,8 +80,7 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public boolean containsPOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException {
+	public boolean containsPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(purchaseOrderLine);
 	}
@@ -93,29 +92,25 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException {
+	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
 		// TODO Auto-generated method stub
 		add(modeOfProcurement);
 	}
 
 	@Override
-	public void updateModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException {
+	public void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(modeOfProcurement);
 	}
 
 	@Override
-	public boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException {
+	public boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(modeOfProcurement);
 	}
 
 	@Override
-	public List<ModeOfProcurement> getAllModeOfProcurement()
-			throws TransactionException {
+	public List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException {
 		// TODO Auto-generated method stub
 		return getList(ModeOfProcurement.class);
 	}

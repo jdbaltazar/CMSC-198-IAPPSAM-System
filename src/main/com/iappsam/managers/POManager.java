@@ -25,31 +25,25 @@ public interface POManager {
 
 	// POLine
 
-	void addPOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException;
+	void addPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
 
-	void updatePOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException;
+	void updatePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
 
-	List<PurchaseOrderLine> getPOLineByPO(String poNumber)
-			throws TransactionException;
+	void removePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
 
-	boolean containsPOLine(PurchaseOrderLine purchaseOrderLine)
-			throws TransactionException;
+	List<PurchaseOrderLine> getPOLineByPO(String poNumber) throws TransactionException;
+
+	boolean containsPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
 
 	List<PurchaseOrderLine> getAllPOLine() throws TransactionException;
 
 	// ModeOfProcurement
 
-	void addModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException;
+	void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
-	void updateModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException;
+	void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
-	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement)
-			throws TransactionException;
+	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
-	List<ModeOfProcurement> getAllModeOfProcurement()
-			throws TransactionException;
+	List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException;
 }

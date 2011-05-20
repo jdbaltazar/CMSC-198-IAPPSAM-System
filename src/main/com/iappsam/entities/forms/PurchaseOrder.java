@@ -12,13 +12,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Purchase_Order")
 public class PurchaseOrder {
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	@Column(name = "Supplier_ID")
 	private int supplierID;
 
 	@Id
 	@Column(name = "PO_Number")
-	private int poNumber;
+	private String poNumber;
 
 	@Column(name = "Date")
 	private Date date;
@@ -41,6 +41,12 @@ public class PurchaseOrder {
 	@Column(name = "Total_Amount_In_Words")
 	private String totalAmountInWords;
 
+	@Column (name = "OR_Number")
+	private String orNumber;
+	
+	@Column (name = "Amount")
+	private long amount;
+	
 	@Column(name = "Signatory_ID")
 	private int supplierSignatoryID;
 
@@ -50,29 +56,48 @@ public class PurchaseOrder {
 	@Column(name = "Signatory_ID2")
 	private int accountantSignatoryID;
 
-	private String orNumber;
-	private float amount;
-
 	public PurchaseOrder() {
 
 	}
 
-	public PurchaseOrder(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
-		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID, dateOfDelivery, totalAmountInWords, supplierSignatoryID, deanSignatoryID, accountantSignatoryID, "", "", "", -1);
-
+	public PurchaseOrder(int supplierID, String poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String paymentTerm, String deliveryTerm, String totalAmountInWords, String orNumber, long amount,
+			int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
+		super();
+		this.supplierID = supplierID;
+		this.poNumber = poNumber;
+		this.date = date;
+		this.modeOfProcurement = modeOfProcurement;
+		this.divisionOfficeID = divisionOfficeID;
+		this.dateOfDelivery = dateOfDelivery;
+		this.paymentTerm = paymentTerm;
+		this.deliveryTerm = deliveryTerm;
+		this.totalAmountInWords = totalAmountInWords;
+		this.orNumber = orNumber;
+		this.amount = amount;
+		this.supplierSignatoryID = supplierSignatoryID;
+		this.deanSignatoryID = deanSignatoryID;
+		this.accountantSignatoryID = accountantSignatoryID;
 	}
 
-	public PurchaseOrder(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID,
-			String paymentTerm, String deliveryTerm, String orNumber, float amount) {
-		init(supplierID, poNumber, date, modeOfProcurement, divisionOfficeID, dateOfDelivery, totalAmountInWords, supplierSignatoryID, deanSignatoryID, accountantSignatoryID, paymentTerm, deliveryTerm, orNumber, amount);
-
+	public PurchaseOrder(int supplierID, String poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
+		super();
+		this.supplierID = supplierID;
+		this.poNumber = poNumber;
+		this.date = date;
+		this.modeOfProcurement = modeOfProcurement;
+		this.divisionOfficeID = divisionOfficeID;
+		this.dateOfDelivery = dateOfDelivery;
+		this.totalAmountInWords = totalAmountInWords;
+		this.supplierSignatoryID = supplierSignatoryID;
+		this.deanSignatoryID = deanSignatoryID;
+		this.accountantSignatoryID = accountantSignatoryID;
 	}
 
 	public int getSupplierID() {
 		return supplierID;
 	}
 
-	public int getPoNumber() {
+	public String getPoNumber() {
 		return poNumber;
 	}
 
@@ -92,62 +117,92 @@ public class PurchaseOrder {
 		return dateOfDelivery;
 	}
 
-	public String getTotalAmountInWords() {
-		return totalAmountInWords;
-	}
-
-	public int[] getSignatoryID() {
-		int[] signatoryID = { supplierSignatoryID, deanSignatoryID, accountantSignatoryID };
-		return signatoryID;
-	}
-
 	public String getPaymentTerm() {
 		return paymentTerm;
-	}
-
-	public void setPaymentTerm(String paymentTerm) {
-		this.paymentTerm = paymentTerm;
 	}
 
 	public String getDeliveryTerm() {
 		return deliveryTerm;
 	}
 
-	public void setDeliveryTerm(String deliveryTerm) {
-		this.deliveryTerm = deliveryTerm;
+	public String getTotalAmountInWords() {
+		return totalAmountInWords;
 	}
 
 	public String getOrNumber() {
 		return orNumber;
 	}
 
+	public long getAmount() {
+		return amount;
+	}
+
+	public int getSupplierSignatoryID() {
+		return supplierSignatoryID;
+	}
+
+	public int getDeanSignatoryID() {
+		return deanSignatoryID;
+	}
+
+	public int getAccountantSignatoryID() {
+		return accountantSignatoryID;
+	}
+
+	public void setSupplierID(int supplierID) {
+		this.supplierID = supplierID;
+	}
+
+	public void setPoNumber(String poNumber) {
+		this.poNumber = poNumber;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setModeOfProcurement(String modeOfProcurement) {
+		this.modeOfProcurement = modeOfProcurement;
+	}
+
+	public void setDivisionOfficeID(int divisionOfficeID) {
+		this.divisionOfficeID = divisionOfficeID;
+	}
+
+	public void setDateOfDelivery(Date dateOfDelivery) {
+		this.dateOfDelivery = dateOfDelivery;
+	}
+
+	public void setPaymentTerm(String paymentTerm) {
+		this.paymentTerm = paymentTerm;
+	}
+
+	public void setDeliveryTerm(String deliveryTerm) {
+		this.deliveryTerm = deliveryTerm;
+	}
+
+	public void setTotalAmountInWords(String totalAmountInWords) {
+		this.totalAmountInWords = totalAmountInWords;
+	}
+
 	public void setOrNumber(String orNumber) {
 		this.orNumber = orNumber;
 	}
 
-	public float getAmount() {
-		return amount;
-	}
-
-	public void setAmount(float amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 
-	public void init(int supplierID, int poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID,
-			String paymentTerm, String deliveryTerm, String orNumber, float amount) {
-		this.supplierID = supplierID;
-		this.poNumber = poNumber;
-		this.date = date;
-		this.modeOfProcurement = modeOfProcurement;
-		this.divisionOfficeID = divisionOfficeID;
-		this.dateOfDelivery = dateOfDelivery;
-		this.totalAmountInWords = totalAmountInWords;
-		this.accountantSignatoryID = accountantSignatoryID;
-		this.deanSignatoryID = deanSignatoryID;
+	public void setSupplierSignatoryID(int supplierSignatoryID) {
 		this.supplierSignatoryID = supplierSignatoryID;
-		this.paymentTerm = paymentTerm;
-		this.deliveryTerm = deliveryTerm;
-		this.orNumber = orNumber;
-		this.amount = amount;
 	}
+
+	public void setDeanSignatoryID(int deanSignatoryID) {
+		this.deanSignatoryID = deanSignatoryID;
+	}
+
+	public void setAccountantSignatoryID(int accountantSignatoryID) {
+		this.accountantSignatoryID = accountantSignatoryID;
+	}
+	
 }
