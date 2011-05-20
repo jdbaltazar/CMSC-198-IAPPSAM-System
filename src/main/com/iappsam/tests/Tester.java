@@ -58,42 +58,62 @@ public class Tester {
 			APPManager appManager = new APPManagerSession();
 			PRManager prManager = new PRManagerSession();
 
-			// Person person = new Person("ASasasasas", "d fgbncdvfgbhnjm");
-			// pManager.addPerson(person);
-			//
-			// // person.setName("Warren");
-			// // pManager.updatePerson(person);
-			// //
-			// Person p = pManager.getPerson(1);
-			//
-			// if (pManager.containsPerson("Warren"))
-			// System.out.println("Warren found!");
-			// else
-			// System.out.println("Warren NOT found!");
-			// System.out.println("Name:" + person.getName());
-			//
-			// // save
-			// Person p2 = new Person("AKO");
-			// int id = pManager.savePerson(p2);
-			// System.out.println("id: " + id);
-
-			// view all
-			// List<Person> persons = pManager.getAllPersons();
-
-			// for (Iterator<Person> iter = persons.iterator(); iter.hasNext();)
-			// {
-			// // Person p = (Person) (iter.next());
-			// System.out.println(p.getName());
-			// }
-			//
-			//
-
-			// Account
-
 			// Account a = new Account("hellow", "sxdcfvgbhn",
-			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getPersonID());
+			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
 			// aManager.addAccount(a);
-			// List<Account> accounts = aManager.getAllAccounts();
+			List<Account> accounts = aManager.getAllAccounts();
+
+			for (Account ac : accounts) {
+				System.out.println(ac.getUsername());
+			}
+
+			// Account a2 = aManager.getAccount("hellow");
+			// a2.setPassword("password");
+			// aManager.updateAccount(a);
+
+			// Contact
+
+			Contact c = new Contact("1232-2323", ContactType.LANDLINE);
+			cManager.addContact(c);
+			Contact c2 = new Contact("asasasasas", ContactType.LANDLINE);
+			cManager.addContact(c2);
+
+			cManager.addContactToPerson(c.getContactID(), 1);
+
+			List<Contact> contacts = cManager.getAllContactsByPerson(1);
+			for (Contact c1 : contacts) {
+				System.out.println(c1.getData());
+			}
+
+			// Supplier
+
+			// Person contactPerson = new Person("De la Cruz");
+			// pManager.addPerson(contactPerson);
+			//
+			// Employee employee = new Employee("CEO", 1);
+			// pManager.addEmployee(employee);
+			//
+			// Supplier supplier = new Supplier("ABC Supplier", "Tacloban City",
+			// employee.getId());
+			// sManager.addSupplier(supplier);
+			//
+			// List<Supplier> suppliers = sManager.getAllSuppliers();
+			// for (Supplier s : suppliers) {
+			// System.out.println(s.getSupplierName());
+			// }
+
+			// Building
+
+			Building building = new Building("Building 1223", "UPTAC Compund");
+			doMananger.addBuilding(building);
+
+			List<Building> buildings = doMananger.getAllBuildings();
+			for (Building b : buildings) {
+				System.out.println(b.getBuildingName());
+			}
+
+			// // DivisionOffice
+
 			//
 			// for (Account ac : accounts) {
 			// System.out.println(ac.getUsername());

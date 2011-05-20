@@ -12,7 +12,7 @@ import com.iappsam.entities.Signatory;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public interface PersonManager {
+public interface PersonManager extends Manager{
 
 	// Person
 
@@ -33,7 +33,7 @@ public interface PersonManager {
 	boolean containsPerson(String name) throws TransactionException;
 
 	List<Person> getAllPersons() throws TransactionException;
-	
+
 	List<Person> getPersonByDivisionOffice(int divisionOfficeId) throws TransactionException;
 
 	// Employee
@@ -49,20 +49,20 @@ public interface PersonManager {
 	void removeEmployee(Employee employee) throws TransactionException;
 
 	boolean containsEmployee(Employee employee) throws TransactionException;
-	
+
 	List<Employee> getAllEmployee() throws TransactionException;
-	
+
 	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
-	
+
 	List<Employee> getEmployeeByDivisionOffice(int divisionOfficeId) throws TransactionException;
-	
-	//EmployeeDivisionOffice
-	
+
+	// EmployeeDivisionOffice
+
 	void addEmployeeToDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException;
-	
+
 	void removeEmployeeFromDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException;
-	
-	List<EmployeeDivisionOffice>getAllEmployeeDivisionOffice() throws TransactionException;
+
+	List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException;
 
 	// Signatory
 
@@ -79,5 +79,7 @@ public interface PersonManager {
 	List<Signatory> getAllSignatories() throws TransactionException;
 
 	List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException;
-	
+
+	void close();
+
 }

@@ -3,11 +3,17 @@ package com.iappsam.entities.forms;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Signatory;
 
 @Entity
 @Table(name = "APP")
@@ -27,31 +33,33 @@ public class AnnualProcurementPlan {
 	@Column(name = "Date_Scheduled")
 	private Date dateScheduled;
 
-	@Column (name = "Signatory_ID")
-	private int preparedBySignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "DivisionOffice_ID")
+	private DivisionOffice divisionOffice;
 
-	@Column (name = "Signatory_ID1")
-	private int recommendedBySignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Signatory_ID")
+	private Signatory preparedBy;
+
+	@ManyToOne
+	@JoinColumn(name = "Signatory_ID1")
+	private Signatory recommendedBy;
 
 	public AnnualProcurementPlan() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlan(int year, String planControlNumber, Date dateScheduled, int preparedBySignatoryID, int recommendedBySignatoryID) {
-		super();
-		this.year = year;
+	public AnnualProcurementPlan(int year, String planControlNumber, Date dateScheduled, DivisionOffice office, Signatory s, Signatory s2) {
+		this(year, office, s, s2);
 		this.planControlNumber = planControlNumber;
 		this.dateScheduled = dateScheduled;
-		this.preparedBySignatoryID = preparedBySignatoryID;
-		this.recommendedBySignatoryID = recommendedBySignatoryID;
 	}
 
-	public AnnualProcurementPlan(int year, int preparedBySignatoryID, int recommendedBySignatoryID) {
-		super();
+	public AnnualProcurementPlan(int year, DivisionOffice office, Signatory s, Signatory s2) {
 		this.year = year;
-		this.preparedBySignatoryID = preparedBySignatoryID;
-		this.recommendedBySignatoryID = recommendedBySignatoryID;
+		this.divisionOffice = office;
+		this.preparedBy = s;
+		this.recommendedBy = s2;
 	}
 
 	public int getAppID() {
@@ -70,20 +78,36 @@ public class AnnualProcurementPlan {
 		return dateScheduled;
 	}
 
-	public int getPreparedBySignatoryID() {
-		return preparedBySignatoryID;
-	}
-
-	public int getRecommendedBySignatoryID() {
-		return recommendedBySignatoryID;
-	}
-
 	public void setAppID(int appID) {
 		this.appID = appID;
 	}
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public DivisionOffice getDivisionOffice() {
+		return divisionOffice;
+	}
+
+	public void setDivisionOffice(DivisionOffice divisionOffice) {
+		this.divisionOffice = divisionOffice;
+	}
+
+	public Signatory getPreparedBy() {
+		return preparedBy;
+	}
+
+	public void setPreparedBy(Signatory preparedBy) {
+		this.preparedBy = preparedBy;
+	}
+
+	public Signatory getRecommendedBy() {
+		return recommendedBy;
+	}
+
+	public void setRecommendedBy(Signatory recommendedBy) {
+		this.recommendedBy = recommendedBy;
 	}
 
 	public void setPlanControlNumber(String planControlNumber) {
@@ -94,12 +118,26 @@ public class AnnualProcurementPlan {
 		this.dateScheduled = dateScheduled;
 	}
 
-	public void setPreparedBySignatoryID(int preparedBySignatoryID) {
-		this.preparedBySignatoryID = preparedBySignatoryID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + appID;
+		return result;
 	}
 
-	public void setRecommendedBySignatoryID(int recommendedBySignatoryID) {
-		this.recommendedBySignatoryID = recommendedBySignatoryID;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AnnualProcurementPlan other = (AnnualProcurementPlan) obj;
+		if (appID != other.appID)
+			return false;
+		return true;
 	}
 
 }

@@ -28,8 +28,6 @@ public interface APPManager {
 
 	void updateAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
 
-	List<AnnualProcurementPlanLine> getAPPLineByAPP(int appID) throws TransactionException;
-
 	boolean containsAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
 
 	List<AnnualProcurementPlanLine> getAllAPPLine() throws TransactionException;

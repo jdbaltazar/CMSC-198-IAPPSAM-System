@@ -34,7 +34,6 @@ public class PurchaseRequestLine implements Serializable {
 
 	public PurchaseRequestLine() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public PurchaseRequestLine(int quantity, String itemDescription, long estimatedUnitCost, int prID) {
