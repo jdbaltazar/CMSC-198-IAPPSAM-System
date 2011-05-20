@@ -1,7 +1,5 @@
 package com.iappsam.entities.forms;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,16 +7,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_Line")
-public class AnnualProcurementPlanLine implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2657493265868247131L;
+public class AnnualProcurementPlanLine {
 
 	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@Column(name = "Item_ID")
+	private int itemID;
 
 	@Column(name = "Quantity_Quarter_1")
 	private int quantityQuarter1;
@@ -33,32 +26,27 @@ public class AnnualProcurementPlanLine implements Serializable {
 	private int quantityQuarter4;
 
 	@Id
-	@Column(name = "Year")
-	private int year;
-
-	@Id
-	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
+	@Column(name = "APP_ID")
+	private int appID;
 
 	public AnnualProcurementPlanLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnnualProcurementPlanLine(String itemDescription, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4,
-			int year, int divisionOfficeID) {
+	public AnnualProcurementPlanLine(int itemID, int quantityQuarter1, int quantityQuarter2, int quantityQuarter3, int quantityQuarter4, int appID) {
 		super();
-		this.itemDescription = itemDescription;
+		this.itemID = itemID;
 		this.quantityQuarter1 = quantityQuarter1;
 		this.quantityQuarter2 = quantityQuarter2;
 		this.quantityQuarter3 = quantityQuarter3;
 		this.quantityQuarter4 = quantityQuarter4;
-		this.year = year;
-		this.divisionOfficeID = divisionOfficeID;
+		this.appID = appID;
 	}
 
-	public String getItemDescription() {
-		return itemDescription;
+
+	public int getItemID() {
+		return itemID;
 	}
 
 	public int getQuantityQuarter1() {
@@ -77,16 +65,13 @@ public class AnnualProcurementPlanLine implements Serializable {
 		return quantityQuarter4;
 	}
 
-	public int getYear() {
-		return year;
+	public int getAppID() {
+		return appID;
 	}
 
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
-	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public void setQuantityQuarter1(int quantityQuarter1) {
@@ -105,12 +90,8 @@ public class AnnualProcurementPlanLine implements Serializable {
 		this.quantityQuarter4 = quantityQuarter4;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
+	public void setAppID(int appID) {
+		this.appID = appID;
 	}
 
 }
