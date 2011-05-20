@@ -1,35 +1,47 @@
 USE IAPPSAM;
 
 INSERT INTO ACCOUNT_TYPE VALUES
-("SYSTEM_ADMIN"),
-("SPSO_PERSONNEL"),
-("NON_SPSO_PERSONNEL_HEAD"),
-("NON_SPSO_PERSONNEL_EMPLOYEE");
+("System Administrator"),
+("SPSO Personnel"),
+("Non-SPSO Personnel (Head)"),
+("Non-SPSO Personnel (Employee)");
 
 INSERT INTO CONTACT_TYPE VALUES
-("LANDLINE"),
-("MOBILE"),
-("FAX"),
-("EMAIL"),
-("WEBSITE"),
-("OTHERS");
+("Landline"),
+("Mobile"),
+("Fax"),
+("Email"),
+("Website"),
+("Others");
 
 INSERT INTO DISPOSAL VALUES
-("DESTROYED"),
-("SOLD_AT_PRIVATE_SALE"),
-("SOLD_AT_PUBLIC_AUCTION"),
-("TRANSFERRED_WITHOUT_COST");
+("Destroyed"),
+("Sold at private sale"),
+("Sold at public auction"),
+("Transferred Without Cost");
 
 INSERT INTO MODE_OF_PROCUREMENT VALUES
-("SHOPPING");
+("Shopping");
 
 INSERT INTO UNIT VALUES 
 ('PCS');
 
 INSERT INTO ITEM_STATUS VALUES
-('NOT AVAILABLE'),
-('AVAILABLE');
+('Not Available'),
+('Available');
 
 INSERT INTO ITEM_CONDITION VALUES
-('UNAVAILABLE'),
-('GOOD CONDITION');
+('Unavailable'),
+('Good Condition');
+
+INSERT INTO ITEM_CATEGORY VALUES
+('Common Office Supplies'),
+('Other Office Supplies'),
+('Common Office Devices'),
+('Common Office Supplies (Exclusive Distributorship)'),
+('Common Computer Supplies'),
+('Common Janitorial Supplies'),
+('Common Electrical/Planing Supplies'),
+('Office Forms (for Purchasing)'),
+('Others');
+

@@ -229,6 +229,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `IAPPSAM`.`Item_Category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`Item_Category` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Category` (
+  `Item_Category` VARCHAR(200) NOT NULL ,
+  PRIMARY KEY (`Item_Category`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `IAPPSAM`.`Item`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Item` ;
@@ -236,6 +247,7 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Item` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   `Description` VARCHAR(500) NOT NULL ,
   `Stock_Number` VARCHAR(45) NULL ,
+  `Item_Category` VARCHAR(200) NOT NULL ,
   `Unit` VARCHAR(20) NOT NULL ,
   `Price` DECIMAL(50,2) NULL ,
   `Date_Acquired` DATE NULL ,
@@ -247,6 +259,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   INDEX `fk_Item_Unit1` (`Unit` ASC) ,
   INDEX `fk_Item_Item_Status1` (`Item_Status` ASC) ,
   INDEX `fk_Item_Item_Condition1` (`Item_Condition` ASC) ,
+  INDEX `fk_Item_Item_Category1` (`Item_Category` ASC) ,
   CONSTRAINT `fk_Item_Unit1`
     FOREIGN KEY (`Unit` )
     REFERENCES `IAPPSAM`.`Unit` (`Unit` )
@@ -260,6 +273,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   CONSTRAINT `fk_Item_Item_Condition1`
     FOREIGN KEY (`Item_Condition` )
     REFERENCES `IAPPSAM`.`Item_Condition` (`Item_Condition` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Item_Item_Category1`
+    FOREIGN KEY (`Item_Category` )
+    REFERENCES `IAPPSAM`.`Item_Category` (`Item_Category` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
