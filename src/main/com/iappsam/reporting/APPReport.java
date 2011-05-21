@@ -29,10 +29,10 @@ public class APPReport {
 
 	private Map<String, String> getPropertyMap() {
 		Map<String, String> m = new HashMap<String, String>();
-		m.put("YEAR", app.getId().getYear() + "");
+		m.put("YEAR", app.getYear() + "");
 		m.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber());
 		m.put("DATE_SCHEDULED", app.getDateScheduled() + "");
-		m.put("OFFICE", app.getId().getId() + "");
+		m.put("OFFICE", app.getDivisionOffice() + "");
 		return m;
 	}
 }

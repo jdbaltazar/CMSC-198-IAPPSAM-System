@@ -82,6 +82,5 @@ public interface PersonManager extends Manager {
 
 	void removeSignatory(Signatory signatory) throws TransactionException;
 
-	void close();
 
 }

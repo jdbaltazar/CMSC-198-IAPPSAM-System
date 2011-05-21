@@ -60,7 +60,6 @@ public class APPManagerSessionTest {
 		assertEquals(app, appFromDb);
 
 		removeAPP(app);
-		appm.close();
 	}
 
 	private static void removeAPP(AnnualProcurementPlan app) {
@@ -84,7 +83,6 @@ public class APPManagerSessionTest {
 		assertEquals(app, appFromDb);
 
 		appManager.removeAPP(app);
-		appManager.close();
 	}
 
 	@After

@@ -67,7 +67,6 @@ public class PersonManagerSessionTest {
 
 	@After
 	public void closeManager() {
-		pm.close();
 	}
 
 	private void removeDivisionThenAssert() throws TransactionException {
@@ -79,7 +78,7 @@ public class PersonManagerSessionTest {
 		dom = new DivisionOfficeManagerSession();
 		office = new DivisionOffice("Division", "Office");
 		dom.addDivisionOffice(office);
-		
+
 		DivisionOffice doFromDb = dom.getDivisionOffice(office.getId());
 		assertEquals(office, doFromDb);
 	}

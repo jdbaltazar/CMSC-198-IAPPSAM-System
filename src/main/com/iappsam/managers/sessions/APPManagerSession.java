@@ -64,4 +64,5 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	public void removeAPP(AnnualProcurementPlan app) throws TransactionException {
 		remove(app);
 	}
+
 }

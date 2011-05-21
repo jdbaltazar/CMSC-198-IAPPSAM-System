@@ -30,9 +30,6 @@ public class Item {
 	@Column(name = "Stock_Number")
 	private String stockNumber;
 
-	@Column(name = "Item_Category")
-	private String itemCategory;
-
 	@Column(name = "Unit")
 	private String unit;
 
@@ -55,6 +52,9 @@ public class Item {
 
 	@Column(name = "Item_Condition")
 	private String itemCondition;
+
+	@Column(name = "Item_Category")
+	private String itemCategory;
 
 	public Item() {
 		super();
@@ -92,7 +92,7 @@ public class Item {
 		return stockNumber;
 	}
 
-	public String getItemCategory() {
+	public String getCategory() {
 		return itemCategory;
 	}
 
@@ -116,11 +116,11 @@ public class Item {
 		return propertyNumber;
 	}
 
-	public String getItemStatus() {
+	public String getStatus() {
 		return itemStatus;
 	}
 
-	public String getItemCondition() {
+	public String getCondition() {
 		return itemCondition;
 	}
 
@@ -132,7 +132,7 @@ public class Item {
 		this.stockNumber = stockNumber;
 	}
 
-	public void setItemCategory(String itemCategory) {
+	public void setCategory(String itemCategory) {
 		this.itemCategory = itemCategory;
 	}
 
@@ -156,11 +156,11 @@ public class Item {
 		this.propertyNumber = propertyNumber;
 	}
 
-	public void setItemStatus(String itemStatus) {
+	public void setStatus(String itemStatus) {
 		this.itemStatus = itemStatus;
 	}
 
-	public void setItemCondition(String itemCondition) {
+	public void setCondition(String itemCondition) {
 		this.itemCondition = itemCondition;
 	}
 

@@ -21,55 +21,36 @@ public class ItemManagerSessionTest {
 	public final ItemCondition condition = new ItemCondition("Condition");
 	public final Item item = new Item("Description", "Category", "Unit", "Status", "Condition");
 
-	private void removeAllExisting() throws TransactionException {
-		if (im.containsItem(item))
-			im.removeItem(item);
-
-		if (im.containsItemCategory(category))
-			im.removeItemCategory(category);
-		
-		if (im.containsUnit(unit))
-			im.removeUnit(unit);
-
-		if (im.containsItemCondition(condition))
-			im.removeItemCondition(condition);
-
-		if (im.containsItemStatus(status))
-			im.removeItemStatus(status);
-	}
-
 	@Test
 	public void addItemAndRemove() throws TransactionException {
-		im.addItemCategory(category);
-		im.addItemCondition(condition);
-		im.addItemStatus(status);
-		im.addUnit(unit);
-		im.addItem(item);
-		im.removeItem(item);
-		im.removeUnit(unit);
-		im.removeItemCondition(condition);
-		im.removeItemStatus(status);
+		addEntities();
 	}
 
 	@Test(expected = TransactionException.class)
 	public void addItemThenRemoveTwice() throws TransactionException {
-		im.addItemCategory(category);
-		im.addItemCondition(condition);
-		im.addItemStatus(status);
-		im.addUnit(unit);
+		addEntities();
 
-		im.addItem(item);
 		im.removeItem(item);
 		im.removeItem(item);
 
+	}
+
+	@After
+	public void removeAllExisting() throws TransactionException {
+		if (im.containsItem(item))
+			im.removeItem(item);
+
+		im.removeItemCategory(category);
 		im.removeUnit(unit);
 		im.removeItemCondition(condition);
 		im.removeItemStatus(status);
 	}
 
-	@After
-	public void removeAllAndClose() throws TransactionException {
-		removeAllExisting();
-		im.close();
+	private void addEntities() throws TransactionException {
+		im.addItemCategory(category);
+		im.addItemCondition(condition);
+		im.addItemStatus(status);
+		im.addUnit(unit);
+		im.addItem(item);
 	}
 }

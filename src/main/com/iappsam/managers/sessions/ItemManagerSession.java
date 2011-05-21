@@ -40,7 +40,8 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsItem(Item item) throws TransactionException {
-		return contains(item);
+
+		return get(Item.class, item.getId()) != null;
 	}
 
 	@Override

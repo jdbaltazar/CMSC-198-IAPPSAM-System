@@ -16,12 +16,6 @@ public abstract class AbstractManager implements Manager {
 		super();
 	}
 
-	@Override
-	@Deprecated
-	public void close() {
-		// session.close();
-	}
-
 	protected void add(Object entity) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
@@ -76,7 +70,6 @@ public abstract class AbstractManager implements Manager {
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
-			ex.printStackTrace();
 			throw new TransactionException(ex.getMessage());
 		} finally {
 			session.close();
