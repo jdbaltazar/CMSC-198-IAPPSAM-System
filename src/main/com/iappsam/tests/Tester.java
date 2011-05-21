@@ -291,7 +291,7 @@ public class Tester {
 			Item item = new Item("xdcfgvbnkmZSXDCFVGBH", ItemCategory.COMMON_OFFICE_FORMS, "PCS", "Available", "Good Condition");
 			iManager.addItem(item);
 
-			PurchaseOrderLine poLine = new PurchaseOrderLine(item.getItemID(), po.getPoNumber());
+			PurchaseOrderLine poLine = new PurchaseOrderLine(item.getId(), po.getPoNumber());
 			poManager.addPOLine(poLine);
 			
 			//remove pr_line

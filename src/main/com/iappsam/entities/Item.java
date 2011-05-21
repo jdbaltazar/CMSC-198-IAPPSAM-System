@@ -21,7 +21,7 @@ public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Item_ID")
-	private int itemID;
+	private int id;
 
 	@Field(name = "description")
 	@Column(name = "Description")
@@ -60,10 +60,8 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String itemCategory,
-			String unit, float price, Date dateAcquired,
-			int inventoryItemNumber, String propertyNumber, String itemStatus,
-			String itemCondition) {
+	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, int inventoryItemNumber,
+			String propertyNumber, String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -77,8 +75,7 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String description, String itemCategory, String unit,
-			String itemStatus, String itemCondition) {
+	public Item(String description, String itemCategory, String unit, String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
 		this.itemCategory = itemCategory;
@@ -167,11 +164,33 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public int getItemID() {
-		return itemID;
+	public int getId() {
+		return id;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setId(int itemID) {
+		this.id = itemID;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }

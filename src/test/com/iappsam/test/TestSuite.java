@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.iappsam.entities.EmployeeTest;
+import com.iappsam.entities.ItemTest;
 import com.iappsam.entities.PersonTest;
 import com.iappsam.entities.forms.AnnualProcurementPlanTest;
 import com.iappsam.managers.sessions.ItemManagerSessionTest;
@@ -15,6 +16,7 @@ import com.iappsam.search.SearchingTest;
 @RunWith(Suite.class)
 @SuiteClasses({ PersonTest.class, //
 		EmployeeTest.class,//
+		ItemTest.class,//
 		AnnualProcurementPlanTest.class, //
 		PersonManagerSessionTest.class, //
 		ItemManagerSessionTest.class, //

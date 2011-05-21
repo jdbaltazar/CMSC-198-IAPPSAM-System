@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.Item;
+import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
@@ -23,14 +24,15 @@ public class SearchingTest {
 	private ItemManager im = new ItemManagerSession();
 	private Searcher s;
 
-	public final ItemCondition condition = new ItemCondition("");
-	public final ItemStatus status = new ItemStatus("");
-	public final Unit unit = new Unit("");
+	public final ItemCategory category = new ItemCategory("Category");
+	public final Unit unit = new Unit("Unit");
+	public final ItemStatus status = new ItemStatus("Status");
+	public final ItemCondition condition = new ItemCondition("Condition");
 
-	public final Item item = new Item("item Description", "", "", "");
-	public final Item item2 = new Item("Description2 item", "", "", "");
-	public final Item itemQuickBrownFox = new Item("Quick Brown Fox", "", "", "");
-	public final Item itemTermName = new Item("Description2 second", "", "", "");
+	public final Item item = new Item("item Description", "Category", "Unit", "Status", "Condition");
+	public final Item item2 = new Item("Description2 item", "Category", "Unit", "Status", "Condition");
+	public final Item itemQuickBrownFox = new Item("Quick Brown Fox", "Category", "Unit", "Status", "Condition");
+	public final Item itemTermName = new Item("Description2 second", "Category", "Unit", "Status", "Condition");
 
 	private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 	{
@@ -38,19 +40,20 @@ public class SearchingTest {
 		calendar.set(2010, 00, 01);
 	}
 
-	public final Item itemDate = new Item("Date1", "", "", "");
+	public final Item itemDate = new Item("Date1", "Category", "Unit", "Status", "Condition");
 	{
 		itemDate.setDateAcquired(calendar.getTime());
 		calendar.clear();
 		calendar.set(2010, 00, 02);
 	}
-	public final Item itemDate2 = new Item("Date2", "", "", "");
+	public final Item itemDate2 = new Item("Date2", "Category", "Unit", "Status", "Condition");
 
 	{
 		itemDate2.setDateAcquired(calendar.getTime());
 	}
 
 	private void addAll() throws TransactionException {
+		im.addItemCategory(category);
 		im.addItemCondition(condition);
 		im.addItemStatus(status);
 		im.addUnit(unit);
@@ -63,6 +66,7 @@ public class SearchingTest {
 	}
 
 	private void removeAllExisting() throws TransactionException {
+
 		if (im.containsItem(item))
 			im.removeItem(item);
 
@@ -89,6 +93,9 @@ public class SearchingTest {
 
 		if (im.containsItemStatus(status))
 			im.removeItemStatus(status);
+		
+		if (im.containsItemCategory(category))
+			im.removeItemCategory(category);
 	}
 
 	@Before

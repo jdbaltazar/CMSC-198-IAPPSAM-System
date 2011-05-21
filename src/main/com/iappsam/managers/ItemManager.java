@@ -3,6 +3,7 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.Item;
+import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
@@ -81,5 +82,11 @@ public interface ItemManager extends Manager {
 	boolean containsItemCondition(String name) throws TransactionException;
 
 	List<ItemCondition> getAllItemCondition() throws TransactionException;
+
+	void addItemCategory(ItemCategory category) throws TransactionException;
+
+	boolean containsItemCategory(ItemCategory category) throws TransactionException;
+
+	void removeItemCategory(ItemCategory category) throws TransactionException;
 
 }

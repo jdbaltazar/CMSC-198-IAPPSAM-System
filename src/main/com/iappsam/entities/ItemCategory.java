@@ -3,8 +3,10 @@ package com.iappsam.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Item_Category")
 public class ItemCategory {
 
 	public static final String COMMON_OFFICE_SUPPLIES = "Common Office Supplies";
@@ -22,7 +24,6 @@ public class ItemCategory {
 
 	public ItemCategory() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ItemCategory(String itemCategory) {

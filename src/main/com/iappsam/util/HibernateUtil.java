@@ -15,6 +15,7 @@ import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.entities.Item;
+import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Person;
@@ -83,6 +84,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(Item.class);
 			conf.addAnnotatedClass(ItemCondition.class);
 			conf.addAnnotatedClass(ItemStatus.class);
+			conf.addAnnotatedClass(ItemCategory.class);
 			conf.addAnnotatedClass(Person.class);
 			conf.addAnnotatedClass(PersonContact.class);
 			conf.addAnnotatedClass(Signatory.class);
