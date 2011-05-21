@@ -17,7 +17,7 @@ public class IIRUP {
 	@Column(name = "IIRUP_ID")
 	private int iirupID;
 	
-	@Column(name = "As_Of_Date")
+	@Column(name = "As_Of")
 	private Date asOfDate;
 	
 	@Column(name = "Employee_ID")

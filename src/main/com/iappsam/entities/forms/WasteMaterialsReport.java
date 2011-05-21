@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Waste_Materials_Report")
 public class WasteMaterialsReport {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Waste_Materials_Report_ID")
@@ -22,10 +23,14 @@ public class WasteMaterialsReport {
 
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
+
+	@Column(name = "Date")
+	private Date date;
+
 	@Column(name = "Signatory_ID")
 	private int propertyOfficerSignatoryID;
 
-	@Column(name = "Signator_ID1")
+	@Column(name = "Signatory_ID1")
 	private int approvedBySignatoryID;
 
 	@Column(name = "Signatory_ID2")
@@ -34,49 +39,94 @@ public class WasteMaterialsReport {
 	@Column(name = "Signatory_ID3")
 	private int witnessToSignatoryID;
 
-	private Date wmrDate;
+	public WasteMaterialsReport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	private void init(int wmrID, int divisionOfficeID, int propertyOfficerSignatoryID, int approvedBySignatoryID, int propertyInspectorySignatoryID, int witnessToSignatoryID, Date wmrDate, String placeOfStorage) {
-		this.wmrDate = wmrDate;
+	public WasteMaterialsReport(String placeOfStorage, int divisionOfficeID, Date date, int propertyOfficerSignatoryID, int approvedBySignatoryID, int propertyInspectorSignatoryID, int witnessToSignatoryID) {
+		super();
+		this.placeOfStorage = placeOfStorage;
 		this.divisionOfficeID = divisionOfficeID;
-		this.propertyInspectorSignatoryID = propertyInspectorySignatoryID;
+		this.date = date;
 		this.propertyOfficerSignatoryID = propertyOfficerSignatoryID;
 		this.approvedBySignatoryID = approvedBySignatoryID;
+		this.propertyInspectorSignatoryID = propertyInspectorSignatoryID;
 		this.witnessToSignatoryID = witnessToSignatoryID;
-		this.wmrID = wmrID;
-		this.placeOfStorage = placeOfStorage;
 	}
 
-	public WasteMaterialsReport(int wmrID, int divisionOfficeID, int propertyOfficerSignatoryID, int approvedBySignatoryID, int propertyInspectorySignatoryID, int witnessToSignatoryID, Date wmrDate) {
-		init(wmrID, divisionOfficeID, propertyOfficerSignatoryID, propertyInspectorySignatoryID, approvedBySignatoryID, witnessToSignatoryID, wmrDate, "");
-	}
-
-	public WasteMaterialsReport(int wmrID, int divisionOfficeID, int propertyOfficerSignatoryID, int approvedBySignatoryID, int propertyInspectorySignatoryID, int witnessToSignatoryID, Date wmrDate, String placeOfStorage) {
-		init(wmrID, divisionOfficeID, propertyOfficerSignatoryID, propertyInspectorySignatoryID, approvedBySignatoryID, witnessToSignatoryID, wmrDate, placeOfStorage);
-	}
-
-	public String getPlaceOfStorage() {
-		return placeOfStorage;
-	}
-
-	public void setPlaceOfStorage(String placeOfStorage) {
-		this.placeOfStorage = placeOfStorage;
+	public WasteMaterialsReport(int divisionOfficeID, Date date, int propertyOfficerSignatoryID, int approvedBySignatoryID, int propertyInspectorSignatoryID, int witnessToSignatoryID) {
+		super();
+		this.divisionOfficeID = divisionOfficeID;
+		this.date = date;
+		this.propertyOfficerSignatoryID = propertyOfficerSignatoryID;
+		this.approvedBySignatoryID = approvedBySignatoryID;
+		this.propertyInspectorSignatoryID = propertyInspectorSignatoryID;
+		this.witnessToSignatoryID = witnessToSignatoryID;
 	}
 
 	public int getWmrID() {
 		return wmrID;
 	}
 
+	public String getPlaceOfStorage() {
+		return placeOfStorage;
+	}
+
 	public int getDivisionOfficeID() {
 		return divisionOfficeID;
 	}
 
-	public int[] getSignatoryID() {
-		int[] signatories = { propertyOfficerSignatoryID, propertyInspectorSignatoryID, approvedBySignatoryID, witnessToSignatoryID };
-		return signatories;
+	public Date getDate() {
+		return date;
 	}
 
-	public Date getWmrDate() {
-		return wmrDate;
+	public int getPropertyOfficerSignatoryID() {
+		return propertyOfficerSignatoryID;
 	}
+
+	public int getApprovedBySignatoryID() {
+		return approvedBySignatoryID;
+	}
+
+	public int getPropertyInspectorSignatoryID() {
+		return propertyInspectorSignatoryID;
+	}
+
+	public int getWitnessToSignatoryID() {
+		return witnessToSignatoryID;
+	}
+
+	public void setWmrID(int wmrID) {
+		this.wmrID = wmrID;
+	}
+
+	public void setPlaceOfStorage(String placeOfStorage) {
+		this.placeOfStorage = placeOfStorage;
+	}
+
+	public void setDivisionOfficeID(int divisionOfficeID) {
+		this.divisionOfficeID = divisionOfficeID;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setPropertyOfficerSignatoryID(int propertyOfficerSignatoryID) {
+		this.propertyOfficerSignatoryID = propertyOfficerSignatoryID;
+	}
+
+	public void setApprovedBySignatoryID(int approvedBySignatoryID) {
+		this.approvedBySignatoryID = approvedBySignatoryID;
+	}
+
+	public void setPropertyInspectorSignatoryID(int propertyInspectorSignatoryID) {
+		this.propertyInspectorSignatoryID = propertyInspectorSignatoryID;
+	}
+
+	public void setWitnessToSignatoryID(int witnessToSignatoryID) {
+		this.witnessToSignatoryID = witnessToSignatoryID;
+	}
+
 }

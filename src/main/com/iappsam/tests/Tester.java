@@ -21,34 +21,43 @@ import com.iappsam.entities.Supplier;
 import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.AnnualProcurementPlanLine;
+import com.iappsam.entities.forms.Disposal;
+import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.entities.forms.IIRUPLine;
 import com.iappsam.entities.forms.PurchaseOrder;
 import com.iappsam.entities.forms.PurchaseOrderLine;
 import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.entities.forms.PurchaseRequestLine;
 import com.iappsam.entities.forms.RequisitionAndIssueSlip;
 import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
+import com.iappsam.entities.forms.WasteMaterialsReport;
+import com.iappsam.entities.forms.WasteMaterialsReportLine;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.RISManager;
 import com.iappsam.managers.SupplierManager;
+import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 import com.iappsam.managers.sessions.PRManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.RISManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
+import com.iappsam.managers.sessions.WMRManagerSession;
 
 public class Tester {
 
@@ -67,6 +76,8 @@ public class Tester {
 			PRManager prManager = new PRManagerSession();
 			POManager poManager = new POManagerSession();
 			RISManager risManager = new RISManagerSession();
+			IIRUPManager iirupManager = new IIRUPManagerSession();
+			WMRManager wmrManager = new WMRManagerSession();
 
 			// Account a = new Account("hellow", "sxdcfvgbhn",
 			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
@@ -316,7 +327,110 @@ public class Tester {
 			// ---------------------------------------------------->
 			// Requisition and Issue slip
 
-			DivisionOffice dOffice = new DivisionOffice("DNSM ", null);
+			// DivisionOffice dOffice = new DivisionOffice("DNSM ", null);
+			// doManager.addDivisionOffice(dOffice);
+			//
+			// Person p1 = new Person("person " + Math.random());
+			// Person p2 = new Person("person " + Math.random());
+			// Person p3 = new Person("person " + Math.random());
+			// Person p4 = new Person("person " + Math.random());
+			//
+			// pManager.addPerson(p1);
+			// pManager.addPerson(p2);
+			// pManager.addPerson(p3);
+			// pManager.addPerson(p4);
+			//
+			// Employee e1 = new Employee("Requisitioner", p1.getPersonID());
+			// Employee e2 = new Employee("Head", p2.getPersonID());
+			// Employee e3 = new Employee("Dean", p3.getPersonID());
+			// Employee e4 = new Employee("Dean", p4.getPersonID());
+			//
+			// pManager.addEmployee(e1);
+			// pManager.addEmployee(e2);
+			// pManager.addEmployee(e3);
+			// pManager.addEmployee(e4);
+			//
+			// Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
+			// Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
+			// Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
+			// Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
+			//
+			// pManager.addSignatory(s1);
+			// pManager.addSignatory(s2);
+			// pManager.addSignatory(s3);
+			// pManager.addSignatory(s4);
+			//
+			//
+			// RequisitionAndIssueSlip ris = new
+			// RequisitionAndIssueSlip(dOffice.getDivisionOfficeID(), "sdsd " +
+			// Math.random(), new Date(0), "dfdfdfdfdf", s1.getSignatoryID(),
+			// s2.getSignatoryID(), s3.getSignatoryID(), s4.getSignatoryID());
+			// risManager.addRIS(ris);
+			//
+			// Item item = new Item("dsds" + Math.random(), ItemCategory.OTHERS,
+			// "PCS", "Available", "Good Condition");
+			// iManager.addItem(item);
+			//
+			// RequisitionAndIssueSlipLine risLine = new
+			// RequisitionAndIssueSlipLine(item.getItemID(), 10,
+			// 10,ris.getRisNumber());
+			// risManager.addRISLine(risLine);
+
+			// ---------------------------------------------------->
+
+			// ---------------------------------------------------->
+
+			// IIRUP
+
+			// Person p1 = new Person("person " + Math.random());
+			// Person p2 = new Person("person " + Math.random());
+			// Person p3 = new Person("person " + Math.random());
+			// Person p4 = new Person("person " + Math.random());
+			//
+			// pManager.addPerson(p1);
+			// pManager.addPerson(p2);
+			// pManager.addPerson(p3);
+			// pManager.addPerson(p4);
+			//
+			// Employee e1 = new Employee("Requisitioner", p1.getPersonID());
+			// Employee e2 = new Employee("Head", p2.getPersonID());
+			// Employee e3 = new Employee("Dean", p3.getPersonID());
+			// Employee e4 = new Employee("Dean", p4.getPersonID());
+			//
+			// pManager.addEmployee(e1);
+			// pManager.addEmployee(e2);
+			// pManager.addEmployee(e3);
+			// pManager.addEmployee(e4);
+			//
+			// Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
+			// Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
+			// Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
+			// Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
+			//
+			// pManager.addSignatory(s1);
+			// pManager.addSignatory(s2);
+			// pManager.addSignatory(s3);
+			// pManager.addSignatory(s4);
+			//
+			// IIRUP iirup = new IIRUP(new Date(0), e1.getEmployeeID(),
+			// s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(),
+			// s4.getSignatoryID());
+			// iirupManager.addIIRUP(iirup);
+			//
+			// Item item = new Item("" + Math.random(), ItemCategory.OTHERS,
+			// "PCS", "Available", "Good Condition");
+			// iManager.addItem(item);
+			//
+			// IIRUPLine iirupLine = new IIRUPLine(item.getItemID(), 10, 12,
+			// 100, "Destroyed", "dfdf", iirup.getIirupID());
+			// iirupManager.addIIRUPLine(iirupLine);
+
+			// ---------------------------------------------------->
+
+			// ---------------------------------------------------->
+			// Waste Materials Report
+
+			DivisionOffice dOffice = new DivisionOffice("sddfdfdf", null);
 			doManager.addDivisionOffice(dOffice);
 
 			Person p1 = new Person("person " + Math.random());
@@ -343,25 +457,20 @@ public class Tester {
 			Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
 			Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
 			Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
-			
+
 			pManager.addSignatory(s1);
 			pManager.addSignatory(s2);
 			pManager.addSignatory(s3);
 			pManager.addSignatory(s4);
-			
 
-			RequisitionAndIssueSlip ris = new RequisitionAndIssueSlip(dOffice.getDivisionOfficeID(), "sdsd " + Math.random(), new Date(0), "dfdfdfdfdf", s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(), s4.getSignatoryID());
-			risManager.addRIS(ris);
+			WasteMaterialsReport wmr = new WasteMaterialsReport(dOffice.getDivisionOfficeID(), new Date(0), s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(), s4.getSignatoryID());
+			wmrManager.addWMR(wmr);
 
-			Item item = new Item("dsds" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
+			Item item = new Item("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
 			iManager.addItem(item);
 
-			RequisitionAndIssueSlipLine risLine = new RequisitionAndIssueSlipLine(item.getItemID(), 10, 10,ris.getRisNumber());
-			risManager.addRISLine(risLine);
-			
-			// ---------------------------------------------------->
-
-			// ---------------------------------------------------->
+			WasteMaterialsReportLine wmrLine = new WasteMaterialsReportLine(item.getItemID(), 100, "dfdfdfdf", "Destroyed", wmr.getWmrID());
+			wmrManager.addWMRLine(wmrLine);
 
 			System.out.println("Success!");
 
