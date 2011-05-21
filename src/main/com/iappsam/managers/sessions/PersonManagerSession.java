@@ -144,7 +144,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getAllEmployee();
 		List<Employee> results = new ArrayList<Employee>();
 		for (Employee emp : employees) {
-			if (emp.getId()== personID)
+			if (emp.getId() == personID)
 				results.add(emp);
 		}
 		return results;
@@ -212,6 +212,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
+	public void removeSignatory(Signatory signatory) throws TransactionException {
+		remove(signatory);
+	}
+
+	@Override
 	public List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException {
 		// TODO Auto-generated method stub
 		List<Signatory> signatories = getAllSignatories();
@@ -219,10 +224,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getEmployeeByPerson(person.getId());
 		for (Signatory signatory : signatories) {
 			for (Employee emp : employees) {
-				if (signatory.getEmployeeID() == emp.getId())
-					result.add(signatory);
+//				if (signatory.getEmployeeID() == emp.getId())
+//					result.add(signatory);
 			}
 		}
 		return result;
 	}
+
 }

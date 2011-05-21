@@ -8,15 +8,15 @@ import javax.persistence.Id;
 
 @Entity
 public class DivisionOffice {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "DivisionOffice_ID")
 	private int id;
-	
+
 	@Column(name = "Division")
 	private String divisionName;
-	
+
 	@Column(name = "Office")
 	private String officeName;
 
@@ -53,5 +53,26 @@ public class DivisionOffice {
 	public void setOfficeName(String officeName) {
 		this.officeName = officeName;
 	}
-		
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DivisionOffice other = (DivisionOffice) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

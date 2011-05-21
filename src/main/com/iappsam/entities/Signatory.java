@@ -1,6 +1,5 @@
 package com.iappsam.entities;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -8,19 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Signatory implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2825516553804809346L;
+public class Signatory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Signatory_ID")
-	private int signatoryID;
+	private int id;
 
 	@Column(name = "Description")
 	private String description;
@@ -28,29 +24,29 @@ public class Signatory implements Serializable {
 	@Column(name = "Date")
 	private Date signatureDate;
 
-	@Column(name = "Employee_ID")
-	private int employeeID;
+	@ManyToOne
+	@JoinColumn(name = "Employee_ID")
+	private Employee employee;
 
 	public Signatory() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Signatory(String description, Date signatureDate, int employeeID) {
+	public Signatory(String description, Date signatureDate, Employee employee) {
 		super();
 		this.description = description;
 		this.signatureDate = signatureDate;
-		this.employeeID = employeeID;
+		this.employee = employee;
 	}
 
-	public Signatory(String description, int employeeID) {
+	public Signatory(String description, Employee employee) {
 		super();
 		this.description = description;
-		this.employeeID = employeeID;
+		this.employee = employee;
 	}
 
-	public int getSignatoryID() {
-		return signatoryID;
+	public int getId() {
+		return id;
 	}
 
 	public String getDescription() {
@@ -61,12 +57,16 @@ public class Signatory implements Serializable {
 		return signatureDate;
 	}
 
-	public int getEmployeeID() {
-		return employeeID;
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setSignatoryID(int signatoryID) {
-		this.signatoryID = signatoryID;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public void setId(int signatoryID) {
+		this.id = signatoryID;
 	}
 
 	public void setDescription(String description) {
@@ -75,10 +75,6 @@ public class Signatory implements Serializable {
 
 	public void setSignatureDate(Date signatureDate) {
 		this.signatureDate = signatureDate;
-	}
-
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
 	}
 
 }

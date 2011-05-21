@@ -285,7 +285,7 @@ public class Tester {
 			Supplier supplier = new Supplier("ANBBCV Supplier", "Tacloban City", emp1.getId());
 			sManager.addSupplier(supplier);
 
-			PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), "dsdfdfd" + Math.random(), new Date(0), "Shopping", dOffice.getId(), new Date(0), "sdsdsd", s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID());
+			PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), "dsdfdfd" + Math.random(), new Date(0), "Shopping", dOffice.getId(), new Date(0), "sdsdsd", s1.getId(), s2.getId(), s3.getId());
 			poManager.addPO(po);
 
 			Item item = new Item("xdcfgvbnkmZSXDCFVGBH", ItemCategory.COMMON_OFFICE_FORMS, "PCS", "Available", "Good Condition");

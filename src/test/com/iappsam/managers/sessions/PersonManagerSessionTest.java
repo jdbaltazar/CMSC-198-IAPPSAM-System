@@ -42,7 +42,7 @@ public class PersonManagerSessionTest {
 	}
 
 	@Test
-	public void addThenRemoveEmployeeWithDivision() throws TransactionException, DuplicateEntryException {
+	public void addThenRemoveEmployeeWithDivisionOffice() throws TransactionException, DuplicateEntryException {
 
 		addPersonThenAssert();
 		addOfficeThenAssert();
@@ -79,7 +79,9 @@ public class PersonManagerSessionTest {
 		dom = new DivisionOfficeManagerSession();
 		office = new DivisionOffice("Division", "Office");
 		dom.addDivisionOffice(office);
-		assertTrue(dom.containsDivisionOffice(office));
+		
+		DivisionOffice doFromDb = dom.getDivisionOffice(office.getId());
+		assertEquals(office, doFromDb);
 	}
 
 	private void addPersonThenAssert() throws TransactionException, DuplicateEntryException {

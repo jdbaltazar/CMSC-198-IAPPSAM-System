@@ -1,6 +1,5 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.AnnualProcurementPlan;
@@ -53,13 +52,11 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
 	public boolean containsAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(annualProcurementPlanLine);
 	}
 
 	@Override
 	public List<AnnualProcurementPlanLine> getAllAPPLine() throws TransactionException {
-		// TODO Auto-generated method stub
 		return getList(AnnualProcurementPlanLine.class);
 	}
 

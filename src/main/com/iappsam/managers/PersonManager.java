@@ -12,7 +12,7 @@ import com.iappsam.entities.Signatory;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public interface PersonManager extends Manager{
+public interface PersonManager extends Manager {
 
 	// Person
 
@@ -79,6 +79,8 @@ public interface PersonManager extends Manager{
 	List<Signatory> getAllSignatories() throws TransactionException;
 
 	List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException;
+
+	void removeSignatory(Signatory signatory) throws TransactionException;
 
 	void close();
 

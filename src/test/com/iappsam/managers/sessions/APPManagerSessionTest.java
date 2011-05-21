@@ -25,22 +25,22 @@ public class APPManagerSessionTest {
 	private PersonManager pm;
 	private DivisionOfficeManager dom;
 
-	private Person p;
-	private Employee e;
-	private Signatory s;
+	private Person person;
+	private Employee employee;
+	private Signatory signatory;
 	private DivisionOffice office;
 
 	@Before
 	public void addAPPDepedencies() throws TransactionException, DuplicateEntryException {
-		p = new Person("John");
+		person = new Person("John");
 		pm = new PersonManagerSession();
-		pm.addPerson(p);
+		pm.addPerson(person);
 
-		e = new Employee("Mayor", p);
-		pm.addEmployee(e);
+		employee = new Employee("Mayor", person);
+		pm.addEmployee(employee);
 
-		s = new Signatory("Signatory", e.getId());
-		pm.addSignatory(s);
+		signatory = new Signatory("Signatory", employee);
+		pm.addSignatory(signatory);
 
 		office = new DivisionOffice("Division", "Office");
 
@@ -53,13 +53,15 @@ public class APPManagerSessionTest {
 
 		addAPPDepedencies();
 
-		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, s, s);
+		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, signatory, signatory);
 
 		APPManager appManager = new APPManagerSession();
 		appManager.addAPP(app);
 
 		assertTrue(appManager.containsAPP(app));
 		removeAPP(app);
+		appManager.close();
+		removeAPPDependencies();
 	}
 
 	private static void removeAPP(AnnualProcurementPlan app) {
@@ -75,32 +77,22 @@ public class APPManagerSessionTest {
 	public void addAPPLine() throws TransactionException, DuplicateEntryException {
 		addAPPDepedencies();
 
-		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, s, s);
+		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, signatory, signatory);
 
 		APPManager appManager = new APPManagerSession();
 		appManager.addAPP(app);
 
 		assertTrue(appManager.containsAPP(app));
 		removeAPP(app);
+		appManager.close();
+		removeAPPDependencies();
 	}
 
 	@After
 	public void removeAPPDependencies() throws TransactionException {
-
-		Session session = HibernateUtil.startSession();
-		Transaction tx = session.beginTransaction();
-
-		try {
-			dom.removeDivisionOffice(office);
-			session.delete(s);
-			pm.removeEmployee(e);
-			pm.removePerson(p);
-			tx.commit();
-		} catch (Exception e) {
-			tx.rollback();
-			throw new TransactionException(e.getMessage());
-		} finally {
-			session.close();
-		}
+		dom.removeDivisionOffice(office);
+		pm.removeSignatory(signatory);
+		pm.removeEmployee(employee);
+		pm.removePerson(person);
 	}
 }
