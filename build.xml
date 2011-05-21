@@ -22,7 +22,7 @@
 	<property name="sql.password" value="123456" />
 	<property name="sql.schema" value="week/phase-3" />
 
-	<target name="all" depends="deploy, sql" />
+	<target name="all" depends="deploy, sql.init" />
 
 	<target name="env.check" unless="env.CONTAINER_HOME">
 		<fail message="Environment variable for the servlet container not set!" />
@@ -60,7 +60,7 @@
 		</copy>
 	</target>
 
-	<target name="sql">
+	<target name="sql.init">
 		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.username}" password="${sql.password}">
 			<classpath path="${lib}" />
 			<transaction src="${sql.schema}/database.sql" />
@@ -68,7 +68,14 @@
 		</sql>
 	</target>
 
-	<target name="deploy" depends="build, sql">
+	<target name="sql.delete.records">
+		<sql driver="${sql.driver}" url="${sql.url}" userid="${sql.username}" password="${sql.password}">
+			<classpath path="${lib}" />
+			<transaction src="${sql.schema}/delete-records.sql" />
+		</sql>
+	</target>
+
+	<target name="deploy" depends="build, sql.init">
 		<mkdir dir="${env.CONTAINER_HOME}/webapps/iappsam" />
 		<copy todir="${env.CONTAINER_HOME}/webapps/iappsam">
 			<fileset dir="webapp" />
