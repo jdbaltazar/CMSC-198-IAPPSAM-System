@@ -3,8 +3,12 @@ package com.iappsam.entities.forms;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "RIS_Line")
 public class RequisitionAndIssueSlipLine implements Serializable{
 
 	/**
@@ -27,14 +31,14 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 	
 	@Id
 	@Column(name = "RIS_Number")
-	private int risNumber;
+	private String risNumber;
 
 	public RequisitionAndIssueSlipLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, String remarks, int risNumber) {
+	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, String remarks, String risNumber) {
 		super();
 		this.itemID = itemID;
 		this.quantityRequested = quantityRequested;
@@ -43,7 +47,7 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 		this.risNumber = risNumber;
 	}
 
-	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, int risNumber) {
+	public RequisitionAndIssueSlipLine(int itemID, int quantityRequested, int quantityIssued, String risNumber) {
 		super();
 		this.itemID = itemID;
 		this.quantityRequested = quantityRequested;
@@ -67,7 +71,7 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 		return remarks;
 	}
 
-	public int getRisNumber() {
+	public String getRisNumber() {
 		return risNumber;
 	}
 
@@ -87,7 +91,7 @@ public class RequisitionAndIssueSlipLine implements Serializable{
 		this.remarks = remarks;
 	}
 
-	public void setRisNumber(int risNumber) {
+	public void setRisNumber(String risNumber) {
 		this.risNumber = risNumber;
 	}
 	

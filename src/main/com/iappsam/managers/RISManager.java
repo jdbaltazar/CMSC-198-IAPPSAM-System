@@ -16,7 +16,7 @@ public interface RISManager {
 	
 	void updateRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
 	
-	RequisitionAndIssueSlip getRIS(int requisitionAndIssueSlipID) throws TransactionException;
+	RequisitionAndIssueSlip getRIS(String requisitionAndIssueSlipID) throws TransactionException;
 	
 	boolean containsRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
 	
@@ -28,7 +28,7 @@ public interface RISManager {
 	
 	void updateRISLine(RequisitionAndIssueSlipLine requisitionAndIssueSlipLine) throws TransactionException;
 
-	List<RequisitionAndIssueSlipLine>getRISLineByRIS(int requisitionAndIssueSlipID) throws TransactionException;
+	List<RequisitionAndIssueSlipLine>getRISLineByRIS(String requisitionAndIssueSlipID) throws TransactionException;
 	
 	boolean containsRISLine(RequisitionAndIssueSlipLine requisitionAndIssueSlipLine) throws TransactionException;
 	

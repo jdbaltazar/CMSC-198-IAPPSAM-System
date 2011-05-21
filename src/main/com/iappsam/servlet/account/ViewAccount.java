@@ -103,7 +103,7 @@ public class ViewAccount extends HttpServlet {
 				designation.add(employee.get(i).getDesignation());
 				employeeNumber.add("" + employee.get(i).getPerson());
 				
-				if(dManager.getDivisionOfficeByEmployee(employee.get(i).getPerson())!=null)
+				if((employee.get(i).getPerson()!=null)
 				division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getPerson()).getDivisionName());
 				else
 				division.add(".");
