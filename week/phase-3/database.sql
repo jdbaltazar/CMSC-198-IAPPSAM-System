@@ -877,7 +877,7 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` (
   `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
   `RC_Code` VARCHAR(80) NULL ,
-  `RIS_Number` INT NOT NULL ,
+  `RIS_Number` VARCHAR(45) NOT NULL ,
   `RIS_Date` DATE NOT NULL ,
   `SAI_Number` VARCHAR(80) NULL ,
   `SAI_Date` DATE NULL ,
@@ -930,7 +930,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`RIS_Line` (
   `Quantity_Requested` INT NOT NULL ,
   `Quantity_Issued` INT NOT NULL ,
   `Remarks` VARCHAR(200) NULL ,
-  `RIS_Number` INT NOT NULL ,
+  `RIS_Number` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`RIS_Number`, `Item_ID`) ,
   INDEX `fk_RIS_Line_Item1` (`Item_ID` ASC) ,
   INDEX `fk_RIS_Line_Requisition_And_Issue_Slip1` (`RIS_Number` ASC) ,
