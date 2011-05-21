@@ -12,7 +12,7 @@ public class DivisionOffice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
+	private int id;
 	
 	@Column(name = "Division")
 	private String divisionName;
@@ -22,7 +22,6 @@ public class DivisionOffice {
 
 	public DivisionOffice() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public DivisionOffice(String divisionName, String officeName) {
@@ -31,8 +30,8 @@ public class DivisionOffice {
 		this.officeName = officeName;
 	}
 
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
+	public int getId() {
+		return id;
 	}
 
 	public String getDivisionName() {
@@ -43,8 +42,8 @@ public class DivisionOffice {
 		return officeName;
 	}
 
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setDivisionName(String divisionName) {

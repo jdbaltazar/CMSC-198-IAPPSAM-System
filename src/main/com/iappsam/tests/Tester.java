@@ -252,7 +252,7 @@ public class Tester {
 			Person contactPerson = new Person("Mr. Bean");
 			pManager.addPerson(contactPerson);
 
-			Employee emp1 = new Employee("CEO", contactPerson.getPersonID());
+			Employee emp1 = new Employee("CEO", contactPerson.getId());
 			pManager.addEmployee(emp1);
 
 			Person p1 = new Person("person " + Math.random());
@@ -263,17 +263,17 @@ public class Tester {
 			pManager.addPerson(p2);
 			pManager.addPerson(p3);
 
-			Employee e1 = new Employee("Requisitioner", p1.getPersonID());
-			Employee e2 = new Employee("Head", p2.getPersonID());
-			Employee e3 = new Employee("Dean", p3.getPersonID());
+			Employee e1 = new Employee("Requisitioner", p1.getId());
+			Employee e2 = new Employee("Head", p2.getId());
+			Employee e3 = new Employee("Dean", p3.getId());
 
 			pManager.addEmployee(e1);
 			pManager.addEmployee(e2);
 			pManager.addEmployee(e3);
 
-			Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
-			Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
-			Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
+			Signatory s1 = new Signatory("Approved by", e1.getId());
+			Signatory s2 = new Signatory("Approved by", e2.getId());
+			Signatory s3 = new Signatory("Approved by", e3.getId());
 
 			pManager.addSignatory(s1);
 			pManager.addSignatory(s2);
@@ -282,10 +282,10 @@ public class Tester {
 			DivisionOffice dOffice = new DivisionOffice("DNSM", null);
 			doMananger.addDivisionOffice(dOffice);
 
-			Supplier supplier = new Supplier("ANBBCV Supplier", "Tacloban City", emp1.getEmployeeID());
+			Supplier supplier = new Supplier("ANBBCV Supplier", "Tacloban City", emp1.getId());
 			sManager.addSupplier(supplier);
 
-			PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), "dsdfdfd" + Math.random(), new Date(0), "Shopping", dOffice.getDivisionOfficeID(), new Date(0), "sdsdsd", s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID());
+			PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), "dsdfdfd" + Math.random(), new Date(0), "Shopping", dOffice.getId(), new Date(0), "sdsdsd", s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID());
 			poManager.addPO(po);
 
 			Item item = new Item("xdcfgvbnkmZSXDCFVGBH", ItemCategory.COMMON_OFFICE_FORMS, "PCS", "Available", "Good Condition");

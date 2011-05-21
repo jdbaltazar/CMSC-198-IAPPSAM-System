@@ -163,7 +163,7 @@ public class AccountCreation extends HttpServlet {
 			else if (accountType.equalsIgnoreCase("System Admin"))
 				accountType = AccountType.SYSTEM_ADMIN;
 			
-			Account account = new Account(userName, password, accountType, person.getPersonID());
+			Account account = new Account(userName, password, accountType, person.getId());
 			Contact contactLandLine = new Contact(landline, "LANDLINE");
 			Contact contactMobile = new Contact(cellphonNumber, "MOBILE");
 			Contact contactEmail = new Contact(emailAdd, "EMAIL");

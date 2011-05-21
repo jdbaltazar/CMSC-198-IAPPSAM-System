@@ -1,24 +1,21 @@
 package com.iappsam.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Employee implements Serializable {
-
-	private static final long serialVersionUID = -7665203460744028855L;
+public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Employee_ID")
-	private int employeeID;
+	private int id;
 
 	@Column(name = "Designation")
 	private String designation;
@@ -26,32 +23,33 @@ public class Employee implements Serializable {
 	@Column(name = "Employee_Number")
 	private String employeeNumber;
 
-	@Column(name = "Person_ID")
-	private int personID;
+	@ManyToOne
+	@JoinColumn(name = "Person_ID")
+	private Person person;
+
+	@ManyToOne
+	@JoinTable(name = "Employee_DivisionOffice", joinColumns = @JoinColumn(name = "Employee_ID"), inverseJoinColumns = @JoinColumn(name = "DivisionOffice_ID"))
+	private DivisionOffice divisionOffice;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(String designation, String employeeNumber, int personID) {
+	public Employee(String designation, String employeeNumber, Person person) {
 		super();
 		this.designation = designation;
 		this.employeeNumber = employeeNumber;
-		this.personID = personID;
+		this.person = person;
 	}
 
-	public Employee(String designation, int personID) {
+	public Employee(String designation, Person person) {
 		super();
 		this.designation = designation;
-		this.personID = personID;
+		this.person = person;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public int getEmployeeID() {
-		return employeeID;
+	public int getId() {
+		return id;
 	}
 
 	public String getDesignation() {
@@ -62,16 +60,24 @@ public class Employee implements Serializable {
 		return employeeNumber;
 	}
 
-	public int getPersonID() {
-		return personID;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setPersonID(int personID) {
-		this.personID = personID;
+	public DivisionOffice getDivisionOffice() {
+		return divisionOffice;
 	}
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
+	public void setDivisionOffice(DivisionOffice divisionOffice) {
+		this.divisionOffice = divisionOffice;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public void setId(int employeeID) {
+		this.id = employeeID;
 	}
 
 	public void setDesignation(String designation) {
@@ -86,7 +92,7 @@ public class Employee implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + employeeID;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -99,7 +105,7 @@ public class Employee implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (employeeID != other.employeeID)
+		if (id != other.id)
 			return false;
 		return true;
 	}

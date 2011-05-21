@@ -12,7 +12,7 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Person_ID")
-	private int personID;
+	private int id;
 	
 	@Column(name = "Title")
 	private String title;
@@ -35,8 +35,8 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getPersonID() {
-		return personID;
+	public int getId() {
+		return id;
 	}
 
 	public String getTitle() {
@@ -47,8 +47,8 @@ public class Person {
 		return name;
 	}
 
-	public void setPersonID(int personID) {
-		this.personID = personID;
+	public void setId(int personID) {
+		this.id = personID;
 	}
 
 	public void setTitle(String title) {
@@ -63,7 +63,7 @@ public class Person {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + personID;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -76,7 +76,7 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (personID != other.personID)
+		if (id != other.id)
 			return false;
 		return true;
 	}

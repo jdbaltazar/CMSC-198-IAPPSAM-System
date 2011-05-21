@@ -32,7 +32,7 @@ public class APPReport {
 		m.put("YEAR", app.getId().getYear() + "");
 		m.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber());
 		m.put("DATE_SCHEDULED", app.getDateScheduled() + "");
-		m.put("OFFICE", app.getId().getDivisionOfficeID() + "");
+		m.put("OFFICE", app.getId().getId() + "");
 		return m;
 	}
 }
