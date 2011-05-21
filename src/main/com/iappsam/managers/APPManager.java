@@ -22,6 +22,8 @@ public interface APPManager {
 
 	List<AnnualProcurementPlan> getAllAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
+	void removeAPP(AnnualProcurementPlan app) throws TransactionException;
+
 	// APPLine
 
 	void addAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;

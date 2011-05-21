@@ -51,17 +51,16 @@ public class APPManagerSessionTest {
 	@Test
 	public void addAPP() throws TransactionException, DuplicateEntryException {
 
-		addAPPDepedencies();
-
 		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, signatory, signatory);
 
-		APPManager appManager = new APPManagerSession();
-		appManager.addAPP(app);
+		APPManager appm = new APPManagerSession();
+		appm.addAPP(app);
 
-		assertTrue(appManager.containsAPP(app));
+		AnnualProcurementPlan appFromDb = appm.getAPP(app.getId());
+		assertEquals(app, appFromDb);
+
 		removeAPP(app);
-		appManager.close();
-		removeAPPDependencies();
+		appm.close();
 	}
 
 	private static void removeAPP(AnnualProcurementPlan app) {
@@ -75,17 +74,17 @@ public class APPManagerSessionTest {
 
 	@Test
 	public void addAPPLine() throws TransactionException, DuplicateEntryException {
-		addAPPDepedencies();
 
 		AnnualProcurementPlan app = new AnnualProcurementPlan(2011, office, signatory, signatory);
 
 		APPManager appManager = new APPManagerSession();
 		appManager.addAPP(app);
 
-		assertTrue(appManager.containsAPP(app));
-		removeAPP(app);
+		AnnualProcurementPlan appFromDb = appManager.getAPP(app.getId());
+		assertEquals(app, appFromDb);
+
+		appManager.removeAPP(app);
 		appManager.close();
-		removeAPPDependencies();
 	}
 
 	@After

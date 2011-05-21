@@ -2,9 +2,10 @@ package com.iappsam.entities.forms;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,7 +63,7 @@ public class AnnualProcurementPlan {
 		this.recommendedBy = s2;
 	}
 
-	public int getAppID() {
+	public int getId() {
 		return appID;
 	}
 

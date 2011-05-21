@@ -777,7 +777,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
   CONSTRAINT `fk_APP_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
+    ON DELETE RESTRICT
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
