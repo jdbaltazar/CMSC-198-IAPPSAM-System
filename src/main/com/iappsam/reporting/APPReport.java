@@ -17,7 +17,6 @@ import com.iappsam.entities.forms.AnnualProcurementPlan;
 
 public class APPReport {
 
-	private AnnualProcurementPlan app;
 	private Map<String, String> propertyMap;
 
 	public APPReport(AnnualProcurementPlan app) throws ReportException {
@@ -29,7 +28,6 @@ public class APPReport {
 		if (app == null)
 			throw new NullPointerException();
 
-		this.app = app;
 		propertyMap = createPropertyMap(app);
 	}
 

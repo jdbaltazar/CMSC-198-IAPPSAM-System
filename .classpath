@@ -70,5 +70,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreports-javaflow-4.0.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/times-new-roman.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
