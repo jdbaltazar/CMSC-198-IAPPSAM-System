@@ -83,6 +83,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(Employee.class);
 			conf.addAnnotatedClass(EmployeeDivisionOffice.class);
 			conf.addAnnotatedClass(Item.class);
+			conf.addAnnotatedClass(ItemCategory.class);
 			conf.addAnnotatedClass(ItemCondition.class);
 			conf.addAnnotatedClass(ItemStatus.class);
 			conf.addAnnotatedClass(ItemCategory.class);

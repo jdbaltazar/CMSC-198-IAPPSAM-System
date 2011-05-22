@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.resultTable{
+	font-family:Lucida Grande;
+}
+
+.tablerow_1{
+	background-color:#EEE0E5;
+}
+.viewbutton{
+	font-size:12px;
+	font-family:"Courier New", Courier, monospace;
+	background-color:#7B1113;
+	color: white;
+	border:none;
+}
+.viewbutton:hover{
+	border:none;
+	font-weight:bold;
+}
+.tableheaders{
+	background-color:#5E2605;
+	color:white;
+	font-family:Lucida Grande;
+	font-size:18px;
+	text-align:center;
+}
+.maroon{
+	font-size:12px;
+	font-family:Lucida Grande;
+	background-color:#7B1113;
+	color:white;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.maroon:hover{
+	font-weight:bold;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+
+.labels{
+	font-family:Lucida Grande;
+	font-size:16px;
+	font-weight:bold;
+}
+.button{
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:white;
+	color:#7B1113;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.button:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+#searchEmployeesDiv {
+	position:absolute;
+	width:471px;
+	height:33px;
+	z-index:1;
+	left: 393px;
+	top: 73px;
+}
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:29px;
+	z-index:2;
+	left: 827px;
+	top: 76px;
+}
+#apDiv2 {
+	position:absolute;
+	width:885px;
+	height:226px;
+	z-index:3;
+	left: 305px;
+	top: 301px;
+}
+#apDiv3 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:4;
+}
+#apDiv4 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:4;
+}
+#apDiv5 {
+	position:absolute;
+	width:900px;
+	height:115px;
+	z-index:3;
+	left: 270px;
+	top: 282px;
+}
+#apDiv6 {
+	position:absolute;
+	width:476px;
+	height:115px;
+	z-index:4;
+	left: 482px;
+	top: 30px;
+}
+#apDiv7 {
+	position:absolute;
+	width:1629px;
+	height:115px;
+	z-index:3;
+	left: -1548px;
+	top: 241px;
+}
+#apDiv8 {
+	position:absolute;
+	width:897px;
+	height:115px;
+	z-index:3;
+	left: 242px;
+	top: 150px;
+}
+
+#apDiv9 {
+	position:absolute;
+	width:959px;
+	height:290px;
+	z-index:3;
+	left: 204px;
+	top: 149px;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0">
+  <tr>
+    <td width="14%"><table width="100%" frame="below">
+      <tr>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Article/s</td>
+      </tr>
+    </table></td>
+    <td width="82%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="IIRUP_Form_2.html">
+      <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+    </form></td>
+  </tr>
+</table>
+<div id="apDiv9"><iframe src="IIRUP_Result_Table.html"  frameborder="0" width="100%" height="80%" name="results"></iframe></div>
+<p>&nbsp;</p>
+<div id="searchEmployeesDiv">
+  <form id="form1" name="form1" method="post" action="">
+    <label for="searchItemField" class="labels">Search:</label>
+    <input name="searchItemField" type="text" id="searchItemField" size="35" />
+    <input name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn" value="GO" />
+  </form>
+</div>
+<div id="apDiv1">
+  <form id="form2" name="form2" method="post" action="IIRUP_Form_2.html">
+    <input name="addAllBtn" type="submit" class="maroon" id="addAllBtn" value="Add All &gt;&gt;" />
+  </form>
+</div>
+</body>
+</html>

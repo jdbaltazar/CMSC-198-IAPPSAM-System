@@ -65,7 +65,7 @@ public interface ItemManager extends Manager {
 
 	List<ItemStatus> getAllItemStatus() throws TransactionException;
 
-	// ItemCodition
+	// ItemCondition
 
 	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
 
@@ -83,6 +83,8 @@ public interface ItemManager extends Manager {
 
 	List<ItemCondition> getAllItemCondition() throws TransactionException;
 
+	// ItemCategory
+	
 	void addItemCategory(ItemCategory category) throws TransactionException;
 
 	boolean containsItemCategory(ItemCategory category) throws TransactionException;

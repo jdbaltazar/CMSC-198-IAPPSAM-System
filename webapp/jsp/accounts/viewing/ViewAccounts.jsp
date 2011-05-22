@@ -1,21 +1,116 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
-.button {
-	font-family: "Courier New", Courier, monospace;
+.button2 {
+	font-size: 14px;
+	font-family: Lucida Grande;
 	background-color: white;
+	color: #7B1113;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.button2:hover {
+	font-weight: bold;
+	color: #060;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
+.header {
+	background-color: #7B1113;
+	width: 578px;
+	height: 25px;
+}
+
+.background {
+	background-color: #EEE0E5;
+	width: 578px;
+}
+
+.resultTable {
+	font-family: Lucida Grande;
+}
+
+.tablerow_1 {
+	background-color: #EEE0E5;
+}
+
+.viewbutton {
+	font-size: 12px;
+	font-family: "Courier New", Courier, monospace;
+	background-color: #7B1113;
+	color: white;
 	border: none;
 }
 
-.button:hover {
-	color: #0F3;
+.viewbutton:hover {
 	border: none;
+	font-weight: bold;
+}
+
+.tableheaders {
+	background-color: #5E2605;
+	color: white;
+	font-family: Lucida Grande;
+	font-size: 18px;
+	text-align: center;
+}
+
+.maroon {
+	font-size: 12px;
+	font-family: Lucida Grande;
+	background-color: #7B1113;
+	color: white;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.maroon:hover {
+	font-weight: bold;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
+.labels {
+	font-family: Lucida Grande;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.button {
+	font-size: 14px;
+	font-family: Lucida Grande;
+	background-color: white;
+	color: #7B1113;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.button:hover {
+	font-weight: bold;
+	color: #060;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
 }
 
 .header {
@@ -47,11 +142,11 @@
 #header {
 	background-color: #7B1113;
 	position: absolute;
-	width: 669px;
+	width: 778px;
 	height: 25px;
 	z-index: 2;
-	left: 327px;
-	top: 165px;
+	left: 332px;
+	top: 333px;
 }
 
 #apDiv2 {
@@ -68,32 +163,99 @@
 	width: 667px;
 	height: 349px;
 	z-index: 3;
-	left: 327px;
-	top: 192px;
+	left: -963px;
+	top: 398px;
+}
+
+#apDiv4 {
+	position: absolute;
+	width: 778px;
+	height: 26px;
+	z-index: 4;
+	left: 331px;
+	top: 359px;
+}
+
+#apDiv5 {
+	position: absolute;
+	width: 777px;
+	height: 142px;
+	z-index: 5;
+	left: 332px;
+	top: 388px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#footer {
+	position: absolute;
+	left: -3px;
+	top: 681px;
+	width: 100%;
 }
 </style>
 </head>
 
 <body>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="20%">
+		<td width="14%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View/Update
-				Account</td>
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View
+				Accounts</td>
 			</tr>
 		</table>
 		</td>
-		<td width="76%">&nbsp;</td>
+		<td width="82%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../MenuFrame.html"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="../MenuFrame.jsp"><input name="backBtn" type="submit"
+			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
 <table width="100%" border="0">
 	<tr>
 		<td>&nbsp;</td>
@@ -102,29 +264,46 @@
 <div id="header"
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Existing
 Accounts</div>
-<div id="apDiv3">
-<table width="100%" border="1">
+<div id="apDiv4">
+<table width="100%" border="1" cellspacing="0" class="tableheaders">
 	<tr>
-		<td width="28%" class="header">Username</td>
-		<td width="24%" class="header">Account Type</td>
-		<td width="32%" class="header">Name</td>
-		<td width="16%" class="header">Action</td>
+		<td width="33%">Account Type</td>
+		<td width="49%">Name</td>
+		<td width="18%">Action</td>
 	</tr>
+	
+</table>
+</div>
+<div id="apDiv5">
+<table width="100%" frame="box" cellspacing="0">
 	<%
-		List<String> userName = (List<String>) request.getAttribute("userName");
-		List<String> acctType = (List<String>) request.getAttribute("acctType");
-		List<String> name = (List<String>) request.getAttribute("name");
+		ArrayList<String> userName = (ArrayList<String>) request.getAttribute("userName");
+		ArrayList<String> acctType = (ArrayList<String>) request.getAttribute("acctType");
+		ArrayList<String> name = (ArrayList<String>) request.getAttribute("name");
 		int listSize = Integer.parseInt((String) request.getAttribute("listSize"));
-
+		boolean rowOdd=true;
 		for (int i = 0; i < listSize; i++) {
-			out.print("<tr><td>" + userName.get(i) + "</td>" + "<td>" + acctType.get(i) + "</td>" + "<td>" + name.get(i) + "</td>" + "<td align=" + '"' + "center" + '"' + ">" + "<form id=" + '"' + "form1" + '"' + " name=+" + '"' + "form1" + '"'
-					+ " method=" + '"' + "post" + '"' + " action=" + '"' + "../accounts/viewing/ViewAccount.do" + '"' + "><input type=" + '"' + "submit" + '"' + " name=" + '"' + "viewAccountBtn" + i + '"' + " id=" + '"' + "viewAccoutnBtn" + i
-					+ '"' + " class=" + '"' + "button" + '"' + " value=" + '"' + "View" + '"' + "/>");
-			out.print("<input type=" + '"' + "hidden" + '"' + " name=" + '"' + "userName" + '"' + " value=" + '"' + userName.get(i)+'"'+"/>");
-			out.print("</form></td>" + "</tr>");
+	%>
+	<tr<%if(rowOdd){
+		out.print(" class = "+'"'+"tablerow_1"+'"');
+		rowOdd=!rowOdd;
+	} 
+	%>>
+		<td width="33%"><%=acctType.get(i)%></td>
+		<td width="49%"><%=name.get(i)%></td>
+
+		<td width="18%" align="center">
+		<form id=<%="form" + i%> method="post"
+			action="../accounts/viewing/ViewAccount.do"><input
+			type="submit" name=<%="viewAccountBtn" + i%>
+			id=<%="viewAccountBtn" + i%> class="maroon" value="View &gt;&gt;" /> <input
+			type="hidden" name="userName" value=<%=userName.get(i)%> /></form>
+		</td>
+	</tr>
+
+	<%
 		}
 	%>
-
 </table>
 </div>
 <p>&nbsp;</p>

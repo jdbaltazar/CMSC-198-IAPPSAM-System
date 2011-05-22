@@ -78,19 +78,21 @@ public class Tester {
 			RISManager risManager = new RISManagerSession();
 			IIRUPManager iirupManager = new IIRUPManagerSession();
 			WMRManager wmrManager = new WMRManagerSession();
+			// -----------------------Account Creation and Login
+			// Test-----------------------
+			Person person = new Person("Mang2", "Tating2");
+			pManager.addPerson(person);
+			Account a = new Account("pusit", "bulad", AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
+			aManager.addAccount(a);
+			List<Account> accounts = aManager.getAllAccounts();
 
-			// Account a = new Account("hellow", "sxdcfvgbhn",
-			// AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
-			// aManager.addAccount(a);
-			// List<Account> accounts = aManager.getAllAccounts();
-			//
-			// for (Account ac : accounts) {
-			// System.out.println(ac.getUsername());
-			// }
+			for (Account ac : accounts) {
+				System.out.println(ac.getUsername());
+			}
 
-			// Account a2 = aManager.getAccount("hellow");
-			// a2.setPassword("password");
-			// aManager.updateAccount(a);
+			Account a2 = aManager.getAccount("hellow");
+			a2.setPassword("password");
+			aManager.updateAccount(a);
 
 			// Contact
 
@@ -442,28 +444,31 @@ public class Tester {
 			pManager.addPerson(p3);
 			pManager.addPerson(p4);
 
-//			Employee e1 = new Employee("Requisitioner", p1.getPersonID());
-//			Employee e2 = new Employee("Head", p2.getPersonID());
-//			Employee e3 = new Employee("Dean", p3.getPersonID());
-//			Employee e4 = new Employee("Dean", p4.getPersonID());
+			// Employee e1 = new Employee("Requisitioner", p1.getPersonID());
+			// Employee e2 = new Employee("Head", p2.getPersonID());
+			// Employee e3 = new Employee("Dean", p3.getPersonID());
+			// Employee e4 = new Employee("Dean", p4.getPersonID());
 
-//			pManager.addEmployee(e1);
-//			pManager.addEmployee(e2);
-//			pManager.addEmployee(e3);
-//			pManager.addEmployee(e4);
+			// pManager.addEmployee(e1);
+			// pManager.addEmployee(e2);
+			// pManager.addEmployee(e3);
+			// pManager.addEmployee(e4);
 
-//			Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
-//			Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
-//			Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
-//			Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
+			// Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
+			// Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
+			// Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
+			// Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
 
-//			pManager.addSignatory(s1);
-//			pManager.addSignatory(s2);
-//			pManager.addSignatory(s3);
-//			pManager.addSignatory(s4);
-//
-//			WasteMaterialsReport wmr = new WasteMaterialsReport(dOffice.getDivisionOfficeID(), new Date(0), s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(), s4.getSignatoryID());
-//			wmrManager.addWMR(wmr);
+			// pManager.addSignatory(s1);
+			// pManager.addSignatory(s2);
+			// pManager.addSignatory(s3);
+			// pManager.addSignatory(s4);
+			//
+			// WasteMaterialsReport wmr = new
+			// WasteMaterialsReport(dOffice.getDivisionOfficeID(), new Date(0),
+			// s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(),
+			// s4.getSignatoryID());
+			// wmrManager.addWMR(wmr);
 
 			Item item = Item.createManagedItem("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
 			iManager.addItem(item);
