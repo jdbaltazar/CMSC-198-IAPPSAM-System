@@ -73,7 +73,7 @@ public class LogIn extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			System.out.println("inside login success!!");
-			if(session!=null)
+			if (session != null)
 				System.out.println("Not nullll!!!!!!!!!!!!!!!!!!!");
 			if (session.isNew()) {
 				// store the username in the session
@@ -81,8 +81,8 @@ public class LogIn extends HttpServlet {
 
 				// set the time out to 30 mins
 				session.setMaxInactiveInterval(30);
-				
-				System.out.println(userName+" has logged in!");
+
+				System.out.println(userName + " has logged in!");
 			}
 			view.forward(request, response);
 		} catch (ServletException e) {

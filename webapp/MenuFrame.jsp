@@ -14,7 +14,6 @@
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
 }
-
 .maroon:hover {
 	font-weight: bold;
 	color: #060;
@@ -428,9 +427,8 @@
 </div>
 <div id="fillupDiv">
 <form id="form8" name="form8" method="get"
-	action="forms/FormsMenuPage.html"><input
-	name="fillupBtn" type="submit" class="button" id="fillupBtn"
-	value="Fillup" /></form>
+	action="forms/FormsMenuPage.html"><input name="fillupBtn"
+	type="submit" class="button" id="fillupBtn" value="Fillup" /></form>
 </div>
 <div id="viewFormDiv">
 <form id="form9" name="form9" method="post" action=""><input

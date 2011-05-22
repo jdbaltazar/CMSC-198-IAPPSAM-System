@@ -21,6 +21,7 @@ public abstract class AbstractManager implements Manager {
 		Transaction tx = session.beginTransaction();
 		try {
 			session.persist(entity);
+			
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
