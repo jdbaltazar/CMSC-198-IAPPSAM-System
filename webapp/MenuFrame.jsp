@@ -427,8 +427,8 @@
 	value="Inventory" /></form>
 </div>
 <div id="fillupDiv">
-<form id="form8" name="form8" method="post"
-	action="forms/view forms/IIRUP Form.html"><input
+<form id="form8" name="form8" method="get"
+	action="forms/FormsMenuPage.html"><input
 	name="fillupBtn" type="submit" class="button" id="fillupBtn"
 	value="Fillup" /></form>
 </div>
@@ -459,7 +459,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="form12" name="form12" method="post" action=""><input
+<form id="form12" name="form12" method="post" action=""LogIn.do""><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>

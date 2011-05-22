@@ -1,20 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.util.ArrayList"%>
 
-<%
-	ArrayList<String> articleName = (ArrayList<String>) request.getAttribute("articleName");
-	ArrayList<String> quantity = (ArrayList<String>) request.getAttribute("quantity");
-	ArrayList<String> unitCost = (ArrayList<String>) request.getAttribute("unitCost");
-	ArrayList<String> totalCost = (ArrayList<String>) request.getAttribute("totalCost");
-	ArrayList<String> propertyNo = (ArrayList<String>) request.getAttribute("propertyNo");
-	ArrayList<String> dateAcquired = (ArrayList<String>) request.getAttribute("dateAcquired");
-	ArrayList<String> noOfYearsInService = (ArrayList<String>) request.getAttribute("noOfYearsInService");
-	ArrayList<String> accumulatedDepreciation = (ArrayList<String>) request.getAttribute("accumulatedDepreciation");
-	ArrayList<String> disposition = (ArrayList<String>) request.getAttribute("disposition");
-	ArrayList<String> appraisal = (ArrayList<String>) request.getAttribute("appraisal");
-	ArrayList<String> orNumber = (ArrayList<String>) request.getAttribute("amount");
-	ArrayList<String> amount = (ArrayList<String>) request.getAttribute("amount");
-%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -193,7 +179,25 @@
 </table>
 </div>
 <div id="apDiv2" style="width: 100%">
-
+<%
+	String asOfField = (String) request.getParameter("asOfField");
+	String station = (String) request.getParameter("station");
+	int articleLength = 0;
+	if ((String) request.getParameter("articleLength") != null)
+		articleLength = Integer.parseInt((String) request.getParameter("articleLength"));
+	ArrayList<String> articleUnitNumbers = new ArrayList<String>();
+	for (int i = 0; i < articleLength; i++) {
+		articleUnitNumbers.add((String) request.getParameter("articleNumber" + i));
+	}
+%> <input name="auAsOfField" value="<%=asOfField%>" type="hidden" /> <input
+	name="auStation" value="<%=station%>" type="hidden" /> <input
+	name="articleLength" value="<%="" + articleLength%>" type="hidden" />
+<%
+	for (int i = 0; i < articleLength; i++) {
+%> <input name="<%="articleNumber" + i%>"
+	value="<%=articleUnitNumbers.get(i)%>" type="hidden" /> <%
+ 	}
+ %>
 <table width="100%" frame="box" cellspacing="0">
 
 	<tr class="tablerow_1">
@@ -229,25 +233,9 @@
 	</tr>
 	<tr>
 		<td>
-		<%
-			if (request.getAttribute("asOfField") != null) {
-				out.print("request1 " + (String) request.getAttribute("asOfField"));
-
-			} else {
-				out.print("request2 " + (String) request.getParameter("asOfField"));
-				request.setAttribute("asOfField", (String) request.getParameter("asOfField"));
-			}
-		%>
+	
 		</td>
 		<td>
-		<%
-			if (request.getAttribute("nameOfAcctableOfficer") != null) {
-				out.print("request1 " + (String) request.getAttribute("nameOfAcctableOfficer"));
-			} else {
-				out.print("request2 " + (String) request.getParameter("nameOfAcctableOfficer"));
-				request.setAttribute("nameOfAcctableOfficer", (String) request.getParameter("nameOfAcctableOfficer"));
-			}
-		%>
 		</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>

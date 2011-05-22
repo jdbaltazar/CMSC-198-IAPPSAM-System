@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.iappsam.entities.Account;
 import com.iappsam.managers.AccountManager;
@@ -68,6 +69,20 @@ public class LogIn extends HttpServlet {
 		try {
 			if (view == null) {
 				view = request.getRequestDispatcher("/MenuFrame.jsp");
+			}
+			HttpSession session = request.getSession();
+
+			System.out.println("inside login success!!");
+			if(session!=null)
+				System.out.println("Not nullll!!!!!!!!!!!!!!!!!!!");
+			if (session.isNew()) {
+				// store the username in the session
+				session.setAttribute("UserName", userName);
+
+				// set the time out to 30 mins
+				session.setMaxInactiveInterval(30);
+				
+				System.out.println(userName+" has logged in!");
 			}
 			view.forward(request, response);
 		} catch (ServletException e) {

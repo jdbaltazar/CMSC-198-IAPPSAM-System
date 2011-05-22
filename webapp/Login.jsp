@@ -184,7 +184,8 @@
     <div id="apDiv2">
       <label for="password" class="labels">Password:</label>
       <input name="password" type="password" id="password" size="25" />
-      <%String passwordIsOK=null;
+      <%
+      String passwordIsOK=null;
       if(request.getAttribute("passwordIsOK")==null)
     	  passwordIsOK=(String)request.getAttribute("passwordIsOK");
       %>

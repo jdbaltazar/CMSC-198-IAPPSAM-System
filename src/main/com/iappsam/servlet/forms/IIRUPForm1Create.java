@@ -21,7 +21,7 @@ import com.iappsam.util.ManagerBin;
 /**
  * Servlet implementation class IIRUPFormCreate
  */
-@WebServlet(name = "IIRUP_FormCreate.do", urlPatterns = { "/forms/view/forms/IIRUP_FormCreate.do" })
+@WebServlet(name = "IIRUP_FormCreate.do", urlPatterns = { "/forms/view/IIRUP_FormCreate.do" })
 public class IIRUPForm1Create extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class IIRUPForm1Create extends HttpServlet {
 		}
 
 		request.setAttribute("designationName", designationName);
-		RequestDispatcher view = request.getRequestDispatcher("../IIRUPForm.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../view/IIRUPForm.jsp");
 
 		view.forward(request, response);
 	}

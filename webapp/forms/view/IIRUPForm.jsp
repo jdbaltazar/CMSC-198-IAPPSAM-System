@@ -1,45 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.servlet.forms.IIRUPFormUtil"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.iappsam.servlet.forms.IIRUPFormUtil"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%
-	ArrayList<String> articleName = (ArrayList<String>) request.getAttribute("articleName");
-	ArrayList<String> quantity = (ArrayList<String>) request.getAttribute("quantity");
-	ArrayList<String> unitCost = (ArrayList<String>) request.getAttribute("unitCost");
-	ArrayList<String> totalCost = (ArrayList<String>) request.getAttribute("totalCost");
-	ArrayList<String> propertyNo = (ArrayList<String>) request.getAttribute("propertyNo");
-	ArrayList<String> dateAcquired = (ArrayList<String>) request.getAttribute("dateAcquired");
-	ArrayList<String> noOfYearsInService = (ArrayList<String>) request.getAttribute("noOfYearsInService");
-	ArrayList<String> accumulatedDepreciation = (ArrayList<String>) request.getAttribute("accumulatedDepreciation");
-	ArrayList<String> disposition = (ArrayList<String>) request.getAttribute("disposition");
-	ArrayList<String> appraisal = (ArrayList<String>) request.getAttribute("appraisal");
-	ArrayList<String> orNumber = (ArrayList<String>) request.getAttribute("orNumber");
-	ArrayList<String> amount = (ArrayList<String>) request.getAttribute("amount");
-	if (articleName == null || articleName.isEmpty())
-		request.setAttribute("articleName", articleName);
-	if (quantity == null || quantity.isEmpty())
-		request.setAttribute("quantity", quantity);
-	if (unitCost == null || unitCost.isEmpty())
-		request.setAttribute("unitCost", unitCost);
-	if (totalCost == null || totalCost.isEmpty())
-		request.setAttribute("totalCost", totalCost);
-	if (propertyNo == null || propertyNo.isEmpty())
-		request.setAttribute("propertyNo", propertyNo);
-	if (dateAcquired == null || dateAcquired.isEmpty())
-		request.setAttribute("dateAcquired", dateAcquired);
-	if (noOfYearsInService == null || noOfYearsInService.isEmpty())
-		request.setAttribute("noOfYearsInService", noOfYearsInService);
-	if (accumulatedDepreciation == null || accumulatedDepreciation.isEmpty())
-		request.setAttribute("accumulatedDepreciation", accumulatedDepreciation);
-	if (disposition == null || disposition.isEmpty())
-		request.setAttribute("disposition", disposition);
-	if (appraisal == null || appraisal.isEmpty())
-		request.setAttribute("appraisal", appraisal);
-	if (orNumber == null || orNumber.isEmpty())
-		request.setAttribute("orNumber", orNumber);
-	if (amount == null || amount.isEmpty())
-		request.setAttribute("amount", amount);
-%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
@@ -134,26 +96,26 @@
 #headerDiv {
 	position: absolute;
 	z-index: 1;
-	left: 398px;
-	top: 143px;
+	left: 407px;
+	top: 267px;
 }
 
 #background {
 	position: absolute;
 	width: 578px;
-	height: 256px;
+	height: 239px;
 	z-index: 2;
-	left: 398px;
-	top: 169px;
+	left: 407px;
+	top: 291px;
 }
 
 #apDiv1 {
 	position: absolute;
 	width: 290px;
-	height: 309px;
+	height: 323px;
 	z-index: 3;
-	left: 556px;
-	top: 178px;
+	left: 576px;
+	top: 304px;
 }
 
 #apDiv2 {
@@ -167,16 +129,16 @@
 
 #apDiv3 {
 	position: absolute;
-	width: 185px;
+	width: 221px;
 	height: 44px;
 	z-index: 4;
-	left: 418px;
-	top: 235px;
+	left: 402px;
+	top: 359px;
 }
 
 #apDiv4 {
 	position: absolute;
-	width: 429px;
+	width: 251px;
 	height: 33px;
 	z-index: 5;
 	left: -54px;
@@ -185,7 +147,7 @@
 
 #apDiv5 {
 	position: absolute;
-	width: 386px;
+	width: 200px;
 	height: 29px;
 	z-index: 5;
 	left: -11px;
@@ -197,8 +159,8 @@
 	width: 80px;
 	height: 30px;
 	z-index: 5;
-	left: 104px;
-	top: 208px;
+	left: 103px;
+	top: 182px;
 }
 
 #apDiv7 {
@@ -206,18 +168,68 @@
 	width: 579px;
 	height: 9px;
 	z-index: 5;
-	left: 398px;
-	top: 426px;
+	left: 407px;
+	top: 531px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#apDiv8 {
+	position: absolute;
+	width: 360px;
+	height: 29px;
+	z-index: 16;
+	left: -17px;
+	top: 123px;
+}
+
+#footer {
+	position: absolute;
+	left: 2px;
+	top: 629px;
+	width: 100%;
 }
 </style>
 </head>
-<%
-	IIRUPFormUtil get = new IIRUPFormUtil();
-%>
+
 <body>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="11%">
+		<td width="10%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
@@ -226,52 +238,85 @@
 			</tr>
 		</table>
 		</td>
-		<td width="85%">&nbsp;</td>
+		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.html"><input name="backBtn"
+			action="../FormsMenuPage.html"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
 <div class="background" id="background"></div>
 <div id="apDiv1">
-<form id="form1" name="form1" method="post" action="../IIRUPForm2.jsp">
+<form id="form1" name="form1" method="post" action="IIRUPForm2.jsp">
+
+<%
+	String asOfField = (String) request.getParameter("auAsOfField");
+	String station = (String) request.getParameter("auStation");
+	int articleLength = 0;
+	if ((String) request.getParameter("articleLength") != null)
+		articleLength = Integer.parseInt((String) request.getParameter("articleLength"));
+	ArrayList<String> articleUnitNumbers = new ArrayList<String>();
+	for (int i = 0; i < articleLength; i++) {
+		articleUnitNumbers.add((String) request.getParameter("articleNumber" + i));
+	}
+%> <input name="auAsOfField" value="<%=asOfField%>" type="hidden" /> <input
+	name="auStation" value="<%=station%>" type="hidden" /> <input
+	name="articleLength" value="<%="" + articleLength%>" type="hidden" />
+<%
+	for (int i = 0; i < articleLength; i++) {
+%> <input name="<%="articleNumber" + i%>"
+	value="<%=articleUnitNumbers.get(i)%>" type="hidden" /> <%
+ 	}
+ %>
+<!--auAsofField
+	auStation
+	articleLength
+	articleNumber  -->
 <p><label for="asOfField" class="labels">As of:</label> <input
-	type="text" name="asOfField" id="asOfField" /></p>
-<div id="apDiv2"><label for="nameOfAcctableOfficer"></label> <input
-	name="nameOfAcctableOfficer" type="text" id="nameOfAcctableOfficer"
-	size="35"
-	value="<%out.print(request.getAttribute("nameOfAcctableOfficer"));
-	if (request.getAttribute("nameOfAcctableOfficer") != null)
-				out.print(request.getAttribute("nameOfAcctableOfficer"));%>" /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<div id="apDiv4"><label for="designation" class="labels">Designation:</label>
-<select name="designation" id="designation">
+	type="text" name="asOfField" id="asOfField"
+	<%if (asOfField != null && !asOfField.isEmpty())
+				out.print("value=" + '"' + asOfField + '"');%> /></p>
+<div id="apDiv2"><label for="nameOfAcctableOfficer"></label> <select
+	name="accountableOfficer" id="accountableOfficer">
 	<%
+		IIRUPFormUtil get = new IIRUPFormUtil();
 		ArrayList<String> designationName = get.getdesignationName();
 		for (int i = 0; i < designationName.size(); i++) {
-	%><option><%=designationName.get(i)%><option />
+	%><option value="85" />
+	<%
+		if (!designationName.get(i).isEmpty())
+				out.print(designationName.get(i) + "  " + designationName.get(i).length());
+	%>
 	<%
 		}
 	%>
-	
+
 </select></div>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<div id="apDiv5"><label for="station" class="labels">Station:</label>
-<input name="station" type="text" id="station" size="30" /></div>
 <div id="apDiv6"><input name="nextBtn" type="submit"
 	class="maroon" id="nextBtn" value="Next&gt;&gt;" /></div>
+<p>&nbsp;</p>
+<div id="apDiv8"><label for="station" class="labels">Station:</label>
+<input type="text" name="station" id="station"
+	<%if (station != null && !station.isEmpty())
+				out.print("value=" + '"' + station + '"');%> /></div>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
+
 </form>
 </div>
 <div class="labels" id="apDiv3">
-<div align="right">Name of <br />
+<div align="right">Name &amp; Designation of <br />
 Accountable Officer:</div>
 </div>
 <div class="header" id="apDiv7"></div>
