@@ -34,4 +34,6 @@ public interface APPManager {
 
 	List<AnnualProcurementPlanLine> getAllAPPLine() throws TransactionException;
 
+	void removeAPPLine(AnnualProcurementPlanLine line1) throws TransactionException;
+
 }

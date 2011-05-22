@@ -470,13 +470,13 @@ public class Tester {
 			// s4.getSignatoryID());
 			// wmrManager.addWMR(wmr);
 
-			Item item = new Item("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
-			iManager.addItem(item);
-
-			// WasteMaterialsReportLine wmrLine = new
-			// WasteMaterialsReportLine(item.getItemID(), 100, "dfdfdfdf",
-			// "Destroyed", wmr.getWmrID());
-			// wmrManager.addWMRLine(wmrLine);
+//			Item item = Item.createManagedItem("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
+//			iManager.addItem(item);
+//
+//			// WasteMaterialsReportLine wmrLine = new
+//			// WasteMaterialsReportLine(item.getItemID(), 100, "dfdfdfdf",
+//			// "Destroyed", wmr.getWmrID());
+//			// wmrManager.addWMRLine(wmrLine);
 
 			System.out.println("Success!");
 

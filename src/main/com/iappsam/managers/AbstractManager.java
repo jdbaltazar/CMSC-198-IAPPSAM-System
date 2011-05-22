@@ -52,7 +52,7 @@ public abstract class AbstractManager implements Manager {
 		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			session.update(entity);
+			session.merge(entity);
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
@@ -70,6 +70,7 @@ public abstract class AbstractManager implements Manager {
 			session.delete(entity);
 			tx.commit();
 		} catch (HibernateException ex) {
+			ex.printStackTrace();
 			tx.rollback();
 			throw new TransactionException(ex.getMessage());
 		} finally {

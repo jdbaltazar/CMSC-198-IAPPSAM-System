@@ -9,12 +9,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "IIRUP_Line")
-public class IIRUPLine implements Serializable{
+public class IIRUPLine implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7906331383568019394L;
+
+	@Id
+	@Column(name = "IIRUP_ID")
+	private int iirupID;
 
 	@Id
 	@Column(name = "Item_ID")
@@ -34,20 +38,16 @@ public class IIRUPLine implements Serializable{
 
 	@Column(name = "Appraisal")
 	private String appraisal;
-	
+
 	@Column(name = "OR_Number")
 	private String orNumber;
-	
-	@Id
-	@Column(name = "IIRUP_ID")
-	private int iirupID;
 
 	public IIRUPLine() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
+	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal,
+			String orNumber, int iirupID) {
 		super();
 		this.itemID = itemID;
 		this.quantity = quantity;

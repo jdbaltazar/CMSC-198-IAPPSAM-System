@@ -65,4 +65,8 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 		remove(app);
 	}
 
+	@Override
+	public void removeAPPLine(AnnualProcurementPlanLine line) throws TransactionException {
+		remove(line);
+	}
 }

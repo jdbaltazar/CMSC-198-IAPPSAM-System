@@ -216,55 +216,55 @@
 </head>
 
 <body>
-<div id="footer">
-<table width="100%" frame="above" bordercolor="#333333"
-	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
-	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
-	</tr>
-</table>
-</div>
-<div id="logoHeader" style="width: 100%"><img name=""
-	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
-<div id="pageLabel" style="width: 100%;">
-<table width="100%" border="0">
-	<tr>
-		<td width="10%">
-		<table width="100%" frame="below">
+	<div id="footer">
+		<table width="100%" frame="above" bordercolor="#333333"
+			style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 			<tr>
-				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">IIRUP
-				Form</td>
+				<td>Copyright © 2011 All Rights Reserved</td>
 			</tr>
 		</table>
-		</td>
-		<td width="86%">&nbsp;</td>
-		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="../FormsMenuPage.html"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
-		</td>
-	</tr>
-</table>
-</div>
-<div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
-	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
-</form>
-</div>
-<div class="background" id="background"></div>
-<div id="apDiv1">
-<form id="form1" name="form1" method="post" action="IIRUPForm2.jsp">
+	</div>
+	<div id="logoHeader" style="width: 100%">
+		<img name="" src="../../images/header2.png" width="100%" height="115"
+			alt="" />
+	</div>
+	<div id="pageLabel" style="width: 100%;">
+		<table width="100%" border="0">
+			<tr>
+				<td width="10%">
+					<table width="100%" frame="below">
+						<tr>
+							<td
+								style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">IIRUP
+								Form</td>
+						</tr>
+					</table></td>
+				<td width="86%">&nbsp;</td>
+				<td width="4%">
+					<form id="form15" name="form15" method="post"
+						action="../FormsMenuPage.html">
+						<input name="backBtn" type="submit" class="button" id="backBtn"
+							value="Back" />
+					</form></td>
+			</tr>
+		</table>
+	</div>
+	<div id="logoutiv" style="width: 90%">
+		<form id="form2" name="form2" method="post" action="">
+			<input name="logout" type="submit" class="maroon" id="logout"
+				value="Logout" />
+		</form>
+	</div>
+	<div class="background" id="background"></div>
+	<div id="apDiv1">
+		<form id="form1" name="form1" method="post" action="IIRUPForm2.jsp">
+
 
 <%
 	String asOfField = (String) session.getAttribute("asOfField");
 	String station = (String) session.getAttribute("station");
 	session.invalidate();
-%> <!--auAsofField
-	auStation
-	articleLength
-	articleNumber  -->
-<p><label for="asOfField" class="labels">As of:</label> <input
+%><p><label for="asOfField" class="labels">As of:</label> <input
 	type="text" name="asOfField" id="asOfField"
 	<%if (asOfField != null)
 				out.print("value=" + '"' + asOfField + '"');%> /></p>
@@ -293,7 +293,6 @@
 	<%
 		}
 	%>
-
 </select></div>
 <p>&nbsp;</p>
 <div id="apDiv6"><input name="nextBtn" type="submit"

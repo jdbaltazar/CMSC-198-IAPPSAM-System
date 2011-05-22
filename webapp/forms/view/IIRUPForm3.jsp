@@ -271,7 +271,7 @@ fields are required</em></div>
 	session.setAttribute("orNumber", orNumber);
 	session.setAttribute("amount", amount);
 %>
-<form id="form1" name="form1" method="post" action="../../IAPPSAM forms/iirup.html">
+<form id="form1" name="form1" method="post" action="../../IAPPSAM forms/iirup.jsp">
 <p><label for="approvedBy" class="labels">Approved by:</label> <select
 	name="approvedBy" id="approvedBy" style="font-size: 10px;">
 	<%

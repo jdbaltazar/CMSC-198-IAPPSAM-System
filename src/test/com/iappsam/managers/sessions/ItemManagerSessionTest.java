@@ -32,7 +32,6 @@ public class ItemManagerSessionTest {
 
 		im.removeItem(item);
 		im.removeItem(item);
-
 	}
 
 	@After

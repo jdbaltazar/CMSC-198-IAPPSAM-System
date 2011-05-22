@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pr" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4641000000000124"/>
+	<property name="ireport.x" value="35"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" fill="Solid">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="PR_NUMBER" class="java.lang.String"/>
+	<parameter name="PR_DATE" class="java.lang.String"/>
+	<parameter name="SAI_NUMBER" class="java.lang.String"/>
+	<parameter name="SAI_DATE" class="java.lang.String"/>
+	<parameter name="ALOBS_NUMBER" class="java.lang.String"/>
+	<parameter name="ALOBS_DATE" class="java.lang.String"/>
+	<parameter name="APPROVED_BY_NAME" class="java.lang.String"/>
+	<parameter name="APPROVED_BY_DESIGNATION" class="java.lang.String"/>
+	<parameter name="REQUESTED_BY_NAME" class="java.lang.String"/>
+	<parameter name="REQUESTED_BY_DESIGNATION" class="java.lang.String"/>
+	<parameter name="PURPOSE" class="java.lang.String"/>
+	<parameter name="DIVISION" class="java.lang.String"/>
+	<parameter name="DEPARTMENT" class="java.lang.String"/>
+	<parameter name="SECTION" class="java.lang.String"/>
+	<field name="Quantity" class="java.lang.String"/>
+	<field name="Unit" class="java.lang.String"/>
+	<field name="Item Description" class="java.lang.String"/>
+	<field name="Stock No." class="java.lang.String"/>
+	<field name="Estimated Unit Cost " class="java.lang.String"/>
+	<field name="Estimated Cost" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="0" y="0" width="540" height="14"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PURCHASE REQUEST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="14" width="540" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[University of the Philippines Tacloban College]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<frame>
+				<reportElement style="style1" x="189" y="0" width="216" height="61"/>
+			</frame>
+			<frame>
+				<reportElement style="style1" mode="Transparent" x="0" y="0" width="189" height="61"/>
+			</frame>
+			<frame>
+				<reportElement style="style1" x="405" y="0" width="135" height="61"/>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="88" height="30"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Department: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="88" height="31"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Section]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="0" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[PR No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="20" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[SAI No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="0" width="35" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Date: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="20" width="35" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Date: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="40" width="35" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Date: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="0" width="101" height="30"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DEPARTMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="30" width="101" height="31"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SECTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="189" y="40" width="49" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[ALOB No.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="238" y="0" width="167" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{PR_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="20" width="167" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SAI_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="40" width="167" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ALOBS_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{PR_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="20" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SAI_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="40" width="100" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ALOBS_DATE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="44" y="0" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" mode="Transparent" x="88" y="0" width="238" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Item Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="326" y="0" width="57" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Stock No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="383" y="0" width="82" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Estimated Unit Cost ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="465" y="0" width="75" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Estimated Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="0" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement style="style1" x="0" y="0" width="44" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="44" y="0" width="44" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="88" y="0" width="238" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Item Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="326" y="0" width="57" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Stock No.}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="383" y="0" width="82" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Unit Cost }]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="465" y="0" width="75" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Cost}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="0" y="0" width="44" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Purpose:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="style1" x="44" y="0" width="496" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{PURPOSE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="0" y="14" width="88" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[SIGNATURE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="88" y="0" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[REQUESTED BY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="314" y="0" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[APPROVED BY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="28" width="88" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[PRINTED NAME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="42" width="88" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[DESIGNATION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="style1" x="88" y="28" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{REQUESTED_BY_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="88" y="42" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{REQUESTED_BY_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="314" y="28" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{APPROVED_BY_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="314" y="42" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{APPROVED_BY_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="style1" x="88" y="14" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="314" y="14" width="226" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="0" width="88" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
