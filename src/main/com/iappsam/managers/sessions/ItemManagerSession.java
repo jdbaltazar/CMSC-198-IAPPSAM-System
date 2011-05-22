@@ -40,7 +40,6 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsItem(Item item) throws TransactionException {
-
 		return get(Item.class, item.getId()) != null;
 	}
 
@@ -86,7 +85,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsUnit(Unit unit) throws TransactionException {
-		return contains(unit);
+		return get(Unit.class, unit.getUnit()) != null;
 	}
 
 	@Override
@@ -131,7 +130,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsItemStatus(ItemStatus itemStatus) throws TransactionException {
-		return contains(itemStatus);
+		return get(ItemStatus.class, itemStatus.getItemStatus()) != null;
 	}
 
 	@Override
@@ -176,7 +175,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsItemCondition(ItemCondition itemCondition) throws TransactionException {
-		return contains(itemCondition);
+		return get(ItemCondition.class, itemCondition.getItemCondition()) != null;
 	}
 
 	@Override
@@ -200,7 +199,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsItemCategory(ItemCategory category) throws TransactionException {
-		return contains(category);
+		return get(ItemCategory.class, category.getItemCategory()) != null;
 	}
 
 	@Override

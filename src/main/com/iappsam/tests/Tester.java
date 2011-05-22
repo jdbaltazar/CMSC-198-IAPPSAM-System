@@ -465,7 +465,7 @@ public class Tester {
 //			WasteMaterialsReport wmr = new WasteMaterialsReport(dOffice.getDivisionOfficeID(), new Date(0), s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(), s4.getSignatoryID());
 //			wmrManager.addWMR(wmr);
 
-			Item item = new Item("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
+			Item item = Item.createManagedItem("sdsd" + Math.random(), ItemCategory.OTHERS, "PCS", "Available", "Good Condition");
 			iManager.addItem(item);
 
 			// WasteMaterialsReportLine wmrLine = new

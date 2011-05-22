@@ -10,7 +10,7 @@ public class ItemTest {
 	public void sameItem() {
 		Item i = new Item();
 		i.setId(1);
-		
+
 		Item i2 = new Item();
 		i2.setId(1);
 

@@ -1,6 +1,8 @@
 package com.iappsam.entities.forms;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,7 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.iappsam.entities.DivisionOffice;
@@ -46,6 +50,9 @@ public class AnnualProcurementPlan {
 	@JoinColumn(name = "Signatory_ID1")
 	private Signatory recommendedBy;
 
+	@OneToMany(mappedBy = "app", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	private Set<AnnualProcurementPlanLine> lines = new HashSet<AnnualProcurementPlanLine>();
+
 	public AnnualProcurementPlan() {
 		super();
 	}
@@ -61,6 +68,10 @@ public class AnnualProcurementPlan {
 		this.divisionOffice = office;
 		this.preparedBy = s;
 		this.recommendedBy = s2;
+	}
+
+	public Set<AnnualProcurementPlanLine> getLines() {
+		return lines;
 	}
 
 	public int getId() {
@@ -85,6 +96,16 @@ public class AnnualProcurementPlan {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public void addLine(AnnualProcurementPlanLine line) {
+		line.setApp(this);
+		lines.add(line);
+	}
+
+	public void removeLine(AnnualProcurementPlanLine line) {
+		line.setApp(null);
+		lines.remove(line);
 	}
 
 	public DivisionOffice getDivisionOffice() {

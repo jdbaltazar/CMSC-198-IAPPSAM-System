@@ -32,10 +32,10 @@ public class Signatory {
 		super();
 	}
 
-	public Signatory(String description, Date signatureDate, Employee employee) {
+	public Signatory(String description, Date date, Employee employee) {
 		super();
 		this.description = description;
-		this.signatureDate = signatureDate;
+		this.signatureDate = date;
 		this.employee = employee;
 	}
 

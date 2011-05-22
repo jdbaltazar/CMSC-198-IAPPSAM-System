@@ -15,7 +15,6 @@ public class ItemCondition {
 
 	public ItemCondition() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ItemCondition(String itemCondition) {

@@ -2,10 +2,11 @@ package com.iappsam.entities.forms;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,30 +18,17 @@ import com.iappsam.entities.Item;
 
 @Entity
 @Table(name = "APP_Line")
-public class AnnualProcurementPlanLine implements Serializable{
+public class AnnualProcurementPlanLine implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7955015943267730159L;
 
-	@Embeddable
-	public static class Id implements Serializable {
-		private static final long serialVersionUID = 3314610323734035453L;
-		private int appId; // @Column(name = "APP_ID")
-		private String itemDescription; // @Column(name = "Item_Description")
-
-		public int getAppId() {
-			return appId;
-		}
-
-		public String getItemDescription() {
-			return itemDescription;
-		}
-	}
-
-	@EmbeddedId
-	private Id id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "APP_Line_ID")
+	private int id;
 
 	@Column(name = "Quantity_Quarter_1")
 	private int quantityQuarter1;
@@ -54,23 +42,20 @@ public class AnnualProcurementPlanLine implements Serializable{
 	@Column(name = "Quantity_Quarter_4")
 	private int quantityQuarter4;
 
-	@ManyToOne
-	@MapsId("appId")
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "APP_ID")
 	private AnnualProcurementPlan app;
 
 	@OneToOne
-	@MapsId("itemDescription")
-	@JoinColumn(name = "Item_Description")
+	@JoinColumn(name = "Item_ID")
 	private Item item;
 
 	public AnnualProcurementPlanLine() {
 		super();
 	}
 
-	public AnnualProcurementPlanLine(AnnualProcurementPlan app, Item item, int quantityQ1, int quantityQ2, int quantityQ3, int quantityQ4) {
+	public AnnualProcurementPlanLine(Item item, int quantityQ1, int quantityQ2, int quantityQ3, int quantityQ4) {
 		super();
-		this.app = app;
 		this.item = item;
 		this.quantityQuarter1 = quantityQ1;
 		this.quantityQuarter2 = quantityQ2;
@@ -94,11 +79,11 @@ public class AnnualProcurementPlanLine implements Serializable{
 		return quantityQuarter4;
 	}
 
-	public Id getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Id id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -132,5 +117,27 @@ public class AnnualProcurementPlanLine implements Serializable{
 
 	public void setQuantityQuarter4(int quantityQuarter4) {
 		this.quantityQuarter4 = quantityQuarter4;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AnnualProcurementPlanLine other = (AnnualProcurementPlanLine) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }

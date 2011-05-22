@@ -788,15 +788,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`APP_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
+  `APP_Line_ID` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
+  `APP_ID` INT NOT NULL ,
   `Quantity_Quarter_1` INT NOT NULL ,
   `Quantity_Quarter_2` INT NOT NULL ,
   `Quantity_Quarter_3` INT NOT NULL ,
   `Quantity_Quarter_4` INT NOT NULL ,
-  `APP_ID` INT NOT NULL ,
-  PRIMARY KEY (`Item_ID`, `APP_ID`) ,
+  PRIMARY KEY (`APP_Line_ID`) ,
   INDEX `fk_APP_Line_Item1` (`Item_ID` ASC) ,
   INDEX `fk_APP_Line_APP1` (`APP_ID` ASC) ,
+  UNIQUE INDEX `Item_ID_UNIQUE` (`Item_ID` ASC) ,
   CONSTRAINT `fk_APP_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )

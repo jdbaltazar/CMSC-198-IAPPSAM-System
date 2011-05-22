@@ -17,10 +17,10 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class PersonManagerSessionTest {
 
 	private PersonManager pm;
-	private Person p;
-	private Employee e;
+	private Person person;
+	private Employee employee;
 	private DivisionOfficeManager dom;
-	private DivisionOffice office;
+	private DivisionOffice divisionOffice;
 
 	@Before
 	public void initPersonManager() {
@@ -47,16 +47,16 @@ public class PersonManagerSessionTest {
 		addPersonThenAssert();
 		addOfficeThenAssert();
 
-		Employee e = new Employee("Designation", p);
-		e.setDivisionOffice(office);
+		Employee e = new Employee("Designation", person);
+		e.setDivisionOffice(divisionOffice);
 
 		pm.addEmployee(e);
 
 		Employee employeeFromDb = pm.getEmployee(e.getId());
 
 		assertEquals(e, employeeFromDb);
-		assertEquals(p, employeeFromDb.getPerson());
-		assertEquals(office, employeeFromDb.getDivisionOffice());
+		assertEquals(person, employeeFromDb.getPerson());
+		assertEquals(divisionOffice, employeeFromDb.getDivisionOffice());
 
 		pm.removeEmployee(e);
 		assertFalse(pm.containsEmployee(e));
@@ -70,42 +70,42 @@ public class PersonManagerSessionTest {
 	}
 
 	private void removeDivisionThenAssert() throws TransactionException {
-		dom.removeDivisionOffice(office);
-		assertFalse(dom.containsDivisionOffice(office));
+		dom.removeDivisionOffice(divisionOffice);
+		assertFalse(dom.containsDivisionOffice(divisionOffice));
 	}
 
 	private void addOfficeThenAssert() throws TransactionException {
 		dom = new DivisionOfficeManagerSession();
-		office = new DivisionOffice("Division", "Office");
-		dom.addDivisionOffice(office);
+		divisionOffice = new DivisionOffice("Division", "Office");
+		dom.addDivisionOffice(divisionOffice);
 
-		DivisionOffice doFromDb = dom.getDivisionOffice(office.getId());
-		assertEquals(office, doFromDb);
+		DivisionOffice doFromDb = dom.getDivisionOffice(divisionOffice.getId());
+		assertEquals(divisionOffice, doFromDb);
 	}
 
 	private void addPersonThenAssert() throws TransactionException, DuplicateEntryException {
-		p = new Person("John");
-		pm.addPerson(p);
-		Person personFromDb = pm.getPerson(p.getId());
-		assertEquals(p, personFromDb);
+		person = new Person("John");
+		pm.addPerson(person);
+		Person personFromDb = pm.getPerson(person.getId());
+		assertEquals(person, personFromDb);
 	}
 
 	private void addEmployeeThenAssert() throws TransactionException, DuplicateEntryException {
-		e = new Employee("Designation", p);
-		pm.addEmployee(e);
-		Employee employeeFromDb = pm.getEmployee(e.getId());
-		assertEquals(e, employeeFromDb);
-		assertEquals(p, employeeFromDb.getPerson());
+		employee = new Employee("Designation", person);
+		pm.addEmployee(employee);
+		Employee employeeFromDb = pm.getEmployee(employee.getId());
+		assertEquals(employee, employeeFromDb);
+		assertEquals(person, employeeFromDb.getPerson());
 		assertNull(employeeFromDb.getDivisionOffice());
 	}
 
 	private void removePersonThenAssert() throws TransactionException {
-		pm.removePerson(p);
-		assertFalse(pm.containsPerson(p));
+		pm.removePerson(person);
+		assertFalse(pm.containsPerson(person));
 	}
 
 	private void removeEmployeeThenAssert() throws TransactionException {
-		pm.removeEmployee(e);
-		assertFalse(pm.containsEmployee(e));
+		pm.removeEmployee(employee);
+		assertFalse(pm.containsEmployee(employee));
 	}
 }
