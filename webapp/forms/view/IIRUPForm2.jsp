@@ -181,14 +181,23 @@
 <div id="apDiv2" style="width: 100%">
 <%
 	String asOfField = (String) request.getParameter("asOfField");
+	if (asOfField == null || asOfField.isEmpty())
+		asOfField = (String) request.getAttribute("asOfField");
+	
 	String station = (String) request.getParameter("station");
+	if(station ==null|| station.isEmpty())
+		station = (String) request.getAttribute("station");
 	int articleLength = 0;
-	if ((String) request.getParameter("articleLength") != null)
+	if ((String) request.getParameter("articleLength") != null&&!((String)request.getParameter("articleLength")).isEmpty())
 		articleLength = Integer.parseInt((String) request.getParameter("articleLength"));
+	else if(request.getAttribute("articleLength")!=null)
+		articleLength = Integer.parseInt((String)request.getAttribute("articleLength"));
 	ArrayList<String> articleUnitNumbers = new ArrayList<String>();
 	for (int i = 0; i < articleLength; i++) {
 		articleUnitNumbers.add((String) request.getParameter("articleNumber" + i));
 	}
+	if(articleUnitNumbers.isEmpty())
+		articleUnitNumbers= (ArrayList<String>)request.getAttribute("articleNumber");
 %> <input name="auAsOfField" value="<%=asOfField%>" type="hidden" /> <input
 	name="auStation" value="<%=station%>" type="hidden" /> <input
 	name="articleLength" value="<%="" + articleLength%>" type="hidden" />
@@ -232,11 +241,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
-	
-		</td>
-		<td>
-		</td>
+		<td></td>
+		<td></td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
