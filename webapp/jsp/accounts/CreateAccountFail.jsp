@@ -408,7 +408,7 @@ Info</div>
 <%
 	String title = (String) request.getAttribute("title");
 %> <input name="title" type="text" id="title" size="20"
-	<%if (!title.isEmpty())
+	<%if (title != null && !title.isEmpty())
 				out.print("value=" + '"' + title + '"');%> /></p>
 <p>&nbsp;</p>
 <div id="apDiv9"><label for="designation3"
@@ -416,11 +416,13 @@ Info</div>
 <%
 	String designation = (String) request.getAttribute("designation");
 %> <input name="designation2" type="text" id="designation3" size="30"
-	<%if (!designation.isEmpty())
-				out.print("value=" + '"' + designation + '"');%> /><%
-	if (designation.isEmpty())
+	<%if (designation != null && !designation.isEmpty())
+				out.print("value=" + '"' + designation + '"');%> />
+<%
+	if (designation == null || designation.isEmpty())
 		out.print("*");
-%></div>
+%>
+</div>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -429,11 +431,13 @@ Info</div>
 <%
 	String name = (String) request.getAttribute("name");
 %> <input name="name" type="text" id="name" size="40"
-	<%if (!name.isEmpty())
-				out.print("value=" + '"' + name + '"');%> /><%
-	if (name.isEmpty())
+	<%if (name != null && !name.isEmpty())
+				out.print("value=" + '"' + name + '"');%> />
+<%
+	if (name == null || name.isEmpty())
 		out.print("*");
-%></div>
+%>
+</div>
 
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
@@ -443,9 +447,9 @@ Info</div>
 Num:</label> <%
  	String employeeNum = (String) request.getAttribute("employeeNumber");
  %> <input type="text" name="employeeNumber" id="employeeNumber3"
-	<%if (!employeeNum.isEmpty())
-		out.print("value="+'"'+employeeNum+'"');%> /></div>
-		
+	<%if (employeeNum != null && !employeeNum.isEmpty())
+				out.print("value=" + '"' + employeeNum + '"');%> /></div>
+
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -504,24 +508,38 @@ Num:</label> <%
 </label></p>
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" /></div>
+Number:</label> <%
+ 	String mobileNumber = (String) request.getAttribute("mobileNumber");
+ %> <input name="mobileNumber" type="text" id="mobileNumber3" size="25"
+	<%if (mobileNumber != null && !mobileNumber.isEmpty())
+				out.print("value=" + '"' + mobileNumber + '"');%> /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25" /></div>
+<%
+	String landline = (String) request.getAttribute("landline");
+%> <input name="landline" type="text" id="landline3" size="25"
+	<%if (landline != null && !landline.isEmpty())
+				out.print("value=" + '"' + landline + '"');%> /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" /></div>
+E-mail Address:</label> <%
+ 	String emailad = (String) request.getAttribute("emailad");
+ %><input name="emailad" type="text" id="emailad3" size="25"
+	<%if (emailad != null && !emailad.isEmpty())
+				out.print("value=" + '"' + emailad + '"');%> /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv16"><label for="userName3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
-<input name="userName" type="text" id="userName3" size="35" /></div>
+<%
+	String userName = (String) request.getAttribute("userName");
+%> <input name="userName" type="text" id="userName3" size="35"
+	<%if (userName != null && !userName.isEmpty())
+				out.print("value=" + '"' + userName + '"');%> /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv17"><label for="password3"

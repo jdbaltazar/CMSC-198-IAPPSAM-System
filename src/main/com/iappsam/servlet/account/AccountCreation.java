@@ -27,7 +27,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class CreateAccount
  */
-@WebServlet("/accounts/AccountCreate.do")
+@WebServlet("/accounts/AccountCreation.do")
 public class AccountCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -83,7 +83,7 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("emailad", emailAdd);
 			request.setAttribute("acctType", accountType);
 
-			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountFail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("CreateAccountFail.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -143,7 +143,7 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("emailad", emailAdd);
 			request.setAttribute("acctType", accountType);
 
-			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("dCreateAccountSuccess.jsp");
 			view.forward(request, response);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

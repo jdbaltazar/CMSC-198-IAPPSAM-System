@@ -5,18 +5,18 @@
 <title>Untitled Document</title>
 <style type="text/css">
 .maroon {
-	font-size: 14px;
+	font-size: 12px;
 	font-family: Lucida Grande;
-	background-color: #EEE0E5;
-	color: #030;
+	background-color: #7B1113;
+	color: white;
 	border-left: 1px solid lightgray;
 	border-right: 1px solid lightgray;
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
 }
+
 .maroon:hover {
 	font-weight: bold;
-	color: #060;
 	/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
 	border-right: 1px solid #7B1113;
@@ -288,7 +288,7 @@
 	height: 23px;
 	z-index: 28;
 	left: 596px;
-	top: 536px;
+	top: 557px;
 }
 
 #employeeDiv {
@@ -297,7 +297,7 @@
 	height: 24px;
 	z-index: 29;
 	left: 596px;
-	top: 557px;
+	top: 578px;
 }
 
 #apDiv4 {
@@ -312,7 +312,7 @@
 #recordsDiv {
 	position: absolute;
 	width: 99px;
-	height: 42px;
+	height: 62px;
 	z-index: 31;
 	left: 496px;
 	top: 536px;
@@ -339,6 +339,15 @@
 	left: 1px;
 	top: 918px;
 	width: 100%;
+}
+
+#apDiv5 {
+	position: absolute;
+	width: 200px;
+	height: 23px;
+	z-index: 32;
+	left: 596px;
+	top: 536px;
 }
 </style>
 </head>
@@ -367,7 +376,8 @@
 		<td>Welcome, <%
 			if (session.getAttribute("userName") == null) {
 				out.print(request.getAttribute("userName"));
-				session.setAttribute("userName", request.getAttribute("userName"));
+				session.setAttribute("userName",
+						request.getAttribute("userName"));
 			}
 		%>!</td>
 	</tr>
@@ -385,7 +395,7 @@
 <p>&nbsp;</p>
 <div id="createNewAcctDiv">
 <form id="form1" name="form1" method="post"
-	action="accounts/CreateAccount.html"><input
+	action="accounts/CreateAccount.jsp"><input
 	name="createNewAcctBtn" type="submit" class="button"
 	id="createNewAcctBtn" value="Create New" /></form>
 </div>
@@ -412,7 +422,7 @@
 </div>
 <div id="itemDiv">
 <form id="form5" name="form5" method="post"
-	action="stocks/items/SearchItems.html"><input name="itemBtn"
+	action="stocks/items/SearchItems.jsp"><input name="itemBtn"
 	type="submit" class="button" id="itemBtn" value="Item" /></form>
 </div>
 <div id="appDiv">
@@ -426,8 +436,8 @@
 	value="Inventory" /></form>
 </div>
 <div id="fillupDiv">
-<form id="form8" name="form8" method="get"
-	action="forms/FormsMenuPage.html"><input name="fillupBtn"
+<form id="form8" name="form8" method="post"
+	action="forms/FormsMenuPage.jsp"><input name="fillupBtn"
 	type="submit" class="button" id="fillupBtn" value="Fillup" /></form>
 </div>
 <div id="viewFormDiv">
@@ -436,19 +446,20 @@
 	value="View" /></form>
 </div>
 <div id="apDiv3">
-<form id="form10" name="form10" method="post" action=""><input
+<form id="form10" name="form10" method="post"
+	action="stocks/stocks/StockProperties.jsp"><input
 	name="stockPropBtn" type="submit" class="button2" id="stockPropBtn"
 	value="Stock Properties" /></form>
 </div>
 <div id="divisionOfficeDiv">
 <form id="form13" name="form13" method="post"
-	action="entities/division/ViewDivisionBldgOffice.html"><input
+	action="entities/division/SearchDivisionOffice.jsp"><input
 	name="divisionOfficeBtn" type="submit" class="button2"
-	id="divisionOfficeBtn" value="Building/Division/Office" /></form>
+	id="divisionOfficeBtn" value="Division/Office" /></form>
 </div>
 <div id="employeeDiv">
 <form id="form14" name="form14" method="post"
-	action="entities/employees/SearchEmployee.html"><input
+	action="entities/employees/SearchEmployee.jsp"><input
 	name="employeeBtn" type="submit" class="button2" id="employeeBtn"
 	value="Employees" /></form>
 </div>
@@ -457,7 +468,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="form12" name="form12" method="post" action=""LogIn.do""><input
+<form id="form12" name="form12" method="post" action=""><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>
@@ -465,9 +476,16 @@ Records:</div>
 <div id="stocksDiv"
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Forms</div>
 <div id="supplierDiv">
-<form id="form11" name="form11" method="post" action=""><input
+<form id="form11" name="form11" method="post"
+	action="entities/supplier/newversion/ViewSuppliers.jsp"><input
 	name="supplierBtn" type="submit" class="button2" id="supplierBtn"
 	value="Supplier" /></form>
+</div>
+<div id="apDiv5">
+<form id="form15" name="form15" method="post"
+	action="entities/building/SearchBuildings.jsp"><input
+	name="buildingBtn" type="submit" class="button2" id="buildingBtn"
+	value="Building" /></form>
 </div>
 </body>
 </html>

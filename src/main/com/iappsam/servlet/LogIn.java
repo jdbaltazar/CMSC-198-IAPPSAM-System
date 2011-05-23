@@ -36,6 +36,7 @@ public class LogIn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("/Login.jsp");
+		view.forward(request, response);
 	}
 
 	/**
@@ -45,8 +46,6 @@ public class LogIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
-		System.out.println(userName);
-		System.out.println(password);
 		if (evaluateLogin(userName, password))
 			logInSuccess(request, response, userName);
 		else
@@ -72,17 +71,12 @@ public class LogIn extends HttpServlet {
 			}
 			HttpSession session = request.getSession();
 
-			System.out.println("inside login success!!");
-			if (session != null)
-				System.out.println("Not nullll!!!!!!!!!!!!!!!!!!!");
 			if (session.isNew()) {
 				// store the username in the session
 				session.setAttribute("UserName", userName);
 
 				// set the time out to 30 mins
 				session.setMaxInactiveInterval(30);
-
-				System.out.println(userName + " has logged in!");
 			}
 			view.forward(request, response);
 		} catch (ServletException e) {
