@@ -18,14 +18,14 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 /**
  * Servlet implementation class LogIn
  */
-@WebServlet("/LogIn.do")
-public class LogIn extends HttpServlet {
+@WebServlet("/login.do")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LogIn() {
+	public Login() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -73,7 +73,7 @@ public class LogIn extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			System.out.println("inside login success!!");
-			if(session!=null)
+			if (session != null)
 				System.out.println("Not nullll!!!!!!!!!!!!!!!!!!!");
 			if (session.isNew()) {
 				// store the username in the session
@@ -81,8 +81,8 @@ public class LogIn extends HttpServlet {
 
 				// set the time out to 30 mins
 				session.setMaxInactiveInterval(30);
-				
-				System.out.println(userName+" has logged in!");
+
+				System.out.println(userName + " has logged in!");
 			}
 			view.forward(request, response);
 		} catch (ServletException e) {
@@ -113,11 +113,9 @@ public class LogIn extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	private boolean evaluateLogin(String userName, String password) {
-		// TODO Auto-generated method stub
 		AccountManager aManager = new AccountManagerSession();
 		try {
 			if (userName.isEmpty() || password.isEmpty())
@@ -129,7 +127,5 @@ public class LogIn extends HttpServlet {
 			return false;
 		}
 		return false;
-
 	}
-
 }

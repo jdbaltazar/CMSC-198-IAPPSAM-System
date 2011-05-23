@@ -4,32 +4,28 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
 @Entity
 public class Account {
-	
+
 	@Id
 	@Column(name = "Username")
 	private String username;
-	
+
 	@Column(name = "Password")
 	private String password;
-	
+
 	@Column(name = "Acquainted")
 	private boolean acquainted;
-	
+
 	@Column(name = "Account_Type")
 	private String accountType;
-	
-	
+
 	@Column(name = "Person_ID")
 	private int personID;
 
 	public Account() {
 		super();
 	}
-	
-	
 
 	public Account(String username, String password, String accountType, int personID) {
 		super();
@@ -38,8 +34,6 @@ public class Account {
 		this.accountType = accountType;
 		this.personID = personID;
 	}
-
-
 
 	public String getUsername() {
 		return username;
