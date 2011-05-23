@@ -214,64 +214,70 @@
 </head>
 
 <body>
-<div id="databaseDiv"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Database</div>
-<div id="accountDiv"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account</div>
-<div id="databaseMenuDiv">
-<div align="center" style="background-color: #EEE0E5;"><a href="#"
-	title="viewLogLink">View System Log</a><br />
-<a href="#" title="backup">Back-up</a> <br />
-<a href="#" title="restore">Restore</a></div>
-</div>
-<div id="welcomeDiv">
-<table width="100%" frame="below"
-	style="color: #003300; font-family: Lucida Grande; font-size: 22px; font-weight: bold">
-	<tr>
-		<td>Welcome, <%=(String) request.getAttribute("name")%></td>
-	</tr>
-</table>
-</div>
-<p>&nbsp;</p>
-<div id="formsDiv"
-	style="background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
-<div align="center">Forms</div>
-</div>
-<div id="entitiesDiv"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Entities</div>
-<div id="entitiesMenuDiv">
-<div align="center" style="background-color: #EEE0E5;"><a href="#"
-	title="employeeLink">Employee</a><br />
-<a href="#" title="divisionLink">Division</a> <br />
-<a href="#" title="supplierLink">Supplier</a> <br />
-<a href="#" title="bldgLink">Building</a></div>
-</div>
-<div id="accountMenuDiv">
-<div align="center" style="background-color: #EEE0E5;"><a
-	href="accounts/CreateAccount.html" title="createNewLink"
-	target="main_frame">Create New</a><br />
-<a href="#" title="searchLink">Search</a> <br />
-<a href="#" title="editAcctLink">Edit Account</a></div>
-</div>
-<p>&nbsp;</p>
-<div id="gap"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
-<p>&nbsp;</p>
-<div id="stocksDiv"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Stocks</div>
-<div id="formsMenuDiv" align="center" style="background-color: #EEE0E5;"><a
-	href="forms/Fillup.html" title="fillup" target="main_frame">Fill-up</a><br />
-<a href="#" title="viewForms" target="_self">View</a></div>
-<div id="stocksMenuDiv">
-<div align="center" style="background-color: #EEE0E5;"><a href="#"
-	title="manageItemsLink">Manage Items</a><br />
-<a href="#" title="manProdCatLink">Manage Product Categories</a><br />
-<a href="#" title="manageUnitsLink">Manage Units</a> <br />
-</div>
-</div>
-<div id="logout">
-<div align="center" style="background-color: #EEE0E5;"><a href="#"
-	title="logout">Logout</a></div>
-</div>
+	<div id="databaseDiv"
+		style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Database</div>
+	<div id="accountDiv"
+		style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account</div>
+	<div id="databaseMenuDiv">
+		<div align="center" style="background-color: #EEE0E5;">
+			<a href="#" title="viewLogLink">View System Log</a><br /> <a
+				href="#" title="backup">Back-up</a> <br /> <a href="#"
+				title="restore">Restore</a>
+		</div>
+	</div>
+	<div id="welcomeDiv">
+		<table width="100%" frame="below"
+			style="color: #003300; font-family: Lucida Grande; font-size: 22px; font-weight: bold">
+			<tr>
+				<td>Welcome, <%=(String) request.getAttribute("name")%></td>
+			</tr>
+		</table>
+	</div>
+	<p>&nbsp;</p>
+	<div id="formsDiv"
+		style="background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
+		<div align="center">Forms</div>
+	</div>
+	<div id="entitiesDiv"
+		style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Entities</div>
+	<div id="entitiesMenuDiv">
+		<div align="center" style="background-color: #EEE0E5;">
+			<a href="#" title="employeeLink">Employee</a><br /> <a href="#"
+				title="divisionLink">Division</a> <br /> <a href="#"
+				title="supplierLink">Supplier</a> <br /> <a href="#"
+				title="bldgLink">Building</a>
+		</div>
+	</div>
+	<div id="accountMenuDiv">
+		<div align="center" style="background-color: #EEE0E5;">
+			<a href="accounts/CreateAccount.html" title="createNewLink"
+				target="main_frame">Create New</a><br /> <a href="#"
+				title="searchLink">Search</a> <br /> <a href="#"
+				title="editAcctLink">Edit Account</a>
+		</div>
+	</div>
+	<p>&nbsp;</p>
+	<div id="gap"
+		style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	<p>&nbsp;</p>
+	<div id="stocksDiv"
+		style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Stocks</div>
+	<div id="formsMenuDiv" align="center"
+		style="background-color: #EEE0E5;">
+		<a href="forms/Fillup.html" title="fillup" target="main_frame">Fill-up</a><br />
+		<a href="#" title="viewForms" target="_self">View</a>
+	</div>
+	<div id="stocksMenuDiv">
+		<div align="center" style="background-color: #EEE0E5;">
+			<a href="#" title="manageItemsLink">Manage Items</a><br /> <a
+				href="#" title="manProdCatLink">Manage Product Categories</a><br />
+			<a href="#" title="manageUnitsLink">Manage Units</a> <br />
+		</div>
+	</div>
+	<div id="logout">
+		<div align="center" style="background-color: #EEE0E5;">
+			<a href="#" title="logout">Logout</a>
+		</div>
+	</div>
 </body>
 </html>

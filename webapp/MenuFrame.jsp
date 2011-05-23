@@ -368,7 +368,6 @@
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Database</div>
 <div id="accountDiv"
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account</div>
-
 <div id="welcomeDiv">
 <table width="100%" frame="below"
 	style="color: #003300; font-family: Lucida Grande; font-size: 22px; font-weight: bold">
@@ -376,15 +375,13 @@
 		<td>Welcome, <%
 			if (session.getAttribute("userName") == null) {
 				out.print(request.getAttribute("userName"));
-				session.setAttribute("userName",
-						request.getAttribute("userName"));
+				session.setAttribute("userName", request.getAttribute("userName"));
 			}
 		%>!</td>
 	</tr>
 </table>
 </div>
 <p>&nbsp;</p>
-
 <p>&nbsp;</p>
 <div id="formsDiv"
 	style="background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
