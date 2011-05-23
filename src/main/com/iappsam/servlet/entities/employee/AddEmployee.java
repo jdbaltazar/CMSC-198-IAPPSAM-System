@@ -1,4 +1,4 @@
-package com.iappsam.servlet.employee;
+package com.iappsam.servlet.entities.employee;
 
 import java.io.IOException;
 import java.util.ArrayList;

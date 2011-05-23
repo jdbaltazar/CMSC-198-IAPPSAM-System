@@ -100,7 +100,7 @@
 }
 #apDiv1 {
 	position:absolute;
-	width:290px;
+	width:316px;
 	height:323px;
 	z-index:3;
 	left: 576px;
@@ -181,8 +181,8 @@
 	width:360px;
 	height:29px;
 	z-index:16;
-	left: -17px;
-	top: 123px;
+	left: -14px;
+	top: 122px;
 }
 #footer{
 	position:absolute;
@@ -228,7 +228,12 @@
   <form id="form1" name="form1" method="post" action="IIRUP_Form_2.html">
     <p>
       <label for="asOfField" class="labels">As of:</label>
-      <input type="text" name="asOfField" id="asOfField" />
+      <select name="asOfMonth" id="asOfMonth">
+      </select>
+      <select name="asOfDay" id="asOfDay">
+      </select>
+      <select name="asOfYear" id="asOfYear">
+      </select>
     </p>
     <div id="apDiv2">
       <label for="nameOfAcctableOfficer"></label>
@@ -242,7 +247,8 @@
     <p>&nbsp;</p>
     <div id="apDiv8">
       <label for="station" class="labels">Station:</label>
-      <input type="text" name="station" id="station" />
+      <select name="station" id="station">
+      </select>
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
