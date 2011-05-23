@@ -92,24 +92,24 @@
 #header {
 	position:absolute;
 	z-index:1;
-	left: 398px;
-	top: 161px;
+	left: 425px;
+	top: 326px;
 }
 #background {
 	position:absolute;
 	width:579px;
-	height:258px;
+	height:207px;
 	z-index:2;
-	left: 398px;
-	top: 188px;
+	left: 425px;
+	top: 350px;
 }
 #apDiv1 {
 	position:absolute;
 	width:379px;
 	height:298px;
 	z-index:3;
-	left: 509px;
-	top: 201px;
+	left: 558px;
+	top: 357px;
 }
 #apDiv2 {
 	position:absolute;
@@ -124,8 +124,8 @@
 	width:487px;
 	height:27px;
 	z-index:4;
-	left: -45px;
-	top: 100px;
+	left: -46px;
+	top: 64px;
 }
 #apDiv4 {
 	position:absolute;
@@ -133,36 +133,73 @@
 	height:26px;
 	z-index:4;
 	left: -32px;
-	top: 143px;
+	top: 109px;
 }
 #apDiv5 {
 	position:absolute;
 	width:78px;
 	height:29px;
 	z-index:4;
-	left: 152px;
-	top: 203px;
+	left: 151px;
+	top: 159px;
 }
 #apDiv6 {
 	position:absolute;
 	width:581px;
 	height:9px;
 	z-index:4;
-	left: 397px;
-	top: 447px;
+	left: 424px;
+	top: 556px;
 }
 #apDiv7 {
 	position:absolute;
 	width:200px;
 	height:18px;
 	z-index:5;
-	left: 429px;
-	top: 416px;
+	left: 458px;
+	top: 525px;
+}
+#pageLabel {
+	position:absolute;
+	width:200px;
+	height:50px;
+	z-index:1;
+	top:181px;
+	left: 13px;
+}
+#logoHeader {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+}
+#logoutiv {
+	position:absolute;
+	width:200px;
+	height:30px;
+	z-index:15;
+	left: 14px;
+	top: 143px;
+}
+#footer{
+	position:absolute;
+	left: 1px;
+	top: 692px;
+	width: 100%;
 }
 </style>
 </head>
 
 <body>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
+ <tr>
+    <td>Copyright © 2011 All Rights Reserved</td>
+  </tr>
+</table>
+</div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
     <td width="11%"><table width="100%" frame="below">
@@ -176,6 +213,12 @@
     </form></td>
   </tr>
 </table>
+</div>
+<div id="logoutiv" style="width:90%">
+  <form id="form2" name="form2" method="post" action="">
+    <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+  </form>
+</div>
 <div class="header" id="header"></div>
 <div class="background" id="background"></div>
 <div class="header" id="apDiv6"></div>
@@ -185,13 +228,9 @@
   <form id="form1" name="form1" method="post" action="">
     <p>
       <label for="approvedBy" class="labels">Approved by:</label>
-      <input name="approvedBy" type="text" id="approvedBy" size="30" />
-    </p>
-    <div id="apDiv2">
-      <label for="designation" class="labels">Designation:</label>
-      <select name="designation" id="designation">
+      <select name="approvedBy" id="approvedBy">
       </select>
-    </div>
+    </p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <div id="apDiv3">

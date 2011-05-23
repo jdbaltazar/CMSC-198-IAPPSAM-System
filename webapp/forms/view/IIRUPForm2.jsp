@@ -138,6 +138,25 @@
 </head>
 
 <body>
+<%
+	String asOfField = (String) request.getParameter("asOfField");
+	if (asOfField != null)
+		session.setAttribute("asOfField", asOfField);
+
+	String station = (String) request.getParameter("station");
+	if (station != null)
+		session.setAttribute("station", station);
+
+	String accountableOfficer = (String) request.getParameter("accountableOfficer");
+	if (accountableOfficer != null)
+		session.setAttribute("accountableOfficer", accountableOfficer);
+
+	ArrayList<String> article = (ArrayList<String>) request.getAttribute("article");
+	ArrayList<String> unitCost = (ArrayList<String>) request.getAttribute("unitCost");
+	ArrayList<String> propertyNo = (ArrayList<String>) request.getAttribute("propertyNo");
+	ArrayList<String> dateAcquired = (ArrayList<String>) request.getAttribute("dateAcquired");
+	boolean isOdd = true;
+%>
 <table width="100%" border="0">
 	<tr>
 		<td width="11%">
@@ -157,10 +176,9 @@
 		</td>
 	</tr>
 </table>
-<div id="apDiv1" style="width: 100%">
-<table width="100%" border="1" cellspacing="0" class="tableheaders">
-	<tr>
-		<td width="18%">Articles</td>
+<table width="100%" frame="box" cellspacing="0">
+	<tr class="tableheaders">
+		<td hwidth="18%">Articles</td>
 		<td width="6%">Quantity</td>
 		<td width="6%">Unit Cost</td>
 		<td width="6%">Total Cost</td>
@@ -176,50 +194,46 @@
 		<td width="5%">Amount</td>
 		<td width="6%">ACTION</td>
 	</tr>
-</table>
-</div>
-<div id="apDiv2" style="width: 100%">
-<%
-	String asOfField = (String) request.getParameter("asOfField");
-	if (asOfField == null || asOfField.isEmpty())
-		asOfField = (String) request.getAttribute("asOfField");
-	
-	String station = (String) request.getParameter("station");
-	if(station ==null|| station.isEmpty())
-		station = (String) request.getAttribute("station");
-	int articleLength = 0;
-	if ((String) request.getParameter("articleLength") != null&&!((String)request.getParameter("articleLength")).isEmpty())
-		articleLength = Integer.parseInt((String) request.getParameter("articleLength"));
-	else if(request.getAttribute("articleLength")!=null)
-		articleLength = Integer.parseInt((String)request.getAttribute("articleLength"));
-	ArrayList<String> articleUnitNumbers = new ArrayList<String>();
-	for (int i = 0; i < articleLength; i++) {
-		articleUnitNumbers.add((String) request.getParameter("articleNumber" + i));
-	}
-	if(articleUnitNumbers.isEmpty())
-		articleUnitNumbers= (ArrayList<String>)request.getAttribute("articleNumber");
-%> <input name="auAsOfField" value="<%=asOfField%>" type="hidden" /> <input
-	name="auStation" value="<%=station%>" type="hidden" /> <input
-	name="articleLength" value="<%="" + articleLength%>" type="hidden" />
-<%
-	for (int i = 0; i < articleLength; i++) {
-%> <input name="<%="articleNumber" + i%>"
-	value="<%=articleUnitNumbers.get(i)%>" type="hidden" /> <%
- 	}
- %>
-<table width="100%" frame="box" cellspacing="0">
+	<%
+		for (int i = 0; article != null && i < article.size(); i++) {
+	%>
+	<tr
+		<%if (isOdd)
+					out.print("class=" + '"' + "tablerow_1" + '"');
 
-	<tr class="tablerow_1">
-		<td width="18%">&nbsp;</td>
-		<td width="6%" align="center">
-		<form id="form4" name="form4" method="post" action=""><input
-			name="quantity" type="text" class="textfields_1" id="quantity"
-			size="5" /></form>
+				isOdd = !isOdd;%>>
+
+		<td width="18%">
+		<%
+			if (article != null)
+					out.print(article.get(i));
+		%>
 		</td>
+
+		<td width="6%" align="center"><input
+			name="<%out.print("quantity" + i);%>" type="text"
+			class="textfields_1" id="quantity" size="5" /></td>
+
+		<td width="6%">
+		<%
+			if (unitCost != null)
+					out.print(unitCost.get(i));
+		%>
+		</td>
+
 		<td width="6%">&nbsp;</td>
-		<td width="6%">&nbsp;</td>
-		<td width="7%">&nbsp;</td>
-		<td width="8%">&nbsp;</td>
+		<td width="7%">
+		<%
+			if (propertyNo != null)
+					out.print(propertyNo.get(i));
+		%>;</td>
+		<td width="8%">
+		<%
+			if (propertyNo != null)
+					out.print(dateAcquired.get(i));
+		%>
+		</td>
+
 		<td width="9%" align="center"><input name="yearsInService"
 			type="text" class="textfields_1" id="yearsInService" size="5" /></td>
 		<td width="8%" align="center"><input name="depreciation"
@@ -233,61 +247,22 @@
 		<td width="5%" align="center"><input name="amount" type="text"
 			class="textfields_1" id="amount" size="5" /></td>
 		<td width="6%">
-		<form id="form1" name="form1" method="post" action="">
+		<form id="form1" name="form1" method="post" action=""></form>
+		</td>
 		<div align="center"><input name="removeBtn" type="submit"
 			title="Remove Article" style="background-color: #C00"
 			class="viewbutton" id="removeBtn" value="X" /></div>
-		</form>
-		</td>
 	</tr>
-	<tr>
+	<%
+		}
+	%>
+	<tr
+		<%if (isOdd)
+				out.print(" class=" + '"' + "tablerow_1" + '"');
+
+			isOdd = !isOdd;%>>
 		<td></td>
 		<td></td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-	</tr>
-	<tr class="tablerow_1">
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-	</tr>
-	<tr class="tablerow_1">
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
@@ -301,14 +276,13 @@
 		<td>&nbsp;</td>
 	</tr>
 </table>
-</div>
 <div id="apDiv3">
-<form id="form2" name="form2" method="post"
-	action="IIRUP_Add_Item_2.html"><input name="addItem"
+<form id="form2" name="form2" method="get"
+	action="SearchIIRUPItemList.do"><input name="addItem"
 	type="submit" class="maroon" id="addItem" value="Add Article" /></form>
 </div>
 <div id="apDiv4">
-<form id="form3" name="form3" method="post" action="IIRUP_Form_3.html">
+<form id="form3" name="form3" method="post" action="IIRUPForm3.jsp">
 <input name="nextBtn" type="submit" class="maroon" id="nextBtn"
 	value="Next&gt;&gt;" /></form>
 </div>
