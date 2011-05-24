@@ -57,15 +57,14 @@ public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
 
-	static {
+	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
 		try {
-
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.connection.username", "root");
-			p.setProperty("hibernate.connection.password", "123456");
-//			p.setProperty("hibernate.show_sql", "true");
+			// p.setProperty("hibernate.show_sql", "true");
+			p.setProperty("hibernate.connection.username", username);
+			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
 			p.setProperty("hibernate.search.default.directory_provider", "filesystem");
 
@@ -122,9 +121,9 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(WasteMaterialsReportLine.class);
 
 			sessionFactory = conf.buildSessionFactory();
-
+			return true;
 		} catch (Throwable ex) {
-			throw new ExceptionInInitializerError(ex);
+			return false;
 		}
 	}
 
@@ -134,5 +133,24 @@ public class HibernateUtil {
 
 	public static void endSession() {
 		sessionFactory.close();
+	}
+
+	public static boolean hotBoot() {
+		return sessionFactory == null;
+	}
+
+	public static boolean evaluate(String username, String password) {
+		if (hotBoot())
+			return tryToBuildSessionFactory(username, password);
+		else
+			return false;
+	}
+
+	public static void close() {
+
+		if (!hotBoot()) {
+			sessionFactory.close();
+			sessionFactory = null;
+		}
 	}
 }

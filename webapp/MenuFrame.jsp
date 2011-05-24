@@ -373,9 +373,9 @@
 	style="color: #003300; font-family: Lucida Grande; font-size: 22px; font-weight: bold">
 	<tr>
 		<td>Welcome, <%
-			if (session.getAttribute("userName") == null) {
-				out.print(request.getAttribute("userName"));
-				session.setAttribute("userName", request.getAttribute("userName"));
+			if (session.getAttribute("username") == null) {
+				out.print(request.getAttribute("username"));
+				session.setAttribute("username", request.getAttribute("username"));
 			}
 		%>!</td>
 	</tr>

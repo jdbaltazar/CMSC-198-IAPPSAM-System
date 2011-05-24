@@ -14,9 +14,13 @@ import com.iappsam.managers.sessions.ItemManagerSessionTest;
 import com.iappsam.managers.sessions.PersonManagerSessionTest;
 import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.SearchingTest;
+import com.iappsam.servlet.LoginTest;
+import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ PersonTest.class, //
+@SuiteClasses({ HibernateUtilTest.class, //
+		LoginTest.class, //
+		PersonTest.class, //
 		EmployeeTest.class,//
 		ItemTest.class,//
 		DivisionOfficeTest.class, //
