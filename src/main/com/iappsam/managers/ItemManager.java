@@ -20,6 +20,8 @@ public interface ItemManager extends Manager {
 	void updateItem(Item item) throws TransactionException;
 
 	Item getItem(int itemID) throws TransactionException;
+	
+	Item getItem(String description) throws TransactionException;
 
 	void removeItem(Item item) throws TransactionException;
 
@@ -28,6 +30,8 @@ public interface ItemManager extends Manager {
 	boolean containsItem(int itemID) throws TransactionException;
 
 	List<Item> getAllItems() throws TransactionException;
+	
+	List<Item> getAllExisitingItems() throws TransactionException;
 
 	// Unit
 

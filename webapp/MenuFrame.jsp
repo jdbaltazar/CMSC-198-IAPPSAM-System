@@ -419,7 +419,7 @@
 </div>
 <div id="itemDiv">
 <form id="form5" name="form5" method="post"
-	action="stocks/items/SearchItems.jsp"><input name="itemBtn"
+	action="items/ViewAllItems.do"><input name="itemBtn"
 	type="submit" class="button" id="itemBtn" value="Item" /></form>
 </div>
 <div id="appDiv">

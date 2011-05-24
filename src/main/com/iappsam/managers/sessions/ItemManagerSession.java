@@ -1,5 +1,6 @@
 package com.iappsam.managers.sessions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.Item;
@@ -34,6 +35,17 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
+	public Item getItem(String description) throws TransactionException {
+		// TODO Auto-generated method stub
+		List<Item> items = getAllItems();
+		for (Item i : items) {
+			if (i.getDescription().equalsIgnoreCase(description))
+				return i;
+		}
+		return null;
+	}
+
+	@Override
 	public void removeItem(Item item) throws TransactionException {
 		remove(item);
 	}
@@ -56,6 +68,19 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public List<Item> getAllItems() throws TransactionException {
 		return getList(Item.class);
+	}
+
+	@Override
+	public List<Item> getAllExisitingItems() throws TransactionException {
+		// TODO Auto-generated method stub
+		List<Item> items = getAllItems();
+		List<Item> results = new ArrayList<Item>();
+		for (Item i : items) {
+			if (i.getDateAcquired() != null) {
+				results.add(i);
+			}
+		}
+		return results;
 	}
 
 	@Override
@@ -104,32 +129,38 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void addItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		add(itemStatus);
 	}
 
 	@Override
-	public String saveItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public String saveItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		return (String) saveItemStatus(itemStatus);
 	}
 
 	@Override
-	public void updateItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void updateItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		update(itemStatus);
 	}
 
 	@Override
-	public ItemStatus getItemStatus(String itemStatus) throws TransactionException {
+	public ItemStatus getItemStatus(String itemStatus)
+			throws TransactionException {
 		return (ItemStatus) get(Item.class, itemStatus);
 	}
 
 	@Override
-	public void removeItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public void removeItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		remove(itemStatus);
 	}
 
 	@Override
-	public boolean containsItemStatus(ItemStatus itemStatus) throws TransactionException {
+	public boolean containsItemStatus(ItemStatus itemStatus)
+			throws TransactionException {
 		return get(ItemStatus.class, itemStatus.getItemStatus()) != null;
 	}
 
@@ -149,37 +180,44 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void addItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		add(itemCondition);
 	}
 
 	@Override
-	public String saveItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public String saveItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		return (String) save(itemCondition);
 	}
 
 	@Override
-	public void updateItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void updateItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		update(itemCondition);
 	}
 
 	@Override
-	public ItemCondition getItemCondition(String itemCondition) throws TransactionException {
+	public ItemCondition getItemCondition(String itemCondition)
+			throws TransactionException {
 		return (ItemCondition) get(ItemCondition.class, itemCondition);
 	}
 
 	@Override
-	public void removeItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public void removeItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		remove(itemCondition);
 	}
 
 	@Override
-	public boolean containsItemCondition(ItemCondition itemCondition) throws TransactionException {
+	public boolean containsItemCondition(ItemCondition itemCondition)
+			throws TransactionException {
 		return get(ItemCondition.class, itemCondition.getItemCondition()) != null;
 	}
 
 	@Override
-	public boolean containsItemCondition(String name) throws TransactionException {
+	public boolean containsItemCondition(String name)
+			throws TransactionException {
 		List<ItemCondition> itemConditions = getAllItemCondition();
 		for (ItemCondition itemCondition : itemConditions) {
 			if (itemCondition.getItemCondition().equalsIgnoreCase(name))
@@ -189,21 +227,25 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public List<ItemCondition> getAllItemCondition() throws TransactionException {
+	public List<ItemCondition> getAllItemCondition()
+			throws TransactionException {
 		return getList(ItemCondition.class);
 	}
 
-	public void addItemCategory(ItemCategory category) throws TransactionException {
+	public void addItemCategory(ItemCategory category)
+			throws TransactionException {
 		add(category);
 	}
 
 	@Override
-	public boolean containsItemCategory(ItemCategory category) throws TransactionException {
+	public boolean containsItemCategory(ItemCategory category)
+			throws TransactionException {
 		return get(ItemCategory.class, category.getItemCategory()) != null;
 	}
 
 	@Override
-	public void removeItemCategory(ItemCategory category) throws TransactionException {
+	public void removeItemCategory(ItemCategory category)
+			throws TransactionException {
 		remove(category);
 	}
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.servlet.forms.iirup.IIRUPFormUtil"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.iappsam.servlet.forms.IIRUPFormUtil"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -271,11 +272,11 @@ fields are required</em></div>
 	session.setAttribute("orNumber", orNumber);
 	session.setAttribute("amount", amount);
 %>
-<form id="form1" name="form1" method="post" action="../../IAPPSAM forms/iirup.jsp">
+<form id="form1" name="form1" method="post" action="../../IAPPSAM forms/iirup.do">
 <p><label for="approvedBy" class="labels">Approved by:</label> <select
 	name="approvedBy" id="approvedBy" style="font-size: 10px;">
 	<%
-		IIRUPFormUtil get = new IIRUPFormUtil();
+		//IIRUPFormUtil get = new IIRUPFormUtil();
 		ArrayList<String> name = get.getNames();
 		for (int i = 0; i < name.size(); i++) {
 	%>

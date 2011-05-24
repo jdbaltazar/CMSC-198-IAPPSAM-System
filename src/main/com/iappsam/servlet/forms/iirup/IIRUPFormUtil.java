@@ -1,4 +1,4 @@
-package com.iappsam.servlet.forms;
+package com.iappsam.servlet.forms.iirup;
 
 import java.util.ArrayList;
 import java.util.List;
