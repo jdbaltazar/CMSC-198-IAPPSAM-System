@@ -18,7 +18,7 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 /**
  * Servlet implementation class LogIn
  */
-@WebServlet("/login.do")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,15 +34,17 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/Login.jsp");
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		forwardToIndexJsp(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
 		System.out.println(userName);
@@ -53,7 +55,8 @@ public class Login extends HttpServlet {
 			logInFail(request, response);
 	}
 
-	private void logInSuccess(HttpServletRequest request, HttpServletResponse response, String userName) {
+	private void logInSuccess(HttpServletRequest request,
+			HttpServletResponse response, String userName) {
 		AccountManager aManager = new AccountManagerSession();
 
 		try {
@@ -61,11 +64,11 @@ public class Login extends HttpServlet {
 			request.setAttribute("personID", pID);
 			request.setAttribute("userName", userName);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("../MenuFrame.jsp");
+		RequestDispatcher view = request
+				.getRequestDispatcher("../MenuFrame.jsp");
 		try {
 			if (view == null) {
 				view = request.getRequestDispatcher("/MenuFrame.jsp");
@@ -95,17 +98,13 @@ public class Login extends HttpServlet {
 
 	}
 
-	private void logInFail(HttpServletRequest request, HttpServletResponse response) {
+	private void logInFail(HttpServletRequest request,
+			HttpServletResponse response) {
 
 		String passwordIsOK = "false";
-		RequestDispatcher view = request.getRequestDispatcher("../Login.jsp");
 		request.setAttribute("passwordIsOK", passwordIsOK);
 		try {
-			if (view == null) {
-				view = request.getRequestDispatcher("/Login.jsp");
-			}
-			if (view != null)
-				view.forward(request, response);
+			forwardToIndexJsp(request, response);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,6 +112,13 @@ public class Login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void forwardToIndexJsp(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher view;
+		view = request.getRequestDispatcher("/index.jsp");
+		view.forward(request, response);
 	}
 
 	private boolean evaluateLogin(String userName, String password) {

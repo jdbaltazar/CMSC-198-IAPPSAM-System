@@ -20,7 +20,7 @@
 		<div style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 18px; font-weight: bold">Login</div>
 	</div>
 	<div class="background">
-		<form id="form1" name="form1" method="post" action="login.do">
+		<form id="form1" name="form1" method="post" action="login">
 			<div class="login-layout">
 				Username <input name="userName" type="text" id="userName" size="25" />
 
