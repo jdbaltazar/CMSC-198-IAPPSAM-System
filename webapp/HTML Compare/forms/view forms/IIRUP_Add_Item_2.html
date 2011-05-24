@@ -26,7 +26,7 @@
 	background-color:#5E2605;
 	color:white;
 	font-family:Lucida Grande;
-	font-size:14px;
+	font-size:18px;
 	text-align:center;
 }
 .maroon{
@@ -79,10 +79,17 @@
 	width:471px;
 	height:33px;
 	z-index:1;
-	left: 501px;
-	top: 288px;
+	left: 394px;
+	top: 289px;
 }
-
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:29px;
+	z-index:2;
+	left: 829px;
+	top: 291px;
+}
 #apDiv2 {
 	position:absolute;
 	width:885px;
@@ -141,8 +148,8 @@
 	width:959px;
 	height:441px;
 	z-index:3;
-	left: 3px;
-	top: 380px;
+	left: 222px;
+	top: 399px;
 }
 #pageLabel {
 	position:absolute;
@@ -172,60 +179,27 @@
 	top: 843px;
 	width: 100%;
 }
-#apDiv10 {
-	position:absolute;
-	width:119px;
-	height:17px;
-	z-index:16;
-	left: 584px;
-	top: 336px;
-}
-#apDiv11 {
-	position:absolute;
-	width:104px;
-	height:28px;
-	z-index:17;
-	left: 692px;
-	top: 325px;
-}
-#apDiv9_2 {
-	position:absolute;
-	width:872px;
-	height:18px;
-	z-index:3;
-	left: 0px;
-	top: 429px;
-}
-#apDiv10_2 {
-	position:absolute;
-	width:871px;
-	height:174px;
-	z-index:4;
-	left: 1px;
-	top: 449px;
-}
-#apDiv1 {
-	position:absolute;
-	width:200px;
-	height:29px;
-	z-index:2;
-	left: 1px;
-	top: 380px;
-}
 </style>
 </head>
 
 <body>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
+ <tr>
+    <td>Copyright © 2011 All Rights Reserved</td>
+  </tr>
+</table>
+</div>
 <div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="14%"><table width="100%" frame="below">
+    <td width="15%"><table width="100%" frame="below">
       <tr>
         <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Article/s</td>
       </tr>
     </table></td>
-    <td width="82%">&nbsp;</td>
+    <td width="81%">&nbsp;</td>
     <td width="4%"><form id="form15" name="form15" method="post" action="IIRUP_Form_2.html">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
@@ -237,62 +211,7 @@
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
-
-<div id="apDiv10_2" style="width:100%">
-  <table width="100%" cellspacing="0" frame="box" class="resultTable">
-    <tr class="tablerow_1">
-      <td width="9%" align="center"><form id="form3" name="form3" method="post" action="">
-        <input type="checkbox" name="include_1" id="include_1" />
-        <label for="include_1"></label>
-      </form></td>
-      <td width="54%">&nbsp;</td>
-      <td width="37%">&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>
-  <p>&nbsp;</p>
-</div>
-<p>&nbsp;</p>
-<div id="apDiv1">
-  <form id="form2" name="form2" method="post" action="IIRUP_Form_2.html" target="_top">
-    <input name="addAllBtn" type="submit" class="maroon" id="addAllBtn" value="Add Selected Items &gt;&gt;" />
-  </form>
-</div>
-<div id="apDiv9_2" style="width:100%">
-  <table width="100%" border="0" cellspacing="0" class="tableheaders">
-    <tr>
-      <td width="9%">Include</td>
-      <td width="54%">Item Description</td>
-      <td width="37%">Item Category</td>
-    </tr>
-  </table>
-</div>
-<div id="footer">
-<table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
- <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
-  </tr>
-</table>
-</div>
+<div id="apDiv9"><iframe src="IIRUP_Result_Table.html"  frameborder="0" width="100%" height="80%" name="results"></iframe></div>
 <p>&nbsp;</p>
 <div id="searchEmployeesDiv">
   <form id="form1" name="form1" method="post" action="">
@@ -301,14 +220,10 @@
     <input name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn" value="GO" />
   </form>
 </div>
-
-<div id="apDiv10" style="font-family:Lucida Grande; font-size:10px; color:red;"><em>Item Not Found?</em></div>
-<p>&nbsp;</p>
-<div id="apDiv11">
-  <form id="form3" name="form3" method="post" action="">
-    <input name="addNewItem" type="submit" class="maroon" id="addNewItem" value="Add New &gt;&gt;" />
+<div id="apDiv1">
+  <form id="form2" name="form2" method="post" action="IIRUP_Form_2.html">
+    <input name="addAllBtn" type="submit" class="maroon" id="addAllBtn" value="Add All &gt;&gt;" />
   </form>
 </div>
 </body>
 </html>
-

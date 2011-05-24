@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.headerLabel{
+	font-family:Lucida Grande; 
+	color:white;
+	 font-size:16px;
+	 font-weight:bold;
+}
 .tableheaders{
 	/*background-color:#5E2605;
 	color:white;*/
@@ -444,6 +450,38 @@
 	left: 412px;
 	top: 527px;
 }
+#apDiv28 {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:18;
+	left: 410px;
+	top: 318px;
+}
+#apDiv29 {
+	position:absolute;
+	width:200px;
+	height:21px;
+	z-index:19;
+	left: 411px;
+	top: 468px;
+}
+#apDiv30 {
+	position:absolute;
+	width:200px;
+	height:20px;
+	z-index:20;
+	left: 408px;
+	top: 674px;
+}
+#apDiv31 {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:21;
+	top: 899px;
+	left: 409px;
+}
 </style>
 </head>
 
@@ -477,17 +515,17 @@
   </form>
 </div>
 <div id="background" style="background-color:#EEE0E5;"></div>
-<div id="accountInfoHeader" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Account Information</div>
-<div id="employmentDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Work Information</div>
+<div id="accountInfoHeader" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
+<div id="employmentDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="apDiv3" style="text-align:left; background-color:#7B1113;"></div>
-<div id="contactInfoDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Contact Information</div>
+<div id="contactInfoDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="apDiv24">
   <form id="form3" name="form3" method="post" action="">
     <input name="addContactInfoBtn" type="submit" class="maroon" id="addContactInfoBtn" value="Add New Contact Info &gt;&gt;" />
   </form>
 </div>
 <p>&nbsp;</p>
-<div id="personalInfo" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold;"> Personal Information</div>
+<div id="personalInfo" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold;"></div>
 <div id="titleDiv">
   <form id="form1" name="form1" method="post" action="">
     <p>&nbsp;</p>
@@ -553,12 +591,7 @@
   </form>
   <div id="apDiv10">
     <label for="acctType3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Account Type: </label>
-    <select name="acctType" id="acctType3" disabled="disabled">
-      <option>Non-SPSO Personnel (Employee)</option>
-      <option>Non-SPSO Personnel (Head)</option>
-      <option>SPSO Personnel</option>
-      <option>System Admin</option>
-    </select>
+    <%=(String) request.getAttribute("acctType")%>
   </div>
 </div>
 <div id="apDiv27">
@@ -587,5 +620,9 @@
     </tr>
   </table>
 </div>
+<div class="headerLabel" id="apDiv28">Personal Information</div>
+<div class="headerLabel" id="apDiv29">Work Information</div>
+<div class="headerLabel" id="apDiv30">Contact Information</div>
+<div class="headerLabel" id="apDiv31">Account Information</div>
 </body>
 </html>

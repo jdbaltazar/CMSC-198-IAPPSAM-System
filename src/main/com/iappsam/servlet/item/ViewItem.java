@@ -47,8 +47,7 @@ public class ViewItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -56,14 +55,12 @@ public class ViewItem extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("aaaaaaaaaaaa");
 
 		ItemManager iManager = new ItemManagerSession();
-		String description = (String) request.getParameter("description");
+		String description = (String)request.getParameter("description");
+
 		Item item = new Item();
 		try {
 			item = iManager.getItem(description);
@@ -71,20 +68,18 @@ public class ViewItem extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
+
 		request.setAttribute("description", item.getDescription());
 		request.setAttribute("unit", item.getUnit());
 		request.setAttribute("category", item.getCategory());
-		request.setAttribute("price", ""+item.getPrice());
-		//request.setAttribute("", );	//date
+		request.setAttribute("price", "" + item.getPrice());
+		// request.setAttribute("", ); //date
 		request.setAttribute("stockNumber", item.getStockNumber());
-		request.setAttribute("inventoryItemNumber", ""+item.getInventoryItemNumber());
+		request.setAttribute("inventoryItemNumber", "" + item.getInventoryItemNumber());
 		request.setAttribute("propertyNumber", item.getPropertyNumber());
-		request.setAttribute("status",item.getStatus());
+		request.setAttribute("status", item.getStatus());
 		request.setAttribute("condition", item.getCondition());
-		RequestDispatcher view = request
-				.getRequestDispatcher("../stocks/items/ViewItems.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/ViewItem.jsp");
 		view.forward(request, response);
 
 	}

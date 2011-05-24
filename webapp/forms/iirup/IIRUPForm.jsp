@@ -243,7 +243,7 @@
 				<td width="86%">&nbsp;</td>
 				<td width="4%">
 					<form id="form15" name="form15" method="post"
-						action="../FormsMenuPage.html">
+						action="../FormsMenuPage.jsp">
 						<input name="backBtn" type="submit" class="button" id="backBtn"
 							value="Back" />
 					</form></td>

@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.headerLabel{
+	font-family:Lucida Grande; 
+	color:white;
+	 font-size:16px;
+	 font-weight:bold;
+}
 .maroon{
 	font-size:12px;
 	font-family:Lucida Grande;
@@ -48,8 +54,8 @@
 	width:578px;
 	height:25px;
 	z-index:1;
-	left: 372px;
-	top: 328px;
+	left: 371px;
+	top: 329px;
 }
 #background {
 	position:absolute;
@@ -129,7 +135,7 @@
 	width:578px;
 	height:9px;
 	z-index:10;
-	left: 370px;
+	left: 371px;
 	top: 552px;
 }
 #border {
@@ -192,6 +198,14 @@
 	left: 158px;
 	top: 150px;
 }
+#apDiv10 {
+	position:absolute;
+	width:200px;
+	height:22px;
+	z-index:16;
+	left: 385px;
+	top: 330px;
+}
 </style>
 </head>
 
@@ -199,7 +213,7 @@
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -213,7 +227,7 @@
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="SearchBuildings.html">
+    <td width="4%"><form id="form15" name="form15" method="post" action="SearchBuildings.jsp">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -225,7 +239,7 @@
   </form>
 </div>
 <div id="background"  style="background-color:#EEE0E5;"></div>
-<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Building Information</div>
+<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
   <form id="form1" name="form1" method="post" action="">
     <p>
@@ -255,6 +269,7 @@
 </div>
 <div id="footer"></div>
 <p>&nbsp;</p>
+<div class="headerLabel" id="apDiv10" >Building Information</div>
 </body>
 </html>
 

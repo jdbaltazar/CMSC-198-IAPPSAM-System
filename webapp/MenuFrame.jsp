@@ -388,7 +388,7 @@
 <div align="center">Stocks</div>
 </div>
 <div id="entitiesDiv"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Entities</div>
+	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Settings</div>
 <p>&nbsp;</p>
 <div id="createNewAcctDiv">
 <form id="form1" name="form1" method="post"
@@ -419,7 +419,7 @@
 </div>
 <div id="itemDiv">
 <form id="form5" name="form5" method="post"
-	action="items/ViewAllItems.do"><input name="itemBtn"
+	action="items/SearchAllItems.do"><input name="itemBtn"
 	type="submit" class="button" id="itemBtn" value="Item" /></form>
 </div>
 <div id="appDiv">
@@ -484,5 +484,6 @@ Records:</div>
 	name="buildingBtn" type="submit" class="button2" id="buildingBtn"
 	value="Building" /></form>
 </div>
+
 </body>
 </html>

@@ -396,7 +396,7 @@
 		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
+			action="../items/ViewAllItems.do"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
@@ -542,7 +542,7 @@ Condition:</label> <select name="itemCondition" disabled="disabled"
 	<option><%=condition%></option>
 </select></div>
 <p>&nbsp;</p>
-<div id="apDiv20"><input type="submit" name="addItemBtn" id="addItemBtn"
+<div id="apDiv20"><input type="submit" name="addItemBtn" id="addItemBtn" disabled="disabled"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
 	value="Update" /></div>
 <p>&nbsp;</p>

@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.button{
+	width:135px;
+	height:26px;
+	background-color:#7B1113;
+	color:white;
+	font-family:Lucida Grande;
+	font-size:16px;
+}
+
+.borders{
+	text-align:center;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+}
+#department {
+	position:absolute;
+	width:200px;
+	height:26px;
+	z-index:1;
+	left: 102px;
+	top: 201px;
+}
+#apDiv2 {
+	position:absolute;
+	width:255px;
+	height:30px;
+	z-index:2;
+	left: 76px;
+	top: 239px;
+}
+#apDiv3 {
+	position:absolute;
+	width:63px;
+	height:36px;
+	z-index:3;
+	left: 478px;
+	top: 928px;
+}
+#apDiv4 {
+	position:absolute;
+	width:153px;
+	height:28px;
+	z-index:4;
+	left: 720px;
+	top: 928px;
+}
+#apDiv5 {
+	position:absolute;
+	width:156px;
+	height:29px;
+	z-index:5;
+	left: 886px;
+	top: 929px;
+}
+#apDiv6 {
+	position:absolute;
+	width:125px;
+	height:25px;
+	z-index:6;
+	left: 826px;
+	top: 891px;
+}
+#apDiv7 {
+	position:absolute;
+	width:200px;
+	height:26px;
+	z-index:7;
+	left: 541px;
+	top: 198px;
+}
+#apDiv8 {
+	position:absolute;
+	width:200px;
+	height:31px;
+	z-index:8;
+	left: 543px;
+	top: 222px;
+}
+#apDiv9 {
+	position:absolute;
+	width:200px;
+	height:31px;
+	z-index:9;
+	left: 545px;
+	top: 251px;
+}
+#apDiv10 {
+	position:absolute;
+	width:80px;
+	height:25px;
+	z-index:10;
+	left: 1039px;
+	top: 199px;
+}
+#apDiv11 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:11;
+}
+#apDiv12 {
+	position:absolute;
+	width:67px;
+	height:28px;
+	z-index:11;
+	left: 1102px;
+	top: 198px;
+}
+#apDiv13 {
+	position:absolute;
+	width:85px;
+	height:25px;
+	z-index:12;
+	left: 1156px;
+	top: 199px;
+}
+#apDiv14 {
+	position:absolute;
+	width:65px;
+	height:26px;
+	z-index:13;
+	left: 1041px;
+	top: 224px;
+}
+#apDiv15 {
+	position:absolute;
+	width:57px;
+	height:26px;
+	z-index:14;
+	left: 1104px;
+	top: 225px;
+}
+#apDiv16 {
+	position:absolute;
+	width:83px;
+	height:26px;
+	z-index:15;
+	left: 1156px;
+	top: 223px;
+}
+#apDiv17 {
+	position:absolute;
+	width:65px;
+	height:27px;
+	z-index:16;
+	left: 1042px;
+	top: 249px;
+}
+#apDiv18 {
+	position:absolute;
+	width:50px;
+	height:28px;
+	z-index:17;
+	left: 1105px;
+	top: 250px;
+}
+#apDiv19 {
+	position:absolute;
+	width:79px;
+	height:28px;
+	z-index:18;
+	left: 1158px;
+	top: 248px;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0">
+  <tr>
+    <td width="17%"><table width="100%" frame="below">
+      <tr>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Purchase Request</td>
+      </tr>
+    </table></td>
+    <td width="80%">&nbsp;</td>
+    <td width="3%"><a href="../MenuFrame.html" title="Back to main menu" target="main_frame">Home</a></td>
+  </tr>
+</table>
+<div id="apDiv7">
+  <form id="form23" name="form23" method="post" action="">
+    <label for="P.R. No."></label>
+    <input name="P.R. No." type="text" id="P.R. No." />
+  </form>
+</div>
+<div id="apDiv8">
+  <form id="form24" name="form24" method="post" action="">
+    <label for="SAINumber"></label>
+    <input name="SAINumber" type="text" id="SAINumber" />
+  </form>
+</div>
+<div id="apDiv9">
+  <form id="form25" name="form25" method="post" action="">
+    <label for="ALBSNum"></label>
+    <input name="ALBSNum" type="text" id="ALBSNum" />
+  </form>
+</div>
+<div id="apDiv10">
+  <form id="form26" name="form26" method="post" action="">
+    <label for="dateMM_1"></label>
+    <select name="dateMM_1" id="dateMM_1">
+          <option selected="selected">MM</option>
+      <option>Jan</option>
+      <option>Feb</option>
+      <option>Mar</option>
+      <option>Apr</option>
+      <option>May</option>
+      <option>Jun</option>
+      <option>Jul</option>
+      <option>Aug</option>
+      <option>Sep</option>
+      <option>Oct</option>
+      <option>Nov</option>
+      <option>Dec</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv12">
+  <form id="form27" name="form27" method="post" action="">
+    <label for="dateDD_1"></label>
+    <select name="dateDD_1" id="dateDD_1">
+    <option selected="selected">DD</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv13">
+  <form id="form28" name="form28" method="post" action="">
+    <label for="dateYY_1"></label>
+    <select name="dateYY_1" id="dateYY_1">
+    <option selected="selected">YYYY</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv14">
+  <form id="form29" name="form29" method="post" action="">
+    <label for="dateMM_2"></label>
+    <select name="dateMM_2" id="dateMM_2">
+          <option selected="selected">MM</option>
+      <option>Jan</option>
+      <option>Feb</option>
+      <option>Mar</option>
+      <option>Apr</option>
+      <option>May</option>
+      <option>Jun</option>
+      <option>Jul</option>
+      <option>Aug</option>
+      <option>Sep</option>
+      <option>Oct</option>
+      <option>Nov</option>
+      <option>Dec</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv15">
+  <form id="form30" name="form30" method="post" action="">
+    <label for="dateDD_2"></label>
+    <select name="dateDD_2" id="dateDD_2">
+    <option selected="selected">DD</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv16">
+  <form id="form31" name="form31" method="post" action="">
+    <label for="dateYY_2"></label>
+    <select name="dateYY_2" id="dateYY_2">
+    <option selected="selected">YYYY</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv17">
+  <form id="form32" name="form32" method="post" action="">
+    <label for="dateMM_3"></label>
+    <select name="dateMM_3" id="dateMM_3">
+          <option selected="selected">MM</option>
+      <option>Jan</option>
+      <option>Feb</option>
+      <option>Mar</option>
+      <option>Apr</option>
+      <option>May</option>
+      <option>Jun</option>
+      <option>Jul</option>
+      <option>Aug</option>
+      <option>Sep</option>
+      <option>Oct</option>
+      <option>Nov</option>
+      <option>Dec</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv18">
+  <form id="form33" name="form33" method="post" action="">
+    <select name="dateDD_3" id="dateDD_3">
+    <option selected="selected">DD</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+      <option>31</option>
+    </select>
+  </form>
+</div>
+<div id="apDiv19">
+  <form id="form34" name="form34" method="post" action="">
+    <select name="dateYY_3" id="dateYY_3">
+    <option selected="selected">YYYY</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2015</option>
+      <option>2016</option>
+    </select>
+  </form>
+</div>
+<p>&nbsp;</p>
+<table width="100%" border="1">
+  <tr>
+    <td><p align="center"><strong>PURCHASE REQUEST<br />
+        <u>University of the Philippines Visayas Tacloban College</u> </strong><br />
+    (Agency)</p>
+      <table width="100%" border="1">
+        <tr>
+          <td width="30%" rowspan="3">Department:<br />
+          <br />
+          Section: 
+          <div id="apDiv2">
+            <form id="form2" name="form2" method="post" action="">
+              <select name="section" id="section">
+                <option>Accounting Office</option>
+                <option>Associate Dean</option>
+                <option>Auxiliary Services</option>
+                <option>Cash</option>
+                <option>CDMO</option>
+                <option>Clinic</option>
+                <option>COA</option>
+                <option>College Secretary</option>
+                <option>CWTS</option>
+                <option>Dean</option>
+                <option>GDP</option>
+                <option>HRDO</option>
+                <option>Library</option>
+                <option>LSHC</option>
+                <option>OASH</option>
+                <option>OCEP</option>
+                <option>OSA</option>
+                <option>ROTC</option>
+                <option>SAO</option>
+                <option>SPSO</option>
+                <option>Student Council</option>
+                <option>SWF</option>
+                <option>System Administration</option>
+                <option>TILC</option>
+                <option>TLRC</option>
+                <option>UP Vista</option>
+              </select>
+            </form>
+          </div></td>
+          <td width="35%">P.R. No.</td>
+          <td width="35%">Date:</td>
+        </tr>
+        <tr>
+          <td>SAI No.</td>
+          <td>Date:</td>
+        </tr>
+        <tr>
+          <td>ALOBS No.</td>
+          <td>Date:</td>
+        </tr>
+      </table>
+      <table width="100%" border="1">
+        <tr>
+          <th width="7%" scope="col">Quantity</th>
+          <th width="10%" scope="col">Unit of<br />
+          Issue</th>
+          <th width="48%" scope="col">Item Description</th>
+          <th width="12%" scope="col">Stock No.</th>
+          <th width="12%" scope="col">Estimated<br />
+          Unit Cost</th>
+          <th width="11%" scope="col">Estimated<br />
+            Cost</th>
+        </tr>
+        <tr>
+          <td><div align="center">
+            <form id="form5" name="form5" method="post" action="">
+              <input name="quantity" type="text" id="quantity" class="borders" size="6" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form16" name="form16" method="post" action="">
+              <label for="unitOfIssue"></label>
+              <select name="unitOfIssue" id="unitOfIssue">
+                <option selected="selected">PCS.</option>
+                <option>M</option>
+                <option>CM</option>
+                <option>KG</option>
+              </select>
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form14" name="form14" method="post" action="">
+              <label for="itemDescription"></label>
+              <input name="itemDescription" type="text" class="borders" id="itemDescription" size="100" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form15" name="form15" method="post" action="">
+              <label for="stockNumber"></label>
+              <input name="stockNumber" type="text" class="borders" id="stockNumber" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form6" name="form6" method="post" action="">
+              <input type="text" name="estUnitCost" class="borders" id="estUnitCost" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form7" name="form7" method="post" action="">
+              <input type="text" name="estimatedCost" class="borders" id="estimatedCost" />
+            </form>
+          </div></td>
+        </tr>
+        <tr>
+          <td><div align="center">
+            <form id="form17" name="form17" method="post" action="">
+              <label for="quantity_2"></label>
+              <input name="quantity_2" type="text" class="borders" id="quantity_2" size="6" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form18" name="form18" method="post" action="">
+              <label for="unitOfIssue_2"></label>
+              <select name="unitOfIssue_2" id="unitOfIssue_2">
+                <option>PCS.</option>
+                <option>M</option>
+                <option>CM</option>
+                <option>KG</option>
+              </select>
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form19" name="form19" method="post" action="">
+              <label for="itemDescription_2"></label>
+              <input name="itemDescription_2" type="text" class="borders" id="itemDescription_2" size="100" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form20" name="form20" method="post" action="">
+              <label for="stockNumber_2"></label>
+              <input name="stockNumber_2" type="text" class="borders" id="stockNumber_2" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form21" name="form21" method="post" action="">
+              <label for="estUnitCost_2"></label>
+              <input name="estUnitCost_2" type="text" class="borders" id="estUnitCost_2" />
+            </form>
+          </div></td>
+          <td><div align="center">
+            <form id="form22" name="form22" method="post" action="">
+              <label for="estimatedCost_2"></label>
+              <input name="estimatedCost_2" type="text" class="borders" id="estimatedCost_2" />
+            </form>
+          </div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <table width="100%" border="1">
+        <tr>
+          <td width="7%">Purpose:</td>
+          <td width="93%"><form id="form13" name="form13" method="post" action="">
+            <label for="purposeField"></label>
+            <input name="purposeField" type="text" class="borders" id="purposeField" size="160" />
+          </form></td>
+        </tr>
+      </table>
+      <table width="100%" border="1">
+        <tr align="center">
+          <td width="17%">&nbsp;</td>
+          <td width="44%">REQUESTED BY:</td>
+          <td width="39%">APPROVED BY:</td>
+        </tr>
+        <tr align="center">
+          <td>SIGNATURE:</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr align="center">
+          <td>PRINTED NAME:</td>
+          <td><form id="form3" name="form3" method="post" action="">
+            <select name="requestor" id="requestor">
+              <option>John David Baltazar</option>
+              <option>Warren Basal</option>
+              <option>Jafet de Veyra</option>
+            </select>
+          </form></td>
+          <td><form id="form8" name="form8" method="post" action="">
+            <select name="approvedBy" id="approvedBy">
+              <option>MARGARITA DELA CRUZ</option>
+            </select>
+          </form></td>
+        </tr>
+        <tr align="center">
+          <td>DESIGNATION:</td>
+          <td><form id="form4" name="form4" method="post" action="">
+            <select name="requestorDesignation" id="requestorDesignation">
+              <option>Utility Worker</option>
+              <option>OCEP Coordinator</option>
+              <option>OSA Coordinator</option>
+              <option>College Secretary</option>
+              <option>Security Officer</option>
+            </select>
+          </form></td>
+          <td><form id="form9" name="form9" method="post" action="">
+            <select name="approvedbyDesignation" id="approvedbyDesignation">
+              <option>Dean</option>
+            </select>
+          </form></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<div id="apDiv3">
+  <form id="form10" name="form10" method="post" action="">
+    <input type="submit" name="saveBtn" id="saveBtn" class="button" value="Save" />
+  </form>
+</div>
+<div id="apDiv4">
+  <form id="form11" name="form11" method="post" action="">
+    <input name="exportBtn" type="submit" class="button" id="exportBtn" value="pdf" />
+  </form>
+</div>
+<div id="apDiv5">
+  <form id="form12" name="form12" method="post" action="">
+    <input name="xlsBtn" type="submit" class="button" id="xlsBtn" value="xls" />
+  </form>
+</div>
+<div id="apDiv6" style="font-family:Lucida Grande; font-size:16px; font-weight:bold"><strong><u>Export as:</u></strong></div>
+<p>&nbsp;</p>
+<div id="department">
+  <form id="form1" name="form1" method="post" action="">
+    <select name="department" id="department2">
+      <option selected="selected">Administrative</option>
+      <option>Humanities</option>
+      <option>Management</option>
+      <option>Natural Sciences and Mathematics</option>
+      <option>Social Sciences</option>
+    </select>
+  </form>
+</div>
+<p>&nbsp;</p>
+</body>
+</html>

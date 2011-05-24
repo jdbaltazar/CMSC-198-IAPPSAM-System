@@ -41,7 +41,7 @@ public class Item {
 	private Date dateAcquired;
 
 	@Column(name = "Inventory_Item_Number")
-	private int inventoryItemNumber;
+	private String inventoryItemNumber;
 
 	@Column(name = "Property_Number")
 	private String propertyNumber;
@@ -59,7 +59,7 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, int inventoryItemNumber,
+	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, String inventoryItemNumber,
 			String propertyNumber, String itemStatus, String itemCondition) {
 		super();
 		this.description = description;
@@ -107,7 +107,7 @@ public class Item {
 		return dateAcquired;
 	}
 
-	public int getInventoryItemNumber() {
+	public String getInventoryItemNumber() {
 		return inventoryItemNumber;
 	}
 
@@ -147,7 +147,7 @@ public class Item {
 		this.dateAcquired = dateAcquired;
 	}
 
-	public void setInventoryItemNumber(int inventoryItemNumber) {
+	public void setInventoryItemNumber(String inventoryItemNumber) {
 		this.inventoryItemNumber = inventoryItemNumber;
 	}
 

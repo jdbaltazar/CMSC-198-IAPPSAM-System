@@ -93,15 +93,15 @@
 #background {
 	position:absolute;
 	width:578px;
-	height:239px;
+	height:256px;
 	z-index:2;
 	left: 407px;
 	top: 291px;
 }
 #apDiv1 {
 	position:absolute;
-	width:316px;
-	height:323px;
+	width:290px;
+	height:309px;
 	z-index:3;
 	left: 576px;
 	top: 304px;
@@ -116,10 +116,10 @@
 }
 #apDiv3 {
 	position:absolute;
-	width:221px;
+	width:185px;
 	height:44px;
 	z-index:4;
-	left: 402px;
+	left: 438px;
 	top: 359px;
 }
 #apDiv4 {
@@ -143,8 +143,8 @@
 	width:80px;
 	height:30px;
 	z-index:5;
-	left: 103px;
-	top: 182px;
+	left: 104px;
+	top: 208px;
 }
 #apDiv7 {
 	position:absolute;
@@ -152,7 +152,7 @@
 	height:9px;
 	z-index:5;
 	left: 407px;
-	top: 531px;
+	top: 547px;
 }
 #pageLabel {
 	position:absolute;
@@ -176,32 +176,10 @@
 	left: 14px;
 	top: 143px;
 }
-#apDiv8 {
-	position:absolute;
-	width:360px;
-	height:29px;
-	z-index:16;
-	left: -14px;
-	top: 122px;
-}
-#footer{
-	position:absolute;
-	left: 2px;
-	top: 629px;
-	width: 100%;
-}
-
 </style>
 </head>
 
 <body>
-<div id="footer">
-<table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
- <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
-  </tr>
-</table>
-</div>
 <div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
@@ -212,7 +190,7 @@
       </tr>
     </table></td>
     <td width="86%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../FormsMenuPage.html">
+    <td width="4%"><form id="form15" name="form15" method="post" action="SearchItems.html">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -228,38 +206,37 @@
   <form id="form1" name="form1" method="post" action="IIRUP_Form_2.html">
     <p>
       <label for="asOfField" class="labels">As of:</label>
-      <select name="asOfMonth" id="asOfMonth">
-      </select>
-      <select name="asOfDay" id="asOfDay">
-      </select>
-      <select name="asOfYear" id="asOfYear">
-      </select>
+      <input type="text" name="asOfField" id="asOfField" />
     </p>
     <div id="apDiv2">
       <label for="nameOfAcctableOfficer"></label>
-      <select name="accountableOfficer" id="accountableOfficer">
-</select>
+      <input name="nameOfAcctableOfficer" type="text" id="nameOfAcctableOfficer" size="35" />
     </div>
     <p>&nbsp;</p>
-    <div id="apDiv6">
-      <input name="nextBtn" type="submit" class="maroon" id="nextBtn" value="Next&gt;&gt;" />
+    <p>&nbsp;</p>
+    <div id="apDiv4">
+      <label for="designation" class="labels">Designation:</label>
+      <select name="designation" id="designation">
+      </select>
     </div>
     <p>&nbsp;</p>
-    <div id="apDiv8">
+    <p>&nbsp;</p>
+    <div id="apDiv5">
       <label for="station" class="labels">Station:</label>
       <select name="station" id="station">
       </select>
     </div>
+    <div id="apDiv6">
+      <input name="nextBtn" type="submit" class="maroon" id="nextBtn" value="Next&gt;&gt;" />
+    </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <p>&nbsp;</p>
-
 
   </form>
 </div>
 <div class="labels" id="apDiv3">
-  <div align="right">Name &amp; Designation of <br />
+  <div align="right">Name of <br />
     Accountable Officer:
   </div>
 </div>
