@@ -72,19 +72,13 @@ public class ViewAccount extends HttpServlet {
 		ArrayList<String> landline = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 
-		ArrayList<String> designation = new ArrayList<String>();
-		ArrayList<String> employeeNumber = new ArrayList<String>();
-		ArrayList<String> division = new ArrayList<String>();
-		ArrayList<String> office = new ArrayList<String>();
 
 		String username;
 		String acctType;
 
 		try {
 			Account account = aManager.getAccount(userName);
-			System.out.println("" + account.getPersonID());
 			Person person = pManager.getPerson(account.getPersonID());
-			List<Employee> employee = pManager.getEmployeeByPerson(person.getId());
 			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
 
 			username = account.getUsername();
@@ -105,28 +99,10 @@ public class ViewAccount extends HttpServlet {
 				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.EMAIL))
 					emailad.add(contact.get(i).getData());
 			}
-			for (int i = 0; i < employee.size(); i++) {
-				designation.add(employee.get(i).getDesignation());
-				employeeNumber.add("" + employee.get(i).getPerson());
 
-				if ((employee.get(i).getPerson() != null))
-					division.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getDivisionName());
-				else
-					division.add(".");
-
-				if (dManager.getDivisionOfficeByEmployee(employee.get(i).getId()) != null)
-					office.add(dManager.getDivisionOfficeByEmployee(employee.get(i).getId()).getOfficeName());
-				else
-					office.add(".");
-
-			}
 
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
-			request.setAttribute("designation", designation);
-			request.setAttribute("employeeNum", employeeNumber);
-			request.setAttribute("division", division);
-			request.setAttribute("office", office);
 			request.setAttribute("mobileNumber", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
