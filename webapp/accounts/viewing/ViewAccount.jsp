@@ -5,6 +5,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.maroon {
+	font-size: 12px;
+	font-family: Lucida Grande;
+	background-color: #7B1113;
+	color: white;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.maroon:hover {
+	font-weight: bold;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
+.addbtn {
+	border-color: white;
+	background-color: #CCC;
+	font-family: Lucida Grande;
+	font-size: 14px;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.addbtn:hover {
+	color: #7B1113;
+	font-weight: bold;
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
 .button {
 	font-size: 14px;
 	font-family: Lucida Grande;
@@ -31,17 +71,17 @@
 	width: 578px;
 	height: 25px;
 	z-index: 1;
-	left: 353px;
-	top: 176px;
+	left: 396px;
+	top: 317px;
 }
 
 #titleDiv {
 	position: absolute;
 	width: 388px;
-	height: 27px;
+	height: 707px;
 	z-index: 3;
-	left: 462px;
-	top: 190px;
+	left: 532px;
+	top: 335px;
 }
 
 #nameDiv {
@@ -56,10 +96,10 @@
 #background {
 	position: absolute;
 	width: 578px;
-	height: 691px;
+	height: 566px;
 	z-index: 3;
-	left: 353px;
-	top: 202px;
+	left: 396px;
+	top: 343px;
 }
 
 #designationDiv {
@@ -110,8 +150,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 7;
-	left: 354px;
-	top: 730px;
+	left: 397px;
+	top: 756px;
 }
 
 #apDiv2 {
@@ -162,8 +202,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 12;
-	left: 353px;
-	top: 321px;
+	left: 397px;
+	top: 466px;
 }
 
 #apDiv3 {
@@ -171,8 +211,8 @@
 	width: 578px;
 	height: 9px;
 	z-index: 13;
-	left: 353px;
-	top: 894px;
+	left: 396px;
+	top: 907px;
 }
 
 #border {
@@ -180,8 +220,8 @@
 	width: 585px;
 	height: 765px;
 	z-index: 1;
-	left: 350px;
-	top: 173px;
+	left: 640px;
+	top: 119px;
 }
 
 #contactInfoDiv {
@@ -189,8 +229,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 14;
-	left: 353px;
-	top: 542px;
+	left: 397px;
+	top: 550px;
 }
 
 #apDiv4 {
@@ -260,7 +300,7 @@
 	height: 34px;
 	z-index: 1;
 	left: -12px;
-	top: 641px;
+	top: 522px;
 }
 
 #apDiv11 {
@@ -268,8 +308,8 @@
 	width: 438px;
 	height: 27px;
 	z-index: 15;
-	left: 22px;
-	top: 595px;
+	left: 18px;
+	top: 468px;
 }
 
 #apDiv12 {
@@ -277,8 +317,8 @@
 	width: 360px;
 	height: 30px;
 	z-index: 15;
-	left: -24px;
-	top: 491px;
+	left: -34px;
+	top: 366px;
 }
 
 #apDiv13 {
@@ -286,8 +326,8 @@
 	width: 292px;
 	height: 31px;
 	z-index: 15;
-	left: 32px;
-	top: 443px;
+	left: 24px;
+	top: 310px;
 }
 
 #apDiv14 {
@@ -295,8 +335,8 @@
 	width: 522px;
 	height: 27px;
 	z-index: 15;
-	left: -51px;
-	top: 401px;
+	left: -58px;
+	top: 261px;
 }
 
 #apDiv15 {
@@ -355,152 +395,189 @@
 
 #apDiv21 {
 	position: absolute;
-	width: 116px;
-	height: 48px;
+	width: 93px;
+	height: 40px;
 	z-index: 15;
-	left: 140px;
-	top: 747px;
+	left: 135px;
+	top: 610px;
+}
+
+#apDiv22 {
+	position: absolute;
+	width: 545px;
+	height: 150px;
+	z-index: 15;
+	left: -92px;
+	top: 185px;
 }
 
 #apDiv23 {
 	position: absolute;
-	width: 583px;
-	height: 25px;
+	width: 281px;
+	height: 31px;
 	z-index: 15;
-	left: -88px;
+	left: 592px;
+	top: 506px;
+}
+
+#apDiv24 {
+	position: absolute;
+	width: 256px;
+	height: 30px;
+	z-index: 16;
+	left: 720px;
+	top: 701px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#footer {
+	position: absolute;
+	left: -2px;
+	top: 1064px;
+	width: 100%;
 }
 </style>
 </head>
 
 <body>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="20%">
+		<td width="19%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View/Update
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View
 				Account</td>
 			</tr>
 		</table>
 		</td>
-		<td width="76%">&nbsp;</td>
+		<td width="77%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../ViewAccounts.do"><input name="backBtn"
+			action="../ViewAccounts.html"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
 <div id="background" style="background-color: #EEE0E5;"></div>
 <div id="accountInfoHeader"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
-Info</div>
+Information</div>
 <div id="employmentDiv"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-Info</div>
+Information</div>
 <div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
-<div id="border">
-<table width="100%" height="730" border="1">
-	<tr>
-		<td height="724">&nbsp;</td>
-	</tr>
-</table>
-</div>
 <div id="contactInfoDiv"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-Info</div>
+Information</div>
+<div id="apDiv23">
+<form id="form2" name="form2" method="post" action=""><input type="hidden" name ="name" value="<%=request.getAttribute("name") %>"/><input
+	name="addWorkInfoBtn" type="submit" class="addbtn" id="addWorkInfoBtn"
+	title="Click to view work info." value="Work Information &gt;&gt;" />
+</form>
+</div>
+<div id="apDiv24">
+<form id="form3" name="form3" method="post" action=""><input
+	name="addContactInfoBtn" type="submit" class="addbtn"
+	id="addContactInfoBtn" value="Add New Contact Info &gt;&gt;" /></form>
+</div>
 <p>&nbsp;</p>
 <div id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-Info</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
+Personal Information</div>
 <div id="titleDiv">
 <form id="form1" name="form1" method="post" action="">
 <p>&nbsp;</p>
 <div id="apDiv20"><label for="title2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<%=(String) request.getAttribute("title")%></div>
+<%=request.getAttribute("title")%></div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Name:</label>
-<%=(String) request.getAttribute("name")%></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<div id="apDiv22">
-<div id="apDiv23">
-<table width="540" border="1">
-	<tr>
-		<th width="135" height="23" scope="col">Designation</th>
-		<th width="135" scope="col">Employee Number</th>
-		<th width="135" scope="col">Division</th>
-		<th width="135" scope="col">Office</th>
-		<%
-			ArrayList<String> designation = (ArrayList<String>) request.getAttribute("designation");
-			ArrayList<String> employeeNumber = (ArrayList<String>) request.getAttribute("employeeNum");
-			ArrayList<String> division = (ArrayList<String>) request.getAttribute("division");
-			ArrayList<String> office = (ArrayList<String>) request.getAttribute("office");
-		%>
-		<%
-			for (int i = 0; i < employeeNumber.size(); i++) {
-				out.print("<tr><td>" + designation.get(i) + "</td>");
-				out.print("<td>" + employeeNumber.get(i) + "</td>");
-				out.print("<td>" + division.get(i) + "</td>");
-				out.print("<td>" + office.get(i) + "</td>");
-				out.print("</tr>");
-			}
-		%>
-	</tr>
-</table>
+<%=request.getAttribute("name")%>
 </div>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
 <div id="apDiv12"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">E-mail
-Address:</label> <select>
+Address:</label> <select name="emailAds" id="emailAds">
 	<%
-		int eNumber = ((ArrayList<String>) request.getAttribute("emailad")).size();
-		ArrayList<String> emailad = (ArrayList<String>) request.getAttribute("emaild");
-		if (eNumber >= 1) {
-			out.print("<option select=" + '"' + "selected" + '"' + ">" + emailad.get(0) + "</option>");
-			if (eNumber > 1) {
-				for (int i = 1; i < eNumber; i++) {
-					out.print("<option>" + emailad.get(i) + "</option>");
-				}
-			}
+		int emailAdNum = 0;
+		ArrayList<String> emailAd = (ArrayList<String>) request.getAttribute("emailad");
+		emailAdNum = emailAd.size();
+		for (int i = 0; i < emailAdNum; i++) {
+	%>
+	<option><%=emailAd.get(i)%></option>
+	<%
 		}
 	%>
 </select></div>
 <div id="apDiv13"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<select>
+
+<select name="landlineNums" id="landlineNums">
 	<%
-		int lNumber = ((ArrayList<String>) request.getAttribute("landline")).size();
+		int landLineNum = 0;
 		ArrayList<String> landline = (ArrayList<String>) request.getAttribute("landline");
-		if (lNumber >= 1) {
-			out.print("<option select=" + '"' + "selected" + '"' + ">" + landline.get(0) + "</option>");
-			if (lNumber > 1) {
-				for (int i = 1; i < lNumber; i++) {
-					out.print("<option>" + landline.get(i) + "</option>");
-				}
-			}
+		landLineNum = landline.size();
+		for (int i = 0; i < landLineNum; i++) {
+	%>
+	<option><%=landline.get(i)%></option>
+	<%
 		}
 	%>
 </select></div>
 <div id="apDiv14"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <select>
+Number:</label> <select name="cellNumbers" id="cellNumbers">
 	<%
-		int mNumber = ((ArrayList<String>) request.getAttribute("mobileNumber")).size();
-		ArrayList<String> mobileNumber = (ArrayList<String>) request.getAttribute("mobileNumber");
-		if (mNumber >= 1) {
-			out.print("<option select=" + '"' + "selected" + '"' + ">" + mobileNumber.get(0) + "</option>");
-			if (mNumber > 1) {
-				for (int i = 1; i < mNumber; i++) {
-					out.print("<option>" + mobileNumber.get(i) + "</option>");
-				}
-			}
+		int mobileNum = 0;
+		ArrayList<String> mobile = (ArrayList<String>) request.getAttribute("mobileNumber");
+		mobileNum = mobile.size();
+		for (int i = 0; i < mobileNum; i++) {
+	%>
+	<option><%=mobile.get(i)%></option>
+	<%
 		}
 	%>
 </select></div>
@@ -509,7 +586,7 @@ Number:</label> <select>
 <p>&nbsp;</p>
 <div id="apDiv11"><label for="userName3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Username:</label>
-<%=(String) request.getAttribute("userName")%></div>
+<%=request.getAttribute("userName") %></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -517,32 +594,20 @@ Number:</label> <select>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<div id="apDiv21"><input type="submit" name="updateBtn"
-	id="updateBtn" value="Update"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><br />
 </p>
 </form>
+
+<div id="apDiv21"><input type="submit" name="updateBtn"
+	id="updateBtn" value="Update"
+	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
+</div>
 <div id="apDiv10"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Account
-Type: </label> <%=(String) request.getAttribute("acctType")%></div>
-<input type="hidden" name="AcctType"
-	value="<%=(String) request.getAttribute("acctType")%>" /> <input
-	type="hidden" name="UserName"
-	value="<%=(String) request.getAttribute("userName")%>" /> <%
- 	request.setAttribute("Landline", landline);
- %>
-<%
-	request.setAttribute("MobileNumber", mobileNumber);
-%> <%
- 	request.setAttribute("Emailad", emailad);
- %>
-<input type="hidden" name="Title"
-	value="<%=(String) request.getAttribute("title")%>" />
+Type: </label> <%=request.getAttribute("acctType") %></div>
 </div>
 </body>
 </html>

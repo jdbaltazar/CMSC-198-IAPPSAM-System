@@ -56,9 +56,9 @@ public class AccountsView extends HttpServlet {
 		ArrayList<String> userName = new ArrayList<String>();
 		ArrayList<String> acctType = new ArrayList<String>();
 		ArrayList<String> name = new ArrayList<String>();
-		List<Account> accounts;
+		
 		try {
-			accounts = aManager.getAllAccounts();
+			List<Account> accounts = aManager.getAllAccounts();
 			for (int i = 0; i < accounts.size(); i++) {
 				userName.add(accounts.get(i).getUsername());
 				acctType.add(accounts.get(i).getAccountType());
@@ -76,7 +76,7 @@ public class AccountsView extends HttpServlet {
 		request.setAttribute("name", name);
 		request.setAttribute("listSize", "" + userName.size());
 
-		RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/viewing/ViewAccounts.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../accounts/ViewAccounts.jsp");
 		view.forward(request, response);
 //		OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
 //		out.write("fuck");
