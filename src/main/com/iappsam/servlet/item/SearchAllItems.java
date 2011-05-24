@@ -37,8 +37,7 @@ public class SearchAllItems extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -46,14 +45,12 @@ public class SearchAllItems extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager iManager = new ItemManagerSession();
 		Searcher s = new ItemSearcher();
 		ArrayList<String> itemDescription = new ArrayList<String>();
 		ArrayList<String> itemCategory = new ArrayList<String>();
-		String searchItemField = (String) request
-				.getParameter("searchItemField");
+		String searchItemField = (String) request.getParameter("searchItemField");
 
 		List<Item> items = new ArrayList<Item>();
 
@@ -67,10 +64,6 @@ public class SearchAllItems extends HttpServlet {
 		} else {
 			items = s.search(searchItemField);
 		}
-		System.out.print(searchItemField);
-		if (items == null || items.isEmpty()) {
-			System.out.print("NULLLLLLLLLLLLLLLLLLL");
-		}
 		for (Item i : items) {
 			itemDescription.add(i.getDescription());
 			itemCategory.add(i.getCategory());
@@ -78,8 +71,7 @@ public class SearchAllItems extends HttpServlet {
 		request.setAttribute("itemDescription", itemDescription);
 		request.setAttribute("itemCategory", itemCategory);
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("../stocks/items/SearchItems.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
 		view.forward(request, response);
 
 	}

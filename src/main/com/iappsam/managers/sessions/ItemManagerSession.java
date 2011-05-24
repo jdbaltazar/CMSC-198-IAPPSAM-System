@@ -249,4 +249,10 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 		remove(category);
 	}
 
+	@Override
+	public List<ItemCategory> getAllItemCategory() throws TransactionException {
+		// TODO Auto-generated method stub
+		return getList(ItemCategory.class);
+	}
+
 }

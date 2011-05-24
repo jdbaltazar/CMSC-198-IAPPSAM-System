@@ -19,7 +19,7 @@
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="sql.url" value="jdbc:mysql://localhost/" />
 	<property name="sql.username" value="root" />
-	<property name="sql.password" value="123456" />
+	<property name="sql.password" value="123" />
 	<property name="sql.schema" value="week/phase-3" />
 
 	<target name="all" depends="deploy, sql.init" />

@@ -94,5 +94,7 @@ public interface ItemManager extends Manager {
 	boolean containsItemCategory(ItemCategory category) throws TransactionException;
 
 	void removeItemCategory(ItemCategory category) throws TransactionException;
+	
+	List<ItemCategory> getAllItemCategory() throws TransactionException;
 
 }

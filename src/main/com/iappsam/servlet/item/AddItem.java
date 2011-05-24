@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.item;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.iappsam.entities.Item;
+import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
@@ -48,30 +50,65 @@ public class AddItem extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager iManager = new ItemManagerSession();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("items/AddItem.jsp");
-		try {
-			List<Unit> units = iManager.getAllUnits();
-			List<ItemStatus> itemStatus = iManager.getAllItemStatus();
-			List<ItemCondition> itemCondition = iManager.getAllItemCondition();
-			ArrayList<String> unitList = new ArrayList<String>();
-			ArrayList<String> itemStatusList=new ArrayList<String>();
-			ArrayList<String> itemConditionList = new ArrayList<String>();
-			for (int i = 0; i < units.size(); i++) {
-				unitList.add(units.get(i).getUnit());
-			}
-			for(int i=0;i<itemStatus.size();i++){
-				itemStatusList.add(itemStatus.get(i).getItemStatus());
-			}
-			for(int i=0;i<itemCondition.size();i++){
-				itemConditionList.add(itemCondition.get(i).getItemCondition());
-			}
 
-			request.setAttribute("unitList", unitList);
-			request.setAttribute("itemConditionList", itemConditionList);
-			request.setAttribute("itemStatusList", itemStatusList);
+		List<Unit> units = new ArrayList<Unit>();
+		List<ItemCategory> categories = new ArrayList<ItemCategory>();
+		List<ItemStatus> status = new ArrayList<ItemStatus>();
+		List<ItemCondition> conditions = new ArrayList<ItemCondition>();
+		
+		ArrayList<String> itemUnits = new ArrayList<String>();
+		ArrayList<String> itemCategories = new ArrayList<String>();
+		ArrayList<String> itemStatuses = new ArrayList<String>();
+		ArrayList<String> itemConditions = new ArrayList<String>();
+
+		try{
+		
+		units = iManager.getAllUnits();
+		categories = iManager.getAllItemCategory();
+		status = iManager.getAllItemStatus();
+		conditions = iManager.getAllItemCondition();
+		
+		if(units==null)
+			units = new ArrayList<Unit>();
+		
+		if(categories==null)
+			categories = new ArrayList<ItemCategory>();
+		
+		if(status==null)
+			status = new ArrayList<ItemStatus>();
+		
+		if(conditions==null)
+			conditions = new ArrayList<ItemCondition>();
+		
+		
+
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		for (Unit u : units) {
+			itemUnits.add(u.getUnit());
+		}
+
+		for (ItemCategory i : categories) {
+			itemCategories.add(i.getItemCategory());
+		}
+
+		for (ItemStatus i : status) {
+			itemStatuses.add(i.getItemStatus());
+		}
+
+		for (ItemCondition i : conditions) {
+			itemConditions.add(i.getItemCondition());
+		}
+
+		request.setAttribute("finishedInputting", "false");
+		request.setAttribute("validInputForItem", "true");
+		request.setAttribute("itemUnits", itemUnits);
+		request.setAttribute("itemCategories", itemCategories);
+		request.setAttribute("itemStatuses", itemStatuses);
+		request.setAttribute("itemConditions", itemConditions);
+
 		requestDispatcher.forward(request, response);
 	}
 

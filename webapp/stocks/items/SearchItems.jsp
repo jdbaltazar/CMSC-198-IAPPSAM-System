@@ -234,7 +234,7 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+		<td>Copyright É 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -269,7 +269,11 @@
 	value="GO" /></form>
 </div>
 <div id="apDiv1">
+<<<<<<< HEAD
+<form id="form2" name="form2" method="post" action="../stocks/AddItem.do">
+=======
 <form id="form2" name="form2" method="post" action="../stocks/items/AddItem.jsp">
+>>>>>>> refs/remotes/github.com/master
 <input name="addItemBtn" type="submit" class="maroon" id="addItemBtn"
 	value="Add Item &gt;&gt;" /></form>
 </div>
