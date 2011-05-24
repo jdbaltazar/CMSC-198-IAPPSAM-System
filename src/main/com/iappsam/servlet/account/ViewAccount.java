@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
 import com.iappsam.entities.Contact;
+import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
@@ -31,7 +32,10 @@ import com.iappsam.managers.sessions.PersonManagerSession;
  */
 @WebServlet("/accounts/viewing/ViewAccount.do")
 public class ViewAccount extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1171906888802134732L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -54,6 +58,7 @@ public class ViewAccount extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 		ContactManager cManager = new ContactManagerSession();
@@ -77,6 +82,7 @@ public class ViewAccount extends HttpServlet {
 
 		try {
 			Account account = aManager.getAccount(userName);
+			System.out.println("" + account.getPersonID());
 			Person person = pManager.getPerson(account.getPersonID());
 			List<Employee> employee = pManager.getEmployeeByPerson(person.getId());
 			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
@@ -87,16 +93,16 @@ public class ViewAccount extends HttpServlet {
 			name = person.getName();
 
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase("mobileNumber"))
+				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.MOBILE))
 					mobileNumber.add(contact.get(i).getData());
 			}
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase("landline"))
+				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.LANDLINE))
 					landline.add(contact.get(i).getData());
 			}
 
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase("emailad"))
+				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.EMAIL))
 					emailad.add(contact.get(i).getData());
 			}
 			for (int i = 0; i < employee.size(); i++) {

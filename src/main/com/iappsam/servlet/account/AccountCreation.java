@@ -117,17 +117,17 @@ public class AccountCreation extends HttpServlet {
 
 		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
-			System.out.println("output");
 		} else
 			acceptResponse(request, response);
 	}
 
 	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("JHefsdf");
 		Person person = new Person(title, name);
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		ContactManager cManager = new ContactManagerSession();
-		System.out.println("JHefsdf");
+		
 
 		try {
 			request.setAttribute("title", title);
@@ -143,7 +143,7 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("emailad", emailAdd);
 			request.setAttribute("acctType", accountType);
 
-			RequestDispatcher view = request.getRequestDispatcher("dCreateAccountSuccess.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("CreateAccountSuccess.jsp");
 			view.forward(request, response);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -168,8 +168,11 @@ public class AccountCreation extends HttpServlet {
 			Contact contactMobile = new Contact(cellphonNumber, "MOBILE");
 			Contact contactEmail = new Contact(emailAdd, "EMAIL");
 			cManager.addContact(contactLandLine);
+			cManager.addContactToPerson(contactLandLine.getContactID(), person.getId());
 			cManager.addContact(contactMobile);
+			cManager.addContactToPerson(contactMobile.getContactID(), person.getId());
 			cManager.addContact(contactEmail);
+			cManager.addContactToPerson(contactEmail.getContactID(), person.getId());
 			aManager.addAccount(account);
 		} catch (TransactionException e) {
 			e.printStackTrace();
