@@ -171,7 +171,7 @@
 		<td width="85%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="get"
-			action="../view/IIRUPForm.jsp"><input name="backBtn"
+			action="../iirup/IIRUPForm.jsp"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>

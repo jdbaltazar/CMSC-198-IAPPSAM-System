@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.headerLabel{
+	font-family:Lucida Grande; 
+	color:white;
+	 font-size:16px;
+	 font-weight:bold;
+}
 .maroon{
 	font-size:12px;
 	font-family:Lucida Grande;
@@ -330,6 +336,22 @@
 	top: 990px;
 	width: 100%;
 }
+#apDiv22 {
+	position:absolute;
+	width:324px;
+	height:25px;
+	z-index:16;
+	left: 471px;
+	top: 305px;
+}
+#generalBorder {
+	position:absolute;
+	width:100%;
+	height:770px;
+	z-index:0;
+	left: 1px;
+	top: 237px;
+}
 </style>
 </head>
 
@@ -337,7 +359,7 @@
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -357,7 +379,7 @@
   </tr>
 </table>
 </div>
-<div id="headerdiv" style="text-align:left; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Item Information</div>
+<div id="headerdiv" style=" font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="background" style="background-color:#EEE0E5;"></div>
 <div id="name">
   <form action="" method="post" name="form1" id="form1">
@@ -503,5 +525,7 @@
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
+<div class="headerLabel" id="apDiv22">Item Information</div>
+<div id="generalBorder"></div> 
 </body>
 </html>

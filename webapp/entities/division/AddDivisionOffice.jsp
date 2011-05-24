@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.headerLabel{
+	font-family:Lucida Grande; 
+	color:white;
+	 font-size:16px;
+	 font-weight:bold;
+}
 .maroon{
 	font-size:12px;
 	font-family:Lucida Grande;
@@ -48,8 +54,8 @@
 	width:578px;
 	height:25px;
 	z-index:1;
-	left: 396px;
-	top: 328px;
+	left: 397px;
+	top: 329px;
 }
 #background {
 	position:absolute;
@@ -224,6 +230,22 @@
 	left: 171px;
 	top: 117px;
 }
+#apDiv14 {
+	position:absolute;
+	width:224px;
+	height:24px;
+	z-index:18;
+	left: 412px;
+	top: 331px;
+}
+#apDiv15 {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:19;
+	left: 410px;
+	top: 501px;
+}
 </style>
 </head>
 
@@ -231,7 +253,7 @@
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -257,7 +279,7 @@
   </form>
 </div>
 <div id="background"  style="background-color:#EEE0E5;"></div>
-<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Division Information</div>
+<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
   <form id="form1" name="form1" method="post" action="">
     <p>
@@ -280,7 +302,7 @@
 </div>
 <div id="footer"></div>
 <p>&nbsp;</p>
-<div id="apDiv10" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">Office Information</div>
+<div id="apDiv10" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="apDiv11">
   <form id="form4" name="form4" method="post" action="">
     <p>
@@ -299,6 +321,8 @@
     <p>&nbsp;</p>
   </form>
 </div>
+<div class="headerLabel" id="apDiv14">Division Information</div>
+<div class="headerLabel" id="apDiv15">Office Information</div>
 </body>
 </html>
 

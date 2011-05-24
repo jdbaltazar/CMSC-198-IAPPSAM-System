@@ -17,7 +17,7 @@ import com.iappsam.util.ManagerBin;
 /**
  * Servlet implementation class IIRUPItemImber
  */
-@WebServlet("/forms/view/IIRUPImbedItems.do")
+@WebServlet("/forms/iirup/IIRUPImbedItems.do")
 public class IIRUPItemImbed extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class IIRUPItemImbed extends HttpServlet {
 			request.setAttribute("propertyNo", propertyNo);
 			request.setAttribute("dateAcquired", dateAcquired);
 
-			RequestDispatcher view = request.getRequestDispatcher("/forms/view/IIRUPForm2.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e) {
 

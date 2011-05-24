@@ -22,7 +22,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class IIRUPForm
  */
-@WebServlet(name = "IIRUPForm.do", urlPatterns = { "/iirup.do" })
+@WebServlet("/forms/iirup/iirup.do" )
 public class IIRUPForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

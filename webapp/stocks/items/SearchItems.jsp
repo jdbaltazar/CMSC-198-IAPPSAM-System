@@ -239,7 +239,7 @@
 </table>
 </div>
 <div id="logoHeader" style="width: 100%"><img name=""
-	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+	src="../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
@@ -255,21 +255,21 @@
 		<td width="89%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="../MenuFrame.jsp"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" action = ""/></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="searchEmployeesDiv">
-<form id="form1" name="form1" method="post" action=""><label
+<form id="form1" name="form1" method="post" action="../items/SearchAllItems.do"><label
 	for="searchItemField" class="labels">Search:</label> <input
 	name="searchItemField" type="text" id="searchItemField" size="35" /> <input
 	name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn"
 	value="GO" /></form>
 </div>
 <div id="apDiv1">
-<form id="form2" name="form2" method="post" action="AddItem.jsp">
+<form id="form2" name="form2" method="post" action="../stocks/items/AddItem.jsp">
 <input name="addItemBtn" type="submit" class="maroon" id="addItemBtn"
 	value="Add Item &gt;&gt;" /></form>
 </div>

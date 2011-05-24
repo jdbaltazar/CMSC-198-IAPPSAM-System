@@ -81,32 +81,32 @@ public class Tester {
 			// -----------------------Account Creation and Login
 			// Test-----------------------
 			Person person = new Person("Mang2", "Tating2");
-			pManager.addPerson(person);
-			Account a = new Account("pusit", "bulad", AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
-			aManager.addAccount(a);
-			List<Account> accounts = aManager.getAllAccounts();
-
-			for (Account ac : accounts) {
-				System.out.println(ac.getUsername());
-			}
-
-			Account a2 = aManager.getAccount("hellow");
-			a2.setPassword("password");
-			aManager.updateAccount(a);
+//			pManager.addPerson(person);
+//			Account a = new Account("pusit", "bulad", AccountType.NON_SPSO_PERSONNEL_HEAD, person.getId());
+//			aManager.addAccount(a);
+//			List<Account> accounts = aManager.getAllAccounts();
+//
+//			for (Account ac : accounts) {
+//				System.out.println(ac.getUsername());
+//			}
+//
+//			Account a2 = aManager.getAccount("hellow");
+//			a2.setPassword("password");
+//			aManager.updateAccount(a);
 
 			// Contact
 
-			// Contact c = new Contact("1232-2323", ContactType.LANDLINE);
-			// cManager.addContact(c);
-			// Contact c2 = new Contact("asasasasas", ContactType.LANDLINE);
-			// cManager.addContact(c2);
-			//
-			// cManager.addContactToPerson(c.getContactID(), 1);
-			//
-			// List<Contact> contacts = cManager.getAllContactsByPerson(1);
-			// for (Contact c1 : contacts) {
-			// System.out.println(c1.getData());
-			// }
+			 Contact c = new Contact("1232-2323", ContactType.LANDLINE);
+			 cManager.addContact(c);
+			 Contact c2 = new Contact("asasasasas", ContactType.LANDLINE);
+			 cManager.addContact(c2);
+			
+			 cManager.addContactToPerson(c.getContactID(), 1);
+			
+			 List<Contact> contacts = cManager.getAllContactsByPerson(1);
+			 for (Contact c1 : contacts) {
+			 System.out.println(c1.getData());
+			 }
 
 			// Supplier
 
@@ -383,66 +383,66 @@ public class Tester {
 
 			// IIRUP
 
-			// Person p1 = new Person("person " + Math.random());
-			// Person p2 = new Person("person " + Math.random());
-			// Person p3 = new Person("person " + Math.random());
-			// Person p4 = new Person("person " + Math.random());
-			//
-			// pManager.addPerson(p1);
-			// pManager.addPerson(p2);
-			// pManager.addPerson(p3);
-			// pManager.addPerson(p4);
-			//
-			// Employee e1 = new Employee("Requisitioner", p1.getPersonID());
-			// Employee e2 = new Employee("Head", p2.getPersonID());
-			// Employee e3 = new Employee("Dean", p3.getPersonID());
-			// Employee e4 = new Employee("Dean", p4.getPersonID());
-			//
-			// pManager.addEmployee(e1);
-			// pManager.addEmployee(e2);
-			// pManager.addEmployee(e3);
-			// pManager.addEmployee(e4);
-			//
-			// Signatory s1 = new Signatory("Approved by", e1.getEmployeeID());
-			// Signatory s2 = new Signatory("Approved by", e2.getEmployeeID());
-			// Signatory s3 = new Signatory("Approved by", e3.getEmployeeID());
-			// Signatory s4 = new Signatory("Approved by", e4.getEmployeeID());
-			//
-			// pManager.addSignatory(s1);
-			// pManager.addSignatory(s2);
-			// pManager.addSignatory(s3);
-			// pManager.addSignatory(s4);
-			//
-			// IIRUP iirup = new IIRUP(new Date(0), e1.getEmployeeID(),
-			// s1.getSignatoryID(), s2.getSignatoryID(), s3.getSignatoryID(),
-			// s4.getSignatoryID());
-			// iirupManager.addIIRUP(iirup);
-			//
-			// Item item = new Item("" + Math.random(), ItemCategory.OTHERS,
-			// "PCS", "Available", "Good Condition");
-			// iManager.addItem(item);
-			//
-			// IIRUPLine iirupLine = new IIRUPLine(item.getItemID(), 10, 12,
-			// 100, "Destroyed", "dfdf", iirup.getIirupID());
-			// iirupManager.addIIRUPLine(iirupLine);
+			 Person p1 = new Person("person " + Math.random());
+			 Person p2 = new Person("person " + Math.random());
+			 Person p3 = new Person("person " + Math.random());
+			 Person p4 = new Person("person " + Math.random());
+			
+			 pManager.addPerson(p1);
+			 pManager.addPerson(p2);
+			 pManager.addPerson(p3);
+			 pManager.addPerson(p4);
+			
+			 Employee e1 = new Employee("Requisitioner", p1);
+			 Employee e2 = new Employee("Head", p2);
+			 Employee e3 = new Employee("Dean", p3);
+			 Employee e4 = new Employee("Dean", p4);
+			
+			 pManager.addEmployee(e1);
+			 pManager.addEmployee(e2);
+			 pManager.addEmployee(e3);
+			 pManager.addEmployee(e4);
+//			
+//			 Signatory s1 = new Signatory("Approved by", e1);
+//			 Signatory s2 = new Signatory("Approved by", e2);
+//			 Signatory s3 = new Signatory("Approved by", e3);
+//			 Signatory s4 = new Signatory("Approved by", e4);
+//			
+//			 pManager.addSignatory(s1);
+//			 pManager.addSignatory(s2);
+//			 pManager.addSignatory(s3);
+//			 pManager.addSignatory(s4);
+//			
+//			 IIRUP iirup = new IIRUP(new Date(0), e1.getId(),
+//			 s1.getId(), s2.getId(), s3.getId(),
+//			 s4.getId());
+//			 iirupManager.addIIRUP(iirup);
+//			
+//			 Item item = new Item("" + Math.random(), ItemCategory.OTHERS,
+//			 "PCS", "Available", "Good Condition");
+//			 iManager.addItem(item);
+//			
+//			 IIRUPLine iirupLine = new IIRUPLine(item.getId(), 10, 12,
+//			 100, "Destroyed", "dfdf", iirup.getIirupID());
+//			 iirupManager.addIIRUPLine(iirupLine);
 
 			// ---------------------------------------------------->
 
 			// ---------------------------------------------------->
 			// Waste Materials Report
 
-			DivisionOffice dOffice = new DivisionOffice("sddfdfdf", null);
-			doManager.addDivisionOffice(dOffice);
-
-			Person p1 = new Person("person " + Math.random());
-			Person p2 = new Person("person " + Math.random());
-			Person p3 = new Person("person " + Math.random());
-			Person p4 = new Person("person " + Math.random());
-
-			pManager.addPerson(p1);
-			pManager.addPerson(p2);
-			pManager.addPerson(p3);
-			pManager.addPerson(p4);
+//			DivisionOffice dOffice = new DivisionOffice("sddfdfdf", null);
+//			doManager.addDivisionOffice(dOffice);
+//
+//			Person p1 = new Person("person " + Math.random());
+//			Person p2 = new Person("person " + Math.random());
+//			Person p3 = new Person("person " + Math.random());
+//			Person p4 = new Person("person " + Math.random());
+//
+//			pManager.addPerson(p1);
+//			pManager.addPerson(p2);
+//			pManager.addPerson(p3);
+//			pManager.addPerson(p4);
 
 			// Employee e1 = new Employee("Requisitioner", p1.getPersonID());
 			// Employee e2 = new Employee("Head", p2.getPersonID());

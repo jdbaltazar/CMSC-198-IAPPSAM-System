@@ -86,7 +86,8 @@
 	font-weight:bold;
 }
 .button{
-	width:416px;
+	height:20px;
+	width:425px;
 	font-size:14px;
 	font-family:Lucida Grande;
 	background-color:#EEE0E5;
@@ -137,16 +138,16 @@
 }
 #footer{
 	position:absolute;
-	left: 5px;
-	top: 852px;
+	left: 2px;
+	top: 805px;
 	width: 100%;
 }
 #apDiv1 {
 	position:absolute;
 	width:200px;
-	height:577px;
+	height:536px;
 	z-index:16;
-	left: 10px;
+	left: 5px;
 	top: 268px;
 }
 #divIIRUP {
@@ -154,15 +155,15 @@
 	width:416px;
 	height:27px;
 	z-index:1;
-	left: 496px;
-	top: 477px;
+	left: 489px;
+	top: 429px;
 }
 #divPR {
 	position:absolute;
 	width:416px;
 	height:26px;
 	z-index:2;
-	left: 496px;
+	left: 489px;
 	top: 44px;
 }
 #divPO {
@@ -170,15 +171,15 @@
 	width:200px;
 	height:28px;
 	z-index:3;
-	left: 496px;
-	top: 72px;
+	left: 489px;
+	top: 65px;
 }
 #divAPP {
 	position:absolute;
 	width:200px;
 	height:30px;
 	z-index:4;
-	left: 496px;
+	left: 489px;
 	top: 129px;
 }
 #divIE {
@@ -186,64 +187,112 @@
 	width:200px;
 	height:29px;
 	z-index:5;
-	left: 496px;
-	top: 185px;
+	left: 489px;
+	top: 171px;
 }
 #divPAR {
 	position:absolute;
 	width:200px;
 	height:30px;
 	z-index:6;
-	left: 496px;
-	top: 340px;
+	left: 489px;
+	top: 310px;
 }
 #divICS {
 	position:absolute;
 	width:200px;
 	height:27px;
 	z-index:7;
-	left: 496px;
-	top: 368px;
+	left: 489px;
+	top: 331px;
 }
 #divRIS {
 	position:absolute;
 	width:200px;
 	height:26px;
 	z-index:8;
-	left: 496px;
-	top: 246px;
+	left: 489px;
+	top: 230px;
 }
 #divPTRPA {
 	position:absolute;
 	width:200px;
 	height:27px;
 	z-index:9;
-	left: 496px;
-	top: 421px;
+	left: 489px;
+	top: 387px;
 }
 #divRSMI {
 	position:absolute;
 	width:200px;
 	height:28px;
 	z-index:10;
-	left: 496px;
-	top: 274px;
+	left: 489px;
+	top: 251px;
 }
 #divWMR {
 	position:absolute;
 	width:200px;
 	height:28px;
 	z-index:11;
-	left: 496px;
-	top: 449px;
+	left: 489px;
+	top: 408px;
 }
 #divCAPP {
 	position:absolute;
 	width:200px;
 	height:31px;
 	z-index:12;
-	left: 496px;
-	top: 157px;
+	left: 489px;
+	top: 150px;
+}
+#apDiv2 {
+	position:absolute;
+	width:418px;
+	height:12px;
+	z-index:13;
+	left: 39px;
+	top: 244px;
+}
+#apDiv3 {
+	position:absolute;
+	width:425px;
+	height:16px;
+	z-index:13;
+	left: 489px;
+	top: 27px;
+}
+#apDiv4 {
+	position:absolute;
+	width:425px;
+	height:16px;
+	z-index:14;
+	left: 489px;
+	top: 112px;
+}
+#apDiv5 {
+	position:absolute;
+	width:425px;
+	height:16px;
+	z-index:15;
+	left: 489px;
+	top: 213px;
+}
+#apDiv6 {
+	position:absolute;
+	width:425px;
+	height:16px;
+	z-index:16;
+	left: 489px;
+	top: 293px;
+}
+#apDiv7 {
+	position:absolute;
+	width:425px;
+	height:16px;
+	z-index:17;
+	left: 489px;
+	top: 372px;
 }
 </style>
 </head>
@@ -266,7 +315,7 @@
       </tr>
     </table></td>
     <td width="89%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.html">
       <input name="backBtn" type="submit" class="button2" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -279,7 +328,7 @@
 </div>
 <div id="apDiv1" style="width:100%;" align="center">
   <div id="divIIRUP">
-    <form id="form1" name="form1" method="get" action="iirup/IIRUPForm.jsp">
+    <form id="form1" name="form1" method="post" action="iirup/IIRUPForm.jsp">
       <input name="prBtn" type="submit" class="button" id="prBtn" value="Inventory and Inspection Report of Unserviceable Property" />
     </form>
   </div>
@@ -338,6 +387,11 @@
       <input name="cappBtn" type="submit" class="button" id="cappBtn" value="Consolidated APP" />
     </form>
   </div>
+  <div class="header" id="apDiv3"></div>
+  <div class="header" id="apDiv4"></div>
+  <div class="header" id="apDiv5"></div>
+  <div class="header" id="apDiv6"></div>
+  <div class="header" id="apDiv7"></div>
 </div>
 </body>
 </html>

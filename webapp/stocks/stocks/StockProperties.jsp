@@ -165,7 +165,7 @@
 	height:23px;
 	z-index:3;
 	left: 507px;
-	top: 196px;
+	top: 206px;
 }
 #divItemStatus {
 	position:absolute;
@@ -189,7 +189,23 @@
 	height:23px;
 	z-index:6;
 	left: 507px;
-	top: 217px;
+	top: 227px;
+}
+#apDiv1 {
+	position:absolute;
+	width:416px;
+	height:16px;
+	z-index:7;
+	left: 507px;
+	top: 60px;
+}
+#apDiv2 {
+	position:absolute;
+	width:416px;
+	height:16px;
+	z-index:8;
+	left: 507px;
+	top: 189px;
 }
 </style>
 </head>
@@ -198,7 +214,7 @@
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -254,6 +270,8 @@
       <input name="disposalBtn" type="submit" class="menubtn" id="disposalBtn" value="Disposal" />
     </form>
   </div>
+  <div class="header" id="apDiv1"></div>
+  <div class="header" id="apDiv2"></div>
 </div>
 </body>
 </html>

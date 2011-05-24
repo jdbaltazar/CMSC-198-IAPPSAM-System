@@ -19,7 +19,7 @@ import com.iappsam.util.ManagerBin;
 /**
  * Servlet implementation class Search
  */
-@WebServlet(name = "Search.do", urlPatterns = { "/forms/view/SearchIIRUPItemList.do" })
+@WebServlet(name = "Search.do", urlPatterns = { "/forms/iirup/SearchIIRUPItemList.do" })
 public class SearchItemList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -65,7 +65,7 @@ public class SearchItemList extends HttpServlet {
 			request.setAttribute("itemCategory", itemCategory);
 			request.setAttribute("itemDescription", itemDescription);
 			request.setAttribute("itemID", itemID);
-			RequestDispatcher view = request.getRequestDispatcher("../view/IIRUAddItem2.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("../iirup/IIRUAddItem2.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
