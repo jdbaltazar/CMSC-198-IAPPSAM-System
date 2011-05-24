@@ -269,7 +269,11 @@
 	value="GO" /></form>
 </div>
 <div id="apDiv1">
+<<<<<<< HEAD
 <form id="form2" name="form2" method="post" action="../stocks/AddItem.do">
+=======
+<form id="form2" name="form2" method="post" action="../stocks/items/AddItem.jsp">
+>>>>>>> refs/remotes/github.com/master
 <input name="addItemBtn" type="submit" class="maroon" id="addItemBtn"
 	value="Add Item &gt;&gt;" /></form>
 </div>
