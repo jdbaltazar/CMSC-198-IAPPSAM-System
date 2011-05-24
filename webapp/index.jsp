@@ -22,7 +22,7 @@
 	<div class="background">
 		<form id="form1" name="form1" method="post" action="login">
 			<div class="login-layout">
-				Username <input name="userName" type="text" id="userName" size="25" />
+				Username <input name="username" type="text" id="username" size="25" />
 
 				<p>
 					Password <input name="password" type="password" id="password2" size="25" />
