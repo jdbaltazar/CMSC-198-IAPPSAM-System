@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div id="logoHeader" style="width: 100%">
-		<img name="" src="images/header2.png" width="100%" height="115" alt="" />
+		<img name="" src="images/header2.png" width="100%" alt="" />
 	</div>
 	<div id="footer">
 		<table width="100%" frame="above" bordercolor="#333333" style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
