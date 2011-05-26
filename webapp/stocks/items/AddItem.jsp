@@ -1,3 +1,4 @@
+<%@page import="com.iappsam.entities.Item"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,23 +7,38 @@
 <title>Untitled Document</title>
 
 <%
+	boolean firstAttempt = true;
+	boolean validEntries = false;
 	ArrayList<String> itemUnits = new ArrayList<String>();
 	ArrayList<String> itemCategories = new ArrayList<String>();
 	ArrayList<String> itemStatuses = new ArrayList<String>();
 	ArrayList<String> itemConditions = new ArrayList<String>();
+	String temp = (String) request.getAttribute("firstAttempt");
 
-	String validInputs = (String) request.getAttribute("validInputForItem");
-	String finishedInputting = (String) request.getAttribute("finishedInputting");
-	boolean finished = false;
-	if (finishedInputting != null && finishedInputting.equalsIgnoreCase("true"))
-		finished = true;
+	itemUnits = (ArrayList<String>) request.getAttribute("itemUnits");
+	itemCategories = (ArrayList<String>) request.getAttribute("itemCategories");
+	itemStatuses = (ArrayList<String>) request.getAttribute("itemStatuses");
+	itemConditions = (ArrayList<String>) request.getAttribute("itemConditions");
 
-	if (!finished) {
-		itemUnits = (ArrayList<String>) request.getAttribute("itemUnits");
-		itemCategories = (ArrayList<String>) request.getAttribute("itemCategories");
-		itemStatuses = (ArrayList<String>) request.getAttribute("itemStatuses");
-		itemConditions = (ArrayList<String>) request.getAttribute("itemConditions");
+	if (temp != null && temp.equalsIgnoreCase("false"))
+		firstAttempt = false;
+	temp = (String) request.getAttribute("validEntries");
+	if (temp.equalsIgnoreCase("true"))
+		validEntries = true;
+
+	if (firstAttempt) {
+
+	} else {
+		if (validEntries) {
+			//disable form
+		} else {
+			//show errror message
+		}
 	}
+
+	String day = (String) request.getAttribute("day");
+	String month = (String) request.getAttribute("month");
+	String year = (String) request.getAttribute("year");
 %>
 
 
@@ -475,16 +491,17 @@
 <div id="background" style="background-color: #EEE0E5;"></div>
 <div id="name">
 <form action="../stocks/SaveItem.do" method="post" name="form1"
-	id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
+	id="form1" <%if (!firstAttempt && validEntries) {%> disabled="disabled"
+	<%}%>>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 <div id="apDiv12"><label for="itemDescription3" class="texts">*Description:</label>
-<textarea name="itemDescription" cols="30" id="itemDescription3"
-	<%if (finished) {%> disabled="disabled" <%}%>></textarea></div>
+<textarea name="itemDescription" cols="30" id="itemDescription3">
+</textarea></div>
+
 <div id="apDiv11"><label for="itemUnit" class="texts">*Unit:</label>
-<select name="itemUnit" id="itemUnit" <%if (finished) {%>
-	disabled="disabled" <%}%>>
+<select name="itemUnit" id="itemUnit">
 	<%
 		for (String s : itemUnits) {
 	%>
@@ -493,84 +510,9 @@
 		}
 	%>
 </select></div>
-<div id="apDiv13"><label for="itemPrice3" class="texts">Price:</label>
-<input name="itemPrice" type="text" id="itemPrice3" size="10"
-	<%if (finished) {%> disabled="disabled" <%}%> /></div>
-<div id="apDiv14"><label for="month3" class="texts">Date
-Acquired:</label> <select name="month" id="month3" <%if (finished) {%>
-	disabled="disabled" <%}%>>
-	<option selected="selected">MM</option>
-	<option>Jan</option>
-	<option>Feb</option>
-	<option>Mar</option>
-	<option>Apr</option>
-	<option>May</option>
 
-	<option>Jun</option>
-	<option>Jul</option>
-	<option>Aug</option>
-	<option>Sep</option>
-	<option>Oct</option>
-	<option>Nov</option>
-	<option>Dec</option>
-</select> <select name="dayAcquired" id="dayAcquired" <%if (finished) {%>
-	disabled="disabled" <%}%>>
-	<option selected="selected">DD</option>
-	<option>1</option>
-	<option>2</option>
-	<option>3</option>
-	<option>4</option>
-	<option>5</option>
-	<option>6</option>
-	<option>7</option>
-	<option>8</option>
-	<option>9</option>
-	<option>10</option>
-	<option>11</option>
-	<option>12</option>
-	<option>13</option>
-	<option>14</option>
-	<option>15</option>
-	<option>16</option>
-	<option>17</option>
-	<option>18</option>
-	<option>19</option>
-	<option>20</option>
-	<option>21</option>
-	<option>22</option>
-	<option>23</option>
-	<option>24</option>
-	<option>25</option>
-	<option>26</option>
-	<option>27</option>
-	<option>28</option>
-	<option>29</option>
-	<option>30</option>
-	<option>31</option>
-</select> <select name="yearAcquired" id="yearAcquired" <%if (finished) {%>
-	disabled="disabled" <%}%>>
-	<option selected="selected">YYYY</option>
-	<option>2000</option>
-	<option>2001</option>
-	<option>2002</option>
-	<option>2003</option>
-	<option>2004</option>
-	<option>2005</option>
-	<option>2006</option>
-	<option>2007</option>
-	<option>2008</option>
-	<option>2009</option>
-	<option>2010</option>
-	<option>2011</option>
-	<option>2012</option>
-	<option>2013</option>
-	<option>2015</option>
-	<option>2016</option>
-</select></div>
-<p>&nbsp;</p>
 <div id="apDiv21"><label for="itemCategory" class="texts">*Category:</label>
-<select name="itemCategory" id="itemCategory" <%if (finished) {%>
-	disabled="disabled" <%}%>>
+<select name="itemCategory" id="itemCategory">
 	<%
 		for (String s : itemCategories) {
 	%>
@@ -579,25 +521,69 @@ Acquired:</label> <select name="month" id="month3" <%if (finished) {%>
 		}
 	%>
 </select></div>
+
+<div id="apDiv13"><label for="itemPrice3" class="texts">Price:</label>
+<input name="itemPrice" type="text" id="itemPrice3" size="10" /></div>
+
+<div id="apDiv14"><label for="month3" class="texts">Date
+Acquired:</label> <select name="monthAcquired" id="month3">
+	<option selected="selected">MM</option>
+	<option>Jan</option>
+	<option>Feb</option>
+	<option>Mar</option>
+	<option>Apr</option>
+	<option>May</option>
+	<option>Jun</option>
+	<option>Jul</option>
+	<option>Aug</option>
+	<option>Sep</option>
+	<option>Oct</option>
+	<option>Nov</option>
+	<option>Dec</option>
+</select> <select name="dayAcquired" id="dayAcquired">
+	<option selected="selected">DD</option>
+	<%
+		for (int i = 1; i <32; i++) {
+	%>
+
+	<option><%=i%></option>
+	<%
+		}
+	%>
+</select> <select name="yearAcquired" id="yearAcquired">
+	<option selected="selected">YYYY</option>
+	<%
+		for (int i = 1973; i <= Integer.parseInt(year); i++){
+			%>
+			<option><%=i%></option>
+			<%
+		}
+	%>
+</select></div>
+
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
+
 <div id="apDiv15"><label for="stockNumber2" class="texts">Stock
 Number:</label> <input name="stockNumber" type="text" id="stockNumber2"
 	size="20" /></div>
+
 <div id="apDiv16"><label for="inventoryItemNum2" class="texts">Inv.
 Item Number:</label> <input type="text" name="inventoryItemNum"
-	id="inventoryItemNum2" <%if (finished) {%> disabled="disabled" <%}%> /></div>
+	id="inventoryItemNum2" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+
 <div id="apDiv17"><label for="itemPropertyNumber2" class="texts">Property
 Number:</label> <input type="text" name="itemPropertyNumber"
-	id="itemPropertyNumber2" <%if (finished) {%> disabled="disabled" <%}%> /></div>
+	id="itemPropertyNumber2" /></div>
 <p>&nbsp;</p>
+
 <div id="apDiv18"><label for="itemStatus2" class="texts">*Item
-Status:</label> <select name="itemStatus" id="itemStatus2" <%if (finished) {%>
-	disabled="disabled" <%}%>>
+Status:</label> <select name="itemStatus" id="itemStatus2">
 	<%
 		for (String s : itemStatuses) {
 	%>
@@ -607,9 +593,9 @@ Status:</label> <select name="itemStatus" id="itemStatus2" <%if (finished) {%>
 	%>
 </select></div>
 <p>&nbsp;</p>
+
 <div id="apDiv19"><label for="itemCondition2" class="texts">*Item
-Condition:</label> <select name="itemCondition" id="itemCondition2"
-	<%if (finished) {%> disabled="disabled" <%}%>>
+Condition:</label> <select name="itemCondition" id="itemCondition2">
 	<%
 		for (String s : itemConditions) {
 	%>
@@ -619,10 +605,11 @@ Condition:</label> <select name="itemCondition" id="itemCondition2"
 	%>
 </select></div>
 <p>&nbsp;</p>
+
 <div id="apDiv20"><input type="submit" name="addItemBtn "
 	id="addItemBtn"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
-	value="Add" <%if (finished) {%> disabled="disabled" <%}%> /></div>
+	value="Add" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -630,6 +617,7 @@ Condition:</label> <select name="itemCondition" id="itemCondition2"
 <p>&nbsp;</p>
 </form>
 </div>
+
 <div class="requiredLabel" id="apDiv1"><em>*required fields</em></div>
 <div id="footer"></div>
 <p>&nbsp;</p>
@@ -642,7 +630,7 @@ Condition:</label> <select name="itemCondition" id="itemCondition2"
 <div id="generalBorder" style="width: 100%"></div>
 
 <%
-	if (validInputs != null && validInputs.equalsIgnoreCase("false")) {
+	if (!firstAttempt && !validEntries) {
 %>
 <div class="requiredLabel" id="apDiv24"><em><strong>Please
 check your input.</strong></em></div>
@@ -652,4 +640,3 @@ check your input.</strong></em></div>
 
 </body>
 </html>
-

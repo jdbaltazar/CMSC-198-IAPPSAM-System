@@ -1,6 +1,7 @@
 package com.iappsam.servlet.item;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
@@ -19,6 +19,7 @@ import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.util.DateUtil;
 
 /**
  * Servlet implementation class AddItem
@@ -55,32 +56,32 @@ public class AddItem extends HttpServlet {
 		List<ItemCategory> categories = new ArrayList<ItemCategory>();
 		List<ItemStatus> status = new ArrayList<ItemStatus>();
 		List<ItemCondition> conditions = new ArrayList<ItemCondition>();
-		
+
 		ArrayList<String> itemUnits = new ArrayList<String>();
 		ArrayList<String> itemCategories = new ArrayList<String>();
 		ArrayList<String> itemStatuses = new ArrayList<String>();
 		ArrayList<String> itemConditions = new ArrayList<String>();
 
 		try{
-		
+
 		units = iManager.getAllUnits();
 		categories = iManager.getAllItemCategory();
 		status = iManager.getAllItemStatus();
 		conditions = iManager.getAllItemCondition();
-		
+
 		if(units==null)
 			units = new ArrayList<Unit>();
-		
+
 		if(categories==null)
 			categories = new ArrayList<ItemCategory>();
-		
+
 		if(status==null)
 			status = new ArrayList<ItemStatus>();
-		
+
 		if(conditions==null)
 			conditions = new ArrayList<ItemCondition>();
-		
-		
+
+
 
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
@@ -102,12 +103,18 @@ public class AddItem extends HttpServlet {
 			itemConditions.add(i.getItemCondition());
 		}
 
-		request.setAttribute("finishedInputting", "false");
-		request.setAttribute("validInputForItem", "true");
+		request.setAttribute("firstAttempt", "true");
+		request.setAttribute("validEntries", "false");
 		request.setAttribute("itemUnits", itemUnits);
 		request.setAttribute("itemCategories", itemCategories);
 		request.setAttribute("itemStatuses", itemStatuses);
 		request.setAttribute("itemConditions", itemConditions);
+		
+		Date date = new Date(System.currentTimeMillis());
+		
+		request.setAttribute("day", DateUtil.getDayEquivalent(date));
+		request.setAttribute("month", DateUtil.getMonthEquivalentInWords(date));
+		request.setAttribute("year", DateUtil.getYearEquivalent(date));
 
 		requestDispatcher.forward(request, response);
 	}
