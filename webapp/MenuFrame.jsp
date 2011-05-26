@@ -393,7 +393,7 @@
 <div id="createNewAcctDiv">
 <form id="form1" name="form1" method="post"
 	action="accounts/CreateAccount.jsp"><input
-	name="createNewAcctBtn" type="submit" class="button"
+	name="createNewAcctBtn" type="submit" class="button"d
 	id="createNewAcctBtn" value="Create New" /></form>
 </div>
 <div id="viewAcctDiv">

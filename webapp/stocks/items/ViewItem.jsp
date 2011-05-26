@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.entities.Item"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -372,18 +371,11 @@
 </head>
 
 <body>
-<%
-	Item item = (Item) request.getAttribute("item");
-	String day = (String) request.getAttribute("day");
-	String month = (String) request.getAttribute("month");
-	String year = (String) request.getAttribute("year");
-%>
-
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright É 2011 All Rights Reserved</td>
+		<td>Copyright © 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -424,59 +416,102 @@ Information</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
+<%
+	String description = (String) request.getAttribute("description");
+	String unit = (String) request.getAttribute("unit");
+	String category = (String) request.getAttribute("category");
+	String price = (String) request.getAttribute("price");
+	//String date = (String)request.getAttribute("date");
+	String stockNumber = (String) request.getAttribute("stockNumber");
+	String inventoryItemNumber = (String) request
+			.getAttribute("inventoryItemNumber");
+	String propertyNumber = (String) request
+			.getAttribute("propertyNumber");
+	String status = (String) request.getAttribute("status");
+	String condition = (String) request.getAttribute("condition");
+%>
+
 <div id="apDiv12"><label for="itemDescription3" class="texts">Description:</label>
 <textarea name="itemDescription" cols="30" disabled="disabled"
-	id="itemDescription3"><%=item.getDescription()%></textarea></div>
+	id="itemDescription3"><%=description%></textarea></div>
 <div id="apDiv11"><label for="itemUnit" class="texts">Unit:</label>
 <select name="itemUnit" disabled="disabled" id="itemUnit">
-	<option selected="selected"><%=item.getUnit()%></option>
+	<option><%=unit%></option>
 </select></div>
 <div id="apDiv13"><label for="itemPrice3" class="texts">Price:</label>
-<input name="itemPrice" type="text" disabled="disabled"
-	value="<%="" + item.getPrice()%>" id="itemPrice3" size="10" /></div>
+<input name="itemPrice" type="text" disabled="disabled" id="itemPrice3"
+	size="10" value <%=price%> /></div>
 <div id="apDiv14"><label for="month3" class="texts">Date
 Acquired:</label> <select name="month" disabled="disabled" id="month3">
-	<%
-		if (month != null) {
-	%>
-	<option selected="selected"><%=month%></option>
-	<%
-		} else {
-	%>
 	<option selected="selected">MM</option>
-	<%
-		}
-	%>
-
+	<option>Jan</option>
+	<option>Feb</option>
+	<option>Mar</option>
+	<option>Apr</option>
+	<option>May</option>
+	<option>Jun</option>
+	<option>Jul</option>
+	<option>Aug</option>
+	<option>Sep</option>
+	<option>Oct</option>
+	<option>Nov</option>
+	<option>Dec</option>
 </select> <select name="dayAcquired" disabled="disabled" id="dayAcquired">
-	<%
-		if (day != null) {
-	%>
-	<option selected="selected"><%=day%></option>
-	<%
-		} else {
-	%>
 	<option selected="selected">DD</option>
-	<%
-		}
-	%>
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>6</option>
+	<option>7</option>
+	<option>8</option>
+	<option>9</option>
+	<option>10</option>
+	<option>11</option>
+	<option>12</option>
+	<option>13</option>
+	<option>14</option>
+	<option>15</option>
+	<option>16</option>
+	<option>17</option>
+	<option>18</option>
+	<option>19</option>
+	<option>20</option>
+	<option>21</option>
+	<option>22</option>
+	<option>23</option>
+	<option>24</option>
+	<option>25</option>
+	<option>26</option>
+	<option>27</option>
+	<option>28</option>
+	<option>29</option>
+	<option>30</option>
+	<option>31</option>
 </select> <select name="yearAcquired" disabled="disabled" id="yearAcquired">
-	<%
-		if (year != null) {
-	%>
-	<option selected="selected"><%=year%></option>
-	<%
-		} else {
-	%>
 	<option selected="selected">YYYY</option>
-	<%
-		}
-	%>
+	<option>2000</option>
+	<option>2001</option>
+	<option>2002</option>
+	<option>2003</option>
+	<option>2004</option>
+	<option>2005</option>
+	<option>2006</option>
+	<option>2007</option>
+	<option>2008</option>
+	<option>2009</option>
+	<option>2010</option>
+	<option>2011</option>
+	<option>2012</option>
+	<option>2013</option>
+	<option>2015</option>
+	<option>2016</option>
 </select></div>
 <p>&nbsp;</p>
 <div id="apDiv21"><label for="itemCategory" class="texts">Category:</label>
 <select name="itemCategory" disabled="disabled" id="itemCategory">
-	<option><%=item.getCategory()%></option>
+	<option>category</option>
 </select></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -484,31 +519,30 @@ Acquired:</label> <select name="month" disabled="disabled" id="month3">
 <p>&nbsp;</p>
 <div id="apDiv15"><label for="stockNumber2" class="texts">Stock
 Number:</label> <input name="stockNumber" type="text" disabled="disabled"
-	value="<%=item.getStockNumber()%>" id="stockNumber2" size="20" /></div>
+	id="stockNumber2" size="20" value=<%=stockNumber%> /></div>
 <div id="apDiv16"><label for="inventoryItemNum2" class="texts">Inv.
 Item Number:</label> <input type="text" name="inventoryItemNum"
-	disabled="disabled" value="<%=item.getInventoryItemNumber()%>"
-	id="inventoryItemNum2" /></div>
+	disabled="disabled" id="inventoryItemNum2" value
+	<%=inventoryItemNumber%> /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv17"><label for="itemPropertyNumber2" class="texts">Property
 Number:</label> <input type="text" name="itemPropertyNumber" disabled="disabled"
-	value="<%=item.getPropertyNumber()%>" id="itemPropertyNumber2" /></div>
+	id="itemPropertyNumber2" value <%=propertyNumber%> /></div>
 <p>&nbsp;</p>
 <div id="apDiv18"><label for="itemStatus2" class="texts">Item
 Status:</label> <select name="itemStatus" disabled="disabled" id="itemStatus2">
 
-	<option selected="selected"><%=item.getStatus()%></option>
+	<option><%=status%></option>
 </select></div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="itemCondition2" class="texts">Item
 Condition:</label> <select name="itemCondition" disabled="disabled"
 	id="itemCondition2">
-	<option selected="selected"><%=item.getCondition()%></option>
+	<option><%=condition%></option>
 </select></div>
 <p>&nbsp;</p>
-<div id="apDiv20"><input type="submit" name="addItemBtn"
-	id="addItemBtn"
+<div id="apDiv20"><input type="submit" name="addItemBtn" id="addItemBtn" disabled="disabled"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
 	value="Update" /></div>
 <p>&nbsp;</p>

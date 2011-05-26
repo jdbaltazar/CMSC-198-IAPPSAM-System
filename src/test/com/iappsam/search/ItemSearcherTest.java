@@ -19,7 +19,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-public class SearchingTest {
+public class ItemSearcherTest {
 
 	private ItemManager im = new ItemManagerSession();
 	private Searcher s;
@@ -42,14 +42,14 @@ public class SearchingTest {
 
 	public final Item itemDate = new Item("Date1", "Category", "Unit", "Status", "Condition");
 	{
-//		itemDate.setDateAcquired(calendar.getTime());
+		itemDate.setDateAcquired(calendar.getTime());
 		calendar.clear();
 		calendar.set(2010, 00, 02);
 	}
 	public final Item itemDate2 = new Item("Date2", "Category", "Unit", "Status", "Condition");
 
 	{
-//		itemDate2.setDateAcquired(calendar.getTime());
+		itemDate2.setDateAcquired(calendar.getTime());
 	}
 
 	@Before
