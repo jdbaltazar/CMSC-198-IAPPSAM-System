@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.iappsam.entities.ContactTest;
 import com.iappsam.entities.DivisionOfficeTest;
 import com.iappsam.entities.EmployeeTest;
 import com.iappsam.entities.ItemTest;
@@ -24,6 +25,7 @@ import com.iappsam.util.HibernateUtilTest;
 		PersonTest.class, //
 		EmployeeTest.class,//
 		ItemTest.class,//
+		ContactTest.class, //
 		DivisionOfficeTest.class, //
 		AnnualProcurementPlanTest.class, //
 		PersonManagerSessionTest.class, //

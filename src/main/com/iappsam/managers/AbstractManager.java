@@ -21,7 +21,7 @@ public abstract class AbstractManager implements Manager {
 		Transaction tx = session.beginTransaction();
 		try {
 			session.persist(entity);
-			
+
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
@@ -127,21 +127,6 @@ public abstract class AbstractManager implements Manager {
 		}
 	}
 
-	// used for updating primary keys
-	protected void executeUpdate(String hql, String primaryKey, String newPrimaryKey) throws TransactionException {
-		// Transaction tx = session.beginTransaction();
-		// try {
-		//
-		// Query query = session.createQuery(hql);
-		// query.setString("name", primaryKey);
-		// query.setString("newName", newPrimaryKey);
-		// tx.commit();
-		// return;
-		// } catch (HibernateException ex) {
-		// tx.rollback();
-		// throw new TransactionException(ex.getMessage());
-		// }
-
-	}
-
+	
+	
 }

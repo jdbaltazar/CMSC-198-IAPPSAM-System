@@ -1,24 +1,35 @@
 package com.iappsam.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Person_ID")
 	private int id;
-	
+
 	@Column(name = "Title")
 	private String title;
-	
+
 	@Column(name = "Name")
 	private String name;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Person_Contact", joinColumns = @JoinColumn(name = "Person_ID"), inverseJoinColumns = @JoinColumn(name = "Contact_ID"))
+	Set<Contact> contacts = new HashSet<Contact>();
 
 	public Person() {
 		super();
@@ -81,4 +92,15 @@ public class Person {
 		return true;
 	}
 
+	public void addContact(Contact contact) {
+		contacts.add(contact);
+	}
+
+	public Set<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void removeContact(Contact contact) {
+		contacts.remove(contact);
+	}
 }

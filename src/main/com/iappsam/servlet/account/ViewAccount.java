@@ -72,7 +72,6 @@ public class ViewAccount extends HttpServlet {
 		ArrayList<String> landline = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 
-
 		String username;
 		String acctType;
 
@@ -87,19 +86,18 @@ public class ViewAccount extends HttpServlet {
 			name = person.getName();
 
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.MOBILE))
+				if (contact.get(i).getType() == ContactType.MOBILE)
 					mobileNumber.add(contact.get(i).getData());
 			}
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.LANDLINE))
+				if (contact.get(i).getType() == ContactType.LANDLINE)
 					landline.add(contact.get(i).getData());
 			}
 
 			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getContactType().equalsIgnoreCase(ContactType.EMAIL))
+				if (contact.get(i).getType() == ContactType.EMAIL)
 					emailad.add(contact.get(i).getData());
 			}
-
 
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);

@@ -20,17 +20,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`Contact_Type`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Contact_Type` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Contact_Type` (
-  `Contact_Type` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`Contact_Type`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `IAPPSAM`.`Contact`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Contact` ;
@@ -38,14 +27,8 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Contact` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Contact` (
   `Contact_ID` INT NOT NULL AUTO_INCREMENT ,
   `Data` VARCHAR(45) NOT NULL ,
-  `Contact_Type` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`Contact_ID`) ,
-  INDEX `fk_Contact_Contact_Type1` (`Contact_Type` ASC) ,
-  CONSTRAINT `fk_Contact_Contact_Type1`
-    FOREIGN KEY (`Contact_Type` )
-    REFERENCES `IAPPSAM`.`Contact_Type` (`Contact_Type` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
+  `Contact_Type` INT NOT NULL ,
+  PRIMARY KEY (`Contact_ID`) )
 ENGINE = InnoDB;
 
 
@@ -249,6 +232,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   INDEX `fk_Item_Item_Status1` (`Item_Status_ID` ASC) ,
   INDEX `fk_Item_Unit1` (`Unit_ID` ASC) ,
   INDEX `fk_Item_Item_Category1` (`Item_Category_ID` ASC) ,
+  UNIQUE INDEX `Description_UNIQUE` (`Description` ASC) ,
   CONSTRAINT `fk_Item_Item_Condition1`
     FOREIGN KEY (`Item_Condition_ID` )
     REFERENCES `IAPPSAM`.`Item_Condition` (`id` )
@@ -639,8 +623,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Disposal` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Disposal` (
-  `Disposal` VARCHAR(80) NOT NULL ,
-  PRIMARY KEY (`Disposal`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(80) NOT NULL ,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
@@ -653,18 +638,13 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`WMR_Line` (
   `Item_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
   `OR_Number` VARCHAR(60) NOT NULL ,
-  `Disposal` VARCHAR(80) NOT NULL ,
   `Disposed_To` VARCHAR(80) NULL ,
   `Waste_Materials_Report_ID` INT NOT NULL ,
+  `id` INT NOT NULL ,
   PRIMARY KEY (`Waste_Materials_Report_ID`, `Item_ID`) ,
-  INDEX `fk_WMR_Line_Dispoasal_Type1` (`Disposal` ASC) ,
   INDEX `fk_WMR_Line_Waste_Materials_Report1` (`Waste_Materials_Report_ID` ASC) ,
   INDEX `fk_WMR_Line_Item1` (`Item_ID` ASC) ,
-  CONSTRAINT `fk_WMR_Line_Dispoasal_Type1`
-    FOREIGN KEY (`Disposal` )
-    REFERENCES `IAPPSAM`.`Disposal` (`Disposal` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_WMR_Line_Disposal1` (`id` ASC) ,
   CONSTRAINT `fk_WMR_Line_Waste_Materials_Report1`
     FOREIGN KEY (`Waste_Materials_Report_ID` )
     REFERENCES `IAPPSAM`.`Waste_Materials_Report` (`Waste_Materials_Report_ID` )
@@ -673,6 +653,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`WMR_Line` (
   CONSTRAINT `fk_WMR_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_WMR_Line_Disposal1`
+    FOREIGN KEY (`id` )
+    REFERENCES `IAPPSAM`.`Disposal` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -732,23 +717,19 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`IIRUP_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP_Line` (
+  `IIRUP_Line_ID` INT NOT NULL AUTO_INCREMENT ,
+  `IIRUP_ID` INT NOT NULL ,
   `Item_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
   `Years_In_Service` INT NOT NULL ,
   `Accumulated_Depreciation` DECIMAL(50,2) NOT NULL ,
-  `Disposal_Type` VARCHAR(80) NOT NULL ,
   `Appraisal` VARCHAR(50) NULL ,
   `OR_Number` VARCHAR(45) NOT NULL ,
-  `IIRUP_ID` INT NOT NULL ,
-  PRIMARY KEY (`IIRUP_ID`, `Item_ID`) ,
-  INDEX `fk_IIRUP_Line_Dispoasal_Type1` (`Disposal_Type` ASC) ,
+  `id` INT NOT NULL ,
+  PRIMARY KEY (`IIRUP_Line_ID`) ,
   INDEX `fk_IIRUP_Line_IIRUP1` (`IIRUP_ID` ASC) ,
   INDEX `fk_IIRUP_Line_Item1` (`Item_ID` ASC) ,
-  CONSTRAINT `fk_IIRUP_Line_Dispoasal_Type1`
-    FOREIGN KEY (`Disposal_Type` )
-    REFERENCES `IAPPSAM`.`Disposal` (`Disposal` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_IIRUP_Line_Disposal1` (`id` ASC) ,
   CONSTRAINT `fk_IIRUP_Line_IIRUP1`
     FOREIGN KEY (`IIRUP_ID` )
     REFERENCES `IAPPSAM`.`IIRUP` (`IIRUP_ID` )
@@ -757,6 +738,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP_Line` (
   CONSTRAINT `fk_IIRUP_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IIRUP_Line_Disposal1`
+    FOREIGN KEY (`id` )
+    REFERENCES `IAPPSAM`.`Disposal` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

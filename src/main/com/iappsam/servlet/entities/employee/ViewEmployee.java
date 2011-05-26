@@ -34,8 +34,7 @@ public class ViewEmployee extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -45,40 +44,32 @@ public class ViewEmployee extends HttpServlet {
 	 */
 	Person p;
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String employeeID = (String) request.getParameter("employeeID");
 		System.out.println(employeeID);
 		ArrayList<String> landline = new ArrayList<String>();
 		ArrayList<String> mobile = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 		try {
-			Employee emp = ManagerBin.pManager.getEmployee(Integer
-					.parseInt(employeeID));
+			Employee emp = ManagerBin.pManager.getEmployee(Integer.parseInt(employeeID));
 			if (emp != null) {
 				p = emp.getPerson();
 				request.setAttribute("title", p.getTitle());
 				request.setAttribute("name", p.getName());
 				request.setAttribute("designation", emp.getDesignation());
 				request.setAttribute("employeeNum", emp.getEmployeeNumber());
-				request.setAttribute("division", emp.getDivisionOffice()
-						.getDivisionName()+" , "+emp.getDivisionOffice()
-						.getOfficeName());
-				
-				List<Contact> contact = ManagerBin.getInstance().cManager
-						.getAllContactsByPerson(p.getId());
-				
+				request.setAttribute("division", emp.getDivisionOffice().getDivisionName() + " , " + emp.getDivisionOffice().getOfficeName());
+
+				List<Contact> contact = ManagerBin.getInstance().cManager.getAllContactsByPerson(p.getId());
+
 				for (int i = 0; contact != null && i < contact.size(); i++) {
-					if (contact.get(i).getContactType()
-							.equalsIgnoreCase(ContactType.LANDLINE)) {
+					if (contact.get(i).getType() == ContactType.LANDLINE) {
 						landline.add(contact.get(i).getData());
 					}
-					if (contact.get(i).getContactType()
-							.equalsIgnoreCase(ContactType.EMAIL)) {
+					if (contact.get(i).getType() == ContactType.EMAIL) {
 						emailad.add(contact.get(i).getData());
 					}
-					if (contact.get(i).getContactType()
-							.equalsIgnoreCase(ContactType.MOBILE)) {
+					if (contact.get(i).getType() == ContactType.MOBILE) {
 						mobile.add(contact.get(i).getData());
 					}
 				}
@@ -86,8 +77,7 @@ public class ViewEmployee extends HttpServlet {
 				request.setAttribute("emailad", emailad);
 				request.setAttribute("landline", landline);
 			}
-			RequestDispatcher view = request
-					.getRequestDispatcher("ViewEmployee.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("ViewEmployee.jsp");
 			view.forward(request, response);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block

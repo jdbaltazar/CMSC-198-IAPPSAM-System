@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.entities.Account;
 import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Contact;
+import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
@@ -125,7 +126,6 @@ public class AccountCreation extends HttpServlet {
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		ContactManager cManager = new ContactManagerSession();
-		
 
 		try {
 			request.setAttribute("title", title);
@@ -160,11 +160,11 @@ public class AccountCreation extends HttpServlet {
 				accountType = AccountType.SPSO_PERSONNEL;
 			else if (accountType.equalsIgnoreCase("System Admin"))
 				accountType = AccountType.SYSTEM_ADMIN;
-			
+
 			Account account = new Account(userName, password, accountType, person.getId());
-			Contact contactLandLine = new Contact(landline, "LANDLINE");
-			Contact contactMobile = new Contact(cellphonNumber, "MOBILE");
-			Contact contactEmail = new Contact(emailAdd, "EMAIL");
+			Contact contactLandLine = new Contact(landline, ContactType.LANDLINE);
+			Contact contactMobile = new Contact(cellphonNumber, ContactType.MOBILE);
+			Contact contactEmail = new Contact(emailAdd, ContactType.EMAIL);
 			cManager.addContact(contactLandLine);
 			cManager.addContactToPerson(contactLandLine.getContactID(), person.getId());
 			cManager.addContact(contactMobile);
