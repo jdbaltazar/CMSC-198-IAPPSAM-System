@@ -61,7 +61,7 @@ import com.iappsam.managers.sessions.WMRManagerSession;
 
 public class Tester {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DuplicateEntryException {
 		// try {
 		//
 		// PersonManager pManager = new PersonManagerSession();
@@ -495,12 +495,23 @@ public class Tester {
 
 		try {
 
-			List<DivisionOffice> dos;
-			dos = doManager.getAllDivisionOffice();
-
-			for (DivisionOffice d : dos) {
-				System.out.println(d.getDivisionName());
+			ContactManager cManager = new ContactManagerSession();
+			Contact c = new Contact("343434", ContactType.MOBILE);
+			cManager.addContact(c);
+			Person p1 = new Person("xxxxxxxxxxxxxxxxxxx");
+			PersonManager pManager = new PersonManagerSession();
+			pManager.addPerson(p1);
+			cManager.addContactToPerson(c.getContactID(), p1.getId());
+			
+			
+			List<Contact>cons = cManager.getAllContactsByPerson(p1.getId());
+			for(Contact c2: cons){
+				System.out.println(c2.getData());
 			}
+			
+			
+			
+			
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

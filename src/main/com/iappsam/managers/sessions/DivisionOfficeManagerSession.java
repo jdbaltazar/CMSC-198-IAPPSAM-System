@@ -9,40 +9,48 @@ import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager {
+public class DivisionOfficeManagerSession extends AbstractManager implements
+		DivisionOfficeManager {
 
 	@Override
-	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+	public void addDivisionOffice(DivisionOffice divisionOffice)
+			throws TransactionException {
 		add(divisionOffice);
 	}
 
 	@Override
-	public int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+	public int saveDivisionOffice(DivisionOffice divisionOffice)
+			throws TransactionException {
 		return (Integer) save(divisionOffice);
 	}
 
 	@Override
-	public void updateDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+	public void updateDivisionOffice(DivisionOffice divisionOffice)
+			throws TransactionException {
 		update(divisionOffice);
 	}
 
 	@Override
-	public DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException {
+	public DivisionOffice getDivisionOffice(int divisionOfficeId)
+			throws TransactionException {
 		return (DivisionOffice) get(DivisionOffice.class, divisionOfficeId);
 	}
 
 	@Override
-	public void removeDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+	public void removeDivisionOffice(DivisionOffice divisionOffice)
+			throws TransactionException {
 		remove(divisionOffice);
 	}
 
 	@Override
-	public boolean containsDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+	public boolean containsDivisionOffice(DivisionOffice divisionOffice)
+			throws TransactionException {
 		return contains(divisionOffice);
 	}
 
 	@Override
-	public boolean containsDivisionOffice(String name) throws TransactionException {
+	public boolean containsDivisionOffice(String name)
+			throws TransactionException {
 		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
 		for (DivisionOffice divisionOffice : divisionOffices) {
 			if (divisionOffice.getDivisionName().equalsIgnoreCase(name))
@@ -52,7 +60,21 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException {
+	public int getDivisionIdByName(String division, String office)
+			throws TransactionException {
+		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
+		for (DivisionOffice divisionOffice : divisionOffices) {
+			if (divisionOffice.getDivisionName().equalsIgnoreCase(division)) {
+				if (divisionOffice.getOfficeName().equalsIgnoreCase(office))
+					return divisionOffice.getId();
+			}
+		}
+		return -1;
+	}
+
+	@Override
+	public DivisionOffice getDivisionOfficeByEmployee(int employeeId)
+			throws TransactionException {
 		List<EmployeeDivisionOffice> emDivisionOffices = getAllEmployeeDivisionOffice();
 		for (EmployeeDivisionOffice emDivisionOffice : emDivisionOffices) {
 			if (emDivisionOffice.getEmployeeID() == employeeId)
@@ -62,7 +84,8 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public List<DivisionOffice> getAllDivisionOffice() throws TransactionException {
+	public List<DivisionOffice> getAllDivisionOffice()
+			throws TransactionException {
 		return getList(DivisionOffice.class);
 	}
 
@@ -92,7 +115,8 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public boolean containsBuilding(Building building) throws TransactionException {
+	public boolean containsBuilding(Building building)
+			throws TransactionException {
 		return contains(building);
 	}
 
@@ -112,7 +136,8 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException {
+	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice()
+			throws TransactionException {
 		return getList(EmployeeDivisionOffice.class);
 	}
 

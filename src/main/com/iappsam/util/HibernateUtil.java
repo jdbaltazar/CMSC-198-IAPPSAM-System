@@ -60,7 +60,7 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	static {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		// tryToBuildSessionFactory("root", "123456");
+		tryToBuildSessionFactory("root", "123456");
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {

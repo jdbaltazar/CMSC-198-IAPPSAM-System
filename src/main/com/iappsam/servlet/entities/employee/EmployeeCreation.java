@@ -9,31 +9,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Account;
+import com.iappsam.entities.Contact;
+import com.iappsam.entities.ContactType;
+import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
-import com.iappsam.managers.AccountManager;
-import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.AccountManagerSession;
-import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.util.ManagerBin;
 
 /**
  * Servlet implementation class EmployeeCreation
  */
-@WebServlet("/entities/createEmployee.do")
+@WebServlet("/entities/employees/CreateEmployee.do")
 public class EmployeeCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String title;
 	private String name;
-	private String employeeID;
-	private String password;
-	private String confirmPassword;
+	private String designation;
+	private String employeeNumber;
 	private String division;
+	private String office;
+	private String mobileNumber;
+	private String landline;
+	private String emailad;
+	private String designationID;
+	private DivisionOffice dOffice;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -41,70 +49,119 @@ public class EmployeeCreation extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		title = request.getParameter("title");
 		name = request.getParameter("name");
-		employeeID = request.getParameter("employeeID");
-		password = request.getParameter("password");
-		confirmPassword = request.getParameter("reenterPassword");
+		designation = request.getParameter("designation");
+		employeeNumber = request.getParameter("employeeNumber");
 		division = request.getParameter("division");
+		office = request.getParameter("office");
+		mobileNumber = request.getParameter("mobileNumber");
+		landline = request.getParameter("landline");
+		emailad = request.getParameter("emailad");
 
-		if (name.isEmpty() || employeeID.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || !password.equals(confirmPassword)) {
+		if (name.isEmpty() || designation.isEmpty()) {
 			addFail(request, response);
+		} else
+			addSuccess(request, response);
+	}
+
+	private String getDivisionNameFromString(String input) {
+		String output = new String();
+		for (int i = 0; input != null && i < input.length(); i++) {
+			if (input.charAt(i) == ',')
+				output = input.substring(0, i - 1);
 		}
-		else 
-			addSuccess(request,response);
+		return output;
 	}
 
-	private void addSuccess(HttpServletRequest request, HttpServletResponse response) {
-//		PersonManager manager = new PersonManagerSession();
-//		manager.ad
-//
-//		try {
-//			request.setAttribute("title", title);
-//			request.setAttribute("name", name);
-//			request.setAttribute("designation", designation);
-//			request.setAttribute("userName", userName);
-//			request.setAttribute("password", password);
-//			request.setAttribute("office", office);
-//			request.setAttribute("division", division);
-//			request.setAttribute("employeeNumber", employeeNumber);
-//
-//			RequestDispatcher view = request.getRequestDispatcher("../jsp/accounts/CreateAccountSuccess.jsp");
-//			view.forward(request, response);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (ServletException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//	
-//		} catch (TransactionException e) {
-//			e.printStackTrace();
-//		}
+	private String getOfficeNameFromString(String input) {
+		String output = new String();
+		for (int i = 0; input != null && i < input.length(); i++) {
+			if (input.charAt(i) == ',')
+				output = input.substring(i + 2);
+		}
+		return output;
 	}
 
-	private void addFail(HttpServletRequest request, HttpServletResponse response) {
+	private void addSuccess(HttpServletRequest request,
+			HttpServletResponse response) {
+		request.setAttribute("title", title);
+		request.setAttribute("name", name);
+		request.setAttribute("designation", designation);
+		request.setAttribute("employeeNumber", employeeNumber);
+		request.setAttribute("mobileNumber", mobileNumber);
+		request.setAttribute("landline", landline);
+		request.setAttribute("emailad", emailad);
+		request.setAttribute("division", division);
+
+		Person person = new Person(title, name);
+		Employee employee = new Employee(designation, employeeNumber, person);
+		Contact c1;
+		Contact c2;
+		Contact c3;
+
 		try {
-			
-			if (password == null || confirmPassword == null || !password.equals(confirmPassword))
-				request.setAttribute("passIsOK", "false");
-			else
-				request.setAttribute("passIsOK", "true");
+			ManagerBin.pManager.addPerson(person);
+			ManagerBin.pManager.addEmployee(employee);
+			System.out.println(getDivisionNameFromString(division));
+			System.out.println(getOfficeNameFromString(division));
+			int dID = ManagerBin.doManager.getDivisionIdByName(
+					getDivisionNameFromString(division),
+					getOfficeNameFromString(division));
+			if (emailad != null && !emailad.isEmpty()) {
+				c1 = new Contact(emailad, ContactType.EMAIL);
+				ManagerBin.cManager.addContact(c1);
+				ManagerBin.cManager.addContactToPerson(c1.getContactID(),
+						person.getId());
+			}
+			if (landline != null && !landline.isEmpty()) {
+				c2 = new Contact(landline, ContactType.LANDLINE);
+				ManagerBin.cManager.addContact(c2);
+				ManagerBin.cManager.addContactToPerson(c2.getContactID(),
+						person.getId());
+			}
+			if (mobileNumber != null && !mobileNumber.isEmpty()) {
+				c3 = new Contact(mobileNumber, ContactType.MOBILE);
+				ManagerBin.cManager.addContact(c3);
+				ManagerBin.cManager.addContactToPerson(c3.getContactID(),
+						person.getId());
+			}
+			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(),
+					dID);
+			RequestDispatcher view = request
+					.getRequestDispatcher("EmployeeFinalize.jsp");
+			view.forward(request, response);
+		} catch (TransactionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (DuplicateEntryException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ServletException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
-			if (name == null)
-				request.setAttribute("nameIsOK", "false");
-			else
-				request.setAttribute("nameIsOK", "true");
+	}
 
-			if (employeeID == null)
-				request.setAttribute("employeeIDIsOK", "false");
-			else
-				request.setAttribute("employeeIDIsOK", "true");
-			
+	private void addFail(HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			request.setAttribute("title", title);
+			request.setAttribute("name", name);
+			request.setAttribute("designation", designation);
+			request.setAttribute("employeeNumber", employeeNumber);
 			request.setAttribute("division", division);
-			RequestDispatcher view = request.getRequestDispatcher("../jsp/entities/employees/CreateEmployeeFail.jsp");
+			request.setAttribute("mobileNumber", mobileNumber);
+			request.setAttribute("landline", landline);
+			request.setAttribute("emailad", emailad);
+			RequestDispatcher view = request
+					.getRequestDispatcher("AddEmployee.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -115,7 +172,5 @@ public class EmployeeCreation extends HttpServlet {
 		}
 
 	}
-
-
 
 }
