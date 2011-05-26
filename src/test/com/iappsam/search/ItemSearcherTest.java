@@ -19,7 +19,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-public class SearchingTest {
+public class ItemSearcherTest {
 
 	private ItemManager im = new ItemManagerSession();
 	private Searcher s;
