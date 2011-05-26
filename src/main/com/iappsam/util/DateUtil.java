@@ -1,6 +1,6 @@
 package com.iappsam.util;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class DateUtil {
 
@@ -81,13 +81,7 @@ public class DateUtil {
 	}
 
 	public static Date converToDate(String yyyy, String mm, String dd) {
-		Date date = null;
-		try {
-			date = Date.valueOf(yyyy + "-" + mm + "-" + dd);
-		} catch (Exception e) {
-
-		}
+		Date date = java.sql.Date.valueOf(yyyy + "-" + mm + "-" + dd);
 		return date;
 	}
-
 }

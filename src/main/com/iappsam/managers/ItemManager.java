@@ -20,8 +20,8 @@ public interface ItemManager extends Manager {
 	void updateItem(Item item) throws TransactionException;
 
 	Item getItem(int itemID) throws TransactionException;
-	
-	Item getItem(String description) throws TransactionException;
+
+	Item getItemByDescription(String description) throws TransactionException;
 
 	void removeItem(Item item) throws TransactionException;
 
@@ -30,7 +30,7 @@ public interface ItemManager extends Manager {
 	boolean containsItem(int itemID) throws TransactionException;
 
 	List<Item> getAllItems() throws TransactionException;
-	
+
 	List<Item> getAllExisitingItems() throws TransactionException;
 
 	// Unit
@@ -41,7 +41,7 @@ public interface ItemManager extends Manager {
 
 	void updateUnit(Unit unit) throws TransactionException;
 
-	Unit getUnit(String unitName) throws TransactionException;
+	Unit getUnitByName(String unitName) throws TransactionException;
 
 	void removeUnit(Unit unit) throws TransactionException;
 
@@ -88,13 +88,15 @@ public interface ItemManager extends Manager {
 	List<ItemCondition> getAllItemCondition() throws TransactionException;
 
 	// ItemCategory
-	
+
 	void addItemCategory(ItemCategory category) throws TransactionException;
 
 	boolean containsItemCategory(ItemCategory category) throws TransactionException;
 
+	ItemCategory getItemCategoryByName(String name);
+
 	void removeItemCategory(ItemCategory category) throws TransactionException;
-	
+
 	List<ItemCategory> getAllItemCategory() throws TransactionException;
 
 }

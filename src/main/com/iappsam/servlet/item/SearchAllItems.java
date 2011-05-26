@@ -66,7 +66,7 @@ public class SearchAllItems extends HttpServlet {
 		}
 		for (Item i : items) {
 			itemDescription.add(i.getDescription());
-			itemCategory.add(i.getCategory());
+			itemCategory.add(i.getItemCategory().getName());
 		}
 		request.setAttribute("itemDescription", itemDescription);
 		request.setAttribute("itemCategory", itemCategory);

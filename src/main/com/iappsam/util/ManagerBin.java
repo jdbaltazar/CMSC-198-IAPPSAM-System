@@ -41,7 +41,7 @@ public class ManagerBin {
 	public static IIRUPManager iirupManager = new IIRUPManagerSession();
 	public static WMRManager wmrManager = new WMRManagerSession();
 
-	private static ManagerBin INSTANCE = new ManagerBin();
+	public final static ManagerBin INSTANCE = new ManagerBin();
 	
 	public ManagerBin() {
 	}

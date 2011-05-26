@@ -51,25 +51,24 @@ public class AddPurchaseRequest extends HttpServlet {
 		try {
 			List<Unit> units = iManager.getAllUnits();
 			List<ItemStatus> itemStatus = iManager.getAllItemStatus();
-			List<ItemCondition> itemCondition = iManager.getAllItemCondition();
+			List<ItemCondition> itemConditions = iManager.getAllItemCondition();
 			ArrayList<String> unitList = new ArrayList<String>();
 			ArrayList<String> itemStatusList=new ArrayList<String>();
-			ArrayList<String> itemConditionList = new ArrayList<String>();
+			ArrayList<String> conditionNames = new ArrayList<String>();
 			for (int i = 0; i < units.size(); i++) {
 				unitList.add(units.get(i).getName());
 			}
 			for(int i=0;i<itemStatus.size();i++){
 				itemStatusList.add(itemStatus.get(i).getName());
 			}
-			for(int i=0;i<itemCondition.size();i++){
-				itemConditionList.add(itemCondition.get(i).getItemCondition());
+			for(int i=0;i<itemConditions.size();i++){
+				conditionNames.add(itemConditions.get(i).getName());
 			}
 
 			request.setAttribute("unitList", unitList);
-			request.setAttribute("itemConditionList", itemConditionList);
+			request.setAttribute("itemConditionList", conditionNames);
 			request.setAttribute("itemStatusList", itemStatusList);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		requestDispatcher.forward(request, response);

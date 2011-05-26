@@ -50,7 +50,7 @@ public class SearchItemList extends HttpServlet {
 			ArrayList<String> itemCategory = new ArrayList<String>();
 			ArrayList<String> itemID = new ArrayList<String>();
 			for (int i = 0; i < itemList.size(); i++) {
-				itemCategory.add(itemList.get(i).getCategory());
+				itemCategory.add(itemList.get(i).getDescription());
 				itemDescription.add(itemList.get(i).getDescription());
 				itemID.add("" + itemList.get(i).getId());
 			}

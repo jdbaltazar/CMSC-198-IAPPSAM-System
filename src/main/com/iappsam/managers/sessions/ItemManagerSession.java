@@ -3,6 +3,9 @@ package com.iappsam.managers.sessions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
@@ -11,6 +14,7 @@ import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.util.HibernateUtil;
 
 public class ItemManagerSession extends AbstractManager implements ItemManager {
 
@@ -35,14 +39,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public Item getItem(String description) throws TransactionException {
-		// TODO Auto-generated method stub
-		List<Item> items = getAllItems();
-		for (Item i : items) {
-			if (i.getDescription().equalsIgnoreCase(description))
-				return i;
-		}
-		return null;
+	public Item getItemByDescription(String description) throws TransactionException {
+		Session session = HibernateUtil.startSession();
+		Item item = (Item) session.createCriteria(Item.class).add(Restrictions.like("description", description)).uniqueResult();
+		session.close();
+		return item;
 	}
 
 	@Override
@@ -99,8 +100,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public Unit getUnit(String unitName) throws TransactionException {
-		return (Unit) get(Unit.class, unitName);
+	public Unit getUnitByName(String unitName) throws TransactionException {
+		Session session = HibernateUtil.startSession();
+		Unit item = (Unit) session.createCriteria(Unit.class).add(Restrictions.like("name", unitName)).uniqueResult();
+		session.close();
+		return item;
 	}
 
 	@Override
@@ -115,12 +119,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public boolean containsUnit(String name) throws TransactionException {
-		List<Unit> units = getAllUnits();
-		for (Unit unit : units) {
-			if (unit.getName().equalsIgnoreCase(name))
-				return true;
-		}
-		return false;
+		return getUnitByName(name) != null;
 	}
 
 	@Override
@@ -144,8 +143,13 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public ItemStatus getItemStatus(String itemStatus) throws TransactionException {
-		return (ItemStatus) get(Item.class, itemStatus);
+	public ItemStatus getItemStatus(String name) throws TransactionException {
+		Session session = HibernateUtil.startSession();
+		
+		ItemStatus cat = (ItemStatus) session.createCriteria(ItemStatus.class).add(Restrictions.like("name", name)).uniqueResult();
+		
+		session.close();
+		return cat;
 	}
 
 	@Override
@@ -237,4 +241,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 		return getList(ItemCategory.class);
 	}
 
+	@Override
+	public ItemCategory getItemCategoryByName(String name) {
+		Session session = HibernateUtil.startSession();
+		ItemCategory cat = (ItemCategory) session.createCriteria(ItemCategory.class).add(Restrictions.like("name", name)).uniqueResult();
+		session.close();
+		return cat;
+	}
 }

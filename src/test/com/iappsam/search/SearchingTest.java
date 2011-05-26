@@ -29,10 +29,10 @@ public class SearchingTest {
 	private final ItemStatus status = new ItemStatus("Status");
 	private final ItemCondition condition = new ItemCondition("Condition");
 
-	private final Item item = new Item("item Description", "Category", "Unit", "Status", "Condition");
-	private final Item item2 = new Item("Descriptions item", "Category", "Unit", "Status", "Condition");
-	private final Item itemQuickBrownFox = new Item("Quick Brown Fox", "Category", "Unit", "Status", "Condition");
-	private final Item itemTermName = new Item("Descriptions second", "Category", "Unit", "Status", "Condition");
+	private final Item item = new Item("item Description", category, unit, status, condition);
+	private final Item item2 = new Item("Descriptions item", category, unit, status, condition);
+	private final Item itemQuickBrownFox = new Item("Quick Brown Fox", category, unit, status, condition);
+	private final Item itemTermName = new Item("Descriptions second", category, unit, status, condition);
 
 	private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 	{
@@ -40,16 +40,16 @@ public class SearchingTest {
 		calendar.set(2010, 00, 01);
 	}
 
-	public final Item itemDate = new Item("Date1", "Category", "Unit", "Status", "Condition");
+	public final Item itemDate = new Item("Date1", category, unit, status, condition);
 	{
-//		itemDate.setDateAcquired(calendar.getTime());
+		itemDate.setDateAcquired(calendar.getTime());
 		calendar.clear();
 		calendar.set(2010, 00, 02);
 	}
-	public final Item itemDate2 = new Item("Date2", "Category", "Unit", "Status", "Condition");
+	public final Item itemDate2 = new Item("Date2", category, unit, status, condition);
 
 	{
-//		itemDate2.setDateAcquired(calendar.getTime());
+		itemDate2.setDateAcquired(calendar.getTime());
 	}
 
 	@Before

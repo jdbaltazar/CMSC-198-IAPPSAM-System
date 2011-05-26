@@ -2,8 +2,6 @@ package com.iappsam.servlet.item;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,14 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.util.DateUtil;
+import com.iappsam.util.ManagerBin;
 
 /**
  * Servlet implementation class SaveItem
@@ -29,209 +23,77 @@ import com.iappsam.util.DateUtil;
 public class SaveItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public SaveItem() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager iManager = new ItemManagerSession();
 		Item item = new Item();
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("items/AddItem.jsp");
 
-		String description = (String) request.getParameter("itemDescription"); //
-		String stockNumber = (String) request.getParameter("stockNumber");
-		String unit = (String) request.getParameter("itemUnit");//
-		String priceS = (String) request.getParameter("itemPrice");
+		String description = request.getParameter("itemDescription"); //
+		String stockNumber = request.getParameter("stockNumber");
+		String unitName = request.getParameter("itemUnit");//
+
 		float price = 0;
 
-		// System.out.println("Price: " + priceS);
-		if (priceS != null && validPrice(priceS))
-			price = Float.parseFloat(priceS);
-		Date dateAcquired = null;
-
-		String day = (String) request.getParameter("dayAcquired");
-		String month = (String) request.getParameter("monthAcquired");
-		String year = (String) request.getParameter("yearAcquired");
-		
-		System.out.println("year:month:day"+year+":"+month+":"+day);
-
-		try {
-			if (!(day.equalsIgnoreCase("DD") || month.equalsIgnoreCase("MM") || year.equalsIgnoreCase("YYYY")))
-				dateAcquired = Date.valueOf(year+"-"+DateUtil.getNumericMonthEquivalent(month)+"-"+day);
-		} catch (Exception e) {
-
-		}
+		Date dateAcquired = parseDateFrom(request);
 
 		String inventoryItemNumber = (String) request.getParameter("inventoryItemNum");
 		String propertyNumber = (String) request.getParameter("itemPropertyNumber");
-		String itemStatus = (String) request.getParameter("itemStatus");//
-		String itemCondition = (String) request.getParameter("itemCondition");//
-		String itemCategory = (String) request.getParameter("itemCategory");//
+		String itemStatusName = (String) request.getParameter("itemStatus");
+		String itemCondition = (String) request.getParameter("itemCondition");
+		String itemCategory = (String) request.getParameter("itemCategory");
 
-		List<Unit> units = new ArrayList<Unit>();
-		List<ItemCategory> categories = new ArrayList<ItemCategory>();
-		List<ItemStatus> status = new ArrayList<ItemStatus>();
-		List<ItemCondition> conditions = new ArrayList<ItemCondition>();
+		// flags
+		request.setAttribute("finishedInputting", "true");
+		request.setAttribute("validInputForItem", "true");
 
-		ArrayList<String> itemUnits = new ArrayList<String>();
-		ArrayList<String> itemCategories = new ArrayList<String>();
-		ArrayList<String> itemStatuses = new ArrayList<String>();
-		ArrayList<String> itemConditions = new ArrayList<String>();
+		request.setAttribute("itemDescription", description);
+		request.setAttribute("stockNumber", stockNumber);
+		request.setAttribute("itemUnit", unitName);
+		request.setAttribute("itemPrice", Float.toString(price));
+		request.setAttribute("inventoryItemNumber", inventoryItemNumber);
+		request.setAttribute("itemPropertyNumber", propertyNumber);
+		request.setAttribute("itemStatus", itemStatusName);
+		request.setAttribute("itemCondition", itemCondition);
+		request.setAttribute("itemCategory", itemCategory);
 
-		System.out.println("description: " + description);
-		System.out.println("stockNumber: " + stockNumber);
-		System.out.println("unit: " + unit);
-		System.out.println("price: " + price);
-		System.out.println("invenItemNum: " + inventoryItemNumber);
-		System.out.println("propNumber: " + propertyNumber);
-		System.out.println("itemStatus: " + itemStatus);
-		System.out.println("itemCondition: " + itemCondition);
-		System.out.println("itemCategory: " + itemCategory);
-
-		if (validInputs(description, stockNumber, itemCategory, unit, priceS, dateAcquired, inventoryItemNumber, propertyNumber, itemStatus, itemCondition)) {
-
-			// flags
-			request.setAttribute("firstAttempt", "false");
-			request.setAttribute("validEntries", "true");
-
-			// request.setAttribute("itemDescription", description);
-			// request.setAttribute("stockNumber", stockNumber);
-			// request.setAttribute("itemUnit", unit);
-			// request.setAttribute("itemPrice", Float.toString(price));
-			// // request.setAttribute("date", arg1);
-			// request.setAttribute("inventoryItemNumber", inventoryItemNumber);
-			// request.setAttribute("itemPropertyNumber", propertyNumber);
-			// request.setAttribute("itemStatus", itemStatus);
-			// request.setAttribute("itemCondition", itemCondition);
-			// request.setAttribute("itemCategory", itemCategory);
-
-			item.setDescription(description);
-			item.setStockNumber(stockNumber);
-			item.setUnit(unit);
+		item.setDescription(description);
+		item.setStockNumber(stockNumber);
+		try {
+			item.setUnit(ManagerBin.iManager.getUnitByName(unitName));
 			item.setPrice(price);
-			if (dateAcquired != null)
-				item.setDateAcquired(dateAcquired);
+			item.setDateAcquired(dateAcquired);
 			item.setInventoryItemNumber(inventoryItemNumber);
 			item.setPropertyNumber(propertyNumber);
-			item.setStatus(itemStatus);
-			item.setCondition(itemCondition);
-			item.setCategory(itemCategory);
-
-			request.setAttribute("item", item);
-			request.setAttribute("description", description);
-
-			try {
-				iManager.addItem(item);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			// request.setAttribute("description", description);
-			requestDispatcher = request.getRequestDispatcher("../items/ViewItem.do");
-
-			System.out.println("Item was saved!!!!!");
-		} else {
-			request.setAttribute("firstAttempt", "false");
-			request.setAttribute("validEntries", "false");
-
-			try {
-
-				units = iManager.getAllUnits();
-				categories = iManager.getAllItemCategory();
-				status = iManager.getAllItemStatus();
-				conditions = iManager.getAllItemCondition();
-
-				if (units == null)
-					units = new ArrayList<Unit>();
-
-				if (categories == null)
-					categories = new ArrayList<ItemCategory>();
-
-				if (status == null)
-					status = new ArrayList<ItemStatus>();
-
-				if (conditions == null)
-					conditions = new ArrayList<ItemCondition>();
-
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			for (Unit u : units) {
-				itemUnits.add(u.getUnit());
-			}
-
-			for (ItemCategory i : categories) {
-				itemCategories.add(i.getItemCategory());
-			}
-
-			for (ItemStatus i : status) {
-				itemStatuses.add(i.getItemStatus());
-			}
-
-			for (ItemCondition i : conditions) {
-				itemConditions.add(i.getItemCondition());
-			}
-			request.setAttribute("itemUnits", itemUnits);
-			request.setAttribute("itemCategories", itemCategories);
-			request.setAttribute("itemStatuses", itemStatuses);
-			request.setAttribute("itemConditions", itemConditions);
-
-			Date date = new Date(System.currentTimeMillis());
-
-			request.setAttribute("day", DateUtil.getDayEquivalent(date));
-			request.setAttribute("month", DateUtil.getMonthEquivalentInWords(date));
-			request.setAttribute("year", DateUtil.getYearEquivalent(date));
-
-			requestDispatcher = request.getRequestDispatcher("items/AddItem.jsp");
-
-			System.out.println("Item was not saved!!!");
+			item.setItemStatus(ManagerBin.iManager.getItemStatus(itemStatusName));
+			item.setItemCondition(ManagerBin.iManager.getItemCondition(itemCondition));
+			item.setItemCategory(ManagerBin.iManager.getItemCategoryByName(itemCategory));
+		} catch (TransactionException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			iManager.addItem(item);
+		} catch (TransactionException e) {
+			e.printStackTrace();
 		}
 
+		System.out.println("Success!");
 		requestDispatcher.forward(request, response);
 	}
 
-	private boolean validPrice(String priceS) {
-		// TODO Auto-generated method stub
-
-		try {
-			float f = Float.parseFloat(priceS);
-			return true;
-		} catch (Exception e) {
-
-		}
-		return false;
+	public static Date parseDateFrom(HttpServletRequest request) {
+		String day = request.getParameter("day");
+		String month = request.getParameter("month");
+		String year = request.getParameter("year");
+		StringBuilder dateBuilder = new StringBuilder(year);
+		dateBuilder.append("-").append(month).append("-").append(day);
+		Date dateAcquired = Date.valueOf(dateBuilder.toString());
+		return dateAcquired;
 	}
-
-	private boolean validInputs(String description, String stockNumber, String itemCategory, String unit, String priceS, Date dateAcquired, String inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
-		if (description == null) {
-			return false;
-		}
-		if (description.equalsIgnoreCase("")) {
-			return false;
-		}
-		// if(priceS!=null){
-		// if(!validPrice(priceS))
-		// return false;
-		// }
-		return true;
-	}
-
 }

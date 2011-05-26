@@ -141,7 +141,7 @@ public class ItemCreation extends HttpServlet {
 				itemStatusList.add(itemStatus.get(i).getName());
 			}
 			for(int i=0;i<itemCondition.size();i++){
-				itemConditionList.add(itemCondition.get(i).getItemCondition());
+				itemConditionList.add(itemCondition.get(i).getName());
 			}
 
 			request.setAttribute("unitList", unitList);

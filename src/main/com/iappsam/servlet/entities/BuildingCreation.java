@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Building;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
@@ -54,7 +55,8 @@ public class BuildingCreation extends HttpServlet {
 		try {
 			doManager.addBuilding(new Building(name, address));
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DuplicateEntryException e) {
 			e.printStackTrace();
 		}
 

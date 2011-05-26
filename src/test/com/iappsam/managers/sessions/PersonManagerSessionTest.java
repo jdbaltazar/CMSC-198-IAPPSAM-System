@@ -74,7 +74,7 @@ public class PersonManagerSessionTest {
 		assertFalse(dom.containsDivisionOffice(divisionOffice));
 	}
 
-	private void addOfficeThenAssert() throws TransactionException {
+	private void addOfficeThenAssert() throws TransactionException, DuplicateEntryException {
 		dom = new DivisionOfficeManagerSession();
 		divisionOffice = new DivisionOffice("Division", "Office");
 		dom.addDivisionOffice(divisionOffice);

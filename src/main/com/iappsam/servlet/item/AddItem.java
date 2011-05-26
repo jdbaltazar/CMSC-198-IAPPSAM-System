@@ -74,7 +74,7 @@ public class AddItem extends HttpServlet {
 		}
 
 		for (ItemCategory i : categories) {
-			itemCategories.add(i.getItemCategory());
+			itemCategories.add(i.getName());
 		}
 
 		for (ItemStatus i : status) {
@@ -82,7 +82,7 @@ public class AddItem extends HttpServlet {
 		}
 
 		for (ItemCondition i : conditions) {
-			itemConditions.add(i.getItemCondition());
+			itemConditions.add(i.getName());
 		}
 
 		request.setAttribute("finishedInputting", "false");
