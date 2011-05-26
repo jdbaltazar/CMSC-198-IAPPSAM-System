@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -212,39 +213,38 @@
   </form>
 </div>
 <div id="apDiv1">
-  <form id="form2" name="form2" method="post" action="AddBuilding.jsp">
+  <form id="form2" name="form2" method="post" action="../../entities/building/AddBuilding.jsp">
     <input name="addBuildingBtn" type="submit" class="maroon" id="addBuildingBtn" value="Add Building &gt;&gt;" />
   </form>
 </div>
 <div id="apDiv10" style="width:100%">
   <table width="100%" cellspacing="0" frame="box" class="resultTable">
-    <tr class="tablerow_1">
-      <td width="37%">&nbsp;</td>
-      <td width="44%">&nbsp;</td>
+  	<%
+		ArrayList<String> bldgName = (ArrayList<String>) request
+				.getAttribute("buildingName");
+		ArrayList<String> bldgAddress = (ArrayList<String>) request
+				.getAttribute("buildingAddress");
+		int size = bldgName.size();
+	%>
+	<%
+		for (int i = 0; i < size; i++) {
+	%>
+	<%
+		if (i % 2 == 0)
+				out.print("<tr class=\"tablerow_1\">");
+			else
+				out.print("<tr>");
+	%>
+	
+      <td width="37%"><%=bldgName.get(i) %></td>
+      <td width="44%"><%=bldgAddress.get(i) %></td>
       <td width="19%" align="center"><form id="form3" name="form3" method="post" action="">
         <input name="viewBtn" type="submit" class="viewbutton" id="viewBtn" value="View >>" />
       </form></td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+    <%
+	}
+	%>
   </table>
   <p>&nbsp;</p>
 </div>

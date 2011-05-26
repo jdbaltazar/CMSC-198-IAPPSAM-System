@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -213,28 +214,27 @@
 </div>
 <div id="resultTable" style="width:100%">
   <table width="100%" frame="box" cellspacing="0">
-    <tr class="tablerow_1">
-      <td width="83%">&nbsp;</td>
+          	<%ArrayList<String> disposal = (ArrayList<String>) request.getAttribute("disposal");
+  	int size = disposal.size();%>
+  	
+  	<%for(int i = 0; i < size; i++)
+  	{ 
+  	%>
+  	<%
+		if (i % 2 == 0)
+				out.print("<tr class=\"tablerow_1\">");
+			else
+				out.print("<tr>");
+	%>
+
+      <td width="83%"><%=disposal.get(i) %></td>
       <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditDisposal.jsp">
         <input name="editBtn_1" type="submit" class="maroon" id="editBtn_1" value="Edit" />
       </form></td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+    <%
+    }
+    %>
   </table>
 </div>
 <div id="apDiv2">

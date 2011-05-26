@@ -209,7 +209,7 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="AddCondition.do">
     <p>
       <label for="conditionField" class="labels">Condition:</label>
       <input name="conditionField" type="text" id="conditionField" size="30" />

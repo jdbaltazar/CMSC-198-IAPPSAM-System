@@ -241,7 +241,7 @@
 <div id="background"  style="background-color:#EEE0E5;"></div>
 <div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="saveBuilding.do">
     <p>
       <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Name:</label>
       <textarea name="name" cols="30" id="name"></textarea>

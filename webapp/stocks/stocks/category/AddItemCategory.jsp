@@ -209,7 +209,7 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="AddCategory.do">
     <p>
       <label for="categoryField" class="labels">Category:</label>
       <input name="categoryField" type="text" id="categoryField" size="30" />
