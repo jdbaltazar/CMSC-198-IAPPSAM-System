@@ -2,33 +2,45 @@ package com.iappsam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Item_Status")
 public class ItemStatus {
-	
+
 	@Id
-	@Column(name = "Item_Status")
-	private String itemStatus;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Id")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
 
 	public ItemStatus() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public ItemStatus(String itemStatus) {
+	public ItemStatus(String name) {
 		super();
-		this.itemStatus = itemStatus;
+		this.name = name;
 	}
 
-	public String getItemStatus() {
-		return itemStatus;
+	public String getName() {
+		return name;
 	}
 
-	public void setItemStatus(String itemStatus) {
-		this.itemStatus = itemStatus;
+	public int getId() {
+		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

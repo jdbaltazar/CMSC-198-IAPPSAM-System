@@ -176,33 +176,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`PR_Line`
+-- Table `IAPPSAM`.`Item_Condition`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PR_Line` ;
+DROP TABLE IF EXISTS `IAPPSAM`.`Item_Condition` ;
 
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PR_Line` (
-  `Quantity` INT NOT NULL ,
-  `Item_Description` VARCHAR(500) NOT NULL ,
-  `Estimated_Unit_Cost` DECIMAL(50,2) NULL ,
-  `Purchase_Request_ID` INT NOT NULL ,
-  PRIMARY KEY (`Purchase_Request_ID`, `Item_Description`) ,
-  INDEX `fk_PR_Line_Purchase_Request1` (`Purchase_Request_ID` ASC) ,
-  CONSTRAINT `fk_PR_Line_Purchase_Request1`
-    FOREIGN KEY (`Purchase_Request_ID` )
-    REFERENCES `IAPPSAM`.`Purchase_Request` (`Purchase_Request_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`Unit`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Unit` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Unit` (
-  `Unit` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`Unit`) )
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Condition` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB;
 
 
@@ -212,19 +194,23 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Item_Status` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Status` (
-  `Item_Status` VARCHAR(50) NOT NULL ,
-  PRIMARY KEY (`Item_Status`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(50) NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`Item_Condition`
+-- Table `IAPPSAM`.`Unit`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Item_Condition` ;
+DROP TABLE IF EXISTS `IAPPSAM`.`Unit` ;
 
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Condition` (
-  `Item_Condition` VARCHAR(50) NOT NULL ,
-  PRIMARY KEY (`Item_Condition`) )
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Unit` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(20) NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB;
 
 
@@ -234,8 +220,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Item_Category` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Category` (
-  `Item_Category` VARCHAR(200) NOT NULL ,
-  PRIMARY KEY (`Item_Category`) )
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(200) NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB;
 
 
@@ -248,37 +236,64 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   `Item_ID` INT NOT NULL AUTO_INCREMENT ,
   `Description` VARCHAR(500) NOT NULL ,
   `Stock_Number` VARCHAR(45) NULL ,
-  `Item_Category` VARCHAR(200) NOT NULL ,
-  `Unit` VARCHAR(20) NOT NULL ,
   `Price` DECIMAL(50,2) NULL ,
   `Date_Acquired` DATE NULL ,
   `Inventory_Item_Number` VARCHAR(60) NULL ,
   `Property_Number` VARCHAR(45) NULL ,
-  `Item_Status` VARCHAR(50) NOT NULL ,
-  `Item_Condition` VARCHAR(50) NOT NULL ,
+  `Item_Condition_ID` INT NOT NULL ,
+  `Item_Status_ID` INT NOT NULL ,
+  `Unit_ID` INT NOT NULL ,
+  `Item_Category_ID` INT NOT NULL ,
   PRIMARY KEY (`Item_ID`) ,
-  INDEX `fk_Item_Unit1` (`Unit` ASC) ,
-  INDEX `fk_Item_Item_Status1` (`Item_Status` ASC) ,
-  INDEX `fk_Item_Item_Condition1` (`Item_Condition` ASC) ,
-  INDEX `fk_Item_Item_Category1` (`Item_Category` ASC) ,
-  CONSTRAINT `fk_Item_Unit1`
-    FOREIGN KEY (`Unit` )
-    REFERENCES `IAPPSAM`.`Unit` (`Unit` )
+  INDEX `fk_Item_Item_Condition1` (`Item_Condition_ID` ASC) ,
+  INDEX `fk_Item_Item_Status1` (`Item_Status_ID` ASC) ,
+  INDEX `fk_Item_Unit1` (`Unit_ID` ASC) ,
+  INDEX `fk_Item_Item_Category1` (`Item_Category_ID` ASC) ,
+  CONSTRAINT `fk_Item_Item_Condition1`
+    FOREIGN KEY (`Item_Condition_ID` )
+    REFERENCES `IAPPSAM`.`Item_Condition` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Item_Item_Status1`
-    FOREIGN KEY (`Item_Status` )
-    REFERENCES `IAPPSAM`.`Item_Status` (`Item_Status` )
+    FOREIGN KEY (`Item_Status_ID` )
+    REFERENCES `IAPPSAM`.`Item_Status` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Item_Item_Condition1`
-    FOREIGN KEY (`Item_Condition` )
-    REFERENCES `IAPPSAM`.`Item_Condition` (`Item_Condition` )
+  CONSTRAINT `fk_Item_Unit1`
+    FOREIGN KEY (`Unit_ID` )
+    REFERENCES `IAPPSAM`.`Unit` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Item_Item_Category1`
-    FOREIGN KEY (`Item_Category` )
-    REFERENCES `IAPPSAM`.`Item_Category` (`Item_Category` )
+    FOREIGN KEY (`Item_Category_ID` )
+    REFERENCES `IAPPSAM`.`Item_Category` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`PR_Line`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`PR_Line` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PR_Line` (
+  `PR_Line_ID` INT NULL AUTO_INCREMENT ,
+  `Quantity` INT NOT NULL ,
+  `Estimated_Unit_Cost` DECIMAL(50,2) NULL ,
+  `Purchase_Request_ID` INT NOT NULL ,
+  `Item_ID` INT NOT NULL ,
+  PRIMARY KEY (`PR_Line_ID`) ,
+  INDEX `fk_PR_Line_Purchase_Request1` (`Purchase_Request_ID` ASC) ,
+  INDEX `fk_PR_Line_Item1` (`Item_ID` ASC) ,
+  CONSTRAINT `fk_PR_Line_Purchase_Request1`
+    FOREIGN KEY (`Purchase_Request_ID` )
+    REFERENCES `IAPPSAM`.`Purchase_Request` (`Purchase_Request_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_PR_Line_Item1`
+    FOREIGN KEY (`Item_ID` )
+    REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

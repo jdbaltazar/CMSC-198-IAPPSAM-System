@@ -2,32 +2,45 @@ package com.iappsam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Item_Condition")
 public class ItemCondition {
-	
+
 	@Id
-	@Column(name = "Item_Condition")
-	private String itemCondition;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Id")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
 
 	public ItemCondition() {
 		super();
 	}
 
-	public ItemCondition(String itemCondition) {
+	public ItemCondition(String name) {
 		super();
-		this.itemCondition = itemCondition;
+		this.name = name;
 	}
 
-	public String getItemCondition() {
-		return itemCondition;
+	public int getId() {
+		return id;
 	}
 
-	public void setItemCondition(String itemCondition) {
-		this.itemCondition = itemCondition;
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

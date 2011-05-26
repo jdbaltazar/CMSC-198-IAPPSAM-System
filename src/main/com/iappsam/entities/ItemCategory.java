@@ -2,6 +2,8 @@ package com.iappsam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,23 +21,35 @@ public class ItemCategory {
 	public static final String OTHERS = "Others";
 
 	@Id
-	@Column(name = "Item_Category")
-	private String itemCategory;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Id")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
 
 	public ItemCategory() {
 		super();
 	}
 
-	public ItemCategory(String itemCategory) {
+	public ItemCategory(String name) {
 		super();
-		this.itemCategory = itemCategory;
+		this.name = name;
 	}
 
-	public String getItemCategory() {
-		return itemCategory;
+	public int getId() {
+		return id;
 	}
 
-	public void setItemCategory(String itemCategory) {
-		this.itemCategory = itemCategory;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -1,54 +1,53 @@
 package com.iappsam.entities.forms;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.iappsam.entities.Item;
 
 @Entity
 @Table(name = "PR_Line")
-public class PurchaseRequestLine implements Serializable {
+public class PurchaseRequestLine {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2663270554482089249L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
 	@Column(name = "Quantity")
 	private int quantity;
 
-	@Id
-	@Column(name = "Item_Description")
-	private String itemDescription;
+	@ManyToOne
+	@JoinColumn(name = "Item_ID")
+	private Item item;
 
 	@Column(name = "Estimated_Unit_Cost")
 	private long estimatedUnitCost;
 
-	@Id
-	@Column(name = "Purchase_Request_ID")
-	private int prID;
+	@ManyToOne
+	@JoinColumn(name = "Purchase_Request_ID")
+	private PurchaseRequest purchaseRequest;
 
 	public PurchaseRequestLine() {
 		super();
 	}
-	
-	public PurchaseRequestLine(int quantity, String itemDescription, long estimatedUnitCost, int prID) {
+
+	public PurchaseRequestLine(int quantity, Item item, long estimatedUnitCost) {
 		super();
 		this.quantity = quantity;
-		this.itemDescription = itemDescription;
 		this.estimatedUnitCost = estimatedUnitCost;
-		this.prID = prID;
+		this.item = item;
 	}
 
-	public PurchaseRequestLine(int quantity, String itemDescription, int prID) {
+	public PurchaseRequestLine(int quantity, Item item) {
 		super();
 		this.quantity = quantity;
-		this.itemDescription = itemDescription;
-		this.prID = prID;
+		this.item = item;
 	}
 
 	public int getQuantity() {
@@ -56,31 +55,64 @@ public class PurchaseRequestLine implements Serializable {
 	}
 
 	public String getItemDescription() {
-		return itemDescription;
+		return item.getDescription();
 	}
 
 	public long getEstimatedUnitCost() {
 		return estimatedUnitCost;
 	}
 
-	public int getPrID() {
-		return prID;
-	}
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
+	public PurchaseRequest getPurchaseRequest() {
+		return purchaseRequest;
+	}
+
+	public void setPurchaseRequest(PurchaseRequest purchaseRequest) {
+		this.purchaseRequest = purchaseRequest;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public void setEstimatedUnitCost(long estimatedUnitCost) {
 		this.estimatedUnitCost = estimatedUnitCost;
 	}
 
-	public void setPrID(int prID) {
-		this.prID = prID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PurchaseRequestLine other = (PurchaseRequestLine) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

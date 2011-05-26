@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
@@ -29,9 +31,6 @@ public class Item {
 	@Column(name = "Stock_Number")
 	private String stockNumber;
 
-	@Column(name = "Unit")
-	private String unit;
-
 	@Column(name = "Price")
 	private float price;
 
@@ -46,21 +45,28 @@ public class Item {
 	@Column(name = "Property_Number")
 	private String propertyNumber;
 
-	@Column(name = "Item_Status")
-	private String itemStatus;
+	@ManyToOne
+	@JoinColumn(name = "Unit_ID")
+	private Unit unit;
 
-	@Column(name = "Item_Condition")
-	private String itemCondition;
+	@ManyToOne
+	@JoinColumn(name = "Item_Status_ID")
+	private ItemStatus itemStatus;
 
-	@Column(name = "Item_Category")
-	private String itemCategory;
+	@ManyToOne
+	@JoinColumn(name = "Item_Condition_ID")
+	private ItemCondition itemCondition;
+
+	@ManyToOne
+	@JoinColumn(name = "Item_Category_ID")
+	private ItemCategory itemCategory;
 
 	public Item() {
 		super();
 	}
 
-	public Item(String description, String stockNumber, String itemCategory, String unit, float price, Date dateAcquired, String inventoryItemNumber,
-			String propertyNumber, String itemStatus, String itemCondition) {
+	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired, String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus,
+			ItemCondition itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -74,7 +80,7 @@ public class Item {
 		this.itemCondition = itemCondition;
 	}
 
-	public Item(String description, String itemCategory, String unit, String itemStatus, String itemCondition) {
+	public Item(String description, ItemCategory itemCategory, Unit unit, ItemStatus itemStatus, ItemCondition itemCondition) {
 		super();
 		this.description = description;
 		this.itemCategory = itemCategory;
@@ -91,11 +97,7 @@ public class Item {
 		return stockNumber;
 	}
 
-	public String getCategory() {
-		return itemCategory;
-	}
-
-	public String getUnit() {
+	public Unit getUnit() {
 		return unit;
 	}
 
@@ -115,12 +117,32 @@ public class Item {
 		return propertyNumber;
 	}
 
-	public String getStatus() {
+	public ItemStatus getItemStatus() {
 		return itemStatus;
 	}
 
-	public String getCondition() {
+	public void setItemStatus(ItemStatus itemStatus) {
+		this.itemStatus = itemStatus;
+	}
+
+	public ItemCondition getItemCondition() {
 		return itemCondition;
+	}
+
+	public void setItemCondition(ItemCondition itemCondition) {
+		this.itemCondition = itemCondition;
+	}
+
+	public ItemCategory getItemCategory() {
+		return itemCategory;
+	}
+
+	public void setItemCategory(ItemCategory itemCategory) {
+		this.itemCategory = itemCategory;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
 
 	public void setDescription(String description) {
@@ -129,14 +151,6 @@ public class Item {
 
 	public void setStockNumber(String stockNumber) {
 		this.stockNumber = stockNumber;
-	}
-
-	public void setCategory(String itemCategory) {
-		this.itemCategory = itemCategory;
-	}
-
-	public void setUnit(String unit) {
-		this.unit = unit;
 	}
 
 	public void setPrice(float price) {
@@ -153,14 +167,6 @@ public class Item {
 
 	public void setPropertyNumber(String propertyNumber) {
 		this.propertyNumber = propertyNumber;
-	}
-
-	public void setStatus(String itemStatus) {
-		this.itemStatus = itemStatus;
-	}
-
-	public void setCondition(String itemCondition) {
-		this.itemCondition = itemCondition;
 	}
 
 	public int getId() {

@@ -1,13 +1,22 @@
 package com.iappsam.entities.forms;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Signatory;
 
 @Entity
 @Table(name = "Purchase_Request")
@@ -16,10 +25,7 @@ public class PurchaseRequest {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Purchase_Request_ID")
-	private int prID;
-
-	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
+	private int id;
 
 	@Column(name = "PR_Number")
 	private String prNumber;
@@ -29,32 +35,43 @@ public class PurchaseRequest {
 
 	@Column(name = "SAI_Number")
 	private String saiNumber;
-	
+
 	@Column(name = "SAI_Date")
 	private Date saiDate;
 
 	@Column(name = "ALOBS_Number")
 	private String alobsNumber;
-	
+
 	@Column(name = "ALOBS_DATE")
 	private Date alobsDate;
 
 	@Column(name = "Purpose")
 	private String purpose;
-	
-	@Column(name = "Signatory_ID")
-	private int requestedBySignatoryID;
-	
-	@Column(name = "Signatory_ID1")
-	private int approvedBySignatoryID;
+
+	@ManyToOne
+	@JoinColumn(name = "DivisionOffice_ID")
+	private DivisionOffice divisionOffice;
+
+	@OneToOne
+	@JoinColumn(name = "Signatory_ID")
+	private Signatory requestedBy;
+
+	@OneToOne
+	@JoinColumn(name = "Signatory_ID1")
+	private Signatory approvedBy;
+
+	@OneToMany(mappedBy = "purchaseRequest")
+	private Set<PurchaseRequestLine> lines = new HashSet<PurchaseRequestLine>();
 
 	public PurchaseRequest() {
 		super();
 	}
 
-	public PurchaseRequest(int divisionOfficeID, String prNumber, Date prDate, String saiNumber, Date saiDate, String alobsNumber, Date alobsDate, String purpose, int requestedBySignatoryID, int approvedBySignatoryID) {
+	public PurchaseRequest(DivisionOffice divisionOffice, String prNumber, Date prDate, String saiNumber, Date saiDate, String alobsNumber, Date alobsDate, String purpose, Signatory requestedBy,
+			Signatory approvedBy) {
 		super();
-		this.divisionOfficeID = divisionOfficeID;
+
+		this.divisionOffice = divisionOffice;
 		this.prNumber = prNumber;
 		this.prDate = prDate;
 		this.saiNumber = saiNumber;
@@ -62,24 +79,20 @@ public class PurchaseRequest {
 		this.alobsNumber = alobsNumber;
 		this.alobsDate = alobsDate;
 		this.purpose = purpose;
-		this.requestedBySignatoryID = requestedBySignatoryID;
-		this.approvedBySignatoryID = approvedBySignatoryID;
+		this.requestedBy = requestedBy;
+		this.approvedBy = approvedBy;
 	}
 
-	public PurchaseRequest(int divisionOfficeID, String purpose, int requestedBySignatoryID, int approvedBySignatoryID) {
+	public PurchaseRequest(DivisionOffice divisionOffice, String purpose, Signatory requestedBy, Signatory approvedBy) {
 		super();
-		this.divisionOfficeID = divisionOfficeID;
+		this.divisionOffice = divisionOffice;
 		this.purpose = purpose;
-		this.requestedBySignatoryID = requestedBySignatoryID;
-		this.approvedBySignatoryID = approvedBySignatoryID;
+		this.requestedBy = requestedBy;
+		this.approvedBy = approvedBy;
 	}
 
-	public int getPrID() {
-		return prID;
-	}
-
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
+	public int getId() {
+		return id;
 	}
 
 	public String getPrNumber() {
@@ -110,20 +123,41 @@ public class PurchaseRequest {
 		return purpose;
 	}
 
-	public int getRequestedBySignatoryID() {
-		return requestedBySignatoryID;
+	public Set<PurchaseRequestLine> getLines() {
+		return lines;
 	}
 
-	public int getApprovedBySignatoryID() {
-		return approvedBySignatoryID;
+	public void addLine(PurchaseRequestLine line) {
+		line.setPurchaseRequest(this);
+		lines.add(line);
 	}
 
-	public void setPrID(int prID) {
-		this.prID = prID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
+	public Signatory getRequestedBy() {
+		return requestedBy;
+	}
+
+	public void setRequestedBy(Signatory requestedBy) {
+		this.requestedBy = requestedBy;
+	}
+
+	public Signatory getApprovedBy() {
+		return approvedBy;
+	}
+
+	public DivisionOffice getDivisionOffice() {
+		return divisionOffice;
+	}
+
+	public void setDivisionOffice(DivisionOffice divisionOffice) {
+		this.divisionOffice = divisionOffice;
+	}
+
+	public void setApprovedBy(Signatory approvedBy) {
+		this.approvedBy = approvedBy;
 	}
 
 	public void setPrNumber(String prNumber) {
@@ -154,13 +188,25 @@ public class PurchaseRequest {
 		this.purpose = purpose;
 	}
 
-	public void setRequestedBySignatoryID(int requestedBySignatoryID) {
-		this.requestedBySignatoryID = requestedBySignatoryID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
 	}
 
-	public void setApprovedBySignatoryID(int approvedBySignatoryID) {
-		this.approvedBySignatoryID = approvedBySignatoryID;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PurchaseRequest other = (PurchaseRequest) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
-
-	
 }

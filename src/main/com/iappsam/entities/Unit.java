@@ -2,31 +2,43 @@ package com.iappsam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Unit {
 
 	@Id
-	@Column(name = "Unit")
-	private String unit;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
 
 	public Unit() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Unit(String unit) {
+	public Unit(String name) {
 		super();
-		this.unit = unit;
+		this.name = name;
 	}
 
-	public String getUnit() {
-		return unit;
+	public String getName() {
+		return name;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
+	public int getId() {
+		return id;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

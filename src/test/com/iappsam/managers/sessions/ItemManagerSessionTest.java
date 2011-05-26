@@ -19,7 +19,7 @@ public class ItemManagerSessionTest {
 	public final Unit unit = new Unit("Unit");
 	public final ItemStatus status = new ItemStatus("Status");
 	public final ItemCondition condition = new ItemCondition("Condition");
-	public final Item item = new Item("Description", "Category", "Unit", "Status", "Condition");
+	public final Item item = new Item("Description", category, unit, status, condition);
 
 	@Test
 	public void addItemAndRemove() throws TransactionException {

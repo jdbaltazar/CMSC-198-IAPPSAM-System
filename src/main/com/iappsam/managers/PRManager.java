@@ -36,4 +36,6 @@ public interface PRManager {
 
 	List<PurchaseRequestLine> getAllPRLine() throws TransactionException;
 
+	void removePR(PurchaseRequest pr) throws TransactionException;
+
 }

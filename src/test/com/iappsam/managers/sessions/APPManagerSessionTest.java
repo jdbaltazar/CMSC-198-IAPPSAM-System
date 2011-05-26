@@ -8,15 +8,13 @@ import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemFactory;
+import com.iappsam.entities.ItemBuilder;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.AnnualProcurementPlanLine;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -68,16 +66,30 @@ public class APPManagerSessionTest {
 	}
 
 	@Test
-	public void addAPPLine() throws TransactionException, DuplicateEntryException {
+	public void addAPPWithLine() throws TransactionException, DuplicateEntryException {
 
 		appManager.addAPP(app);
 
-		Item item = ItemFactory.createPersistedItem("Item Description");
-		AnnualProcurementPlanLine line1 = new AnnualProcurementPlanLine(item, 1, 2, 3, 4);
+		ItemBuilder builder = new ItemBuilder();
+		builder.addCategory("Cat");
+		builder.addStatus("Status");
+		builder.addUnit("Unit");
+		builder.addCondition("Condition");
+		builder.addItem("Description");
+		builder.addToDatabase();
+
+		AnnualProcurementPlanLine line1 = new AnnualProcurementPlanLine(builder.getItem(), 1, 2, 3, 4);
 		app.addLine(line1);
 
-		Item item2 = ItemFactory.createPersistedItem("Second Item Description");
-		AnnualProcurementPlanLine line2 = new AnnualProcurementPlanLine(item2, 5, 6, 7, 8);
+		ItemBuilder builder2 = new ItemBuilder();
+		builder2.addCategory("Cat2");
+		builder2.addStatus("Status2");
+		builder2.addUnit("Unit2");
+		builder2.addCondition("Condition2");
+		builder2.addItem("Description2");
+		builder2.addToDatabase();
+
+		AnnualProcurementPlanLine line2 = new AnnualProcurementPlanLine(builder2.getItem(), 5, 6, 7, 8);
 		app.addLine(line2);
 
 		appManager.addAPPLine(line1);
@@ -90,10 +102,8 @@ public class APPManagerSessionTest {
 		appManager.removeAPPLine(line2);
 		appManager.removeAPP(app);
 
-		ItemManager im = new ItemManagerSession();
-		im.removeItem(item);
-		im.removeItem(item2);
-		ItemFactory.removeItemDependencies();
+		builder.removeFromDatabase();
+		builder2.removeFromDatabase();
 	}
 
 	private void assertAPPContains(AnnualProcurementPlanLine line1, AnnualProcurementPlanLine line2) throws TransactionException {

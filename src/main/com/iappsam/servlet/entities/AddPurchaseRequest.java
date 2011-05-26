@@ -56,10 +56,10 @@ public class AddPurchaseRequest extends HttpServlet {
 			ArrayList<String> itemStatusList=new ArrayList<String>();
 			ArrayList<String> itemConditionList = new ArrayList<String>();
 			for (int i = 0; i < units.size(); i++) {
-				unitList.add(units.get(i).getUnit());
+				unitList.add(units.get(i).getName());
 			}
 			for(int i=0;i<itemStatus.size();i++){
-				itemStatusList.add(itemStatus.get(i).getItemStatus());
+				itemStatusList.add(itemStatus.get(i).getName());
 			}
 			for(int i=0;i<itemCondition.size();i++){
 				itemConditionList.add(itemCondition.get(i).getItemCondition());

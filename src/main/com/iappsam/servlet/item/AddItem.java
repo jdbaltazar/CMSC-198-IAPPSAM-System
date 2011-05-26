@@ -70,7 +70,7 @@ public class AddItem extends HttpServlet {
 			e.printStackTrace();
 		}
 		for (Unit u : units) {
-			itemUnits.add(u.getUnit());
+			itemUnits.add(u.getName());
 		}
 
 		for (ItemCategory i : categories) {
@@ -78,7 +78,7 @@ public class AddItem extends HttpServlet {
 		}
 
 		for (ItemStatus i : status) {
-			itemStatuses.add(i.getItemStatus());
+			itemStatuses.add(i.getName());
 		}
 
 		for (ItemCondition i : conditions) {
