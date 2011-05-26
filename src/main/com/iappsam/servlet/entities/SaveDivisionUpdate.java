@@ -44,8 +44,10 @@ public class SaveDivisionUpdate extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher view = request.getRequestDispatcher("../divisions/SaveDivisionUpdate.do");
+		RequestDispatcher view = null; // request.getRequestDispatcher("../divisions/SaveDivisionUpdate.do");
 		String name = (String) request.getParameter("name");
+
+		System.out.println("--------------------New Division name: " + name);
 		if (name != null) {
 			if (!name.equalsIgnoreCase("")) {
 				DivisionOffice dOffice = null;
@@ -69,7 +71,8 @@ public class SaveDivisionUpdate extends HttpServlet {
 				}
 			}
 		}
-		view.forward(request, response);
+		if (view != null)
+			view.forward(request, response);
 	}
 
 }
