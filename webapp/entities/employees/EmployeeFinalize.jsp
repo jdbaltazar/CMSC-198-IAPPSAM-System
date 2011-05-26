@@ -1,7 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="java.util.List"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -463,33 +461,34 @@ field</em></div>
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
 Information</div>
 <div id="titleDiv">
-<form id="form1" name="form1" method="post" action="CreateEmployee.do">
+<form id="form1" name="form1" method="post" action="">
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<input name="title" type="text" id="title" size="20"
-	<%String title = (String) request.getAttribute("title");
-			if (title != null && !title.isEmpty()) {%>
-	value="<%=title%>" <%}%> /></p>
+<%
+	String title = (String) request.getAttribute("title");
+	if (title != null && !title.isEmpty()) {
+%> <%=title%> <%
+ 	}
+ %>
+</p>
 
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40"
-	<%String name = (String) request.getAttribute("name");
-			if (name != null && !name.isEmpty()) {%>
-	value="<%=name%>" <%}%> /> <%
- 	if (name != null && name.isEmpty())
- 		out.print("*");
+<%
+	String name = (String) request.getAttribute("name");
+	if (name != null && !name.isEmpty()) {
+%> <%=name%> <%
+ 	}
  %>
 </div>
 
 <div id="apDiv9"><label for="designation3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<input name="designation" type="text" id="designation3" size="30"
-	<%String designation = (String) request.getAttribute("designation");
-			if (designation != null && !designation.isEmpty()) {%>
-	value="<%=designation%>" <%}%> /> <%
- 	if (designation != null && designation.isEmpty())
- 		out.print("*");
+<%
+	String designation = (String) request.getAttribute("designation");
+	if (designation != null && !designation.isEmpty()) {
+%> <%=designation%> <%
+ 	}
  %>
 </div>
 <p>&nbsp;</p>
@@ -499,33 +498,20 @@ Information</div>
 </label></p>
 <div id="apDiv10"><label for="employeeNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
-	<%String employeeNumber = (String) request
-					.getAttribute("employeeNumber");
-			if (employeeNumber != null && !employeeNumber.isEmpty()) {%>
-	value="<%=employeeNumber%>" <%}%> /></div>
+No.:</label> <%
+ 	String employeeNumber = (String) request
+ 			.getAttribute("employeeNumber");
+ 	if (employeeNumber != null && !employeeNumber.isEmpty()) {
+ %> <%=employeeNumber%> <%
+ 	}
+ %>
+</div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv11"><label for="division3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
-<select name="division" id="division3">
-	<%
-		List<DivisionOffice> dOffice = ManagerBin.doManager
-				.getAllDivisionOffice();
-		for (int i = 0; i < dOffice.size(); i++) {
-	%>
-	<option id="<%=dOffice.get(i).getId()%>">
-	<%
-		out.print(dOffice.get(i).getDivisionName() + " , "
-					+ dOffice.get(i).getOfficeName());
-	%>
-	</option>
-	<%
-		}
-	%>
-
-</select> <label for="office3"
+<%=request.getAttribute("division")%><label for="office3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
 </div>
 <p><label for="division2"
@@ -541,30 +527,38 @@ No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
 </label></p>
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25"
-	<%String mobileNumber = (String) request.getAttribute("mobileNumber");
-			if (mobileNumber != null && !mobileNumber.isEmpty()
-					&& !mobileNumber.equalsIgnoreCase("null")) {%>
-	value="<%=mobileNumber%>" <%}%> /></div>
+Number:</label> <%
+ 	String mobileNumber = (String) request.getAttribute("mobileNumber");
+ 	if (mobileNumber != null && !mobileNumber.isEmpty()
+ 			&& !mobileNumber.equalsIgnoreCase("null")) {
+ %> <%=mobileNumber%> <%
+ 	}
+ %>
+</div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25"
-	<%String landline = (String) request.getAttribute("landline");
-			if (landline != null && !landline.isEmpty()
-					&& !landline.equalsIgnoreCase("null")) {%>
-	value="<%=landline%>" <%}%> /></div>
+
+<%
+	String landline = (String) request.getAttribute("landline");
+	if (landline != null && !landline.isEmpty()
+			&& !landline.equalsIgnoreCase("null")) {
+%> <%=landline%> <%
+ 	}
+ %>
+</div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25"
-	<%String emailad = (String) request.getAttribute("emailad");
-			if (emailad != null && !emailad.isEmpty()
-					&& !emailad.equalsIgnoreCase("null")) {%>
-	value="<%=emailad%>" <%}%> /></div>
+E-mail Address:</label> <%
+ 	String emailad = (String) request.getAttribute("emailad");
+ 	if (emailad != null && !emailad.isEmpty()
+ 			&& !emailad.equalsIgnoreCase("null")) {
+ %> <%=emailad%> <%
+ 	}
+ %>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 

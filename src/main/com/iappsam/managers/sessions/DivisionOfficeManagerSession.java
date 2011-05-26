@@ -7,18 +7,26 @@ import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.AbstractManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager {
 
 	@Override
-	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
-		add(divisionOffice);
+	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException {
+		if (!containsDivisionOffice(divisionOffice)) {
+			add(divisionOffice);
+		} else {
+			throw new DuplicateEntryException();
+		}
 	}
 
 	@Override
-	public int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
-		return (Integer) save(divisionOffice);
+	public int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException {
+		if (!containsDivisionOffice(divisionOffice))
+			return (Integer) save(divisionOffice);
+		else
+			throw new DuplicateEntryException();
 	}
 
 	@Override
@@ -29,6 +37,18 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException {
 		return (DivisionOffice) get(DivisionOffice.class, divisionOfficeId);
+	}
+
+	@Override
+	public DivisionOffice getDivisionOffice(String division) throws TransactionException {
+		List<DivisionOffice> dOffices = getAllDivisionOffice();
+
+		for (DivisionOffice dOffice : dOffices) {
+			if (dOffice.getDivisionName().equalsIgnoreCase(division)) {
+				return dOffice;
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -52,6 +72,18 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
+	public int getDivisionIdByName(String division, String office) throws TransactionException {
+		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
+		for (DivisionOffice divisionOffice : divisionOffices) {
+			if (divisionOffice.getDivisionName().equalsIgnoreCase(division)) {
+				if (divisionOffice.getOfficeName().equalsIgnoreCase(office))
+					return divisionOffice.getId();
+			}
+		}
+		return -1;
+	}
+
+	@Override
 	public DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException {
 		List<EmployeeDivisionOffice> emDivisionOffices = getAllEmployeeDivisionOffice();
 		for (EmployeeDivisionOffice emDivisionOffice : emDivisionOffices) {
@@ -67,13 +99,20 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public void addBuilding(Building building) throws TransactionException {
-		add(building);
+	public void addBuilding(Building building) throws TransactionException, DuplicateEntryException {
+		if (!containsBuilding(building))
+			add(building);
+		else
+			throw new DuplicateEntryException();
+
 	}
 
 	@Override
-	public int saveBuilding(Building building) throws TransactionException {
-		return (Integer) save(building);
+	public int saveBuilding(Building building) throws TransactionException, DuplicateEntryException {
+		if (!contains(building))
+			return (Integer) save(building);
+		else
+			throw new DuplicateEntryException();
 	}
 
 	@Override
