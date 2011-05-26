@@ -1,8 +1,10 @@
 package com.iappsam.entities.forms;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class ModeOfProcurement {
 	
 	@Id
@@ -11,7 +13,6 @@ public class ModeOfProcurement {
 
 	public ModeOfProcurement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ModeOfProcurement(String modeOfProcurement) {

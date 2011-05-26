@@ -241,32 +241,32 @@
 </div>
 <div id="border" align="center" style="width:100%">
   <div id="divCategory">
-    <form id="form1" name="form1" method="post" action="category/ViewItemCategories.jsp">
+    <form id="form1" name="form1" method="post" action="SearchAllItemCategories.do">
       <input name="categoryBtn" type="submit" class="menubtn" id="categoryBtn" value="Item Category" />
     </form>
   </div>
   <div id="divUnit">
-    <form id="form3" name="form3" method="post" action="unit/ItemUnit.jsp">
+    <form id="form3" name="form3" method="post" action="SearchAllItemUnits.do">
       <input name="unitBtn" type="submit" class="menubtn" id="unitBtn" value="Item Unit" />
     </form>
   </div>
   <div id="divModOfProc">
-    <form id="form4" name="form4" method="post" action="modeofprocurement/ViewModeOfProcurement.jsp">
+    <form id="form4" name="form4" method="post" action="SearchAllModes.do">
       <input name="modOfProc" type="submit" class="menubtn" id="modOfProc" value="Mode of Procurement" />
     </form>
   </div>
   <div id="divItemStatus">
-    <form id="form5" name="form5" method="post" action="status/ViewItemStatus.jsp">
+    <form id="form5" name="form5" method="post" action="SearchAllItemStatus.do">
       <input name="itemStatus" type="submit" class="menubtn" id="itemStatus" value="Item Status" />
     </form>
   </div>
   <div id="divItemCond">
-    <form id="form6" name="form6" method="post" action="condition/ViewItemConditions.jsp">
+    <form id="form6" name="form6" method="post" action="SearchAllItemConditions.do">
       <input name="itemConditionBtn" type="submit" class="menubtn" id="itemConditionBtn" value="Item Condition" />
     </form>
   </div>
   <div id="divDisposal">
-    <form id="form7" name="form7" method="post" action="disposal/ViewDisposal.jsp">
+    <form id="form7" name="form7" method="post" action="SearchAllDisposal.do">
       <input name="disposalBtn" type="submit" class="menubtn" id="disposalBtn" value="Disposal" />
     </form>
   </div>
