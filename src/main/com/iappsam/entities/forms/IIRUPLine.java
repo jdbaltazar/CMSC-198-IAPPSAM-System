@@ -1,26 +1,24 @@
 package com.iappsam.entities.forms;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "IIRUP_Line")
-public class IIRUPLine implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7906331383568019394L;
+public class IIRUPLine {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "IIRUP_Line_ID")
+	private int id;
+
 	@Column(name = "IIRUP_ID")
 	private int iirupID;
 
-	@Id
 	@Column(name = "Item_ID")
 	private int itemID;
 
@@ -46,8 +44,7 @@ public class IIRUPLine implements Serializable {
 		super();
 	}
 
-	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal,
-			String orNumber, int iirupID) {
+	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
 		super();
 		this.itemID = itemID;
 		this.quantity = quantity;

@@ -9,38 +9,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-//Inventory and Inspection of Report of Unserviceable Property
+// Inventory and Inspection of Report of Unserviceable Property
 public class IIRUP {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "IIRUP_ID")
 	private int iirupID;
-	
+
 	@Column(name = "As_Of")
 	private Date asOfDate;
-	
+
 	@Column(name = "Employee_ID")
 	private int accountableOfficerEmployeeID;
 
-	@Column (name = "Station")
+	@Column(name = "Station")
 	private String station;
-	
+
 	@Column(name = "Signatory_ID")
 	private int requstedBySignatoryID;
-	
+
 	@Column(name = "Signatory_ID1")
 	private int approvedBySignatoryID;
-	
+
 	@Column(name = "Signatory_ID2")
 	private int inspectorSignatoryID;
-	
+
 	@Column(name = "Signatory_ID3")
 	private int witnessSignatoryID;
 
 	public IIRUP() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public IIRUP(Date asOfDate, int accountableOfficerEmployeeID, String station, int requstedBySignatoryID, int approvedBySignatoryID, int inspectorSignatoryID, int witnessSignatoryID) {
@@ -127,5 +126,5 @@ public class IIRUP {
 	public void setWitnessSignatoryID(int witnessSignatoryID) {
 		this.witnessSignatoryID = witnessSignatoryID;
 	}
-	
+
 }

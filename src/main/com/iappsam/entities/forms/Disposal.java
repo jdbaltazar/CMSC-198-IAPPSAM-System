@@ -2,36 +2,70 @@ package com.iappsam.entities.forms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Disposal {
-	
+
 	public final String DESTROYED = "DESTROYED";
 	public final String SOLD_AT_PRIVATE_SALE = "SOLD_AT_PRIVATE_SALE";
 	public final String SOLD_AT_PUBLIC_AUCTION = "SOLD_AT_PUBLIC_AUCTION";
 	public final String TRANSFERRED_WITHOUT_COST = "TRANSFERRED_WITHOUT_COST";
-	
+
 	@Id
-	@Column(name = "Disposal")
-	private String disposal;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
 
 	public Disposal() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Disposal(String disposal) {
+	public Disposal(String name) {
 		super();
-		this.disposal = disposal;
+		this.name = name;
 	}
 
-	public String getDisposal() {
-		return disposal;
+	public int getId() {
+		return id;
 	}
 
-	public void setDisposal(String disposal) {
-		this.disposal = disposal;
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Disposal other = (Disposal) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

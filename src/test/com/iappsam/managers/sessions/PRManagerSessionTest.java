@@ -7,16 +7,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemBuilder;
-import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
-import com.iappsam.entities.forms.AnnualProcurementPlan;
+import com.iappsam.entities.SignatoryBuilder;
 import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.entities.forms.PurchaseRequestLine;
 import com.iappsam.managers.PRManager;
-import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
@@ -24,12 +20,9 @@ public class PRManagerSessionTest {
 
 	private DivisionOffice divisionOffice;
 	private DivisionOfficeManagerSession dom;
-	private PersonManager pm;
-	private Person person;
 	private PRManager prm;
 	private PurchaseRequest pr;
-	private Employee employee;
-	private Signatory signatory;
+	private SignatoryBuilder signatorybuilder;
 
 	@Before
 	public void addPR() throws TransactionException, DuplicateEntryException {
@@ -37,15 +30,8 @@ public class PRManagerSessionTest {
 		dom = new DivisionOfficeManagerSession();
 		dom.addDivisionOffice(divisionOffice);
 
-		pm = new PersonManagerSession();
-		person = new Person("Person");
-		pm.addPerson(person);
+		Signatory signatory = buildAndGetSignatory();
 
-		employee = new Employee("Dean", person);
-		pm.addEmployee(employee);
-
-		signatory = new Signatory("Description", employee);
-		pm.addSignatory(signatory);
 		prm = new PRManagerSession();
 		pr = new PurchaseRequest(divisionOffice, "Purpose", signatory, signatory);
 		prm.addPR(pr);
@@ -61,12 +47,7 @@ public class PRManagerSessionTest {
 		assertPurchaseRequestAdded();
 
 		ItemBuilder builder = new ItemBuilder();
-		builder.addCategory("Cat");
-		builder.addStatus("Status");
-		builder.addUnit("Unit");
-		builder.addCondition("Condition");
-		builder.addItem("Description");
-		builder.addToDatabase();
+		builder.addCategory("Cat").addStatus("Status").addUnit("Unit").addCondition("Condition").addItem("Description").addToDatabase();
 		PurchaseRequestLine line = new PurchaseRequestLine(1, builder.getItem());
 		pr.addLine(line);
 
@@ -84,11 +65,15 @@ public class PRManagerSessionTest {
 	@After
 	public void removePRandReferences() throws TransactionException {
 		prm.removePR(pr);
-		pm.removeSignatory(signatory);
-		pm.removeEmployee(employee);
-		pm.removePerson(person);
-
+		signatorybuilder.removeFromDatabase();
 		dom.removeDivisionOffice(divisionOffice);
+	}
+
+	private Signatory buildAndGetSignatory() throws TransactionException, DuplicateEntryException {
+		signatorybuilder = new SignatoryBuilder();
+		signatorybuilder.addPerson("Person").addEmployee("Dean").addSignatory("Description").addToDatabase();
+		Signatory signatory = signatorybuilder.getSignatory();
+		return signatory;
 	}
 
 	private void assertPurchaseRequestAdded() throws TransactionException {

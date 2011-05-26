@@ -18,7 +18,6 @@ public class IIRUPFormUtil {
 					names.add(employeeList.get(i).getPerson().getName());
 			}
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return names;
