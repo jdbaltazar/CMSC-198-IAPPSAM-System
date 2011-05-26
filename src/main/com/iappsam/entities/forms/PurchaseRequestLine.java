@@ -17,6 +17,7 @@ public class PurchaseRequestLine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "PR_Line_ID")
 	private int id;
 
 	@Column(name = "Quantity")

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -60,7 +61,7 @@ public class PurchaseRequest {
 	@JoinColumn(name = "Signatory_ID1")
 	private Signatory approvedBy;
 
-	@OneToMany(mappedBy = "purchaseRequest")
+	@OneToMany(mappedBy = "purchaseRequest", fetch = FetchType.EAGER)
 	private Set<PurchaseRequestLine> lines = new HashSet<PurchaseRequestLine>();
 
 	public PurchaseRequest() {

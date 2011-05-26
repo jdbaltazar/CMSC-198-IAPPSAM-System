@@ -78,38 +78,23 @@ public class APPManagerSessionTest {
 		builder.addItem("Description");
 		builder.addToDatabase();
 
-		AnnualProcurementPlanLine line1 = new AnnualProcurementPlanLine(builder.getItem(), 1, 2, 3, 4);
-		app.addLine(line1);
+		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(builder.getItem(), 1, 2, 3, 4);
+		app.addLine(line);
 
-		ItemBuilder builder2 = new ItemBuilder();
-		builder2.addCategory("Cat2");
-		builder2.addStatus("Status2");
-		builder2.addUnit("Unit2");
-		builder2.addCondition("Condition2");
-		builder2.addItem("Description2");
-		builder2.addToDatabase();
-
-		AnnualProcurementPlanLine line2 = new AnnualProcurementPlanLine(builder2.getItem(), 5, 6, 7, 8);
-		app.addLine(line2);
-
-		appManager.addAPPLine(line1);
-		appManager.addAPPLine(line2);
+		appManager.addAPPLine(line);
 		appManager.updateAPP(app);
 
-		assertAPPContains(line1, line2);
+		assertAPPContains(line);
 
-		appManager.removeAPPLine(line1);
-		appManager.removeAPPLine(line2);
+		appManager.removeAPPLine(line);
 		appManager.removeAPP(app);
 
 		builder.removeFromDatabase();
-		builder2.removeFromDatabase();
 	}
 
-	private void assertAPPContains(AnnualProcurementPlanLine line1, AnnualProcurementPlanLine line2) throws TransactionException {
+	private void assertAPPContains(AnnualProcurementPlanLine line1) throws TransactionException {
 		AnnualProcurementPlan appFromDb = appManager.getAPP(app.getId());
 		assertTrue(appFromDb.getLines().contains(line1));
-		assertTrue(appFromDb.getLines().contains(line2));
 	}
 
 	@After
