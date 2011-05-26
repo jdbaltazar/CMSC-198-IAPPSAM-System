@@ -2,6 +2,7 @@ package com.iappsam.managers;
 
 import java.util.List;
 
+import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.WasteMaterialsReport;
 import com.iappsam.entities.forms.WasteMaterialsReportLine;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -33,5 +34,17 @@ public interface WMRManager {
 	boolean containsWMRLine(WasteMaterialsReportLine wasteMaterialsReportLine) throws TransactionException;
 	
 	List<WasteMaterialsReportLine>getAllWMRLine() throws TransactionException;
+	
+	//Disposal
+	
+	void addDisposal(Disposal disposal) throws TransactionException;
+	
+	String saveDisposal(Disposal disposal) throws TransactionException;
+	
+	void removeDisposal(Disposal disposal) throws TransactionException;
+	
+	boolean containsDisposal(Disposal disposal) throws TransactionException;
+	
+	List<Disposal>getAllDisposal() throws TransactionException;
 	
 }

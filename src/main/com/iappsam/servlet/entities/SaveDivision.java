@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
@@ -55,6 +56,9 @@ public class SaveDivision extends HttpServlet {
 					System.out.println("Saved division successfully!");
 					view = request.getRequestDispatcher("../divisions/SearchDivisionOffice.do");
 				} catch (TransactionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (DuplicateEntryException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
