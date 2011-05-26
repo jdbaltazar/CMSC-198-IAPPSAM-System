@@ -134,6 +134,7 @@ public class SaveItem extends HttpServlet {
 			item.setCategory(itemCategory);
 
 			request.setAttribute("item", item);
+			request.setAttribute("description", description);
 
 			try {
 				iManager.addItem(item);
@@ -143,7 +144,7 @@ public class SaveItem extends HttpServlet {
 			}
 
 			// request.setAttribute("description", description);
-			requestDispatcher = request.getRequestDispatcher("items/ViewItem.jsp");
+			requestDispatcher = request.getRequestDispatcher("../items/ViewItem.do");
 
 			System.out.println("Item was saved!!!!!");
 		} else {

@@ -286,8 +286,7 @@
 <table width="100%" cellspacing="0" frame="box" class="resultTable">
 
 	<%
-		ArrayList<String> descriptions = (ArrayList<String>) request
-				.getAttribute("itemDescription");
+		ArrayList<String> descriptions = (ArrayList<String>) request.getAttribute("itemDescription");
 		ArrayList<String> categories = (ArrayList<String>) request
 				.getAttribute("itemCategory");
 		int size = descriptions.size();

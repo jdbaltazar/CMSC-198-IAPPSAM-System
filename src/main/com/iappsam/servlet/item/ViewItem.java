@@ -53,7 +53,7 @@ public class ViewItem extends HttpServlet {
 		ItemManager iManager = new ItemManagerSession();
 		String description = (String) request.getParameter("description");
 
-		System.out.println("item description: ");
+		System.out.println("item description: "+description);
 		
 		Item item = null;
 		try {
@@ -73,13 +73,18 @@ public class ViewItem extends HttpServlet {
 				String month = DateUtil.getMonthEquivalentInWords(date);
 				String year = DateUtil.getYearEquivalent(date);
 				
-				System.out.println("day:month:year "+day+":"+month+":"+year);
+				System.out.println("vvvvvvvvvvvvvvvvvvvvvvvviiiiiiiiiiiiiiiiiiiiewwwwwwwwwwwwwwwwwwwww");
+				
+				System.out.println("day:month:year>"+day+":"+month+":"+year);
 				
 				request.setAttribute("day", day);
 				request.setAttribute("month", month);
 				request.setAttribute("year", year);
 			}
 			
+		}else{
+			
+			System.out.println("item is NULLLLLLLLLLLLLLLL");
 		}
 		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/ViewItem.jsp");
 		view.forward(request, response);

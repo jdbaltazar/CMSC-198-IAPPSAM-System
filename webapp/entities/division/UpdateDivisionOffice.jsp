@@ -282,6 +282,10 @@
 
 <%
 	List<DivisionOffice> dos = (List<DivisionOffice>) request.getAttribute("divOffices");
+	DivisionOffice dOffice = (DivisionOffice)request.getAttribute("dOffice");
+	String offName = dOffice.getOfficeName();
+	if(offName==null)
+		offName = " ";
 %>
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -323,16 +327,16 @@
 <div id="headerDiv"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="nameDiv">
-<form id="form1" name="form1" method="post" action="SaveDivision.do">
+<form id="form1" name="form1" method="post" action="SaveDivisionUpdate.do">
 <p><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" value="" size="30" /></p>
+<input name="name" type="text" id="name" value="<%=dOffice.getDivisionName()%>" size="30" /></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv9"><input name="addBtn" type="submit" id="addBtn"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
-	value="Add" /></div>
+	value="Save" /></div>
 
 </form>
 </div>
@@ -346,14 +350,14 @@ field</em></form>
 <div id="apDiv10"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="apDiv11">
-<form id="form4" name="form4" method="post" action="SaveDivisionOffice.do">
+<form id="form4" name="form4" method="post" action="SaveDivisionOfficeUpdate.do">
 <p><label for="officeName"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="officeName" type="text" id="officeName" size="30" /></p>
+<input name="officeName" type="text" id="officeName" value = "<%=offName %>" size="30" /></p>
 <div id="apDiv13"><input type="submit" name="addOfficeBtn"
 	id="addOfficeBtn"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
-	value="Add" /></div>
+	value="Save" /></div>
 <p>&nbsp;</p>
 <div id="apDiv12"><label for="inDivision"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Division:</label>

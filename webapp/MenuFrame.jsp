@@ -450,7 +450,7 @@
 </div>
 <div id="divisionOfficeDiv">
 <form id="form13" name="form13" method="post"
-	action="entities/division/SearchDivisionOffice.jsp"><input
+	action="divisions/SearchDivisionOffice.do"><input
 	name="divisionOfficeBtn" type="submit" class="button2"
 	id="divisionOfficeBtn" value="Division/Office" /></form>
 </div>
