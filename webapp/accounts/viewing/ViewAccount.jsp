@@ -489,7 +489,7 @@
 		<td width="77%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../ViewAccounts.html"><input name="backBtn"
+			action="../ViewAccounts.do"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
@@ -512,7 +512,7 @@ Information</div>
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
 Information</div>
 <div id="apDiv23">
-<form id="form2" name="form2" method="post" action=""><input type="hidden" name ="name" value="<%=request.getAttribute("name") %>"/><input
+<form id="form2" name="form2" method="post" action="ViewWorkInformation.do"><input type="hidden" name ="name" value="<%=request.getAttribute("name") %>"/><input
 	name="addWorkInfoBtn" type="submit" class="addbtn" id="addWorkInfoBtn"
 	title="Click to view work info." value="Work Information &gt;&gt;" />
 </form>

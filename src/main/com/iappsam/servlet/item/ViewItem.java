@@ -51,7 +51,7 @@ public class ViewItem extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		ItemManager iManager = new ItemManagerSession();
-		String description = (String) request.getParameter("description");
+		String description = (String)request.getParameter("description");
 
 		System.out.println("item description: ");
 		
@@ -62,7 +62,6 @@ public class ViewItem extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
 		if (item != null) {
 			
 			request.setAttribute("item", item);

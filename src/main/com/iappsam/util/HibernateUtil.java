@@ -56,9 +56,10 @@ import com.iappsam.entities.forms.WasteMaterialsReportLine;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
-	static {
-		tryToBuildSessionFactory("root", "123456");
-	}
+
+	// static {
+	// tryToBuildSessionFactory("root", "123456");
+	// }
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
 		try {
