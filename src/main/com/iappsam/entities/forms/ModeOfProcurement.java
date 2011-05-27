@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Mode_Of_Procurement")
 public class ModeOfProcurement {
-	
+
 	@Id
 	@Column(name = "Mode_Of_Procurement")
 	private String modeOfProcurement;

@@ -195,7 +195,7 @@
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllItemDisposal.do">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllDisposal.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -209,7 +209,7 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="AddDisposal.do">
     <p>
       <label for="disposalField" class="labels">Disposal:</label>
       <input name="disposalField" type="text" id="disposalField" size="30" />

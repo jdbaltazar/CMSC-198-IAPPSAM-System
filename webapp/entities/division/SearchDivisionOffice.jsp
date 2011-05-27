@@ -207,7 +207,7 @@
 
 
 <div id="logoHeader" style="width: 100%"><img name=""
-	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+	src="../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
@@ -223,7 +223,7 @@
 		<td width="81%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
+			action="../MenuFrame.jsp"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
@@ -278,7 +278,7 @@
 	<td width="19%" align="center">
 	<form id="form3" name="form3" method="post"
 		action="UpdateDivisionOffice.do"><input name="viewBtn"
-		type="submit" class="viewbutton" id="viewBtn" value="Edit &gt;&gt;" />
+		type="submit" class="viewbutton" id="viewBtn" value="Edit &gt;&gt;" disabled = "disabled" />
 	<input type="hidden" name="dOfficeID" value=<%=""+d.getId()%> /></form>
 	</td>
 	</tr>

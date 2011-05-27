@@ -40,7 +40,7 @@ public class AddDisposal extends HttpServlet {
 		
 		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllDisposal.do");
 
-		String disposalInput = (String) request.getParameter("categoryField");
+		String disposalInput = (String) request.getParameter("disposalField");
 		
 		disposal.setName(disposalInput);
 		

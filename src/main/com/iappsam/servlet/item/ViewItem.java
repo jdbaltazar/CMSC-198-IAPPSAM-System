@@ -67,7 +67,7 @@ public class ViewItem extends HttpServlet {
 
 			System.out.println("item is NULLLLLLLLLLLLLLLL");
 		}
-		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/ViewItem.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../items/SearchAllItems.do");
 		view.forward(request, response);
 
 	}

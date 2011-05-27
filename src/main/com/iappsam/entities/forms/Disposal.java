@@ -7,13 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-
 public class Disposal {
 
-	public final String DESTROYED = "DESTROYED";
-	public final String SOLD_AT_PRIVATE_SALE = "SOLD_AT_PRIVATE_SALE";
-	public final String SOLD_AT_PUBLIC_AUCTION = "SOLD_AT_PUBLIC_AUCTION";
-	public final String TRANSFERRED_WITHOUT_COST = "TRANSFERRED_WITHOUT_COST";
+	public static final String DESTROYED = "DESTROYED";
+	public static final String SOLD_AT_PRIVATE_SALE = "SOLD_AT_PRIVATE_SALE";
+	public static final String SOLD_AT_PUBLIC_AUCTION = "SOLD_AT_PUBLIC_AUCTION";
+	public static final String TRANSFERRED_WITHOUT_COST = "TRANSFERRED_WITHOUT_COST";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

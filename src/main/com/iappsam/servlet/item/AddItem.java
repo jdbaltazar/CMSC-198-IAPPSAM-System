@@ -91,6 +91,9 @@ public class AddItem extends HttpServlet {
 		request.setAttribute("itemCategories", itemCategories);
 		request.setAttribute("itemStatuses", itemStatuses);
 		request.setAttribute("itemConditions", itemConditions);
+		
+		request.setAttribute("validInputForItem", "true");
+		request.setAttribute("finishedInputting", "false");
 
 		forwardToJsp("items/AddItem.jsp", request, response);
 	}

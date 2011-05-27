@@ -447,7 +447,7 @@
 		</table>
 	</div>
 	<div id="logoHeader" style="width: 95%;">
-		<img name="" src="../../images/header2.png" width="1354" height="115" alt="" />
+		<img name="" src="../images/header2.png" width="1354" height="115" alt="" />
 	</div>
 	<div id="pageLabel" style="width: 100%;">
 		<table width="100%" border="0">
@@ -483,6 +483,20 @@
 				<label for="itemUnit" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit" <%if (finished) {%> disabled="disabled" <%}%>>
 					<%
 						for (String s : itemUnits) {
+					%>
+					<option><%=s%></option>
+					<%
+						}
+					%>
+				</select>
+			</div>
+			
+			<div id="apDiv21">
+				<label for="itemCategory" class="texts">*Category:</label> <select name="itemCategory" id="itemCategory" <%if (finished) {%> disabled="disabled"
+					<%}%>
+				>
+					<%
+						for (String s : itemCategories) {
 					%>
 					<option><%=s%></option>
 					<%
@@ -561,19 +575,6 @@
 				</select>
 			</div>
 			<p>&nbsp;</p>
-			<div id="apDiv21">
-				<label for="itemCategory" class="texts">*Category:</label> <select name="itemCategory" id="itemCategory" <%if (finished) {%> disabled="disabled"
-					<%}%>
-				>
-					<%
-						for (String s : itemCategories) {
-					%>
-					<option><%=s%></option>
-					<%
-						}
-					%>
-				</select>
-			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
