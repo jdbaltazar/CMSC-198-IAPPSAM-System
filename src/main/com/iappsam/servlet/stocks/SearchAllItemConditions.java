@@ -35,7 +35,7 @@ public class SearchAllItemConditions extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../stocks/stocks/condition/ViewItemConditions.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewItemConditions.jsp");
 		
 		ArrayList<String> itemCondition = new ArrayList<String>();
 		

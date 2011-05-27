@@ -201,7 +201,7 @@
   </table>
 </div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="../../stocks/stocks/category/AddItemCategory.jsp">
+  <form id="form1" name="form1" method="post" action="AddItemCategory.jsp">
     <input name="addNewBtn" type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
   </form>
 </div>

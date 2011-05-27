@@ -18,7 +18,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
-@WebServlet("/stocks/stocks/disposal/AddDisposal.do")
+@WebServlet("/stocks/stocks/AddDisposal.do")
 public class AddDisposal extends HttpServlet {
 	
 	/**
@@ -38,7 +38,7 @@ public class AddDisposal extends HttpServlet {
 		WMRManager wmrManager = new WMRManagerSession();
 		Disposal disposal = new Disposal();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllDisposal.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllDisposal.do");
 
 		String disposalInput = (String) request.getParameter("disposalField");
 		

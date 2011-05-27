@@ -14,7 +14,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/unit/AddUnit.do")
+@WebServlet("/stocks/stocks/AddUnit.do")
 public class AddUnit extends HttpServlet {
 	
 	public AddUnit(){
@@ -29,7 +29,7 @@ public class AddUnit extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllItemUnits.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemUnits.do");
 
 		String unitInput = (String) request.getParameter("unitField");
 		

@@ -16,7 +16,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/status/AddStatus.do")
+@WebServlet("/stocks/stocks/AddStatus.do")
 public class AddStatus extends HttpServlet {
 	
 	/**
@@ -36,7 +36,7 @@ public class AddStatus extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemStatus status = new ItemStatus();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllItemStatus.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemStatus.do");
 
 		String statusInput = (String) request.getParameter("statusField");
 		

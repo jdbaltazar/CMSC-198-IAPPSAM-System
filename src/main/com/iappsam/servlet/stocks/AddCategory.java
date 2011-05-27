@@ -15,7 +15,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/category/AddCategory.do")
+@WebServlet("/stocks/stocks/AddCategory.do")
 public class AddCategory extends HttpServlet {
 	
 	/**
@@ -35,7 +35,7 @@ public class AddCategory extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCategory category = new ItemCategory();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllItemCategories.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemCategories.do");
 
 		String categoryInput = (String) request.getParameter("categoryField");
 		

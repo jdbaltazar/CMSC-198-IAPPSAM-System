@@ -18,7 +18,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 
-@WebServlet("/stocks/stocks/modeofprocurement/AddMode.do")
+@WebServlet("/stocks/stocks/AddMode.do")
 public class AddModeofProcurement extends HttpServlet {
 	
 	/**
@@ -38,7 +38,7 @@ public class AddModeofProcurement extends HttpServlet {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllModes.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllModes.do");
 
 		String modeofP = (String) request.getParameter("modeOfProcurementField");
 		

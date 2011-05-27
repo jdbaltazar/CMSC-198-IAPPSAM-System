@@ -39,7 +39,7 @@ public class SearchAllItemUnits extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../stocks/stocks/unit/ItemUnit.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ItemUnit.jsp");
 
 		ArrayList<String> itemUnit = new ArrayList<String>();
 

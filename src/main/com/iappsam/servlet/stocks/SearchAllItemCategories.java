@@ -34,7 +34,7 @@ public class SearchAllItemCategories extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../stocks/stocks/category/ViewItemCategories.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewItemCategories.jsp");
 		
 		ArrayList<String> itemCategory = new ArrayList<String>();
 		

@@ -16,7 +16,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/condition/AddCondition.do")
+@WebServlet("/stocks/stocks/AddCondition.do")
 public class AddCondition extends HttpServlet {
 	
 	/**
@@ -36,7 +36,7 @@ public class AddCondition extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCondition condition = new ItemCondition();
 		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllItemConditions.do");
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemConditions.do");
 
 		String conditionInput = (String) request.getParameter("conditionField");
 		

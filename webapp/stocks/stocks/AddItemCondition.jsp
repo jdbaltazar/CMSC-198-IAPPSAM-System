@@ -185,17 +185,17 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="12%"><table width="100%" frame="below">
+    <td width="17%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Disposal</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Item Condition</td>
       </tr>
     </table></td>
-    <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllDisposal.do">
+    <td width="79%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="SearchAllItemConditions.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -209,10 +209,10 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="AddDisposal.do">
+  <form id="form1" name="form1" method="post" action="AddCondition.do">
     <p>
-      <label for="disposalField" class="labels">Disposal:</label>
-      <input name="disposalField" type="text" id="disposalField" size="30" />
+      <label for="conditionField" class="labels">Condition:</label>
+      <input name="conditionField" type="text" id="conditionField" size="30" />
     </p>
     <p>&nbsp;</p>
     <div id="apDiv2">

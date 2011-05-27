@@ -37,7 +37,7 @@ public class SearchAllModes extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../stocks/stocks/modeofprocurement/ViewModeOfProcurement.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewModeOfProcurement.jsp");
 		
 		ArrayList<String> mode = new ArrayList<String>();
 		
