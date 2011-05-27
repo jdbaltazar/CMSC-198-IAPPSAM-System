@@ -424,7 +424,7 @@
 </div>
 <div id="appDiv">
 <form id="form6" name="form6" method="post" action=""><input
-	name="appBtn" type="submit" class="button" id="appBtn" value="APP" />
+	name="appBtn" type="submit" class="button" id="appBtn" value="Annual Procurement Plan" />
 </form>
 </div>
 <div id="inventoryDiv">

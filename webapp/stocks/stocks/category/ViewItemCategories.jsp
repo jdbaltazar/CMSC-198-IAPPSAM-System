@@ -221,7 +221,7 @@
 	%>
       <td width="83%"><%=categories.get(i) %></td>
       <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditCategory.jsp">
-        <input name="editBtn_1" type="submit" class="maroon" id="editBtn_1" value="Edit" />
+        <input name="editBtn_1" disabled="disabled" type="submit" class="maroon" id="editBtn_1" value="Edit" />
       </form></td>
     </tr>
     <%

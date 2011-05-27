@@ -229,7 +229,7 @@
 	%>
       <td width="83%"><%=units.get(i) %></td>
       <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditItemUnit.jsp">
-        <input name="editBtn_1" type="submit" class="maroon" id="editBtn_1" value="Edit" />
+        <input name="editBtn_1" type="submit" disabled="disabled" class="maroon" id="editBtn_1" value="Edit" />
       </form></td>
     </tr>
     <%

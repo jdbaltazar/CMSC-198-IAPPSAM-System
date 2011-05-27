@@ -6,15 +6,8 @@ INSERT INTO ACCOUNT_TYPE VALUES
 ("Non-SPSO Personnel (Head)"),
 ("Non-SPSO Personnel (Employee)");
 
-INSERT INTO CONTACT_TYPE VALUES
-("Landline"),
-("Mobile"),
-("Fax"),
-("Email"),
-("Website"),
-("Others");
 
-INSERT INTO DISPOSAL VALUES
+INSERT INTO DISPOSAL (name) VALUES 
 ("Destroyed"),
 ("Sold at private sale"),
 ("Sold at public auction"),
@@ -23,17 +16,17 @@ INSERT INTO DISPOSAL VALUES
 INSERT INTO MODE_OF_PROCUREMENT VALUES
 ("Shopping");
 
-INSERT INTO UNIT VALUES 
+INSERT INTO UNIT(name) VALUES 
 ('PCS');
 
-INSERT INTO ITEM_STATUS VALUES
+INSERT INTO ITEM_STATUS(name) VALUES
 ('Not Available'),
 ('Available');
 
-INSERT INTO ITEM_CONDITION VALUES
+INSERT INTO ITEM_CONDITION(name) VALUES
 ('Good Condition');
 
-INSERT INTO ITEM_CATEGORY VALUES
+INSERT INTO ITEM_CATEGORY(name) VALUES
 ('Common Office Supplies'),
 ('Other Office Supplies'),
 ('Common Office Devices'),

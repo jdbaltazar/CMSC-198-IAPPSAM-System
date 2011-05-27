@@ -145,9 +145,9 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public ItemStatus getItemStatus(String name) throws TransactionException {
 		Session session = HibernateUtil.startSession();
-		
+
 		ItemStatus cat = (ItemStatus) session.createCriteria(ItemStatus.class).add(Restrictions.like("name", name)).uniqueResult();
-		
+
 		session.close();
 		return cat;
 	}
@@ -194,7 +194,10 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public ItemCondition getItemCondition(String itemCondition) throws TransactionException {
-		return (ItemCondition) get(ItemCondition.class, itemCondition);
+		Session session = HibernateUtil.startSession();
+		ItemCondition cat = (ItemCondition) session.createCriteria(ItemCondition.class).add(Restrictions.like("name", itemCondition)).uniqueResult();
+		session.close();
+		return cat;
 	}
 
 	@Override

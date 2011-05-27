@@ -188,7 +188,7 @@
       </tr>
     </table></td>
     <td width="87%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../StockProperties.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../../stocks/stocks/StockProperties.jsp">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -229,7 +229,7 @@
 
       <td width="83%"><%=disposal.get(i) %></td>
       <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditDisposal.jsp">
-        <input name="editBtn_1" type="submit" class="maroon" id="editBtn_1" value="Edit" />
+        <input name="editBtn_1" type="submit" disabled="disabled" class="maroon" id="editBtn_1" value="Edit" />
       </form></td>
     </tr>
     <%

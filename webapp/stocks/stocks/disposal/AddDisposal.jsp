@@ -195,7 +195,7 @@
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="ViewDisposal.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllItemDisposal.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+
 public class Disposal {
 
 	public final String DESTROYED = "DESTROYED";
