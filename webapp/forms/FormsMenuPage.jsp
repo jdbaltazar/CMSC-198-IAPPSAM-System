@@ -301,7 +301,7 @@
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -315,7 +315,7 @@
       </tr>
     </table></td>
     <td width="89%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.html">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
       <input name="backBtn" type="submit" class="button2" id="backBtn" value="Back" />
     </form></td>
   </tr>
