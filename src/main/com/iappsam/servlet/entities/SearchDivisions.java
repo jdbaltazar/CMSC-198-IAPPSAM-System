@@ -19,7 +19,7 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 /**
  * Servlet implementation class SearchDivisionOffice
  */
-@WebServlet("/divisions/SearchDivisions.do")
+@WebServlet("/entities/division/SearchDivisions.do")
 public class SearchDivisions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -56,7 +56,7 @@ public class SearchDivisions extends HttpServlet {
 		
 		request.setAttribute("divOffices", dos);
 		
-		RequestDispatcher view = request.getRequestDispatcher("../entities/division/SearchDivisions.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
 		view.forward(request, response);
 	}
 

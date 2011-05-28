@@ -46,6 +46,7 @@ public class IIRUPForm extends HttpServlet {
 	private String nameOfInspector;
 
 	private String nameOfWitness;
+	private String requestedBy;
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -98,6 +99,7 @@ public class IIRUPForm extends HttpServlet {
 		approvedBy=(String)request.getParameter("approvedBy");
 		nameOfInspector=(String)request.getParameter("nameOfInspector");
 		nameOfWitness=(String)request.getParameter("nameOfWitness");
+		requestedBy=(String)request.getParameter("requestedBy");
 		itemIDs = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		quantity = (ArrayList<String>) request.getSession().getAttribute("quantity");
 		yearsInService = (ArrayList<String>) request.getSession().getAttribute("yearsInService");
@@ -146,6 +148,18 @@ public class IIRUPForm extends HttpServlet {
 					break;
 				}
 			}
+
+			limit=pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(requestedBy)).getId()).size();
+			for(int i=0;i<limit;i++){
+				Employee temp;
+				temp = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(requestedBy)).getId()).get(i);
+				if (temp.getDesignation().equals(getDesignationFromEntry(requestedBy))) {
+					requestedByEmployee=temp;
+					requestedBySignatory=new Signatory("",asOfDate,requestedByEmployee);
+					ManagerBin.pManager.addSignatory(requestedBySignatory);
+					break;
+				}
+			}
 			
 			limit=pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(nameOfInspector)).getId()).size();
 			for(int i=0;i<limit;i++){
@@ -169,23 +183,24 @@ public class IIRUPForm extends HttpServlet {
 					break;
 				}
 			}
-		
+			IIRUP iirupForm = new IIRUP(asOfDate, Integer.parseInt(accountableOfficerEmployeeID), requestedBySignatory.getId(), approvedBySignatory.getId(), 1, 1);
+
+			try {
+				iManage.addIIRUP(iirupForm);
+				
+				System.out.println("successfully saved IIRUP!!");
+			} catch (TransactionException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		} catch (TransactionException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		
 		
-		IIRUP iirupForm = new IIRUP(asOfDate, Integer.parseInt(accountableOfficerEmployeeID), 1, 1, 1, 1);
-		
-		try {
-			iManage.addIIRUP(iirupForm);
-			
-			System.out.println("successfully saved IIRUP!!");
-		} catch (TransactionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		
 
 		// for (int i = 0; i < itemIDs.size(); i++) {

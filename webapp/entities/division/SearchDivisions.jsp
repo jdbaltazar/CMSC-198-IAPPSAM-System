@@ -257,7 +257,7 @@
   </form>
 </div>
 <div id="apDiv1">
-  <form id="form2" name="form2" method="post" action="AddItem.html">
+  <form id="form2" name="form2" method="post" action="AddDivision.jsp">
     <input name="addDivisionBtn" type="submit" class="maroon" id="addDivisionBtn" value="Add Division &gt;&gt;" />
   </form>
 </div>

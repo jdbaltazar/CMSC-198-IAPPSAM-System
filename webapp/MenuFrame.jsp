@@ -452,13 +452,13 @@
 </div>
 <div id="divisionOfficeDiv">
 <form id="form13" name="form13" method="post"
-	action="divisions/SearchDivisions.do"><input
+	action="entities/division/SearchDivisions.do"><input
 	name="divisionOfficeBtn" type="submit" class="button2"
 	id="divisionOfficeBtn" value="Division/Office" /></form>
 </div>
 <div id="employeeDiv">
 <form id="form14" name="form14" method="post"
-	action="entities/employees/SearchEmployee.jsp"><input
+	action="entities/employees/SearchEmployee.do"><input
 	name="employeeBtn" type="submit" class="button2" id="employeeBtn"
 	value="Employees" /></form>
 </div>

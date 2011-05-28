@@ -94,14 +94,13 @@ public class EmployeeCreation extends HttpServlet {
 		request.setAttribute("division", division);
 
 		Person person = new Person(title, name);
-		Employee employee = new Employee(designation, employeeNumber, person);
+		
 		Contact c1;
 		Contact c2;
 		Contact c3;
 
 		try {
-			ManagerBin.pManager.addPerson(person);
-			ManagerBin.pManager.addEmployee(employee);
+
 			System.out.println("Division Name:" + getDivisionNameFromString(division));
 			if (getOfficeNameFromString(division) != null)
 				System.out.println("Office Name:" + getOfficeNameFromString(division));
@@ -111,21 +110,22 @@ public class EmployeeCreation extends HttpServlet {
 				c1 = new Contact(emailad, ContactType.EMAIL);
 				ManagerBin.cManager.addContact(c1);
 				person.addContact(c1);
-				ManagerBin.pManager.updatePerson(person);
 			}
 			if (landline != null && !landline.isEmpty()) {
 				c2 = new Contact(landline, ContactType.LANDLINE);
 				ManagerBin.cManager.addContact(c2);
 				person.addContact(c2);
-				ManagerBin.pManager.updatePerson(person);
 			}
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				c3 = new Contact(mobileNumber, ContactType.MOBILE);
 				ManagerBin.cManager.addContact(c3);
 				person.addContact(c3);
-				ManagerBin.pManager.updatePerson(person);
 			}
 
+			
+			ManagerBin.pManager.addPerson(person);
+			Employee employee = new Employee(designation, employeeNumber, person);
+			ManagerBin.pManager.addEmployee(employee);
 			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(), dOffice.getId());
 			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);

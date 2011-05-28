@@ -373,8 +373,8 @@
 		<td width="83%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="../MenuFrame.jsp"><input name="backBtn" type="submit"
+			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
@@ -433,19 +433,20 @@
 			}
 			i++;
 		%>
-	
-	<tr>
-		<td></td>
-		<td></td>
-	</tr>
+
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
 </table>
 </div>
 <div class="headers" id="apDiv19">Division</div>
 <div class="headers" id="apDiv20">Offices</div>
 <div id="apDiv21">
-<form id="form4" name="form4" method="post" action=""><input
+<form id="form4" name="form4" method="post" action="AddDivisionOffice.jsp"><input
 	name="addNewOfficeBtn" type="submit" class="viewbutton"
-	id="addNewOfficeBtn" value="Add New Office &gt;&gt;" /></form>
+	id="addNewOfficeBtn" value="Add New Office &gt;&gt;" /> <input
+	type="hidden" name="dOffice" value=<%=dOffice%> /></form>
 </div>
 <div class="headers" id="apDiv22">Action</div>
 <div class="headers" id="apDiv23">Action</div>

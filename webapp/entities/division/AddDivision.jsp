@@ -4,439 +4,473 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
-.required{
-	color:red;
-	font-size:10px; 
-	font-family:Lucida Grande;
-}
-.button{
-	font-size:14px;
-	font-family:Lucida Grande;
-	background-color:white;
-	color:#7B1113;
-	border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+.headers {
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
 }
 
-.button:hover{
-	font-weight:bold;
-	color:#060;
-/*	background:#EEE0E5;;*/
+.tablerow_1 {
+	background-color: #EEE0E5;
+}
+
+.viewbutton {
+	font-size: 12px;
+	font-family: "Courier New", Courier, monospace;
+	background-color: #7B1113;
+	color: white;
+	border: none;
+}
+
+.viewbutton:hover {
+	border: none;
+	font-weight: bold;
+}
+
+.tableheaders {
+	background-color: #5E2605;
+	color: white;
+	font-family: Lucida Grande;
+	font-size: 14px;
+	text-align: center;
+}
+
+.maroon {
+	font-size: 12px;
+	font-family: Lucida Grande;
+	background-color: #7B1113;
+	color: white;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.maroon:hover {
+	font-weight: bold;
+	/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
-  border-right: 1px solid #7B1113;
-  border-top: 1px solid #7B1113;
-  border-bottom: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
 }
-.labels{
-	font-family:Lucida Grande;
-	font-size:16px;
-	font-weight:bold;
+
+.labels {
+	font-family: Lucida Grande;
+	font-size: 16px;
+	font-weight: bold;
 }
-#headerDiv {
-	position:absolute;
-	width:605px;
-	height:25px;
-	z-index:1;
-	left: 353px;
-	top: 176px;
+
+.button {
+	font-size: 14px;
+	font-family: Lucida Grande;
+	background-color: white;
+	color: #7B1113;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
 }
-#background {
-	position:absolute;
-	width:604px;
-	height:750px;
-	z-index:0;
-	left: 353px;
-	top: 202px;
+
+.button:hover {
+	font-weight: bold;
+	color: #060;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
 }
-#nameDiv {
-	position:absolute;
-	width:462px;
-	height:24px;
-	z-index:3;
-	left: 460px;
-	top: 230px;
+
+#searchEmployeesDiv {
+	position: absolute;
+	width: 471px;
+	height: 33px;
+	z-index: 1;
+	left: 411px;
+	top: 303px;
 }
-#divisionIDdiv {
-	position:absolute;
-	width:447px;
-	height:25px;
-	z-index:4;
-	left: 416px;
+
+#apDiv1 {
+	position: absolute;
+	width: 200px;
+	height: 29px;
+	z-index: 2;
+	left: 837px;
+	top: 306px;
+}
+
+#apDiv2 {
+	position: absolute;
+	width: 885px;
+	height: 226px;
+	z-index: 3;
+	left: 305px;
+	top: 301px;
+}
+
+#apDiv3 {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 4;
+}
+
+#apDiv4 {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 4;
+}
+
+#apDiv5 {
+	position: absolute;
+	width: 900px;
+	height: 115px;
+	z-index: 3;
+	left: 270px;
 	top: 282px;
 }
-#apDiv1 {
-	position:absolute;
-	width:385px;
-	height:25px;
-	z-index:5;
-	left: 436px;
-	top: 335px;
-}
-#apDiv2 {
-	position:absolute;
-	width:390px;
-	height:24px;
-	z-index:6;
-	left: 354px;
-	top: 387px;
-}
-#apDiv3 {
-	position:absolute;
-	width:210px;
-	height:27px;
-	z-index:7;
-	left: 409px;
-	top: 388px;
-}
-#apDiv4 {
-	position:absolute;
-	width:200px;
-	height:25px;
-	z-index:8;
-	left: 432px;
-	top: 444px;
-}
-#apDiv5 {
-	position:absolute;
-	width:200px;
-	height:73px;
-	z-index:9;
-	left: 1058px;
-	top: 177px;
-}
+
 #apDiv6 {
-	position:absolute;
-	width:448px;
-	height:27px;
-	z-index:10;
-	left: 444px;
-	top: 440px;
-}
-#apDiv7 {
-	position:absolute;
-	width:605px;
-	height:8px;
-	z-index:11;
-	left: 353px;
-	top: 946px;
-}
-#apDiv8 {
-	position:absolute;
-	width:614px;
-	height:803px;
-	z-index:1;
-	left: 349px;
-	top: 173px;
-}
-#apDiv9 {
-	position:absolute;
-	width:464px;
-	height:152px;
-	z-index:15;
-	left: 301px;
-	top: 292px;
-}
-#apDiv10 {
-	position:absolute;
-	width:64px;
-	height:29px;
-	z-index:13;
-	left: 350px;
-	top: 114px;
-}
-#apDiv11 {
-	position:absolute;
-	width:177px;
-	height:23px;
-	z-index:13;
-	left: 129px;
-	top: 20px;
-}
-#apDiv12 {
-	position:absolute;
-	width:406px;
-	height:23px;
-	z-index:16;
-	left: 163px;
+	position: absolute;
+	width: 476px;
+	height: 115px;
+	z-index: 4;
+	left: 482px;
 	top: 30px;
 }
-#apDiv13 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:13;
+
+#apDiv7 {
+	position: absolute;
+	width: 1629px;
+	height: 115px;
+	z-index: 3;
+	left: -1548px;
+	top: 241px;
 }
-#apDiv14 {
-	position:absolute;
-	width:718px;
-	height:27px;
-	z-index:13;
-	left: 149px;
-	top: 66px;
+
+#apDiv8 {
+	position: absolute;
+	width: 897px;
+	height: 115px;
+	z-index: 3;
+	left: 242px;
+	top: 150px;
 }
-#apDiv15 {
-	position:absolute;
-	width:493px;
-	height:179px;
-	z-index:15;
-	left: 408px;
-	top: 281px;
+
 }
-#apDiv16 {
-	position:absolute;
-	width:318px;
-	height:502px;
-	z-index:1;
-	left: 411px;
-	top: 231px;
+#apDiv10 {
+	position: absolute;
+	width: 1224px;
+	height: 309px;
+	z-index: 3;
+	left: 146px;
+	top: 152px;
 }
-#apDiv17 {
-	position:absolute;
-	width:200px;
-	height:29px;
-	z-index:15;
+
+#apDiv11 {
+	position: absolute;
+	width: 905px;
+	height: 502px;
+	z-index: 3;
+	left: 244px;
+	top: 388px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 46px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#footer {
+	position: absolute;
 	left: 0px;
-	top: 257px;
+	top: 702px;
+	width: 100%;
 }
-#apDiv18 {
-	position:absolute;
-	width:663px;
-	height:96px;
-	z-index:17;
-	left: 446px;
-	top: 542px;
+
+#divItemTableHeader {
+	position: absolute;
+	width: 872px;
+	height: 34px;
+	z-index: 3;
+	left: 1px;
+	top: 411px;
 }
-#apDiv19 {
-	position:absolute;
-	width:60px;
-	height:35px;
-	z-index:17;
-	left: 206px;
-	top: 57px;
+
+#divItemResultTable {
+	position: absolute;
+	width: 871px;
+	height: 110px;
+	z-index: 4;
+	left: 1px;
+	top: 433px;
 }
-#apDiv20 {
-	position:absolute;
-	width:492px;
-	height:151px;
-	z-index:15;
-	left: 411px;
-	top: 525px;
-}
-#apDiv21 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:16;
-	left: 9px;
-	top: 397px;
-}
-#apDiv22 {
-	position:absolute;
-	width:188px;
-	height:31px;
-	z-index:17;
-	top: 451px;
-	left: 2px;
-}
-#apDiv23 {
-	position:absolute;
-	width:440px;
-	height:219px;
-	z-index:18;
-	left: 457px;
-	top: 729px;
-}
-#apDiv24 {
-	position:absolute;
-	width:242px;
-	height:45px;
-	z-index:18;
+
+#apDiv12 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 16;
 	left: 12px;
+	top: 226px;
+}
+
+#apDiv13 {
+	position: absolute;
+	width: 448px;
+	height: 25px;
+	z-index: 17;
+	left: 510px;
+	top: 58px;
+}
+
+#apDiv14 {
+	position: absolute;
+	width: 482px;
+	height: 26px;
+	z-index: 1;
+	left: 475px;
+	top: 89px;
+}
+
+#apDiv15 {
+	position: absolute;
+	width: 408px;
+	height: 28px;
+	z-index: 2;
+	left: 260px;
+	top: 185px;
+}
+
+#apDiv16 {
+	position: absolute;
+	width: 482px;
+	height: 28px;
+	z-index: 2;
+	left: 475px;
+	top: 115px;
+}
+
+#apDiv17 {
+	position: absolute;
+	width: 480px;
+	height: 26px;
+	z-index: 3;
+	left: 475px;
+	top: 234px;
+}
+
+#apDiv18 {
+	position: absolute;
+	width: 480px;
+	height: 49px;
+	z-index: 4;
+	left: 476px;
+	top: 261px;
+}
+
+#apDiv19 {
+	position: absolute;
+	width: 200px;
+	height: 22px;
+	z-index: 5;
+	left: 492px;
+	top: 92px;
+}
+
+#apDiv20 {
+	position: absolute;
+	width: 200px;
+	height: 23px;
+	z-index: 6;
+	left: 491px;
+	top: 237px;
+}
+
+#apDiv21 {
+	position: absolute;
+	width: 200px;
+	height: 28px;
+	z-index: 7;
+	left: 474px;
+	top: 163px;
+}
+
+#apDiv22 {
+	position: absolute;
+	width: 104px;
+	height: 22px;
+	z-index: 8;
+	left: 861px;
+	top: 92px;
+}
+
+#apDiv23 {
+	position: absolute;
+	width: 74px;
+	height: 22px;
+	z-index: 9;
+	left: 860px;
+	top: 236px;
+}
+
+#apDiv24 {
+	position: absolute;
+	width: 483px;
+	height: 128px;
+	z-index: 6;
+	left: 475px;
+	top: 115px;
+}
+
+#apDiv25 {
+	position: absolute;
+	width: 443px;
+	height: 95px;
+	z-index: 7;
+	left: 503px;
+	top: 128px;
+}
+
+#apDiv26 {
+	position: absolute;
+	width: 392px;
+	height: 25px;
+	z-index: 17;
+	left: 15px;
 	top: 64px;
 }
-#apDiv25 {
-	position:absolute;
-	width:61px;
-	height:29px;
-	z-index:18;
-	left: 193px;
-	top: 118px;
-}
-#apDiv26 {
-	position:absolute;
-	width:200px;
-	height:115px;
-	z-index:18;
-}
+
 #apDiv27 {
-	position:absolute;
-	width:494px;
-	height:196px;
-	z-index:17;
-	left: 411px;
-	top: 717px;
+	position: absolute;
+	width: 79px;
+	height: 32px;
+	z-index: 17;
+	left: 191px;
+	top: 74px;
 }
+
 #apDiv28 {
-	position:absolute;
-	width:200px;
-	height:18px;
-	z-index:19;
-	left: 435px;
-	top: 423px;
+	position: absolute;
+	width: 482px;
+	height: 11px;
+	z-index: 8;
+	left: 475px;
+	top: 243px;
 }
+
 #apDiv29 {
-	position:absolute;
-	width:166px;
-	height:19px;
-	z-index:20;
-	left: 436px;
-	top: 614px;
-}
-#apDiv30 {
-	position:absolute;
-	width:200px;
-	height:18px;
-	z-index:21;
-	left: 440px;
-	top: 857px;
+	position: absolute;
+	width: 190px;
+	height: 19px;
+	z-index: 9;
+	left: 629px;
+	top: 179px;
+	font-style: italic;
+	font-weight: bold;
+	color: #F00;
+	font-size: 12px;
 }
 </style>
 </head>
 
 <body>
-<div id="background"  style="background-color:#EEE0E5;"></div>
-<table width="100%" border="0">
-  <tr>
-    <td width="26%"><table width="100%" frame="below">
-      <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Building/Division/Office</td>
-      </tr>
-    </table></td>
-    <td width="70%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="ViewDivisionBldgOffice.jsp">
-      <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
-    </form></td>
-  </tr>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
 </table>
-<div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold">New Building/Division/Office</div>
-<div id="apDiv7" style="background-color:#7B1113;"></div>
-<div id="apDiv8">
-  <table width="100%" height="781" border="1">
-    <tr>
-      <td height="775">&nbsp;</td>
-    </tr>
-  </table>
 </div>
-<div id="apDiv15">
-  <table width="100%" height="172" border="1">
-    <tr>
-      <td height="166">&nbsp;</td>
-    </tr>
-  </table>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
+<table width="100%" border="0">
+	<tr>
+		<td width="12%">
+		<table width="100%" frame="below">
+			<tr>
+				<td
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
+				Division</td>
+			</tr>
+		</table>
+		</td>
+		<td width="84%">&nbsp;</td>
+		<td width="4%">
+		<form id="form15" name="form15" method="post"
+			action="SearchDivisions.do"><input name="backBtn" type="submit"
+			class="button" id="backBtn" value="Back" /></form>
+		</td>
+	</tr>
+</table>
 </div>
-<div id="apDiv16">
-  <form id="form2" name="form2" method="post" action="">
-    <p>
-      <label for="building4" class="labels">Building:</label>
-      <select name="building" id="building4">
-      </select>
-    </p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <div id="apDiv22">
-      <label for="office" class="labels">Office:</label>
-      <select name="office" id="office">
-      </select>
-    </div>
-    <p>&nbsp;</p>
-    <div id="apDiv17">
-      <label for="division" class="labels">Division:</label>
-      <select name="division" id="division">
-      </select>
-    </div>
-  </form>
-</div>
-<div id="apDiv18">
-  <form id="form3" name="form3" method="post" action="">
-    <p>
-      <label for="divisionName" class="labels">*Division Name:</label>
-      <input name="divisionName" type="text" id="divisionName" size="35" />
-    </p>
-    <div id="apDiv19">
-      <input name="addDivisionBtn" type="submit" class="button" id="addDivisionBtn" value="Add" />
-    </div>
-    <p>&nbsp;</p>
-  </form>
-</div>
-<div id="apDiv20">
-  <table width="100%" border="1">
-    <tr>
-      <td height="117">&nbsp;</td>
-    </tr>
-  </table>
-</div>
-<div id="apDiv23">
-  <form id="form4" name="form4" method="post" action="">
-    <p>
-      <label for="officeName" class="labels">*Office Name:</label>
-      <input name="officeName" type="text" id="officeName" size="35" />
-    </p>
-    <div id="apDiv24">
-      <label for="inDivisionDiv" class="labels">*In Division:</label>
-      <select name="inDivisionDiv" id="inDivisionDiv">
-      </select>
-    </div>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <div id="apDiv25">
-      <input name="addOfficeBtn" type="submit" class="button" id="addOfficeBtn" value="Add" />
-    </div>
-    <p>&nbsp;</p>
-  </form>
-</div>
-<div id="apDiv27">
-  <table width="100%" border="1">
-    <tr>
-      <td height="169">&nbsp;</td>
-    </tr>
-  </table>
-</div>
-<div class="required" id="apDiv28"><em>*required field</em></div>
-<div class="required" id="apDiv29"><em>*required field</em></div>
-<div class="required" id="apDiv30"><em>*required fields</em></div>
 <p>&nbsp;</p>
-<div id="apDiv9">
-  <form action="" method="post" name="form1" id="form1">
-    <p>&nbsp;</p>
-    <div id="apDiv12">
-      <label for="bldgNameField" class="labels">*Bldg. Name:</label>
-      <input name="bldgNameField" type="text" id="bldgNameField" size="35" />
-    </div>
-    <div id="apDiv10">
-      <input name="addBtn2" type="submit" class="button" id="addBtn2" value="Add" />
-    </div>
-    <div id="apDiv14">
-      <label for="bldgAddress" class="labels">Bldg. Address:</label>
-      <input name="bldgAddress" type="text" id="bldgAddress" size="35" />
-    </div>
-    <p>&nbsp;</p>
-  </form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv9"></div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
+<p>&nbsp;</p>
+<div id="apDiv12">
+<div class="viewbutton" id="apDiv14"></div>
+<div class="headers" id="apDiv19">Division</div>
+<div class="tablerow_1" id="apDiv24"></div>
+<div id="apDiv25">
+<form id="form1" name="form1" method="post" action="SaveDivision.do">
+<p><label for="divisionName" class="labels">Division Name:</label> <input
+	name="divisionName" type="text" id="divisionName" size="35" /></p>
+<div id="apDiv27"><input type="submit" name="addBtn" id="addBtn"
+	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
+	value="Add" /></div>
+<p>&nbsp;</p>
+</form>
+</div>
+<%
+	if (((String) request.getAttribute("isReturning")) != null && ((String) request.getAttribute("isReturning")).equals("true")) {
+%>
+<div class="maroon" id="apDiv28"></div>
+<div id="apDiv29">Division Already Exists</div>
+<%
+	}
+%>
+
+<%
+	if (((String) request.getAttribute("isEmpty")) != null && ((String) request.getAttribute("isEmpty")).equals("true")) {
+%>
+<div class="maroon" id="apDiv28"></div>
+<div id="apDiv29">Please Enter Input</div>
+<%
+	}
+%>
 </div>
 </body>
 </html>
+
