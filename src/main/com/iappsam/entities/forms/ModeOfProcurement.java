@@ -15,7 +15,7 @@ public class ModeOfProcurement {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Mode_Of_Procurement_ID")
 	private int id;
-	
+
 	@Column(name = "Name")
 	private String modeOfProcurement;
 

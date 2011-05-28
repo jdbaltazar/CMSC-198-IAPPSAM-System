@@ -16,7 +16,6 @@ import com.iappsam.managers.sessions.PersonManagerSessionTest;
 import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.ItemSearcherTest;
 import com.iappsam.servlet.LoginTest;
-import com.iappsam.servlet.item.SaveItemTest;
 import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
@@ -32,8 +31,7 @@ import com.iappsam.util.HibernateUtilTest;
 		ItemManagerSessionTest.class, //
 		APPManagerSessionTest.class, //
 		ItemSearcherTest.class, //
-		APPReportTest.class, //
-		SaveItemTest.class })
+		APPReportTest.class})
 public class TestSuite {
 
 }
