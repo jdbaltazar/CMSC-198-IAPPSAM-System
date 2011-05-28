@@ -24,6 +24,7 @@ public class PersonManagerSessionTest {
 	private DivisionOffice divisionOffice;
 	private ContactManager cm;
 	private Contact contact;
+	private Person person2;
 
 	@Before
 	public void initPersonManager() {
@@ -49,62 +50,107 @@ public class PersonManagerSessionTest {
 		addPersonThenAssert();
 		addEmployeeThenAssert();
 
-		assertEquals(1, pm.getAllEmployee().size());
+		assertExactlyOneEmployeeInDatabase();
 
 		removeEmployeeThenAssert();
 		removePersonThenAssert();
 	}
 
 	@Test
-	public void addPerson() throws TransactionException, DuplicateEntryException {
-		Person person = new Person("John");
-		pm.addPerson(person);
-		assertTrue(pm.containsPerson(person));
-		pm.removePerson(person);
+	public void exactlyOneEmployeeWithDivision() throws TransactionException, DuplicateEntryException {
+		addPersonThenAssert();
+		addOfficeThenAssert();
+		addEmployeeWithDivisionThenAssert();
+
+		assertExactlyOneEmployeeInDatabase();
+
+		removeEmployeeThenAssert();
+		removeDivisionThenAssert();
+		removePersonThenAssert();
 	}
 
 	@Test
-	public void addPersonWithContact() throws TransactionException, DuplicateEntryException {
-		addContact();
+	public void addPerson() throws TransactionException, DuplicateEntryException {
+		addPersonThenAssert();
+		removePersonThenAssert();
+	}
 
-		Person person = new Person("Maria");
-		pm.addPerson(person);
+	@Test
+	public void addPersonWithContactThenRemoveCascade() throws TransactionException, DuplicateEntryException {
+		addPersonWithContact();
+		assertPersonWithContactExistInDatabase();
+		removePerson();
+	}
 
-		person.addContact(contact);
-		pm.updatePerson(person);
+	@Test
+	public void exactlyOnePersonInDatabase() throws TransactionException, DuplicateEntryException {
+		addPersonWithContact();
+		assertPersonWithContactExistInDatabase();
 
-		Person personFromDb = pm.getPerson(person.getId());
-		assertTrue(personFromDb.getContacts().contains(contact));
-
-		person.removeContact(contact);
-		pm.updatePerson(person);
-		pm.removePerson(person);
-
-		removeContact();
+		assertOnePersonInDatabase();
+		removePerson();
 	}
 
 	@Test
 	public void addThenRemoveEmployeeWithDivisionOffice() throws TransactionException, DuplicateEntryException {
-
 		addPersonThenAssert();
 		addOfficeThenAssert();
-
-		Employee e = new Employee("Designation", person);
-		e.setDivisionOffice(divisionOffice);
-
-		pm.addEmployee(e);
-
-		Employee employeeFromDb = pm.getEmployee(e.getId());
-
-		assertEquals(e, employeeFromDb);
-		assertEquals(person, employeeFromDb.getPerson());
-		assertEquals(divisionOffice, employeeFromDb.getDivisionOffice());
-
-		pm.removeEmployee(e);
-		assertFalse(pm.containsEmployee(e));
-
+		addEmployeeWithDivisionThenAssert();
+		removeEmployeeThenAssert();
 		removeDivisionThenAssert();
 		removePersonThenAssert();
+	}
+
+	private void assertExactlyOneEmployeeInDatabase() throws TransactionException {
+		assertEquals(1, pm.getAllEmployee().size());
+	}
+
+	private void addEmployeeWithDivisionThenAssert() throws TransactionException, DuplicateEntryException {
+		employee = new Employee("Designation", person);
+		employee.setDivisionOffice(divisionOffice);
+
+		pm.addEmployee(employee);
+
+		Employee employeeFromDb = pm.getEmployee(employee.getId());
+
+		assertEquals(employee, employeeFromDb);
+		assertEquals(person, employeeFromDb.getPerson());
+		assertEquals(divisionOffice, employeeFromDb.getDivisionOffice());
+	}
+
+	private void removeOtherPersonWithContact() throws TransactionException {
+		pm.removePerson(person2);
+	}
+
+	private void assertOtherPersonWithContactExistInDatbase() throws TransactionException {
+		Person personFromDb = pm.getPerson(person2.getId());
+		assertTrue(personFromDb.getContacts().contains(contact));
+	}
+
+	private void addAnotherPersonWithExistingContact() throws TransactionException, DuplicateEntryException {
+		person2 = new Person("Maria");
+		person2.addContact(contact);
+		pm.addPerson(person2);
+	}
+
+	private void assertOnePersonInDatabase() throws TransactionException {
+		assertEquals(1, pm.getAllPersons().size());
+	}
+
+	private void assertPersonWithContactExistInDatabase() throws TransactionException {
+		Person personFromDb = pm.getPerson(person.getId());
+		assertTrue(personFromDb.getContacts().contains(contact));
+	}
+
+	private void removePerson() throws TransactionException {
+		pm.removePerson(person);
+	}
+
+	private void addPersonWithContact() throws TransactionException, DuplicateEntryException {
+		person = new Person("Maria");
+		contact = new Contact("contact", ContactType.LANDLINE);
+		person.addContact(contact);
+		pm.addPerson(person);
 	}
 
 	private void removeContact() throws TransactionException {
