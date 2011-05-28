@@ -1,6 +1,5 @@
 package com.iappsam.servlet.stocks;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -20,13 +19,13 @@ import com.iappsam.managers.sessions.POManagerSession;
 
 @WebServlet("/stocks/stocks/AddMode.do")
 public class AddModeofProcurement extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddModeofProcurement(){
+	public AddModeofProcurement() {
 		super();
 	}
 
@@ -37,24 +36,27 @@ public class AddModeofProcurement extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
-		
+
 		RequestDispatcher add = request.getRequestDispatcher("SearchAllModes.do");
 
 		String modeofP = (String) request.getParameter("modeOfProcurementField");
-		
-		modeofProc.setModeOfProcurement(modeofP);
-		
-		request.setAttribute("modeofProc", modeofProc);
-		
-		try {
-			poManager.addModeOfProcurement(modeofProc);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!modeofP.equals("")) {
+			modeofProc.setModeOfProcurement(modeofP);
+
+			request.setAttribute("modeofProc", modeofProc);
+
+			try {
+				poManager.addModeOfProcurement(modeofProc);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			add = request.getRequestDispatcher("AddModeofProcurement.jsp");
 		}
-		
+
 		add.forward(request, response);
-		
+
 	}
 }
-

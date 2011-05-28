@@ -1,6 +1,5 @@
 package com.iappsam.servlet.stocks;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -17,13 +16,13 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 
 @WebServlet("/stocks/stocks/AddCategory.do")
 public class AddCategory extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddCategory(){
+	public AddCategory() {
 		super();
 	}
 
@@ -34,23 +33,29 @@ public class AddCategory extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCategory category = new ItemCategory();
-		
+
 		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemCategories.do");
 
 		String categoryInput = (String) request.getParameter("categoryField");
-		
-		category.setName(categoryInput);
-		
-		request.setAttribute("category", category);
-		
-		try {
-			itemManager.addItemCategory(category);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!categoryInput.equals("")) {
+			category.setName(categoryInput);
+
+			request.setAttribute("category", category);
+
+			try {
+				itemManager.addItemCategory(category);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		else{
+			add = request.getRequestDispatcher("AddItemCategory.jsp");
 		}
 		
 		add.forward(request, response);
-		
 	}
 }

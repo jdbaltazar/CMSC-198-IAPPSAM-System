@@ -1,6 +1,5 @@
 package com.iappsam.servlet.stocks;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,13 +17,13 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 
 @WebServlet("/stocks/stocks/AddStatus.do")
 public class AddStatus extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddStatus(){
+	public AddStatus() {
 		super();
 	}
 
@@ -35,23 +34,27 @@ public class AddStatus extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemStatus status = new ItemStatus();
-		
+
 		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemStatus.do");
 
 		String statusInput = (String) request.getParameter("statusField");
-		
-		status.setName(statusInput);
-		
-		request.setAttribute("status", status);
-		
-		try {
-			itemManager.addItemStatus(status);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!statusInput.equals("")) {
+			status.setName(statusInput);
+
+			request.setAttribute("status", status);
+
+			try {
+				itemManager.addItemStatus(status);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			add = request.getRequestDispatcher("AddItemStatus.jsp");
 		}
 		
 		add.forward(request, response);
-		
+
 	}
 }

@@ -16,8 +16,8 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 
 @WebServlet("/stocks/stocks/AddUnit.do")
 public class AddUnit extends HttpServlet {
-	
-	public AddUnit(){
+
+	public AddUnit() {
 		super();
 	}
 
@@ -28,23 +28,26 @@ public class AddUnit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
-		
+
 		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemUnits.do");
 
 		String unitInput = (String) request.getParameter("unitField");
-		
-		unit.setName(unitInput);
-		
-		request.setAttribute("unit", unit);
-		
-		try {
-			itemManager.addUnit(unit);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!unitInput.equals("")) {
+			unit.setName(unitInput);
+
+			request.setAttribute("unit", unit);
+
+			try {
+				itemManager.addUnit(unit);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			add = request.getRequestDispatcher("AddItemUnit.jsp");
 		}
-		
 		add.forward(request, response);
-		
+
 	}
 }
