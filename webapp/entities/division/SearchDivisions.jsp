@@ -301,9 +301,9 @@
 				out.print("<tr>");
 	%>
       <td width="84%"><%=d.getDivisionName()%></td>
-      <td width="16%" align="center"><form id="form3" name="form3" method="post" action="UpdateDivisionOffice.do">
+      <td width="16%" align="center"><form id="form3" name="form3" method="post" action="ViewDivisionAndOffices.do">
         <input name="viewBtn" type="submit" class="viewbutton" id="viewBtn" value="View &gt;&gt;" />
-        <input type="hidden" name="dOfficeID" value=<%=d.getDivisionName()%> />
+        <input type="hidden" name="dOfficeID" value=<%=""+d.getId()%> />
       </form></td>
     </tr>
     <%
