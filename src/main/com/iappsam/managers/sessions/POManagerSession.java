@@ -115,4 +115,21 @@ public class POManagerSession extends AbstractManager implements POManager {
 		return getList(ModeOfProcurement.class);
 	}
 
+	@Override
+	public ModeOfProcurement getModeOfProcurement(int id) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (ModeOfProcurement) get(ModeOfProcurement.class, id);
+	}
+
+	@Override
+	public ModeOfProcurement getModeOfProcurement(String name) throws TransactionException {
+		// TODO Auto-generated method stub
+		List<ModeOfProcurement> mops = getAllModeOfProcurement();
+		for (ModeOfProcurement m : mops) {
+			if (m.getModeOfProcurement().equalsIgnoreCase(name))
+				return m;
+		}
+		return null;
+	}
+
 }

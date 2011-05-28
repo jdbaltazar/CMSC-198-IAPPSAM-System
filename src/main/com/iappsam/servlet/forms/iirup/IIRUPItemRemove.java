@@ -19,14 +19,14 @@ import com.iappsam.util.ManagerBin;
 /**
  * Servlet implementation class IIRUPItemImber
  */
-@WebServlet("/forms/iirup/IIRUPImbedItems.do")
-public class IIRUPItemImbed extends HttpServlet {
+@WebServlet("/forms/iirup/IIRUPRemoveItem.do")
+public class IIRUPItemRemove extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public IIRUPItemImbed() {
+	public IIRUPItemRemove() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,18 +46,21 @@ public class IIRUPItemImbed extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		String[] itemList = request.getParameterValues("include1");
-		ArrayList<String> trueItemList = new ArrayList<String>();
-		
+		String[] itemList1 = request.getParameterValues("include1");
+		ArrayList<String> itemList = (ArrayList<String>) request.getSession()
+				.getAttribute("itemList");
+		for(int i=0;i<itemList1.length;i++){
+			itemList.remove(itemList1[i]);
+		}
 		ArrayList<String> article = new ArrayList<String>();
 		ArrayList<String> unitCost = new ArrayList<String>();
 		ArrayList<String> propertyNo = new ArrayList<String>();
 		ArrayList<String> dateAcquired = new ArrayList<String>();
 		try {
-			for (int i = 0; i < itemList.length; i++) {
+			for (int i = 0; i < itemList.size(); i++) {
+
 				Item item = ManagerBin.iManager.getItem(Integer
-						.parseInt(itemList[i]));
-				trueItemList.add(itemList[i]);
+						.parseInt(itemList.get(i)));
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());
 				propertyNo.add(item.getPropertyNumber());
@@ -66,13 +69,11 @@ public class IIRUPItemImbed extends HttpServlet {
 				else
 					dateAcquired.add("");
 			}
-
-			request.getSession().setAttribute("itemList", trueItemList);
+			request.getSession().setAttribute("itemList", itemList);
 			request.setAttribute("article", article);
 			request.setAttribute("unitCost", unitCost);
 			request.setAttribute("propertyNo", propertyNo);
 			request.setAttribute("dateAcquired", dateAcquired);
-			System.out.println("heyo");
 			RequestDispatcher view = request
 					.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
 			view.forward(request, response);

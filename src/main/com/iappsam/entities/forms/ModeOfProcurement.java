@@ -10,7 +10,10 @@ import javax.persistence.Table;
 public class ModeOfProcurement {
 
 	@Id
-	@Column(name = "Mode_Of_Procurement")
+	@Column(name = "Mode_Of_Procurement_ID")
+	private int id;
+	
+	@Column(name = "Name")
 	private String modeOfProcurement;
 
 	public ModeOfProcurement() {
@@ -28,6 +31,14 @@ public class ModeOfProcurement {
 
 	public void setModeOfProcurement(String modeOfProcurement) {
 		this.modeOfProcurement = modeOfProcurement;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

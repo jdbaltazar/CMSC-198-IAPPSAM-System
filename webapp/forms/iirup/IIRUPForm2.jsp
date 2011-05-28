@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -105,7 +106,7 @@
 	height: 46px;
 	z-index: 1;
 	left: -1px;
-	top: 112px;
+	top: 273px;
 }
 
 #apDiv2 {
@@ -114,7 +115,7 @@
 	height: 144px;
 	z-index: 2;
 	left: -1px;
-	top: 151px;
+	top: 315px;
 }
 
 #apDiv3 {
@@ -122,8 +123,8 @@
 	width: 85px;
 	height: 30px;
 	z-index: 3;
-	left: 582px;
-	top: 343px;
+	left: 444px;
+	top: 478px;
 }
 
 #apDiv4 {
@@ -131,35 +132,69 @@
 	width: 99px;
 	height: 29px;
 	z-index: 4;
-	left: 702px;
-	top: 343px;
+	left: 661px;
+	top: 478px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 50px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#footer {
+	position: absolute;
+	left: 2px;
+	top: 659px;
+	width: 100%;
+}
+
+#apDiv5 {
+	position: absolute;
+	width: 87px;
+	height: 31px;
+	z-index: 16;
+	left: 553px;
+	top: 478px;
 }
 </style>
 </head>
 
 <body>
-<%
-	String asOfField = (String) request.getParameter("asOfField");
-	if (asOfField != null)
-		session.setAttribute("asOfField", asOfField);
 
-	String station = (String) request.getParameter("station");
-	if (station != null)
-		session.setAttribute("station", station);
-
-	String accountableOfficer = (String) request.getParameter("accountableOfficer");
-	if (accountableOfficer != null)
-		session.setAttribute("accountableOfficer", accountableOfficer);
-
-	ArrayList<String> article = (ArrayList<String>) request.getAttribute("article");
-	ArrayList<String> unitCost = (ArrayList<String>) request.getAttribute("unitCost");
-	ArrayList<String> propertyNo = (ArrayList<String>) request.getAttribute("propertyNo");
-	ArrayList<String> dateAcquired = (ArrayList<String>) request.getAttribute("dateAcquired");
-	boolean isOdd = true;
-%>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="11%">
+		<td width="10%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
@@ -168,17 +203,90 @@
 			</tr>
 		</table>
 		</td>
-		<td width="85%">&nbsp;</td>
+		<td width="86%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="get"
-			action="../iirup/IIRUPForm.jsp"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="IIRUP Form.html">
+		<input name="backBtn" type="submit" class="button" id="backBtn"
+			value="Back" /></form>
 		</td>
 	</tr>
 </table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
+
+<%
+	if (session.getAttribute("asOfDate") == null
+			|| request.getParameter("asOfMonth") != null) {
+		int month = Integer.parseInt(request.getParameter("asOfMonth"));
+		int year = Integer.parseInt(request.getParameter("asOfYear"));
+		int day = Integer.parseInt(request.getParameter("asOfDay"));
+		Date date = new Date(year, month, day);
+		session.setAttribute("asOfDate", date);
+	}
+
+	String station = (String) request.getParameter("station");
+	session.setAttribute("station", station);
+
+	String accountableOfficer = (String) request
+			.getParameter("accountableOfficer");
+	if (accountableOfficer != null)
+		session.setAttribute("accountableOfficer", accountableOfficer);
+
+	ArrayList<String> article = (ArrayList<String>) request
+			.getAttribute("article");
+	if (article == null)
+		article = (ArrayList<String>) session.getAttribute("article");
+	session.setAttribute("article", article);
+
+	ArrayList<String> unitCost = (ArrayList<String>) request
+			.getAttribute("unitCost");
+	if (unitCost == null)
+		unitCost = (ArrayList<String>) session.getAttribute("unitCost");
+	session.setAttribute("unitCost", article);
+
+	ArrayList<String> propertyNo = (ArrayList<String>) request
+			.getAttribute("propertyNo");
+	if (propertyNo == null)
+		propertyNo = (ArrayList<String>) session
+				.getAttribute("propertyNo");
+	session.setAttribute("propertyNo", article);
+
+	ArrayList<String> dateAcquired = (ArrayList<String>) request
+			.getAttribute("dateAcquired");
+	if (dateAcquired == null)
+		dateAcquired = (ArrayList<String>) session
+				.getAttribute("dateAcquired");
+	session.setAttribute("dateAcquired", article);
+
+	boolean isOdd = true;
+
+	ArrayList<String> quantity = (ArrayList<String>) session
+			.getAttribute("quantity");
+	ArrayList<String> yearsInService = (ArrayList<String>) session
+			.getAttribute("yearsInService");
+	ArrayList<String> depreciation = (ArrayList<String>) session
+			.getAttribute("depreciation");
+	ArrayList<String> disposition = (ArrayList<String>) session
+			.getAttribute("disposition");
+	ArrayList<String> appraisal = (ArrayList<String>) session
+			.getAttribute("appraisal");
+	ArrayList<String> orNumber = (ArrayList<String>) session
+			.getAttribute("orNumber");
+	ArrayList<String> amount = (ArrayList<String>) session
+			.getAttribute("amount");
+%>
+
+
+<form id="form3" name="form3" method="post" action="IIRUPForm3.do">
+
+<div id="apDiv1" style="width: 100%">
 <table width="100%" frame="box" cellspacing="0">
 	<tr class="tableheaders">
-		<td hwidth="18%">Articles</td>
+		<td width="18%">Articles</td>
 		<td width="6%">Quantity</td>
 		<td width="6%">Unit Cost</td>
 		<td width="6%">Total Cost</td>
@@ -192,7 +300,6 @@
 		<td width="6%">Appraisal</td>
 		<td width="6%">O.R. #</td>
 		<td width="5%">Amount</td>
-		<td width="6%">ACTION</td>
 	</tr>
 	<%
 		for (int i = 0; article != null && i < article.size(); i++) {
@@ -210,9 +317,10 @@
 		%>
 		</td>
 
-		<td width="6%" align="center"><input
-			name="<%out.print("quantity" + i);%>" type="text"
-			class="textfields_1" id="quantity" size="5" /></td>
+		<td width="6%" align="center"><input name="quantity" type="text"
+			class="textfields_1" id="quantity" size="5"
+			<%if (quantity != null && !quantity.isEmpty()) {%>
+			value="<%=quantity.get(i)%>" <%}%> /></td>
 
 		<td width="6%">
 		<%
@@ -235,23 +343,31 @@
 		</td>
 
 		<td width="9%" align="center"><input name="yearsInService"
-			type="text" class="textfields_1" id="yearsInService" size="5" /></td>
+			type="text" class="textfields_1" id="yearsInService" size="5"
+			<%if (yearsInService != null && !yearsInService.isEmpty()) {%>
+			value="<%=yearsInService.get(i)%>" <%}%> /></td>
 		<td width="8%" align="center"><input name="depreciation"
-			type="text" class="textfields_1" id="depreciation" size="5" /></td>
+			type="text" class="textfields_1" id="depreciation" size="5"
+			<%if (depreciation != null && !depreciation.isEmpty()) {%>
+			value="<%=depreciation.get(i)%>" <%}%> /></td>
 		<td width="9%" align="center"><input name="disposition"
-			type="text" class="textfields_1" id="disposition" size="5" /></td>
+			type="text" class="textfields_1" id="disposition" size="5"
+			<%if (disposition != null && !disposition.isEmpty()) {%>
+			value="<%=disposition.get(i)%>" <%}%> /></td>
 		<td width="6%" align="center"><input name="appraisal" type="text"
-			class="textfields_1" id="appraisal" size="5" /></td>
+			class="textfields_1" id="appraisal" size="5"
+			<%if (appraisal != null && !appraisal.isEmpty()) {%>
+			value="<%=appraisal.get(i)%>" <%}%> /></td>
 		<td width="6%" align="center"><input name="orNumber" type="text"
-			class="textfields_1" id="orNumber" size="5" /></td>
+			class="textfields_1" id="orNumber" size="5"
+			<%if (orNumber != null && !orNumber.isEmpty()) {%>
+			value="<%=orNumber.get(i)%>" <%}%> /></td>
 		<td width="5%" align="center"><input name="amount" type="text"
-			class="textfields_1" id="amount" size="5" /></td>
-		<td width="6%">
-		<form id="form1" name="form1" method="post" action=""></form>
-		</td>
-		<div align="center"><input name="removeBtn" type="submit"
-			title="Remove Article" style="background-color: #C00"
-			class="viewbutton" id="removeBtn" value="X" /></div>
+			class="textfields_1" id="amount" size="5"
+			<%if (amount != null && !amount.isEmpty()) {%>
+			value="<%=amount.get(i)%>" <%}%> /></td>
+
+
 	</tr>
 	<%
 		}
@@ -273,19 +389,25 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
-		<td>&nbsp;</td>
 	</tr>
 </table>
+</div>
+<div id="apDiv4"><input name="nextBtn" type="submit"
+	class="maroon" id="nextBtn" value="Next&gt;&gt;" /></div>
+</form>
+
+
 <div id="apDiv3">
 <form id="form2" name="form2" method="get"
 	action="SearchIIRUPItemList.do"><input name="addItem"
 	type="submit" class="maroon" id="addItem" value="Add Article" /></form>
 </div>
-<div id="apDiv4">
-<form id="form3" name="form3" method="post" action="IIRUPForm3.jsp">
-<input name="nextBtn" type="submit" class="maroon" id="nextBtn"
-	value="Next&gt;&gt;" /></form>
-</div>
 <p>&nbsp;</p>
+<div id="apDiv5">
+
+<form id="form4" name="form4" method="post" action="IIRUPRemoveItem.jsp"">
+<input name="nextBtn2" type="submit" class="maroon" id="nextBtn2"
+	value="Remove Items" /></form>
+</div>
 </body>
 </html>

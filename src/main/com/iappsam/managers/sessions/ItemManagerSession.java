@@ -40,10 +40,17 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public Item getItemByDescription(String description) throws TransactionException {
-		Session session = HibernateUtil.startSession();
-		Item item = (Item) session.createCriteria(Item.class).add(Restrictions.like("description", description)).uniqueResult();
-		session.close();
-		return item;
+		// Session session = HibernateUtil.startSession();
+		// Item item = (Item)
+		// session.createCriteria(Item.class).add(Restrictions.like("description",
+		// description)).uniqueResult();
+		// session.close();
+		List<Item> items = getAllItems();
+		for (Item i : items) {
+			if (i.getDescription().equalsIgnoreCase(description))
+				return i;
+		}
+		return null;
 	}
 
 	@Override

@@ -51,6 +51,8 @@ public class SearchEmployee extends HttpServlet {
 		if (query == null || query.isEmpty()) {
 			try {
 				List<Employee> empList = pManager.getAllEmployee();
+				System.out.println("size of empls:"+empList.size());
+				
 				for (int i = 0; i < empList.size(); i++) {
 					employeeID.add("" + empList.get(i).getId());
 					System.out.println(empList.get(i).getId());

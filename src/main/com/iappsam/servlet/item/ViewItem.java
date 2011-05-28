@@ -40,6 +40,7 @@ public class ViewItem extends HttpServlet {
 		Item item = null;
 		try {
 			item = iManager.getItemByDescription(description);
+			
 		} catch (TransactionException e1) {
 			e1.printStackTrace();
 		}
@@ -67,7 +68,7 @@ public class ViewItem extends HttpServlet {
 
 			System.out.println("item is NULLLLLLLLLLLLLLLL");
 		}
-		RequestDispatcher view = request.getRequestDispatcher("../items/SearchAllItems.do");
+		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/ViewItem.jsp");
 		view.forward(request, response);
 
 	}

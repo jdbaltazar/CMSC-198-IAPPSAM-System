@@ -40,8 +40,7 @@ public class EmployeeCreation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -49,8 +48,7 @@ public class EmployeeCreation extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameter("designation");
@@ -85,8 +83,7 @@ public class EmployeeCreation extends HttpServlet {
 		return output;
 	}
 
-	private void addSuccess(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void addSuccess(HttpServletRequest request, HttpServletResponse response) {
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -105,33 +102,28 @@ public class EmployeeCreation extends HttpServlet {
 		try {
 			ManagerBin.pManager.addPerson(person);
 			ManagerBin.pManager.addEmployee(employee);
-			System.out.println(getDivisionNameFromString(division));
-			System.out.println(getOfficeNameFromString(division));
-			int dID = ManagerBin.doManager.getDivisionIdByName(
-					getDivisionNameFromString(division),
-					getOfficeNameFromString(division));
+			System.out.println("Division Name:"+getDivisionNameFromString(division));
+			if(getOfficeNameFromString(division)!=null)
+			System.out.println("Office Name:"+getOfficeNameFromString(division));
+			int dID = ManagerBin.doManager.getDivisionIdByName(getDivisionNameFromString(division), getOfficeNameFromString(division));
+			System.out.print("Division ID" + dID);
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
 				ManagerBin.cManager.addContact(c1);
-				ManagerBin.cManager.addContactToPerson(c1.getContactID(),
-						person.getId());
+				ManagerBin.cManager.addContactToPerson(c1.getContactID(), person.getId());
 			}
 			if (landline != null && !landline.isEmpty()) {
 				c2 = new Contact(landline, ContactType.LANDLINE);
 				ManagerBin.cManager.addContact(c2);
-				ManagerBin.cManager.addContactToPerson(c2.getContactID(),
-						person.getId());
+				ManagerBin.cManager.addContactToPerson(c2.getContactID(), person.getId());
 			}
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				c3 = new Contact(mobileNumber, ContactType.MOBILE);
 				ManagerBin.cManager.addContact(c3);
-				ManagerBin.cManager.addContactToPerson(c3.getContactID(),
-						person.getId());
+				ManagerBin.cManager.addContactToPerson(c3.getContactID(), person.getId());
 			}
-			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(),
-					dID);
-			RequestDispatcher view = request
-					.getRequestDispatcher("EmployeeFinalize.jsp");
+			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(), dID);
+			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e1) {
 			// TODO Auto-generated catch block
@@ -149,8 +141,7 @@ public class EmployeeCreation extends HttpServlet {
 
 	}
 
-	private void addFail(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void addFail(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -160,8 +151,7 @@ public class EmployeeCreation extends HttpServlet {
 			request.setAttribute("mobileNumber", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
-			RequestDispatcher view = request
-					.getRequestDispatcher("AddEmployee.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("AddEmployee.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

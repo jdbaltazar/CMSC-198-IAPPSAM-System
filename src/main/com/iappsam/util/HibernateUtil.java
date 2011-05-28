@@ -67,7 +67,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "true");
+			//p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -108,7 +108,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
 			conf.addAnnotatedClass(InventoryOfEquipment.class);
 			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			conf.addAnnotatedClass(ModeOfProcurement.class);
+			//conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
 			conf.addAnnotatedClass(PTRPA.class);

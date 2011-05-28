@@ -377,6 +377,8 @@
 				out.print(request.getAttribute("username"));
 				session.setAttribute("username", request.getAttribute("username"));
 			}
+			else
+				out.print(session.getAttribute("username"));
 		%>!</td>
 	</tr>
 </table>
@@ -393,7 +395,7 @@
 <div id="createNewAcctDiv">
 <form id="form1" name="form1" method="post"
 	action="accounts/CreateAccount.jsp"><input
-	name="createNewAcctBtn" type="submit" class="button"d
+	name="createNewAcctBtn" type="submit" class="button"
 	id="createNewAcctBtn" value="Create New" /></form>
 </div>
 <div id="viewAcctDiv">
@@ -408,7 +410,7 @@
 	value="View System Log" /></form>
 </div>
 <div id="backupDiv">
-<form id="form3" name="form3" method="post" action=""><input
+<form id="form3" name="form3" method="post" action="database/backup.do"><input
 	name="backupBtn" type="submit" class="button" id="backupBtn"
 	value="Backup" /></form>
 </div>
@@ -424,8 +426,8 @@
 </div>
 <div id="appDiv">
 <form id="form6" name="form6" method="post" action=""><input
-	name="appBtn" type="submit" class="button" id="appBtn" value="Annual Procurement Plan" />
-</form>
+	name="appBtn" type="submit" class="button" id="appBtn"
+	value="Annual Procurement Plan" disabled="disabled"/></form>
 </div>
 <div id="inventoryDiv">
 <form id="form7" name="form7" method="post" action=""><input
@@ -450,7 +452,7 @@
 </div>
 <div id="divisionOfficeDiv">
 <form id="form13" name="form13" method="post"
-	action="divisions/SearchDivisionOffice.do"><input
+	action="divisions/SearchDivisions.do"><input
 	name="divisionOfficeBtn" type="submit" class="button2"
 	id="divisionOfficeBtn" value="Division/Office" /></form>
 </div>
@@ -476,7 +478,7 @@ Records:</div>
 <form id="form11" name="form11" method="post"
 	action="entities/supplier/ViewSuppliers.jsp"><input
 	name="supplierBtn" type="submit" class="button2" id="supplierBtn"
-	value="Supplier" /></form>
+	value="Supplier" disabled="disabled" /></form>
 </div>
 <div id="apDiv5">
 <form id="form15" name="form15" method="post"

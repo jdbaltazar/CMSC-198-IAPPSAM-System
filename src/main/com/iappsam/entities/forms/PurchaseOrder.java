@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Purchase_Order")
 public class PurchaseOrder {
-	
+
 	@Column(name = "Supplier_ID")
 	private int supplierID;
 
@@ -23,8 +23,8 @@ public class PurchaseOrder {
 	@Column(name = "Date")
 	private Date date;
 
-	@Column(name = "Mode_Of_Procurement")
-	private String modeOfProcurement;
+	@Column(name = "Mode_Of_Procurement_ID")
+	private int modeOfProcurementID;
 
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
@@ -41,12 +41,12 @@ public class PurchaseOrder {
 	@Column(name = "Total_Amount_In_Words")
 	private String totalAmountInWords;
 
-	@Column (name = "OR_Number")
+	@Column(name = "OR_Number")
 	private String orNumber;
-	
-	@Column (name = "Amount")
+
+	@Column(name = "Amount")
 	private long amount;
-	
+
 	@Column(name = "Signatory_ID")
 	private int supplierSignatoryID;
 
@@ -60,13 +60,13 @@ public class PurchaseOrder {
 
 	}
 
-	public PurchaseOrder(int supplierID, String poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String paymentTerm, String deliveryTerm, String totalAmountInWords, String orNumber, long amount,
+	public PurchaseOrder(int supplierID, String poNumber, Date date, int modeOfProcurementID, int divisionOfficeID, Date dateOfDelivery, String paymentTerm, String deliveryTerm, String totalAmountInWords, String orNumber, long amount,
 			int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
 		super();
 		this.supplierID = supplierID;
 		this.poNumber = poNumber;
 		this.date = date;
-		this.modeOfProcurement = modeOfProcurement;
+		this.modeOfProcurementID = modeOfProcurementID;
 		this.divisionOfficeID = divisionOfficeID;
 		this.dateOfDelivery = dateOfDelivery;
 		this.paymentTerm = paymentTerm;
@@ -79,12 +79,12 @@ public class PurchaseOrder {
 		this.accountantSignatoryID = accountantSignatoryID;
 	}
 
-	public PurchaseOrder(int supplierID, String poNumber, Date date, String modeOfProcurement, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
+	public PurchaseOrder(int supplierID, String poNumber, Date date, int modeOfProcurementID, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
 		super();
 		this.supplierID = supplierID;
 		this.poNumber = poNumber;
 		this.date = date;
-		this.modeOfProcurement = modeOfProcurement;
+		this.modeOfProcurementID = modeOfProcurementID;
 		this.divisionOfficeID = divisionOfficeID;
 		this.dateOfDelivery = dateOfDelivery;
 		this.totalAmountInWords = totalAmountInWords;
@@ -105,8 +105,8 @@ public class PurchaseOrder {
 		return date;
 	}
 
-	public String getModeOfProcurement() {
-		return modeOfProcurement;
+	public int getModeOfProcurementID() {
+		return modeOfProcurementID;
 	}
 
 	public int getDivisionOfficeID() {
@@ -161,8 +161,8 @@ public class PurchaseOrder {
 		this.date = date;
 	}
 
-	public void setModeOfProcurement(String modeOfProcurement) {
-		this.modeOfProcurement = modeOfProcurement;
+	public void setModeOfProcurementID(int modeOfProcurementID) {
+		this.modeOfProcurementID = modeOfProcurementID;
 	}
 
 	public void setDivisionOfficeID(int divisionOfficeID) {
@@ -204,5 +204,5 @@ public class PurchaseOrder {
 	public void setAccountantSignatoryID(int accountantSignatoryID) {
 		this.accountantSignatoryID = accountantSignatoryID;
 	}
-	
+
 }

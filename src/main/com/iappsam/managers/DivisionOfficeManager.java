@@ -20,7 +20,7 @@ public interface DivisionOfficeManager {
 
 	DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException;
 
-	DivisionOffice getDivisionOffice(String division) throws TransactionException;
+	DivisionOffice getDivisionOffice(String division, String office) throws TransactionException;
 
 	DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException;
 

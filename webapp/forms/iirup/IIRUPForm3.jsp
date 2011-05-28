@@ -238,9 +238,8 @@
 		</td>
 		<td width="85%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="IIRUPForm2.jsp"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="IIRUPForm2.jsp"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
@@ -254,25 +253,14 @@
 <div class="background" id="background"></div>
 <div class="header" id="apDiv6"></div>
 <div class="requiredLabel" id="apDiv7"><em><strong>ALL</strong>
-fields are required</em></div>
+fields are required</em> Under Construction</div>
 <p>&nbsp;</p>
 <div id="apDiv1">
 <%
-	String[] yearsInService = request.getParameterValues("yearsInService");
-	String[] depreciation = request.getParameterValues("depreciation");
-	String[] disposition = request.getParameterValues("disposition");
-	String[] appraisal = request.getParameterValues("appraisal");
-	String[] orNumber = request.getParameterValues("orNumber");
-	String[] amount = request.getParameterValues("amount");
-
-	session.setAttribute("yearsInService", yearsInService);
-	session.setAttribute("depreciation", depreciation);
-	session.setAttribute("disposition", disposition);
-	session.setAttribute("appraisal", appraisal);
-	session.setAttribute("orNumber", orNumber);
-	session.setAttribute("amount", amount);
+	
 %>
-<form id="form1" name="form1" method="post" action="../../forms/iirup/iirup.do">
+<form id="form1" name="form1" method="post"
+	action="../../forms/iirup/iirup.do">
 <p><label for="approvedBy" class="labels">Approved by:</label> <select
 	name="approvedBy" id="approvedBy" style="font-size: 10px;">
 	<%
@@ -282,7 +270,8 @@ fields are required</em></div>
 	%>
 	<optgroup label="<%=name.get(i)%>">
 		<%
-			ArrayList<String> designations = get.getDesignationByName(name.get(i));
+			ArrayList<String> designations = get.getDesignationByName(name
+						.get(i));
 				for (int j = 0; j < designations.size(); j++) {
 		%><option>
 		<%
@@ -310,7 +299,7 @@ of Witness:</label> <input name="nameOfWitness" type="text" id="nameOfWitness"
 	size="30" /></div>
 <p>&nbsp;</p>
 <div id="apDiv5"><input name="finishBtn" type="submit"
-	class="maroon" id="finishBtn" value="Finish" /></div>
+	class="maroon" id="finishBtn" value="Finish"  disabled="disabled"/></div>
 
 </form>
 </div>

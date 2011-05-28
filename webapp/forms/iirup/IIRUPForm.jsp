@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.Date"%>
+<%@page import="bsh.util.Util"%>
 <%@page import="com.iappsam.servlet.forms.iirup.IIRUPFormUtil"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.iappsam.servlet.forms.iirup.IIRUPFormUtil"%>
@@ -213,62 +215,108 @@
 	top: 629px;
 	width: 100%;
 }
+.texts {	font-family: Lucida Grande;
+	font-size: 16px;
+	font-weight: bold;
+}
+#apDiv14 {
+	position: absolute;
+	width: 414px;
+	height: 29px;
+	z-index: 18;
+	left: -58px;
+	top: 19px;
+}
 </style>
 </head>
 
 <body>
-	<div id="footer">
-		<table width="100%" frame="above" bordercolor="#333333"
-			style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
+<table width="100%" border="0">
+	<tr>
+		<td width="10%">
+		<table width="100%" frame="below">
 			<tr>
-				<td>Copyright © 2011 All Rights Reserved</td>
+				<td
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">IIRUP
+				Form</td>
 			</tr>
 		</table>
-	</div>
-	<div id="logoHeader" style="width: 100%">
-		<img name="" src="../../images/header2.png" width="100%" height="115"
-			alt="" />
-	</div>
-	<div id="pageLabel" style="width: 100%;">
-		<table width="100%" border="0">
-			<tr>
-				<td width="10%">
-					<table width="100%" frame="below">
-						<tr>
-							<td
-								style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">IIRUP
-								Form</td>
-						</tr>
-					</table></td>
-				<td width="86%">&nbsp;</td>
-				<td width="4%">
-					<form id="form15" name="form15" method="post"
-						action="../FormsMenuPage.jsp">
-						<input name="backBtn" type="submit" class="button" id="backBtn"
-							value="Back" />
-					</form></td>
-			</tr>
-		</table>
-	</div>
-	<div id="logoutiv" style="width: 90%">
-		<form id="form2" name="form2" method="post" action="">
-			<input name="logout" type="submit" class="maroon" id="logout"
-				value="Logout" />
-		</form>
-	</div>
-	<div class="background" id="background"></div>
-	<div id="apDiv1">
-		<form id="form1" name="form1" method="post" action="IIRUPForm2.jsp">
+		</td>
+		<td width="86%">&nbsp;</td>
+		<td width="4%">
+		<form id="form15" name="form15" method="post"
+			action="../IIRUPFlush.do"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" /></form>
+		</td>
+	</tr>
+</table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
+<div class="background" id="background"></div>
+<div id="apDiv1">
+<form id="form1" name="form1" method="post" action="IIRUPForm2.jsp">
 
 
 <%
-	String asOfField = (String) session.getAttribute("asOfField");
+	Date asOfDate =(Date) session.getAttribute("asOfDate");
 	String station = (String) session.getAttribute("station");
-	session.invalidate();
-%><p><label for="asOfField" class="labels">As of:</label> <input
-	type="text" name="asOfField" id="asOfField"
-	<%if (asOfField != null)
-				out.print("value=" + '"' + asOfField + '"');%> /></p>
+%><p>&nbsp;</p>
+<div id="apDiv14">
+  <label for="month3" class="texts">Date
+    Acquired:</label>
+  <select name="asOfMonth" id="month3">
+    <option selected="selected">MM</option>
+    <option>01</option>
+    <option>02</option>
+    <option>03</option>
+    <option>04</option>
+    <option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option>
+    <option>09</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+  </select>
+  <select name="asOfDay" id="asOfDay">
+    <option selected="selected">DD</option>
+    <%
+		for (int i = 1; i <32; i++) {
+	%>
+    <option><%=i%></option>
+    <%
+		}
+	%>
+  </select>
+  <select name="asOfYear" id="asOfYear">
+    <option selected="selected">YYYY</option>
+    <%
+    	Date date= new Date();
+    	 int year = Integer.parseInt(date.toString().substring(date.toString().length()-4,date.toString().length()));
+		for (int i = 1973; i <= year; i++){
+			%>
+    <option><%=i%></option>
+    <%
+		}
+	%>
+  </select>
+</div>
 <div id="apDiv2"><label for="nameOfAcctableOfficer"></label> <select
 	name="accountableOfficer" id="accountableOfficer">
 	<%
@@ -278,7 +326,8 @@
 	%>
 	<optgroup label="<%=name.get(i)%>">
 		<%
-			ArrayList<String> designations = get.getDesignationByName(name.get(i));
+			ArrayList<String> designations = get.getDesignationByName(name
+						.get(i));
 				for (int j = 0; j < designations.size(); j++) {
 		%><option>
 		<%

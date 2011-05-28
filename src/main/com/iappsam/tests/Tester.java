@@ -68,7 +68,7 @@ public class Tester {
 		// AccountManager aManager = new AccountManagerSession();
 		// ContactManager cManager = new ContactManagerSession();
 		// SupplierManager sManager = new SupplierManagerSession();
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+//		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		// ItemManager iManager = new ItemManagerSession();
 		//
 		// // Forms
@@ -492,25 +492,35 @@ public class Tester {
 
 		// Date date = Date.valueOf("2011-05-26");
 		// System.out.println("date: "+date.toString());
-
-		try {
-
-			ContactManager cManager = new ContactManagerSession();
-			Contact c = new Contact("343434", ContactType.MOBILE);
-			cManager.addContact(c);
-			Person p1 = new Person("xxxxxxxxxxxxxxxxxxx");
-			PersonManager pManager = new PersonManagerSession();
-			pManager.addPerson(p1);
-			cManager.addContactToPerson(c.getContactID(), p1.getId());
-			
-			
-			List<Contact>cons = cManager.getAllContactsByPerson(p1.getId());
-			for(Contact c2: cons){
-				System.out.println(c2.getData());
-			}
-			
-			
-			
+		/*------Signatory-----------*/
+//		Person p1=new Person("manong", "fishball");
+//		Person p2=new Person("Miss","Fishball");
+//		Person p3=new Person("Mr.","Kikiam");
+//		Person p4 = new Person("Mr.","Kitty");
+//		try {
+//
+//			ContactManager cManager = new ContactManagerSession();
+//			Contact c = new Contact("343434", ContactType.MOBILE);
+//			cManager.addContact(c);
+//			Person p1 = new Person("xxxxxxxxxxxxxxxxxxx");
+//			PersonManager pManager = new PersonManagerSession();
+//			pManager.addPerson(p1);
+//			cManager.addContactToPerson(c.getContactID(), p1.getId());
+//			
+//			
+//			List<Contact>cons = cManager.getAllContactsByPerson(p1.getId());
+//			for(Contact c2: cons){
+//				System.out.println(c2.getData());
+//			}
+		try{	
+		
+		PersonManager pManager = new PersonManagerSession();
+		
+//		List<Person>persons = pManager.getAllPersons();
+//		System.out.println("size: "+persons.size());
+		
+		System.out.println("size of employees: "+pManager.getAllEmployee().size());
+		
 			
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block

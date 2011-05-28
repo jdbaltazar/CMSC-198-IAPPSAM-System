@@ -14,7 +14,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException {
-		if (!containsDivisionOffice(divisionOffice)) {
+		if (getDivisionOffice(divisionOffice.getDivisionName(), divisionOffice.getOfficeName()) == null) {
 			add(divisionOffice);
 		} else {
 			throw new DuplicateEntryException();
@@ -23,10 +23,11 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException {
-		if (!containsDivisionOffice(divisionOffice))
+		if (getDivisionOffice(divisionOffice.getDivisionName(), divisionOffice.getOfficeName()) == null) {
 			return (Integer) save(divisionOffice);
-		else
+		} else {
 			throw new DuplicateEntryException();
+		}
 	}
 
 	@Override
@@ -40,12 +41,16 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public DivisionOffice getDivisionOffice(String division) throws TransactionException {
+	public DivisionOffice getDivisionOffice(String division, String office) throws TransactionException {
 		List<DivisionOffice> dOffices = getAllDivisionOffice();
-
 		for (DivisionOffice dOffice : dOffices) {
+
 			if (dOffice.getDivisionName().equalsIgnoreCase(division)) {
-				return dOffice;
+				if (dOffice.getOfficeName() == null && office == null)
+					return dOffice;
+				else if (office != null && dOffice.getOfficeName().equalsIgnoreCase(office)) {
+					return dOffice;
+				}
 			}
 		}
 		return null;
@@ -76,7 +81,10 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
 		for (DivisionOffice divisionOffice : divisionOffices) {
 			if (divisionOffice.getDivisionName().equalsIgnoreCase(division)) {
-				if (divisionOffice.getOfficeName().equalsIgnoreCase(office))
+				if (office.equalsIgnoreCase("null") || divisionOffice.getOfficeName() == null) {
+					return divisionOffice.getId();
+				}
+				if (divisionOffice.getOfficeName() != null && divisionOffice.getOfficeName().equalsIgnoreCase(office))
 					return divisionOffice.getId();
 			}
 		}

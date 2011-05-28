@@ -289,8 +289,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Mode_Of_Procurement` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Mode_Of_Procurement` (
-  `Mode_Of_Procurement` VARCHAR(50) NOT NULL ,
-  PRIMARY KEY (`Mode_Of_Procurement`) )
+  `Mode_Of_Procurement_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(80) NOT NULL ,
+  PRIMARY KEY (`Mode_Of_Procurement_ID`) )
 ENGINE = InnoDB;
 
 
@@ -303,7 +304,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `Supplier_ID` INT NOT NULL AUTO_INCREMENT ,
   `PO_Number` VARCHAR(45) NOT NULL ,
   `Date` DATE NOT NULL ,
-  `Mode_Of_Procurement` VARCHAR(50) NOT NULL ,
+  `Mode_Of_Procurement_ID` INT NOT NULL ,
   `DivisionOffice_ID` INT NOT NULL ,
   `Date_Of_Delivery` VARCHAR(100) NOT NULL ,
   `Payment_Term` VARCHAR(80) NULL ,
@@ -316,19 +317,14 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `Signatory_ID2` INT NOT NULL ,
   PRIMARY KEY (`PO_Number`) ,
   INDEX `fk_Purchase_Order_Supplier1` (`Supplier_ID` ASC) ,
-  INDEX `fk_Purchase_Order_Mode_Of_Procurement1` (`Mode_Of_Procurement` ASC) ,
   INDEX `fk_Purchase_Order_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_Purchase_Order_Signatory1` (`Signatory_ID` ASC) ,
   INDEX `fk_Purchase_Order_Signatory2` (`Signatory_ID1` ASC) ,
   INDEX `fk_Purchase_Order_Signatory3` (`Signatory_ID2` ASC) ,
+  INDEX `fk_Purchase_Order_Mode_Of_Procurement1` (`Mode_Of_Procurement_ID` ASC) ,
   CONSTRAINT `fk_Purchase_Order_Supplier1`
     FOREIGN KEY (`Supplier_ID` )
     REFERENCES `IAPPSAM`.`Supplier` (`Supplier_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Order_Mode_Of_Procurement1`
-    FOREIGN KEY (`Mode_Of_Procurement` )
-    REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Mode_Of_Procurement` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_DivisionOffice1`
@@ -349,6 +345,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   CONSTRAINT `fk_Purchase_Order_Signatory3`
     FOREIGN KEY (`Signatory_ID2` )
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Purchase_Order_Mode_Of_Procurement1`
+    FOREIGN KEY (`Mode_Of_Procurement_ID` )
+    REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Mode_Of_Procurement_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

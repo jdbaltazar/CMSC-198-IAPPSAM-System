@@ -4,17 +4,20 @@ import java.util.List;
 
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Supplier;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface SupplierManager{
 	
-	void addSupplier(Supplier supplier) throws TransactionException;
+	void addSupplier(Supplier supplier) throws TransactionException, DuplicateEntryException;
 
-	int saveSupplier(Supplier supplier) throws TransactionException;
+	int saveSupplier(Supplier supplier) throws TransactionException, DuplicateEntryException;
 
 	void updateSupplier(Supplier supplier) throws TransactionException;
 
 	Supplier getSupplier(int supplierId) throws TransactionException;
+	
+	Supplier getSupplier(String supplierName) throws TransactionException;
 
 	void removeSupplier(Supplier supplier) throws TransactionException;
 

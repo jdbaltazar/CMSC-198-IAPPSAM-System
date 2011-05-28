@@ -23,9 +23,9 @@
 		<form id="form1" name="form1" method="post" action="login">
 			<div class="login-layout">
 				Username <input name="username" type="text" id="username" size="25" />
-
+				
 				<p>
-					Password <input name="password" type="password" id="password2" size="25" />
+					Password <input name="password" type="password" id="password2" size="25"/>
 					<%
 						String passwordIsOK = null;
 						if (request.getAttribute("passwordIsOK") == null)
@@ -59,11 +59,6 @@
 			and password given to you in the appropriate Username and Password boxes at the right then click on the &quot;Enter&quot; button to enter the main
 			menu page.
 		</p>
-	</div>
-	<div id="probDiv" style="font-family: Lucida Grande; color: black; font-size: 12px;">
-		If <b>problems</b> persist, email us at <span class="misc">iappsams@yahoo.com</span> contact <a href="http://www.facebook.com/johndavidbaltazar"
-			target="_blank"
-		><span class="misc">John David S. Baltazar.</span> </a>
 	</div>
 </body>
 </html>

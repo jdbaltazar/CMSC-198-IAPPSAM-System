@@ -45,6 +45,8 @@ public interface PersonManager extends Manager {
 	void updateEmployee(Employee employee) throws TransactionException;
 
 	Employee getEmployee(int employeeID) throws TransactionException;
+	
+	Employee getEmployee(String name, String designation) throws TransactionException;
 
 	void removeEmployee(Employee employee) throws TransactionException;
 

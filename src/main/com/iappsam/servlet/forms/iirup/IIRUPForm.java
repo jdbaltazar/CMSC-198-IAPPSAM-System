@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Employee;
+import com.iappsam.entities.Signatory;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.entities.forms.IIRUPLine;
 import com.iappsam.managers.IIRUPManager;
@@ -18,14 +19,34 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.util.ManagerBin;
 
 /**
  * Servlet implementation class IIRUPForm
  */
-@WebServlet("/forms/iirup/iirup.do" )
+@WebServlet("/forms/iirup/iirup.do")
 public class IIRUPForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	//IIRUP
+	private Date asOfDate;
+	
+	//iirupLine
+	private ArrayList<String> quantity;
+	private ArrayList<String> itemIDs ;
+	private ArrayList<String> yearsInService;
+	private ArrayList<String> depreciation;
+	private ArrayList<String> disposition;
+	private ArrayList<String> appraisal ;
+	private ArrayList<String> orNumber;
+	private ArrayList<String> amount;
+
+	private String approvedBy;
+
+	private String nameOfInspector;
+
+	private String nameOfWitness;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -46,7 +67,8 @@ public class IIRUPForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	private String getPerson(String input) {
+	private String getDesignationFromEntry(String input) {
+		System.out.println(input);
 		for (int i = 0; i < input.length(); i++) {
 			if (input.charAt(i) == ':')
 				return input.substring(i + 2);
@@ -55,7 +77,8 @@ public class IIRUPForm extends HttpServlet {
 		return null;
 	}
 
-	private String getDesignation(String input) {
+	private String getPersonFromEntry(String input) {
+		System.out.println(input);
 		for (int i = 0; i < input.length(); i++) {
 			if (input.charAt(i) == ':')
 				return input.substring(0, i - 1);
@@ -70,50 +93,114 @@ public class IIRUPForm extends HttpServlet {
 
 		// extra
 		String accountableOfficer = (String) request.getSession().getAttribute("accountableOfficer");
-
-		String asOfDate = (String) request.getSession().getAttribute("asOfDate");
+		Date asOfDate = (Date) request.getSession().getAttribute("asOfDate");
 		String station = (String) request.getSession().getAttribute("session");
-		String[] itemIDs = (String[]) request.getSession().getAttribute("include_1");
-
-		String[] yearsInService = (String[]) request.getSession().getAttribute("yearsInService");
-		String[] depreciation = (String[]) request.getSession().getAttribute("depreciation");
-		String[] disposition = (String[]) request.getSession().getAttribute("disposition");
-		String[] appraisal = (String[]) request.getSession().getAttribute("appraisal");
-		String[] orNumber = (String[]) request.getSession().getAttribute("orNumber");
-		String[] amount = (String[]) request.getSession().getAttribute("amount");
+		approvedBy=(String)request.getParameter("approvedBy");
+		nameOfInspector=(String)request.getParameter("nameOfInspector");
+		nameOfWitness=(String)request.getParameter("nameOfWitness");
+		itemIDs = (ArrayList<String>) request.getSession().getAttribute("itemList");
+		quantity = (ArrayList<String>) request.getSession().getAttribute("quantity");
+		yearsInService = (ArrayList<String>) request.getSession().getAttribute("yearsInService");
+		depreciation = (ArrayList<String>) request.getSession().getAttribute("depreciation");
+		disposition= (ArrayList<String>) request.getSession().getAttribute("disposition");
+		appraisal= (ArrayList<String>) request.getSession().getAttribute("appraisal");
+		orNumber = (ArrayList<String>) request.getSession().getAttribute("orNumber");
+		amount= (ArrayList<String>) request.getSession().getAttribute("amount");
 
 		String accountableOfficerEmployeeID = "";
 		int limit;
+		
 		try {
-			limit = pManager.getEmployeeByPerson(pManager.getPerson(getPerson(accountableOfficer)).getId()).size();
+			limit = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(accountableOfficer)).getId()).size();
+			Employee accountableEmployee;
+			Employee approvedByEmployee;
+			Employee requestedByEmployee;
+			Employee witnessedByEmployee;
+			Employee inspectedByEmployee;
+			
+			Signatory accountableSignatory=null;
+			Signatory requestedBySignatory=null;
+			Signatory approvedBySignatory=null;
+			Signatory witnessedBySignatory=null;
+			Signatory inspectedBySignatory=null;
+			
 			for (int i = 0; i < limit; i++) {
 				Employee temp;
-				temp = pManager.getEmployeeByPerson(pManager.getPerson(accountableOfficer).getId()).get(i);
-				if (temp.getDesignation().equals(getDesignation(accountableOfficer))) {
+				temp = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(accountableOfficer)).getId()).get(i);
+				if (temp.getDesignation().equals(getDesignationFromEntry(accountableOfficer))) {
 					accountableOfficerEmployeeID = "" + temp.getId();
+					accountableEmployee=temp;
+					accountableSignatory=new Signatory("", asOfDate, accountableEmployee);
+					ManagerBin.pManager.addSignatory(accountableSignatory);
+					break;
 				}
 			}
+			limit=pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(approvedBy)).getId()).size();
+			for(int i=0;i<limit;i++){
+				Employee temp;
+				temp = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(approvedBy)).getId()).get(i);
+				if (temp.getDesignation().equals(getDesignationFromEntry(approvedBy))) {
+					approvedByEmployee=temp;
+					approvedBySignatory=new Signatory("",asOfDate,approvedByEmployee);
+					ManagerBin.pManager.addSignatory(approvedBySignatory);
+					break;
+				}
+			}
+			
+			limit=pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(nameOfInspector)).getId()).size();
+			for(int i=0;i<limit;i++){
+				Employee temp;
+				temp = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(nameOfInspector)).getId()).get(i);
+				if (temp.getDesignation().equals(getDesignationFromEntry(nameOfInspector))) {
+					inspectedByEmployee=temp;
+					inspectedBySignatory=new Signatory("",asOfDate,inspectedByEmployee);
+					ManagerBin.pManager.addSignatory(inspectedBySignatory);
+					break;
+				}
+			}
+			limit=pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(nameOfWitness)).getId()).size();
+			for(int i=0;i<limit;i++){
+				Employee temp;
+				temp = pManager.getEmployeeByPerson(pManager.getPerson(getPersonFromEntry(nameOfWitness)).getId()).get(i);
+				if (temp.getDesignation().equals(getDesignationFromEntry(nameOfWitness))) {
+					witnessedByEmployee=temp;
+					witnessedBySignatory=new Signatory("",asOfDate,witnessedByEmployee);
+					ManagerBin.pManager.addSignatory(witnessedBySignatory);
+					break;
+				}
+			}
+		
 		} catch (TransactionException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-
-		IIRUP iirupForm = new IIRUP(new Date(0), Integer.parseInt(accountableOfficerEmployeeID), 1, 1, 1, 1);
+		
+		
+		IIRUP iirupForm = new IIRUP(asOfDate, Integer.parseInt(accountableOfficerEmployeeID), 1, 1, 1, 1);
+		
 		try {
 			iManage.addIIRUP(iirupForm);
+			
+			System.out.println("successfully saved IIRUP!!");
 		} catch (TransactionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		for (int i = 0; i < itemIDs.length; i++) {
-			IIRUPLine iLine = new IIRUPLine(Integer.parseInt(itemIDs[i]), 0, 0, 0, "0", "0", iirupForm.getIirupID());
-			try {
-				iManage.addIIRUPLine(iLine);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
+
+		// for (int i = 0; i < itemIDs.size(); i++) {
+		// IIRUPLine iLine = new IIRUPLine(Integer.parseInt(itemIDs.get(i)),
+		// Integer.parseInt(quantity.get(i)),
+		// Integer.parseInt(yearsInService.get(i)),
+		// Integer.parseInt(depreciation.get(i)), "0", "0",
+		// iirupForm.getIirupID());
+		// try {
+		// iManage.addIIRUPLine(iLine);
+		// } catch (TransactionException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
 
 	}
 }

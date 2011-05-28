@@ -42,7 +42,11 @@ public interface POManager {
 	void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
 	void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
-
+	
+	ModeOfProcurement getModeOfProcurement(int id)  throws TransactionException;
+	
+	ModeOfProcurement getModeOfProcurement(String name)  throws TransactionException;
+	
 	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
 	List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException;

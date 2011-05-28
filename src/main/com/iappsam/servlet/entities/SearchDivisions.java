@@ -19,14 +19,14 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 /**
  * Servlet implementation class SearchDivisionOffice
  */
-@WebServlet("/divisions/SearchDivisionOffice.do")
-public class SearchDivisionOffice extends HttpServlet {
+@WebServlet("/divisions/SearchDivisions.do")
+public class SearchDivisions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchDivisionOffice() {
+    public SearchDivisions() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,7 +56,7 @@ public class SearchDivisionOffice extends HttpServlet {
 		
 		request.setAttribute("divOffices", dos);
 		
-		RequestDispatcher view = request.getRequestDispatcher("../entities/division/SearchDivisionOffice.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../entities/division/SearchDivisions.jsp");
 		view.forward(request, response);
 	}
 

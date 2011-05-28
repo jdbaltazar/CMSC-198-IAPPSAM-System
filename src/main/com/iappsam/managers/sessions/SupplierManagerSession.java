@@ -34,6 +34,16 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 		// TODO Auto-generated method stub
 		return (Supplier)get(Supplier.class, supplierId);
 	}
+	
+	@Override
+	public Supplier getSupplier(String supplierName) throws TransactionException {
+		List<Supplier>suppliers = getAllSuppliers();
+		for(Supplier s: suppliers){
+			if(s.getSupplierName().equalsIgnoreCase(supplierName))
+				return s;
+		}
+		return null;
+	}
 
 	@Override
 	public void removeSupplier(Supplier supplier) throws TransactionException {

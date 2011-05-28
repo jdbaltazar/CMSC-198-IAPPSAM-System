@@ -242,6 +242,7 @@
 	ArrayList<String> itemCategory = (ArrayList<String>) request.getAttribute("itemCategory");
 	ArrayList<String> itemDescription = (ArrayList<String>) request.getAttribute("itemDescription");
 	ArrayList<String> itemID = (ArrayList<String>) request.getAttribute("itemID");
+
 %>
 <body>
 <div id="logoHeader" style="width: 100%"><img name=""
@@ -249,7 +250,7 @@
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="14%">
+		<td width="13%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
@@ -258,8 +259,8 @@
 			</tr>
 		</table>
 		</td>
-		<td width="82%">&nbsp;</td>
-		<td width="4%">
+		<td width="80%">&nbsp;</td>
+		<td width="7%">
 		<form id="form15" name="form15" method="post"
 			action="IIRUPForm2.jsp"><input name="backBtn" type="submit"
 			class="button" id="backBtn" value="Back" /></form>
@@ -291,7 +292,7 @@
 					} else
 						rowOdd = !rowOdd;%>>
 		<td width="9%" align="center"><input type="checkbox"
-			name="include_1" id="include_1" value="<%=itemID.get(i)%>" /> <label
+			name="include1" id="include1" value="<%=itemID.get(i)%>" /> <label
 			for="include_1"></label></td>
 		<td width="54%"><%=itemDescription.get(i)%></td>
 		<td width="37%"><%=itemCategory.get(i)%></td>

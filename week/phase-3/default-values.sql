@@ -13,11 +13,11 @@ INSERT INTO DISPOSAL (name) VALUES
 ("Sold at public auction"),
 ("Transferred Without Cost");
 
-INSERT INTO MODE_OF_PROCUREMENT VALUES
-("Shopping");
-
 INSERT INTO UNIT(name) VALUES 
 ('PCS');
+
+INSERT INTO MODE_OF_PROCUREMENT(NAME) VALUES
+('Shopping');
 
 INSERT INTO ITEM_STATUS(name) VALUES
 ('Not Available'),

@@ -213,4 +213,21 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		}
 		return result;
 	}
+
+	@Override
+	public Employee getEmployee(String name, String designation) throws TransactionException {
+		// TODO Auto-generated method stub
+
+		List<Person> persons = getAllPersons();
+		for (Person p : persons) {
+			if (p.getName() == name) {
+				List<Employee> employments = getEmployeeByPerson(p.getId());
+				for (Employee emp : employments) {
+					if (emp.getDesignation().equalsIgnoreCase(designation))
+						return emp;
+				}
+			}
+		}
+		return null;
+	}
 }

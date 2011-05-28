@@ -253,12 +253,12 @@
 				.getAttribute("employeeID");
 		boolean isOdd = false;
 	%>
-	<tr <%if (isOdd) {%> clas="tablerow_1"
+	<tr <%if (isOdd) {%> class="tablerow_1"
 		<%isOdd = !isOdd;
 			} else
 				isOdd = !isOdd;%>>
 		<%
-			for (int i = 0; i < name.size(); i++) {
+			for (int i = 0;name!=null&& i < name.size(); i++) {
 		%>
 		<td width="40%"><%=name.get(i)%></td>
 		<td width="41%"><%=designation.get(i)%></td>
