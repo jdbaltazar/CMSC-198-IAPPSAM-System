@@ -1,6 +1,5 @@
 package com.iappsam.servlet.stocks;
 
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,15 +17,15 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
-@WebServlet("/stocks/stocks/disposal/AddDisposal.do")
+@WebServlet("/stocks/stocks/AddDisposal.do")
 public class AddDisposal extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddDisposal(){
+	public AddDisposal() {
 		super();
 	}
 
@@ -37,23 +36,28 @@ public class AddDisposal extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WMRManager wmrManager = new WMRManagerSession();
 		Disposal disposal = new Disposal();
-		
-		RequestDispatcher add = request.getRequestDispatcher("/stocks/stocks/SearchAllDisposal.do");
+
+		RequestDispatcher add = request.getRequestDispatcher("SearchAllDisposal.do");
 
 		String disposalInput = (String) request.getParameter("disposalField");
-		
-		disposal.setName(disposalInput);
-		
-		request.setAttribute("disposal", disposal);
-		
-		try {
-			wmrManager.addDisposal(disposal);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!disposalInput.equals("")) {
+			disposal.setName(disposalInput);
+
+			request.setAttribute("disposal", disposal);
+
+			try {
+				wmrManager.addDisposal(disposal);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
+
+		else {
+			add = request.getRequestDispatcher("AddDisposal.jsp");
+		}
 		add.forward(request, response);
-		
+
 	}
 }

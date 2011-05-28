@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -107,18 +106,10 @@
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
 }
-#divTableheadr {
-	position:absolute;
-	width:200px;
-	height:22px;
-	z-index:1;
-	left: 1px;
-	top: 374px;
-}
 #pageLabel {
 	position:absolute;
 	width:200px;
-	height:46px;
+	height:50px;
 	z-index:1;
 	top:181px;
 	left: 13px;
@@ -140,32 +131,48 @@
 #footer{
 	position:absolute;
 	left: 1px;
-	top: 620px;
+	top: 623px;
 	width: 100%;
+}
+#header {
+	position:absolute;
+	width:445px;
+	height:21px;
+	z-index:1;
+	left: 509px;
+	top: 303px;
+}
+#background {
+	position:absolute;
+	width:446px;
+	height:162px;
+	z-index:16;
+	left: 509px;
+	top: 326px;
 }
 #apDiv1 {
 	position:absolute;
-	width:102px;
-	height:26px;
-	z-index:16;
-	left: 840px;
-	top: 289px;
-}
-#resultTable {
-	position:absolute;
-	width:521px;
-	height:164px;
+	width:419px;
+	height:131px;
 	z-index:17;
-	left: 1px;
-	top: 398px;
+	left: 627px;
+	top: 342px;
 }
 #apDiv2 {
 	position:absolute;
-	width:361px;
-	height:31px;
+	width:60px;
+	height:35px;
 	z-index:18;
-	left: 443px;
-	top: 287px;
+	left: 77px;
+	top: 78px;
+}
+#apDiv3 {
+	position:absolute;
+	width:447px;
+	height:9px;
+	z-index:18;
+	left: 509px;
+	top: 488px;
 }
 </style>
 </head>
@@ -174,7 +181,7 @@
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -182,13 +189,13 @@
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="11%"><table width="100%" frame="below">
+    <td width="12%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Item Status</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Item Unit</td>
       </tr>
     </table></td>
-    <td width="85%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../../stocks/stocks/StockProperties.jsp">
+    <td width="84%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllItemUnits.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -199,49 +206,21 @@
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
-<div id="divTableheadr" style="width:100%">
-  <table width="100%" border="1" cellspacing="0" class="tableheaders">
-    <tr>
-      <td width="83%">Item Status</td>
-      <td width="17%">Action</td>
-    </tr>
-  </table>
-</div>
+<div id="header" style="background-color:#7B1113;"></div>
+<div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="../../stocks/stocks/status/AddItemStatus.jsp">
-    <input name="addNewBtn" type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
+  <form id="form1" name="form1" method="post" action="AddUnit.do">
+    <p>
+      <label for="unitField" class="labels">Unit:</label>
+      <input name="unitField" type="text" id="unitField" size="20" />
+    </p>
+    <p>&nbsp;</p>
+    <div id="apDiv2">
+      <input type="submit" name="addBtn" id="addBtn" value="Add" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
+    </div>
+    <p>&nbsp;</p>
   </form>
 </div>
-<div id="resultTable" style="width:100%">
-  <table width="100%" frame="box" cellspacing="0">
-      	<%ArrayList<String> status = (ArrayList<String>) request.getAttribute("itemStatus");
-  	int size = status.size();%>
-  	
-  	<%for(int i = 0; i < size; i++)
-  	{ 
-  	%>
-  	<%
-		if (i % 2 == 0)
-				out.print("<tr class=\"tablerow_1\">");
-			else
-				out.print("<tr>");
-	%>
-      <td width="83%"><%=status.get(i) %></td>
-      <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditItemStatus.jsp">
-        <input name="editBtn_1" type="submit" disabled="disabled" class="maroon" id="editBtn_1" value="Edit" />
-      </form></td>
-    </tr>
-    <%
-    }
-    %>
-  </table>
-</div>
-<div id="apDiv2">
-  <form id="form3" name="form3" method="post" action="">
-    <label for="searchField" class="labels">Search:</label>
-    <input name="searchField" type="text" id="searchField" size="30" />
-    <input name="hoSearchBtn" type="submit" class="maroon" id="hoSearchBtn" value="GO" />
-  </form>
-</div>
+<div id="apDiv3" style="background-color:#7B1113;"></div>
 </body>
 </html>

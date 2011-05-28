@@ -185,7 +185,7 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
@@ -195,7 +195,7 @@
       </tr>
     </table></td>
     <td width="74%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../SearchAllModes.do">
+    <td width="4%"><form id="form15" name="form15" method="post" action="SearchAllModes.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>

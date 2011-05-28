@@ -202,7 +202,7 @@
   </table>
 </div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="../../stocks/stocks/unit/AddItemUnit.jsp">
+  <form id="form1" name="form1" method="post" action="AddItemUnit.jsp">
     <input name="addNewBtn" type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
   </form>
 </div>

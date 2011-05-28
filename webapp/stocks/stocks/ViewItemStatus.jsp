@@ -118,7 +118,7 @@
 #pageLabel {
 	position:absolute;
 	width:200px;
-	height:50px;
+	height:46px;
 	z-index:1;
 	top:181px;
 	left: 13px;
@@ -176,12 +176,12 @@
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="18%"><table width="100%" frame="below">
+    <td width="11%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Mode of Procurement</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Item Status</td>
       </tr>
     </table></td>
-    <td width="78%">&nbsp;</td>
+    <td width="85%">&nbsp;</td>
     <td width="4%"><form id="form15" name="form15" method="post" action="../../stocks/stocks/StockProperties.jsp">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
@@ -196,20 +196,20 @@
 <div id="divTableheadr" style="width:100%">
   <table width="100%" border="1" cellspacing="0" class="tableheaders">
     <tr>
-      <td width="83%">Mode of Procurement</td>
+      <td width="83%">Item Status</td>
       <td width="17%">Action</td>
     </tr>
   </table>
 </div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="../../stocks/stocks/modeofprocurement/AddModeofProcurement.jsp">
+  <form id="form1" name="form1" method="post" action="AddItemStatus.jsp">
     <input name="addNewBtn" type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
   </form>
 </div>
 <div id="resultTable" style="width:100%">
   <table width="100%" frame="box" cellspacing="0">
-          	<%ArrayList<String> modes = (ArrayList<String>) request.getAttribute("mode");
-  	int size = modes.size();%>
+      	<%ArrayList<String> status = (ArrayList<String>) request.getAttribute("itemStatus");
+  	int size = status.size();%>
   	
   	<%for(int i = 0; i < size; i++)
   	{ 
@@ -220,9 +220,8 @@
 			else
 				out.print("<tr>");
 	%>
-
-      <td width="83%"><%=modes.get(i) %></td>
-      <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditModeofProcurement.jsp">
+      <td width="83%"><%=status.get(i) %></td>
+      <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditItemStatus.jsp">
         <input name="editBtn_1" type="submit" disabled="disabled" class="maroon" id="editBtn_1" value="Edit" />
       </form></td>
     </tr>

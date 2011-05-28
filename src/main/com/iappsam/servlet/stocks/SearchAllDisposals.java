@@ -37,7 +37,7 @@ public class SearchAllDisposals extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WMRManager wmrManager = new WMRManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../stocks/stocks/disposal/ViewDisposal.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewDisposal.jsp");
 		
 		ArrayList<String> disposal = new ArrayList<String>();
 		
