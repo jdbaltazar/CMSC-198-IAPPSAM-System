@@ -20,8 +20,7 @@ public abstract class AbstractManager implements Manager {
 		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			session.persist(entity);
-
+			session.saveOrUpdate(entity);
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
@@ -127,6 +126,4 @@ public abstract class AbstractManager implements Manager {
 		}
 	}
 
-	
-	
 }

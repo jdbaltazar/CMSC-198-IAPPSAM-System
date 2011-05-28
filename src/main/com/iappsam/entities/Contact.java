@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
 @Entity(name = "Contact")
@@ -21,6 +22,11 @@ public class Contact {
 
 	@Column(name = "Contact_Type")
 	private ContactType contactType;
+
+	// @ManyToOne
+	// @JoinTable(name = "Person_Contact", joinColumns = @JoinColumn(name =
+	// "Contact_ID"), inverseJoinColumns = @JoinColumn(name = "Person_ID"))
+	// private Person person;
 
 	public Contact() {
 		super();
@@ -43,6 +49,14 @@ public class Contact {
 	public ContactType getType() {
 		return contactType;
 	}
+
+	// public Person getPerson() {
+	// return person;
+	// }
+	//
+	// public void setPerson(Person person) {
+	// this.person = person;
+	// }
 
 	public void setId(int contactID) {
 		this.contactID = contactID;

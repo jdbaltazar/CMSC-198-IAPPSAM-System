@@ -3,6 +3,7 @@ package com.iappsam.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,9 +28,9 @@ public class Person {
 	@Column(name = "Name")
 	private String name;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Person_Contact", joinColumns = @JoinColumn(name = "Person_ID"), inverseJoinColumns = @JoinColumn(name = "Contact_ID"))
-	Set<Contact> contacts = new HashSet<Contact>();
+	private Set<Contact> contacts = new HashSet<Contact>();
 
 	public Person() {
 		super();
@@ -93,6 +94,7 @@ public class Person {
 	}
 
 	public void addContact(Contact contact) {
+		// contact.setPerson(this);
 		contacts.add(contact);
 	}
 
