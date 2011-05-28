@@ -22,6 +22,8 @@ public class PersonManagerSessionTest {
 	private Employee employee;
 	private DivisionOfficeManager dom;
 	private DivisionOffice divisionOffice;
+	private ContactManager cm;
+	private Contact contact;
 
 	@Before
 	public void initPersonManager() {
@@ -43,6 +45,17 @@ public class PersonManagerSessionTest {
 	}
 
 	@Test
+	public void exactlyOneEmployee() throws TransactionException, DuplicateEntryException {
+		addPersonThenAssert();
+		addEmployeeThenAssert();
+
+		assertEquals(1, pm.getAllEmployee().size());
+
+		removeEmployeeThenAssert();
+		removePersonThenAssert();
+	}
+
+	@Test
 	public void addPerson() throws TransactionException, DuplicateEntryException {
 		Person person = new Person("John");
 		pm.addPerson(person);
@@ -52,9 +65,7 @@ public class PersonManagerSessionTest {
 
 	@Test
 	public void addPersonWithContact() throws TransactionException, DuplicateEntryException {
-		Contact contact = new Contact("contact", ContactType.LANDLINE);
-		ContactManager cm = new ContactManagerSession();
-		cm.addContact(contact);
+		addContact();
 
 		Person person = new Person("Maria");
 		pm.addPerson(person);
@@ -69,7 +80,7 @@ public class PersonManagerSessionTest {
 		pm.updatePerson(person);
 		pm.removePerson(person);
 
-		cm.removeContact(contact);
+		removeContact();
 	}
 
 	@Test
@@ -94,6 +105,16 @@ public class PersonManagerSessionTest {
 
 		removeDivisionThenAssert();
 		removePersonThenAssert();
+	}
+
+	private void removeContact() throws TransactionException {
+		cm.removeContact(contact);
+	}
+
+	private void addContact() throws TransactionException {
+		contact = new Contact("contact", ContactType.LANDLINE);
+		cm = new ContactManagerSession();
+		cm.addContact(contact);
 	}
 
 	private void removeDivisionThenAssert() throws TransactionException {

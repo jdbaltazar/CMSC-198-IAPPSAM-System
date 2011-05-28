@@ -166,7 +166,6 @@ public class SaveItem extends HttpServlet {
 				e.printStackTrace();
 			}
 
-			// request.setAttribute("description", description);
 			requestDispatcher = request.getRequestDispatcher("items/ViewItem.jsp");
 
 			System.out.println("Item was saved!!!!!");
@@ -194,7 +193,6 @@ public class SaveItem extends HttpServlet {
 					conditions = new ArrayList<ItemCondition>();
 
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			for (Unit u : units) {
