@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -81,7 +82,7 @@ public class IIRUPForm extends HttpServlet {
 	}
 
 	private String getPersonFromEntry(String input) {
-		System.out.println("Input for getPersonFromEntry: "+input);
+		System.out.println("Input for getPersonFromEntry: " + input);
 		for (int i = 0; i < input.length(); i++) {
 			if (input.charAt(i) == ':')
 				return input.substring(0, i - 1);
@@ -172,7 +173,7 @@ public class IIRUPForm extends HttpServlet {
 			}
 			IIRUP iirupForm = new IIRUP(asOfDate, accountableEmployee, requestedByEmployee, approvedByEmployee, inspectedByEmployee, witnessedByEmployee);
 			ArrayList<Item> item = new ArrayList<Item>();
-			for (int i=0; i < itemIDs.size(); i++) {
+			for (int i = 0; i < itemIDs.size(); i++) {
 				Item itemInstance = ManagerBin.iManager.getItem(Integer.parseInt(itemIDs.get(i)));
 				item.add(itemInstance);
 			}
@@ -182,12 +183,19 @@ public class IIRUPForm extends HttpServlet {
 					disposal = new Disposal(Disposal.DESTROYED);
 				if (disposition.get(i).equalsIgnoreCase(Disposal.SOLD_AT_PRIVATE_SALE))
 					disposal = new Disposal(Disposal.SOLD_AT_PRIVATE_SALE);
-				iirupForm.addLine(new IIRUPLine(iirupForm, item.get(i), Integer.parseInt(quantity.get(i)), Integer.parseInt(yearsInService.get(i)), Float.parseFloat(depreciation.get(i)), disposal, orNumber.get(i)));
+				IIRUPLine line = new IIRUPLine(iirupForm, item.get(i), Integer.parseInt(quantity.get(i)), Integer.parseInt(yearsInService.get(i)), Float.parseFloat(depreciation.get(i)), disposal, orNumber.get(i));
+				line.setAppraisal(appraisal.get(i));
+
+				iirupForm.addLine(line);
+
 			}
 			try {
 				ManagerBin.iirupManager.addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
+				request.getSession().setAttribute("iirupForm", iirupForm);
+				RequestDispatcher view = request.getRequestDispatcher("IIRUPFlush.do");
+				view.forward(request, response);
 			} catch (TransactionException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

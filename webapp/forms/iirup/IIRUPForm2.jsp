@@ -219,8 +219,7 @@
 </div>
 
 <%
-	if (session.getAttribute("asOfDate") == null
-			|| request.getParameter("asOfMonth") != null) {
+	if (session.getAttribute("asOfDate") == null || request.getParameter("asOfMonth") != null) {
 		int month = Integer.parseInt(request.getParameter("asOfMonth"));
 		int year = Integer.parseInt(request.getParameter("asOfYear"));
 		int day = Integer.parseInt(request.getParameter("asOfDay"));
@@ -231,57 +230,43 @@
 	String station = (String) request.getParameter("station");
 	session.setAttribute("station", station);
 
-	String accountableOfficer = (String) request
-			.getParameter("accountableOfficer");
+	String accountableOfficer = (String) request.getParameter("accountableOfficer");
 	String requestedBy = (String) request.getParameter("requestedBy");
 	if (accountableOfficer != null)
 		session.setAttribute("accountableOfficer", accountableOfficer);
-	
-	if(requestedBy!=null){
-		session.setAttribute("requestedBy",requestedBy);
+
+	if (requestedBy != null) {
+		session.setAttribute("requestedBy", requestedBy);
 	}
-	ArrayList<String> article = (ArrayList<String>) request
-			.getAttribute("article");
+	ArrayList<String> article = (ArrayList<String>) request.getAttribute("article");
 	if (article == null)
 		article = (ArrayList<String>) session.getAttribute("article");
 	session.setAttribute("article", article);
 
-	ArrayList<String> unitCost = (ArrayList<String>) request
-			.getAttribute("unitCost");
+	ArrayList<String> unitCost = (ArrayList<String>) request.getAttribute("unitCost");
 	if (unitCost == null)
 		unitCost = (ArrayList<String>) session.getAttribute("unitCost");
 	session.setAttribute("unitCost", article);
 
-	ArrayList<String> propertyNo = (ArrayList<String>) request
-			.getAttribute("propertyNo");
+	ArrayList<String> propertyNo = (ArrayList<String>) request.getAttribute("propertyNo");
 	if (propertyNo == null)
-		propertyNo = (ArrayList<String>) session
-				.getAttribute("propertyNo");
+		propertyNo = (ArrayList<String>) session.getAttribute("propertyNo");
 	session.setAttribute("propertyNo", article);
 
-	ArrayList<String> dateAcquired = (ArrayList<String>) request
-			.getAttribute("dateAcquired");
+	ArrayList<String> dateAcquired = (ArrayList<String>) request.getAttribute("dateAcquired");
 	if (dateAcquired == null)
-		dateAcquired = (ArrayList<String>) session
-				.getAttribute("dateAcquired");
+		dateAcquired = (ArrayList<String>) session.getAttribute("dateAcquired");
 	session.setAttribute("dateAcquired", article);
 
 	boolean isOdd = true;
 
-	ArrayList<String> quantity = (ArrayList<String>) session
-			.getAttribute("quantity");
-	ArrayList<String> yearsInService = (ArrayList<String>) session
-			.getAttribute("yearsInService");
-	ArrayList<String> depreciation = (ArrayList<String>) session
-			.getAttribute("depreciation");
-	ArrayList<String> disposition = (ArrayList<String>) session
-			.getAttribute("disposition");
-	ArrayList<String> appraisal = (ArrayList<String>) session
-			.getAttribute("appraisal");
-	ArrayList<String> orNumber = (ArrayList<String>) session
-			.getAttribute("orNumber");
-	ArrayList<String> amount = (ArrayList<String>) session
-			.getAttribute("amount");
+	ArrayList<String> quantity = (ArrayList<String>) session.getAttribute("quantity");
+	ArrayList<String> yearsInService = (ArrayList<String>) session.getAttribute("yearsInService");
+	ArrayList<String> depreciation = (ArrayList<String>) session.getAttribute("depreciation");
+	ArrayList<String> disposition = (ArrayList<String>) session.getAttribute("disposition");
+	ArrayList<String> appraisal = (ArrayList<String>) session.getAttribute("appraisal");
+	ArrayList<String> orNumber = (ArrayList<String>) session.getAttribute("orNumber");
+	ArrayList<String> amount = (ArrayList<String>) session.getAttribute("amount");
 %>
 
 
@@ -293,7 +278,6 @@
 		<td width="18%">Articles</td>
 		<td width="6%">Quantity</td>
 		<td width="6%">Unit Cost</td>
-		<td width="6%">Total Cost</td>
 		<td width="7%">Property No.</td>
 		<td width="8%">Date Acquired</td>
 		<td width="9%">No. of<br />
@@ -303,7 +287,6 @@
 		<td width="9%">Disposition</td>
 		<td width="6%">Appraisal</td>
 		<td width="6%">O.R. #</td>
-		<td width="5%">Amount</td>
 	</tr>
 	<%
 		for (int i = 0; article != null && i < article.size(); i++) {
@@ -333,7 +316,6 @@
 		%>
 		</td>
 
-		<td width="6%">&nbsp;</td>
 		<td width="7%">
 		<%
 			if (propertyNo != null)
@@ -366,10 +348,7 @@
 			class="textfields_1" id="orNumber" size="5"
 			<%if (orNumber != null && !orNumber.isEmpty()) {%>
 			value="<%=orNumber.get(i)%>" <%}%> /></td>
-		<td width="5%" align="center"><input name="amount" type="text"
-			class="textfields_1" id="amount" size="5"
-			<%if (amount != null && !amount.isEmpty()) {%>
-			value="<%=amount.get(i)%>" <%}%> /></td>
+
 
 
 	</tr>
@@ -391,8 +370,7 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
+		
 	</tr>
 </table>
 </div>

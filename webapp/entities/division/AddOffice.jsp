@@ -388,8 +388,10 @@
 <body>
 
 <%
-	String divisionName = (String) request.getParameter("divisionName");
-	System.out.println("name: " + divisionName);
+	System.out.println("inside addoffice.jsp........");
+	String dOfficeID = (String) request.getAttribute("dOfficeID");
+	String divisionName = (String) request.getAttribute("divisionName");
+	System.out.println("divName: " + divisionName);
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -416,8 +418,9 @@
 		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.html"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="ViewDivisionAndOffices.do"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" /> <input
+			type="hidden" name="dOfficeID" value=<%=dOfficeID%> /></form>
 		</td>
 	</tr>
 </table>
@@ -434,17 +437,17 @@
 <p>&nbsp;</p>
 <div id="apDiv12">
 <div class="viewbutton" id="apDiv14"></div>
-<div class="headers" id="apDiv19">Office</div>
+<div class="headers" id="apDiv19"><%=divisionName%></div>
 <div class="tablerow_1" id="apDiv24"></div>
 <div id="apDiv25">
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="SaveOffice.do">
 <p><label for="officeName" class="labels">Office Name:</label> <input
 	name="officeName" type="text" id="officeName" size="35" /></p>
 <div id="apDiv27"><input type="submit" name="addBtn" id="addBtn"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
 	value="Add" /></div>
 <p>&nbsp;</p>
-</form>
+<input type="hidden" name="divisionName" value=<%=divisionName%> /></form>
 </div>
 <div class="maroon" id="apDiv28"></div>
 </div>

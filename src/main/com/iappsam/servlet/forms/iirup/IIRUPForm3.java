@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class IIRUPForm2Form3Interval
  */
 @WebServlet("/forms/iirup/IIRUPForm3.do")
-public class IIRUPForm2Form3Interval extends HttpServlet {
+public class IIRUPForm3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public IIRUPForm2Form3Interval() {
+	public IIRUPForm3() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,7 +46,6 @@ public class IIRUPForm2Form3Interval extends HttpServlet {
 		String[] disposition1 = request.getParameterValues("disposition");
 		String[] appraisal1 = request.getParameterValues("appraisal");
 		String[] orNumber1 = request.getParameterValues("orNumber");
-		String[] amount1 = request.getParameterValues("amount");
 
 		ArrayList<String> itemList = (ArrayList<String>) request.getSession()
 				.getAttribute("itemList");
@@ -88,10 +87,6 @@ public class IIRUPForm2Form3Interval extends HttpServlet {
 			else
 				orNumber.add("");
 
-			if (amount1 != null)
-				amount.add(amount1[i]);
-			else
-				amount.add("");
 		}
 		request.getSession().setAttribute("quantity", quantity);
 		request.getSession().setAttribute("yearsInService", yearsInService);
@@ -99,8 +94,6 @@ public class IIRUPForm2Form3Interval extends HttpServlet {
 		request.getSession().setAttribute("disposition", disposition);
 		request.getSession().setAttribute("appraisal", appraisal);
 		request.getSession().setAttribute("orNumber", orNumber);
-		request.getSession().setAttribute("amount", amount);
-
 		RequestDispatcher view = request.getRequestDispatcher("IIRUPForm3.jsp");
 
 		view.forward(request, response);

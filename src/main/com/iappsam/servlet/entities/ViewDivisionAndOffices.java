@@ -52,6 +52,9 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 
 		String divisionID = (String) request.getParameter("dOfficeID");
+		
+		if(divisionID==null)
+			divisionID = (String)request.getAttribute("dOfficeID");
 		DivisionOffice dOffice = null;
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 

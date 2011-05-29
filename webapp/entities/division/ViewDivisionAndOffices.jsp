@@ -347,6 +347,11 @@
 <%
 	DivisionOffice dOffice = (DivisionOffice) request.getAttribute("dOffice");
 	ArrayList<DivisionOffice> offices = (ArrayList<DivisionOffice>) request.getAttribute("offices");
+	
+	if(dOffice!=null&&offices!=null){
+		
+		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+	}
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -373,7 +378,7 @@
 		<td width="83%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../MenuFrame.jsp"><input name="backBtn" type="submit"
+			action="SearchDivisions.do"><input name="backBtn" type="submit"
 			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
@@ -428,11 +433,11 @@
 			%>
 			<td width="72%"><%=office.getOfficeName()%></td>
 			<td width="28%" align="center">
-			<form id="form3" name="form3" method="post" action="AddOffice.jsp"><input
+			<form id="form3" name="form3" method="post" action="AddOffice.do"><input
 				name="editOfficeBtn" type="submit" class="viewbutton"
 				id="editOfficeBtn" value="Edit &gt;&gt;" />
 				<input
-			type="hidden" name="divisionName" value=<%=dOffice.getDivisionName()%> />
+			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> />
 				</form>
 			</td>
 		</tr>
@@ -451,10 +456,10 @@
 <div class="headers" id="apDiv19">Division</div>
 <div class="headers" id="apDiv20">Offices</div>
 <div id="apDiv21">
-<form id="form4" name="form4" method="post" action="AddDivisionOffice.jsp"><input
+<form id="form4" name="form4" method="post" action="EditOffice.do"><input
 	name="addNewOfficeBtn" type="submit" class="viewbutton"
 	id="addNewOfficeBtn" value="Add New Office &gt;&gt;" /> <input
-	type="hidden" name="dOffice" value=<%=dOffice%> /></form>
+			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> /></form>
 </div>
 <div class="headers" id="apDiv22">Action</div>
 <div class="headers" id="apDiv23">Action</div>

@@ -43,29 +43,37 @@ public class SaveDivisionEdit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DivisionOffice dOffice = (DivisionOffice) request.getAttribute("dOffice");
-		String divisionName = (String) request.getParameter("newName");
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("EditDivision.do");
 
-		if (dOffice != null) {
-			if (divisionName != null) {
+		System.out.println("inside savedivisionedit........");
+		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");
 
-				if (!divisionName.equalsIgnoreCase("")) {
-					dOffice.setDivisionName(divisionName);
+		String dOfficeID = (String) request.getParameter("dOfficeID");
+		System.out.println("dOfficeID: " + dOfficeID);
+		String newName = (String) request.getParameter("newName");
+		System.out.println("new name: " + newName);
 
-					try {
+		if (dOfficeID != null) {
+			DivisionOffice dOffice = null;
+			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+
+			try {
+				dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
+				if (dOffice != null && newName != null) {
+					if (!newName.equalsIgnoreCase("")) {
+						dOffice.setDivisionName(newName);
 						doManager.updateDivisionOffice(dOffice);
-						view = request.getRequestDispatcher("ViewDivisionAndOffices.jsp");
-						request.setAttribute("dOfficeID", "" + dOffice.getId());
-					} catch (TransactionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						request.setAttribute("dOfficeID", dOfficeID);
+						view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
 					}
 				}
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-
 		view.forward(request, response);
 	}
 

@@ -325,7 +325,7 @@
 	height:25px;
 	z-index:17;
 	left: 32px;
-	top: 64px;
+	top: 48px;
 }
 #apDiv27 {
 	position:absolute;
@@ -370,6 +370,8 @@
     <td width="84%">&nbsp;</td>
     <td width="4%"><form id="form15" name="form15" method="post" action="ViewDivisionAndOffices.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+      <input
+			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> />
     </form></td>
   </tr>
 </table>
@@ -390,13 +392,9 @@
   <div class="tablerow_1" id="apDiv24"></div>
   <div id="apDiv25">
     <form id="form1" name="form1" method="post" action="SaveDivisionEdit.do">
-      <p>
-        <label for="divisionName" class="labels">Division Name:</label>
-        <input name="divisionName" type="text" id="divisionName" value = "<%=dOffice.getDivisionName()%>" disabled="disabled"/>
-      </p>
       <div id="apDiv26">
         <label for="newName" class="labels">New Name:</label>
-        <input type="text" name="newName" id="newName" />
+        <input type="text" name="newName" id="newName" value = "<%=dOffice.getDivisionName()%>"/>
         
       </div>
       <p>&nbsp;</p>
@@ -405,6 +403,8 @@
         <input type="submit" name="updateBtn" id="updateBtn" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Update" />
       </div>
       <p>&nbsp;</p>
+      <input
+			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> />
     </form>
   </div>
   <div class="maroon" id="apDiv28"></div>

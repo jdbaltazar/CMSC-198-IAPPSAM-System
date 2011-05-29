@@ -124,8 +124,9 @@ public class EmployeeCreation extends HttpServlet {
 
 			ManagerBin.pManager.addPerson(person);
 			Employee employee = new Employee(designation, employeeNumber, person);
+			employee.setDivisionOffice(dOffice);
 			ManagerBin.pManager.addEmployee(employee);
-			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(), dOffice.getId());
+			
 			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e1) {

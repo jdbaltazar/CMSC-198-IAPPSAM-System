@@ -42,16 +42,17 @@ public class EditDivision extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		System.out.println("inside editdivision....................");
+		
 		String dOfficeID = (String)request.getParameter("dOfficeID");
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		DivisionOffice dOffice = null;
-		RequestDispatcher view = null;
 		System.out.println("id: "+dOfficeID);
+		
+		
+		DivisionOffice dOffice = null;
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		
 		try {
 			dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
-			request.setAttribute("dOffice", dOffice);
-			view = request.getRequestDispatcher("EditDivision.jsp");
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,8 +61,11 @@ public class EditDivision extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(view==null)
-			view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
+		if(dOffice!=null){
+			request.setAttribute("dOffice", dOffice);
+		}
+		
+		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");		
 		view.forward(request, response);
 		
 	}

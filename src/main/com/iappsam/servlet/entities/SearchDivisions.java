@@ -46,15 +46,22 @@ public class SearchDivisions extends HttpServlet {
 		
 		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+		List<DivisionOffice>result = new ArrayList<DivisionOffice>();
 		
 		try {
 			dos = doManager.getAllDivisionOffice();
+			
+			for(DivisionOffice d: dos){
+				if(d.getOfficeName()!=null)
+					result.add(d);
+			}
+			
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("divOffices", dos);
+		request.setAttribute("divOffices", result);
 		
 		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
 		view.forward(request, response);
