@@ -389,7 +389,7 @@
   <div class="headers" id="apDiv19">Division</div>
   <div class="tablerow_1" id="apDiv24"></div>
   <div id="apDiv25">
-    <form id="form1" name="form1" method="post" action="">
+    <form id="form1" name="form1" method="post" action="SaveDivisionEdit.do">
       <p>
         <label for="divisionName" class="labels">Division Name:</label>
         <input name="divisionName" type="text" id="divisionName" value = "<%=dOffice.getDivisionName()%>" disabled="disabled"/>
@@ -397,6 +397,7 @@
       <div id="apDiv26">
         <label for="newName" class="labels">New Name:</label>
         <input type="text" name="newName" id="newName" />
+        
       </div>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
