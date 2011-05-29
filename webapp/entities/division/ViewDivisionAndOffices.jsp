@@ -396,9 +396,14 @@
 	<tr>
 		<td width="72%"><%=dOffice.getDivisionName()%></td>
 		<td width="28%" align="center">
-		<form id="form1" name="form1" method="post" action=""><input
+		<form id="form1" name="form1" method="post" action="EditDivision.do"><input
 			name="editBtn" type="submit" class="viewbutton" id="editBtn"
-			value="Edit &gt;&gt;" /></form>
+			value="Edit &gt;&gt;" /><input
+			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> /></form>
+			
+			<%
+			System.out.println("id: "+dOffice.getId());
+			%>
 		</td>
 	</tr>
 </table>

@@ -121,7 +121,7 @@
 	width: 445px;
 	height: 298px;
 	z-index: 3;
-	left: 558px;
+	left: 520px;
 	top: 357px;
 }
 
@@ -139,8 +139,8 @@
 	width: 487px;
 	height: 27px;
 	z-index: 4;
-	left: -46px;
-	top: 64px;
+	left: 28px;
+	top: 70px;
 }
 
 #apDiv4 {
@@ -148,8 +148,8 @@
 	width: 444px;
 	height: 26px;
 	z-index: 4;
-	left: -32px;
-	top: 109px;
+	left: -31px;
+	top: 107px;
 }
 
 #apDiv5 {
@@ -227,7 +227,7 @@
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="11%">
+	  <td width="11%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
@@ -236,7 +236,7 @@
 			</tr>
 		</table>
 		</td>
-		<td width="85%">&nbsp;</td>
+	  <td width="85%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post" action="IIRUPForm2.jsp"><input
 			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
@@ -252,8 +252,6 @@
 <div class="header" id="header"></div>
 <div class="background" id="background"></div>
 <div class="header" id="apDiv6"></div>
-<div class="requiredLabel" id="apDiv7"><em><strong>ALL</strong>
-fields are required</em> Under Construction</div>
 <p>&nbsp;</p>
 <div id="apDiv1">
 <%
@@ -290,16 +288,65 @@ fields are required</em> Under Construction</div>
 </select></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<div id="apDiv3"><label for="nameOfInspector" class="labels">Name
-of Inspector:</label> <input name="nameOfInspector" type="text"
-	id="nameOfInspector" size="30" /></div>
+<div id="apDiv3"><label for="nameOfInspector" class="labels">Inspector:</label>
+  <select
+	name="nameOfInspector" id="approvedBy2" style="font-size: 10px;">
+    <%
+		for (int i = 0; i < name.size(); i++) {
+	%>
+    <optgroup label="<%=name.get(i)%>">
+      <%
+			ArrayList<String> designations = get.getDesignationByName(name
+						.get(i));
+				for (int j = 0; j < designations.size(); j++) {
+		%>
+      <option>
+        <%
+			if (!designations.get(j).isEmpty())
+						out.print(designations.get(j));
+		%>
+        </option>
+      <%
+			}
+		%>
+      </optgroup>
+    <%
+		}
+	%>
+  </select>
+</div>
 <p>&nbsp;</p>
 <div id="apDiv4"><label for="nameOfWitness" class="labels">Name
-of Witness:</label> <input name="nameOfWitness" type="text" id="nameOfWitness"
-	size="30" /></div>
+of Witness:</label>
+  <select
+	name="nameOfWitness" id="approvedBy3" style="font-size: 10px;">
+    <%
+		for (int i = 0; i < name.size(); i++) {
+	%>
+    <optgroup label="<%=name.get(i)%>">
+      <%
+			ArrayList<String> designations = get.getDesignationByName(name
+						.get(i));
+				for (int j = 0; j < designations.size(); j++) {
+		%>
+      <option>
+        <%
+			if (!designations.get(j).isEmpty())
+						out.print(designations.get(j));
+		%>
+        </option>
+      <%
+			}
+		%>
+      </optgroup>
+    <%
+		}
+	%>
+  </select>
+</div>
 <p>&nbsp;</p>
 <div id="apDiv5"><input name="finishBtn" type="submit"
-	class="maroon" id="finishBtn" value="Finish"  disabled="disabled"/></div>
+	class="maroon" id="finishBtn" value="Finish"  /></div>
 
 </form>
 </div>

@@ -94,7 +94,7 @@ public class EmployeeCreation extends HttpServlet {
 		request.setAttribute("division", division);
 
 		Person person = new Person(title, name);
-		
+
 		Contact c1;
 		Contact c2;
 		Contact c3;
@@ -108,21 +108,20 @@ public class EmployeeCreation extends HttpServlet {
 
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
-				ManagerBin.cManager.addContact(c1);
+			
 				person.addContact(c1);
 			}
 			if (landline != null && !landline.isEmpty()) {
 				c2 = new Contact(landline, ContactType.LANDLINE);
-				ManagerBin.cManager.addContact(c2);
+			
 				person.addContact(c2);
 			}
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				c3 = new Contact(mobileNumber, ContactType.MOBILE);
-				ManagerBin.cManager.addContact(c3);
+			
 				person.addContact(c3);
 			}
 
-			
 			ManagerBin.pManager.addPerson(person);
 			Employee employee = new Employee(designation, employeeNumber, person);
 			ManagerBin.pManager.addEmployee(employee);

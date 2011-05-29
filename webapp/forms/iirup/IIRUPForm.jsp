@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
 <%@page import="bsh.util.Util"%>
 <%@page import="com.iappsam.servlet.forms.iirup.IIRUPFormUtil"%>
@@ -106,7 +109,7 @@
 #background {
 	position: absolute;
 	width: 578px;
-	height: 239px;
+	height: 293px;
 	z-index: 2;
 	left: 407px;
 	top: 291px;
@@ -144,8 +147,8 @@
 	width: 251px;
 	height: 33px;
 	z-index: 5;
-	left: -54px;
-	top: 117px;
+	left: 52px;
+	top: 115px;
 }
 
 #apDiv5 {
@@ -153,8 +156,8 @@
 	width: 200px;
 	height: 29px;
 	z-index: 5;
-	left: -11px;
-	top: 157px;
+	left: 422px;
+	top: 421px;
 }
 
 #apDiv6 {
@@ -162,8 +165,8 @@
 	width: 80px;
 	height: 30px;
 	z-index: 5;
-	left: 103px;
-	top: 182px;
+	left: 102px;
+	top: 230px;
 }
 
 #apDiv7 {
@@ -172,7 +175,7 @@
 	height: 9px;
 	z-index: 5;
 	left: 407px;
-	top: 531px;
+	top: 575px;
 }
 
 #pageLabel {
@@ -206,7 +209,7 @@
 	height: 29px;
 	z-index: 16;
 	left: -17px;
-	top: 123px;
+	top: 175px;
 }
 
 #footer {
@@ -226,6 +229,20 @@
 	z-index: 18;
 	left: -58px;
 	top: 19px;
+}
+#apDiv9 {	position: absolute;
+	width: 435px;
+	height: 28px;
+	z-index: 4;
+	left: 51px;
+	top: 71px;
+}
+#apDiv10 {	position: absolute;
+	width: 221px;
+	height: 44px;
+	z-index: 4;
+	left: 402px;
+	top: 359px;
 }
 </style>
 </head>
@@ -349,9 +366,56 @@
 	class="maroon" id="nextBtn" value="Next&gt;&gt;" /></div>
 <p>&nbsp;</p>
 <div id="apDiv8"><label for="station" class="labels">Station:</label>
-<input type="text" name="station" id="station"
-	<%if (station != null)
-				out.print("value=" + '"' + station + '"');%> /></div>
+  </input>
+  <select
+	name="station" id="requestedBy2">
+  
+	<%
+		List<DivisionOffice> dOffice = ManagerBin.doManager
+				.getAllDivisionOffice();
+		for (int i = 0; i < dOffice.size(); i++) {
+	%>
+	<option value="<%=dOffice.get(i).getId()%>">
+	<%
+		out.print(dOffice.get(i).getDivisionName() + " , "
+					+ dOffice.get(i).getOfficeName());
+	%>
+	</option>
+	<%
+		}
+	%>
+  </select>
+</div>
+<div id="apDiv4">
+  <label for="requestedBy"></label>
+  <select
+	name="requestedBy" id="requestedBy">
+    <%
+		
+		
+		for (int i = 0; i < name.size(); i++) {
+	%>
+    <optgroup label="<%=name.get(i)%>">
+      <%
+			ArrayList<String> designations = get.getDesignationByName(name
+						.get(i));
+				for (int j = 0; j < designations.size(); j++) {
+		%>
+      <option>
+        <%
+			if (!designations.get(j).isEmpty())
+						out.print(designations.get(j));
+		%>
+        </option>
+      <%
+			}
+		%>
+      </optgroup>
+    <%
+		}
+	%>
+  </select>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -362,10 +426,14 @@
 </div>
 <div class="labels" id="apDiv3">
 <div align="right">Name &amp; Designation of <br />
+
 Accountable Officer:</div>
 </div>
 <div class="header" id="apDiv7"></div>
 <p>&nbsp;</p>
 <div class="header" id="headerDiv"></div>
+<div class="labels" id="apDiv5">
+  <div align="right">Requested By:</div>
+</div>
 </body>
 </html>

@@ -47,7 +47,13 @@ public class IIRUPItemImbed extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String[] itemList = request.getParameterValues("include1");
-		ArrayList<String> trueItemList = new ArrayList<String>();
+		System.out.println(itemList.length);
+		String station = (String)request.getSession().getAttribute("station");
+		System.out.print("Station:  "+station);
+		ArrayList<String> trueItemList =(ArrayList<String>) request.getSession().getAttribute("itemList");
+		if(trueItemList==null||trueItemList.isEmpty()){
+			trueItemList=new ArrayList<String>();
+		}
 		
 		ArrayList<String> article = new ArrayList<String>();
 		ArrayList<String> unitCost = new ArrayList<String>();
@@ -57,7 +63,17 @@ public class IIRUPItemImbed extends HttpServlet {
 			for (int i = 0; i < itemList.length; i++) {
 				Item item = ManagerBin.iManager.getItem(Integer
 						.parseInt(itemList[i]));
+				if(trueItemList.contains(itemList[i]))
+					continue;
+				
 				trueItemList.add(itemList[i]);
+				
+			}
+			
+			for(int i=0;i<trueItemList.size();i++){
+				Item item = ManagerBin.iManager.getItem(Integer
+						.parseInt(trueItemList.get(i)));
+				
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());
 				propertyNo.add(item.getPropertyNumber());

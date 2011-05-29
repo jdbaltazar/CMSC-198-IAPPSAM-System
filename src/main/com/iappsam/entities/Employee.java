@@ -1,5 +1,6 @@
 package com.iappsam.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Employee {
@@ -23,7 +26,8 @@ public class Employee {
 	@Column(name = "Employee_Number")
 	private String employeeNumber;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Person_ID")
 	private Person person;
 
@@ -108,5 +112,9 @@ public class Employee {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public static Employee create(String designation, String title, String name) {
+		return new Employee(designation, new Person(title, name));
 	}
 }

@@ -670,42 +670,42 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`IIRUP` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP` (
-  `IIRUP_ID` INT NOT NULL AUTO_INCREMENT ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `As_Of` DATE NOT NULL ,
-  `Employee_ID` INT NOT NULL ,
   `Station` VARCHAR(80) NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
-  `Signatory_ID2` INT NOT NULL ,
-  `Signatory_ID3` INT NOT NULL ,
-  PRIMARY KEY (`IIRUP_ID`) ,
-  INDEX `fk_IIRUP_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_IIRUP_Signatory2` (`Signatory_ID1` ASC) ,
-  INDEX `fk_IIRUP_Signatory3` (`Signatory_ID2` ASC) ,
-  INDEX `fk_IIRUP_Signatory4` (`Signatory_ID3` ASC) ,
-  INDEX `fk_IIRUP_Employee1` (`Employee_ID` ASC) ,
-  CONSTRAINT `fk_IIRUP_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_IIRUP_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_IIRUP_Signatory3`
-    FOREIGN KEY (`Signatory_ID2` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_IIRUP_Signatory4`
-    FOREIGN KEY (`Signatory_ID3` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  `Accountable_Officer_ID` INT NOT NULL ,
+  `Requested_by_ID` INT NOT NULL ,
+  `Approved_by_ID` INT NOT NULL ,
+  `Inspector_ID` INT NOT NULL ,
+  `Witness_ID` INT NOT NULL ,
+  PRIMARY KEY (`ID`) ,
+  INDEX `fk_IIRUP_Employee2` (`Accountable_Officer_ID` ASC) ,
+  INDEX `fk_IIRUP_Employee1` (`Requested_by_ID` ASC) ,
+  INDEX `fk_IIRUP_Employee3` (`Approved_by_ID` ASC) ,
+  INDEX `fk_IIRUP_Employee4` (`Inspector_ID` ASC) ,
+  INDEX `fk_IIRUP_Employee5` (`Witness_ID` ASC) ,
+  CONSTRAINT `fk_IIRUP_Employee2`
+    FOREIGN KEY (`Accountable_Officer_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_IIRUP_Employee1`
-    FOREIGN KEY (`Employee_ID` )
+    FOREIGN KEY (`Requested_by_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IIRUP_Employee3`
+    FOREIGN KEY (`Approved_by_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IIRUP_Employee4`
+    FOREIGN KEY (`Inspector_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IIRUP_Employee5`
+    FOREIGN KEY (`Witness_ID` )
     REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
@@ -718,32 +718,32 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`IIRUP_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP_Line` (
-  `IIRUP_Line_ID` INT NOT NULL AUTO_INCREMENT ,
-  `IIRUP_ID` INT NOT NULL ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `Disposal_ID` INT NOT NULL ,
   `Item_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
   `Years_In_Service` INT NOT NULL ,
   `Accumulated_Depreciation` DECIMAL(50,2) NOT NULL ,
   `Appraisal` VARCHAR(50) NULL ,
   `OR_Number` VARCHAR(45) NOT NULL ,
-  `id` INT NOT NULL ,
-  PRIMARY KEY (`IIRUP_Line_ID`) ,
-  INDEX `fk_IIRUP_Line_IIRUP1` (`IIRUP_ID` ASC) ,
+  `IIRUP_ID` INT NOT NULL ,
+  PRIMARY KEY (`ID`) ,
   INDEX `fk_IIRUP_Line_Item1` (`Item_ID` ASC) ,
-  INDEX `fk_IIRUP_Line_Disposal1` (`id` ASC) ,
-  CONSTRAINT `fk_IIRUP_Line_IIRUP1`
-    FOREIGN KEY (`IIRUP_ID` )
-    REFERENCES `IAPPSAM`.`IIRUP` (`IIRUP_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_IIRUP_Line_Disposal1` (`Disposal_ID` ASC) ,
+  INDEX `fk_IIRUP_Line_IIRUP1` (`IIRUP_ID` ASC) ,
   CONSTRAINT `fk_IIRUP_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_IIRUP_Line_Disposal1`
-    FOREIGN KEY (`id` )
+    FOREIGN KEY (`Disposal_ID` )
     REFERENCES `IAPPSAM`.`Disposal` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IIRUP_Line_IIRUP1`
+    FOREIGN KEY (`IIRUP_ID` )
+    REFERENCES `IAPPSAM`.`IIRUP` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

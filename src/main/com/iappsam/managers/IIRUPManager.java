@@ -33,6 +33,8 @@ public interface IIRUPManager {
 	boolean containsIIRUPLine(IIRUPLine iirupLine) throws TransactionException;
 	
 	List<IIRUPLine>getAllIIRUPLine() throws TransactionException;
+
+	void removeIIRUP(IIRUP iirup) throws TransactionException;
 	
 	
 }

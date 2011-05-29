@@ -233,9 +233,13 @@
 
 	String accountableOfficer = (String) request
 			.getParameter("accountableOfficer");
+	String requestedBy = (String) request.getParameter("requestedBy");
 	if (accountableOfficer != null)
 		session.setAttribute("accountableOfficer", accountableOfficer);
-
+	
+	if(requestedBy!=null){
+		session.setAttribute("requestedBy",requestedBy);
+	}
 	ArrayList<String> article = (ArrayList<String>) request
 			.getAttribute("article");
 	if (article == null)
