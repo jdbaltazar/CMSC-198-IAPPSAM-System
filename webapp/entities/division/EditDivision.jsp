@@ -371,7 +371,7 @@
     <td width="4%"><form id="form15" name="form15" method="post" action="ViewDivisionAndOffices.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
       <input
-			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> />
+			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> />
     </form></td>
   </tr>
 </table>

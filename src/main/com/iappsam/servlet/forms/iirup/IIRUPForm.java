@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.Signatory;
@@ -32,8 +33,6 @@ public class IIRUPForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// IIRUP
-	private Date asOfDate;
-
 	// iirupLine
 	private ArrayList<String> quantity;
 	private ArrayList<String> itemIDs;
@@ -42,7 +41,6 @@ public class IIRUPForm extends HttpServlet {
 	private ArrayList<String> disposition;
 	private ArrayList<String> appraisal;
 	private ArrayList<String> orNumber;
-	private ArrayList<String> amount;
 
 	private String approvedBy;
 
@@ -99,7 +97,7 @@ public class IIRUPForm extends HttpServlet {
 		String accountableOfficer = (String) request.getSession().getAttribute("accountableOfficer");
 		Date asOfDate = (Date) request.getSession().getAttribute("asOfDate");
 
-		String station = (String) request.getSession().getAttribute("session");
+		DivisionOffice station = (DivisionOffice) request.getSession().getAttribute("station");
 		approvedBy = (String) request.getParameter("approvedBy");
 		nameOfInspector = (String) request.getParameter("nameOfInspector");
 		nameOfWitness = (String) request.getParameter("nameOfWitness");
@@ -111,7 +109,6 @@ public class IIRUPForm extends HttpServlet {
 		disposition = (ArrayList<String>) request.getSession().getAttribute("disposition");
 		appraisal = (ArrayList<String>) request.getSession().getAttribute("appraisal");
 		orNumber = (ArrayList<String>) request.getSession().getAttribute("orNumber");
-		amount = (ArrayList<String>) request.getSession().getAttribute("amount");
 
 		String accountableOfficerEmployeeID = "";
 		int limit;
@@ -172,6 +169,10 @@ public class IIRUPForm extends HttpServlet {
 				}
 			}
 			IIRUP iirupForm = new IIRUP(asOfDate, accountableEmployee, requestedByEmployee, approvedByEmployee, inspectedByEmployee, witnessedByEmployee);
+			if(station.getOfficeName()!=null)
+			iirupForm.setStation(station.getDivisionName()+","+station.getOfficeName());
+			else
+				iirupForm.setStation(station.getDivisionName());
 			ArrayList<Item> item = new ArrayList<Item>();
 			for (int i = 0; i < itemIDs.size(); i++) {
 				Item itemInstance = ManagerBin.iManager.getItem(Integer.parseInt(itemIDs.get(i)));
@@ -193,7 +194,7 @@ public class IIRUPForm extends HttpServlet {
 				ManagerBin.iirupManager.addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
-				request.getSession().setAttribute("iirupForm", iirupForm);
+				request.setAttribute("iirupForm", iirupForm);
 				RequestDispatcher view = request.getRequestDispatcher("IIRUPFlush.do");
 				view.forward(request, response);
 			} catch (TransactionException e1) {

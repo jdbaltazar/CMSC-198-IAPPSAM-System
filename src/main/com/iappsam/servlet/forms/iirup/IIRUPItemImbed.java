@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Item;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ManagerBin;
@@ -50,8 +51,8 @@ public class IIRUPItemImbed extends HttpServlet {
 			view.forward(request, response);
 			return;
 		}
-		String station = (String) request.getSession().getAttribute("station");
-		System.out.print("Station:  " + station);
+		DivisionOffice station = (DivisionOffice) request.getSession().getAttribute("station");
+		System.out.println("Station:  " + station.getDivisionName()+"/"+station.getOfficeName());
 		ArrayList<String> trueItemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		if (trueItemList == null || trueItemList.isEmpty()) {
 			trueItemList = new ArrayList<String>();

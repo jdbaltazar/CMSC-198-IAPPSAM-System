@@ -1,8 +1,6 @@
 package com.iappsam.servlet.entities;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,55 +13,51 @@ import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.util.ManagerBin;
 
 /**
- * Servlet implementation class SearchDivisionOffice
+ * Servlet implementation class AddOffice
  */
-@WebServlet("/entities/division/SearchDivisions.do")
-public class SearchDivisions extends HttpServlet {
+@WebServlet("/entities/division/AddOffice.do")
+public class AddOffice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchDivisions() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddOffice() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("....inside addoffice.java");
 		
-		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		List<DivisionOffice>result = new ArrayList<DivisionOffice>();
+		int dOfficeID = Integer.parseInt((String) request.getParameter("dOfficeID"));
 		
+		DivisionOffice dOffice;
 		try {
-			dos = doManager.getAllDivisionOffice();
-			
-			for(DivisionOffice d: dos){
-				if(d.getOfficeName()==null)
-					result.add(d);
-			}
-			
+			dOffice = ManagerBin.doManager.getDivisionOffice(dOfficeID);
+			request.setAttribute("dOffice", dOffice);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("divOffices", result);
-		
-		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
+
+		RequestDispatcher view = request.getRequestDispatcher("AddOffice.jsp");
 		view.forward(request, response);
 	}
 

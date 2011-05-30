@@ -16,7 +16,7 @@
 }
 
 .maroon:hover {
-	font-weight: bold;
+	font-weight: bold;r
 	/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
 	border-right: 1px solid #7B1113;
@@ -439,7 +439,7 @@
 	type="submit" class="button" id="fillupBtn" value="Fillup" /></form>
 </div>
 <div id="viewFormDiv">
-<form id="form9" name="form9" method="post" action=""><input
+<form id="form9" name="form9" method="post" action="forms/iirup/SearchIIRUPForm.do"><input
 	name="viewFormBtn" type="submit" class="button" id="viewFormBtn"
 	value="View" /></form>
 </div>
@@ -466,7 +466,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="form12" name="form12" method="post" action=""><input
+<form id="form12" name="form12" method="post" action="logout"><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>

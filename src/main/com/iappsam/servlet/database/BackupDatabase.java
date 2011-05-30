@@ -4,6 +4,9 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
+import com.iappsam.database.BackupDatabaseTool;
+
 import java.util.*;
 import java.text.DateFormat;
 
@@ -15,16 +18,17 @@ public class BackupDatabase extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
-
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		
-		String filePath = "C:\\Users\\JDB\\workspace\\CMSC-198-IAPPSAM-Sytem\\";
-		String fileName = "File.sql";
+		BackupDatabaseTool bdTool = new BackupDatabaseTool();
+		String fileName = bdTool.getFileName();
+		String filePath = bdTool.getFilePath();
+
+		// String filePath =
+		// "C:\\Users\\JDB\\workspace\\CMSC-198-IAPPSAM-Sytem\\";
+		// String fileName = "File.sql";
 		ServletOutputStream stream = null;
 		BufferedInputStream buf = null;
 

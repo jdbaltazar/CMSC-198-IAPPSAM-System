@@ -18,14 +18,14 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 /**
  * Servlet implementation class SaveDivisionEdit
  */
-@WebServlet("/entities/division/SaveDivisionEdit.do")
-public class SaveDivisionEdit extends HttpServlet {
+@WebServlet("/entities/division/SaveOfficeEdit.do")
+public class SaveOfficeEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SaveDivisionEdit() {
+	public SaveOfficeEdit() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

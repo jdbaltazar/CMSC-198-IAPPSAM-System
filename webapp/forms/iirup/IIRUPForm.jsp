@@ -218,10 +218,13 @@
 	top: 629px;
 	width: 100%;
 }
-.texts {	font-family: Lucida Grande;
+
+.texts {
+	font-family: Lucida Grande;
 	font-size: 16px;
 	font-weight: bold;
 }
+
 #apDiv14 {
 	position: absolute;
 	width: 414px;
@@ -230,14 +233,18 @@
 	left: -58px;
 	top: 19px;
 }
-#apDiv9 {	position: absolute;
+
+#apDiv9 {
+	position: absolute;
 	width: 435px;
 	height: 28px;
 	z-index: 4;
 	left: 51px;
 	top: 71px;
 }
-#apDiv10 {	position: absolute;
+
+#apDiv10 {
+	position: absolute;
 	width: 221px;
 	height: 44px;
 	z-index: 4;
@@ -273,8 +280,8 @@
 		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../IIRUPFlush.do"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="../IIRUPFlush.do"><input name="backBtn" type="submit"
+			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
@@ -290,50 +297,45 @@
 
 
 <%
-	Date asOfDate =(Date) session.getAttribute("asOfDate");
-	String station = (String) session.getAttribute("station");
+	Date asOfDate = (Date) session.getAttribute("asOfDate");
+	DivisionOffice station = (DivisionOffice) session.getAttribute("station");
 %><p>&nbsp;</p>
-<div id="apDiv14">
-  <label for="month3" class="texts">Date
-    Acquired:</label>
-  <select name="asOfMonth" id="month3">
-    <option selected="selected">MM</option>
-    <option>01</option>
-    <option>02</option>
-    <option>03</option>
-    <option>04</option>
-    <option>05</option>
-    <option>06</option>
-    <option>07</option>
-    <option>08</option>
-    <option>09</option>
-    <option>10</option>
-    <option>11</option>
-    <option>12</option>
-  </select>
-  <select name="asOfDay" id="asOfDay">
-    <option selected="selected">DD</option>
-    <%
-		for (int i = 1; i <32; i++) {
+<div id="apDiv14"><label for="month3" class="texts">Date
+Acquired:</label> <select name="asOfMonth" id="month3">
+	<option selected="selected">MM</option>
+	<option>01</option>
+	<option>02</option>
+	<option>03</option>
+	<option>04</option>
+	<option>05</option>
+	<option>06</option>
+	<option>07</option>
+	<option>08</option>
+	<option>09</option>
+	<option>10</option>
+	<option>11</option>
+	<option>12</option>
+</select> <select name="asOfDay" id="asOfDay">
+	<option selected="selected">DD</option>
+	<%
+		for (int i = 1; i < 32; i++) {
 	%>
-    <option><%=i%></option>
-    <%
+	<option><%=i%></option>
+	<%
 		}
 	%>
-  </select>
-  <select name="asOfYear" id="asOfYear">
-    <option selected="selected">YYYY</option>
-    <%
-    	Date date= new Date();
-    	 int year = Integer.parseInt(date.toString().substring(date.toString().length()-4,date.toString().length()));
-		for (int i = 1973; i <= year; i++){
-			%>
-    <option><%=i%></option>
-    <%
+</select> <select name="asOfYear" id="asOfYear">
+	<option selected="selected">YYYY</option>
+	<%
+		Date date = new Date();
+		int year = Integer.parseInt(date.toString().substring(date.toString().length() - 4, date.toString().length()));
+		for (int i = 1973; i <= year; i++) {
+	%>
+	<option><%=i%></option>
+	<%
 		}
 	%>
-  </select>
-</div>
+</select></div>
 <div id="apDiv2"><label for="nameOfAcctableOfficer"></label> <select
 	name="accountableOfficer" id="accountableOfficer">
 	<%
@@ -343,8 +345,7 @@
 	%>
 	<optgroup label="<%=name.get(i)%>">
 		<%
-			ArrayList<String> designations = get.getDesignationByName(name
-						.get(i));
+			ArrayList<String> designations = get.getDesignationByName(name.get(i));
 				for (int j = 0; j < designations.size(); j++) {
 		%><option>
 		<%
@@ -366,56 +367,45 @@
 	class="maroon" id="nextBtn" value="Next&gt;&gt;" /></div>
 <p>&nbsp;</p>
 <div id="apDiv8"><label for="station" class="labels">Station:</label>
-  </input>
-  <select
-	name="station" id="requestedBy2">
-  
+</input> <select name="station" id="requestedBy2">
+
 	<%
-		List<DivisionOffice> dOffice = ManagerBin.doManager
-				.getAllDivisionOffice();
+		List<DivisionOffice> dOffice = ManagerBin.doManager.getAllDivisionOffice();
 		for (int i = 0; i < dOffice.size(); i++) {
 	%>
 	<option value="<%=dOffice.get(i).getId()%>">
 	<%
-		out.print(dOffice.get(i).getDivisionName() + " , "
-					+ dOffice.get(i).getOfficeName());
+		out.print(dOffice.get(i).getDivisionName() + " , " + dOffice.get(i).getOfficeName());
 	%>
 	</option>
 	<%
 		}
 	%>
-  </select>
-</div>
-<div id="apDiv4">
-  <label for="requestedBy"></label>
-  <select
+</select></div>
+<div id="apDiv4"><label for="requestedBy"></label> <select
 	name="requestedBy" id="requestedBy">
-    <%
-		
-		
+	<%
 		for (int i = 0; i < name.size(); i++) {
 	%>
-    <optgroup label="<%=name.get(i)%>">
-      <%
-			ArrayList<String> designations = get.getDesignationByName(name
-						.get(i));
+	<optgroup label="<%=name.get(i)%>">
+		<%
+			ArrayList<String> designations = get.getDesignationByName(name.get(i));
 				for (int j = 0; j < designations.size(); j++) {
 		%>
-      <option>
-        <%
+		<option>
+		<%
 			if (!designations.get(j).isEmpty())
 						out.print(designations.get(j));
 		%>
-        </option>
-      <%
+		</option>
+		<%
 			}
 		%>
-      </optgroup>
-    <%
+	</optgroup>
+	<%
 		}
 	%>
-  </select>
-</div>
+</select></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -433,7 +423,7 @@ Accountable Officer:</div>
 <p>&nbsp;</p>
 <div class="header" id="headerDiv"></div>
 <div class="labels" id="apDiv5">
-  <div align="right">Requested By:</div>
+<div align="right">Requested By:</div>
 </div>
 </body>
 </html>

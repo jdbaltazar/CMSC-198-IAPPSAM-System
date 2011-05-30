@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.entities.forms.Disposal"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -228,8 +231,11 @@
 	}
 
 	String station = (String) request.getParameter("station");
-	session.setAttribute("station", station);
-
+	System.out.println("JK's Number:"+station);
+	if(station!=null){
+	DivisionOffice dOffice =ManagerBin.doManager.getDivisionOffice(Integer.parseInt(station));
+	session.setAttribute("station", dOffice);
+	}
 	String accountableOfficer = (String) request.getParameter("accountableOfficer");
 	String requestedBy = (String) request.getParameter("requestedBy");
 	if (accountableOfficer != null)
@@ -336,10 +342,16 @@
 			type="text" class="textfields_1" id="depreciation" size="5"
 			<%if (depreciation != null && !depreciation.isEmpty()) {%>
 			value="<%=depreciation.get(i)%>" <%}%> /></td>
-		<td width="9%" align="center"><input name="disposition"
-			type="text" class="textfields_1" id="disposition" size="5"
-			<%if (disposition != null && !disposition.isEmpty()) {%>
-			value="<%=disposition.get(i)%>" <%}%> /></td>
+		<td width="9%" align="center"><select name="disposition"
+			id="disposition">
+			<option value="<%=Disposal.DESTROYED%>">Destroyed</option>
+			<option value="<%=Disposal.SOLD_AT_PRIVATE_SALE%>">Sold at
+			Private Sale</option>
+			<option value="<%=Disposal.SOLD_AT_PUBLIC_AUCTION%>">Sold at
+			Public Auction</option>
+			<option value="<%=Disposal.TRANSFERRED_WITHOUT_COST%>">Transferred
+			Without Cost</option>
+		</select></td>
 		<td width="6%" align="center"><input name="appraisal" type="text"
 			class="textfields_1" id="appraisal" size="5"
 			<%if (appraisal != null && !appraisal.isEmpty()) {%>
@@ -370,7 +382,7 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
-		
+
 	</tr>
 </table>
 </div>
