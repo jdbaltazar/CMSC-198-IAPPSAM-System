@@ -315,7 +315,7 @@
       </tr>
     </table></td>
     <td width="89%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../menu">
       <input name="backBtn" type="submit" class="button2" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -328,7 +328,7 @@
 </div>
 <div id="apDiv1" style="width:100%;" align="center">
   <div id="divIIRUP">
-    <form id="form1" name="form1" method="post" action="iirup/ViewAllIIRUPForm.jsp">
+    <form id="form1" name="form1" method="post" action="iirup/SearchIIRUPForm.do">
       <input name="prBtn" type="submit" class="button" id="prBtn" value="Inventory and Inspection Report of Unserviceable Property" />
     </form>
   </div>

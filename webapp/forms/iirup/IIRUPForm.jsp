@@ -280,7 +280,7 @@
 		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../IIRUPFlush.do"><input name="backBtn" type="submit"
+			action="../formsmenu"><input name="backBtn" type="submit"
 			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>

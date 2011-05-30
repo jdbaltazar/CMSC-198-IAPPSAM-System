@@ -439,7 +439,7 @@
 	type="submit" class="button" id="fillupBtn" value="Fillup" /></form>
 </div>
 <div id="viewFormDiv">
-<form id="form9" name="form9" method="post" action="forms/iirup/SearchIIRUPForm.do"><input
+<form id="form9" name="form9" method="post" action="forms/ViewFormsMenuPage.jsp"><input
 	name="viewFormBtn" type="submit" class="button" id="viewFormBtn"
 	value="View" /></form>
 </div>
