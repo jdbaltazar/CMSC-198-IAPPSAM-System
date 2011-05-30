@@ -554,7 +554,7 @@
       <select name="acctType" id="acctType3">
         <option>Non-SPSO Personnel (Employee)</option>
         <option>Non-SPSO Personnel (Head)</option>
-        <option>SPSO Personnel</option>
+        <option selected="selected">SPSO Personnel</option>
         <option>System Admin</option>
       </select>
     </div>

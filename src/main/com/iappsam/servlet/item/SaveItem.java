@@ -65,19 +65,19 @@ public class SaveItem extends HttpServlet {
 			price = Float.parseFloat(priceS);
 		Date dateAcquired = null;
 
-		String day = (String) request.getParameter("dayAcquired");
-		String month = (String) request.getParameter("monthAcquired");
-		String year = (String) request.getParameter("yearAcquired");
+		String day = (String) request.getParameter("day");
+		String month = (String) request.getParameter("month");
+		String year = (String) request.getParameter("year");
 
-		System.out.println("year:month:day" + year + ":" + month + ":" + day);
+		System.out.println("year:month:day " + year + ":" + month + ":" + day);
 
 		try {
 			if (!(day.equalsIgnoreCase("DD") || month.equalsIgnoreCase("MM") || year.equalsIgnoreCase("YYYY")))
-				dateAcquired = Date.valueOf(year + "-" + DateUtil.getNumericMonthEquivalent(month) + "-" + day);
+				dateAcquired = Date.valueOf(year + "-" + month + "-" + day);
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
-
+		System.out.println("Hey Bitch:-"+dateAcquired.toString());
 		String inventoryItemNumber = (String) request.getParameter("inventoryItemNum");
 		String propertyNumber = (String) request.getParameter("itemPropertyNumber");
 		String itemStatus = (String) request.getParameter("itemStatus");//

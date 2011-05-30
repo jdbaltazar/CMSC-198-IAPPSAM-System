@@ -18,54 +18,61 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 /**
  * Servlet implementation class SaveDivisionOffice
  */
-@WebServlet("/divisions/SaveDivision.do")
+@WebServlet("/entities/division/SaveDivision.do")
 public class SaveDivision extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SaveDivision() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SaveDivision() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		RequestDispatcher view = request.getRequestDispatcher("../divisions/AddDivisionOffice.do");
-		String name = (String)request.getParameter("name");
-		if(name!=null){
-			if(!name.equalsIgnoreCase("")){
-				System.out.println("division name: "+name);
-				DivisionOffice dOffice = new DivisionOffice(name, null);
+		RequestDispatcher view = request.getRequestDispatcher("AddDivision.jsp");
+		String divisionName = request.getParameter("divisionName");
+		
+		if(divisionName!=null){
+			if(!divisionName.equalsIgnoreCase("")){
 				DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-				
+				DivisionOffice dOffice = new DivisionOffice(divisionName, null);
 				try {
 					doManager.addDivisionOffice(dOffice);
 					System.out.println("Saved division successfully!");
-					view = request.getRequestDispatcher("../divisions/SearchDivisionOffice.do");
+					view = request.getRequestDispatcher("SearchDivisions.do");
+					view.forward(request, response);
 				} catch (TransactionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (DuplicateEntryException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					view=request.getRequestDispatcher("AddDivision.jsp");
+					request.setAttribute("isReturning", "true");
+					view.forward(request, response);
 				}
 			}
+			else{
+				view=request.getRequestDispatcher("AddDivision.jsp");
+				request.setAttribute("isEmpty", "true");
+				view.forward(request, response);
+			}
 		}
-		view.forward(request, response);
+		
 
 	}
-
 }

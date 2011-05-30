@@ -44,11 +44,10 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	public DivisionOffice getDivisionOffice(String division, String office) throws TransactionException {
 		List<DivisionOffice> dOffices = getAllDivisionOffice();
 		for (DivisionOffice dOffice : dOffices) {
-
 			if (dOffice.getDivisionName().equalsIgnoreCase(division)) {
 				if (dOffice.getOfficeName() == null && office == null)
 					return dOffice;
-				else if (office != null && dOffice.getOfficeName().equalsIgnoreCase(office)) {
+				else if (office != null && (dOffice.getOfficeName() != null && dOffice.getOfficeName().equalsIgnoreCase(office))) {
 					return dOffice;
 				}
 			}

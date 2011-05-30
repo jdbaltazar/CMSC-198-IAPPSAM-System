@@ -15,6 +15,14 @@ public class BackupDatabase extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	
+
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		
 		String filePath = "C:\\Users\\JDB\\workspace\\CMSC-198-IAPPSAM-Sytem\\";
 		String fileName = "File.sql";
 		ServletOutputStream stream = null;
@@ -48,11 +56,5 @@ public class BackupDatabase extends HttpServlet {
 			if (buf != null)
 				buf.close();
 		}
-
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		doGet(request, response);
 	}
 }

@@ -1,130 +1,155 @@
 package com.iappsam.entities.forms;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-@Entity
+import org.hibernate.annotations.Cascade;
+
+import com.iappsam.entities.Employee;
+import com.iappsam.entities.Item;
+
 // Inventory and Inspection of Report of Unserviceable Property
+@Entity
 public class IIRUP {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IIRUP_ID")
-	private int iirupID;
+	@Column(name = "ID")
+	private int id;
 
 	@Column(name = "As_Of")
 	private Date asOfDate;
 
-	@Column(name = "Employee_ID")
-	private int accountableOfficerEmployeeID;
+	@ManyToOne
+	@JoinColumn(name = "Accountable_Officer_ID")
+	private Employee accountableOfficer;
 
 	@Column(name = "Station")
 	private String station;
 
-	@Column(name = "Signatory_ID")
-	private int requstedBySignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Requested_by_ID")
+	private Employee requestedBy;
 
-	@Column(name = "Signatory_ID1")
-	private int approvedBySignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Approved_by_ID")
+	private Employee approvedBy;
 
-	@Column(name = "Signatory_ID2")
-	private int inspectorSignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Inspector_ID")
+	private Employee inspector;
 
-	@Column(name = "Signatory_ID3")
-	private int witnessSignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Witness_ID")
+	private Employee witness;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "iirup")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	private Set<IIRUPLine> lines = new HashSet<IIRUPLine>();
 
 	public IIRUP() {
 		super();
 	}
 
-	public IIRUP(Date asOfDate, int accountableOfficerEmployeeID, String station, int requstedBySignatoryID, int approvedBySignatoryID, int inspectorSignatoryID, int witnessSignatoryID) {
+	public IIRUP(Date asOfDate, Employee accountableOfficer, Employee requestedBy, Employee approvedBy, Employee inspector, Employee witness) {
 		super();
 		this.asOfDate = asOfDate;
-		this.accountableOfficerEmployeeID = accountableOfficerEmployeeID;
-		this.station = station;
-		this.requstedBySignatoryID = requstedBySignatoryID;
-		this.approvedBySignatoryID = approvedBySignatoryID;
-		this.inspectorSignatoryID = inspectorSignatoryID;
-		this.witnessSignatoryID = witnessSignatoryID;
+		this.accountableOfficer = accountableOfficer;
+		this.requestedBy = requestedBy;
+		this.approvedBy = approvedBy;
+		this.inspector = inspector;
+		this.witness = witness;
 	}
 
-	public IIRUP(Date asOfDate, int accountableOfficerEmployeeID, int requstedBySignatoryID, int approvedBySignatoryID, int inspectorSignatoryID, int witnessSignatoryID) {
-		super();
-		this.asOfDate = asOfDate;
-		this.accountableOfficerEmployeeID = accountableOfficerEmployeeID;
-		this.requstedBySignatoryID = requstedBySignatoryID;
-		this.approvedBySignatoryID = approvedBySignatoryID;
-		this.inspectorSignatoryID = inspectorSignatoryID;
-		this.witnessSignatoryID = witnessSignatoryID;
+	public void addLine(Item item, int quantity, int yearsInService, float accumulatedDepreciation, Disposal disposal, String orNumber) {
+		lines.add(new IIRUPLine(this, item, quantity, yearsInService, accumulatedDepreciation, disposal, orNumber));
 	}
 
-	public int getIirupID() {
-		return iirupID;
+	public int getId() {
+		return id;
 	}
 
 	public Date getAsOfDate() {
 		return asOfDate;
 	}
 
-	public int getAccountableOfficerEmployeeID() {
-		return accountableOfficerEmployeeID;
-	}
-
 	public String getStation() {
 		return station;
 	}
 
-	public int getRequstedBySignatoryID() {
-		return requstedBySignatoryID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getApprovedBySignatoryID() {
-		return approvedBySignatoryID;
+	public Employee getAccountableOfficer() {
+		return accountableOfficer;
 	}
 
-	public int getInspectorSignatoryID() {
-		return inspectorSignatoryID;
+	public Employee getRequestedBy() {
+		return requestedBy;
 	}
 
-	public int getWitnessSignatoryID() {
-		return witnessSignatoryID;
+	public Employee getApprovedBy() {
+		return approvedBy;
 	}
 
-	public void setIirupID(int iirupID) {
-		this.iirupID = iirupID;
+	public Employee getInspector() {
+		return inspector;
+	}
+
+	public Employee getWitness() {
+		return witness;
+	}
+
+	public void setAccountableOfficer(Employee accountableOfficer) {
+		this.accountableOfficer = accountableOfficer;
+	}
+
+	public void setRequestedBy(Employee requestedBy) {
+		this.requestedBy = requestedBy;
+	}
+
+	public void setApprovedBy(Employee approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	public void setInspector(Employee inspector) {
+		this.inspector = inspector;
+	}
+
+	public void setWitness(Employee witness) {
+		this.witness = witness;
 	}
 
 	public void setAsOfDate(Date asOfDate) {
 		this.asOfDate = asOfDate;
 	}
 
-	public void setAccountableOfficerEmployeeID(int accountableOfficerEmployeeID) {
-		this.accountableOfficerEmployeeID = accountableOfficerEmployeeID;
-	}
-
 	public void setStation(String station) {
 		this.station = station;
 	}
 
-	public void setRequstedBySignatoryID(int requstedBySignatoryID) {
-		this.requstedBySignatoryID = requstedBySignatoryID;
+	public Set<IIRUPLine> getLines() {
+		return lines;
 	}
 
-	public void setApprovedBySignatoryID(int approvedBySignatoryID) {
-		this.approvedBySignatoryID = approvedBySignatoryID;
+	public void addLine(IIRUPLine line) {
+		lines.add(line);
 	}
 
-	public void setInspectorSignatoryID(int inspectorSignatoryID) {
-		this.inspectorSignatoryID = inspectorSignatoryID;
+	public void removeLine(IIRUPLine line) {
+		lines.remove(line);
 	}
-
-	public void setWitnessSignatoryID(int witnessSignatoryID) {
-		this.witnessSignatoryID = witnessSignatoryID;
-	}
-
 }

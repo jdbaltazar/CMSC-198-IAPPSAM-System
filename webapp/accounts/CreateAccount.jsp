@@ -552,7 +552,7 @@ Password:</label> <input name="reenterPassword" type="password"
 Type: </label> <select name="acctType" id="acctType3">
 	<option>Non-SPSO Personnel (Employee)</option>
 	<option>Non-SPSO Personnel (Head)</option>
-	<option>SPSO Personnel</option>
+	<option selected="selected">SPSO Personnel</option>
 	<option>System Admin</option>
 </select></div>
 <p>&nbsp;</p>

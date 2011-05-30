@@ -20,11 +20,6 @@ import com.iappsam.entities.Item;
 @Table(name = "APP_Line")
 public class AnnualProcurementPlanLine implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7955015943267730159L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "APP_Line_ID")

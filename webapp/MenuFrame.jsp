@@ -376,8 +376,7 @@
 			if (session.getAttribute("username") == null) {
 				out.print(request.getAttribute("username"));
 				session.setAttribute("username", request.getAttribute("username"));
-			}
-			else
+			} else
 				out.print(session.getAttribute("username"));
 		%>!</td>
 	</tr>
@@ -427,7 +426,7 @@
 <div id="appDiv">
 <form id="form6" name="form6" method="post" action=""><input
 	name="appBtn" type="submit" class="button" id="appBtn"
-	value="Annual Procurement Plan" disabled="disabled"/></form>
+	value="Annual Procurement Plan" disabled="disabled" /></form>
 </div>
 <div id="inventoryDiv">
 <form id="form7" name="form7" method="post" action=""><input
@@ -452,13 +451,13 @@
 </div>
 <div id="divisionOfficeDiv">
 <form id="form13" name="form13" method="post"
-	action="divisions/SearchDivisions.do"><input
+	action="entities/division/SearchDivisions.do"><input
 	name="divisionOfficeBtn" type="submit" class="button2"
 	id="divisionOfficeBtn" value="Division/Office" /></form>
 </div>
 <div id="employeeDiv">
 <form id="form14" name="form14" method="post"
-	action="entities/employees/SearchEmployee.jsp"><input
+	action="entities/employees/SearchEmployee.do"><input
 	name="employeeBtn" type="submit" class="button2" id="employeeBtn"
 	value="Employees" /></form>
 </div>

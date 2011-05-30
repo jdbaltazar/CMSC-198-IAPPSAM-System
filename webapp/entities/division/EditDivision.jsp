@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
-.resultTable{
+.headers{
 	font-family:Lucida Grande;
+	 color:white;
+	  font-size:16px;
+	   font-weight:bold;
 }
-
 .tablerow_1{
 	background-color:#EEE0E5;
 }
@@ -90,8 +90,8 @@
 	width:200px;
 	height:29px;
 	z-index:2;
-	left: 834px;
-	top: 305px;
+	left: 837px;
+	top: 306px;
 }
 #apDiv2 {
 	position:absolute;
@@ -209,23 +209,148 @@
 #apDiv12 {
 	position:absolute;
 	width:100%;
-	height:22px;
+	height:100%;
 	z-index:16;
-	left: 0px;
-	top: 419px;
+	left: 12px;
+	top: 226px;
 }
 #apDiv13 {
 	position:absolute;
-	width:100%;
-	height:49px;
+	width:448px;
+	height:25px;
 	z-index:17;
-	left: 0px;
-	top: 442px;
+	left: 510px;
+	top: 58px;
+}
+#apDiv14 {
+	position:absolute;
+	width:482px;
+	height:26px;
+	z-index:1;
+	left: 475px;
+	top: 89px;
+}
+#apDiv15 {
+	position:absolute;
+	width:408px;
+	height:28px;
+	z-index:2;
+	left: 260px;
+	top: 185px;
+}
+#apDiv16 {
+	position:absolute;
+	width:482px;
+	height:28px;
+	z-index:2;
+	left: 475px;
+	top: 115px;
+}
+#apDiv17 {
+	position:absolute;
+	width:480px;
+	height:26px;
+	z-index:3;
+	left: 475px;
+	top: 234px;
+}
+#apDiv18 {
+	position:absolute;
+	width:480px;
+	height:49px;
+	z-index:4;
+	left: 476px;
+	top: 261px;
+}
+#apDiv19 {
+	position:absolute;
+	width:200px;
+	height:22px;
+
+	z-index:5;
+	left: 492px;
+	top: 92px;
+}
+#apDiv20 {
+	position:absolute;
+	width:200px;
+	height:23px;
+	z-index:6;
+	left: 491px;
+	top: 237px;
+}
+#apDiv21 {
+	position:absolute;
+	width:200px;
+	height:28px;
+	z-index:7;
+	left: 474px;
+	top: 163px;
+}
+#apDiv22 {
+	position:absolute;
+	width:104px;
+	height:22px;
+	z-index:8;
+	left: 861px;
+	top: 92px;
+}
+#apDiv23 {
+	position:absolute;
+	width:74px;
+	height:22px;
+	z-index:9;
+	left: 860px;
+	top: 236px;
+}
+#apDiv24 {
+	position:absolute;
+	width:483px;
+	height:178px;
+	z-index:6;
+	left: 475px;
+	top: 115px;
+}
+#apDiv25 {
+	position:absolute;
+	width:393px;
+	height:191px;
+	z-index:7;
+	left: 545px;
+	top: 122px;
+}
+#apDiv26 {
+	position:absolute;
+	width:392px;
+	height:25px;
+	z-index:17;
+	left: 32px;
+	top: 48px;
+}
+#apDiv27 {
+	position:absolute;
+	width:97px;
+	height:32px;
+	z-index:17;
+	left: 140px;
+	top: 117px;
+}
+#apDiv28 {
+	position:absolute;
+	width:482px;
+	height:11px;
+	z-index:8;
+	left: 475px;
+	top: 293px;
 }
 </style>
 </head>
 
 <body>
+
+<%
+	DivisionOffice dOffice = (DivisionOffice)request.getAttribute("dOffice");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -237,29 +362,19 @@
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="9%"><table width="100%" frame="below">
+    <td width="12%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300"> Divisions</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300"> Edit Division</td>
       </tr>
     </table></td>
-    <td width="87%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../../MenuFrame.html">
+    <td width="84%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewDivisionAndOffices.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+      <input
+			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> />
     </form></td>
   </tr>
 </table>
-</div>
-<div id="searchEmployeesDiv">
-  <form id="form1" name="form1" method="post" action="">
-    <label for="searchItemField" class="labels">Search:</label>
-    <input name="searchItemField" type="text" id="searchItemField" size="35" />
-    <input name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn" value="GO" />
-  </form>
-</div>
-<div id="apDiv1">
-  <form id="form2" name="form2" method="post" action="AddDivision.jsp">
-    <input name="addDivisionBtn" type="submit" class="maroon" id="addDivisionBtn" value="Add Division &gt;&gt;" />
-  </form>
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -272,46 +387,27 @@
 </div>
 <p>&nbsp;</p>
 <div id="apDiv12">
-  <table width="100%" border="1" cellspacing="0" class="tableheaders">
-    <tr>
-      <td width="84%">Division Name</td>
-      <td width="16%">Action</td>
-    </tr>
-  </table>
-</div>
-<div id="apDiv13">
-  <table width="100%" frame="box" cellspacing="0">
-  <%
-		List<DivisionOffice> dOffices = new ArrayList<DivisionOffice>();
-		dOffices = (List<DivisionOffice>) request.getAttribute("divOffices");
-		int i = 0;
-	%>
-
-	<%
-		for (DivisionOffice d : dOffices) {
-			String officeName = d.getOfficeName();
-			if (officeName == null)
-				officeName = " ";
-	%>
-	
-	<%
-		if (i % 2 == 0)
-				out.print("<tr class=\"tablerow_1\">");
-			else
-				out.print("<tr>");
-	%>
-      <td width="84%"><%=d.getDivisionName()%></td>
-      <td width="16%" align="center"><form id="form3" name="form3" method="post" action="ViewDivisionAndOffices.do">
-        <input name="viewBtn" type="submit" class="viewbutton" id="viewBtn" value="View &gt;&gt;" />
-        <input type="hidden" name="dOfficeID" value=<%=""+d.getId()%> />
-      </form></td>
-    </tr>
-    <%
-		i++;
-		}
-	%>
-  </table>
+  <div class="viewbutton" id="apDiv14"></div>
+  <div class="headers" id="apDiv19">Division</div>
+  <div class="tablerow_1" id="apDiv24"></div>
+  <div id="apDiv25">
+    <form id="form1" name="form1" method="post" action="SaveDivisionEdit.do">
+      <div id="apDiv26">
+        <label for="newName" class="labels">New Name:</label>
+        <input type="text" name="newName" id="newName" value = "<%=dOffice.getDivisionName()%>"/>
+        
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <div id="apDiv27">
+        <input type="submit" name="updateBtn" id="updateBtn" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Update" />
+      </div>
+      <p>&nbsp;</p>
+      <input
+			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> />
+    </form>
+  </div>
+  <div class="maroon" id="apDiv28"></div>
 </div>
 </body>
 </html>
-

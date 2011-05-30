@@ -5,7 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.iappsam.entities.Item;
 
 @Entity
 @Table(name = "IIRUP_Line")
@@ -13,14 +21,16 @@ public class IIRUPLine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IIRUP_Line_ID")
+	@Column(name = "ID")
 	private int id;
 
-	@Column(name = "IIRUP_ID")
-	private int iirupID;
+	@ManyToOne
+	@JoinColumn(name = "IIRUP_ID")
+	private IIRUP iirup;
 
-	@Column(name = "Item_ID")
-	private int itemID;
+	@OneToOne
+	@JoinColumn(name = "Item_ID")
+	private Item item;
 
 	@Column(name = "Quantity")
 	private int quantity;
@@ -31,8 +41,10 @@ public class IIRUPLine {
 	@Column(name = "Accumulated_Depreciation")
 	private float accumulatedDepreciation;
 
-	@Column(name = "Disposal_Type")
-	private String disposalType;
+	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "Disposal_ID")
+	private Disposal disposal;
 
 	@Column(name = "Appraisal")
 	private String appraisal;
@@ -44,31 +56,27 @@ public class IIRUPLine {
 		super();
 	}
 
-	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String appraisal, String orNumber, int iirupID) {
+	public IIRUPLine(IIRUP iirup, Item item, int quantity, int yearsInService, float accumulatedDepreciation, Disposal disposal, String orNumber) {
 		super();
-		this.itemID = itemID;
+		this.iirup = iirup;
+		this.item = item;
 		this.quantity = quantity;
 		this.yearsInService = yearsInService;
 		this.accumulatedDepreciation = accumulatedDepreciation;
-		this.disposalType = disposalType;
-		this.appraisal = appraisal;
+		this.disposal = disposal;
 		this.orNumber = orNumber;
-		this.iirupID = iirupID;
 	}
 
-	public IIRUPLine(int itemID, int quantity, int yearsInService, float accumulatedDepreciation, String disposalType, String orNumber, int iirupID) {
-		super();
-		this.itemID = itemID;
-		this.quantity = quantity;
-		this.yearsInService = yearsInService;
-		this.accumulatedDepreciation = accumulatedDepreciation;
-		this.disposalType = disposalType;
-		this.orNumber = orNumber;
-		this.iirupID = iirupID;
+	public int getId() {
+		return id;
 	}
 
-	public int getItemID() {
-		return itemID;
+	public IIRUP getIirup() {
+		return iirup;
+	}
+
+	public Item getItem() {
+		return item;
 	}
 
 	public int getQuantity() {
@@ -83,8 +91,8 @@ public class IIRUPLine {
 		return accumulatedDepreciation;
 	}
 
-	public String getDisposalType() {
-		return disposalType;
+	public Disposal getDisposal() {
+		return disposal;
 	}
 
 	public String getAppraisal() {
@@ -95,12 +103,16 @@ public class IIRUPLine {
 		return orNumber;
 	}
 
-	public int getIirupID() {
-		return iirupID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	public void setIirup(IIRUP iirup) {
+		this.iirup = iirup;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public void setQuantity(int quantity) {
@@ -115,8 +127,8 @@ public class IIRUPLine {
 		this.accumulatedDepreciation = accumulatedDepreciation;
 	}
 
-	public void setDisposalType(String disposalType) {
-		this.disposalType = disposalType;
+	public void setDisposal(Disposal disposal) {
+		this.disposal = disposal;
 	}
 
 	public void setAppraisal(String appraisal) {
@@ -127,8 +139,37 @@ public class IIRUPLine {
 		this.orNumber = orNumber;
 	}
 
-	public void setIirupID(int iirupID) {
-		this.iirupID = iirupID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((iirup == null) ? 0 : iirup.hashCode());
+		result = prime * result + ((item == null) ? 0 : item.hashCode());
+		return result;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof IIRUPLine))
+			return false;
+		IIRUPLine other = (IIRUPLine) obj;
+		if (id != other.id)
+			return false;
+		if (iirup == null) {
+			if (other.iirup != null)
+				return false;
+		} else if (!iirup.equals(other.iirup))
+			return false;
+		if (item == null) {
+			if (other.item != null)
+				return false;
+		} else if (!item.equals(other.item))
+			return false;
+		return true;
+	}
 }

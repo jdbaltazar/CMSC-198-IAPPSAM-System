@@ -242,7 +242,7 @@
 	ArrayList<String> itemCategory = (ArrayList<String>) request.getAttribute("itemCategory");
 	ArrayList<String> itemDescription = (ArrayList<String>) request.getAttribute("itemDescription");
 	ArrayList<String> itemID = (ArrayList<String>) request.getAttribute("itemID");
-
+	ArrayList<String> imbeddedItemID = (ArrayList<String>) request.getSession().getAttribute("itemList");
 %>
 <body>
 <div id="logoHeader" style="width: 100%"><img name=""
@@ -261,9 +261,8 @@
 		</td>
 		<td width="80%">&nbsp;</td>
 		<td width="7%">
-		<form id="form15" name="form15" method="post"
-			action="IIRUPForm2.jsp"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="IIRUPForm2.jsp"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
@@ -284,6 +283,8 @@
 		boolean rowOdd = true;
 		if (itemDescription != null) {
 			for (int i = 0; i < itemDescription.size(); i++) {
+				if(imbeddedItemID!=null&&imbeddedItemID.contains(itemID.get(i)))
+					continue;
 	%>
 	<tr
 		<%if (rowOdd) {

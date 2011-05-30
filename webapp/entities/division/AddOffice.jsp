@@ -1,6 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -209,8 +207,8 @@
 
 #footer {
 	position: absolute;
-	left: 1px;
-	top: 887px;
+	left: 0px;
+	top: 702px;
 	width: 100%;
 }
 
@@ -339,19 +337,61 @@
 	left: 860px;
 	top: 236px;
 }
+
+#apDiv24 {
+	position: absolute;
+	width: 483px;
+	height: 128px;
+	z-index: 6;
+	left: 475px;
+	top: 115px;
+}
+
+#apDiv25 {
+	position: absolute;
+	width: 443px;
+	height: 95px;
+	z-index: 7;
+	left: 519px;
+	top: 128px;
+}
+
+#apDiv26 {
+	position: absolute;
+	width: 392px;
+	height: 25px;
+	z-index: 17;
+	left: 15px;
+	top: 64px;
+}
+
+#apDiv27 {
+	position: absolute;
+	width: 79px;
+	height: 32px;
+	z-index: 17;
+	left: 179px;
+	top: 64px;
+}
+
+#apDiv28 {
+	position: absolute;
+	width: 482px;
+	height: 11px;
+	z-index: 8;
+	left: 475px;
+	top: 243px;
+}
 </style>
 </head>
 
 <body>
 
 <%
-	DivisionOffice dOffice = (DivisionOffice) request.getAttribute("dOffice");
-	ArrayList<DivisionOffice> offices = (ArrayList<DivisionOffice>) request.getAttribute("offices");
-	
-	if(dOffice!=null&&offices!=null){
-		
-		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
-	}
+	System.out.println("inside addoffice.jsp........");
+	String dOfficeID = (String) request.getAttribute("dOfficeID");
+	String divisionName = (String) request.getAttribute("divisionName");
+	System.out.println("divName: " + divisionName);
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -366,20 +406,21 @@
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="13%">
+		<td width="10%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">
-				View Division</td>
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
+				Office</td>
 			</tr>
 		</table>
 		</td>
-		<td width="83%">&nbsp;</td>
+		<td width="86%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="SearchDivisions.do"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
+			action="ViewDivisionAndOffices.do"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" /> <input
+			type="hidden" name="dOfficeID" value=<%=dOfficeID%> /></form>
 		</td>
 	</tr>
 </table>
@@ -396,74 +437,19 @@
 <p>&nbsp;</p>
 <div id="apDiv12">
 <div class="viewbutton" id="apDiv14"></div>
-<div id="apDiv16">
-<table width="100%" cellspacing="0" frame="box" class="tablerow_1">
-	<tr>
-		<td width="72%"><%=dOffice.getDivisionName()%></td>
-		<td width="28%" align="center">
-		<form id="form1" name="form1" method="post" action="EditDivision.do"><input
-			name="editBtn" type="submit" class="viewbutton" id="editBtn"
-			value="Edit &gt;&gt;" /><input
-			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> /></form>
-			
-			<%
-			System.out.println("id: "+dOffice.getId());
-			%>
-		</td>
-	</tr>
-</table>
+<div class="headers" id="apDiv19"><%=divisionName%></div>
+<div class="tablerow_1" id="apDiv24"></div>
+<div id="apDiv25">
+<form id="form1" name="form1" method="post" action="SaveOffice.do">
+<p><label for="officeName" class="labels">Office Name:</label> <input
+	name="officeName" type="text" id="officeName" size="35" /></p>
+<div id="apDiv27"><input type="submit" name="addBtn" id="addBtn"
+	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
+	value="Add" /></div>
+<p>&nbsp;</p>
+<input type="hidden" name="divisionName" value=<%=divisionName%> /></form>
 </div>
-<div class="maroon" id="apDiv17"></div>
-<div id="apDiv18">
-<table width="100%" frame="box" cellspacing="0">
-
-	<%
-		int i = 0;
-		for (DivisionOffice office : offices) {
-			if (i % 2 == 0) {
-	%>
-	<tr class="tablerow_1">
-
-		<%
-			} else {
-		%>
-		<tr>
-			<%
-				}
-			%>
-			<td width="72%"><%=office.getOfficeName()%></td>
-			<td width="28%" align="center">
-			<form id="form3" name="form3" method="post" action="AddOffice.do"><input
-				name="editOfficeBtn" type="submit" class="viewbutton"
-				id="editOfficeBtn" value="Edit &gt;&gt;" />
-				<input
-			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> />
-				</form>
-			</td>
-		</tr>
-
-		<%
-			}
-			i++;
-		%>
-
-		<tr>
-			<td></td>
-			<td></td>
-		</tr>
-</table>
-</div>
-<div class="headers" id="apDiv19">Division</div>
-<div class="headers" id="apDiv20">Offices</div>
-<div id="apDiv21">
-<form id="form4" name="form4" method="post" action="EditOffice.do"><input
-	name="addNewOfficeBtn" type="submit" class="viewbutton"
-	id="addNewOfficeBtn" value="Add New Office &gt;&gt;" /> <input
-			type="hidden" name="divisionID" value=<%=""+dOffice.getId()%> /></form>
-</div>
-<div class="headers" id="apDiv22">Action</div>
-<div class="headers" id="apDiv23">Action</div>
+<div class="maroon" id="apDiv28"></div>
 </div>
 </body>
 </html>
-

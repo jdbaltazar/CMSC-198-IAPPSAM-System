@@ -94,35 +94,39 @@ public class EmployeeCreation extends HttpServlet {
 		request.setAttribute("division", division);
 
 		Person person = new Person(title, name);
-		Employee employee = new Employee(designation, employeeNumber, person);
+
 		Contact c1;
 		Contact c2;
 		Contact c3;
 
 		try {
-			ManagerBin.pManager.addPerson(person);
-			ManagerBin.pManager.addEmployee(employee);
-			System.out.println("Division Name:"+getDivisionNameFromString(division));
-			if(getOfficeNameFromString(division)!=null)
-			System.out.println("Office Name:"+getOfficeNameFromString(division));
-			int dID = ManagerBin.doManager.getDivisionIdByName(getDivisionNameFromString(division), getOfficeNameFromString(division));
-			System.out.print("Division ID" + dID);
+
+			System.out.println("Division Name:" + getDivisionNameFromString(division));
+			if (getOfficeNameFromString(division) != null)
+				System.out.println("Office Name:" + getOfficeNameFromString(division));
+			DivisionOffice dOffice = ManagerBin.doManager.getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
+
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
-				ManagerBin.cManager.addContact(c1);
-				ManagerBin.cManager.addContactToPerson(c1.getContactID(), person.getId());
+			
+				person.addContact(c1);
 			}
 			if (landline != null && !landline.isEmpty()) {
 				c2 = new Contact(landline, ContactType.LANDLINE);
-				ManagerBin.cManager.addContact(c2);
-				ManagerBin.cManager.addContactToPerson(c2.getContactID(), person.getId());
+			
+				person.addContact(c2);
 			}
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				c3 = new Contact(mobileNumber, ContactType.MOBILE);
-				ManagerBin.cManager.addContact(c3);
-				ManagerBin.cManager.addContactToPerson(c3.getContactID(), person.getId());
+			
+				person.addContact(c3);
 			}
-			ManagerBin.pManager.addEmployeeToDivisionOffice(employee.getId(), dID);
+
+			ManagerBin.pManager.addPerson(person);
+			Employee employee = new Employee(designation, employeeNumber, person);
+			employee.setDivisionOffice(dOffice);
+			ManagerBin.pManager.addEmployee(employee);
+			
 			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e1) {

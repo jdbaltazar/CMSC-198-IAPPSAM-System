@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class ModeOfProcurement {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "Mode_Of_Procurement_ID")
 	private int id;
 

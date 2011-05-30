@@ -35,8 +35,7 @@ public class IIRUPItemImbed extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -44,20 +43,37 @@ public class IIRUPItemImbed extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] itemList = request.getParameterValues("include1");
-		ArrayList<String> trueItemList = new ArrayList<String>();
-		
+		if (itemList == null) {
+			RequestDispatcher view = request.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
+			view.forward(request, response);
+			return;
+		}
+		String station = (String) request.getSession().getAttribute("station");
+		System.out.print("Station:  " + station);
+		ArrayList<String> trueItemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
+		if (trueItemList == null || trueItemList.isEmpty()) {
+			trueItemList = new ArrayList<String>();
+		}
+
 		ArrayList<String> article = new ArrayList<String>();
 		ArrayList<String> unitCost = new ArrayList<String>();
 		ArrayList<String> propertyNo = new ArrayList<String>();
 		ArrayList<String> dateAcquired = new ArrayList<String>();
 		try {
 			for (int i = 0; i < itemList.length; i++) {
-				Item item = ManagerBin.iManager.getItem(Integer
-						.parseInt(itemList[i]));
+				Item item = ManagerBin.iManager.getItem(Integer.parseInt(itemList[i]));
+				if (trueItemList.contains(itemList[i]))
+					continue;
+
 				trueItemList.add(itemList[i]);
+
+			}
+
+			for (int i = 0; i < trueItemList.size(); i++) {
+				Item item = ManagerBin.iManager.getItem(Integer.parseInt(trueItemList.get(i)));
+
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());
 				propertyNo.add(item.getPropertyNumber());
@@ -72,9 +88,7 @@ public class IIRUPItemImbed extends HttpServlet {
 			request.setAttribute("unitCost", unitCost);
 			request.setAttribute("propertyNo", propertyNo);
 			request.setAttribute("dateAcquired", dateAcquired);
-			System.out.println("heyo");
-			RequestDispatcher view = request
-					.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e) {
 

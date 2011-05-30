@@ -37,8 +37,7 @@ public class IIRUPManagerSession extends AbstractManager implements IIRUPManager
 
 	@Override
 	public boolean containsIIRUP(IIRUP iirup) throws TransactionException {
-		// TODO Auto-generated method stub
-		return contains(iirup);
+		return getIIRUP(iirup.getId()) != null;
 	}
 
 	@Override
@@ -54,28 +53,18 @@ public class IIRUPManagerSession extends AbstractManager implements IIRUPManager
 	}
 
 	@Override
-	public void updateIIRUPLine(IIRUPLine iirupLine)
-			throws TransactionException {
+	public void updateIIRUPLine(IIRUPLine iirupLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		update(iirupLine);
 	}
 
 	@Override
-	public List<IIRUPLine> getIIRUPLineByIIRUP(int iirupID)
-			throws TransactionException {
-		// TODO Auto-generated method stub
-		List<IIRUPLine> iirupLines = getAllIIRUPLine();
-		List<IIRUPLine> result = new ArrayList<IIRUPLine>();
-		for (IIRUPLine iirupLine : iirupLines) {
-			if (iirupLine.getIirupID() == iirupID)
-				result.add(iirupLine);
-		}
-		return result;
+	public List<IIRUPLine> getIIRUPLineByIIRUP(int iirupID) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean containsIIRUPLine(IIRUPLine iirupLine)
-			throws TransactionException {
+	public boolean containsIIRUPLine(IIRUPLine iirupLine) throws TransactionException {
 		// TODO Auto-generated method stub
 		return contains(iirupLine);
 	}
@@ -86,4 +75,8 @@ public class IIRUPManagerSession extends AbstractManager implements IIRUPManager
 		return getList(IIRUPLine.class);
 	}
 
+	@Override
+	public void removeIIRUP(IIRUP iirup) throws TransactionException {
+		remove(iirup);
+	}
 }

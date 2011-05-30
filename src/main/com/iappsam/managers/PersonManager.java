@@ -42,7 +42,6 @@ public interface PersonManager extends Manager {
 
 	int saveEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
 
-	void updateEmployee(Employee employee) throws TransactionException;
 
 	Employee getEmployee(int employeeID) throws TransactionException;
 	

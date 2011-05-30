@@ -1,8 +1,6 @@
 package com.iappsam.servlet.entities;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,16 +15,16 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
 /**
- * Servlet implementation class SearchDivisionOffice
+ * Servlet implementation class EditDivision
  */
-@WebServlet("/entities/division/SearchDivisions.do")
-public class SearchDivisions extends HttpServlet {
+@WebServlet("/entities/division/EditDivision.do")
+public class EditDivision extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchDivisions() {
+    public EditDivision() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,27 +42,32 @@ public class SearchDivisions extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
+		System.out.println("inside editdivision....................");
+		
+		String dOfficeID = (String)request.getParameter("dOfficeID");
+		System.out.println("id: "+dOfficeID);
+		
+		
+		DivisionOffice dOffice = null;
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		List<DivisionOffice>result = new ArrayList<DivisionOffice>();
 		
 		try {
-			dos = doManager.getAllDivisionOffice();
-			
-			for(DivisionOffice d: dos){
-				if(d.getOfficeName()!=null)
-					result.add(d);
-			}
-			
+			dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("divOffices", result);
+		if(dOffice!=null){
+			request.setAttribute("dOffice", dOffice);
+		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");		
 		view.forward(request, response);
+		
 	}
 
 }

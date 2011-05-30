@@ -19,7 +19,7 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 /**
  * Servlet implementation class UpdateDivisionOffice
  */
-@WebServlet("/divisions/ViewDivisionAndOffices.do")
+@WebServlet("/entities/division/ViewDivisionAndOffices.do")
 public class ViewDivisionAndOffices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +52,9 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 
 		String divisionID = (String) request.getParameter("dOfficeID");
+		
+		if(divisionID==null)
+			divisionID = (String)request.getAttribute("dOfficeID");
 		DivisionOffice dOffice = null;
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 
@@ -88,7 +91,7 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		request.setAttribute("dOffice", dOffice);
 		request.setAttribute("offices", offices);
 
-		view = request.getRequestDispatcher("../entities/division/ViewDivisionAndOffices.jsp");
+		view = request.getRequestDispatcher("ViewDivisionAndOffices.jsp");
 		view.forward(request, response);
 	}
 }
