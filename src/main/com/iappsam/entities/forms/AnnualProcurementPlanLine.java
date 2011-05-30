@@ -37,7 +37,7 @@ public class AnnualProcurementPlanLine implements Serializable {
 	@Column(name = "Quantity_Quarter_4")
 	private int quantityQuarter4;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "APP_ID")
 	private AnnualProcurementPlan app;
 

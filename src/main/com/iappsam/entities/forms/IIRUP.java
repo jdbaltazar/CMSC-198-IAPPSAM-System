@@ -16,12 +16,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.search.annotations.ContainedIn;
+import org.hibernate.search.annotations.DateBridge;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Resolution;
 
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
 
 // Inventory and Inspection of Report of Unserviceable Property
 @Entity
+@Indexed
 public class IIRUP {
 
 	@Id
@@ -29,34 +36,42 @@ public class IIRUP {
 	@Column(name = "ID")
 	private int id;
 
+	@Field(name = "iirup_date")
+	@DateBridge(resolution = Resolution.DAY)
 	@Column(name = "As_Of")
 	private Date asOfDate;
 
 	@ManyToOne
 	@JoinColumn(name = "Accountable_Officer_ID")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Employee accountableOfficer;
 
+	@Field(name = "iirup_station")
 	@Column(name = "Station")
 	private String station;
 
 	@ManyToOne
 	@JoinColumn(name = "Requested_by_ID")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Employee requestedBy;
 
 	@ManyToOne
 	@JoinColumn(name = "Approved_by_ID")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Employee approvedBy;
 
 	@ManyToOne
 	@JoinColumn(name = "Inspector_ID")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Employee inspector;
 
 	@ManyToOne
 	@JoinColumn(name = "Witness_ID")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Employee witness;
 
+	@IndexedEmbedded
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "iirup")
-	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	private Set<IIRUPLine> lines = new HashSet<IIRUPLine>();
 
 	public IIRUP() {
@@ -151,5 +166,27 @@ public class IIRUP {
 
 	public void removeLine(IIRUPLine line) {
 		lines.remove(line);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IIRUP other = (IIRUP) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }

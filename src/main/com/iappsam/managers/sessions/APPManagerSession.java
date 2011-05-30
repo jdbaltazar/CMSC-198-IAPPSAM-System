@@ -36,7 +36,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public List<AnnualProcurementPlan> getAllAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
+	public List<AnnualProcurementPlan> getAllAPP() throws TransactionException {
 		return getList(AnnualProcurementPlan.class);
 	}
 

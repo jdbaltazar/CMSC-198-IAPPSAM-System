@@ -2,15 +2,17 @@ package com.iappsam.search;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
@@ -22,8 +24,8 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 
 public class ItemSearcherTest {
 
-	private ItemManager im = new ItemManagerSession();
-	private Searcher s;
+	private static ItemManager im;
+	private static ItemSearcher s;
 
 	private final ItemCategory category = new ItemCategory("Category");
 	private final Unit unit = new Unit("Unit");
@@ -34,29 +36,22 @@ public class ItemSearcherTest {
 	private final Item item2 = new Item("Description item", category, unit, status, condition);
 	private final Item itemQuickBrownFox = new Item("Quick Brown Fox", category, unit, status, condition);
 	private final Item itemTermName = new Item("Descriptions second", category, unit, status, condition);
+	private final Item itemDate = new Item("Date1", category, unit, status, condition);
+	private final Item itemDate2 = new Item("Date2", category, unit, status, condition);
 
-	private final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-	{
-		calendar.clear();
-		calendar.set(2010, 00, 01);
-	}
-
-	public final Item itemDate = new Item("Date1", category, unit, status, condition);
-	{
-		itemDate.setDateAcquired(calendar.getTime());
-		calendar.clear();
-		calendar.set(2010, 00, 02);
-	}
-	public final Item itemDate2 = new Item("Date2", category, unit, status, condition);
-
-	{
-		itemDate2.setDateAcquired(calendar.getTime());
+	@BeforeClass
+	public static void initManagers() {
+		im = new ItemManagerSession();
+		s = new ItemSearcher();
 	}
 
 	@Before
 	public void init() throws TransactionException {
+		EntityRemover.removeAll();
+
+		itemDate.setDateAcquired(Date.valueOf("2010-01-01"));
+		itemDate2.setDateAcquired(Date.valueOf("2010-01-02"));
 		addAll();
-		s = new ItemSearcher();
 	}
 
 	@Test
@@ -118,20 +113,6 @@ public class ItemSearcherTest {
 
 		assertEquals(1, result.size());
 		assertTrue(result.contains(item2));
-	}
-
-	@After
-	public void removeAll() throws TransactionException {
-		im.removeItem(itemQuickBrownFox);
-		im.removeItem(itemTermName);
-		im.removeItem(itemDate2);
-		im.removeItem(itemDate);
-		im.removeItem(item2);
-		im.removeItem(item);
-		im.removeUnit(unit);
-		im.removeItemCondition(condition);
-		im.removeItemStatus(status);
-		im.removeItemCategory(category);
 	}
 
 	private void addAll() throws TransactionException {

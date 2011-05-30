@@ -12,10 +12,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.search.annotations.ContainedIn;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 import com.iappsam.entities.Item;
 
 @Entity
+@Indexed
 @Table(name = "IIRUP_Line")
 public class IIRUPLine {
 
@@ -25,10 +29,12 @@ public class IIRUPLine {
 	private int id;
 
 	@ManyToOne
+	@ContainedIn
 	@JoinColumn(name = "IIRUP_ID")
 	private IIRUP iirup;
 
 	@OneToOne
+	@IndexedEmbedded
 	@JoinColumn(name = "Item_ID")
 	private Item item;
 

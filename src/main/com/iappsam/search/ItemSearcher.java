@@ -2,7 +2,6 @@ package com.iappsam.search;
 
 import java.util.List;
 
-import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Query;
 import org.hibernate.Session;
 import org.hibernate.search.FullTextQuery;
@@ -14,7 +13,7 @@ import org.hibernate.search.query.dsl.TermMatchingContext;
 import com.iappsam.entities.Item;
 import com.iappsam.util.HibernateUtil;
 
-public class ItemSearcher implements Searcher {
+public class ItemSearcher {
 
 	private QueryBuilder builder;
 	private TermMatchingContext onField;
@@ -28,7 +27,6 @@ public class ItemSearcher implements Searcher {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Item> search(String string) {
 		Query searchQuery = onField.ignoreFieldBridge().matching(string).createQuery();
 		FullTextQuery fullTextQuery = fullSession.createFullTextQuery(searchQuery, Item.class);

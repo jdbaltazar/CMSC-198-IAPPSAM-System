@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.ItemBuilder;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
@@ -33,6 +34,8 @@ public class APPManagerSessionTest {
 
 	@Before
 	public void addAPPDepedencies() throws TransactionException, DuplicateEntryException {
+		EntityRemover.removeAll();
+
 		person = new Person("John");
 		pm = new PersonManagerSession();
 		pm.addPerson(person);
@@ -68,8 +71,7 @@ public class APPManagerSessionTest {
 	@Test
 	public void addAPPWithLine() throws TransactionException, DuplicateEntryException {
 
-		appManager.addAPP(app);
-
+		// build item
 		ItemBuilder builder = new ItemBuilder();
 		builder.addCategory("Cat");
 		builder.addStatus("Status");
@@ -80,13 +82,10 @@ public class APPManagerSessionTest {
 
 		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(builder.getItem(), 1, 2, 3, 4);
 		app.addLine(line);
-
-		appManager.addAPPLine(line);
-		appManager.updateAPP(app);
+		appManager.addAPP(app);
 
 		assertAPPContains(line);
 
-		appManager.removeAPPLine(line);
 		appManager.removeAPP(app);
 
 		builder.removeFromDatabase();
@@ -97,11 +96,11 @@ public class APPManagerSessionTest {
 		assertTrue(appFromDb.getLines().contains(line1));
 	}
 
-	@After
-	public void removeAPPDependencies() throws TransactionException {
-		dom.removeDivisionOffice(office);
-		pm.removeSignatory(signatory);
-		pm.removeEmployee(employee);
-		pm.removePerson(person);
-	}
+	// @After
+	// public void removeAPPDependencies() throws TransactionException {
+	// dom.removeDivisionOffice(office);
+	// pm.removeSignatory(signatory);
+	// pm.removeEmployee(employee);
+	// pm.removePerson(person);
+	// }
 }

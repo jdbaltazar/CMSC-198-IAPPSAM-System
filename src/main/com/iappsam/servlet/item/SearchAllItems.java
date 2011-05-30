@@ -47,7 +47,7 @@ public class SearchAllItems extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager iManager = new ItemManagerSession();
-		Searcher s = new ItemSearcher();
+		ItemSearcher s = new ItemSearcher();
 		ArrayList<String> itemDescription = new ArrayList<String>();
 		ArrayList<String> itemCategory = new ArrayList<String>();
 		String searchItemField = (String) request.getParameter("searchItemField");
