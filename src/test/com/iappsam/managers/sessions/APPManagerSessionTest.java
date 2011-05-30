@@ -80,7 +80,7 @@ public class APPManagerSessionTest {
 		builder.addItem("Description");
 		builder.addToDatabase();
 
-		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(builder.getItem(), 1, 2, 3, 4);
+		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(app, builder.getItem(), 1, 2, 3, 4);
 		app.addLine(line);
 		appManager.addAPP(app);
 

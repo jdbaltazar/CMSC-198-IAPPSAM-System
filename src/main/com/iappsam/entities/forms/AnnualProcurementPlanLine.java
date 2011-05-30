@@ -18,7 +18,7 @@ import com.iappsam.entities.Item;
 
 @Entity
 @Table(name = "APP_Line")
-public class AnnualProcurementPlanLine implements Serializable {
+public class AnnualProcurementPlanLine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,8 +49,9 @@ public class AnnualProcurementPlanLine implements Serializable {
 		super();
 	}
 
-	public AnnualProcurementPlanLine(Item item, int quantityQ1, int quantityQ2, int quantityQ3, int quantityQ4) {
+	public AnnualProcurementPlanLine(AnnualProcurementPlan app, Item item, int quantityQ1, int quantityQ2, int quantityQ3, int quantityQ4) {
 		super();
+		this.app = app;
 		this.item = item;
 		this.quantityQuarter1 = quantityQ1;
 		this.quantityQuarter2 = quantityQ2;
