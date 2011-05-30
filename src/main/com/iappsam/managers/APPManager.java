@@ -20,7 +20,7 @@ public interface APPManager {
 
 	boolean containsAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
-	List<AnnualProcurementPlan> getAllAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
+	List<AnnualProcurementPlan> getAllAPP() throws TransactionException;
 
 	void removeAPP(AnnualProcurementPlan app) throws TransactionException;
 

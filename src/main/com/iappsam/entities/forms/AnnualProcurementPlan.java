@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Signatory;
 
@@ -50,7 +52,7 @@ public class AnnualProcurementPlan {
 	@JoinColumn(name = "Signatory_ID1")
 	private Signatory recommendedBy;
 
-	@OneToMany(mappedBy = "app", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<AnnualProcurementPlanLine> lines = new HashSet<AnnualProcurementPlanLine>();
 
 	public AnnualProcurementPlan() {

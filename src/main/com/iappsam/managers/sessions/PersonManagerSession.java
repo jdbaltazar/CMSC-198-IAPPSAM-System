@@ -123,8 +123,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Employee> getAllEmployee() throws TransactionException {
-		List<Employee> list =getList(Employee.class);
-		System.out.println("Called from iappsam.managers.sessions.PersonManagerSession.getAllEmployee::"+list.size());
+		List<Employee> list = getList(Employee.class);
 		return list;
 	}
 

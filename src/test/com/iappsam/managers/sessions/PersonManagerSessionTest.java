@@ -9,6 +9,7 @@ import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
@@ -27,22 +28,20 @@ public class PersonManagerSessionTest {
 	private Person person2;
 
 	@Before
-	public void initPersonManager() {
+	public void initPersonManager() throws TransactionException {
+		EntityRemover.removeAll();
 		pm = new PersonManagerSession();
 	}
 
 	@Test
 	public void addThenRemovePerson() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
-		removePersonThenAssert();
 	}
 
 	@Test
 	public void addThenRemoveEmployee() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 		addEmployeeThenAssert();
-		removeEmployeeThenAssert();
-		removePersonThenAssert();
 	}
 
 	@Test
@@ -51,9 +50,6 @@ public class PersonManagerSessionTest {
 		addEmployeeThenAssert();
 
 		assertExactlyOneEmployeeInDatabase();
-
-		removeEmployeeThenAssert();
-		removePersonThenAssert();
 	}
 
 	@Test
@@ -63,23 +59,17 @@ public class PersonManagerSessionTest {
 		addEmployeeWithDivisionThenAssert();
 
 		assertExactlyOneEmployeeInDatabase();
-
-		removeEmployeeThenAssert();
-		removeDivisionThenAssert();
-		removePersonThenAssert();
 	}
 
 	@Test
 	public void addPerson() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
-		removePersonThenAssert();
 	}
 
 	@Test
 	public void addPersonWithContactThenRemoveCascade() throws TransactionException, DuplicateEntryException {
 		addPersonWithContact();
 		assertPersonWithContactExistInDatabase();
-		removePerson();
 	}
 
 	@Test
@@ -88,7 +78,6 @@ public class PersonManagerSessionTest {
 		assertPersonWithContactExistInDatabase();
 
 		assertOnePersonInDatabase();
-		removePerson();
 	}
 
 	@Test
@@ -96,9 +85,6 @@ public class PersonManagerSessionTest {
 		addPersonThenAssert();
 		addOfficeThenAssert();
 		addEmployeeWithDivisionThenAssert();
-		removeEmployeeThenAssert();
-		removeDivisionThenAssert();
-		removePersonThenAssert();
 	}
 
 	private void assertExactlyOneEmployeeInDatabase() throws TransactionException {

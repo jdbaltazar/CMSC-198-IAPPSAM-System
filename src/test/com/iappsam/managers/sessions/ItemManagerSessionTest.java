@@ -2,16 +2,16 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemBuilder;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemManagerSessionTest {
@@ -23,6 +23,11 @@ public class ItemManagerSessionTest {
 	public final ItemStatus status = new ItemStatus("Status");
 	public final ItemCondition condition = new ItemCondition("Condition");
 	public final Item item = new Item("Description", category, unit, status, condition);
+
+	@Before
+	public void cleanUpDatabase() throws TransactionException {
+		EntityRemover.removeAll();
+	}
 
 	@Test
 	public void addItemAndRemove() throws TransactionException {
@@ -88,17 +93,6 @@ public class ItemManagerSessionTest {
 		} finally {
 			builder.removeFromDatabase();
 		}
-	}
-
-	@After
-	public void removeAllExisting() throws TransactionException {
-		if (im.containsItem(item))
-			im.removeItem(item);
-
-		im.removeItemCategory(category);
-		im.removeUnit(unit);
-		im.removeItemCondition(condition);
-		im.removeItemStatus(status);
 	}
 
 	private void addEntities() throws TransactionException {

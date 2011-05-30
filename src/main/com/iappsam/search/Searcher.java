@@ -6,6 +6,6 @@ import com.iappsam.entities.Item;
 
 public interface Searcher {
 
-	List<Item> search(String string);
+	<T> List<T> search(Class<T> c, String string);
 
 }
