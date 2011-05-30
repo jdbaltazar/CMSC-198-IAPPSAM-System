@@ -556,6 +556,7 @@
 					<option>30</option>
 					<option>31</option>
 				</select> <select name="year" id="yearAcquired" <%if (finished) {%> disabled="disabled" <%}%>>
+				<%%>
 					<option>2000</option>
 					<option>2001</option>
 					<option>2002</option>
