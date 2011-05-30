@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 
 import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.Signatory;
 
 @Entity
@@ -101,8 +102,11 @@ public class AnnualProcurementPlan {
 	}
 
 	public void addLine(AnnualProcurementPlanLine line) {
-		line.setApp(this);
 		lines.add(line);
+	}
+
+	public void addLine(Item item, int quantityQ1, int quantityQ2, int quantityQ3, int quantityQ4) {
+		addLine(new AnnualProcurementPlanLine(this, item, quantityQ1, quantityQ2, quantityQ3, quantityQ4));
 	}
 
 	public void removeLine(AnnualProcurementPlanLine line) {
