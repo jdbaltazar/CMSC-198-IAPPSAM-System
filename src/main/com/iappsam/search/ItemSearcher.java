@@ -2,8 +2,10 @@ package com.iappsam.search;
 
 import java.util.List;
 
+import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Query;
 import org.hibernate.Session;
+import org.hibernate.search.FullTextQuery;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
@@ -22,13 +24,14 @@ public class ItemSearcher implements Searcher {
 		Session s = HibernateUtil.startSession();
 		fullSession = Search.getFullTextSession(s);
 		builder = fullSession.getSearchFactory().buildQueryBuilder().forEntity(Item.class).get();
-		onField = builder.keyword().onField("description").andField("date");
+		onField = builder.keyword().onFields("description", "date");
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Item> search(String string) {
 		Query searchQuery = onField.ignoreFieldBridge().matching(string).createQuery();
-		return fullSession.createFullTextQuery(searchQuery, Item.class).list();
+		FullTextQuery fullTextQuery = fullSession.createFullTextQuery(searchQuery, Item.class);
+		return fullTextQuery.list();
 	}
 }

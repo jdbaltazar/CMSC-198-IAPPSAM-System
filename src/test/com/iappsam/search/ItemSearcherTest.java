@@ -8,6 +8,7 @@ import java.util.TimeZone;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.iappsam.entities.Item;
@@ -29,8 +30,8 @@ public class ItemSearcherTest {
 	private final ItemStatus status = new ItemStatus("Status");
 	private final ItemCondition condition = new ItemCondition("Condition");
 
-	private final Item item = new Item("item Description", category, unit, status, condition);
-	private final Item item2 = new Item("Descriptions item", category, unit, status, condition);
+	private final Item item = new Item("item", category, unit, status, condition);
+	private final Item item2 = new Item("Description item", category, unit, status, condition);
 	private final Item itemQuickBrownFox = new Item("Quick Brown Fox", category, unit, status, condition);
 	private final Item itemTermName = new Item("Descriptions second", category, unit, status, condition);
 
@@ -65,7 +66,16 @@ public class ItemSearcherTest {
 		assertEquals(2, result.size());
 		assertTrue(result.contains(item));
 		assertTrue(result.contains(item2));
+	}
 
+	@Ignore
+	@Test
+	public void searchItemNameWildcard() throws TransactionException {
+		List<Item> result = s.search("Ite*");
+
+		assertEquals(2, result.size());
+		assertTrue(result.contains(item));
+		assertTrue(result.contains(item2));
 	}
 
 	@Test
@@ -106,8 +116,8 @@ public class ItemSearcherTest {
 	public void searchItemDescription() throws TransactionException {
 		List<Item> result = s.search("Description");
 
-		assertTrue(result.size() == 1);
-		assertTrue(result.contains(item));
+		assertEquals(1, result.size());
+		assertTrue(result.contains(item2));
 	}
 
 	@After
