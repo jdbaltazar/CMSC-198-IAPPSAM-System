@@ -50,16 +50,16 @@ public class Login extends HttpServlet {
 
 	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) {
 		try {
-			RequestDispatcher view = request.getRequestDispatcher("/MenuFrame.jsp");
+			// RequestDispatcher view =
+			// request.getRequestDispatcher("/menu.jsp");
 			HttpSession session = request.getSession();
 
 			if (session.isNew()) {
 				session.setAttribute("username", username);
 				session.setMaxInactiveInterval(30);
 			}
-			view.forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
+			// view.forward(request, response);
+			response.sendRedirect("/menu");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
