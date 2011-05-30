@@ -22,47 +22,53 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 @WebServlet("/entities/division/SearchDivisions.do")
 public class SearchDivisions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchDivisions() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SearchDivisions() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
+
+		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		List<DivisionOffice>result = new ArrayList<DivisionOffice>();
-		
+		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
+		String query = (String) request.getParameter("searchField");
+
 		try {
-			dos = doManager.getAllDivisionOffice();
-			
-			for(DivisionOffice d: dos){
-				if(d.getOfficeName()==null)
-					result.add(d);
+			if (query != null && !query.isEmpty()) {
+				
+			} else {
+				dos = doManager.getAllDivisionOffice();
+
+				for (DivisionOffice d : dos) {
+					if (d.getOfficeName() == null)
+						result.add(d);
+				}
 			}
-			
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("divOffices", result);
-		
+
 		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
 		view.forward(request, response);
 	}

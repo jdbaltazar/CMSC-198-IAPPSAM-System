@@ -105,11 +105,18 @@ public class EmployeeCreation extends HttpServlet {
 			if (getOfficeNameFromString(division) != null)
 				System.out.println("Office Name:" + getOfficeNameFromString(division));
 			DivisionOffice dOffice = ManagerBin.doManager.getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
+		
+			System.out.println("Email"+emailad);
+			System.out.println("LandLine"+landline);
+			System.out.println("MobileNumber:"+mobileNumber);
+			
 
+			ManagerBin.pManager.addPerson(person);
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
 			
 				person.addContact(c1);
+				
 			}
 			if (landline != null && !landline.isEmpty()) {
 				c2 = new Contact(landline, ContactType.LANDLINE);
@@ -121,8 +128,6 @@ public class EmployeeCreation extends HttpServlet {
 			
 				person.addContact(c3);
 			}
-
-			ManagerBin.pManager.addPerson(person);
 			Employee employee = new Employee(designation, employeeNumber, person);
 			employee.setDivisionOffice(dOffice);
 			ManagerBin.pManager.addEmployee(employee);

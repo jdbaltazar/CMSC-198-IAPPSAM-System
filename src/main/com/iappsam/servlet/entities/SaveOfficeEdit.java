@@ -14,6 +14,7 @@ import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.util.ManagerBin;
 
 /**
  * Servlet implementation class SaveDivisionEdit
@@ -45,42 +46,25 @@ public class SaveOfficeEdit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("inside savedivisionedit........");
-		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");
-
-		String dOfficeID = (String) request.getParameter("dOfficeID");
-		System.out.println("dOfficeID: " + dOfficeID);
+		int officeID = Integer.parseInt((String) request.getParameter("officeID"));
 		String newName = (String) request.getParameter("newName");
-		System.out.println("new name: " + newName);
 
-		if (dOfficeID != null) {
-			DivisionOffice dOffice = null;
-			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-
-			try {
-				dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
-				if (dOffice != null && newName != null) {
-					if (!newName.equalsIgnoreCase("")) {
-						List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
-						for (DivisionOffice d : dOffices) {
-							if (d.getDivisionName().equalsIgnoreCase(dOffice.getDivisionName()))
-								d.setDivisionName(newName);
-							doManager.updateDivisionOffice(dOffice);
-						}
-						dOffice.setDivisionName(newName);
-						doManager.updateDivisionOffice(dOffice);
-						request.setAttribute("dOfficeID", dOfficeID);
-						view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
-					}
-				}
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
+		DivisionOffice office;
+		try {
+			office = ManagerBin.doManager.getDivisionOffice(officeID);
+			if (newName != null && !newName.equalsIgnoreCase("")) {
+				office.setOfficeName(newName);
+				ManagerBin.doManager.updateDivisionOffice(office);
+				view = request.getRequestDispatcher("SearchDivisions.do");
+			}else{
+				request.setAttribute("office", office);
 			}
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		view.forward(request, response);
 	}
 

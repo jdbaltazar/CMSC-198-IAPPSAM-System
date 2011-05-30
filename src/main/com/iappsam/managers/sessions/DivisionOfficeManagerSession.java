@@ -45,7 +45,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		List<DivisionOffice> dOffices = getAllDivisionOffice();
 		for (DivisionOffice dOffice : dOffices) {
 			if (dOffice.getDivisionName().equalsIgnoreCase(division)) {
-				if (dOffice.getOfficeName() == null && office == null)
+				if (office == null||office.equalsIgnoreCase("null"))
 					return dOffice;
 				else if (office != null && (dOffice.getOfficeName() != null && dOffice.getOfficeName().equalsIgnoreCase(office))) {
 					return dOffice;
@@ -80,7 +80,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
 		for (DivisionOffice divisionOffice : divisionOffices) {
 			if (divisionOffice.getDivisionName().equalsIgnoreCase(division)) {
-				if (office.equalsIgnoreCase("null") || divisionOffice.getOfficeName() == null) {
+				if (office.equalsIgnoreCase("null")) {
 					return divisionOffice.getId();
 				}
 				if (divisionOffice.getOfficeName() != null && divisionOffice.getOfficeName().equalsIgnoreCase(office))

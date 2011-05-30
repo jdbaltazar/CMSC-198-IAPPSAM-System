@@ -61,9 +61,7 @@ public class ViewEmployee extends HttpServlet {
 				request.setAttribute("name", p.getName());
 				request.setAttribute("designation", emp.getDesignation());
 				request.setAttribute("employeeNum", emp.getEmployeeNumber());
-				request.setAttribute("division", emp.getDivisionOffice()
-						.getDivisionName()+" , "+emp.getDivisionOffice()
-						.getOfficeName());
+				request.setAttribute("division", emp.getDivisionOffice());
 				
 				List<Contact> contact = ManagerBin.getInstance().cManager
 						.getAllContactsByPerson(p.getId());
@@ -81,6 +79,13 @@ public class ViewEmployee extends HttpServlet {
 							.equals(ContactType.MOBILE)) {
 						mobile.add(contact.get(i).getData());
 					}
+				}
+				
+				if(mobile.isEmpty()){
+					System.out.println("what the fuck!!");
+				}
+				if(landline.isEmpty()){
+					System.out.println("what the hell!!");
 				}
 				request.setAttribute("mobil", mobile);
 				request.setAttribute("emailad", emailad);

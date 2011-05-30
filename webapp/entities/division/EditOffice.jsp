@@ -389,7 +389,6 @@
 
 <%
 	DivisionOffice office = (DivisionOffice) request.getAttribute("office");
-	DivisionOffice dOffice = (DivisionOffice) request.getAttribute("dOffice");
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -417,8 +416,7 @@
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
 			action="ViewDivisionAndOffices.do"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" />
-			<input type="hidden" name="dOfficeID" value=<%="" + dOffice.getId()%>></input>
+			type="submit" class="button" id="backBtn" value="Back" /></input>
 			</form>
 		</td>
 	</tr>

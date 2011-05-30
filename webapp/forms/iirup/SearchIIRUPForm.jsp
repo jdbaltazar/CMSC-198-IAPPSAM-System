@@ -209,7 +209,11 @@
 <div id="pageLabel" style="width: 100%;">
 <%
 	List<IIRUP> iirupList = (List<IIRUP>) request.getAttribute("iirupList");
-	int limit = iirupList.size();
+	int limit = 0;
+	if (iirupList != null)
+		limit = iirupList.size();
+	else
+		limit = 0;
 %>
 <table width="100%" border="0">
 	<tr>
@@ -253,10 +257,11 @@
 		<td width="33%"><%=((iirupList.get(i).getAsOfDate().getDay()) + "-" + (iirupList.get(i).getAsOfDate().getMonth()) + "-" + (iirupList.get(i).getAsOfDate().getYear() - 1900))%></td>
 		<td width="48%"><%=(iirupList.get(i).getRequestedBy().getPerson().getTitle() + " " + iirupList.get(i).getRequestedBy().getPerson().getName())%></td>
 		<td width="19%" align="center">
-		<form id="form3" name="form3" method="post" action="IIRUPFormFinalize.jsp"><input
-			type="hidden" name="iirupID" id="iirupID"
-			value="<%=iirupList.get(i).getId()%>"></input><input name="viewBtn"
-			type="submit" class="viewbutton" id="viewBtn" value="View >>" /></form>
+		<form id="form3" name="form3" method="post"
+			action="IIRUPFormFinalize.jsp"><input type="hidden"
+			name="iirupID" id="iirupID" value="<%=iirupList.get(i).getId()%>"></input><input
+			name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
+			value="View >>" /></form>
 		</td>
 	</tr>
 	<%

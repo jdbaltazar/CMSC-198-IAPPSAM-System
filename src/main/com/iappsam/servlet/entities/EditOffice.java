@@ -46,25 +46,14 @@ public class EditOffice extends HttpServlet {
 		System.out.println(".....inside editoffice.java");
 
 		int officeID = Integer.parseInt((String) request.getParameter("officeID"));
-		DivisionOffice dOffice = null, office = null;
+		DivisionOffice office = null;
 		try {
 			office = ManagerBin.doManager.getDivisionOffice(officeID);
-			dOffice = ManagerBin.doManager.getDivisionOffice(office.getDivisionName(), null);
-
-			request.setAttribute("dOfficeID", "" + dOffice.getId());
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (office != null) {
-			request.setAttribute("office", office);
-		}
-
-		if (dOffice == null) {
-
-			System.out.println("dOffice is NULL!!!!!!!!!!!!!!!!!!!!");
-		}
-
+		request.setAttribute("office", office);
 		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
 
 		System.out.println("........outside editoffice.java");

@@ -466,33 +466,33 @@ Information</div>
 <div id="titleDiv">
 <form id="form1" name="form1" method="post" action="CreateEmployee.do">
 <p><label for="title"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<%
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title: <%
 	String title = (String) request.getAttribute("title");
 	if (title != null && !title.isEmpty()) {
 %> <%=title%> <%
  	}
- %>
+ %></label>
+
 </p>
 
 <div id="apDiv8"><label for="name"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<%
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:<%
 	String name = (String) request.getAttribute("name");
 	if (name != null && !name.isEmpty()) {
 %> <%=name%> <%
  	}
- %>
+ %></label>
+
 </div>
 
 <div id="apDiv9"><label for="designation3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<%
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:<%
 	String designation = (String) request.getAttribute("designation");
 	if (designation != null && !designation.isEmpty()) {
 %> <%=designation%> <%
  	}
- %>
+ %></label>
+
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -502,8 +502,7 @@ Information</div>
 <div id="apDiv10"><label for="employeeNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
 No.:</label> <%
- 	String employeeNumber = (String) request
- 			.getAttribute("employeeNum");
+ 	String employeeNumber = (String) request.getAttribute("employeeNum");
  	if (employeeNumber != null && !employeeNumber.isEmpty()) {
  %> <%=employeeNumber%> <%
  	}
@@ -514,7 +513,12 @@ No.:</label> <%
 </label></p>
 <div id="apDiv11"><label for="division3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
-<%=request.getAttribute("division")%><label for="office3"
+<%
+	DivisionOffice division = (DivisionOffice) request.getAttribute("division");
+	out.print("" + division.getDivisionName());
+	if (division.getOfficeName() != null)
+		out.print("," + division.getOfficeName());
+%><label for="office3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
 </div>
 <p><label for="division2"
@@ -532,9 +536,8 @@ No.:</label> <%
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <select>
 	<%
-		ArrayList<String> mobileNumber = (ArrayList<String>) request
-				.getAttribute("mobil");
-		int mobileNumberNo=0;
+		ArrayList<String> mobileNumber = (ArrayList<String>) request.getAttribute("mobil");
+		int mobileNumberNo = 0;
 		if (mobileNumber != null)
 			mobileNumberNo = mobileNumber.size();
 	%>
@@ -552,9 +555,8 @@ Number:</label> <select>
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
 <select>
 	<%
-		ArrayList<String> landline = (ArrayList<String>) request
-				.getAttribute("landline");
-		int landlineNo=0;
+		ArrayList<String> landline = (ArrayList<String>) request.getAttribute("landline");
+		int landlineNo = 0;
 		if (landline != null)
 			landlineNo = landline.size();
 	%>
@@ -569,9 +571,8 @@ Number:</label> <select>
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <select>
 	<%
-		ArrayList<String> emailad = (ArrayList<String>) request
-				.getAttribute("emailad");
-		int emailNo=0;
+		ArrayList<String> emailad = (ArrayList<String>) request.getAttribute("emailad");
+		int emailNo = 0;
 		if (emailad != null)
 			emailNo = emailad.size();
 	%>
