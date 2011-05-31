@@ -110,7 +110,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
 			conf.addAnnotatedClass(InventoryOfEquipment.class);
 			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			// conf.addAnnotatedClass(ModeOfProcurement.class);
+			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
 			conf.addAnnotatedClass(PTRPA.class);
@@ -139,7 +139,7 @@ public class HibernateUtil {
 	}
 
 	private static void createAdminAccount() throws TransactionException {
-		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
+		new AccountManagerSession().addAccount(new Account("admin", "admin", new AccountType(AccountType.SYSTEM_ADMIN), new Person("admin")));
 	}
 
 	public static Session startSession() throws HibernateException {

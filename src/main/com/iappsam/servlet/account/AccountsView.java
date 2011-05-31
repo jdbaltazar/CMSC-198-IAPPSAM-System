@@ -61,8 +61,8 @@ public class AccountsView extends HttpServlet {
 			List<Account> accounts = aManager.getAllAccounts();
 			for (int i = 0; i < accounts.size(); i++) {
 				userName.add(accounts.get(i).getUsername());
-				acctType.add(accounts.get(i).getAccountType());
-				name.add(pManager.getPerson(accounts.get(i).getPersonID()).getName());
+				acctType.add(accounts.get(i).getType().getAccountType());
+				name.add(pManager.getPerson(accounts.get(i).getPerson().getId()).getName());
 			}
 		} catch (org.hibernate.TransactionException e) {
 			e.printStackTrace();

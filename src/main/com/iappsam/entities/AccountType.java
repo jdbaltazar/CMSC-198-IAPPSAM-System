@@ -1,16 +1,39 @@
 package com.iappsam.entities;
 
-public enum AccountType {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	SYSTEM_ADMIN("System Administrator"), SPSO_PERSONNEL("SPSO Personnel"), NON_SPSO_PERSONNEL_HEAD("Non-SPSO Personnel (Head)"), NON_SPSO_PERSONNEL_EMPLOYEE("Non-SPSO Personnel (Employee)");
+@Entity
+@Table(name = "Account_Type")
+public class AccountType {
+	
+	public static final String SYSTEM_ADMIN = "System Administrator";
+	public static final String SPSO_PERSONNEL = "SPSO Personnel";
+	public static final String NON_SPSO_PERSONNEL_HEAD = "Non-SPSO Personnel (Head)";
+	public static final String NON_SPSO_PERSONNEL_EMPLOYEE = "Non-SPSO Personnel (Employee)";
+	
+	@Id
+	@Column(name = "Account_Type")
+	private String accountType;
 
-	private String name;
-
-	private AccountType(String name) {
-		this.name = name;
+	public AccountType() {
+		super();
 	}
 
-	public String toString() {
-		return name;
+	public AccountType(String accountType) {
+		super();
+		setAccountType(accountType);
 	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	
 }

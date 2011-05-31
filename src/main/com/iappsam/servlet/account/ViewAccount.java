@@ -77,11 +77,11 @@ public class ViewAccount extends HttpServlet {
 
 		try {
 			Account account = aManager.getAccount(userName);
-			Person person = pManager.getPerson(account.getPersonID());
+			Person person = pManager.getPerson(account.getPerson().getId());
 			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
 
 			username = account.getUsername();
-			acctType = account.getAccountType();
+			acctType = account.getType().getAccountType();
 			title = person.getTitle();
 			name = person.getName();
 

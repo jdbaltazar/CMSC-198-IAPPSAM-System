@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.iappsam.database.BackupDatabaseTool;
 import com.iappsam.entities.Account;
-import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Building;
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;

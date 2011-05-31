@@ -54,23 +54,34 @@ public class SearchAllItems extends HttpServlet {
 		String searchItemField = (String) request.getParameter("searchItemField");
 		ItemSearcher s = new ItemSearcher();
 		List<Item> items = new ArrayList<Item>();
+		List<Item> uniqueItems = new ArrayList<Item>();
 
 		if (searchItemField == null || (searchItemField != null && searchItemField.equalsIgnoreCase(""))) {
 			try {
 				items = ManagerBin.iManager.getAllItems();
+				uniqueItems = items;
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
-			System.out.println("keyword: "+searchItemField);
+			System.out.println("keyword: " + searchItemField);
 			items = s.search(searchItemField);
+			boolean unique = true;
+			for (Item item : items) {
+				for (Item i : uniqueItems) {
+					if (i.getId() == item.getId()) {
+						unique = false;
+					}
+				}
+				if (unique)
+					uniqueItems.add(item);
+			}
 		}
 
-		request.setAttribute("items", items);
+		request.setAttribute("items", uniqueItems);
 
 		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
 		view.forward(request, response);
 	}
-
 }
