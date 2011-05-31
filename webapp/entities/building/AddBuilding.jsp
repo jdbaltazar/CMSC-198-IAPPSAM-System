@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Add Building</title>
 <style type="text/css">
 .headerLabel{
 	font-family:Lucida Grande; 
@@ -54,24 +55,24 @@
 	width:578px;
 	height:25px;
 	z-index:1;
-	left: 371px;
-	top: 329px;
+	left: 423px;
+	top: 333px;
 }
 #background {
 	position:absolute;
 	width:578px;
 	height:198px;
 	z-index:3;
-	left: 371px;
-	top: 355px;
+	left: 423px;
+	top: 357px;
 }
 #nameDiv {
 	position:absolute;
 	width:462px;
-	height:24px;
+	height:268px;
 	z-index:3;
-	left: 480px;
-	top: 354px;
+	left: 561px;
+	top: 371px;
 }
 #divisionIDdiv {
 	position:absolute;
@@ -86,8 +87,8 @@
 	width:192px;
 	height:25px;
 	z-index:5;
-	left: 407px;
-	top: 513px;
+	left: 460px;
+	top: 516px;
 }
 #apDiv2 {
 	position:absolute;
@@ -135,8 +136,8 @@
 	width:578px;
 	height:9px;
 	z-index:10;
-	left: 371px;
-	top: 552px;
+	left: 425px;
+	top: 556px;
 }
 #border {
 	position:absolute;
@@ -185,26 +186,34 @@
 #apDiv8 {
 	position:absolute;
 	width:471px;
-	height:45px;
+	height:25px;
 	z-index:16;
-	left: -16px;
-	top: 80px;
+	left: -13px;
+	top: 72px;
 }
 #apDiv9 {
 	position:absolute;
 	width:63px;
 	height:42px;
 	z-index:16;
-	left: 158px;
-	top: 150px;
+	left: 141px;
+	top: 125px;
 }
 #apDiv10 {
 	position:absolute;
 	width:200px;
 	height:22px;
 	z-index:16;
-	left: 385px;
-	top: 330px;
+	left: 439px;
+	top: 334px;
+}
+#apDiv11 {
+	position:absolute;
+	width:100%;
+	height:80%;
+	z-index:0;
+	left: 14px;
+	top: 273px;
 }
 </style>
 </head>
@@ -244,13 +253,13 @@
   <form id="form1" name="form1" method="post" action="saveBuilding.do">
     <p>
       <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Name:</label>
-      <textarea name="name" cols="30" id="name"></textarea>
+      <input name="name" type="text" id="name" value="" size="30" maxlength="80" />
     </p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <div id="apDiv8">
       <label for="address" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Address:</label>
-      <textarea name="address" cols="30" id="address"></textarea>
+      <input name="address" type="text" id="address" value="" size="30" maxlength="200" />
     </div>
     <p>&nbsp;</p>
     <div id="apDiv9">
@@ -270,6 +279,7 @@
 <div id="footer"></div>
 <p>&nbsp;</p>
 <div class="headerLabel" id="apDiv10" >Building Information</div>
+<div id="apDiv11"></div>
 </body>
 </html>
 

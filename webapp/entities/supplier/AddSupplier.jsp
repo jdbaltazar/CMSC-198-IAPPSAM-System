@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Add Supplier</title>
 <title>Untitled Document</title>
 <style type="text/css">
 .headers{
@@ -410,15 +411,15 @@ font-weight:bold;
 	height:26px;
 	z-index:21;
 	left: -69px;
-	top: 50px;
+	top: 53px;
 }
 #apDiv24 {
 	position:absolute;
 	width:571px;
-	height:43px;
+	height:27px;
 	z-index:21;
 	left: -93px;
-	top: 97px;
+	top: 107px;
 }
 #apDiv25 {
 	position:absolute;
@@ -468,6 +469,14 @@ font-weight:bold;
 	left: 546px;
 	top: 609px;
 }
+#apDiv31 {
+	position:absolute;
+	width:100%;
+	height:200%;
+	z-index:0;
+	left: 14px;
+	top: 325px;
+}
 </style>
 </head>
 
@@ -475,7 +484,7 @@ font-weight:bold;
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -512,19 +521,19 @@ font-weight:bold;
     <p>&nbsp;</p>
     <div id="apDiv23">
       <label for="supplierName" class="labels">*Supplier Name:</label>
-      <input name="supplierName" type="text" id="supplierName" size="35" />
+      <input name="supplierName" type="text" id="supplierName" size="35" maxlength="80" />
     </div>
     <p>&nbsp;</p>
     <div id="apDiv24">
       <label for="supplierAddress" class="labels">*Supplier Address:</label>
-      <textarea name="supplierAddress" id="supplierAddress"></textarea>
+      <input name="supplierAddress" type="text" id="supplierAddress" value="" size="40" maxlength="100" />
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <div id="apDiv25">
       <label for="tin" class="labels">TIN:</label>
-      <input name="tin" type="text" id="tin" size="25" />
+      <input name="tin" type="text" id="tin" size="25" maxlength="45" />
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -533,7 +542,7 @@ font-weight:bold;
     <p>&nbsp;    </p>
     <div id="apDiv22">
       <label for="title2" class="labels">Title:</label>
-      <input type="text" name="title" id="title2" />
+      <input name="title" type="text" id="title2" maxlength="10" />
     </div>
     <p>
       <label for="title" style="font-family:Lucida Grande; font-size:16px; font-weight:bold"><br />
@@ -542,12 +551,12 @@ font-weight:bold;
 
 	<div id="apDiv8">
       <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Name:</label>
-      <input name="name" type="text"  id="name"  size="40" />
+      <input name="name" type="text"  id="name"  size="40" maxlength="80" />
     </div>
     
     <div id="apDiv9">
       <label for="designation3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Designation:</label>
-      <input name="designation2" type="text" id="designation3" size="30" />
+      <input name="designation2" type="text" id="designation3" size="30" maxlength="45" />
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -557,7 +566,7 @@ font-weight:bold;
     </p>
     <div id="apDiv10">
       <label for="employeeNumber3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Employee No.:</label>
-      <input type="text" name="employeeNumber" id="employeeNumber3" />
+      <input name="employeeNumber" type="text" id="employeeNumber3" maxlength="45" />
     </div>
     <p>
       <label for="employeeNumber2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold"><br />
@@ -579,7 +588,7 @@ font-weight:bold;
     </p>
     <div id="apDiv13">
       <label for="mobileNumber3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Cellphone Number:</label>
-      <input name="mobileNumber" type="text" id="mobileNumber3" size="25" />
+      <input name="mobileNumber" type="text" id="mobileNumber3" size="25" maxlength="45" />
     </div>
     <p>
       <label for="mobileNumber2" style="font-family:Lucida Grande; font-size:16px; font-weight:bold"><br />
@@ -587,12 +596,12 @@ font-weight:bold;
     </p>
     <div id="apDiv14">
       <label for="landline3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Landline:</label>
-      <input name="landline" type="text" id="landline3" size="25" />
+      <input name="landline" type="text" id="landline3" size="25" maxlength="45" />
     </div>
     <div id="apDiv15">
       <label for="emailad3" style="font-family:Lucida Grande; font-size:16px; font-weight:bold"><br />
         E-mail Address:</label>
-      <input name="emailad" type="text" id="emailad3" size="25" />
+      <input name="emailad" type="text" id="emailad3" size="25" maxlength="45" />
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -611,5 +620,6 @@ font-weight:bold;
 <div class="headers" id="apDiv27">Contact Person Information</div>
 <div class="headers" id="apDiv28"> Work Information</div>
 <div class="headers" id="apDiv29">Contact Information</div>
+<div id="apDiv31"></div>
 </body>
 </html>

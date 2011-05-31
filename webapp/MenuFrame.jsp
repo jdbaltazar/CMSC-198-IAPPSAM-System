@@ -1,9 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: Menu</title>
 <style type="text/css">
+.link {
+	text-decoration:none;
+	font-size: 14px;
+	font-family: Lucida Grande;
+	color: #003300;
+}
+
+.link:hover {
+	text-decoration:underline;
+	font-weight: bold;
+}
 .maroon {
 	font-size: 12px;
 	font-family: Lucida Grande;
@@ -349,6 +361,22 @@
 	left: 596px;
 	top: 536px;
 }
+#apDiv6 {
+	position:absolute;
+	width:100%;
+	height:160%;
+	z-index:0;
+	left: 11px;
+	top: 173px;
+}
+#apDiv7 {
+	position:absolute;
+	width:43px;
+	height:21px;
+	z-index:1;
+	left: 1282px;
+	top: 3px;
+}
 </style>
 </head>
 
@@ -357,7 +385,8 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+	  <td width="50%">Copyright ï¿½ 2011 All Rights Reserved</td>
+		<td width="50%">&nbsp;</td>
 	</tr>
 </table>
 </div>
@@ -485,6 +514,8 @@ Records:</div>
 	name="buildingBtn" type="submit" class="button2" id="buildingBtn"
 	value="Building" /></form>
 </div>
-
+<div id="apDiv6">
+  <div id="apDiv7"><a href="help.html" title="IAPPSAM Help" target="_blank" class="link">Help</a></div>
+</div>
 </body>
 </html>

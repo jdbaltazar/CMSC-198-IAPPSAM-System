@@ -9,16 +9,16 @@
 	width: 303px;
 	height: 22px;
 	z-index: 1;
-	left: 600px;
-	top: 165px;
+	left: 1017px;
+	top: 251px;
 }
 #header2 {
 	position: absolute;
 	width: 303px;
 	height: 8px;
 	z-index: 8;
-	left: 600px;
-	top: 433px;
+	left: 1018px;
+	top: 516px;
 }
 
 .background {
@@ -27,8 +27,8 @@
 	width: 303px;
 	height: 239px;
 	z-index: 2;
-	left: 600px;
-	top: 190px;
+	left: 1018px;
+	top: 277px;
 }
 
 .login-layout {
@@ -133,11 +133,11 @@
 
 #intromsgdiv {
 	position: absolute;
-	width: 540px;
-	height: 125px;
+	width: 998px;
+	height: 110px;
 	z-index: 9;
-	left: 10px;
-	top: 227px;
+	left: 11px;
+	top: 323px;
 }
 
 #probDiv {
@@ -196,7 +196,7 @@
 
 #footer {
 	position: absolute;
-	left: 2px;
-	top: 641px;
+	left: 1px;
+	top: 609px;
 	width: 100%;
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: Suppliers</title>
 <style type="text/css">
 .menubtn{
 	height:20px;
@@ -173,7 +173,7 @@
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright © 2011 All Rights Reserved</td>
+    <td>Copyright ï¿½ 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>

@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Add Item</title>
 
@@ -94,16 +95,16 @@
 	height: 25px;
 	z-index: 1;
 	left: 455px;
-	top: 304px;
+	top: 348px;
 }
 
 #background {
 	position: absolute;
 	width: 578px;
-	height: 584px;
+	height: 541px;
 	z-index: 2;
 	left: 455px;
-	top: 329px;
+	top: 372px;
 }
 
 #name {
@@ -279,10 +280,10 @@
 #apDiv12 {
 	position: absolute;
 	width: 413px;
-	height: 43px;
+	height: 27px;
 	z-index: 18;
-	left: -57px;
-	top: 24px;
+	left: -58px;
+	top: 50px;
 }
 
 #apDiv13 {
@@ -403,8 +404,8 @@
 	width: 324px;
 	height: 25px;
 	z-index: 16;
-	left: 471px;
-	top: 305px;
+	left: 472px;
+	top: 349px;
 }
 
 #generalBorder {
@@ -471,21 +472,21 @@
 	<div id="headerdiv" style="font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 	<div id="background" style="background-color: #EEE0E5;"></div>
 	<div id="name">
-		<form action="../stocks/SaveItem.do" method="post" name="form1" id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
+<form action="../stocks/SaveItem.do" method="post" name="form1" id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 
 			<div id="apDiv12">
 				<label for="itemDescription3" class="texts">*Description:</label>
-				<textarea name="itemDescription" cols="30" id="itemDescription3" <%if (finished) {%> disabled="disabled" <%}%>></textarea>
+                <input name="itemDescription" type="text" disabled="disabled" id="itemDescription3" value="" size="30" maxlength="500" <%if (finished) {%>="<%if (finished) {%>" <%}%>="<%}%>" />
 			</div>
 			<div id="apDiv11">
-				<label for="itemUnit" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit" <%if (finished) {%> disabled="disabled" <%}%>>
+<label for="itemUnit" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit" <%if (finished) {%> disabled="disabled" <%}%>>
 					<%
 						for (String s : itemUnits) {
 					%>
 					<option><%=s%></option>
-					<%
+<%
 						}
 					%>
 				</select>
@@ -505,8 +506,8 @@
 				</select>
 			</div>
 			<div id="apDiv13">
-				<label for="itemPrice3" class="texts">Price:</label> <input name="itemPrice" type="text" id="itemPrice3" size="10" <%if (finished) {%>
-					disabled="disabled" <%}%>
+				<label for="itemPrice3" class="texts">Price:</label> <input name="itemPrice" type="text"
+					disabled="disabled" id="itemPrice3" size="10" maxlength="50" <%if (finished) {%> <%}%>
 				/>
 			</div>
 			<div id="apDiv14">
@@ -580,11 +581,11 @@
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<div id="apDiv15">
-				<label for="stockNumber2" class="texts">Stock Number:</label> <input name="stockNumber" type="text" id="stockNumber2" size="20" />
+				<label for="stockNumber2" class="texts">Stock Number:</label> <input name="stockNumber" type="text" id="stockNumber2" size="20" maxlength="45" />
 			</div>
 			<div id="apDiv16">
-				<label for="inventoryItemNum2" class="texts">Inv. Item Number:</label> <input type="text" name="inventoryItemNum" id="inventoryItemNum2"
-					<%if (finished) {%> disabled="disabled" <%}%>
+				<label for="inventoryItemNum2" class="texts">Inv. Item Number:</label> <input name="inventoryItemNum" type="text" disabled="disabled" id="inventoryItemNum2" maxlength="60"
+					<%if (finished) {%> <%}%>
 				/>
 			</div>
 			<p>&nbsp;</p>
@@ -647,7 +648,7 @@
 		</form>
 	</div>
 	<div class="headerLabel" id="apDiv22">Item Information</div>
-	<div id="generalBorder" style="width: 100%"></div>
+<div id="generalBorder" style="width: 100%"></div>
 
 	<%
 		if (validInputs != null && validInputs.equalsIgnoreCase("false")) {

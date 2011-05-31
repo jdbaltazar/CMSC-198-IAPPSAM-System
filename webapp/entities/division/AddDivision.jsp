@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Add Division</title>
 <style type="text/css">
 .headers {
 	font-family: Lucida Grande;
@@ -446,7 +447,7 @@
 <div id="apDiv25">
 <form id="form1" name="form1" method="post" action="SaveDivision.do">
 <p><label for="divisionName" class="labels">Division Name:</label> <input
-	name="divisionName" type="text" id="divisionName" size="35" /></p>
+	name="divisionName" type="text" id="divisionName" size="35" maxlength="80" /></p>
 <div id="apDiv27"><input type="submit" name="addBtn" id="addBtn"
 	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
 	value="Add" /></div>
