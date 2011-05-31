@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
+import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Employee;
@@ -73,31 +75,24 @@ public class ViewAccount extends HttpServlet {
 		ArrayList<String> emailad = new ArrayList<String>();
 
 		String username;
-		String acctType;
+		AccountType acctType;
 
 		try {
 			Account account = aManager.getAccount(userName);
-			Person person = pManager.getPerson(account.getPerson().getId());
-			List<Contact> contact = cManager.getAllContactsByPerson(person.getId());
+			Set<Contact> contacts = account.getPerson().getContacts();
 
 			username = account.getUsername();
-			acctType = account.getType().getAccountType();
-			title = person.getTitle();
-			name = person.getName();
+			acctType = account.getType();
+			title = account.getPerson().getTitle();
+			name = account.getPerson().getName();
 
-			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getType() == ContactType.MOBILE)
-					mobileNumber.add(contact.get(i).getData());
-			}
-			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getType() == ContactType.LANDLINE)
-					landline.add(contact.get(i).getData());
-			}
-
-			for (int i = 0; i < contact.size(); i++) {
-				if (contact.get(i).getType() == ContactType.EMAIL)
-					emailad.add(contact.get(i).getData());
-			}
+			for (Contact contact : contacts)
+				if (contact.getType() == ContactType.MOBILE)
+					mobileNumber.add(contact.getData());
+				else if (contact.getType() == ContactType.LANDLINE)
+					landline.add(contact.getData());
+				else if (contact.getType() == ContactType.EMAIL)
+					landline.add(contact.getData());
 
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -107,7 +102,6 @@ public class ViewAccount extends HttpServlet {
 			request.setAttribute("userName", username);
 			request.setAttribute("acctType", acctType);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher view = request.getRequestDispatcher("../viewing/ViewAccount.jsp");

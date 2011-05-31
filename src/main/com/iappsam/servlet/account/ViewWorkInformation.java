@@ -66,8 +66,7 @@ public class ViewWorkInformation extends HttpServlet {
 		try {
 			account = aManager.getAccount(userName);
 
-			System.out.println("" + account.getPerson().getId());
-			Person person = pManager.getPerson(account.getPerson().getId());
+			Person person = account.getPerson();
 			List<Employee> employee = pManager.getEmployeeByPerson(person.getId());
 			for (int i = 0; i < employee.size(); i++) {
 				designation.add(employee.get(i).getDesignation());

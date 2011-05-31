@@ -1,9 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: Menu</title>
 <style type="text/css">
+.link {
+	text-decoration:none;
+	font-size: 14px;
+	font-family: Lucida Grande;
+	color: #003300;
+	text-align:right;
+}
+
+.link:hover {
+	text-decoration:underline;
+	font-weight: bold;
+}
 .maroon {
 	font-size: 12px;
 	font-family: Lucida Grande;
@@ -349,6 +362,22 @@
 	left: 596px;
 	top: 536px;
 }
+#apDiv6 {
+	position:absolute;
+	width:100%;
+	height:160%;
+	z-index:1;
+	left: 11px;
+	top: 173px;
+}
+#apDiv7 {
+		width:43px;
+	height:21px;
+	margin-right: 10px;
+	z-index:1;
+	/*left: 1277px;*/
+	float: right;
+}
 </style>
 </head>
 
@@ -357,7 +386,8 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+	  <td width="50%">Copyright ï¿½ 2011 All Rights Reserved</td>
+		<td width="50%">&nbsp;</td>
 	</tr>
 </table>
 </div>
@@ -475,9 +505,9 @@ Records:</div>
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Forms</div>
 <div id="supplierDiv">
 <form id="form11" name="form11" method="post"
-	action="entities/supplier/SearchSuppliers.do"><input
+	action="entities/supplier/ViewSuppliers.jsp"><input
 	name="supplierBtn" type="submit" class="button2" id="supplierBtn"
-	value="Supplier" /></form>
+	value="Supplier" disabled="disabled" /></form>
 </div>
 <div id="apDiv5">
 <form id="form15" name="form15" method="post"
@@ -485,6 +515,8 @@ Records:</div>
 	name="buildingBtn" type="submit" class="button2" id="buildingBtn"
 	value="Building" /></form>
 </div>
-
+<div id="apDiv6">
+  <div id="apDiv7"><a href="help.html" title="IAPPSAM Help" target="_blank" class="link">Help</a></div>
+</div>
 </body>
 </html>

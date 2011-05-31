@@ -139,7 +139,7 @@ public class HibernateUtil {
 	}
 
 	private static void createAdminAccount() throws TransactionException {
-		new AccountManagerSession().addAccount(new Account("admin", "admin", new AccountType(AccountType.SYSTEM_ADMIN), new Person("admin")));
+		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 
 	public static Session startSession() throws HibernateException {

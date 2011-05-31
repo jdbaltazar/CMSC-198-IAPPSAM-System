@@ -4,8 +4,9 @@
 <%@page import="com.iappsam.util.ManagerBin"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Add Employee</title>
 <style type="text/css">
 .maroon {
 	font-size: 12px;
@@ -408,6 +409,14 @@
 	top: 992px;
 	width: 100%;
 }
+#apDiv21 {
+	position:absolute;
+	width:100%;
+	height:150%;
+	z-index:0;
+	left: 12px;
+	top: 261px;
+}
 </style>
 </head>
 
@@ -416,7 +425,7 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+		<td>Copyright ï¿½ 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -466,17 +475,17 @@ Information</div>
 <form id="form1" name="form1" method="post" action="CreateEmployee.do">
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<input name="title" type="text" id="title" size="20"
+<input name="title" type="text" id="title"
+	value="<%=title%>" size="20" maxlength="10"
 	<%String title = (String) request.getAttribute("title");
-			if (title != null && !title.isEmpty()) {%>
-	value="<%=title%>" <%}%> /></p>
+			if (title != null && !title.isEmpty()) {%> <%}%> /></p>
 
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40"
+<input name="name" type="text" id="name"
+	value="<%=name%>" size="40" maxlength="80"
 	<%String name = (String) request.getAttribute("name");
-			if (name != null && !name.isEmpty()) {%>
-	value="<%=name%>" <%}%> /> <%
+			if (name != null && !name.isEmpty()) {%> <%}%> /> <%
  	if (name != null && name.isEmpty())
  		out.print("*");
  %>
@@ -484,10 +493,10 @@ Information</div>
 
 <div id="apDiv9"><label for="designation3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<input name="designation" type="text" id="designation3" size="30"
+<input name="designation" type="text" id="designation3"
+	value="<%=designation%>" size="30" maxlength="45"
 	<%String designation = (String) request.getAttribute("designation");
-			if (designation != null && !designation.isEmpty()) {%>
-	value="<%=designation%>" <%}%> /> <%
+			if (designation != null && !designation.isEmpty()) {%> <%}%> /> <%
  	if (designation != null && designation.isEmpty())
  		out.print("*");
  %>
@@ -499,11 +508,11 @@ Information</div>
 </label></p>
 <div id="apDiv10"><label for="employeeNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
+No.:</label> <input name="employeeNumber" type="text" id="employeeNumber3"
+	value="<%=employeeNumber%>" maxlength="45"
 	<%String employeeNumber = (String) request
 					.getAttribute("employeeNumber");
-			if (employeeNumber != null && !employeeNumber.isEmpty()) {%>
-	value="<%=employeeNumber%>" <%}%> /></div>
+			if (employeeNumber != null && !employeeNumber.isEmpty()) {%> <%}%> /></div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -542,29 +551,29 @@ No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25"
+	value="<%=mobileNumber%>"
+	size="25" maxlength="45"
 	<%String mobileNumber = (String) request.getAttribute("mobileNumber");
 			if (mobileNumber != null && !mobileNumber.isEmpty()
-					&& !mobileNumber.equalsIgnoreCase("null")) {%>
-	value="<%=mobileNumber%>" <%}%> /></div>
+					&& !mobileNumber.equalsIgnoreCase("null")) {%> <%}%> /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25"
+<input name="landline" type="text" id="landline3"
+	value="<%=landline%>" size="25" maxlength="45"
 	<%String landline = (String) request.getAttribute("landline");
 			if (landline != null && !landline.isEmpty()
-					&& !landline.equalsIgnoreCase("null")) {%>
-	value="<%=landline%>" <%}%> /></div>
+					&& !landline.equalsIgnoreCase("null")) {%> <%}%> /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25"
+	value="<%=emailad%>"
+	size="25" maxlength="45"
 	<%String emailad = (String) request.getAttribute("emailad");
 			if (emailad != null && !emailad.isEmpty()
-					&& !emailad.equalsIgnoreCase("null")) {%>
-	value="<%=emailad%>" <%}%> /></div>
+					&& !emailad.equalsIgnoreCase("null")) {%> <%}%> /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
@@ -577,5 +586,6 @@ E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
 </p>
 </form>
 </div>
+<div id="apDiv21"></div>
 </body>
 </html>

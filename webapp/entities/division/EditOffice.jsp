@@ -2,8 +2,9 @@
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Edit Office</title>
 <style type="text/css">
 .headers {
 	font-family: Lucida Grande;
@@ -440,8 +441,8 @@
 <form id="form1" name="form1" method="post" action="SaveOfficeEdit.do">
 <p>&nbsp;</p>
 <div id="apDiv26"><label for="newName" class="labels">New
-Name:</label> <input type="text" name="newName" id="newName"
-	value="<%=office.getOfficeName()%>" /></div>
+Name:</label> <input name="newName" type="text" id="newName"
+	value="<%=office.getOfficeName()%>" maxlength="80" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv27"><input type="submit" name="updateBtn"

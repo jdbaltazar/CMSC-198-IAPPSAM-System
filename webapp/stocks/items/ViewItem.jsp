@@ -2,8 +2,9 @@
 <%@page import="com.iappsam.entities.Item"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: View Item</title>
 <style type="text/css">
 .maroon {
 	font-size: 12px;

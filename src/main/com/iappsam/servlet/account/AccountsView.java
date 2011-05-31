@@ -49,20 +49,20 @@ public class AccountsView extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 
 		ArrayList<String> userName = new ArrayList<String>();
 		ArrayList<String> acctType = new ArrayList<String>();
 		ArrayList<String> name = new ArrayList<String>();
-		
+
 		try {
 			List<Account> accounts = aManager.getAllAccounts();
 			for (int i = 0; i < accounts.size(); i++) {
 				userName.add(accounts.get(i).getUsername());
-				acctType.add(accounts.get(i).getType().getAccountType());
-				name.add(pManager.getPerson(accounts.get(i).getPerson().getId()).getName());
+				acctType.add(accounts.get(i).getType().toString());
+				name.add(accounts.get(i).getPerson().getName());
 			}
 		} catch (org.hibernate.TransactionException e) {
 			e.printStackTrace();
@@ -78,9 +78,9 @@ public class AccountsView extends HttpServlet {
 
 		RequestDispatcher view = request.getRequestDispatcher("../accounts/ViewAccounts.jsp");
 		view.forward(request, response);
-//		OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
-//		out.write("fuck");
-//		out.flush();
+		// OutputStreamWriter out = new
+		// OutputStreamWriter(response.getOutputStream());
+		// out.write("fuck");
+		// out.flush();
 	}
-
 }

@@ -114,7 +114,8 @@ public class AccountCreation extends HttpServlet {
 		emailAdd = request.getParameter("emailad");
 		accountType = request.getParameter("acctType");
 
-		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
+		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty()
+				|| userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
 		} else
 			acceptResponse(request, response);
@@ -152,16 +153,18 @@ public class AccountCreation extends HttpServlet {
 		}
 		try {
 			pManager.addPerson(person);
-			if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Employee)"))
-				accountType = AccountType.NON_SPSO_PERSONNEL_EMPLOYEE;
-			else if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Head)"))
-				accountType = AccountType.NON_SPSO_PERSONNEL_HEAD;
-			else if (accountType.equalsIgnoreCase("SPSO Personnel"))
-				accountType = AccountType.SPSO_PERSONNEL;
-			else if (accountType.equalsIgnoreCase("System Admin"))
-				accountType = AccountType.SYSTEM_ADMIN;
 
-			Account account = new Account(userName, password, new AccountType(accountType), person);
+			AccountType type = null;
+			if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Employee)"))
+				type = AccountType.NON_SPSO_PERSONNEL_EMPLOYEE;
+			else if (accountType.equalsIgnoreCase("Non-SPSO Personnel (Head)"))
+				type = AccountType.NON_SPSO_PERSONNEL_HEAD;
+			else if (accountType.equalsIgnoreCase("SPSO Personnel"))
+				type = AccountType.SPSO_PERSONNEL;
+			else if (accountType.equalsIgnoreCase("System Admin"))
+				type = AccountType.SYSTEM_ADMIN;
+
+			Account account = new Account(userName, password, type, person);
 			Contact contactLandLine = new Contact(landline, ContactType.LANDLINE);
 			Contact contactMobile = new Contact(cellphonNumber, ContactType.MOBILE);
 			Contact contactEmail = new Contact(emailAdd, ContactType.EMAIL);
