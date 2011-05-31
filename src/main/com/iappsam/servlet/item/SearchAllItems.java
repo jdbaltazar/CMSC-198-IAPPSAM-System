@@ -52,24 +52,25 @@ public class SearchAllItems extends HttpServlet {
 		System.out.println("...inside search all items");
 
 		String searchItemField = (String) request.getParameter("searchItemField");
-			ItemSearcher s = new ItemSearcher();
-			List<Item> items = new ArrayList<Item>();
+		ItemSearcher s = new ItemSearcher();
+		List<Item> items = new ArrayList<Item>();
 
-			if (searchItemField == null || searchItemField.equalsIgnoreCase("")) {
-				try {
-					items = ManagerBin.iManager.getAllItems();
-				} catch (TransactionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				items = s.search(searchItemField);
+		if (searchItemField == null || (searchItemField != null && searchItemField.equalsIgnoreCase(""))) {
+			try {
+				items = ManagerBin.iManager.getAllItems();
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+		} else {
+			System.out.println("keyword: "+searchItemField);
+			items = s.search(searchItemField);
+		}
 
-			request.setAttribute("items", items);
+		request.setAttribute("items", items);
 
-			RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
-			view.forward(request, response);
+		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
+		view.forward(request, response);
 	}
 
 }

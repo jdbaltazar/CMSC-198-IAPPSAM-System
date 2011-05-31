@@ -50,6 +50,8 @@ import com.iappsam.entities.forms.RequisitionAndIssueSlip;
 import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
 import com.iappsam.entities.forms.WasteMaterialsReport;
 import com.iappsam.entities.forms.WasteMaterialsReportLine;
+import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.AccountManagerSession;
 
 /**
  * Startup Hibernate and provide access to the singleton SessionFactory
@@ -59,8 +61,8 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	static {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		if (!tryToBuildSessionFactory("root", "123456"))
-			throw new RuntimeException();
+		// if (!tryToBuildSessionFactory("root", "123456"))
+		// throw new RuntimeException();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -79,7 +81,6 @@ public class HibernateUtil {
 			// entities
 			conf.setProperties(p);
 			conf.addAnnotatedClass(Account.class);
-			conf.addAnnotatedClass(AccountType.class);
 			conf.addAnnotatedClass(Building.class);
 			conf.addAnnotatedClass(Contact.class);
 			conf.addAnnotatedClass(ContactType.class);
@@ -127,11 +128,18 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(WasteMaterialsReportLine.class);
 
 			sessionFactory = conf.buildSessionFactory();
+
+			createAdminAccount();
 			return true;
 		} catch (Throwable ex) {
 			ex.printStackTrace();
+			sessionFactory = null;
 			return false;
 		}
+	}
+
+	private static void createAdminAccount() throws TransactionException {
+		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 
 	public static Session startSession() throws HibernateException {
