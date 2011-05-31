@@ -16,7 +16,7 @@
 			</tr>
 		</table>
 	</div>
-	<div id="header" a	lign="center">
+	<div id="header" align="center">
 		<div style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 18px; font-weight: bold">Login</div>
 	</div>
 	<div class="background">
