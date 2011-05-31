@@ -495,7 +495,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="form12" name="form12" method="post" action="logout"><input
+<form id="logout" name="form12" method="post" action="logout"><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>
@@ -504,9 +504,9 @@ Records:</div>
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Forms</div>
 <div id="supplierDiv">
 <form id="form11" name="form11" method="post"
-	action="entities/supplier/ViewSuppliers.jsp"><input
+	action="entities/supplier/SearchSuppliers.do"><input
 	name="supplierBtn" type="submit" class="button2" id="supplierBtn"
-	value="Supplier" disabled="disabled" /></form>
+	value="Supplier" /></form>
 </div>
 <div id="apDiv5">
 <form id="form15" name="form15" method="post"

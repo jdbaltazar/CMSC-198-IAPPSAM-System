@@ -390,7 +390,7 @@
 <p>&nbsp;</p>
 <div id="apDiv9"></div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>

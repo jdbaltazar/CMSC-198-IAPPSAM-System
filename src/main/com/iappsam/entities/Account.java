@@ -1,8 +1,13 @@
 package com.iappsam.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Account {
@@ -18,21 +23,22 @@ public class Account {
 	private boolean acquainted;
 
 	@Column(name = "Account_Type")
-	private String accountType;
+	private AccountType type;
 
-	@Column(name = "Person_ID")
-	private int personID;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Person_ID")
+	private Person person;
 
 	public Account() {
 		super();
 	}
 
-	public Account(String username, String password, String accountType, int personID) {
+	public Account(String username, String password, AccountType type, Person person) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.accountType = accountType;
-		this.personID = personID;
+		this.type = type;
+		this.person = person;
 	}
 
 	public String getUsername() {
@@ -43,28 +49,28 @@ public class Account {
 		return password.equals(word);
 	}
 
-	public String getAccountType() {
-		return accountType;
-	}
-
-	public int getPersonID() {
-		return personID;
-	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	public AccountType getType() {
+		return type;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public void setType(AccountType type) {
+		this.type = type;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
-
-	public void setPersonID(int personID) {
-		this.personID = personID;
 	}
 
 	public boolean isAcquainted() {

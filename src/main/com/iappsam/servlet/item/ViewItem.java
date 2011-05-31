@@ -15,6 +15,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.util.DateUtil;
+import com.iappsam.util.ManagerBin;
 
 @WebServlet("/items/ViewItem.do")
 public class ViewItem extends HttpServlet {
@@ -31,16 +32,11 @@ public class ViewItem extends HttpServlet {
 
 		System.out.println("view item was called!!!");
 
-
-		ItemManager iManager = new ItemManagerSession();
-		String description = (String) request.getParameter("description");
-
-		System.out.println("item description: " + description);
+		int itemID = Integer.parseInt((String)request.getParameter("itemID"));
 
 		Item item = null;
 		try {
-			item = iManager.getItemByDescription(description);
-			
+			item = ManagerBin.iManager.getItem(itemID);
 		} catch (TransactionException e1) {
 			e1.printStackTrace();
 		}
@@ -54,8 +50,6 @@ public class ViewItem extends HttpServlet {
 				String day = DateUtil.getDayEquivalent(date);
 				String month = DateUtil.getMonthEquivalentInWords(date);
 				String year = DateUtil.getYearEquivalent(date);
-
-				System.out.println("vvvvvvvvvvvvvvvvvvvvvvvviiiiiiiiiiiiiiiiiiiiewwwwwwwwwwwwwwwwwwwww");
 
 				System.out.println("day:month:year>" + day + ":" + month + ":" + year);
 

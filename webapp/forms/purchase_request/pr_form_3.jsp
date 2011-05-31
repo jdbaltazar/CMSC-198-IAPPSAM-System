@@ -4,6 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.requiredLabel{
+	font-family:Lucida Grande;
+	font-size:10px;
+	color:red;
+}
 .header{
 	background-color:#7B1113;
 	width:578px;
@@ -84,80 +89,80 @@
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
 }
-#headerDiv {
+#header {
 	position:absolute;
 	z-index:1;
-	left: 407px;
-	top: 267px;
+	left: 425px;
+	top: 326px;
 }
 #background {
 	position:absolute;
-	width:578px;
-	height:239px;
+	width:579px;
+	height:229px;
 	z-index:2;
-	left: 407px;
-	top: 291px;
+	left: 425px;
+	top: 350px;
 }
 #apDiv1 {
 	position:absolute;
-	width:290px;
-	height:323px;
+	width:379px;
+	height:298px;
 	z-index:3;
-	left: 583px;
-	top: 305px;
+	left: 558px;
+	top: 357px;
 }
 #apDiv2 {
 	position:absolute;
-	width:435px;
-	height:28px;
+	width:285px;
+	height:26px;
 	z-index:4;
-	left: 49px;
-	top: 11px;
+	left: 5px;
+	top: 59px;
 }
 #apDiv3 {
 	position:absolute;
-	width:221px;
-	height:26px;
+	width:487px;
+	height:27px;
 	z-index:4;
-	left: 407px;
-	top: 319px;
+	left: -46px;
+	top: 86px;
 }
 #apDiv4 {
 	position:absolute;
-	width:251px;
-	height:33px;
-	z-index:5;
-	left: -54px;
-	top: 117px;
+	width:444px;
+	height:26px;
+	z-index:4;
+	left: -40px;
+	top: 127px;
 }
 #apDiv5 {
 	position:absolute;
-	width:200px;
+	width:78px;
 	height:29px;
-	z-index:5;
-	left: -11px;
-	top: 157px;
+	z-index:4;
+	left: 151px;
+	top: 173px;
 }
 #apDiv6 {
 	position:absolute;
-	width:80px;
-	height:30px;
-	z-index:5;
-	left: 100px;
-	top: 177px;
+	width:581px;
+	height:9px;
+	z-index:4;
+	left: 425px;
+	top: 580px;
 }
 #apDiv7 {
 	position:absolute;
-	width:579px;
-	height:9px;
+	width:200px;
+	height:18px;
 	z-index:5;
-	left: 407px;
-	top: 531px;
+	left: 458px;
+	top: 542px;
 }
 #pageLabel {
 	position:absolute;
 	width:200px;
-	height:53px;
+	height:49px;
 	z-index:1;
 	top:181px;
 	left: 13px;
@@ -176,37 +181,12 @@
 	left: 14px;
 	top: 143px;
 }
-#apDiv8 {
-	position:absolute;
-	width:479px;
-	height:29px;
-	z-index:16;
-	left: -11px;
-	top: 51px;
-}
-#apDiv9 {
-	position:absolute;
-	width:486px;
-	height:28px;
-	z-index:16;
-	left: -18px;
-	top: 87px;
-}
-#apDiv10 {
-	position:absolute;
-	width:510px;
-	height:27px;
-	z-index:16;
-	left: -44px;
-	top: 121px;
-}
 #footer{
 	position:absolute;
-	left: 2px;
-	top: 627px;
+	left: 1px;
+	top: 692px;
 	width: 100%;
 }
-
 </style>
 </head>
 
@@ -214,7 +194,7 @@
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
-    <td>Copyright Â© 2011 All Rights Reserved</td>
+    <td>Copyright © 2011 All Rights Reserved</td>
   </tr>
 </table>
 </div>
@@ -222,13 +202,13 @@
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="21%"><table width="100%" frame="below">
+    <td width="22%"><table width="100%" frame="below">
       <tr>
         <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Purchase Request Form</td>
       </tr>
     </table></td>
-    <td width="75%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../../FormsMenuPage.html">
+    <td width="74%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="PR_Form_2.html">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -239,67 +219,36 @@
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
+<div class="header" id="header"></div>
 <div class="background" id="background"></div>
+<div class="header" id="apDiv6"></div>
+<div class="requiredLabel" id="apDiv7"><em><strong>ALL</strong> fields are required</em></div>
+<p>&nbsp;</p>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="PR_Form_2.html">
+  <form id="form1" name="form1" method="post" action="">
+    <p>
+      <label for="purpose" class="labels">Purpose:</label>
+      <textarea name="purpose" id="purpose"></textarea>
+    </p>
     <p>&nbsp;</p>
-    <div id="apDiv2">
-      <label for="nameOfAcctableOfficer"></label>
-      <select name="deptAndSection" id="deptAndSection">
-</select>
-    </div>
     <p>&nbsp;</p>
-    <div id="apDiv6">
-      <input name="nextBtn" type="submit" class="maroon" id="nextBtn" value="Next&gt;&gt;" />
-    </div>
-    <p>&nbsp;</p>
-    <div id="apDiv8">
-      <label for="prNumber" class="labels">PR.No.:</label>
-      <input name="prNumber" type="text" id="prNumber" size="15" />
-      <label for="PRmonth" class="labels">Date:</label>
-      <select name="PRmonth" id="PRmonth">
-      </select>
-      <select name="PRday" id="PRday">
-      </select>
-      <select name="PRyear" id="PRyear">
-      </select>
-    </div>
-    <div id="apDiv9">
-      <label for="saiNumber" class="labels">SAI No.:</label>
-      <input name="saiNumber" type="text" id="saiNumber" size="15" /> 
-      <label for="SAImonth" class="labels">Date:</label>
-      <select name="SAImonth" id="SAImonth">
-      </select>
-      <select name="SAIday" id="SAIday">
-      </select>
-      <select name="SAIyear" id="SAIyear">
+    <div id="apDiv3">
+      <label for="requestedBy" class="labels">Requested by:</label>
+      <select name="requestedBy" id="requestedBy">
       </select>
     </div>
     <p>&nbsp;</p>
-    <div id="apDiv10">
-      <label for="alobsNumber" class="labels">ALOBS No.:</label>
-      <input name="alobsNumber" type="text" id="alobsNumber" size="15" /> 
-      <label for="ALOBSmonth" class="labels">Date:</label>
-      <select name="ALOBSmonth" id="ALOBSmonth">
-      </select>
-      <select name="ALOBSday" id="ALOBSday">
-      </select>
-      <select name="ALOBSyear" id="ALOBSyear">
+    <div id="apDiv4">
+      <label for="approvedby" class="labels">Approved by:</label>
+      <select name="approvedby" id="approvedby">
       </select>
     </div>
     <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-
+    <div id="apDiv5">
+      <input name="finishBtn" type="submit" class="maroon" id="finishBtn" value="Finish" />
+    </div>
 
   </form>
 </div>
-<div class="labels" id="apDiv3">
-  <div align="right">Department &amp; Section:
-  </div>
-</div>
-<div class="header" id="apDiv7"></div>
-<p>&nbsp;</p>
-<div class="header" id="headerDiv"></div>
 </body>
 </html>

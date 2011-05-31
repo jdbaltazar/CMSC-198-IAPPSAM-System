@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.util.Cleaner;
+import com.iappsam.util.Verifier;
 
 @WebServlet("/forms/formsmenu")
 public class FormsMenuPage extends HttpServlet {
@@ -17,9 +18,8 @@ public class FormsMenuPage extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		System.out.println("...inside formsmenu.java");
-		
 		Cleaner.clean(request);
 		request.getRequestDispatcher("FormsMenuPage.jsp").forward(request, response);
 	}

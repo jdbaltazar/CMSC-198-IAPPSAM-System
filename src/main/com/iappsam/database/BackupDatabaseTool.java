@@ -17,7 +17,7 @@ public class BackupDatabaseTool{
     private String username = "root";
     String dbname = "IAPPSAM";
     public String fileName= "IAPPSAMS DB Backup ";
-    public String filePath = "C:/IAPPSAMS DB backup/";
+    public String filePath = "C:\\IAPPSAMS DB backup\\";
     String backupURL = filePath;
 
     @SuppressWarnings("static-access")

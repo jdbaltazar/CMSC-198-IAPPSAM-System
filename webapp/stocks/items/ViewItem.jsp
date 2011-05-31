@@ -72,7 +72,7 @@
 #background {
 	position: absolute;
 	width: 578px;
-	height: 496px;
+	height: 570px;
 	z-index: 2;
 	left: 383px;
 	top: 350px;
@@ -192,8 +192,8 @@
 	width: 578px;
 	height: 9px;
 	z-index: 14;
-	left: 383px;
-	top: 848px;
+	left: 382px;
+	top: 921px;
 }
 
 #apDiv8 {
@@ -325,8 +325,8 @@
 	width: 68px;
 	height: 35px;
 	z-index: 18;
-	left: 81px;
-	top: 528px;
+	left: 94px;
+	top: 510px;
 }
 
 #apDiv21 {
@@ -412,7 +412,7 @@
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
