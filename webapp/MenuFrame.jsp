@@ -10,6 +10,7 @@
 	font-size: 14px;
 	font-family: Lucida Grande;
 	color: #003300;
+	text-align:right;
 }
 
 .link:hover {
@@ -365,17 +366,17 @@
 	position:absolute;
 	width:100%;
 	height:160%;
-	z-index:0;
+	z-index:1;
 	left: 11px;
 	top: 173px;
 }
 #apDiv7 {
-	position:absolute;
-	width:43px;
+		width:43px;
 	height:21px;
+	margin-right: 10px;
 	z-index:1;
-	left: 1282px;
-	top: 3px;
+	/*left: 1277px;*/
+	float: right;
 }
 </style>
 </head>
@@ -495,7 +496,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="logout" name="form12" method="post" action="logout"><input
+<form id="form12" name="form12" method="post" action="logout"><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>
@@ -504,9 +505,9 @@ Records:</div>
 	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Forms</div>
 <div id="supplierDiv">
 <form id="form11" name="form11" method="post"
-	action="entities/supplier/SearchSuppliers.do"><input
+	action="entities/supplier/ViewSuppliers.jsp"><input
 	name="supplierBtn" type="submit" class="button2" id="supplierBtn"
-	value="Supplier" /></form>
+	value="Supplier" disabled="disabled" /></form>
 </div>
 <div id="apDiv5">
 <form id="form15" name="form15" method="post"

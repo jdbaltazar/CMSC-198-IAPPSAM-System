@@ -110,7 +110,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
 			conf.addAnnotatedClass(InventoryOfEquipment.class);
 			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			// conf.addAnnotatedClass(ModeOfProcurement.class);
+			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
 			conf.addAnnotatedClass(PTRPA.class);
