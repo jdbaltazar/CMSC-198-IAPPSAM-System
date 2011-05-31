@@ -4,7 +4,7 @@
 <%@page import="com.iappsam.util.ManagerBin"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="shortcut icon" href="favicon.ico" />
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Employee</title>
 <style type="text/css">
@@ -444,14 +444,16 @@
 								style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
 								Employee</td>
 						</tr>
-					</table></td>
+					</table>
+				</td>
 				<td width="83%">&nbsp;</td>
 				<td width="4%">
 					<form id="form15" name="form15" method="post"
 						action="SearchEmployee.do">
 						<input name="backBtn" type="submit" class="button" id="backBtn"
 							value="Back" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 		</table>
 	</div>

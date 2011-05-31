@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="shortcut icon" href="favicon.ico" />
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Stock Properties</title>
 <style type="text/css">
@@ -28,9 +28,13 @@
   border-bottom: 1px solid #7B1113;
 }
 .header{
+	color:white;
 	background-color:#7B1113;
-	width:578px;
-	height:25px;
+	text-align:center;
+	text-shadow:#999;
+	font-family:Lucida Grande; 
+	font-size:12px; 
+	font-weight:bold;
 }
 
 .background{
@@ -271,8 +275,8 @@
       <input name="disposalBtn" type="submit" class="menubtn" id="disposalBtn" value="Disposal" />
     </form>
   </div>
-  <div class="header" id="apDiv1"></div>
-  <div class="header" id="apDiv2"></div>
+  <div class="header" id="apDiv1">Item Properties</div>
+  <div class="header" id="apDiv2">Others</div>
 </div>
 </body>
 </html>

@@ -434,7 +434,7 @@
 </form>
 </div>
 <div id="viewSysLogdiv">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="database/ViewSystemLog.jsp"><input
 	name="viewSysLogBtn" type="submit" class="button" id="viewSysLogBtn"
 	value="View System Log" /></form>
 </div>
