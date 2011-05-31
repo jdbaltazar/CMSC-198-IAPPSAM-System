@@ -1,7 +1,8 @@
-<%@page import="com.iappsam.entities.Building"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.Item"%>
+<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.entities.ItemCategory"%>
+<%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -88,16 +89,7 @@
 	width: 471px;
 	height: 33px;
 	z-index: 1;
-	left: 379px;
-	top: 285px;
-}
-
-#apDiv1 {
-	position: absolute;
-	width: 200px;
-	height: 29px;
-	z-index: 2;
-	left: 808px;
+	left: 501px;
 	top: 288px;
 }
 
@@ -162,20 +154,11 @@
 
 #apDiv9 {
 	position: absolute;
-	width: 872px;
-	height: 23px;
+	width: 959px;
+	height: 441px;
 	z-index: 3;
-	left: 0px;
-	top: 384px;
-}
-
-#apDiv10 {
-	position: absolute;
-	width: 871px;
-	height: 174px;
-	z-index: 4;
-	left: 0px;
-	top: 407px;
+	left: 3px;
+	top: 380px;
 }
 
 #pageLabel {
@@ -202,88 +185,149 @@
 	left: 14px;
 	top: 143px;
 }
+
+#footer {
+	position: absolute;
+	left: 1px;
+	top: 843px;
+	width: 100%;
+}
+
+#apDiv10 {
+	position: absolute;
+	width: 119px;
+	height: 17px;
+	z-index: 16;
+	left: 584px;
+	top: 336px;
+}
+
+#apDiv11 {
+	position: absolute;
+	width: 104px;
+	height: 28px;
+	z-index: 17;
+	left: 692px;
+	top: 325px;
+}
+
+#apDiv9_2 {
+	position: absolute;
+	width: 872px;
+	height: 18px;
+	z-index: 3;
+	left: 0px;
+	top: 429px;
+}
+
+#apDiv10_2 {
+	position: absolute;
+	width: 871px;
+	height: 174px;
+	z-index: 4;
+	left: 1px;
+	top: 449px;
+}
+
+#apDiv1 {
+	position: absolute;
+	width: 200px;
+	height: 29px;
+	z-index: 2;
+	left: -3px;
+	top: -57px;
+}
 </style>
 </head>
 
+<%
+	ArrayList<String> itemID = (ArrayList<String>) session
+			.getAttribute("itemList");
+	ArrayList<Item> itemList = new ArrayList<Item>();
+	for (int i = 0; i < itemID.size(); i++)
+		itemList.add(ManagerBin.iManager.getItem(Integer
+				.parseInt(itemID.get(i))));
+%>
+<body>
 <div id="logoHeader" style="width: 100%"><img name=""
 	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="11%">
+		<td width="14%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Buildings</td>
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Remove
+				Article/s</td>
 			</tr>
 		</table>
 		</td>
-		<td width="85%">&nbsp;</td>
+		<td width="82%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post" action="../../menu"><input
+		<form id="form15" name="form15" method="post" action="pr_form_2.jsp"><input
 			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../../logout"><input
+<form id="form2" name="form2" method="post" action=""><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
-<div id="searchEmployeesDiv">
-<form id="form1" name="form1" method="post" action=""><label
-	for="searchBuildingField" class="labels">Search:</label> <input
-	name="searchBuildingField" type="text" id="searchBuildingField"
-	size="35" /> <input name="goSearchBtn" type="submit" class="maroon"
-	id="goSearchBtn" value="GO" /></form>
-</div>
-<div id="apDiv1">
-<form id="form2" name="form2" method="post"
-	action="../../entities/building/AddBuilding.jsp"><input
-	name="addBuildingBtn" type="submit" class="maroon" id="addBuildingBtn"
-	value="Add Building &gt;&gt;" /></form>
-</div>
-<div id="apDiv10" style="width: 100%">
+<div id="apDiv10_2" style="width: 100%">
+
+<form id="form2" name="form2" method="post" action="pr_form_remove_item.do">
+<div id="apDiv1"><input name="addAllBtn" type="submit"
+	class="maroon" id="addAllBtn" value="Remove Selected Items &gt;&gt;" /></div>
 <table width="100%" cellspacing="0" frame="box" class="resultTable">
 	<%
-		List<Building> buildings = (List<Building>) request.getAttribute("buildings");
+		boolean rowOdd = true;
+		if (itemList != null) {
+			for (int i = 0; i < itemList.size(); i++) {
 	%>
-	<%
-		for (int i = 0; i < buildings.size(); i++) {
-	%>
-	<%
-		if (i % 2 == 0)
-				out.print("<tr class=\"tablerow_1\">");
-			else
-				out.print("<tr>");
-	%>
-
-	<td width="37%"><%=buildings.get(i).getBuildingName()%></td>
-	<td width="44%"><%=buildings.get(i).getBuildingAddress()%></td>
-	<td width="19%" align="center">
-	<form id="form3" name="form3" method="post" action=""><input
-		name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
-		value="Edit >>" disabled="disabled" /> <input type="hidden"
-		name="buildingID" value="<%=buildings.get(i).getBuildingID()%>"></input></form>
-	</td>
+	<tr
+		<%if (rowOdd) {
+						out.print("class=" + '"' + "tablerow_1" + '"');
+						rowOdd = !rowOdd;
+					} else
+						rowOdd = !rowOdd;%>>
+		<td width="9%" align="center"><input type="checkbox"
+			name="include1" id="include1" value="<%=itemList.get(i).getId()%>" />
+		<label for="include_1"></label></td>
+		<td width="54%"><%=itemList.get(i).getDescription()%></td>
+		<td width="37%"><%=itemList.get(i).getItemCategory().getName()%></td>
 	</tr>
 	<%
 		}
+		}
 	%>
 </table>
+
+</form>
 <p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
-<div id="apDiv9" style="width: 100%">
-<table width="100%" border="1" cellspacing="0" class="tableheaders">
+<div id="apDiv9_2" style="width: 100%">
+<table width="100%" border="0" cellspacing="0" class="tableheaders">
 	<tr>
-		<td width="37%">Building Name</td>
-		<td width="44%">Address</td>
-		<td width="19%">Action</td>
+		<td width="9%">Include</td>
+		<td width="54%">Item Description</td>
+		<td width="37%">Item Category</td>
 	</tr>
 </table>
 </div>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </body>
 </html>
 

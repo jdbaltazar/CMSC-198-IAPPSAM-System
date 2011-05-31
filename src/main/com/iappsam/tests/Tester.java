@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.iappsam.database.BackupDatabaseTool;
 import com.iappsam.entities.Account;
 import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Building;
@@ -512,21 +513,26 @@ public class Tester {
 //			for(Contact c2: cons){
 //				System.out.println(c2.getData());
 //			}
-		try{	
-		
-		PersonManager pManager = new PersonManagerSession();
-		
-//		List<Person>persons = pManager.getAllPersons();
-//		System.out.println("size: "+persons.size());
-		
-		System.out.println("size of employees: "+pManager.getAllEmployee().size());
-		
-			
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try{	
+//		
+//		PersonManager pManager = new PersonManagerSession();
+//		
+////		List<Person>persons = pManager.getAllPersons();
+////		System.out.println("size: "+persons.size());
+//		
+//		System.out.println("size of employees: "+pManager.getAllEmployee().size());
+//		
+//			
+//		} catch (TransactionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
+		BackupDatabaseTool bdTool = new BackupDatabaseTool();
+		String fileName = bdTool.getFileName();
+		String filePath = bdTool.getFilePath();
+		
+		System.out.println("filePath: "+filePath);
 
 	}
 }

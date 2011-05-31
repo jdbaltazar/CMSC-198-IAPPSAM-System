@@ -1,3 +1,5 @@
+<%@page import="com.iappsam.entities.Item"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -254,31 +256,32 @@
 		</td>
 		<td width="89%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="../menu"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" action = ""/></form>
+		<form id="form15" name="form15" method="post" action="../menu"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back"
+			action="" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="searchEmployeesDiv">
-<form id="form1" name="form1" method="post" action="../items/SearchAllItems.do"><label
-	for="searchItemField" class="labels">Search:</label> <input
-	name="searchItemField" type="text" id="searchItemField" size="35" /> <input
+<form id="form1" name="form1" method="post"
+	action="../items/SearchAllItems.do"><label for="searchItemField"
+	class="labels">Search:</label> <input name="searchItemField"
+	type="text" id="searchItemField" size="35" /> <input
 	name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn"
 	value="GO" /></form>
 </div>
 <div id="apDiv1">
-<form id="form2" name="form2" method="post" action="../stocks/AddItem.do">
-<input name="addItemBtn" type="submit" class="maroon" id="addItemBtn"
-	value="Add Item &gt;&gt;" /></form>
+<form id="form2" name="form2" method="post"
+	action="../stocks/AddItem.do"><input name="addItemBtn"
+	type="submit" class="maroon" id="addItemBtn" value="Add Item &gt;&gt;" /></form>
 </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv9"></div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
@@ -286,13 +289,11 @@
 <table width="100%" cellspacing="0" frame="box" class="resultTable">
 
 	<%
-		ArrayList<String> descriptions = (ArrayList<String>) request.getAttribute("itemDescription");
-		ArrayList<String> categories = (ArrayList<String>) request
-				.getAttribute("itemCategory");
-		int size = descriptions.size();
+		List<Item> items = (List<Item>) request.getAttribute("items");
 	%>
 	<%
-		for (int i = 0; i < size; i++) {
+		int i = 0;
+		for (Item item : items) {
 	%>
 	<%
 		if (i % 2 == 0)
@@ -301,16 +302,17 @@
 				out.print("<tr>");
 	%>
 
-	<td width="46%"><%=descriptions.get(i)%></td>
-	<td width="35%"><%=categories.get(i)%></td>
+	<td width="46%"><%=item.getDescription()%></td>
+	<td width="35%"><%=item.getItemCategory().getName()%></td>
 	<td width="19%" align="center">
-	<form id="form3" name="form3" method="post" action="../items/ViewItem.do">
-	<input name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
-		value="View >>" /><input
-			type="hidden" name="description" value=<%=descriptions.get(i)%> /></form>
+	<form id="form3" name="form3" method="post"
+		action="../items/ViewItem.do"><input name="viewBtn"
+		type="submit" class="viewbutton" id="viewBtn" value="View >>" /><input
+		type="hidden" name="itemID" value=<%="" + item.getId()%> /></form>
 	</td>
 	</tr>
 	<%
+		i++;
 		}
 	%>
 </table>

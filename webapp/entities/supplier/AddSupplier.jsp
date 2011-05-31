@@ -489,14 +489,14 @@ font-weight:bold;
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="SearchEmployee.html">
+    <td width="4%"><form id="form15" name="form15" method="post" action="SearchSuppliers.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
 </table>
 </div>
 <div id="logoutiv" style="width:90%">
-  <form id="form2" name="form2" method="post" action="">
+  <form id="form2" name="form2" method="post" action="../../logout">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
@@ -508,7 +508,7 @@ font-weight:bold;
 <p>&nbsp;</p>
 <div id="personalInfo" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="titleDiv">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="SaveSupplier.do">
     <p>&nbsp;</p>
     <div id="apDiv23">
       <label for="supplierName" class="labels">*Supplier Name:</label>

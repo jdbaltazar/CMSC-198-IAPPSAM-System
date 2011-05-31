@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.supplier;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,25 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Building;
-import com.iappsam.entities.Item;
-import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.ItemManager;
+import com.iappsam.entities.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.search.ItemSearcher;
-import com.iappsam.search.Searcher;
+import com.iappsam.util.ManagerBin;
 
-@WebServlet("/entities/building/SearchAllBuildings.do")
-public class SearchAllBuildings extends HttpServlet{
-
+/**
+ * Servlet implementation class SearchSuppliers
+ */
+@WebServlet("/entities/supplier/SearchSuppliers.do")
+public class SearchSuppliers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchAllBuildings() {
+	public SearchSuppliers() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,20 +37,26 @@ public class SearchAllBuildings extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("SearchBuildings.jsp");
-		
-		List<Building> buildings = new ArrayList<Building>();
+		// TODO Auto-generated method stub
+
+		System.out.println("..........inside searchSuppliers.java");
+		List<Supplier> suppliers = new ArrayList<Supplier>();
 
 		try {
-			buildings = doManager.getAllBuildings();
+			suppliers = ManagerBin.sManager.getAllSuppliers();
 		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("buildings", buildings);
-		
+
+		request.setAttribute("suppliers", suppliers);
+		RequestDispatcher view = request.getRequestDispatcher("SearchSuppliers.jsp");
 		view.forward(request, response);
 
 	}

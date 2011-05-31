@@ -23,14 +23,14 @@ import com.iappsam.util.Verifier;
 /**
  * Servlet implementation class SearchAllItems
  */
-@WebServlet("/items/SearchAllItems.do")
-public class SearchAllItems extends HttpServlet {
+@WebServlet("/items/ViewAllItems.do")
+public class ViewAllItems extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchAllItems() {
+	public ViewAllItems() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -49,27 +49,20 @@ public class SearchAllItems extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("...inside search all items");
+		System.out.println("...view search all items");
 
-		String searchItemField = (String) request.getParameter("searchItemField");
-			ItemSearcher s = new ItemSearcher();
-			List<Item> items = new ArrayList<Item>();
-
-			if (searchItemField == null || searchItemField.equalsIgnoreCase("")) {
-				try {
-					items = ManagerBin.iManager.getAllItems();
-				} catch (TransactionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				items = s.search(searchItemField);
-			}
-
-			request.setAttribute("items", items);
-
-			RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
-			view.forward(request, response);
+		List<Item>items = new ArrayList<Item>();
+		
+		try {
+			items = ManagerBin.iManager.getAllItems();
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("items", items);
+		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
+		view.forward(request, response);
 	}
 
 }

@@ -20,7 +20,12 @@ public class Menu extends HttpServlet {
 		
 		System.out.println("...inside menu.java");
 		
+		
+		String username = (String)request.getAttribute("username");
+		System.out.println("usernaem: "+username);
 		Cleaner.clean(request);
+//		String username = (String)request.getAttribute("username");
+		request.setAttribute("username", username);
 		request.getRequestDispatcher("MenuFrame.jsp").forward(request, response);
 	}
 }

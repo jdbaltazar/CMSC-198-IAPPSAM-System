@@ -1,13 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="java.util.List"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.entities.Person"%>
+<%@page import="com.iappsam.entities.Employee"%>
+<%@page import="com.iappsam.entities.Supplier"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
+<title>Untitled Document</title>
 <style type="text/css">
+.headers {
+	text-align: left;
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.labels {
+	font-family: Lucida Grande;
+	font-size: 16px;
+	font-weight: bold;
+}
+
 .maroon {
 	font-size: 12px;
 	font-family: Lucida Grande;
@@ -54,17 +68,17 @@
 	width: 578px;
 	height: 25px;
 	z-index: 1;
-	left: 376px;
-	top: 290px;
+	left: 389px;
+	top: 666px;
 }
 
 #titleDiv {
 	position: absolute;
 	width: 388px;
-	height: 663px;
+	height: 910px;
 	z-index: 3;
-	left: 497px;
-	top: 326px;
+	left: 511px;
+	top: 356px;
 }
 
 #nameDiv {
@@ -79,10 +93,10 @@
 #background {
 	position: absolute;
 	width: 578px;
-	height: 567px;
+	height: 514px;
 	z-index: 3;
-	left: 376px;
-	top: 316px;
+	left: 389px;
+	top: 690px;
 }
 
 #designationDiv {
@@ -185,8 +199,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 12;
-	left: 375px;
-	top: 442px;
+	left: 389px;
+	top: 817px;
 }
 
 #apDiv3 {
@@ -194,8 +208,8 @@
 	width: 578px;
 	height: 9px;
 	z-index: 13;
-	left: 376px;
-	top: 883px;
+	left: 389px;
+	top: 1205px;
 }
 
 #border {
@@ -212,8 +226,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 14;
-	left: 376px;
-	top: 630px;
+	left: 389px;
+	top: 965px;
 }
 
 #apDiv4 {
@@ -248,8 +262,8 @@
 	width: 200px;
 	height: 18px;
 	z-index: 18;
-	left: 404px;
-	top: 848px;
+	left: 412px;
+	top: 1171px;
 }
 
 #acctTypediv {
@@ -266,8 +280,8 @@
 	width: 480px;
 	height: 32px;
 	z-index: 19;
-	left: -18px;
-	top: 65px;
+	left: 2px;
+	top: 409px;
 }
 
 #apDiv9 {
@@ -275,8 +289,8 @@
 	width: 380px;
 	height: 29px;
 	z-index: 19;
-	top: 163px;
-	left: -55px;
+	top: 503px;
+	left: -30px;
 }
 
 #apDiv10 {
@@ -284,8 +298,8 @@
 	width: 313px;
 	height: 28px;
 	z-index: 19;
-	left: -61px;
-	top: 210px;
+	left: -33px;
+	top: 551px;
 }
 
 #apDiv11 {
@@ -311,8 +325,8 @@
 	width: 453px;
 	height: 28px;
 	z-index: 19;
-	left: -77px;
-	top: 354px;
+	left: -59px;
+	top: 654px;
 }
 
 #apDiv14 {
@@ -320,8 +334,8 @@
 	width: 394px;
 	height: 25px;
 	z-index: 19;
-	left: 5px;
-	top: 407px;
+	left: 23px;
+	top: 707px;
 }
 
 #apDiv15 {
@@ -329,8 +343,8 @@
 	width: 429px;
 	height: 19px;
 	z-index: 19;
-	left: -51px;
-	top: 437px;
+	left: -33px;
+	top: 737px;
 }
 
 #apDiv16 {
@@ -374,14 +388,14 @@
 	width: 66px;
 	height: 37px;
 	z-index: 19;
-	left: 124px;
-	top: 504px;
+	left: 152px;
+	top: 805px;
 }
 
 #pageLabel {
 	position: absolute;
 	width: 200px;
-	height: 50px;
+	height: 39px;
 	z-index: 1;
 	top: 181px;
 	left: 13px;
@@ -405,14 +419,123 @@
 
 #footer {
 	position: absolute;
-	left: 1px;
-	top: 992px;
+	left: 2px;
+	top: 1339px;
 	width: 100%;
+}
+
+#background_1 {
+	position: absolute;
+	width: 578px;
+	height: 194px;
+	z-index: 0;
+	left: 388px;
+	top: 384px;
+}
+
+#apDiv21 {
+	position: absolute;
+	width: 577px;
+	height: 23px;
+	z-index: 20;
+	left: 388px;
+	top: 361px;
+}
+
+#apDiv22 {
+	position: absolute;
+	width: 303px;
+	height: 26px;
+	z-index: 21;
+	left: 19px;
+	top: 360px;
+}
+
+#apDiv23 {
+	position: absolute;
+	width: 506px;
+	height: 26px;
+	z-index: 21;
+	left: -69px;
+	top: 50px;
+}
+
+#apDiv24 {
+	position: absolute;
+	width: 571px;
+	height: 43px;
+	z-index: 21;
+	left: -93px;
+	top: 97px;
+}
+
+#apDiv25 {
+	position: absolute;
+	width: 311px;
+	height: 26px;
+	z-index: 21;
+	left: 28px;
+	top: 167px;
+}
+
+#apDiv26 {
+	position: absolute;
+	width: 200px;
+	height: 26px;
+	z-index: 21;
+	left: 402px;
+	top: 362px;
+}
+
+#apDiv27 {
+	position: absolute;
+	width: 290px;
+	height: 22px;
+	z-index: 22;
+	left: 400px;
+	top: 668px;
+}
+
+#apDiv28 {
+	position: absolute;
+	width: 322px;
+	height: 27px;
+	z-index: 23;
+	left: 401px;
+	top: 818px;
+}
+
+#apDiv29 {
+	position: absolute;
+	width: 200px;
+	height: 21px;
+	z-index: 24;
+	left: 401px;
+	top: 966px;
+}
+
+#apDiv30 {
+	position: absolute;
+	width: 296px;
+	height: 22px;
+	z-index: 25;
+	left: 546px;
+	top: 609px;
 }
 </style>
 </head>
 
 <body>
+
+<%
+	Supplier s = (Supplier) request.getAttribute("supplier");
+	Employee emp = (Employee) request.getAttribute("employee");
+	Person p = (Person) request.getAttribute("person");
+
+	String mobile = (String) request.getAttribute("mobile");
+	String landline = (String) request.getAttribute("landline");
+	String email = (String) request.getAttribute("email");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
@@ -426,74 +549,76 @@
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
-		<td width="13%">
+		<td width="12%">
 		<table width="100%" frame="below">
 			<tr>
 				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
-				Employee</td>
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View
+				Supplier</td>
 			</tr>
 		</table>
 		</td>
-		<td width="83%">&nbsp;</td>
+		<td width="84%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="SearchEmployee.do"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
+			action="SearchSuppliers.do"><input name="backBtn"
+			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
 <form id="form2" name="form2" method="post" action="../../logout"><input
-	name="logout" type="submit" class="maroon" id="logout" value="Logout" /></form>
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
 </div>
 <div id="background" style="background-color: #EEE0E5;"></div>
 <div id="employmentDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-Information</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
 <div id="contactInfoDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-Information</div>
-<div id="apDiv7"
-	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
-field</em></div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <p>&nbsp;</p>
 <div id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-Information</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="titleDiv">
-<form id="form1" name="form1" method="post" action="CreateEmployee.do">
+<form disabled="disabled" id="form1" name="form1" method="post">
+<p>&nbsp;</p>
+<div id="apDiv23"><label for="supplierName" class="labels">*Supplier
+Name:</label> <input name="supplierName" type="text" id="supplierName" size="35"
+	value="<%=s.getSupplierName()%>" /></div>
+<p>&nbsp;</p>
+<div id="apDiv24"><label for="supplierAddress" class="labels">*Supplier
+Address:</label> <textarea name="supplierAddress" id="supplierAddress"
+	value="<%=s.getAddress()%>"></textarea></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv25"><label for="tin" class="labels">TIN:</label> <input
+	name="tin" type="text" id="tin" size="25" <%if (s.getTin() != null) {%>
+	value="<%=s.getTin()%>" <%}%> /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv22"><label for="title2" class="labels">Title:</label>
+<input type="text" name="title" id="title2"
+	<%if (p.getTitle() != null) {%>
+	value="<%=p.getTitle()%>" <%}%> /></div>
 <p><label for="title"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title: <%
-	String title = (String) request.getAttribute("title");
-	if (title != null && !title.isEmpty()) {
-%> <%=title%> <%
- 	}
- %></label>
-
-</p>
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
 
 <div id="apDiv8"><label for="name"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:<%
-	String name = (String) request.getAttribute("name");
-	if (name != null && !name.isEmpty()) {
-%> <%=name%> <%
- 	}
- %></label>
-
-</div>
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
+<input name="name" type="text" id="name" size="40"
+	value="<%=p.getName()%>" /></div>
 
 <div id="apDiv9"><label for="designation3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:<%
-	String designation = (String) request.getAttribute("designation");
-	if (designation != null && !designation.isEmpty()) {
-%> <%=designation%> <%
- 	}
- %></label>
-
-</div>
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
+<input name="designation2" type="text" id="designation3" size="30"
+	value="<%=emp.getDesignation()%>" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><label for="employeeNumber2"
@@ -501,26 +626,12 @@ Information</div>
 </label></p>
 <div id="apDiv10"><label for="employeeNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <%
- 	String employeeNumber = (String) request.getAttribute("employeeNum");
- 	if (employeeNumber != null && !employeeNumber.isEmpty()) {
- %> <%=employeeNumber%> <%
- 	}
- %>
-</div>
+No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
+	<%if (emp.getEmployeeNumber() != null) {%>
+	value="<%=emp.getEmployeeNumber()%>" <%}%> /></div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
-<div id="apDiv11"><label for="division3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
-<%
-	DivisionOffice division = (DivisionOffice) request.getAttribute("division");
-	out.print("" + division.getDivisionName());
-	if (division.getOfficeName() != null)
-		out.print("," + division.getOfficeName());
-%><label for="office3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
-</div>
 <p><label for="division2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label> <label for="office2"
@@ -534,66 +645,33 @@ No.:</label> <%
 </label></p>
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <select>
-	<%
-		ArrayList<String> mobileNumber = (ArrayList<String>) request.getAttribute("mobil");
-		int mobileNumberNo = 0;
-		if (mobileNumber != null)
-			mobileNumberNo = mobileNumber.size();
-	%>
-	<%
-		for (int i = 0; i < mobileNumberNo; i++) {
-	%><option><%=mobileNumber.get(i)%></option>
-	<%
-		}
-	%>
-</select></div>
+Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
+	size="25" <%if (mobile != null) {%> value="<%=mobile%>"
+	<%}%> /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<select>
-	<%
-		ArrayList<String> landline = (ArrayList<String>) request.getAttribute("landline");
-		int landlineNo = 0;
-		if (landline != null)
-			landlineNo = landline.size();
-	%>
-	<%
-		for (int i = 0; i < landlineNo; i++) {
-	%><option><%=landline.get(i)%></option>
-	<%
-		}
-	%>
-</select></div>
+<input name="landline" type="text" id="landline3" size="25" <%if (landline != null) {%> value="<%=landline%>"
+	<%}%>/></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-E-mail Address:</label> <select>
-	<%
-		ArrayList<String> emailad = (ArrayList<String>) request.getAttribute("emailad");
-		int emailNo = 0;
-		if (emailad != null)
-			emailNo = emailad.size();
-	%>
-	<%
-		for (int i = 0; i < emailNo; i++) {
-	%><option><%=emailad.get(i)%></option>
-	<%
-		}
-	%>
-</select></div>
+E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
+	size="25" <%if (email!= null) {%> value="<%=email%>"
+	<%}%>/></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-
-<div id="apDiv20"><input type="submit" name="addBtn" id="addBtn"
-	value="Add"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</div>
 <p>&nbsp;</p>
 <p><br />
 </p>
 </form>
 </div>
+<div id="background_1" style="background-color: #EEE0E5;"></div>
+<div class="maroon" id="apDiv21"></div>
+<div class="headers" id="apDiv26">Supplier Information</div>
+<div class="headers" id="apDiv27">Contact Person Information</div>
+<div class="headers" id="apDiv28">Work Information</div>
+<div class="headers" id="apDiv29">Contact Information</div>
 </body>
 </html>
