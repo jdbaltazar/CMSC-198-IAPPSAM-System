@@ -80,7 +80,7 @@ public class Login extends HttpServlet {
 
 	private void forwardToIndexJsp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view;
-		view = request.getRequestDispatcher("/index.jsp");
+		view = request.getRequestDispatcher("index.jsp");
 		view.forward(request, response);
 	}
 

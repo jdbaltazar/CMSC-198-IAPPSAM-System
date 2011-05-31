@@ -17,14 +17,13 @@ public class Menu extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		System.out.println("...inside menu.java");
-		
-		
-		String username = (String)request.getAttribute("username");
-		System.out.println("usernaem: "+username);
+
+		String username = (String) request.getAttribute("username");
+		System.out.println("usernaem: " + username);
 		Cleaner.clean(request);
-//		String username = (String)request.getAttribute("username");
+		// String username = (String)request.getAttribute("username");
 		request.setAttribute("username", username);
 		request.getRequestDispatcher("MenuFrame.jsp").forward(request, response);
 	}
