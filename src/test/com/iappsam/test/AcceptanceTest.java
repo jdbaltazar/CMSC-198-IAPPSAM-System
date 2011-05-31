@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.sourceforge.jwebunit.junit.WebTester;
-import net.sourceforge.jwebunit.util.TestingEngineRegistry;
 
 public class AcceptanceTest {
 

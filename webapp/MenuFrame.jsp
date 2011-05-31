@@ -496,7 +496,7 @@ Stocks:</div>
 <div class="labels" id="recordsDiv"><br />
 Records:</div>
 <div id="apDiv2">
-<form id="form12" name="form12" method="post" action="logout"><input
+<form id="logout" name="form12" method="post" action="logout"><input
 	name="logoutBtn" type="submit" class="maroon" id="logoutBtn"
 	value="Logout" /></form>
 </div>
