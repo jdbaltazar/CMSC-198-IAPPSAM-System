@@ -6,8 +6,9 @@
 <%@page import="com.iappsam.entities.forms.IIRUP"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: IIRUP Form</title>
 <style type="text/css">
 .button {
 	font-size: 14px;
