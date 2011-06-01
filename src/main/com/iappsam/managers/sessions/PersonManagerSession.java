@@ -3,10 +3,6 @@ package com.iappsam.managers.sessions;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
@@ -14,16 +10,12 @@ import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.HibernateUtil;
 
 public class PersonManagerSession extends AbstractManager implements PersonManager {
 
 	@Override
 	public void addPerson(Person person) throws TransactionException, DuplicateEntryException {
-		if (!contains(person.getName()))
-			add(person);
-		else
-			throw new DuplicateEntryException();
+		add(person);
 	}
 
 	@Override

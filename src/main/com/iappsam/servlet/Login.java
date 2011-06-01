@@ -85,7 +85,7 @@ public class Login extends HttpServlet {
 	}
 
 	private boolean evaluateLogin(String username, String password) {
-		if (HibernateUtil.hotBoot())
+		if (HibernateUtil.isConnected())
 			return HibernateUtil.evaluate(username, password);
 		else
 			return evaluateNotFirstRun(username, password);

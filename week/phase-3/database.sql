@@ -15,7 +15,8 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Person` (
   `Person_ID` INT NOT NULL AUTO_INCREMENT ,
   `Title` VARCHAR(10) NULL ,
   `Name` VARCHAR(80) NOT NULL ,
-  PRIMARY KEY (`Person_ID`) )
+  PRIMARY KEY (`Person_ID`) ,
+  UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) )
 ENGINE = InnoDB;
 
 

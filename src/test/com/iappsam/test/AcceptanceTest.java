@@ -17,13 +17,6 @@ public class AcceptanceTest {
 	}
 
 	@Test
-	public void loginRootAccount() {
-		tester.beginAt("/login");
-		assertIsInLoginPage();
-		tryTologinWith("root", "123456");
-	}
-
-	@Test
 	public void loginAdminAccount() {
 		tester.beginAt("/login");
 		assertIsInLoginPage();

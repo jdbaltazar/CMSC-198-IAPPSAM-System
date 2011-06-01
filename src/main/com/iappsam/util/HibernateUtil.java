@@ -58,10 +58,11 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
+	
 	static {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		// if (!tryToBuildSessionFactory("root", "123456"))
-		// throw new RuntimeException();
+		if (!tryToBuildSessionFactory("root", "123456"))
+			throw new RuntimeException();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -148,21 +149,20 @@ public class HibernateUtil {
 		sessionFactory.close();
 	}
 
-	public static boolean hotBoot() {
-		return sessionFactory == null;
+	public static boolean isConnected() {
+		return sessionFactory != null;
 	}
 
 	public static boolean evaluate(String username, String password) {
-		if (hotBoot())
+		if (!isConnected())
 			return tryToBuildSessionFactory(username, password);
-
 		else
 			return false;
 	}
 
 	public static void close() {
 
-		if (!hotBoot()) {
+		if (isConnected()) {
 			sessionFactory.close();
 			sessionFactory = null;
 		}

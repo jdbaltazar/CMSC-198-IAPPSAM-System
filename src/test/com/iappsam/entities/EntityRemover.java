@@ -14,6 +14,7 @@ import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.APPManager;
+import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.IIRUPManager;
@@ -21,12 +22,12 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.APPManagerSession;
+import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class EntityRemover {
 
@@ -36,6 +37,7 @@ public class EntityRemover {
 	private static APPManager appm = new APPManagerSession();
 	private static DivisionOfficeManager dom = new DivisionOfficeManagerSession();
 	private static ContactManager cm = new ContactManagerSession();
+	private static AccountManager am = new AccountManagerSession();
 
 	public static void removeAll() throws TransactionException {
 		removeAPPs();
@@ -44,16 +46,22 @@ public class EntityRemover {
 		removeItemDependencies();
 		removeSignatories();
 		removeEmployees();
+		removeAccounts();
 		removePersons();
 		removeContacts();
 		removeDivisionOffices();
+	}
+
+	private static void removeAccounts() throws TransactionException {
+		List<Account> accounts = am.getAllAccounts();
+		for (Account i : accounts)
+			am.removeAccount(i);
 	}
 
 	private static void removeContacts() throws TransactionException {
 		List<Contact> contacts = cm.getAllContacts();
 		for (Contact i : contacts)
 			cm.removeContact(i);
-
 	}
 
 	private static void removeDivisionOffices() throws TransactionException {
