@@ -80,6 +80,10 @@ public class Employee {
 		this.person = person;
 	}
 
+	public boolean hasDivisionOffice() {
+		return divisionOffice != null;
+	}
+
 	public void setId(int employeeID) {
 		this.id = employeeID;
 	}
