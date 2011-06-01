@@ -18,17 +18,5 @@ public interface IEManager {
 
 	boolean containsIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 
-	List<InventoryOfEquipment> getALLIE() throws TransactionException;
-
-	// InventoryOfEquipmentLine
-
-	void addIELine(InventoryOfEquipmentLine invenEquipmentLine) throws TransactionException;
-
-	void updateIELineOfIE(InventoryOfEquipmentLine invenEquipmentLine) throws TransactionException;
-
-	List<InventoryOfEquipmentLine> getIELineByIE(int invenEquipmentID) throws TransactionException;
-
-	boolean containsIELine(int invenEquipmentID, int itemID) throws TransactionException;
-
-	List<InventoryOfEquipmentLine> getAllIELine() throws TransactionException;
+	List<InventoryOfEquipment> getAllIE() throws TransactionException;
 }

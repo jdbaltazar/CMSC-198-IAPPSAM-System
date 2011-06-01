@@ -23,30 +23,16 @@ public interface POManager {
 
 	List<PurchaseOrder> getAllPO() throws TransactionException;
 
-	// POLine
-
-	void addPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
-
-	void updatePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
-
-	void removePOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
-
-	List<PurchaseOrderLine> getPOLineByPO(String poNumber) throws TransactionException;
-
-	boolean containsPOLine(PurchaseOrderLine purchaseOrderLine) throws TransactionException;
-
-	List<PurchaseOrderLine> getAllPOLine() throws TransactionException;
-
 	// ModeOfProcurement
 
 	void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
 	void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
-	
-	ModeOfProcurement getModeOfProcurement(int id)  throws TransactionException;
-	
-	ModeOfProcurement getModeOfProcurement(String name)  throws TransactionException;
-	
+
+	ModeOfProcurement getModeOfProcurement(int id) throws TransactionException;
+
+	ModeOfProcurement getModeOfProcurement(String name) throws TransactionException;
+
 	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
 	List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException;

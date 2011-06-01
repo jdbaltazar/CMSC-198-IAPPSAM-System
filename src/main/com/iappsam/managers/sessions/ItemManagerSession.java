@@ -75,7 +75,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<Item> getAllItems() throws TransactionException {
-		return getList(Item.class);
+		return getAll(Item.class);
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<Unit> getAllUnits() throws TransactionException {
-		return getList(Unit.class);
+		return getAll(Unit.class);
 	}
 
 	@Override
@@ -181,7 +181,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<ItemStatus> getAllItemStatus() throws TransactionException {
-		return getList(ItemStatus.class);
+		return getAll(ItemStatus.class);
 	}
 
 	@Override
@@ -229,7 +229,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<ItemCondition> getAllItemCondition() throws TransactionException {
-		return getList(ItemCondition.class);
+		return getAll(ItemCondition.class);
 	}
 
 	public void addItemCategory(ItemCategory category) throws TransactionException {
@@ -248,7 +248,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<ItemCategory> getAllItemCategory() throws TransactionException {
-		return getList(ItemCategory.class);
+		return getAll(ItemCategory.class);
 	}
 
 	@Override

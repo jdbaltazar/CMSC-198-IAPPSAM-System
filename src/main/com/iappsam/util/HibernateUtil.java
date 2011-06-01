@@ -14,7 +14,6 @@ import com.iappsam.entities.ContactType;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
@@ -68,7 +67,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			// p.setProperty("hibernate.show_sql", "true");
+			p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -86,7 +85,6 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(DivisionOffice.class);
 			conf.addAnnotatedClass(DivisionOfficeContact.class);
 			conf.addAnnotatedClass(Employee.class);
-			conf.addAnnotatedClass(EmployeeDivisionOffice.class);
 			conf.addAnnotatedClass(Item.class);
 			conf.addAnnotatedClass(ItemCategory.class);
 			conf.addAnnotatedClass(ItemCondition.class);
@@ -109,7 +107,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(InventoryCustodianSlipLine.class);
 			conf.addAnnotatedClass(InventoryOfEquipment.class);
 			conf.addAnnotatedClass(InventoryOfEquipmentLine.class);
-			// conf.addAnnotatedClass(ModeOfProcurement.class);
+			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementReceipt.class);
 			conf.addAnnotatedClass(PropertyAcknowledgementRecieptLine.class);
 			conf.addAnnotatedClass(PTRPA.class);

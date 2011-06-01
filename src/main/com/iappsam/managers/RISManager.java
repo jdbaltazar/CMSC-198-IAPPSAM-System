@@ -22,16 +22,4 @@ public interface RISManager {
 	
 	List<RequisitionAndIssueSlip>getAllRIS() throws TransactionException;
 	
-	//RISLine
-	
-	void addRISLine(RequisitionAndIssueSlipLine requisitionAndIssueSlipLine) throws TransactionException;
-	
-	void updateRISLine(RequisitionAndIssueSlipLine requisitionAndIssueSlipLine) throws TransactionException;
-
-	List<RequisitionAndIssueSlipLine>getRISLineByRIS(String requisitionAndIssueSlipID) throws TransactionException;
-	
-	boolean containsRISLine(RequisitionAndIssueSlipLine requisitionAndIssueSlipLine) throws TransactionException;
-	
-	List<RequisitionAndIssueSlipLine>getAllRISLine() throws TransactionException;
-
 }

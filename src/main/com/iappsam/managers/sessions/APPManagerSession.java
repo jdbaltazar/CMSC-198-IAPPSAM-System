@@ -2,11 +2,15 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.iappsam.entities.Person;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.AnnualProcurementPlanLine;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.util.HibernateUtil;
 
 public class APPManagerSession extends AbstractManager implements APPManager {
 
@@ -37,36 +41,19 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
 	public List<AnnualProcurementPlan> getAllAPP() throws TransactionException {
-		return getList(AnnualProcurementPlan.class);
-	}
 
-	@Override
-	public void addAPPLine(AnnualProcurementPlanLine appLine) throws TransactionException {
-		add(appLine);
-	}
+		Session session = HibernateUtil.startSession();
+		Transaction tx = session.beginTransaction();
 
-	@Override
-	public void updateAPPLine(AnnualProcurementPlanLine appLine) throws TransactionException {
-		update(appLine);
-	}
+		List<AnnualProcurementPlan> list = session.createQuery("from AnnualProcurementPlan").list();
 
-	@Override
-	public boolean containsAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException {
-		return contains(annualProcurementPlanLine);
-	}
-
-	@Override
-	public List<AnnualProcurementPlanLine> getAllAPPLine() throws TransactionException {
-		return getList(AnnualProcurementPlanLine.class);
+		tx.commit();
+		session.close();
+		return list;
 	}
 
 	@Override
 	public void removeAPP(AnnualProcurementPlan app) throws TransactionException {
 		remove(app);
-	}
-
-	@Override
-	public void removeAPPLine(AnnualProcurementPlanLine line) throws TransactionException {
-		remove(line);
 	}
 }

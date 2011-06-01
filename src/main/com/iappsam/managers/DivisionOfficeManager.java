@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Building;
-import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
@@ -21,8 +20,6 @@ public interface DivisionOfficeManager {
 	DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException;
 
 	DivisionOffice getDivisionOffice(String division, String office) throws TransactionException;
-
-	DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException;
 
 	void removeDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
@@ -49,11 +46,5 @@ public interface DivisionOfficeManager {
 	boolean containsBuilding(String name) throws TransactionException;
 
 	List<Building> getAllBuildings() throws TransactionException;
-
-	// EmployeeDivisionOffice
-
-	List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException;
-
-	int getDivisionIdByName(String division, String office) throws TransactionException;
 
 }

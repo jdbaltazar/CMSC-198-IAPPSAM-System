@@ -9,37 +9,33 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class SupplierManagerSession extends AbstractManager implements SupplierManager{
+public class SupplierManagerSession extends AbstractManager implements SupplierManager {
 
 	@Override
 	public void addSupplier(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
 		add(supplier);
 	}
 
 	@Override
 	public int saveSupplier(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
-		return (Integer)save(supplier);
+		return (Integer) save(supplier);
 	}
 
 	@Override
 	public void updateSupplier(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
 		update(supplier);
 	}
 
 	@Override
 	public Supplier getSupplier(int supplierId) throws TransactionException {
-		// TODO Auto-generated method stub
-		return (Supplier)get(Supplier.class, supplierId);
+		return (Supplier) get(Supplier.class, supplierId);
 	}
-	
+
 	@Override
 	public Supplier getSupplier(String supplierName) throws TransactionException {
-		List<Supplier>suppliers = getAllSuppliers();
-		for(Supplier s: suppliers){
-			if(s.getSupplierName().equalsIgnoreCase(supplierName))
+		List<Supplier> suppliers = getAllSuppliers();
+		for (Supplier s : suppliers) {
+			if (s.getSupplierName().equalsIgnoreCase(supplierName))
 				return s;
 		}
 		return null;
@@ -47,22 +43,19 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 
 	@Override
 	public void removeSupplier(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
 		remove(supplier);
 	}
 
 	@Override
 	public boolean containsSupplier(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(supplier);
 	}
 
 	@Override
 	public boolean containsSupplier(String name) throws TransactionException {
-		// TODO Auto-generated method stub
-		List<Supplier>suppliers = getList(Supplier.class);
-		for(Supplier s: suppliers){
-			if(s.getSupplierName().equalsIgnoreCase(name))
+		List<Supplier> suppliers = getAllSuppliers();
+		for (Supplier s : suppliers) {
+			if (s.getSupplierName().equalsIgnoreCase(name))
 				return true;
 		}
 		return false;
@@ -70,17 +63,6 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 
 	@Override
 	public List<Supplier> getAllSuppliers() throws TransactionException {
-		// TODO Auto-generated method stub
-		return getList(Supplier.class);
+		return getAll(Supplier.class);
 	}
-	
-	//ContactPerson
-
-	@Override
-	public Person getContactPerson(Supplier supplier) throws TransactionException {
-		// TODO Auto-generated method stub
-		PersonManager pManager = new PersonManagerSession();
-		return pManager.getPerson(supplier.getContactPersonID());
-	}
-
 }

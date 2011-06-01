@@ -27,6 +27,5 @@ public interface SupplierManager{
 
 	List<Supplier> getAllSuppliers() throws TransactionException;
 	
-	Person getContactPerson(Supplier supplier) throws TransactionException;
 	
 }

@@ -14,12 +14,14 @@ import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.APPManager;
+import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.APPManagerSession;
+import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -33,6 +35,7 @@ public class EntityRemover {
 	private static ItemManager im = new ItemManagerSession();
 	private static APPManager appm = new APPManagerSession();
 	private static DivisionOfficeManager dom = new DivisionOfficeManagerSession();
+	private static ContactManager cm = new ContactManagerSession();
 
 	public static void removeAll() throws TransactionException {
 		removeAPPs();
@@ -42,7 +45,15 @@ public class EntityRemover {
 		removeSignatories();
 		removeEmployees();
 		removePersons();
+		removeContacts();
 		removeDivisionOffices();
+	}
+
+	private static void removeContacts() throws TransactionException {
+		List<Contact> contacts = cm.getAllContacts();
+		for (Contact i : contacts)
+			cm.removeContact(i);
+
 	}
 
 	private static void removeDivisionOffices() throws TransactionException {

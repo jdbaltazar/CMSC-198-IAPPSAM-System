@@ -14,96 +14,46 @@ public class RSMIManagerSession extends AbstractManager implements RSMIManager {
 
 	@Override
 	public void addRSMI(RSMI rsmi) throws TransactionException {
-		// TODO Auto-generated method stub
 		add(rsmi);
 	}
 
 	@Override
 	public int saveRSMI(RSMI rsmi) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (Integer) save(rsmi);
 	}
 
 	@Override
 	public void updateRSMI(RSMI rsmi) throws TransactionException {
-		// TODO Auto-generated method stub
 		update(rsmi);
 	}
 
 	@Override
 	public RSMI getRSMI(int rsmiID) throws TransactionException {
-		// TODO Auto-generated method stub
 		return (RSMI) get(RSMI.class, rsmiID);
 	}
 
 	@Override
 	public boolean containsRSMI(RSMI rsmi) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(rsmi);
 	}
 
 	@Override
 	public List<RSMI> getAllRSMI() throws TransactionException {
-		// TODO Auto-generated method stub
 		return getAllRSMI();
 	}
 
 	@Override
-	public void addRSMILine(RSMILine rsmiLine) throws TransactionException {
-		// TODO Auto-generated method stub
-		add(rsmiLine);
-	}
-
-	@Override
-	public void updateRSMILine(RSMILine rsmiLine) throws TransactionException {
-		// TODO Auto-generated method stub
-		update(rsmiLine);
-	}
-
-	@Override
-	public List<RSMILine> getRSMILineByRSMI(int rsmiID)
-			throws TransactionException {
-		// TODO Auto-generated method stub
-		List<RSMILine> rsmiLines = getAllRSMILine();
-		List<RSMILine> result = new ArrayList<RSMILine>();
-		for (RSMILine rsmiLine : rsmiLines) {
-			if (rsmiLine.getRsmiID()== rsmiID)
-				result.add(rsmiLine);
-		}
-		return result;
-	}
-
-	@Override
-	public boolean containsRSMILine(RSMILine rsmiLine)
-			throws TransactionException {
-		// TODO Auto-generated method stub
-		return contains(rsmiLine);
-	}
-
-	@Override
-	public List<RSMILine> getAllRSMILine() throws TransactionException {
-		// TODO Auto-generated method stub
-		return getList(RSMILine.class);
-	}
-
-	@Override
-	public void addRecapitulationLine(RecapitulationLine recapitulationLine)
-			throws TransactionException {
-		// TODO Auto-generated method stub
+	public void addRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException {
 		add(recapitulationLine);
 	}
 
 	@Override
-	public void updateRecapitulationLine(RecapitulationLine recapitulationLine)
-			throws TransactionException {
-		// TODO Auto-generated method stub
+	public void updateRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException {
 		update(recapitulationLine);
 	}
 
 	@Override
-	public List<RecapitulationLine> getRecapitulationLineByRSMI(int rsmiID)
-			throws TransactionException {
-		// TODO Auto-generated method stub
+	public List<RecapitulationLine> getRecapitulationLineByRSMI(int rsmiID) throws TransactionException {
 		List<RecapitulationLine> recapLines = getAllRecapitulationLine();
 		List<RecapitulationLine> result = new ArrayList<RecapitulationLine>();
 		for (RecapitulationLine recapLine : recapLines) {
@@ -114,17 +64,13 @@ public class RSMIManagerSession extends AbstractManager implements RSMIManager {
 	}
 
 	@Override
-	public boolean containsRecapitulationLine(
-			RecapitulationLine recapitulationLine) throws TransactionException {
-		// TODO Auto-generated method stub
+	public boolean containsRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException {
 		return contains(recapitulationLine);
 	}
 
 	@Override
-	public List<RecapitulationLine> getAllRecapitulationLine()
-			throws TransactionException {
-		// TODO Auto-generated method stub
-		return getList(RecapitulationLine.class);
+	public List<RecapitulationLine> getAllRecapitulationLine() throws TransactionException {
+		return getAll(RecapitulationLine.class);
 	}
 
 }

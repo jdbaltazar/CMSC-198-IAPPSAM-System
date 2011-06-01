@@ -38,43 +38,7 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
 	public List<PurchaseRequest> getAllPR() throws TransactionException {
-		return getList(PurchaseRequest.class);
-	}
-
-	@Override
-	public void addPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
-		add(purchaseRequestLine);
-	}
-
-	@Override
-	public void updatePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
-		update(purchaseRequestLine);
-	}
-
-	@Override
-	public List<PurchaseRequestLine> getPRLineByPR(int purchaseRequestID) throws TransactionException {
-		List<PurchaseRequestLine> prLines = getAllPRLine();
-		List<PurchaseRequestLine> result = new ArrayList<PurchaseRequestLine>();
-		for (PurchaseRequestLine prLine : prLines) {
-			if (prLine.getId() == purchaseRequestID)
-				result.add(prLine);
-		}
-		return result;
-	}
-
-	@Override
-	public boolean containsPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
-		return contains(purchaseRequestLine);
-	}
-
-	@Override
-	public void removePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException {
-		remove(purchaseRequestLine);
-	}
-
-	@Override
-	public List<PurchaseRequestLine> getAllPRLine() throws TransactionException {
-		return getList(PurchaseRequestLine.class);
+		return getAll(PurchaseRequest.class);
 	}
 
 	@Override

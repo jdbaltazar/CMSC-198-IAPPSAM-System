@@ -7,7 +7,7 @@ import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class AccountManagerSession extends AbstractManager implements AccountManager{
+public class AccountManagerSession extends AbstractManager implements AccountManager {
 
 	@Override
 	public void addAccount(Account account) throws TransactionException {
@@ -16,20 +16,17 @@ public class AccountManagerSession extends AbstractManager implements AccountMan
 
 	@Override
 	public String saveAccount(Account account) throws TransactionException {
-		// TODO Auto-generated method stub
-		return (String)save(account);
+		return (String) save(account);
 	}
 
 	@Override
 	public void updateAccount(Account account) throws TransactionException {
-		// TODO Auto-generated method stub
 		update(account);
 	}
 
 	@Override
 	public Account getAccount(String username) throws TransactionException {
-		// TODO Auto-generated method stub
-		return (Account)get(Account.class, username);
+		return (Account) get(Account.class, username);
 	}
 
 	@Override
@@ -39,30 +36,16 @@ public class AccountManagerSession extends AbstractManager implements AccountMan
 
 	@Override
 	public boolean containsAccount(Account account) throws TransactionException {
-		// TODO Auto-generated method stub
 		return contains(account);
 	}
 
 	@Override
 	public boolean containsAccount(String username) throws TransactionException {
-		// TODO Auto-generated method stub
-		return (getAccount(username)!=null);
+		return (getAccount(username) != null);
 	}
 
 	@Override
 	public List<Account> getAllAccounts() throws TransactionException {
-		// TODO Auto-generated method stub
-		return getList(Account.class);
+		return getAll(Account.class);
 	}
-
-	// @Override
-	// public void updateAccountUsername(String username, String newUsername)
-	// throws TransactionException {
-	// // TODO Auto-generated method stub
-	// executeUpdate("update Account set Username = :newName where name = :name",
-	// username, newUsername);
-	// }
-
-	
-
 }
