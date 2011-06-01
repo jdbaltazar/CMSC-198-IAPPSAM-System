@@ -17,6 +17,8 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.search.Searcher;
+import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Verifier;
 
 /**
  * Servlet implementation class SearchAllItems
@@ -46,34 +48,40 @@ public class SearchAllItems extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ItemManager iManager = new ItemManagerSession();
-		ItemSearcher s = new ItemSearcher();
-		ArrayList<String> itemDescription = new ArrayList<String>();
-		ArrayList<String> itemCategory = new ArrayList<String>();
+
+		System.out.println("...inside search all items");
+
 		String searchItemField = (String) request.getParameter("searchItemField");
-
+		ItemSearcher s = new ItemSearcher();
 		List<Item> items = new ArrayList<Item>();
+		List<Item> uniqueItems = new ArrayList<Item>();
 
-		if (searchItemField == null || searchItemField.equalsIgnoreCase("")) {
+		if (searchItemField == null || (searchItemField != null && searchItemField.equalsIgnoreCase(""))) {
 			try {
-				items = iManager.getAllItems();
+				items = ManagerBin.iManager.getAllItems();
+				uniqueItems = items;
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
+			System.out.println("keyword: " + searchItemField);
 			items = s.search(searchItemField);
+			boolean unique = true;
+			for (Item item : items) {
+				for (Item i : uniqueItems) {
+					if (i.getId() == item.getId()) {
+						unique = false;
+					}
+				}
+				if (unique)
+					uniqueItems.add(item);
+			}
 		}
-		for (Item i : items) {
-			itemDescription.add(i.getDescription());
-			itemCategory.add(i.getItemCategory().getName());
-		}
-		request.setAttribute("itemDescription", itemDescription);
-		request.setAttribute("itemCategory", itemCategory);
+
+		request.setAttribute("items", uniqueItems);
 
 		RequestDispatcher view = request.getRequestDispatcher("../stocks/items/SearchItems.jsp");
 		view.forward(request, response);
-
 	}
-
 }

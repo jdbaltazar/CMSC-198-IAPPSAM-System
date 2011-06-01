@@ -2,8 +2,9 @@
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::View Accounts</title>
 <style type="text/css">
 .button2 {
 	font-size: 14px;
@@ -220,14 +221,6 @@
 </head>
 
 <body>
-<div id="footer">
-<table width="100%" frame="above" bordercolor="#333333"
-	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
-	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
-	</tr>
-</table>
-</div>
 <div id="logoHeader" style="width: 100%"><img name=""
 	src="../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
@@ -245,14 +238,14 @@
 		<td width="82%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../MenuFrame.jsp"><input name="backBtn" type="submit"
+			action="../menu"><input name="backBtn" type="submit"
 			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
@@ -261,11 +254,8 @@
 		<td>&nbsp;</td>
 	</tr>
 </table>
-<div id="header"
-	style="text-align: center; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold; width: 100%;">Existing
-Accounts</div>
 <div id="apDiv4" style="width: 100%">
-<table width="100%" border="1" cellspacing="0" class="tableheaders">
+  <table width="100%" border="1" cellspacing="0" class="tableheaders">
 	<tr>
 		<td width="33%">Account Type</td>
 		<td width="49%">Name</td>

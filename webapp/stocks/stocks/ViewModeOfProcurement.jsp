@@ -2,8 +2,9 @@
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: View Mode of Procurement</title>
 <style type="text/css">
 .menubtn{
 	height:20px;
@@ -189,7 +190,7 @@
 </table>
 </div>
 <div id="logoutiv" style="width:90%">
-  <form id="form2" name="form2" method="post" action="">
+  <form id="form2" name="form2" method="post" action="../../logout">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>

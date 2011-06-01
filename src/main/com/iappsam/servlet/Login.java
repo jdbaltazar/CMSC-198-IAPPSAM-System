@@ -43,23 +43,24 @@ public class Login extends HttpServlet {
 			logInFail(request, response);
 	}
 
-	private void logInSuccess(HttpServletRequest request, HttpServletResponse response, String username) {
+	private void logInSuccess(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException {
 		request.setAttribute("username", username);
 		forwardToMenuFrameJsp(request, response, username);
 	}
 
-	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) {
+	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException {
 		try {
-			// RequestDispatcher view =
-			// request.getRequestDispatcher("/menu.jsp");
+			 RequestDispatcher view =
+			 request.getRequestDispatcher("menu");
 			HttpSession session = request.getSession();
 
 			if (session.isNew()) {
+				request.setAttribute("username", username);
 				session.setAttribute("username", username);
 				session.setMaxInactiveInterval(30);
 			}
-			// view.forward(request, response);
-			response.sendRedirect("/menu");
+			 view.forward(request, response);
+			//response.sendRedirect("menu");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -79,7 +80,7 @@ public class Login extends HttpServlet {
 
 	private void forwardToIndexJsp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view;
-		view = request.getRequestDispatcher("/index.jsp");
+		view = request.getRequestDispatcher("index.jsp");
 		view.forward(request, response);
 	}
 

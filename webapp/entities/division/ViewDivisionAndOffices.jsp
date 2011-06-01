@@ -4,8 +4,9 @@
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::View Division/Offices</title>
 <style type="text/css">
 .headers {
 	font-family: Lucida Grande;
@@ -389,7 +390,7 @@
 <p>&nbsp;</p>
 <div id="apDiv9"></div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>

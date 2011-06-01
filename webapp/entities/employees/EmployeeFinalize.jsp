@@ -2,6 +2,7 @@
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
@@ -414,7 +415,7 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+		<td>Copyright ï¿½ 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -442,7 +443,7 @@
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" /></form>
 </div>
 <div id="background" style="background-color: #EEE0E5;"></div>

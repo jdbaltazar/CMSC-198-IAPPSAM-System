@@ -1,9 +1,12 @@
+<%@page import="com.iappsam.entities.Building"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Buildings</title>
 <style type="text/css">
 .resultTable {
 	font-family: Lucida Grande;
@@ -218,15 +221,14 @@
 		</td>
 		<td width="85%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="../../menu"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
@@ -246,12 +248,10 @@
 <div id="apDiv10" style="width: 100%">
 <table width="100%" cellspacing="0" frame="box" class="resultTable">
 	<%
-		ArrayList<String> bldgName = (ArrayList<String>) request.getAttribute("buildingName");
-		ArrayList<String> bldgAddress = (ArrayList<String>) request.getAttribute("buildingAddress");
-		int size = bldgName.size();
+		List<Building> buildings = (List<Building>) request.getAttribute("buildings");
 	%>
 	<%
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < buildings.size(); i++) {
 	%>
 	<%
 		if (i % 2 == 0)
@@ -260,12 +260,13 @@
 				out.print("<tr>");
 	%>
 
-	<td width="37%"><%=bldgName.get(i)%></td>
-	<td width="44%"><%=bldgAddress.get(i)%></td>
+	<td width="37%"><%=buildings.get(i).getBuildingName()%></td>
+	<td width="44%"><%=buildings.get(i).getBuildingAddress()%></td>
 	<td width="19%" align="center">
 	<form id="form3" name="form3" method="post" action=""><input
 		name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
-		value="Edit >>" disabled="disabled" /></form>
+		value="Edit >>" disabled="disabled" /> <input type="hidden"
+		name="buildingID" value="<%=buildings.get(i).getBuildingID()%>"></input></form>
 	</td>
 	</tr>
 	<%

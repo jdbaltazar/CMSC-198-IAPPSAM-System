@@ -1,9 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Create Account</title>
 <style type="text/css">
+.headers{
+font-family: Lucida Grande;
+ color: white; 
+font-size: 16px; 
+font-weight: bold;	
+}
 .maroon {
 	font-size: 12px;
 	font-family: Lucida Grande;
@@ -16,8 +23,9 @@
 }
 
 .maroon:hover {
-	font-weight: bold;
-	/*	background:#EEE0E5;;*/
+	color:#999;
+	/*font-weight: bold;
+		background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
 	border-right: 1px solid #7B1113;
 	border-top: 1px solid #7B1113;
@@ -405,6 +413,62 @@
 	top: 1249px;
 	width: 100%;
 }
+#apDiv21 {
+	position:absolute;
+	width:245px;
+	height:26px;
+	z-index:19;
+	left: 776px;
+	top: 252px;
+}
+#apDiv22 {
+	position:absolute;
+	width:100%;
+	height:200%;
+	z-index:0;
+	left: 11px;
+	top: 234px;
+}
+#apDiv23 {
+	position:absolute;
+	width:200px;
+	height:25px;
+	z-index:20;
+	left: 442px;
+	top: 19px;
+}
+#apDiv24 {
+	position:absolute;
+	width:200px;
+	height:22px;
+	z-index:20;
+	left: 455px;
+	top: 254px;
+}
+#apDiv25 {
+	position:absolute;
+	width:200px;
+	height:22px;
+	z-index:21;
+	left: 453px;
+	top: 407px;
+}
+#apDiv26 {
+	position:absolute;
+	width:200px;
+	height:21px;
+	z-index:22;
+	left: 453px;
+	top: 592px;
+}
+#apDiv27 {
+	position:absolute;
+	width:200px;
+	height:20px;
+	z-index:23;
+	left: 452px;
+	top: 778px;
+}
 </style>
 </head>
 
@@ -413,7 +477,7 @@
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
+		<td>Copyright ï¿½ 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -434,55 +498,51 @@
 		<td width="77%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../MenuFrame.jsp"><input name="backBtn" type="submit"
+			action="../menu"><input name="backBtn" type="submit"
 			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
+<form id="form2" name="form2" method="post" action="../logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
 <div id="background" style="background-color: #EEE0E5;"></div>
 <div id="accountInfoHeader"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
-Info</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="employmentDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-Info</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
 <div id="contactInfoDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-Info</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="apDiv7"
 	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
 field</em></div>
 <p>&nbsp;</p>
 <div align="center" id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-Info</div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="titleDiv">
 <form id="form1" name="form1" method="post" action="AccountCreation.do">
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
 	
 <!-- Title -->
-<input name="title" type="text" id="title" size="20" /></p>
+<input name="title" type="text" id="title" size="20" maxlength="10" /></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
 <!-- Name -->
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40" /></div>
+<input name="name" type="text" id="name" size="40" maxlength="80" /></div>
 <p>&nbsp;</p>
 
 <!-- Designation -->
 <div id="apDiv9"><label for="designation3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<input name="designation" type="text" id="designation3" size="30" /></div>
+<input name="designation" type="text" id="designation3" size="30" maxlength="45" /></div>
 
 <!-- EmployeeNumber -->
 <p><label for="employeeNumber2"
@@ -490,7 +550,7 @@ Info</div>
 </label></p>
 <div id="apDiv10"><label for="employeeNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3" /></div>
+No.:</label> <input name="employeeNumber" type="text" id="employeeNumber3" maxlength="45" /></div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -519,33 +579,33 @@ No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3" /></d
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" /></div>
+	size="25" maxlength="45" /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25" /></div>
+<input name="landline" type="text" id="landline3" size="25" maxlength="45" /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" /></div>
+	size="25" maxlength="45" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv16"><label for="userName3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
-<input name="userName" type="text" id="userName3" size="35" /></div>
+<input name="userName" type="text" id="userName3" size="35" maxlength="60" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv17"><label for="password3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
-<input name="password" type="password" id="password3" size="30" /></div>
+<input name="password" type="password" id="password3" size="30" maxlength="80" /></div>
 <p>&nbsp;</p>
 <div id="apDiv18"><label for="reenterPassword3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Re-enter
 Password:</label> <input name="reenterPassword" type="password"
-	id="reenterPassword3" size="30" /></div>
+	id="reenterPassword3" size="30" maxlength="80" /></div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
@@ -565,5 +625,15 @@ Type: </label> <select name="acctType" id="acctType3">
 </p>
 </form>
 </div>
+<div id="apDiv21">
+  <form id="form3" name="form3" method="post" action="">
+    <input name="addForCurrentBtn" type="submit" class="maroon" id="addForCurrentBtn" value="Create Account For Existing Person &gt;&gt;" />
+  </form>
+</div>
+<div class="headers" id="apDiv24">Personal Information</div>
+<div id="apDiv22"></div>
+<div class="headers" id="apDiv26">Contact Information</div>
+<div class="headers" id="apDiv27">Account Information</div>
+<div class="headers" id="apDiv25">Work Information</div>
 </body>
 </html>

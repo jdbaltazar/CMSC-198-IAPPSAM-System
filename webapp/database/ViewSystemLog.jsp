@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: View System Log</title>
 <style type="text/css">
 .resultTable{
 	font-family:Lucida Grande;
@@ -26,7 +27,7 @@
 	background-color:#5E2605;
 	color:white;
 	font-family:Lucida Grande;
-	font-size:18px;
+	font-size:14px;
 	text-align:center;
 }
 .maroon{
@@ -79,10 +80,17 @@
 	width:471px;
 	height:33px;
 	z-index:1;
-	left: 501px;
-	top: 288px;
+	left: 411px;
+	top: 303px;
 }
-
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:29px;
+	z-index:2;
+	left: 837px;
+	top: 306px;
+}
 #apDiv2 {
 	position:absolute;
 	width:885px;
@@ -135,19 +143,27 @@
 	left: 242px;
 	top: 150px;
 }
-
-#apDiv9 {
+}
+#apDiv10 {
 	position:absolute;
-	width:959px;
-	height:441px;
+	width:1224px;
+	height:309px;
 	z-index:3;
-	left: 3px;
-	top: 380px;
+	left: 146px;
+	top: 152px;
+}
+#apDiv11 {
+	position:absolute;
+	width:905px;
+	height:502px;
+	z-index:3;
+	left: 244px;
+	top: 388px;
 }
 #pageLabel {
 	position:absolute;
 	width:200px;
-	height:50px;
+	height:44px;
 	z-index:1;
 	top:181px;
 	left: 13px;
@@ -169,24 +185,40 @@
 #footer{
 	position:absolute;
 	left: 1px;
-	top: 843px;
+	top: 887px;
 	width: 100%;
 }
-#apDiv10 {
+#divItemTableHeader {
 	position:absolute;
-	width:119px;
-	height:17px;
-	z-index:16;
-	left: 584px;
-	top: 336px;
+	width:872px;
+	height:34px;
+	z-index:3;
+	left: 1px;
+	top: 411px;
 }
-#apDiv11 {
+#divItemResultTable {
 	position:absolute;
-	width:104px;
-	height:28px;
+	width:871px;
+	height:110px;
+	z-index:4;
+	left: 1px;
+	top: 433px;
+}
+#apDiv12 {
+	position:absolute;
+	width:100%;
+	height:22px;
+	z-index:16;
+	left: 1px;
+	top: 310px;
+}
+#apDiv13 {
+	position:absolute;
+	width:100%;
+	height:115px;
 	z-index:17;
-	left: 692px;
-	top: 325px;
+	left: 1px;
+	top: 332px;
 }
 </style>
 </head>
@@ -199,43 +231,47 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="11%"><table width="100%" frame="below">
+    <td width="15%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Item/s</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300"> View System Log</td>
       </tr>
     </table></td>
-    <td width="85%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="PR_Form_2.html">
+    <td width="81%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
 </table>
 </div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv9"></div>
 <div id="logoutiv" style="width:90%">
   <form id="form2" name="form2" method="post" action="">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
-<div id="apDiv9" style="width:100%"><iframe src="PR_Form_ResultTable.html"  frameborder="0" width="100%" height="80%" name="results"></iframe></div>
 <p>&nbsp;</p>
-<div id="searchEmployeesDiv">
-  <form id="form1" name="form1" method="post" action="">
-    <label for="searchItemField" class="labels">Search:</label>
-    <input name="searchItemField" type="text" id="searchItemField" size="35" />
-    <input name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn" value="GO" />
-  </form>
+<div id="apDiv12">
+  <table width="100%" border="1" cellspacing="0" class="tableheaders">
+    <tr>
+      <td width="26%">Date</td>
+      <td width="74%">Activities</td>
+    </tr>
+  </table>
 </div>
-
-<div id="apDiv10" style="font-family:Lucida Grande; font-size:10px; color:red;"><em>Item Not Found?</em></div>
-<p>&nbsp;</p>
-<div id="apDiv11">
-  <form id="form3" name="form3" method="post" action="">
-    <input name="addNewItem" type="submit" class="maroon" id="addNewItem" value="Add New &gt;&gt;" />
-  </form>
+<div id="apDiv13">
+  <table width="100%" frame="box" cellspacing="0" class="tablerow_1">
+    <tr>
+      <td width="26%">&nbsp;</td>
+      <td width="74%">&nbsp;</td>
+    </tr>
+  </table>
 </div>
 </body>
 </html>

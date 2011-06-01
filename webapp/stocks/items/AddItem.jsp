@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Add Item</title>
 
@@ -440,14 +441,16 @@
 
 <body>
 	<div id="footer_2">
-		<table width="100%" frame="above" bordercolor="#333333" style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+		<table width="100%" frame="above" bordercolor="#333333"
+			style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 			<tr>
-				<td>Copyright � 2011 All Rights Reserved</td>
+				<td>Copyright ï¿½ 2011 All Rights Reserved</td>
 			</tr>
 		</table>
 	</div>
 	<div id="logoHeader" style="width: 95%;">
-		<img name="" src="../images/header2.png" width="1354" height="115" alt="" />
+		<img name="" src="../images/header2.png" width="1354" height="115"
+			alt="" />
 	</div>
 	<div id="pageLabel" style="width: 100%;">
 		<table width="100%" border="0">
@@ -455,32 +458,41 @@
 				<td width="9%">
 					<table width="100%" frame="below">
 						<tr>
-							<td style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add Item</td>
+							<td
+								style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
+								Item</td>
 						</tr>
 					</table>
 				</td>
 				<td width="87%">&nbsp;</td>
 				<td width="4%">
-					<form id="form15" name="form15" method="post" action="../items/SearchAllItems.do">
-						<input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+					<form id="form15" name="form15" method="post"
+						action="../items/SearchAllItems.do">
+						<input name="backBtn" type="submit" class="button" id="backBtn"
+							value="Back" />
 					</form>
 				</td>
 			</tr>
 		</table>
 	</div>
-	<div id="headerdiv" style="font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	<div id="headerdiv"
+		style="font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 	<div id="background" style="background-color: #EEE0E5;"></div>
 	<div id="name">
-		<form action="../stocks/SaveItem.do" method="post" name="form1" id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
+		<form action="../stocks/SaveItem.do" method="post" name="form1"
+			id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 
 			<div id="apDiv12">
 				<label for="itemDescription3" class="texts">*Description:</label>
-				<textarea name="itemDescription" cols="30" id="itemDescription3" <%if (finished) {%> disabled="disabled" <%}%>></textarea>
+				<textarea name="itemDescription" cols="30" id="itemDescription3"
+					<%if (finished) {%> disabled="disabled" <%}%>></textarea>
 			</div>
 			<div id="apDiv11">
-				<label for="itemUnit" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit" <%if (finished) {%> disabled="disabled" <%}%>>
+				<label for="itemUnit" class="texts">*Unit:</label> <select
+					name="itemUnit" id="itemUnit" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<%
 						for (String s : itemUnits) {
 					%>
@@ -490,11 +502,11 @@
 					%>
 				</select>
 			</div>
-			
+
 			<div id="apDiv21">
-				<label for="itemCategory" class="texts">*Category:</label> <select name="itemCategory" id="itemCategory" <%if (finished) {%> disabled="disabled"
-					<%}%>
-				>
+				<label for="itemCategory" class="texts">*Category:</label> <select
+					name="itemCategory" id="itemCategory" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<%
 						for (String s : itemCategories) {
 					%>
@@ -505,12 +517,14 @@
 				</select>
 			</div>
 			<div id="apDiv13">
-				<label for="itemPrice3" class="texts">Price:</label> <input name="itemPrice" type="text" id="itemPrice3" size="10" <%if (finished) {%>
-					disabled="disabled" <%}%>
-				/>
+				<label for="itemPrice3" class="texts">Price:</label> <input
+					name="itemPrice" type="text" id="itemPrice3" size="10"
+					<%if (finished) {%> disabled="disabled" <%}%> />
 			</div>
 			<div id="apDiv14">
-				<label for="month3" class="texts">Date Acquired:</label> <select name="month" id="month3" <%if (finished) {%> disabled="disabled" <%}%>>
+				<label for="month3" class="texts">Date Acquired:</label> <select
+					name="month" id="month3" <%if (finished) {%> disabled="disabled"
+					<%}%>>
 					<option value="01">Jan</option>
 					<option value="02">Feb</option>
 					<option value="03">Mar</option>
@@ -523,7 +537,8 @@
 					<option value="10">Oct</option>
 					<option value="11">Nov</option>
 					<option value="12">Dec</option>
-				</select> <select name="day" id="dayAcquired" <%if (finished) {%> disabled="disabled" <%}%>>
+				</select> <select name="day" id="dayAcquired" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<option>01</option>
 					<option>02</option>
 					<option>03</option>
@@ -555,8 +570,8 @@
 					<option>29</option>
 					<option>30</option>
 					<option>31</option>
-				</select> <select name="year" id="yearAcquired" <%if (finished) {%> disabled="disabled" <%}%>>
-				<%%>
+				</select> <select name="year" id="yearAcquired" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<option>2000</option>
 					<option>2001</option>
 					<option>2002</option>
@@ -581,25 +596,28 @@
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<div id="apDiv15">
-				<label for="stockNumber2" class="texts">Stock Number:</label> <input name="stockNumber" type="text" id="stockNumber2" size="20" />
+				<label for="stockNumber2" class="texts">Stock Number:</label> <input
+					name="stockNumber" type="text" id="stockNumber2" size="20" />
 			</div>
 			<div id="apDiv16">
-				<label for="inventoryItemNum2" class="texts">Inv. Item Number:</label> <input type="text" name="inventoryItemNum" id="inventoryItemNum2"
-					<%if (finished) {%> disabled="disabled" <%}%>
-				/>
+				<label for="inventoryItemNum2" class="texts">Inv. Item
+					Number:</label> <input type="text" name="inventoryItemNum"
+					id="inventoryItemNum2" <%if (finished) {%> disabled="disabled"
+					<%}%> />
 			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<div id="apDiv17">
-				<label for="itemPropertyNumber2" class="texts">Property Number:</label> <input type="text" name="itemPropertyNumber" id="itemPropertyNumber2"
-					<%if (finished) {%> disabled="disabled" <%}%>
-				/>
+				<label for="itemPropertyNumber2" class="texts">Property
+					Number:</label> <input type="text" name="itemPropertyNumber"
+					id="itemPropertyNumber2" <%if (finished) {%> disabled="disabled"
+					<%}%> />
 			</div>
 			<p>&nbsp;</p>
 			<div id="apDiv18">
-				<label for="itemStatus2" class="texts">*Item Status:</label> <select name="itemStatus" id="itemStatus2" <%if (finished) {%> disabled="disabled"
-					<%}%>
-				>
+				<label for="itemStatus2" class="texts">*Item Status:</label> <select
+					name="itemStatus" id="itemStatus2" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<%
 						for (String s : itemStatuses) {
 					%>
@@ -611,9 +629,9 @@
 			</div>
 			<p>&nbsp;</p>
 			<div id="apDiv19">
-				<label for="itemCondition2" class="texts">*Item Condition:</label> <select name="itemCondition" id="itemCondition2" <%if (finished) {%>
-					disabled="disabled" <%}%>
-				>
+				<label for="itemCondition2" class="texts">*Item Condition:</label> <select
+					name="itemCondition" id="itemCondition2" <%if (finished) {%>
+					disabled="disabled" <%}%>>
 					<%
 						for (String s : itemConditions) {
 					%>
@@ -626,9 +644,8 @@
 			<p>&nbsp;</p>
 			<div id="apDiv20">
 				<input type="submit" name="addItemBtn " id="addItemBtn"
-					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" value="Add" <%if (finished) {%> disabled="disabled"
-					<%}%>
-				/>
+					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
+					value="Add" <%if (finished) {%> disabled="disabled" <%}%> />
 			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
@@ -643,8 +660,9 @@
 	<div id="footer"></div>
 	<p>&nbsp;</p>
 	<div id="logoutiv" style="width: 90%">
-		<form id="form2" name="form2" method="post" action="">
-			<input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+		<form id="form2" name="form2" method="post" action="../logout">
+			<input name="logout" type="submit" class="maroon" id="logout"
+				value="Logout" />
 		</form>
 	</div>
 	<div class="headerLabel" id="apDiv22">Item Information</div>

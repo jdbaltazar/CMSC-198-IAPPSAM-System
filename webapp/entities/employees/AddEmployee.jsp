@@ -4,8 +4,9 @@
 <%@page import="com.iappsam.util.ManagerBin"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM::Add Employee</title>
 <style type="text/css">
 .maroon {
 	font-size: 12px;
@@ -408,174 +409,212 @@
 	top: 992px;
 	width: 100%;
 }
+
+#apDiv21 {
+	position: absolute;
+	width: 100%;
+	height: 150%;
+	z-index: 0;
+	left: 12px;
+	top: 261px;
+}
 </style>
 </head>
 
 <body>
-<div id="footer">
-<table width="100%" frame="above" bordercolor="#333333"
-	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
-	<tr>
-		<td>Copyright © 2011 All Rights Reserved</td>
-	</tr>
-</table>
-</div>
-<div id="logoHeader" style="width: 100%"><img name=""
-	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
-<div id="pageLabel" style="width: 100%;">
-<table width="100%" border="0">
-	<tr>
-		<td width="13%">
-		<table width="100%" frame="below">
+	<div id="footer">
+		<table width="100%" frame="above" bordercolor="#333333"
+			style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 			<tr>
-				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
-				Employee</td>
+				<td>Copyright © 2011 All Rights Reserved</td>
 			</tr>
 		</table>
-		</td>
-		<td width="83%">&nbsp;</td>
-		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="SearchEmployee.do"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
-		</td>
-	</tr>
-</table>
-</div>
-<div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action=""><input
-	name="logout" type="submit" class="maroon" id="logout" value="Logout" /></form>
-</div>
-<div id="background" style="background-color: #EEE0E5;"></div>
-<div id="employmentDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-Information</div>
-<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
-<div id="contactInfoDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-Information</div>
-<div id="apDiv7"
-	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
-field</em></div>
-<p>&nbsp;</p>
-<div id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-Information</div>
-<div id="titleDiv">
-<form id="form1" name="form1" method="post" action="CreateEmployee.do">
-<p><label for="title"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<input name="title" type="text" id="title" size="20"
-	<%String title = (String) request.getAttribute("title");
+	</div>
+	<div id="logoHeader" style="width: 100%">
+		<img name="" src="../../images/header2.png" width="100%" height="115"
+			alt="" />
+	</div>
+	<div id="pageLabel" style="width: 100%;">
+		<table width="100%" border="0">
+			<tr>
+				<td width="13%">
+					<table width="100%" frame="below">
+						<tr>
+							<td
+								style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Add
+								Employee</td>
+						</tr>
+					</table>
+				</td>
+				<td width="83%">&nbsp;</td>
+				<td width="4%">
+					<form id="form15" name="form15" method="post"
+						action="SearchEmployee.do">
+						<input name="backBtn" type="submit" class="button" id="backBtn"
+							value="Back" />
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="logoutiv" style="width: 90%">
+		<form id="form2" name="form2" method="post" action="../../logout">
+			<input name="logout" type="submit" class="maroon" id="logout"
+				value="Logout" />
+		</form>
+	</div>
+	<div id="background" style="background-color: #EEE0E5;"></div>
+	<div id="employmentDiv"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
+		Information</div>
+	<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
+	<div id="contactInfoDiv"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
+		Information</div>
+	<div id="apDiv7"
+		style="font-family: Lucida Grande; color: red; font-size: 11px;">
+		<em>*required field</em>
+	</div>
+	<p>&nbsp;</p>
+	<div id="personalInfo"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
+		Information</div>
+	<div id="titleDiv">
+		<form id="form1" name="form1" method="post" action="CreateEmployee.do">
+			<p>
+				<label for="title"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
+				<input name="title" type="text" id="title" size="20"
+					<%String title = (String) request.getAttribute("title");
 			if (title != null && !title.isEmpty()) {%>
-	value="<%=title%>" <%}%> /></p>
+					value="<%=title%>" <%}%> />
+			</p>
 
-<div id="apDiv8"><label for="name"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40"
-	<%String name = (String) request.getAttribute("name");
+			<div id="apDiv8">
+				<label for="name"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
+				<input name="name" type="text" id="name" size="40"
+					<%String name = (String) request.getAttribute("name");
 			if (name != null && !name.isEmpty()) {%>
-	value="<%=name%>" <%}%> /> <%
- 	if (name != null && name.isEmpty())
- 		out.print("*");
- %>
-</div>
+					value="<%=name%>" <%}%> />
+				<%
+					if (name != null && name.isEmpty())
+						out.print("*");
+				%>
+			</div>
 
-<div id="apDiv9"><label for="designation3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<input name="designation" type="text" id="designation3" size="30"
-	<%String designation = (String) request.getAttribute("designation");
+			<div id="apDiv9">
+				<label for="designation3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
+				<input name="designation" type="text" id="designation3" size="30"
+					<%String designation = (String) request.getAttribute("designation");
 			if (designation != null && !designation.isEmpty()) {%>
-	value="<%=designation%>" <%}%> /> <%
- 	if (designation != null && designation.isEmpty())
- 		out.print("*");
- %>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><label for="employeeNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv10"><label for="employeeNumber3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
-	<%String employeeNumber = (String) request
-					.getAttribute("employeeNumber");
+					value="<%=designation%>" <%}%> />
+				<%
+					if (designation != null && designation.isEmpty())
+						out.print("*");
+				%>
+			</div>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>
+				<label for="employeeNumber2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<div id="apDiv10">
+				<label for="employeeNumber3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
+					No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
+					<%String employeeNumber = (String) request.getAttribute("employeeNumber");
 			if (employeeNumber != null && !employeeNumber.isEmpty()) {%>
-	value="<%=employeeNumber%>" <%}%> /></div>
-<p><label for="employeeNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv11"><label for="division3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
-<select name="division" id="division3">
-	<%
-		List<DivisionOffice> dOffice = ManagerBin.doManager
-				.getAllDivisionOffice();
-		for (int i = 0; i < dOffice.size(); i++) {
-	%>
-	<option id="<%=dOffice.get(i).getId()%>">
-	<%
-		out.print(dOffice.get(i).getDivisionName() + " , "
-					+ dOffice.get(i).getOfficeName());
-	%>
-	</option>
-	<%
-		}
-	%>
+					value="<%=employeeNumber%>" <%}%> />
+			</div>
+			<p>
+				<label for="employeeNumber2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<div id="apDiv11">
+				<label for="division3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
+				<select name="division" id="division3">
+					<%
+						List<DivisionOffice> dOffice = ManagerBin.doManager.getAllDivisionOffice();
+						for (int i = 0; i < dOffice.size(); i++) {
+					%>
+					<option id="<%=dOffice.get(i).getId()%>">
+						<%
+							out.print(dOffice.get(i).getDivisionName() + " , " + dOffice.get(i).getOfficeName());
+						%>
+					</option>
+					<%
+						}
+					%>
 
-</select> <label for="office3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
-</div>
-<p><label for="division2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label> <label for="office2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<p><label for="office2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<p><label for="mobileNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv13"><label for="mobileNumber3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25"
-	<%String mobileNumber = (String) request.getAttribute("mobileNumber");
-			if (mobileNumber != null && !mobileNumber.isEmpty()
-					&& !mobileNumber.equalsIgnoreCase("null")) {%>
-	value="<%=mobileNumber%>" <%}%> /></div>
-<p><label for="mobileNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv14"><label for="landline3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25"
-	<%String landline = (String) request.getAttribute("landline");
-			if (landline != null && !landline.isEmpty()
-					&& !landline.equalsIgnoreCase("null")) {%>
-	value="<%=landline%>" <%}%> /></div>
-<div id="apDiv15"><label for="emailad3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25"
-	<%String emailad = (String) request.getAttribute("emailad");
-			if (emailad != null && !emailad.isEmpty()
-					&& !emailad.equalsIgnoreCase("null")) {%>
-	value="<%=emailad%>" <%}%> /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+				</select> <label for="office3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
+			</div>
+			<p>
+				<label for="division2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label> <label for="office2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<p>
+				<label for="office2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<p>
+				<label for="mobileNumber2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<div id="apDiv13">
+				<label for="mobileNumber3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
+					Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
+					size="25"
+					<%String mobileNumber = (String) request.getAttribute("mobileNumber");
+			if (mobileNumber != null && !mobileNumber.isEmpty() && !mobileNumber.equalsIgnoreCase("null")) {%>
+					value="<%=mobileNumber%>" <%}%> />
+			</div>
+			<p>
+				<label for="mobileNumber2"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+				</label>
+			</p>
+			<div id="apDiv14">
+				<label for="landline3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
+				<input name="landline" type="text" id="landline3" size="25"
+					<%String landline = (String) request.getAttribute("landline");
+			if (landline != null && !landline.isEmpty() && !landline.equalsIgnoreCase("null")) {%>
+					value="<%=landline%>" <%}%> />
+			</div>
+			<div id="apDiv15">
+				<label for="emailad3"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+					E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
+					size="25"
+					<%String emailad = (String) request.getAttribute("emailad");
+			if (emailad != null && !emailad.isEmpty() && !emailad.equalsIgnoreCase("null")) {%>
+					value="<%=emailad%>" <%}%> />
+			</div>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
 
-<div id="apDiv20"><input type="submit" name="addBtn" id="addBtn"
-	value="Add"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</div>
-<p>&nbsp;</p>
-<p><br />
-</p>
-</form>
-</div>
+			<div id="apDiv20">
+				<input type="submit" name="addBtn" id="addBtn" value="Add"
+					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
+			</div>
+			<p>&nbsp;</p>
+			<p>
+				<br />
+			</p>
+		</form>
+	</div>
 </body>
 </html>

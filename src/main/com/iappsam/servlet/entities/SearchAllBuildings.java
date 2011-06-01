@@ -44,10 +44,7 @@ public class SearchAllBuildings extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("../../entities/building/SearchBuildings.jsp");
-		
-		ArrayList<String> buildingName = new ArrayList<String>();
-		ArrayList<String> buildingAddress = new ArrayList<String>();
+		RequestDispatcher view = request.getRequestDispatcher("SearchBuildings.jsp");
 		
 		List<Building> buildings = new ArrayList<Building>();
 
@@ -56,25 +53,7 @@ public class SearchAllBuildings extends HttpServlet{
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-//		if (searchItemField == null || searchItemField.equalsIgnoreCase("")) {
-//			try {
-//				items = iManager.getAllItems();
-//			} catch (TransactionException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		} else {
-//			items = s.search(searchItemField);
-//		}
-
-		for (Building b: buildings){
-			buildingName.add(b.getBuildingName());
-			buildingAddress.add(b.getBuildingAddress());
-		}
-		System.out.println("maaay sulooooooooood!!");
-		request.setAttribute("buildingName", buildingName);
-		request.setAttribute("buildingAddress", buildingAddress);
-		
+		request.setAttribute("buildings", buildings);
 		
 		view.forward(request, response);
 

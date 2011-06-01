@@ -3,8 +3,9 @@
 <%@page import="com.iappsam.entities.forms.IIRUP"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: Search IIRUP</title>
 <style type="text/css">
 .resultTable {
 	font-family: Lucida Grande;
@@ -229,7 +230,7 @@
 		<td width="81%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../MenuFrame.jsp"><input name="backBtn"
+			action="../viewformsmenu"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>

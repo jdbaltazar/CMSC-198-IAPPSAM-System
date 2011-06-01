@@ -1,11 +1,5 @@
 USE IAPPSAM;
 
-INSERT INTO ACCOUNT_TYPE VALUES
-("System Administrator"),
-("SPSO Personnel"),
-("Non-SPSO Personnel (Head)"),
-("Non-SPSO Personnel (Employee)");
-
 
 INSERT INTO DISPOSAL (name) VALUES 
 ("Destroyed"),

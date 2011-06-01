@@ -24,11 +24,14 @@
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
 }
-.header{
+/*.header{
+	color:white;
+	font-size:5px;
+	text-align:center;
 	background-color:#7B1113;
 	width:578px;
 	height:25px;
-}
+}*/
 
 .background{
 	background-color:#EEE0E5;
@@ -108,10 +111,12 @@
   border-bottom: 1px solid #7B1113;
 }
 .header{
+	color:white;
+	background-color:#7B1113;
 	text-align:center;
 	text-shadow:#999;
 	font-family:Lucida Grande; 
-	font-size:16px; 
+	font-size:12px; 
 	font-weight:bold;
 }
 #pageLabel {
@@ -315,14 +320,14 @@
       </tr>
     </table></td>
     <td width="89%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../menu">
       <input name="backBtn" type="submit" class="button2" id="backBtn" value="Back" />
     </form></td>
   </tr>
 </table>
 </div>
 <div id="logoutiv" style="width:90%">
-  <form id="form2" name="form2" method="post" action="">
+  <form id="form2" name="form2" method="post" action="../logout">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
@@ -387,11 +392,11 @@
       <input name="cappBtn" type="submit" class="button" id="cappBtn" value="Consolidated APP" />
     </form>
   </div>
-  <div class="header" id="apDiv3"></div>
-  <div class="header" id="apDiv4"></div>
-  <div class="header" id="apDiv5"></div>
-  <div class="header" id="apDiv6"></div>
-  <div class="header" id="apDiv7"></div>
+  <div class="header" id="apDiv3">Purchase</div>
+  <div class="header" id="apDiv4">Inventory</div>
+  <div class="header" id="apDiv5">Issuance</div>
+  <div class="header" id="apDiv6">PAR/ICS</div>
+  <div class="header" id="apDiv7">Disposal</div>
 </div>
 </body>
 </html>

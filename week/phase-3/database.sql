@@ -1031,17 +1031,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IAPPSAM`.`Account_Type`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Account_Type` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Account_Type` (
-  `Account_Type` VARCHAR(50) NOT NULL ,
-  PRIMARY KEY (`Account_Type`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `IAPPSAM`.`Account`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `IAPPSAM`.`Account` ;
@@ -1050,19 +1039,13 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Account` (
   `Username` VARCHAR(60) NOT NULL ,
   `Password` VARCHAR(80) NOT NULL ,
   `Acquainted` TINYINT(1)  NOT NULL ,
-  `Account_Type` VARCHAR(50) NOT NULL ,
+  `Account_Type` INT NOT NULL ,
   `Person_ID` INT NOT NULL ,
   PRIMARY KEY (`Username`) ,
   INDEX `fk_Account_Person1` (`Person_ID` ASC) ,
-  INDEX `fk_Account_Account_Type1` (`Account_Type` ASC) ,
   CONSTRAINT `fk_Account_Person1`
     FOREIGN KEY (`Person_ID` )
     REFERENCES `IAPPSAM`.`Person` (`Person_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Account_Account_Type1`
-    FOREIGN KEY (`Account_Type` )
-    REFERENCES `IAPPSAM`.`Account_Type` (`Account_Type` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

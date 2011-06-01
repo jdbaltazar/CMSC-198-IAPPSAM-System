@@ -1,8 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>IAPPSAM :: Add Item Category</title>
 <style type="text/css">
 .menubtn{
 	height:20px;
@@ -202,7 +203,7 @@
 </table>
 </div>
 <div id="logoutiv" style="width:90%">
-  <form id="form2" name="form2" method="post" action="">
+  <form id="form2" name="form2" method="post" action="../../logout">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
@@ -212,7 +213,7 @@
   <form id="form1" name="form1" method="post" action="AddCategory.do">
     <p>
       <label for="categoryField" class="labels">Category:</label>
-      <input name="categoryField" type="text" id="categoryField" size="30" />
+      <input name="categoryField" type="text" id="categoryField" size="30" maxlength="200" />
     </p>
     <p>&nbsp;</p>
     <div id="apDiv2">

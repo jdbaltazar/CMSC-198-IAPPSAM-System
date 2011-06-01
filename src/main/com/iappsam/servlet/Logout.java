@@ -23,40 +23,29 @@ public class Logout extends HttpServlet {
 	 */
 	public Logout() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("Login.jsp");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 		view.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("inside the LOGOUT post!!!!!!!!!!!!!");
 
 		HttpSession session = request.getSession();
 
-		Enumeration<String>attributes = session.getAttributeNames();
-		while(attributes.hasMoreElements()){
+		Enumeration<String> attributes = session.getAttributeNames();
+		while (attributes.hasMoreElements()) {
 			session.removeAttribute(attributes.nextElement());
 		}
 		session.invalidate();
 
-//		RequestDispatcher view = request.getRequestDispatcher("Login.jsp");
-//		view.forward(request, response);
-		
-		response.sendRedirect("index.jsp");
+		// RequestDispatcher view = request.getRequestDispatcher("Login.jsp");
+		// view.forward(request, response);
+
+		response.sendRedirect("login");
 	}
 
 }
