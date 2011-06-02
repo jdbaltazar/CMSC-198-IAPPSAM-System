@@ -15,6 +15,7 @@ import com.iappsam.entities.Item;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.search.Searcher;
 import com.iappsam.util.ManagerBin;
@@ -52,7 +53,7 @@ public class SearchAllItems extends HttpServlet {
 		System.out.println("...inside search all items");
 
 		String searchItemField = (String) request.getParameter("searchItemField");
-		ItemSearcher s = new ItemSearcher();
+		AbstractSearcher s = new ItemSearcher();
 		List<Item> items = new ArrayList<Item>();
 		List<Item> uniqueItems = new ArrayList<Item>();
 

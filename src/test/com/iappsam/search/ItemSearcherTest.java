@@ -23,7 +23,7 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 public class ItemSearcherTest {
 
 	private static ItemManager im;
-	private static ItemSearcher s;
+	private static AbstractSearcher s;
 
 	private final ItemCategory category = new ItemCategory("Category");
 	private final Unit unit = new Unit("Unit");
