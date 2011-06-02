@@ -10,19 +10,15 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.ItemManagerSession;
 
-public class ItemSearcherTest {
+public class ItemSearcherTest extends ItemManagerTestSuite {
 
-	private static ItemManager im;
 	private static AbstractSearcher s;
 
 	private final ItemCategory category = new ItemCategory("Category");
@@ -38,15 +34,12 @@ public class ItemSearcherTest {
 	private final Item itemDate2 = new Item("Date2", category, unit, status, condition);
 
 	@BeforeClass
-	public static void initManagers() {
-		im = new ItemManagerSession();
+	public static void initSearcher() {
 		s = new ItemSearcher();
 	}
 
-	@Before
-	public void init() throws TransactionException {
-		EntityRemover.removeAll();
-
+	@Override
+	public void initAfter() throws TransactionException {
 		itemDate.setDateAcquired(Date.valueOf("2010-01-01"));
 		itemDate2.setDateAcquired(Date.valueOf("2010-01-02"));
 		addAll();
