@@ -37,6 +37,8 @@ public interface ItemManager extends Manager {
 
 	void addUnit(Unit unit) throws TransactionException;
 
+	void addUnit(String unitName) throws TransactionException;
+
 	String saveUnit(Unit unit) throws TransactionException;
 
 	void updateUnit(Unit unit) throws TransactionException;
@@ -98,5 +100,11 @@ public interface ItemManager extends Manager {
 	void removeItemCategory(ItemCategory category) throws TransactionException;
 
 	List<ItemCategory> getAllItemCategory() throws TransactionException;
+
+	void addItemStatus(String name) throws TransactionException;
+
+	void addItemCondition(String name) throws TransactionException;
+
+	void addItemCategory(String name) throws TransactionException;
 
 }

@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.iappsam.LoginModuleTest;
 import com.iappsam.entities.ContactTest;
 import com.iappsam.entities.DivisionOfficeTest;
 import com.iappsam.entities.EmployeeTest;
@@ -26,10 +27,14 @@ import com.iappsam.search.ItemConditionSearcherTest;
 import com.iappsam.search.ItemSearcherTest;
 import com.iappsam.search.ItemStatusSearcherTest;
 import com.iappsam.search.UnitSearcherTest;
+import com.iappsam.servlet.LoginController;
+import com.iappsam.servlet.LoginControllerTest;
 import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ HibernateUtilTest.class, //
+@SuiteClasses({ LoginModuleTest.class, //
+		LoginControllerTest.class, //
+		HibernateUtilTest.class, //
 		ItemTest.class,//
 		ContactTest.class, //
 		DivisionOfficeTest.class, //

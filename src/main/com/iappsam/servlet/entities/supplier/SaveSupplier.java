@@ -74,9 +74,10 @@ public class SaveSupplier extends HttpServlet {
 				ManagerBin.pManager.addPerson(p);
 				emp = new Employee(designation, employeeNumber, p);
 				ManagerBin.pManager.addEmployee(emp);
-				s = new Supplier(supplierName, supplierAddress, tin, emp.getId());
+				s = new Supplier(supplierName, supplierAddress, emp);
+				s.setTin(tin);
 				ManagerBin.sManager.addSupplier(s);
-				request.setAttribute("supplierID", ""+s.getId());
+				request.setAttribute("supplierID", "" + s.getId());
 				view = request.getRequestDispatcher("ViewSupplier.do");
 				System.out.println("supplier was saved!!!");
 			} catch (TransactionException e) {

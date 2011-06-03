@@ -97,6 +97,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
+	public void addUnit(String name) throws TransactionException {
+		addUnit(new Unit(name));
+	}
+
+	@Override
 	public String saveUnit(Unit unit) throws TransactionException {
 		return (String) save(unit);
 	}
@@ -137,6 +142,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public void addItemStatus(ItemStatus itemStatus) throws TransactionException {
 		add(itemStatus);
+	}
+
+	@Override
+	public void addItemStatus(String name) throws TransactionException {
+		addItemStatus(new ItemStatus(name));
 	}
 
 	@Override
@@ -190,6 +200,11 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
+	public void addItemCondition(String name) throws TransactionException {
+		addItemCondition(new ItemCondition(name));
+	}
+
+	@Override
 	public String saveItemCondition(ItemCondition itemCondition) throws TransactionException {
 		return (String) save(itemCondition);
 	}
@@ -232,8 +247,14 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 		return getAll(ItemCondition.class);
 	}
 
+	@Override
 	public void addItemCategory(ItemCategory category) throws TransactionException {
 		add(category);
+	}
+
+	@Override
+	public void addItemCategory(String name) throws TransactionException {
+		addItemCategory(new ItemCategory(name));
 	}
 
 	@Override

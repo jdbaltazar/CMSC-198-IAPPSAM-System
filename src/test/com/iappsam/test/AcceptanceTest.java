@@ -13,7 +13,7 @@ public class AcceptanceTest {
 	@Before
 	public void setup() throws Exception {
 		tester = new WebTester();
-		tester.setBaseUrl("http://localhost:8080/CMSC-198-IAPPSAM-Sytem/");
+		tester.setBaseUrl("http://localhost/");
 	}
 
 	@Test

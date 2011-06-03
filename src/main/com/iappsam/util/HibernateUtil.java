@@ -50,8 +50,12 @@ import com.iappsam.entities.forms.RequisitionAndIssueSlip;
 import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
 import com.iappsam.entities.forms.WasteMaterialsReport;
 import com.iappsam.entities.forms.WasteMaterialsReportLine;
+import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
+import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.managers.sessions.WMRManagerSession;
 
 /**
  * Startup Hibernate and provide access to the singleton SessionFactory
@@ -71,7 +75,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "true");
+			// p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -130,7 +134,7 @@ public class HibernateUtil {
 			sessionFactory = conf.buildSessionFactory();
 
 			EntityRemover.removeAll();
-			createAdminAccount();
+			persistDefaultEntities();
 			return true;
 		} catch (Throwable ex) {
 			ex.printStackTrace();
@@ -139,7 +143,37 @@ public class HibernateUtil {
 		}
 	}
 
-	private static void createAdminAccount() throws TransactionException {
+	private static void persistDefaultEntities() throws TransactionException {
+		addAdminAccount();
+		addDisposals();
+		addItemDependencies();
+	}
+
+	private static void addItemDependencies() throws TransactionException {
+		ItemManager im = new ItemManagerSession();
+		im.addUnit("PCS");
+		im.addItemStatus("Not Available");
+		im.addItemStatus("Available");
+		im.addItemCondition("Good Condition");
+		im.addItemCategory("Common Office Supplies");
+		im.addItemCategory("Other Office Supplies");
+		im.addItemCategory("Common Office Supplies (Exclusive Distributorship)");
+		im.addItemCategory("Common Computer Supplies");
+		im.addItemCategory("Common Janitorial Supplies");
+		im.addItemCategory("Common Electrical/Planing Supplies");
+		im.addItemCategory("Office Forms (for Purchasing)");
+		im.addItemCategory("Others");
+	}
+
+	private static void addDisposals() throws TransactionException {
+		WMRManager wmrm = new WMRManagerSession();
+		wmrm.addDisposal(new Disposal("Destroyed"));
+		wmrm.addDisposal(new Disposal("Sold at private sale"));
+		wmrm.addDisposal(new Disposal("Sold at public auction"));
+		wmrm.addDisposal(new Disposal("Transferred Without Cost"));
+	}
+
+	private static void addAdminAccount() throws TransactionException {
 		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 
