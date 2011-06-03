@@ -231,12 +231,6 @@
     %>
   </table>
 </div>
-<div id="apDiv2">
-  <form id="form3" name="form3" method="post" action="">
-    <label for="searchField" class="labels">Search:</label>
-    <input name="searchField" type="text" id="searchField" size="30" />
-    <input name="hoSearchBtn" type="submit" class="maroon" id="hoSearchBtn" value="GO" />
-  </form>
-</div>
+
 </body>
 </html>

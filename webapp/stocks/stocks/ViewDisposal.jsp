@@ -149,7 +149,7 @@
 	width:102px;
 	height:26px;
 	z-index:16;
-	left: 840px;
+	left: 593px;
 	top: 289px;
 }
 #resultTable {
@@ -208,7 +208,7 @@
   </form>
 </div>
 <div id="resultTable" style="width:100%">
-  <table width="100%" frame="box" cellspacing="0">
+<table width="100%" frame="box" cellspacing="0">
           	<%ArrayList<String> disposal = (ArrayList<String>) request.getAttribute("disposal");
   	int size = disposal.size();%>
   	
@@ -231,13 +231,6 @@
     }
     %>
   </table>
-</div>
-<div id="apDiv2">
-  <form id="form3" name="form3" method="post" action="">
-    <label for="searchField" class="labels">Search:</label>
-    <input name="searchField" type="text" id="searchField" size="30" />
-    <input name="hoSearchBtn" type="submit" class="maroon" id="hoSearchBtn" value="GO" />
-  </form>
 </div>
 </body>
 </html>

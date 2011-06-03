@@ -149,8 +149,8 @@
 	width:102px;
 	height:26px;
 	z-index:16;
-	left: 840px;
-	top: 289px;
+	left: 606px;
+	top: 303px;
 }
 #resultTable {
 	position:absolute;
@@ -208,7 +208,7 @@
   </form>
 </div>
 <div id="resultTable" style="width:100%">
-  <table width="100%" frame="box" cellspacing="0">
+<table width="100%" frame="box" cellspacing="0">
           	<%ArrayList<String> modes = (ArrayList<String>) request.getAttribute("mode");
   	int size = modes.size();%>
   	
@@ -231,13 +231,6 @@
     }
     %>
   </table>
-</div>
-<div id="apDiv2">
-  <form id="form3" name="form3" method="post" action="">
-    <label for="searchField" class="labels">Search:</label>
-    <input name="searchField" type="text" id="searchField" size="30" />
-    <input name="hoSearchBtn" type="submit" class="maroon" id="hoSearchBtn" value="GO" />
-  </form>
 </div>
 </body>
 </html>
