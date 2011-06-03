@@ -220,167 +220,187 @@
 </head>
 
 <body>
-<table width="100%" border="0">
-	<tr>
-		<td width="19%">
-		<table width="100%" frame="below">
+	<table width="100%" border="0">
+		<tr>
+			<td width="19%">
+				<table width="100%" frame="below">
+					<tr>
+						<td
+							style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Create
+							New Account</td>
+					</tr>
+				</table></td>
+			<td width="77%">&nbsp;</td>
+			<td width="4%"><a href="/menu" title="Back to main menu"
+				target="main_frame">Home</a>
+			</td>
+		</tr>
+	</table>
+	<div id="background" style="background-color: #EEE0E5;"></div>
+	<div id="designationDiv">
+		<form id="form3" name="form3" method="post"
+			action="../accounts/accountCreate.do">
+			<label for="designation"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
+			<%
+				String designation = (String) request.getAttribute("designation");
+			%>
+			<%=designation%></form>
+	</div>
+	<div id="empNumDiv">
+		<form id="form4" name="form4" method="post" action="">
+			<label for="employeeNumber"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
+				Num:</label>
+			<%
+				String employeeNumber = (String) request.getAttribute("employeeNumber");
+			%>
+			<%=employeeNumber%></form>
+	</div>
+	<div id="Division">
+		<form id="form5" name="form5" method="post" action="">
+			<label for="division"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division:</label>
+			<%
+				String division = (String) request.getAttribute("division");
+			%>
+			<%=division%></form>
+	</div>
+	<%
+		String office = (String) request.getAttribute("office");
+	%>
+	<%
+		if (office != null) {
+	%>
+	<div id="officeDiv">
+		<form id="form6" name="form6" method="post" action="">
+			<label for="office"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Office:</label>
+
+			<%=office%></form>
+	</div>
+	<%
+		}
+	%>
+	<div id="accountInfoHeader"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
+		Info</div>
+	<div id="userNameDiv">
+		<div>
+			<form id="form7" name="form7" method="post" action="">
+				<label for="userName"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
+				<%
+					String userName = (String) request.getAttribute("userName");
+				%>
+				<%=userName%></form>
+		</div>
+	</div>
+	<div id="passwordDiv">
+		<div>
+			<form id="form8" name="form8" method="post" action="">
+				<label for="password"
+					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
+				<%
+					String password = (String) request.getAttribute("password");
+				%>
+				<%
+					for (int i = 0; i < password.length(); i++)
+						out.print("*");
+				%>
+			</form>
+		</div>
+	</div>
+	<div id="sumbmitDivBtn">
+		<form id="form10" name="form10" method="post"
+			action="../MenuFrame.html">
+			<p>
+				<input type="submit" name="submit" id="submit" value="Back"
+					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
+			</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+		</form>
+	</div>
+	<div id="employmentDiv"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
+		Info</div>
+	<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
+	<div id="border">
+		<table width="100%" height="870" border="1">
 			<tr>
-				<td
-					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Create
-				New Account</td>
+				<td height="864">&nbsp;</td>
 			</tr>
 		</table>
-		</td>
-		<td width="77%">&nbsp;</td>
-		<td width="4%"><a href="../MenuFrame.html"
-			title="Back to main menu" target="main_frame">Home</a></td>
-	</tr>
-</table>
-<div id="background" style="background-color: #EEE0E5;"></div>
-<div id="designationDiv">
-<form id="form3" name="form3" method="post"
-	action="../accounts/accountCreate.do"><label for="designation"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<%
-	String designation = (String) request.getAttribute("designation");
-%> <%=designation%></form>
-</div>
-<div id="empNumDiv">
-<form id="form4" name="form4" method="post" action=""><label
-	for="employeeNumber"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-Num:</label> <%
- 	String employeeNumber = (String) request.getAttribute("employeeNumber");
- %> <%=employeeNumber%></form>
-</div>
-<div id="Division">
-<form id="form5" name="form5" method="post" action=""><label
-	for="division"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division:</label>
-<%
-	String division = (String) request.getAttribute("division");
-%> <%=division%></form>
-</div>
-<%
-	String office = (String) request.getAttribute("office");
-%>
-<%
-	if (office != null) {
-%>
-<div id="officeDiv">
-<form id="form6" name="form6" method="post" action=""><label
-	for="office"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Office:</label>
-
-<%=office%></form>
-</div>
-<%
-	}
-%>
-<div id="accountInfoHeader"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
-Info</div>
-<div id="userNameDiv">
-<div>
-<form id="form7" name="form7" method="post" action=""><label
-	for="userName"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
-<%
-	String userName = (String) request.getAttribute("userName");
-%> <%=userName%></form>
-</div>
-</div>
-<div id="passwordDiv">
-<div>
-<form id="form8" name="form8" method="post" action=""><label
-	for="password"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
-<%
-	String password = (String) request.getAttribute("password");
-%> <%
- 	for (int i = 0; i < password.length(); i++)
- 		out.print("*");
- %>
-</form>
-</div>
-</div>
-<div id="sumbmitDivBtn">
-<form id="form10" name="form10" method="post" action="../MenuFrame.html">
-<p><input type="submit" name="submit" id="submit" value="Back"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-</form>
-</div>
-<div id="employmentDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-Info</div>
-<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
-<div id="border">
-<table width="100%" height="870" border="1">
-	<tr>
-		<td height="864">&nbsp;</td>
-	</tr>
-</table>
-</div>
-<div id="contactInfoDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-Info</div>
-<div id="apDiv4">
-<form id="form11" name="form11" method="post" action=""><label
-	for="mobileNumber"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <%
- 	String mobileNumber = (String) request.getAttribute("mobileNumber");
- %> <%=mobileNumber%></form>
-</div>
-<div id="apDiv5">
-<form id="form12" name="form12" method="post" action=""><label
-	for="landline"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<%
-	String landline = (String) request.getAttribute("landline");
-%> <%=landline%></form>
-</div>
-<div id="apDiv6">
-<form id="form13" name="form13" method="post" action=""><label
-	for="emailad"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">E-mail
-Address:</label> <%
- 	String emailad = (String) request.getAttribute("emailad");
- %> <%=emailad%></form>
-</div>
-<div id="apDiv7"
-	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
-field</em></div>
-<div id="acctTypediv">
-<form id="form14" name="form14" method="post" action=""><label
-	for="acctType"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
-Type: </label> <%
- 	String acctType = (String) request.getAttribute("acctType");
- %> <%=acctType%></form>
-</div>
-<p>&nbsp;</p>
-<div id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-Info</div>
-<div id="titleDiv">
-<form id="form1" name="form1" method="post" action=""><label
-	for="title"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<%
-	String title = (String) request.getAttribute("title");
-%> <%=title%> <br />
-</form>
-</div>
-<div id="nameDiv">
-<form id="form2" name="form2" method="post" action=""><label
-	for="name"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<%
-	String name = (String) request.getAttribute("name");
-%> <%=name%></form>
+	</div>
+	<div id="contactInfoDiv"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
+		Info</div>
+	<div id="apDiv4">
+		<form id="form11" name="form11" method="post" action="">
+			<label for="mobileNumber"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
+				Number:</label>
+			<%
+				String mobileNumber = (String) request.getAttribute("mobileNumber");
+			%>
+			<%=mobileNumber%></form>
+	</div>
+	<div id="apDiv5">
+		<form id="form12" name="form12" method="post" action="">
+			<label for="landline"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
+			<%
+				String landline = (String) request.getAttribute("landline");
+			%>
+			<%=landline%></form>
+	</div>
+	<div id="apDiv6">
+		<form id="form13" name="form13" method="post" action="">
+			<label for="emailad"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">E-mail
+				Address:</label>
+			<%
+				String emailad = (String) request.getAttribute("emailad");
+			%>
+			<%=emailad%></form>
+	</div>
+	<div id="apDiv7"
+		style="font-family: Lucida Grande; color: red; font-size: 11px;">
+		<em>*required field</em>
+	</div>
+	<div id="acctTypediv">
+		<form id="form14" name="form14" method="post" action="">
+			<label for="acctType"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
+				Type: </label>
+			<%
+				String acctType = (String) request.getAttribute("acctType");
+			%>
+			<%=acctType%></form>
+	</div>
+	<p>&nbsp;</p>
+	<div id="personalInfo"
+		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
+		Info</div>
+	<div id="titleDiv">
+		<form id="form1" name="form1" method="post" action="">
+			<label for="title"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
+			<%
+				String title = (String) request.getAttribute("title");
+			%>
+			<%=title%>
+			<br />
+		</form>
+	</div>
+	<div id="nameDiv">
+		<form id="form2" name="form2" method="post" action="">
+			<label for="name"
+				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
+			<%
+				String name = (String) request.getAttribute("name");
+			%>
+			<%=name%></form>
 </body>
 </html>

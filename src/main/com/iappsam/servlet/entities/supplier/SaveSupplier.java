@@ -49,7 +49,7 @@ public class SaveSupplier extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("inside savesupplier.java");
+		System.out.println("........inside savesupplier.java");
 		String supplierName = (String) request.getParameter("supplierName");
 		String supplierAddress = (String) request.getParameter("supplierAddress");
 		String tin = (String) request.getParameter("tin");
@@ -66,45 +66,11 @@ public class SaveSupplier extends HttpServlet {
 
 		if (Verifier.validEntry(supplierName) && Verifier.validEntry(supplierAddress) && Verifier.validEntry(name) && Verifier.validEntry(designation)) {
 
-			Contact mobile = null, landL = null, emAdd = null;
 			Person p = null;
 			Employee emp = null;
 			Supplier s = null;
-			if (Verifier.validEntry(mobileNumber)) {
-				mobile = new Contact(mobileNumber, ContactType.MOBILE);
-				try {
-					ManagerBin.cManager.addContact(mobile);
-				} catch (TransactionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (Verifier.validEntry(landline)) {
-				landL = new Contact(landline, ContactType.LANDLINE);
-				try {
-					ManagerBin.cManager.addContact(landL);
-				} catch (TransactionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (Verifier.validEntry(emailad)) {
-				emAdd = new Contact(emailad, ContactType.EMAIL);
-				try {
-					ManagerBin.cManager.addContact(emAdd);
-				} catch (TransactionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			p = new Person(title, name);
 			try {
-				if (mobile != null)
-					p.addContact(mobile);
-				if (landL != null)
-					p.addContact(landL);
-				if (emAdd != null)
-					p.addContact(emAdd);
 				ManagerBin.pManager.addPerson(p);
 				emp = new Employee(designation, employeeNumber, p);
 				ManagerBin.pManager.addEmployee(emp);

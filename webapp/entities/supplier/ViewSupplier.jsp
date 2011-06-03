@@ -532,9 +532,9 @@
 	Employee emp = (Employee) request.getAttribute("employee");
 	Person p = (Person) request.getAttribute("person");
 
-	String mobile = (String) request.getAttribute("mobile");
-	String landline = (String) request.getAttribute("landline");
-	String email = (String) request.getAttribute("email");
+	//String mobile = (String) request.getAttribute("mobile");
+	//String landline = (String) request.getAttribute("landline");
+	//String email = (String) request.getAttribute("email");
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -646,20 +646,17 @@ No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" <%if (mobile != null) {%> value="<%=mobile%>"
-	<%}%> /></div>
+	size="25" /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25" <%if (landline != null) {%> value="<%=landline%>"
-	<%}%>/></div>
+<input name="landline" type="text" id="landline3" size="25" /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" <%if (email!= null) {%> value="<%=email%>"
-	<%}%>/></div>
+	size="25" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

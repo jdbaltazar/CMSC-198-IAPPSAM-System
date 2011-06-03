@@ -47,9 +47,15 @@ public class ViewSupplier extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		int supplierID = Integer.parseInt((String) request.getParameter("supplierID"));
 		
 		System.out.println("..........inside viewsupplier.java");
+		String sID = (String) request.getParameter("supplierID");
+		if(sID==null){
+			sID = (String) request.getAttribute("supplierID");
+		}
+		int supplierID = Integer.parseInt(sID);
+		
+	
 		
 		Supplier s = null;
 		Employee emp =null;
@@ -64,20 +70,20 @@ public class ViewSupplier extends HttpServlet {
 			request.setAttribute("employee",emp);
 			request.setAttribute("person", p);
 			
-			String mobile=null, landline=null, email=null;
-			Set<Contact>contacts = p.getContacts();
-			for(Contact c: contacts){
-				if(c.getType().equals(ContactType.MOBILE))
-					mobile = c.getData();
-				if(c.getType().equals(ContactType.LANDLINE))
-					landline = c.getData();
-				if(c.getType().equals(ContactType.EMAIL))
-					email = c.getData();
-			}
-			
-			request.setAttribute("mobile", mobile);
-			request.setAttribute("landline",landline);
-			request.setAttribute("email", email);
+//			String mobile=null, landline=null, email=null;
+//			Set<Contact>contacts = p.getContacts();
+//			for(Contact c: contacts){
+//				if(c.getType().equals(ContactType.MOBILE))
+//					mobile = c.getData();
+//				if(c.getType().equals(ContactType.LANDLINE))
+//					landline = c.getData();
+//				if(c.getType().equals(ContactType.EMAIL))
+//					email = c.getData();
+//			}
+//			
+//			request.setAttribute("mobile", mobile);
+//			request.setAttribute("landline",landline);
+//			request.setAttribute("email", email);
 			
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
