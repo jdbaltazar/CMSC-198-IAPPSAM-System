@@ -85,10 +85,8 @@ public class AccountCreation extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("CreateAccountFail.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -114,8 +112,7 @@ public class AccountCreation extends HttpServlet {
 		emailAdd = request.getParameter("emailad");
 		accountType = request.getParameter("acctType");
 
-		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty()
-				|| userName.isEmpty() || reenterPassword.isEmpty()) {
+		if (password.isEmpty() || !password.equals(reenterPassword) || name.isEmpty() || designation.isEmpty() || division.isEmpty() || userName.isEmpty() || reenterPassword.isEmpty()) {
 			failedResponse(request, response);
 		} else
 			acceptResponse(request, response);
@@ -145,10 +142,8 @@ public class AccountCreation extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("CreateAccountSuccess.jsp");
 			view.forward(request, response);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
@@ -168,17 +163,15 @@ public class AccountCreation extends HttpServlet {
 			Contact contactLandLine = new Contact(landline, ContactType.LANDLINE);
 			Contact contactMobile = new Contact(cellphonNumber, ContactType.MOBILE);
 			Contact contactEmail = new Contact(emailAdd, ContactType.EMAIL);
-			cManager.addContact(contactLandLine);
-			cManager.addContactToPerson(contactLandLine.getContactID(), person.getId());
-			cManager.addContact(contactMobile);
-			cManager.addContactToPerson(contactMobile.getContactID(), person.getId());
-			cManager.addContact(contactEmail);
-			cManager.addContactToPerson(contactEmail.getContactID(), person.getId());
+
+			account.getPerson().addContact(contactEmail);
+			account.getPerson().addContact(contactMobile);
+			account.getPerson().addContact(contactLandLine);
+
 			aManager.addAccount(account);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		} catch (DuplicateEntryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

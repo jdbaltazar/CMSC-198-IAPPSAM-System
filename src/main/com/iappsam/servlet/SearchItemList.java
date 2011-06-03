@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Item;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.util.ManagerBin;
 
@@ -36,7 +37,7 @@ public class SearchItemList extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ItemSearcher iSearcher = new ItemSearcher();
+		AbstractSearcher iSearcher = new ItemSearcher();
 		List<Item> itemList = null;
 		String searchItemField = (String) request.getParameter("searchItemField");
 

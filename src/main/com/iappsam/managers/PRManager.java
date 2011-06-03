@@ -22,20 +22,6 @@ public interface PRManager {
 
 	List<PurchaseRequest> getAllPR() throws TransactionException;
 
-	// PRLine
-
-	void addPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException;
-
-	void updatePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException;
-
-	List<PurchaseRequestLine> getPRLineByPR(int purchaseRequestID) throws TransactionException;
-
-	boolean containsPRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException;
-
-	void removePRLine(PurchaseRequestLine purchaseRequestLine) throws TransactionException;
-
-	List<PurchaseRequestLine> getAllPRLine() throws TransactionException;
-
 	void removePR(PurchaseRequest pr) throws TransactionException;
 
 }

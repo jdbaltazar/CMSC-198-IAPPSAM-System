@@ -8,11 +8,8 @@ public class ContactTest {
 
 	@Test
 	public void sameContact() {
-		Contact contact = new Contact();
-		contact.setId(1);
-
-		Contact contact2 = new Contact();
-		contact2.setId(1);
+		Contact contact = new Contact("data", ContactType.EMAIL);
+		Contact contact2 = new Contact("data", ContactType.EMAIL);
 
 		assertEquals(contact, contact2);
 	}

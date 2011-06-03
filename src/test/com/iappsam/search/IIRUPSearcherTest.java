@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.sql.Date;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,10 +33,7 @@ public class IIRUPSearcherTest {
 
 	@Before
 	public void initSearcher() throws TransactionException {
-		EntityRemover.removeIIRUPs();
-		EntityRemover.removeItems();
-		EntityRemover.removeItemDependencies();
-		EntityRemover.removeEmployees();
+		EntityRemover.removeAll();
 
 		searcher = new IIRUPSearcher();
 		Employee em = Employee.create("Dean", "Mr", "John");

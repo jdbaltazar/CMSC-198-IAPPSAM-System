@@ -2,26 +2,21 @@ package com.iappsam.util;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import com.iappsam.entities.EntityRemover;
+import com.iappsam.managers.exceptions.TransactionException;
 
 public class HibernateUtilTest {
 
-	@Test
-	public void hotBoot() {
-		assertTrue(HibernateUtil.hotBoot());
-		assertTrue(HibernateUtil.evaluate("root", "123456"));
-
-		assertFalse(HibernateUtil.hotBoot());
+	@Before
+	public void removeAll() throws TransactionException {
+		EntityRemover.removeAll();
 	}
 
 	@Test
-	public void invalidAccount() {
-		assertFalse(HibernateUtil.evaluate("root", ""));
-	}
-
-	@After
-	public void cleanup() {
-		HibernateUtil.close();
+	public void isConnected() {
+		assertTrue(HibernateUtil.isConnected());
 	}
 }

@@ -24,16 +24,4 @@ public interface APPManager {
 
 	void removeAPP(AnnualProcurementPlan app) throws TransactionException;
 
-	// APPLine
-
-	void addAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
-
-	void updateAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
-
-	boolean containsAPPLine(AnnualProcurementPlanLine annualProcurementPlanLine) throws TransactionException;
-
-	List<AnnualProcurementPlanLine> getAllAPPLine() throws TransactionException;
-
-	void removeAPPLine(AnnualProcurementPlanLine line1) throws TransactionException;
-
 }

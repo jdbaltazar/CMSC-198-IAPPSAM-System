@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.iappsam.entities.Person;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.HibernateUtil;
 
@@ -94,11 +95,11 @@ public abstract class AbstractManager implements Manager {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected <T> List<T> getList(Class<T> c) throws TransactionException {
+	protected <T> List<T> getAll(Class<T> c) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 		try {
-			List<T> list = session.createCriteria(c).list();
+			List<T> list = session.createQuery("from " + c.getSimpleName()).list();
 			tx.commit();
 			return list;
 		} catch (HibernateException ex) {

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
 import com.iappsam.managers.AbstractManager;
@@ -16,10 +15,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void addPerson(Person person) throws TransactionException, DuplicateEntryException {
-		if (!contains(person.getName()))
-			add(person);
-		else
-			throw new DuplicateEntryException();
+		add(person);
 	}
 
 	@Override
@@ -67,27 +63,8 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Person> getAllPersons() throws TransactionException {
-		return getList(Person.class);
-	}
 
-	@Override
-	public List<Person> getPersonByDivisionOffice(int divisionOfficeId) throws TransactionException {
-		List<Person> result = new ArrayList<Person>();
-		List<EmployeeDivisionOffice> employeeDivisionOffices = getAllEmployeeDivisionOffice();
-		for (EmployeeDivisionOffice emDivisionOffice : employeeDivisionOffices) {
-			if (emDivisionOffice.getDivisionOfficeID() == divisionOfficeId) {
-				Employee emp = getEmployee(emDivisionOffice.getEmployeeID());
-				Person p = getPerson(emp.getId());
-				if (!result.contains(p))
-					result.add(p);
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException {
-		return getList(EmployeeDivisionOffice.class);
+		return getAll(Person.class);
 	}
 
 	@Override
@@ -123,8 +100,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Employee> getAllEmployee() throws TransactionException {
-		List<Employee> list = getList(Employee.class);
-		return list;
+		return getAll(Employee.class);
 	}
 
 	@Override
@@ -136,31 +112,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 				results.add(emp);
 		}
 		return results;
-	}
-
-	@Override
-	public List<Employee> getEmployeeByDivisionOffice(int divisionOfficeId) throws TransactionException {
-		List<Employee> result = new ArrayList<Employee>();
-		List<EmployeeDivisionOffice> employeeDivisionOffices = getAllEmployeeDivisionOffice();
-		for (EmployeeDivisionOffice emDivisionOffice : employeeDivisionOffices) {
-			if (emDivisionOffice.getDivisionOfficeID() == divisionOfficeId) {
-				Employee emp = getEmployee(emDivisionOffice.getEmployeeID());
-				result.add(emp);
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public void addEmployeeToDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException {
-		EmployeeDivisionOffice emDivisionOffice = new EmployeeDivisionOffice(employeeID, divisionOfficeID);
-		add(emDivisionOffice);
-	}
-
-	@Override
-	public void removeEmployeeFromDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException {
-		EmployeeDivisionOffice emDivisionOffice = new EmployeeDivisionOffice(employeeID, divisionOfficeID);
-		remove(emDivisionOffice);
 	}
 
 	@Override
@@ -190,7 +141,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Signatory> getAllSignatories() throws TransactionException {
-		return getList(Signatory.class);
+		return getAll(Signatory.class);
 	}
 
 	@Override

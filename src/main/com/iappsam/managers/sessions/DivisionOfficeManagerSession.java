@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.iappsam.entities.Building;
 import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -45,7 +44,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		List<DivisionOffice> dOffices = getAllDivisionOffice();
 		for (DivisionOffice dOffice : dOffices) {
 			if (dOffice.getDivisionName().equalsIgnoreCase(division)) {
-				if (office == null||office.equalsIgnoreCase("null"))
+				if (office == null || office.equalsIgnoreCase("null"))
 					return dOffice;
 				else if (office != null && (dOffice.getOfficeName() != null && dOffice.getOfficeName().equalsIgnoreCase(office))) {
 					return dOffice;
@@ -76,33 +75,8 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
-	public int getDivisionIdByName(String division, String office) throws TransactionException {
-		List<DivisionOffice> divisionOffices = getAllDivisionOffice();
-		for (DivisionOffice divisionOffice : divisionOffices) {
-			if (divisionOffice.getDivisionName().equalsIgnoreCase(division)) {
-				if (office.equalsIgnoreCase("null")) {
-					return divisionOffice.getId();
-				}
-				if (divisionOffice.getOfficeName() != null && divisionOffice.getOfficeName().equalsIgnoreCase(office))
-					return divisionOffice.getId();
-			}
-		}
-		return -1;
-	}
-
-	@Override
-	public DivisionOffice getDivisionOfficeByEmployee(int employeeId) throws TransactionException {
-		List<EmployeeDivisionOffice> emDivisionOffices = getAllEmployeeDivisionOffice();
-		for (EmployeeDivisionOffice emDivisionOffice : emDivisionOffices) {
-			if (emDivisionOffice.getEmployeeID() == employeeId)
-				return getDivisionOffice(emDivisionOffice.getDivisionOfficeID());
-		}
-		return null;
-	}
-
-	@Override
 	public List<DivisionOffice> getAllDivisionOffice() throws TransactionException {
-		return getList(DivisionOffice.class);
+		return getAll(DivisionOffice.class);
 	}
 
 	@Override
@@ -154,12 +128,6 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public List<Building> getAllBuildings() throws TransactionException {
-		return getList(Building.class);
+		return getAll(Building.class);
 	}
-
-	@Override
-	public List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException {
-		return getList(EmployeeDivisionOffice.class);
-	}
-
 }

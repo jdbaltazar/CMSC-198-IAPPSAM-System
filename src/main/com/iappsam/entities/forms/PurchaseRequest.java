@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -61,7 +62,7 @@ public class PurchaseRequest {
 	@JoinColumn(name = "Signatory_ID1")
 	private Signatory approvedBy;
 
-	@OneToMany(mappedBy = "purchaseRequest", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "purchaseRequest", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<PurchaseRequestLine> lines = new HashSet<PurchaseRequestLine>();
 
 	public PurchaseRequest() {

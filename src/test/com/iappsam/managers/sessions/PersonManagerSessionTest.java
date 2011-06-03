@@ -28,18 +28,18 @@ public class PersonManagerSessionTest {
 	private Person person2;
 
 	@Before
-	public void initPersonManager() throws TransactionException {
+	public void init() throws TransactionException {
 		EntityRemover.removeAll();
 		pm = new PersonManagerSession();
 	}
 
 	@Test
-	public void addThenRemovePerson() throws TransactionException, DuplicateEntryException {
+	public void testAddPerson() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 	}
 
 	@Test
-	public void addThenRemoveEmployee() throws TransactionException, DuplicateEntryException {
+	public void addEmployee() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 		addEmployeeThenAssert();
 	}
@@ -67,24 +67,48 @@ public class PersonManagerSessionTest {
 	}
 
 	@Test
-	public void addPersonWithContactThenRemoveCascade() throws TransactionException, DuplicateEntryException {
+	public void testAddPersonWithContact() throws TransactionException, DuplicateEntryException {
 		addPersonWithContact();
 		assertPersonWithContactExistInDatabase();
+	}
+
+	@Test
+	public void addPersonWith2Contacts() throws TransactionException, DuplicateEntryException {
+		person = new Person("Maria");
+		contact = new Contact("contact", ContactType.LANDLINE);
+
+		Contact contact2 = new Contact("More Contact", ContactType.EMAIL);
+
+		person.addContact(contact);
+		person.addContact(contact2);
+
+		pm.addPerson(person);
+
+		assertEquals(1, pm.getAllPersons().size());
+		Person personFromDb = pm.getPerson(person.getId());
+		assertTrue(personFromDb.getContacts().contains(contact));
+		assertTrue(personFromDb.getContacts().contains(contact2));
 	}
 
 	@Test
 	public void exactlyOnePersonInDatabase() throws TransactionException, DuplicateEntryException {
 		addPersonWithContact();
 		assertPersonWithContactExistInDatabase();
-
 		assertOnePersonInDatabase();
 	}
 
 	@Test
-	public void addThenRemoveEmployeeWithDivisionOffice() throws TransactionException, DuplicateEntryException {
+	public void addEmployeeWithDivisionOffice() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 		addOfficeThenAssert();
 		addEmployeeWithDivisionThenAssert();
+	}
+
+	private void addPersonWithContact() throws TransactionException, DuplicateEntryException {
+		person = new Person("Maria");
+		contact = new Contact("contact", ContactType.LANDLINE);
+		person.addContact(contact);
+		pm.addPerson(person);
 	}
 
 	private void assertExactlyOneEmployeeInDatabase() throws TransactionException {
@@ -104,54 +128,14 @@ public class PersonManagerSessionTest {
 		assertEquals(divisionOffice, employeeFromDb.getDivisionOffice());
 	}
 
-	private void removeOtherPersonWithContact() throws TransactionException {
-		pm.removePerson(person2);
-	}
-
-	private void assertOtherPersonWithContactExistInDatbase() throws TransactionException {
-		Person personFromDb = pm.getPerson(person2.getId());
-		assertTrue(personFromDb.getContacts().contains(contact));
-	}
-
-	private void addAnotherPersonWithExistingContact() throws TransactionException, DuplicateEntryException {
-		person2 = new Person("Maria");
-		person2.addContact(contact);
-		pm.addPerson(person2);
-	}
-
 	private void assertOnePersonInDatabase() throws TransactionException {
 		assertEquals(1, pm.getAllPersons().size());
 	}
 
 	private void assertPersonWithContactExistInDatabase() throws TransactionException {
+		assertEquals(1, pm.getAllPersons().size());
 		Person personFromDb = pm.getPerson(person.getId());
 		assertTrue(personFromDb.getContacts().contains(contact));
-	}
-
-	private void removePerson() throws TransactionException {
-		pm.removePerson(person);
-	}
-
-	private void addPersonWithContact() throws TransactionException, DuplicateEntryException {
-		person = new Person("Maria");
-		contact = new Contact("contact", ContactType.LANDLINE);
-		person.addContact(contact);
-		pm.addPerson(person);
-	}
-
-	private void removeContact() throws TransactionException {
-		cm.removeContact(contact);
-	}
-
-	private void addContact() throws TransactionException {
-		contact = new Contact("contact", ContactType.LANDLINE);
-		cm = new ContactManagerSession();
-		cm.addContact(contact);
-	}
-
-	private void removeDivisionThenAssert() throws TransactionException {
-		dom.removeDivisionOffice(divisionOffice);
-		assertFalse(dom.containsDivisionOffice(divisionOffice));
 	}
 
 	private void addOfficeThenAssert() throws TransactionException, DuplicateEntryException {
@@ -166,6 +150,7 @@ public class PersonManagerSessionTest {
 	private void addPersonThenAssert() throws TransactionException, DuplicateEntryException {
 		person = new Person("John");
 		pm.addPerson(person);
+		assertEquals(1, pm.getAllPersons().size());
 		Person personFromDb = pm.getPerson(person.getId());
 		assertEquals(person, personFromDb);
 	}
@@ -173,19 +158,12 @@ public class PersonManagerSessionTest {
 	private void addEmployeeThenAssert() throws TransactionException, DuplicateEntryException {
 		employee = new Employee("Designation", person);
 		pm.addEmployee(employee);
+		
+		assertEquals(1, pm.getAllEmployee().size());
 		Employee employeeFromDb = pm.getEmployee(employee.getId());
 		assertEquals(employee, employeeFromDb);
 		assertEquals(person, employeeFromDb.getPerson());
 		assertNull(employeeFromDb.getDivisionOffice());
 	}
 
-	private void removePersonThenAssert() throws TransactionException {
-		pm.removePerson(person);
-		assertFalse(pm.containsPerson(person));
-	}
-
-	private void removeEmployeeThenAssert() throws TransactionException {
-		pm.removeEmployee(employee);
-		assertFalse(pm.containsEmployee(employee));
-	}
 }

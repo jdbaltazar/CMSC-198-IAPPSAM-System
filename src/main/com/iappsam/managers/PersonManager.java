@@ -6,7 +6,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EmployeeDivisionOffice;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -34,17 +33,14 @@ public interface PersonManager extends Manager {
 
 	List<Person> getAllPersons() throws TransactionException;
 
-	List<Person> getPersonByDivisionOffice(int divisionOfficeId) throws TransactionException;
-
 	// Employee
 
 	void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
 
 	int saveEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
 
-
 	Employee getEmployee(int employeeID) throws TransactionException;
-	
+
 	Employee getEmployee(String name, String designation) throws TransactionException;
 
 	void removeEmployee(Employee employee) throws TransactionException;
@@ -54,16 +50,6 @@ public interface PersonManager extends Manager {
 	List<Employee> getAllEmployee() throws TransactionException;
 
 	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
-
-	List<Employee> getEmployeeByDivisionOffice(int divisionOfficeId) throws TransactionException;
-
-	// EmployeeDivisionOffice
-
-	void addEmployeeToDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException;
-
-	void removeEmployeeFromDivisionOffice(int employeeID, int divisionOfficeID) throws TransactionException;
-
-	List<EmployeeDivisionOffice> getAllEmployeeDivisionOffice() throws TransactionException;
 
 	// Signatory
 
@@ -82,6 +68,5 @@ public interface PersonManager extends Manager {
 	List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException;
 
 	void removeSignatory(Signatory signatory) throws TransactionException;
-
 
 }

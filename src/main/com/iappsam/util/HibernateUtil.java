@@ -14,7 +14,7 @@ import com.iappsam.entities.ContactType;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EmployeeDivisionOffice;
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
@@ -59,10 +59,11 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
+	
 	static {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		// if (!tryToBuildSessionFactory("root", "123456"))
-		// throw new RuntimeException();
+		if (!tryToBuildSessionFactory("root", "123456"))
+			throw new RuntimeException();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -70,7 +71,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			// p.setProperty("hibernate.show_sql", "true");
+			p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -87,7 +88,6 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(DivisionOffice.class);
 			conf.addAnnotatedClass(DivisionOfficeContact.class);
 			conf.addAnnotatedClass(Employee.class);
-			conf.addAnnotatedClass(EmployeeDivisionOffice.class);
 			conf.addAnnotatedClass(Item.class);
 			conf.addAnnotatedClass(ItemCategory.class);
 			conf.addAnnotatedClass(ItemCondition.class);
@@ -129,6 +129,7 @@ public class HibernateUtil {
 
 			sessionFactory = conf.buildSessionFactory();
 
+			EntityRemover.removeAll();
 			createAdminAccount();
 			return true;
 		} catch (Throwable ex) {
@@ -150,21 +151,20 @@ public class HibernateUtil {
 		sessionFactory.close();
 	}
 
-	public static boolean hotBoot() {
-		return sessionFactory == null;
+	public static boolean isConnected() {
+		return sessionFactory != null;
 	}
 
 	public static boolean evaluate(String username, String password) {
-		if (hotBoot())
+		if (!isConnected())
 			return tryToBuildSessionFactory(username, password);
-
 		else
 			return false;
 	}
 
 	public static void close() {
 
-		if (!hotBoot()) {
+		if (isConnected()) {
 			sessionFactory.close();
 			sessionFactory = null;
 		}

@@ -22,16 +22,4 @@ public interface PTRPAManager {
 
 	List<PTRPA> getAllPTRPA() throws TransactionException;
 	
-	//PTRPALine
-	
-	void addPTRPALine(PTRPALine ptrpaLine) throws TransactionException;
-	
-	void updatePTRPALine(PTRPALine ptrpaLine) throws TransactionException;
-	
-	List<PTRPALine>getPTRPALineByPTRPA(int ptrpaID) throws TransactionException;
-	
-	boolean containsPTRPALine(PTRPALine ptrpaLine) throws TransactionException;
-	
-	List<PTRPALine>getAllPTRPALine() throws TransactionException;
-
 }

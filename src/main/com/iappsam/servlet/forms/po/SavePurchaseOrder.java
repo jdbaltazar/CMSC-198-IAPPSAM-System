@@ -3,7 +3,6 @@ package com.iappsam.servlet.forms.po;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
 import com.iappsam.entities.Supplier;
 import com.iappsam.entities.forms.ModeOfProcurement;
@@ -33,35 +30,19 @@ import com.iappsam.managers.sessions.POManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 
-/**
- * Servlet implementation class SavePurchaseOrder
- */
 @WebServlet("/forms/savePurchaseOrder")
 public class SavePurchaseOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public SavePurchaseOrder() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		PersonManager pManager = new PersonManagerSession();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
@@ -109,11 +90,11 @@ public class SavePurchaseOrder extends HttpServlet {
 			pManager.addSignatory(deanSignatory);
 			pManager.addSignatory(accountantSignatory);
 
-			if (validInputs(supplierName, poNumber, dateAccomplished, mop.getId(), divisionName, officeName, dateOfDelivery, totalAmountInWords, supplierContactName, supplierContactDesignation, deanName, deanDesignation, accountantName,
-					accountantDesignation, itemIDs, amount)) {
+			if (validInputs(supplierName, poNumber, dateAccomplished, mop.getId(), divisionName, officeName, dateOfDelivery, totalAmountInWords, supplierContactName, supplierContactDesignation,
+					deanName, deanDesignation, accountantName, accountantDesignation, itemIDs, amount)) {
 
-				PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), poNumber, dateAccomplished, mop.getId(), dOffice.getId(), dateOfDelivery, paymentTerm, deliveryTerm, totalAmountInWords, orNumber, amount, supplierSignatory.getId(),
-						deanSignatory.getId(), accountantSignatory.getId());
+				PurchaseOrder po = new PurchaseOrder(supplier.getSupplierID(), poNumber, dateAccomplished, mop.getId(), dOffice.getId(), dateOfDelivery, paymentTerm, deliveryTerm, totalAmountInWords,
+						orNumber, amount, supplierSignatory.getId(), deanSignatory.getId(), accountantSignatory.getId());
 				poManager.addPO(po);
 
 				// poLines
@@ -122,13 +103,11 @@ public class SavePurchaseOrder extends HttpServlet {
 					Item item = iManager.getItem(Integer.parseInt(itemID));
 					if (item != null) {
 						PurchaseOrderLine poLine = new PurchaseOrderLine(item.getId(), po.getPoNumber());
-						poManager.addPOLine(poLine);
+						// poManager.addLine(poLine);
 					}
 				}
-
 			}
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -136,8 +115,9 @@ public class SavePurchaseOrder extends HttpServlet {
 
 	ArrayList<String> itemIDs = new ArrayList<String>();
 
-	private boolean validInputs(String supplierName, String poNumber, Date dateAccomplished, int modeOfProcurementID, String divisionName, String officeName, Date dateOfDelivery, String totalAmountInWords, String supplierContactName,
-			String supplierContactDesignation, String deanName, String deanDesignation, String accountantName, String accountantDesignation, ArrayList<String> itemIDs, long amount) {
+	private boolean validInputs(String supplierName, String poNumber, Date dateAccomplished, int modeOfProcurementID, String divisionName, String officeName, Date dateOfDelivery,
+			String totalAmountInWords, String supplierContactName, String supplierContactDesignation, String deanName, String deanDesignation, String accountantName, String accountantDesignation,
+			ArrayList<String> itemIDs, long amount) {
 		if (!validInput(supplierName))
 			return false;
 		if (!validInput(poNumber))
