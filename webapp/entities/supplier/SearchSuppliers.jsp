@@ -263,7 +263,7 @@
 			<form id="form4" name="form4" method="post" action=""><input
 				name="editBtn_1" type="submit" class="maroon" id="editBtn_1"
 				value="Edit" /><input type="hidden" name="supplierID"
-				value=<%=s.getSupplierID()%> /></form>
+				value=<%=s.getId()%> /></form>
 			</td>
 		</tr>
 		<%
