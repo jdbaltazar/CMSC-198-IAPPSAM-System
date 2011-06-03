@@ -13,10 +13,12 @@ import com.iappsam.entities.ItemStatusTest;
 import com.iappsam.entities.ItemTest;
 import com.iappsam.entities.PersonTest;
 import com.iappsam.entities.SignatoryTest;
+import com.iappsam.entities.SupplierTest;
 import com.iappsam.entities.forms.AnnualProcurementPlanTest;
 import com.iappsam.managers.sessions.APPManagerSessionTest;
 import com.iappsam.managers.sessions.ItemManagerSessionTest;
 import com.iappsam.managers.sessions.PersonManagerSessionTest;
+import com.iappsam.managers.sessions.SupplierManagerSessionTest;
 import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.IIRUPSearcherTest;
 import com.iappsam.search.ItemCategorySearcherTest;
@@ -37,8 +39,10 @@ import com.iappsam.util.HibernateUtilTest;
 		ItemStatusTest.class, //
 		PersonTest.class, //
 		SignatoryTest.class, //
+		SupplierTest.class, //
 		AnnualProcurementPlanTest.class, //
 		PersonManagerSessionTest.class, //
+		SupplierManagerSessionTest.class, //
 		ItemManagerSessionTest.class, //
 		APPManagerSessionTest.class, //
 		ItemSearcherTest.class, //

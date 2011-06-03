@@ -1,4 +1,4 @@
-<project name="CMSC-198-IAPPSAM" default="all" basedir=".">
+ <project name="CMSC-198-IAPPSAM" default="all" basedir=".">
 
 	<property environment="env" />
 	<property name="CONTAINER_HOME" value="${env.CONTAINER_HOME}" />

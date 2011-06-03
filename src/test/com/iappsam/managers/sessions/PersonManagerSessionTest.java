@@ -2,21 +2,19 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class PersonManagerSessionTest {
+public class PersonManagerSessionTest extends ManagerSessionTestCase {
 
 	private PersonManagerSession pm;
 	private Person person;
@@ -27,9 +25,7 @@ public class PersonManagerSessionTest {
 	private Contact contact;
 	private Person person2;
 
-	@Before
-	public void init() throws TransactionException {
-		EntityRemover.removeAll();
+	protected void afterInit() {
 		pm = new PersonManagerSession();
 	}
 
@@ -158,7 +154,7 @@ public class PersonManagerSessionTest {
 	private void addEmployeeThenAssert() throws TransactionException, DuplicateEntryException {
 		employee = new Employee("Designation", person);
 		pm.addEmployee(employee);
-		
+
 		assertEquals(1, pm.getAllEmployee().size());
 		Employee employeeFromDb = pm.getEmployee(employee.getId());
 		assertEquals(employee, employeeFromDb);

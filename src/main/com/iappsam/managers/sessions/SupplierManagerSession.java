@@ -2,6 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
+import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Supplier;
 import com.iappsam.managers.AbstractManager;
@@ -43,7 +44,12 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 
 	@Override
 	public void removeSupplier(Supplier supplier) throws TransactionException {
+
 		remove(supplier);
+		Employee contactPerson = supplier.getContactPerson();
+
+		if (contactPerson.getSupplierCount() == 1)
+			remove(contactPerson);
 	}
 
 	@Override

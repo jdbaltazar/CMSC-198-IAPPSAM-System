@@ -59,11 +59,11 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
-	
+
 	static {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		if (!tryToBuildSessionFactory("root", "123456"))
-			throw new RuntimeException();
+			throw new RuntimeException("connection unsuccessful");
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {

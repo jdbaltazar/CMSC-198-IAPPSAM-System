@@ -20,6 +20,7 @@ import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
@@ -28,6 +29,7 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.managers.sessions.SupplierManagerSession;
 
 public class EntityRemover {
 
@@ -38,11 +40,13 @@ public class EntityRemover {
 	private static DivisionOfficeManager dom = new DivisionOfficeManagerSession();
 	private static ContactManager cm = new ContactManagerSession();
 	private static AccountManager am = new AccountManagerSession();
+	private static SupplierManager sm = new SupplierManagerSession();
 
 	public static void removeAll() throws TransactionException {
 		removeAPPs();
 		removeIIRUPs();
 		removeItems();
+		removeSuppliers();
 		removeItemDependencies();
 		removeSignatories();
 		removeEmployees();
@@ -50,6 +54,12 @@ public class EntityRemover {
 		removePersons();
 		removeContacts();
 		removeDivisionOffices();
+	}
+
+	private static void removeSuppliers() throws TransactionException {
+		List<Supplier> suppliers = sm.getAllSuppliers();
+		for (Supplier s : suppliers)
+			sm.removeSupplier(s);
 	}
 
 	private static void removeAccounts() throws TransactionException {

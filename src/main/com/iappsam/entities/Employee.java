@@ -1,16 +1,23 @@
 package com.iappsam.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
+
+import com.iappsam.managers.AbstractManager;
 
 @Entity
 public class Employee {
@@ -34,6 +41,9 @@ public class Employee {
 	@ManyToOne
 	@JoinTable(name = "Employee_DivisionOffice", joinColumns = @JoinColumn(name = "Employee_ID"), inverseJoinColumns = @JoinColumn(name = "DivisionOffice_ID"))
 	private DivisionOffice divisionOffice;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "contactPerson")
+	private Set<Supplier> suppliers = new HashSet<Supplier>();
 
 	public Employee() {
 		super();
@@ -120,5 +130,28 @@ public class Employee {
 
 	public static Employee create(String designation, String title, String name) {
 		return new Employee(designation, new Person(title, name));
+	}
+
+	public Set<Supplier> getSuppliers() {
+		return suppliers;
+	}
+
+	public void addSupplier(Supplier supplier) {
+		suppliers.add(supplier);
+	}
+
+	public boolean hasSuppliers() {
+		if (suppliers != null)
+			return !suppliers.isEmpty();
+
+		return false;
+	}
+
+	public void removeSupplier(Supplier supplier) {
+		suppliers.remove(supplier);
+	}
+
+	public int getSupplierCount() {
+		return getSuppliers().size();
 	}
 }
