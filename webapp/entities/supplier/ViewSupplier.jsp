@@ -532,9 +532,9 @@
 	Employee emp = (Employee) request.getAttribute("employee");
 	Person p = (Person) request.getAttribute("person");
 
-	//String mobile = (String) request.getAttribute("mobile");
-	//String landline = (String) request.getAttribute("landline");
-	//String email = (String) request.getAttribute("email");
+	String mobile = (String) request.getAttribute("mobile");
+	String landline = (String) request.getAttribute("landline");
+	String email = (String) request.getAttribute("email");
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -582,21 +582,20 @@
 <div id="personalInfo"
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
 <div id="titleDiv">
-<form disabled="disabled" id="form1" name="form1" method="post">
+<form id="form1" name="form1" method="post" action="">
 <p>&nbsp;</p>
 <div id="apDiv23"><label for="supplierName" class="labels">*Supplier
 Name:</label> <input name="supplierName" type="text" id="supplierName" size="35"
-	value="<%=s.getSupplierName()%>" /></div>
+	value="<%=s.getSupplierName()%>" disabled="disabled"/></div>
 <p>&nbsp;</p>
 <div id="apDiv24"><label for="supplierAddress" class="labels">*Supplier
-Address:</label> <textarea name="supplierAddress" id="supplierAddress"
-	value="<%=s.getAddress()%>"></textarea></div>
+Address:</label> <textarea name="supplierAddress" id="supplierAddress"disabled="disabled"><%=s.getAddress()%> </textarea></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv25"><label for="tin" class="labels">TIN:</label> <input
 	name="tin" type="text" id="tin" size="25" <%if (s.getTin() != null) {%>
-	value="<%=s.getTin()%>" <%}%> /></div>
+	value="<%=s.getTin()%>" <%}%> disabled="disabled"/></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -605,7 +604,7 @@ Address:</label> <textarea name="supplierAddress" id="supplierAddress"
 <div id="apDiv22"><label for="title2" class="labels">Title:</label>
 <input type="text" name="title" id="title2"
 	<%if (p.getTitle() != null) {%>
-	value="<%=p.getTitle()%>" <%}%> /></div>
+	value="<%=p.getTitle()%>" <%}%> disabled="disabled"/></div>
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -613,12 +612,12 @@ Address:</label> <textarea name="supplierAddress" id="supplierAddress"
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
 <input name="name" type="text" id="name" size="40"
-	value="<%=p.getName()%>" /></div>
+	value="<%=p.getName()%>" disabled="disabled"/></div>
 
 <div id="apDiv9"><label for="designation3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
 <input name="designation2" type="text" id="designation3" size="30"
-	value="<%=emp.getDesignation()%>" /></div>
+	value="<%=emp.getDesignation()%>" disabled="disabled"/></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><label for="employeeNumber2"
@@ -628,7 +627,7 @@ Address:</label> <textarea name="supplierAddress" id="supplierAddress"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
 No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
 	<%if (emp.getEmployeeNumber() != null) {%>
-	value="<%=emp.getEmployeeNumber()%>" <%}%> /></div>
+	value="<%=emp.getEmployeeNumber()%>" <%}%> disabled="disabled"/></div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -645,18 +644,18 @@ No.:</label> <input type="text" name="employeeNumber" id="employeeNumber3"
 </label></p>
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" /></div>
+Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3" value = "<%=mobile %>"
+	size="25" disabled="disabled"/></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25" /></div>
+<input name="landline" type="text" id="landline3" value = "<%=landline %>" size="25" disabled="disabled"/></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" /></div>
+value = "<%=email %>"	size="25" disabled="disabled"/></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

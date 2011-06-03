@@ -37,6 +37,14 @@ public class Supplier {
 		super();
 	}
 
+	public Supplier(String supplierName, String address, String tin, Employee employee) {
+		super();
+		setSupplierName(supplierName);
+		setAddress(address);
+		setTin(tin);
+		setContactPerson(employee);
+	}
+	
 	public Supplier(String supplierName, String address, Employee employee) {
 		super();
 		setSupplierName(supplierName);
