@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
 import com.iappsam.LoginModule;
 
 @WebServlet("/login")
-public class LoginController extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String USERNAME = "username";
 	public static final String PASSWORD = "password";
 
-	public LoginController() {
+	public LoginServlet() {
 		super();
 	}
 
@@ -39,15 +39,12 @@ public class LoginController extends HttpServlet {
 	}
 
 	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException, IOException {
-		request.setAttribute("username", username);
 		RequestDispatcher view = request.getRequestDispatcher("menu.jsp");
 		HttpSession session = request.getSession();
 
-		if (session.isNew()) {
-			request.setAttribute("username", username);
-			session.setAttribute("username", username);
-			session.setMaxInactiveInterval(30);
-		}
+		session.setAttribute("username", username);
+		session.setMaxInactiveInterval(30);
+
 		view.forward(request, response);
 	}
 

@@ -27,13 +27,14 @@ import com.iappsam.search.ItemConditionSearcherTest;
 import com.iappsam.search.ItemSearcherTest;
 import com.iappsam.search.ItemStatusSearcherTest;
 import com.iappsam.search.UnitSearcherTest;
-import com.iappsam.servlet.LoginController;
-import com.iappsam.servlet.LoginControllerTest;
+import com.iappsam.servlet.LoginServlet;
+import com.iappsam.servlet.LoginServletTest;
+import com.iappsam.servlet.item.ItemServletTest;
 import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ LoginModuleTest.class, //
-		LoginControllerTest.class, //
+		LoginServletTest.class, //
 		HibernateUtilTest.class, //
 		ItemTest.class,//
 		ContactTest.class, //
@@ -56,6 +57,7 @@ import com.iappsam.util.HibernateUtilTest;
 		ItemStatusSearcherTest.class, //
 		UnitSearcherTest.class, //
 		IIRUPSearcherTest.class, //
+		ItemServletTest.class, //
 		APPReportTest.class })
 public class TestSuite {
 

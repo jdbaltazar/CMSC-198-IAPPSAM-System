@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.iappsam.servlet.item.ItemAction;
+
 import net.sourceforge.jwebunit.junit.WebTester;
 
 public class AcceptanceTest {
@@ -14,13 +16,16 @@ public class AcceptanceTest {
 	public void setup() throws Exception {
 		tester = new WebTester();
 		tester.setBaseUrl("http://localhost/");
-	}
 
-	@Test
-	public void loginAdminAccount() {
 		tester.beginAt("/login");
 		assertIsInLoginPage();
 		tryTologinWith("admin", "admin");
+	}
+
+	@Test
+	public void viewItemList() {
+		tester.beginAt("/items?view=items");
+		tester.assertTitleEquals("IAPPSAM :: Items");
 	}
 
 	@After

@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.item;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -22,16 +22,10 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSessionTest;
 
-/**
- * Servlet implementation class ItemCreation
- */
-@WebServlet("/stocks/createItem.do")
+@WebServlet("/item")
 public class ItemCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	String name;
 	String unit;
 	String description;
@@ -44,25 +38,15 @@ public class ItemCreation extends HttpServlet {
 	String propertyNumber;
 	String itemStatus;
 	String itemCondition;
+	private java.sql.Date date;
 
 	public ItemCreation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	java.sql.Date date;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -91,12 +75,12 @@ public class ItemCreation extends HttpServlet {
 			failRequest(request, response);
 			System.out.println("Heyoooo");
 		}
-		else
-			succesfulRequest(request, response);
+//		else
+//			succesfulRequest(request, response);
 
 	}
 
-	private void failRequest(HttpServletRequest request, HttpServletResponse response) {
+	private void failRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (name.isEmpty())
 			request.setAttribute("nameIsOK", "true");
 		else
@@ -148,37 +132,13 @@ public class ItemCreation extends HttpServlet {
 			request.setAttribute("itemConditionList", itemConditionList);
 			request.setAttribute("itemStatusList", itemStatusList);
 		} catch (TransactionException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		
 		RequestDispatcher view = request.getRequestDispatcher("../jsp/stocks/CreateItemFail.jsp");
-		try {
 			view.forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-	}
-
-	private void succesfulRequest(HttpServletRequest request, HttpServletResponse response) {
-//		Item item;
-//		if (stockNumber.isEmpty())
-//			item = new Item(name, unit, description, Float.parseFloat(price), date, itemStatus, itemCondition);
-//		else
-//			item = new Item(name, stockNumber, unit, description, Float.parseFloat(price), date, Integer.parseInt(invItemNumber), propertyNumber, itemStatus, itemCondition);
-//		ItemManager manager = new ItemManagerSession();
-//		try {
-//			manager.addItem(item);
-//		} catch (TransactionException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 
 }

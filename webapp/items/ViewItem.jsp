@@ -380,14 +380,7 @@
 	String year = (String) request.getAttribute("year");
 %>
 
-<div id="footer_2">
-<table width="100%" frame="above" bordercolor="#333333"
-	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
-	<tr>
-		<td>Copyright É 2011 All Rights Reserved</td>
-	</tr>
-</table>
-</div>
+
 <div id="logoHeader" style="width: 100%"><img name=""
 	src="../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
@@ -411,11 +404,7 @@
 	</tr>
 </table>
 </div>
-<div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../logout"><input
-	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
-</form>
-</div>
+<c:import url="../logout-header.jsp"/>
 <div id="headerdiv"
 	style="text-align: left; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Item
 Information</div>
@@ -519,7 +508,6 @@ Condition:</label> <select name="itemCondition" disabled="disabled"
 <p>&nbsp;</p>
 </form>
 </div>
-<div id="footer"></div>
-<p>&nbsp;</p>
+<c:import url="../copyright.jsp"/>
 </body>
 </html>
