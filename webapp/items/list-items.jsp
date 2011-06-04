@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link rel="shortcut icon" href="../../favicon.ico" />
+<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Items</title>
-<link href="list.css" rel="stylesheet" type="text/css" />
+<link href="./items/list-items.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,37 +20,28 @@
 				<td width="7%">
 					<table width="100%" frame="below">
 						<tr>
-							<td style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Items</td>
+							<td id="item-label">Items</td>
 						</tr>
 					</table>
 				</td>
 				<td width="89%">&nbsp;</td>
-				<td width="4%">
-					<form id="form15" name="form15" method="post" action="../menu">
-						<input name="backBtn" type="submit" class="button" id="backBtn" value="Back" action="" />
-					</form>
-				</td>
+				<td width="4%"><a class="button" href="/menu">Back</a></td>
 			</tr>
 		</table>
 	</div>
 	<div id="searchEmployeesDiv">
 		<form id="form1" name="form1" method="post" action="../items/SearchAllItems.do">
 			<label for="searchItemField" class="labels">Search:</label> <input name="searchItemField" type="text" id="searchItemField" size="35" /> <input
-				name="goSearchBtn" type="submit" class="maroon" id="goSearchBtn" value="GO"
+				name="goSearchBtn" type="submit" class="maroon" value="GO"
 			/>
 		</form>
 	</div>
 	<div id="apDiv1">
-		<form id="form2" name="form2" method="post" action="../stocks/AddItem.do">
-			<input name="addItemBtn" type="submit" class="maroon" id="addItemBtn" value="Add Item &gt;&gt;" />
-		</form>
+		<a href="/items?add=item">Add Item >></a>
+
 	</div>
-	<div id="apDiv9"></div>
-	<div id="logoutiv" style="width: 90%">
-		<form id="form2" name="form2" method="post" action="../logout">
-			<input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
-		</form>
-	</div>
+
+
 	<div id="divItemResultTable" style="width: 100%;">
 		<table width="100%" cellspacing="0" frame="box" class="resultTable">
 
@@ -82,7 +73,7 @@
 			%>
 		</table>
 	</div>
-	<p>&nbsp;</p>
+
 	<div id="divItemTableHeader" style="width: 100%;">
 		<table width="100%" border="1" cellspacing="0" class="tableheaders">
 			<tr>

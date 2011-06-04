@@ -1,7 +1,7 @@
 package com.iappsam.servlet.item;
 
 public enum ItemAction {
-	VIEW_ITEMS("view=all");
+	VIEW_ITEMS("view=all"), ADD_ITEM("add=item");
 
 	public final String code;
 

@@ -2,9 +2,8 @@ package com.iappsam.test;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import com.iappsam.servlet.item.ItemAction;
 
 import net.sourceforge.jwebunit.junit.WebTester;
 
@@ -23,9 +22,22 @@ public class AcceptanceTest {
 	}
 
 	@Test
-	public void viewItemList() {
-		tester.beginAt("/items?view=items");
+	public void navigateToItemPage() {
+		clickItemLink();
 		tester.assertTitleEquals("IAPPSAM :: Items");
+	}
+
+	@Test
+	public void navigateToAddItemPage() {
+		clickItemLink();
+		clickAddItemLink();
+		tester.assertTitleEquals("IAPPSAM :: Add Item");
+	}
+
+	@Ignore
+	@Test
+	public void backToMenuFromItemList() {
+		clickItemLink();
 	}
 
 	@After
@@ -36,10 +48,20 @@ public class AcceptanceTest {
 		assertIsInLoginPage();
 	}
 
+	private void clickAddItemLink() {
+		tester.assertLinkPresentWithExactText("Add Item >>");
+		tester.clickLinkWithText("Add Item >>");
+	}
+
 	private void assertIsInLoginPage() {
 		tester.assertTitleEquals("IAPPSAM :: Login");
 		tester.assertTextPresent("Username");
 		tester.assertTextPresent("Password");
+	}
+
+	private void clickItemLink() {
+		tester.assertLinkPresentWithExactText("Items");
+		tester.clickLinkWithExactText("Items");
 	}
 
 	private void tryTologinWith(String username, String password) {

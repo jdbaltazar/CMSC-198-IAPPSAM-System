@@ -25,7 +25,7 @@
 	</div>
 
 	<div id="items">
-		<a href="/items?view=items">Items</a>
+		<a id="view-items" href="/items?view=items">Items</a>
 		<ul>
 			<li><a href="/items?add=item">New Item</a>
 			</li>

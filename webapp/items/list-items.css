@@ -83,6 +83,13 @@
 	top: 303px;
 }
 
+#item-label {
+	font-family: Lucida Grande;
+	font-size: 20px;
+	font-weight: bold;
+	color: #003300
+}
+
 #apDiv1 {
 	position: absolute;
 	width: 200px;
