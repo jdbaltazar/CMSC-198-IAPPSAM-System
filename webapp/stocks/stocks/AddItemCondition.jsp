@@ -196,7 +196,7 @@
       </tr>
     </table></td>
     <td width="79%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="SearchAllItemConditions.do">
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewItemConditions.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -210,7 +210,7 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="AddCondition.do">
+  <form id="form1" name="form1" method="post" action="AddItemCondition.do">
     <p>
       <label for="conditionField" class="labels">Condition:</label>
       <input name="conditionField" type="text" id="conditionField" size="30" maxlength="45" />

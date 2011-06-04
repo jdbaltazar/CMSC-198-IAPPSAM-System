@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemcondition;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,15 +17,15 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/SearchAllItemConditions.do")
-public class SearchAllItemConditions extends HttpServlet{
+@WebServlet("/stocks/stocks/ViewItemConditions.do")
+public class ViewItemConditions extends HttpServlet{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7700104491260715251L;
 
-	public SearchAllItemConditions(){
+	public ViewItemConditions(){
 		super();
 	}
 
@@ -37,22 +37,16 @@ public class SearchAllItemConditions extends HttpServlet{
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("ViewItemConditions.jsp");
 		
-		ArrayList<String> itemCondition = new ArrayList<String>();
-		
-		List<ItemCondition> conditions = new ArrayList<ItemCondition>();
+		List<ItemCondition> itemConditions = new ArrayList<ItemCondition>();
 		
 		try {
-			conditions = itemManager.getAllItemCondition();
+			itemConditions = itemManager.getAllItemCondition();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		for(ItemCondition ic: conditions){
-			itemCondition.add(ic.getName());
-		}
-		
-		request.setAttribute("itemCondition", itemCondition);
+		request.setAttribute("itemConditions", itemConditions);
 		
 		view.forward(request, response);
 	}

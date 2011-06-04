@@ -266,7 +266,7 @@
     </form>
   </div>
   <div id="divItemCond">
-    <form id="form6" name="form6" method="post" action="SearchAllItemConditions.do">
+    <form id="form6" name="form6" method="post" action="ViewItemConditions.do">
       <input name="itemConditionBtn" type="submit" class="menubtn" id="itemConditionBtn" value="Item Condition" />
     </form>
   </div>

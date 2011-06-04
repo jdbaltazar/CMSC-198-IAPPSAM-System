@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.ItemCondition"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -153,11 +154,11 @@
 }
 #apDiv1 {
 	position:absolute;
-	width:419px;
+	width:331px;
 	height:131px;
 	z-index:17;
-	left: 568px;
-	top: 351px;
+	left: 581px;
+	top: 342px;
 }
 #apDiv2 {
 	position:absolute;
@@ -179,6 +180,10 @@
 </head>
 
 <body>
+
+<%
+	ItemCondition itemCondition = (ItemCondition)request.getAttribute("itemCondition");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -186,17 +191,17 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
     <td width="17%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">View Item Condition</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Edit Item Condition</td>
       </tr>
     </table></td>
     <td width="79%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="ViewItemConditions.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewItemConditions.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -210,14 +215,16 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="SaveEditedItemCondition.do">
     <p>
       <label for="conditionField" class="labels">Condition:</label>
-      <input name="conditionField" type="text" id="conditionField" disabled="disabled" size="30" />
+      <input name="conditionField" type="text" id="conditionField"  value="<%=itemCondition.getName()%>" size="30" />
+     <input type="hidden" name="itemConditionID"
+		value=<%="" + itemCondition.getId()%> />	
     </p>
     <p>&nbsp;</p>
     <div id="apDiv2">
-      <input type="submit" name="updateBtn" id="updateBtn" value="Update" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
+      <input type="submit" name="updateBtn" id="updateBtn" value="Save" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
     </div>
     <p>&nbsp;</p>
   </form>

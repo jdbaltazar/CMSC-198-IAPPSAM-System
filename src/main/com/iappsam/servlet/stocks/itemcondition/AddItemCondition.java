@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemcondition;
 
 import java.io.IOException;
 
@@ -15,16 +15,17 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddCondition.do")
-public class AddCondition extends HttpServlet {
+@WebServlet("/stocks/stocks/AddItemCondition.do")
+public class AddItemCondition extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddCondition() {
+	public AddItemCondition() {
 		super();
 	}
 
@@ -36,17 +37,16 @@ public class AddCondition extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCondition condition = new ItemCondition();
 
-		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemConditions.do");
+		RequestDispatcher add = request.getRequestDispatcher("AddItemCondition.jsp");
 
 		String conditionInput = (String) request.getParameter("conditionField");
 
-		if (!conditionInput.equals("")) {
+		if (Verifier.validEntry(conditionInput)) {
 			condition.setName(conditionInput);
-
-			request.setAttribute("condition", condition);
-
 			try {
 				itemManager.addItemCondition(condition);
+				add = request.getRequestDispatcher("ViewItemConditions.do");
+				System.out.println("condition was saved!!!!!!1");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,10 +54,6 @@ public class AddCondition extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-
-		else {
-			add = request.getRequestDispatcher("AddItemCondition.jsp");
 		}
 		add.forward(request, response);
 
