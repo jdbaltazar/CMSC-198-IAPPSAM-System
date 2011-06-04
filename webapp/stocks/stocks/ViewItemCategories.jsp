@@ -250,9 +250,10 @@
 	%>
 	<td width="83%"><%=iCategory.getName()%></td>
 	<td width="17%" align="center">
-	<form id="form4" name="form4" method="post" action="EditCategory.jsp">
-	<input name="editBtn_1" disabled="disabled" type="submit"
-		class="maroon" id="editBtn_1" value="Edit" /></form>
+	<form id="form4" name="form4" method="post" action="EditItemCategory.do">
+	<input name="editBtn_1" type="submit" class="maroon" id="editBtn_1"
+		value="Edit" /><input type="hidden" name="itemCategoryID"
+		value=<%="" + iCategory.getId()%> /></form>
 	</td>
 	</tr>
 	<%

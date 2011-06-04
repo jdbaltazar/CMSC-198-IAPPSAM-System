@@ -79,7 +79,7 @@ public interface ItemManager extends Manager {
 	void addItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException;
 
 	void addItemCondition(String name) throws TransactionException, DuplicateEntryException;
-	
+
 	int saveItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException;
 
 	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
@@ -97,14 +97,16 @@ public interface ItemManager extends Manager {
 	// ItemCategory
 
 	void addItemCategory(ItemCategory category) throws TransactionException, DuplicateEntryException;
-	
+
 	void addItemCategory(String name) throws TransactionException, DuplicateEntryException;
 
 	int saveItemCategory(ItemCategory category) throws TransactionException, DuplicateEntryException;
-	
+
 	void updateItemCategory(ItemCategory category) throws TransactionException;
 
-	ItemCategory getItemCategoryByName(String name);
+	ItemCategory getItemCategoryByName(String name) throws TransactionException;
+
+	ItemCategory getItemCategory(int itemCategoryID) throws TransactionException;
 
 	boolean containsItemCategory(ItemCategory category) throws TransactionException;
 

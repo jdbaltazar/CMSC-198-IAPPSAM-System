@@ -40,21 +40,19 @@ public class AddItemCategory extends HttpServlet {
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCategory.jsp");
 		
 		String categoryInput = (String) request.getParameter("categoryField");
-
 		if (Verifier.validEntry(categoryInput)) {
 			category.setName(categoryInput);
 			try {
 				itemManager.addItemCategory(category);
 				add = request.getRequestDispatcher("ViewItemCategories.do");
+				System.out.println("category was saveD!!!!!!!!!!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			} catch (DuplicateEntryException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
-			
-			
 		}
 		
 		add.forward(request, response);

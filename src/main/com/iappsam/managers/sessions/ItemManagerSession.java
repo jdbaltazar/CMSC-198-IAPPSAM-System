@@ -103,7 +103,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public void addUnit(String name) throws TransactionException, DuplicateEntryException {
 		if (getUnitByName(name) == null)
-			addUnit(new Unit(name));
+			add(new Unit(name));
 		else
 			throw new DuplicateEntryException();
 
@@ -162,7 +162,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public void addItemStatus(String name) throws TransactionException, DuplicateEntryException {
 		if (getItemStatus(name) == null)
-			addItemStatus(new ItemStatus(name));
+			add(new ItemStatus(name));
 		else
 			throw new DuplicateEntryException();
 
@@ -225,7 +225,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public void addItemCondition(String name) throws TransactionException, DuplicateEntryException {
 		if (getItemCondition(name) == null)
-			addItemCondition(new ItemCondition(name));
+			add(new ItemCondition(name));
 		else
 			throw new DuplicateEntryException();
 
@@ -282,16 +282,16 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public void addItemCategory(ItemCategory category) throws TransactionException, DuplicateEntryException {
 		if (getItemCategoryByName(category.getName()) == null)
 			add(category);
-		else
-			throw new DuplicateEntryException();
+		// else
+		// throw new DuplicateEntryException();
 	}
 
 	@Override
 	public void addItemCategory(String name) throws TransactionException, DuplicateEntryException {
 		if (getItemCategoryByName(name) == null)
-			addItemCategory(new ItemCategory(name));
-		else
-			throw new DuplicateEntryException();
+			add(new ItemCategory(name));
+		// else
+		// throw new DuplicateEntryException();
 
 	}
 
@@ -327,11 +327,17 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public ItemCategory getItemCategoryByName(String name) {
+	public ItemCategory getItemCategoryByName(String name) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 		ItemCategory cat = (ItemCategory) session.createCriteria(ItemCategory.class).add(Restrictions.like("name", name)).uniqueResult();
 		session.close();
 		return cat;
+	}
+
+	@Override
+	public ItemCategory getItemCategory(int itemCategoryID) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (ItemCategory) get(ItemCategory.class, itemCategoryID);
 	}
 
 }
