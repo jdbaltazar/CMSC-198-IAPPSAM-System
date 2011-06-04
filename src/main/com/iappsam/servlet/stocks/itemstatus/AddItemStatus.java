@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemstatus;
 
 import java.io.IOException;
 
@@ -15,16 +15,17 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddStatus.do")
-public class AddStatus extends HttpServlet {
+@WebServlet("/stocks/stocks/AddItemStatus.do")
+public class AddItemStatus extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddStatus() {
+	public AddItemStatus() {
 		super();
 	}
 
@@ -36,28 +37,24 @@ public class AddStatus extends HttpServlet {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemStatus status = new ItemStatus();
 
-		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemStatus.do");
-
+		RequestDispatcher add = request.getRequestDispatcher("AddItemStatus.jsp");
 		String statusInput = (String) request.getParameter("statusField");
 
-		if (!statusInput.equals("")) {
+		if (Verifier.validEntry(statusInput)) {
 			status.setName(statusInput);
-
-			request.setAttribute("status", status);
-
 			try {
 				itemManager.addItemStatus(status);
+				add = request.getRequestDispatcher("ViewItemStatuses.do");
+				System.out.println("status was saved!!!!!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// e.printStackTrace();
 			} catch (DuplicateEntryException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
-		} else {
-			add = request.getRequestDispatcher("AddItemStatus.jsp");
 		}
-		
+
 		add.forward(request, response);
 
 	}

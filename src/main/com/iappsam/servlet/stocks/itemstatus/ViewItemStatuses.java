@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemstatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,15 +17,15 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/SearchAllItemStatus.do")
-public class SearchAllItemStatus extends HttpServlet{
+@WebServlet("/stocks/stocks/ViewItemStatuses.do")
+public class ViewItemStatuses extends HttpServlet{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7700104491260715251L;
 
-	public SearchAllItemStatus(){
+	public ViewItemStatuses(){
 		super();
 	}
 
@@ -37,22 +37,16 @@ public class SearchAllItemStatus extends HttpServlet{
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("ViewItemStatuses.jsp");
 		
-		ArrayList<String> itemStatus = new ArrayList<String>();
-		
-		List<ItemStatus> status = new ArrayList<ItemStatus>();
+		List<ItemStatus> statuses = new ArrayList<ItemStatus>();
 		
 		try {
-			status = itemManager.getAllItemStatus();
+			statuses = itemManager.getAllItemStatus();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		for(ItemStatus is: status){
-			itemStatus.add(is.getName());
-		}
-		
-		request.setAttribute("itemStatus", itemStatus);
+		request.setAttribute("itemStatuses", statuses);
 		
 		view.forward(request, response);
 	}

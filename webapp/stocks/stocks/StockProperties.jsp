@@ -261,7 +261,7 @@
     </form>
   </div>
   <div id="divItemStatus">
-    <form id="form5" name="form5" method="post" action="SearchAllItemStatus.do">
+    <form id="form5" name="form5" method="post" action="ViewItemStatuses.do">
       <input name="itemStatus" type="submit" class="menubtn" id="itemStatus" value="Item Status" />
     </form>
   </div>
