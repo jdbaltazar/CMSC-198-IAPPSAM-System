@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemcategory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,15 +16,15 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
-@WebServlet("/stocks/stocks/SearchAllItemCategories.do")
-public class SearchAllItemCategories extends HttpServlet{
+@WebServlet("/stocks/stocks/ViewItemCategories.do")
+public class ViewItemCategories extends HttpServlet{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7700104491260715251L;
 
-	public SearchAllItemCategories(){
+	public ViewItemCategories(){
 		super();
 	}
 
@@ -36,8 +36,6 @@ public class SearchAllItemCategories extends HttpServlet{
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("ViewItemCategories.jsp");
 		
-		ArrayList<String> itemCategory = new ArrayList<String>();
-		
 		List<ItemCategory> categories = new ArrayList<ItemCategory>();
 		
 		try {
@@ -47,12 +45,7 @@ public class SearchAllItemCategories extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		for(ItemCategory ic: categories){
-			itemCategory.add(ic.getName());
-		}
-		
-		request.setAttribute("itemCategory", itemCategory);
-		
+		request.setAttribute("categories", categories);
 		view.forward(request, response);
 	}
 }

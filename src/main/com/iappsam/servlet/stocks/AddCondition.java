@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
@@ -47,6 +48,9 @@ public class AddCondition extends HttpServlet {
 			try {
 				itemManager.addItemCondition(condition);
 			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DuplicateEntryException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -52,6 +52,7 @@ import com.iappsam.entities.forms.WasteMaterialsReport;
 import com.iappsam.entities.forms.WasteMaterialsReportLine;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.WMRManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -143,13 +144,13 @@ public class HibernateUtil {
 		}
 	}
 
-	private static void persistDefaultEntities() throws TransactionException {
+	private static void persistDefaultEntities() throws TransactionException, DuplicateEntryException {
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();
 	}
 
-	private static void addItemDependencies() throws TransactionException {
+	private static void addItemDependencies() throws TransactionException, DuplicateEntryException {
 		ItemManager im = new ItemManagerSession();
 		im.addUnit("PCS");
 		im.addItemStatus("Not Available");

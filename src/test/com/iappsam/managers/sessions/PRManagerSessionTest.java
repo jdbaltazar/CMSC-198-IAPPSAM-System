@@ -45,7 +45,7 @@ public class PRManagerSessionTest {
 	}
 
 	@Test
-	public void PRwithLineAdded() throws TransactionException {
+	public void PRwithLineAdded() throws TransactionException, DuplicateEntryException {
 		assertPurchaseRequestAdded();
 
 		ItemBuilder builder = new ItemBuilder();

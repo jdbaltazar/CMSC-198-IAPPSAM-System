@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.iappsam.entities.ItemStatus;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemStatusSearcherTest extends ItemManagerTestSuite {
@@ -20,7 +21,7 @@ public class ItemStatusSearcherTest extends ItemManagerTestSuite {
 	}
 
 	@Test
-	public void searchItemStatusName() throws TransactionException {
+	public void searchItemStatusName() throws TransactionException, DuplicateEntryException {
 		ItemStatus status = new ItemStatus("st");
 		im.addItemStatus(status);
 

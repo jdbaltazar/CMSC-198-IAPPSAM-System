@@ -15,6 +15,7 @@ import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemSearcherTest extends ItemManagerTestSuite {
@@ -39,7 +40,7 @@ public class ItemSearcherTest extends ItemManagerTestSuite {
 	}
 
 	@Override
-	public void initAfter() throws TransactionException {
+	public void initAfter() throws TransactionException, DuplicateEntryException {
 		itemDate.setDateAcquired(Date.valueOf("2010-01-01"));
 		itemDate2.setDateAcquired(Date.valueOf("2010-01-02"));
 		addAll();
@@ -116,7 +117,7 @@ public class ItemSearcherTest extends ItemManagerTestSuite {
 		assertTrue(result.contains(itemTermName));
 	}
 
-	private void addAll() throws TransactionException {
+	private void addAll() throws TransactionException, DuplicateEntryException {
 		im.addItemCategory(category);
 		im.addItemCondition(condition);
 		im.addItemStatus(status);

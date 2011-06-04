@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
@@ -41,6 +42,9 @@ public class AddUnit extends HttpServlet {
 			try {
 				itemManager.addUnit(unit);
 			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DuplicateEntryException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -196,7 +196,7 @@
       </tr>
     </table></td>
     <td width="79%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="SearchAllItemCategories.do">
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewItemCategories.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>

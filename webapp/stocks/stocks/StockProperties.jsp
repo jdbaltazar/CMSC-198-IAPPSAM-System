@@ -246,7 +246,7 @@
 </div>
 <div id="border" align="center" style="width:100%">
   <div id="divCategory">
-    <form id="form1" name="form1" method="post" action="SearchAllItemCategories.do">
+    <form id="form1" name="form1" method="post" action="ViewItemCategories.do">
       <input name="categoryBtn" type="submit" class="menubtn" id="categoryBtn" value="Item Category" />
     </form>
   </div>

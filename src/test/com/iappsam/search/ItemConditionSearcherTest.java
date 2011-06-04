@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.iappsam.entities.ItemCondition;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemConditionSearcher;
 
@@ -21,7 +22,7 @@ public class ItemConditionSearcherTest extends ItemManagerTestSuite {
 	}
 
 	@Test
-	public void searchConditionName() throws TransactionException {
+	public void searchConditionName() throws TransactionException, DuplicateEntryException {
 		ItemCondition condition = new ItemCondition("Condition");
 		im.addItemCondition(condition);
 
