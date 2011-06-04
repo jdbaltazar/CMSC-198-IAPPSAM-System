@@ -37,13 +37,14 @@
 		</delete>
 	</target>
 
+
 	<target name="clean.classes">
 		<delete dir="classes">
 		</delete>
 	</target>
 
 	<target name="clean.webapps">
-		<delete dir="${env.CONTAINER_HOME}/webapps/iappsam">
+		<delete dir="${env.CONTAINER_HOME}/webapps/ROOT">
 		</delete>
 	</target>
 

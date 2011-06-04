@@ -5,32 +5,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<link rel="shortcut icon" href="../favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Items</title>
-<link href="./items/list-items.css" rel="stylesheet" type="text/css" />
+<link href="/items/items.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<jsp:include page="../logo.jsp" />
-	<jsp:include page="../logout-button.jsp" />
+	<jsp:include page="/logo.jsp" />
+	<jsp:include page="/logout-button.jsp" />
 	<div id="pageLabel" style="width: 100%;">
 		<table width="100%" border="0">
 			<tr>
 				<td width="7%">
 					<table width="100%" frame="below">
 						<tr>
-							<td id="item-label">Items</td>
+							<td class=title-label>Items</td>
 						</tr>
-					</table>
-				</td>
+					</table></td>
 				<td width="89%">&nbsp;</td>
-				<td width="4%"><a class="button" href="/menu">Back</a></td>
+				<td width="4%"><a class="button" href="/menu">Back</a>
+				</td>
 			</tr>
 		</table>
 	</div>
 	<div id="searchEmployeesDiv">
-		<form id="form1" name="form1" method="post" action="../items/SearchAllItems.do">
+		<form id="form1" name="form1" method="post" action="/items/SearchAllItems.do">
 			<label for="searchItemField" class="labels">Search:</label> <input name="searchItemField" type="text" id="searchItemField" size="35" /> <input
 				name="goSearchBtn" type="submit" class="maroon" value="GO"
 			/>
@@ -64,8 +64,7 @@
 					<input name="viewBtn" type="submit" class="viewbutton" id="viewBtn" value="View >>" /><input type="hidden" name="itemID"
 						value=<%="" + item.getId()%>
 					/>
-				</form>
-			</td>
+				</form></td>
 			</tr>
 			<%
 				i++;
@@ -83,7 +82,7 @@
 			</tr>
 		</table>
 	</div>
-	<jsp:include page="../copyright.jsp" />
+	<jsp:include page="/copyright.jsp" />
 </body>
 </html>
 

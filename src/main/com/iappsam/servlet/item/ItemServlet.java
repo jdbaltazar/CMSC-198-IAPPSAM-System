@@ -124,17 +124,14 @@ public class ItemServlet extends HttpServlet {
 
 	private ItemAction getAction(HttpServletRequest request) {
 
-		String view = request.getParameter("view");
+		// String view = request.getParameter("view");
 		String add = request.getParameter("add");
 
-		if (view != null) {
-			if (view.equals("items"))
-				return ItemAction.VIEW_ITEMS;
-		} else if (add != null) {
+		if (add != null) {
 			if (add.equals("item"))
 				return ItemAction.ADD_ITEM;
 		}
-		return null;
+		return ItemAction.VIEW_ITEMS;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

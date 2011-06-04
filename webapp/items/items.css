@@ -83,7 +83,7 @@
 	top: 303px;
 }
 
-#item-label {
+.title-label {
 	font-family: Lucida Grande;
 	font-size: 20px;
 	font-weight: bold;
@@ -200,13 +200,6 @@
 	z-index: 15;
 	left: 14px;
 	top: 143px;
-}
-
-#footer {
-	position: absolute;
-	left: 1px;
-	top: 887px;
-	width: 100%;
 }
 
 #divItemTableHeader {

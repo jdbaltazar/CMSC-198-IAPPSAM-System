@@ -34,6 +34,16 @@ public class AcceptanceTest {
 		tester.assertTitleEquals("IAPPSAM :: Add Item");
 	}
 
+	@Test
+	public void clickBackInAddItemPage() {
+		clickItemLink();
+		clickAddItemLink();
+
+		tester.assertLinkPresent("back");
+		tester.clickLink("back");
+		tester.assertTitleEquals("IAPPSAM :: Items");
+	}
+
 	@Ignore
 	@Test
 	public void backToMenuFromItemList() {
@@ -60,8 +70,8 @@ public class AcceptanceTest {
 	}
 
 	private void clickItemLink() {
-		tester.assertLinkPresentWithExactText("Items");
-		tester.clickLinkWithExactText("Items");
+		tester.assertLinkPresent("view-items");
+		tester.clickLink("view-items");
 	}
 
 	private void tryTologinWith(String username, String password) {

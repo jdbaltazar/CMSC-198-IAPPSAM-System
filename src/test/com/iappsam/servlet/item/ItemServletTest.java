@@ -30,7 +30,6 @@ public class ItemServletTest {
 	@Test
 	public void listItems() throws ServletException, IOException {
 
-		when(request.getParameter("view")).thenReturn("items");
 		when(request.getRequestDispatcher(ItemServlet.LIST_ITEMS_JSP)).thenReturn(dispatcher);
 
 		ItemServlet servlet = new ItemServlet();

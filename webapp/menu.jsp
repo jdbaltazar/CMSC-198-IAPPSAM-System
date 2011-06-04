@@ -20,23 +20,19 @@
 	<div id="account">
 		<a href="/accounts?view=all">Accounts</a>
 		<ul>
-			<li><a href="/accounts?add=account">New Account</a></li>
+			<li><a href="/accounts?add=account">New Account</a>
+			</li>
 		</ul>
 	</div>
 
 	<div id="items">
-		<a id="view-items" href="/items?view=items">Items</a>
+		<a id="view-items" href="/items">Items</a>
 		<ul>
-			<li><a href="/items?add=item">New Item</a>
-			</li>
-			<li><a href="/items?view=categories">Item Categories</a>
-			</li>
-			<li><a href="/items?view=conditions">Item Conditions</a>
-			</li>
-			<li><a href="/items?view=statuses">Item Statuses</a>
-			</li>
-			<li><a href="/items?view=units">Units</a>
-			</li>
+			<li><a href="/items?add=item">New Item</a></li>
+			<li><a href="/items?view=categories">Item Categories</a></li>
+			<li><a href="/items?view=conditions">Item Conditions</a></li>
+			<li><a href="/items?view=statuses">Item Statuses</a></li>
+			<li><a href="/items?view=units">Units</a></li>
 		</ul>
 	</div>
 

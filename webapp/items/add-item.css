@@ -5,46 +5,10 @@
 	font-weight: bold;
 }
 
-.maroon {
-	font-size: 12px;
-	font-family: Lucida Grande;
-	background-color: #7B1113;
-	color: white;
-	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-}
 
-.maroon:hover {
-	font-weight: bold;
-	/*	background:#EEE0E5;;*/
-	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
-}
 
-.button {
-	font-size: 14px;
-	font-family: Lucida Grande;
-	background-color: white;
-	color: #7B1113;
-	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-}
 
-.button:hover {
-	font-weight: bold;
-	color: #060;
-	/*	background:#EEE0E5;;*/
-	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
-}
+
 
 .requiredLabel {
 	font-family: Lucida Grande;
@@ -113,59 +77,6 @@
 	top: 337px;
 }
 
-#apDiv1 {
-	position: absolute;
-	width: 147px;
-	height: 15px;
-	z-index: 7;
-	left: 484px;
-	top: 857px;
-}
-
-#apDiv2 {
-	position: absolute;
-	width: 380px;
-	height: 27px;
-	z-index: 8;
-	left: 420px;
-	top: 460px;
-}
-
-#apDiv3 {
-	position: absolute;
-	width: 456px;
-	height: 25px;
-	z-index: 9;
-	left: 933px;
-	top: 507px;
-}
-
-#apDiv4 {
-	position: absolute;
-	width: 438px;
-	height: 26px;
-	z-index: 10;
-	left: 936px;
-	top: 567px;
-}
-
-#apDiv5 {
-	position: absolute;
-	width: 385px;
-	height: 27px;
-	z-index: 11;
-	left: 943px;
-	top: 618px;
-}
-
-#apDiv6 {
-	position: absolute;
-	width: 353px;
-	height: 27px;
-	z-index: 12;
-	left: 1067px;
-	top: 704px;
-}
 
 #addDiv {
 	position: absolute;
@@ -176,24 +87,8 @@
 	top: 772px;
 }
 
-#apDiv7 {
-	position: absolute;
-	width: 586px;
-	height: 642px;
-	z-index: 1;
-	left: 127px;
-	top: 179px;
-}
 
-#footer {
-	background-color: #7B1113;
-	position: absolute;
-	width: 578px;
-	height: 9px;
-	z-index: 14;
-	left: 455px;
-	top: 913px;
-}
+
 
 #apDiv8 {
 	position: absolute;
