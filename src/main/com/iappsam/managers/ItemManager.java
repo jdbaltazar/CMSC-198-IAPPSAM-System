@@ -45,6 +45,8 @@ public interface ItemManager extends Manager {
 	void updateUnit(Unit unit) throws TransactionException;
 
 	Unit getUnitByName(String unitName) throws TransactionException;
+	
+	Unit getUnit(int unitID) throws TransactionException;
 
 	void removeUnit(Unit unit) throws TransactionException;
 
@@ -65,6 +67,8 @@ public interface ItemManager extends Manager {
 	void updateItemStatus(ItemStatus itemStatus) throws TransactionException;
 
 	ItemStatus getItemStatus(String itemStatus) throws TransactionException;
+	
+	ItemStatus getItemStatus(int itemStatusID) throws TransactionException;
 
 	void removeItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -85,6 +89,8 @@ public interface ItemManager extends Manager {
 	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	ItemCondition getItemCondition(String itemCondition) throws TransactionException;
+	
+	ItemCondition getItemCondition(int itemConditionID) throws TransactionException;
 
 	void removeItemCondition(ItemCondition itemCondition) throws TransactionException;
 

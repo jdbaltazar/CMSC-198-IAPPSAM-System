@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemunit;
 
 import java.io.IOException;
 
@@ -14,11 +14,12 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddUnit.do")
-public class AddUnit extends HttpServlet {
+@WebServlet("/stocks/stocks/AddItemUnit.do")
+public class AddItemUnit extends HttpServlet {
 
-	public AddUnit() {
+	public AddItemUnit() {
 		super();
 	}
 
@@ -27,20 +28,21 @@ public class AddUnit extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("......inside aaditemunit.java");
+		
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 
-		RequestDispatcher add = request.getRequestDispatcher("SearchAllItemUnits.do");
-
+		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
 		String unitInput = (String) request.getParameter("unitField");
 
-		if (!unitInput.equals("")) {
+		if (Verifier.validEntry(unitInput)) {
 			unit.setName(unitInput);
-
-			request.setAttribute("unit", unit);
-
 			try {
 				itemManager.addUnit(unit);
+				add = request.getRequestDispatcher("ViewItemUnits.do");
+				System.out.println("item unit was saved!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,10 +50,8 @@ public class AddUnit extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else {
-			add = request.getRequestDispatcher("AddItemUnit.jsp");
 		}
 		add.forward(request, response);
-
+		
 	}
 }

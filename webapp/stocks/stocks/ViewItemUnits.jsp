@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.Unit"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -188,6 +190,10 @@
 
 <body>
 
+<%
+	List<Unit> itemUnits = (List<Unit>) request.getAttribute("itemUnits");
+%>
+
 <div id="logoHeader" style="width: 100%"><img name=""
 	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
@@ -232,13 +238,11 @@
 <div id="resultTable" style="width: 100%">
 <table width="100%" frame="box" cellspacing="0">
 
-	<%
-		ArrayList<String> units = (ArrayList<String>) request.getAttribute("itemUnit");
-		int size = units.size();
-	%>
+
 
 	<%
-		for (int i = 0; i < size; i++) {
+		int i = 0;
+		for (Unit u : itemUnits) {
 	%>
 	<%
 		if (i % 2 == 0)
@@ -246,14 +250,16 @@
 			else
 				out.print("<tr>");
 	%>
-	<td width="83%"><%=units.get(i)%></td>
+	<td width="83%"><%=u.getName()%></td>
 	<td width="17%" align="center">
-	<form id="form4" name="form4" method="post" action="EditItemUnit.jsp">
-	<input name="editBtn_1" type="submit" disabled="disabled"
-		class="maroon" id="editBtn_1" value="Edit" /></form>
+	<form id="form4" name="form4" method="post" action="EditItemUnit.do">
+	<input name="editBtn_1" type="submit" class="maroon" id="editBtn_1"
+		value="Edit" /> <input type="hidden" name="itemUnitID"
+		value=<%="" + u.getId()%> /></form>
 	</td>
 	</tr>
 	<%
+		i++;
 		}
 	%>
 </table>

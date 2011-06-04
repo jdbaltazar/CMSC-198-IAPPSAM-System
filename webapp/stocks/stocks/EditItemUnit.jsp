@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.Unit"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -153,19 +154,19 @@
 }
 #apDiv1 {
 	position:absolute;
-	width:419px;
-	height:131px;
+	width:222px;
+	height:115px;
 	z-index:17;
-	left: 627px;
-	top: 342px;
+	left: 642px;
+	top: 354px;
 }
 #apDiv2 {
 	position:absolute;
 	width:60px;
 	height:35px;
 	z-index:18;
-	left: 65px;
-	top: 83px;
+	left: 60px;
+	top: 64px;
 }
 #apDiv3 {
 	position:absolute;
@@ -179,6 +180,10 @@
 </head>
 
 <body>
+
+<%
+	Unit itemUnit = (Unit)request.getAttribute("itemUnit");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -186,17 +191,17 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
     <td width="13%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">View Item Unit</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Edit Item Unit</td>
       </tr>
     </table></td>
     <td width="83%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="ItemUnit.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewItemUnits.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -210,14 +215,16 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="SaveEditedItemUnit.do">
     <p>
       <label for="unitField" class="labels">Unit:</label>
-      <input name="unitField" type="text" id="unitField" disabled="disabled" size="20" />
+      <input name="unitField" type="text" id="unitField" value = "<%=itemUnit.getName()%>"size="20" />
+    	 <input type="hidden" name="itemUnitID"
+		value=<%="" + itemUnit.getId()%> />
     </p>
     <p>&nbsp;</p>
     <div id="apDiv2">
-      <input type="submit" name="updateBtn" id="updateBtn" value="Update" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
+      <input type="submit" name="updateBtn" id="updateBtn" value="Save" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
     </div>
     <p>&nbsp;</p>
   </form>

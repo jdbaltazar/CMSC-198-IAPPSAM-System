@@ -251,7 +251,7 @@
     </form>
   </div>
   <div id="divUnit">
-    <form id="form3" name="form3" method="post" action="SearchAllItemUnits.do">
+    <form id="form3" name="form3" method="post" action="ViewItemUnits.do">
       <input name="unitBtn" type="submit" class="menubtn" id="unitBtn" value="Item Unit" />
     </form>
   </div>

@@ -77,7 +77,7 @@ public class SaveItem extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Hey Bitch:-"+dateAcquired.toString());
+		System.out.println("Hey Bitch:-" + dateAcquired.toString());
 		String inventoryItemNumber = (String) request.getParameter("inventoryItemNum");
 		String propertyNumber = (String) request.getParameter("itemPropertyNumber");
 		String itemStatus = (String) request.getParameter("itemStatus");//
@@ -104,8 +104,7 @@ public class SaveItem extends HttpServlet {
 		System.out.println("itemCondition: " + itemCondition);
 		System.out.println("itemCategory: " + itemCategory);
 
-		if (validInputs(description, stockNumber, itemCategory, unit, priceS, dateAcquired, inventoryItemNumber, propertyNumber, itemStatus,
-				itemCondition)) {
+		if (validInputs(description, stockNumber, itemCategory, unit, priceS, dateAcquired, inventoryItemNumber, propertyNumber, itemStatus, itemCondition)) {
 
 			// flags
 			request.setAttribute("firstAttempt", "false");
@@ -147,15 +146,21 @@ public class SaveItem extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			try {
 
-			if (itemCategory != null) {
+				if (itemCategory != null) {
 
-				ItemCategory iC = iManager.getItemCategoryByName(itemCategory);
-				if (iC != null)
-					item.setItemCategory(iC);
-			}
-			else {
-				item.setItemCategory(iManager.getItemCategoryByName("Others"));
+					ItemCategory iC;
+					iC = iManager.getItemCategoryByName(itemCategory);
+
+					if (iC != null)
+						item.setItemCategory(iC);
+				} else {
+					item.setItemCategory(iManager.getItemCategoryByName("Others"));
+				}
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			request.setAttribute("item", item);
 
@@ -241,8 +246,7 @@ public class SaveItem extends HttpServlet {
 		return false;
 	}
 
-	private boolean validInputs(String description, String stockNumber, String itemCategory, String unit, String priceS, Date dateAcquired,
-			String inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
+	private boolean validInputs(String description, String stockNumber, String itemCategory, String unit, String priceS, Date dateAcquired, String inventoryItemNumber, String propertyNumber, String itemStatus, String itemCondition) {
 		if (description == null) {
 			return false;
 		}

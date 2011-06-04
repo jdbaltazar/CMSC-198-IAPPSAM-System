@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.itemunit;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,16 +16,17 @@ import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.util.ManagerBin;
 
-@WebServlet("/stocks/stocks/SearchAllItemUnits.do")
-public class SearchAllItemUnits extends HttpServlet {
+@WebServlet("/stocks/stocks/ViewItemUnits.do")
+public class ViewItemUnits extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public SearchAllItemUnits() {
+	public ViewItemUnits() {
 		super();
 	}
 
@@ -38,25 +39,21 @@ public class SearchAllItemUnits extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ItemUnit.jsp");
-
-		ArrayList<String> itemUnit = new ArrayList<String>();
+		
+		System.out.println("..........inside view item units.java");
+		
+		RequestDispatcher view = request.getRequestDispatcher("ViewItemUnits.jsp");
 
 		List<Unit> units = new ArrayList<Unit>();
 
 		try {
-			units = itemManager.getAllUnits();
+			units = ManagerBin.iManager.getAllUnits();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		for (Unit u : units)
-			itemUnit.add(u.getName());
-
-		request.setAttribute("itemUnit", itemUnit);
-
+		request.setAttribute("itemUnits", units);
 		view.forward(request, response);
 	}
 }

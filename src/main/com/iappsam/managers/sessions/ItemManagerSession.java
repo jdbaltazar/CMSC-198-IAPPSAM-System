@@ -96,16 +96,16 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public void addUnit(Unit unit) throws TransactionException, DuplicateEntryException {
 		if (getUnitByName(unit.getName()) == null)
 			add(unit);
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 	}
 
 	@Override
 	public void addUnit(String name) throws TransactionException, DuplicateEntryException {
 		if (getUnitByName(name) == null)
 			add(new Unit(name));
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 
 	}
 
@@ -155,16 +155,16 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public void addItemStatus(ItemStatus itemStatus) throws TransactionException, DuplicateEntryException {
 		if (getItemStatus(itemStatus.getName()) == null)
 			add(itemStatus);
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 	}
 
 	@Override
 	public void addItemStatus(String name) throws TransactionException, DuplicateEntryException {
 		if (getItemStatus(name) == null)
 			add(new ItemStatus(name));
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 
 	}
 
@@ -218,16 +218,16 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public void addItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException {
 		if (getItemCondition(itemCondition.getName()) == null)
 			add(itemCondition);
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 	}
 
 	@Override
 	public void addItemCondition(String name) throws TransactionException, DuplicateEntryException {
 		if (getItemCondition(name) == null)
 			add(new ItemCondition(name));
-		else
-			throw new DuplicateEntryException();
+		//else
+			//throw new DuplicateEntryException();
 
 	}
 
@@ -338,6 +338,24 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public ItemCategory getItemCategory(int itemCategoryID) throws TransactionException {
 		// TODO Auto-generated method stub
 		return (ItemCategory) get(ItemCategory.class, itemCategoryID);
+	}
+
+	@Override
+	public Unit getUnit(int unitID) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (Unit)get(Unit.class, unitID);
+	}
+
+	@Override
+	public ItemStatus getItemStatus(int itemStatusID) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (ItemStatus)get(ItemStatus.class, itemStatusID);
+	}
+
+	@Override
+	public ItemCondition getItemCondition(int itemConditionID) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (ItemCondition)get(ItemCondition.class, itemConditionID);
 	}
 
 }
