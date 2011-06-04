@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.building;
 
 
 import java.io.IOException;
@@ -15,9 +15,11 @@ import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Verifier;
 
 @SuppressWarnings("serial")
-@WebServlet("/entities/building/saveBuilding.do")
+@WebServlet("/entities/building/AddBuilding.do")
 public class AddBuilding extends HttpServlet {
 	
 	public AddBuilding(){
@@ -30,28 +32,27 @@ public class AddBuilding extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		Building building = new Building();
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("SearchAllBuildings.do");//("../../entities/building/AddBuilding.jsp");
+		System.out.println("...inside addbuilding");
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("AddBuilding.jsp");
 		
 		String name = (String) request.getParameter("name");
 		String address = (String) request.getParameter("address");
 		
-		building.setBuildingName(name);
-		building.setBuildingAddress(address);
-		
-		request.setAttribute("building", building);
-
-		try {
-			doManager.addBuilding(building);
-		} catch (TransactionException e) {
-			e.printStackTrace();
-		} catch (DuplicateEntryException e) {
-			e.printStackTrace();
+		if(Verifier.validEntry(name)&&Verifier.validEntry(address)){
+			Building building = new Building(name, address);
+			try {
+				ManagerBin.doManager.addBuilding(building);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DuplicateEntryException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 
-		// request.setAttribute("description", description);
-		//requestDispatcher = request.getRequestDispatcher("building/AddBuilding.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

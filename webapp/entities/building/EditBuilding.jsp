@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.Building"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -219,6 +220,11 @@
 </head>
 
 <body>
+
+<%
+
+	Building building = (Building)request.getAttribute("building");
+%>
 <div id="footer_2">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -232,7 +238,7 @@
   <tr>
     <td width="12%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Building</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Edit Building</td>
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
@@ -250,25 +256,28 @@
 <div id="background"  style="background-color:#EEE0E5;"></div>
 <div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
-  <form id="form1" name="form1" method="post" action="AddBuilding.do">
+  <form id="form1" name="form1" method="post" action="SaveEditedBuilding.do">
     <p>
       <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Name:</label>
-      <input name="name" type="text" id="name" value="" size="30" maxlength="80" />
+      <input name="name" type="text" id="name" value="<%=building.getBuildingName()%>" size="30" maxlength="80" />
     </p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <div id="apDiv8">
       <label for="address" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">Address:</label>
-      <input name="address" type="text" id="address" value="" size="30" maxlength="200" />
+      <input name="address" type="text" id="address" value="<%=building.getBuildingAddress()%>" size="30" maxlength="200" />
     </div>
     <p>&nbsp;</p>
     <div id="apDiv9">
-      <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Add" />
+    
+      <input type="submit" name="addBtn" id="addBtn"  style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" value="Save" />
     </div>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
+    <input type="hidden"
+		name="buildingID" value="<%=building.getBuildingID()%>"></input>
   </form>
 </div>
 <div id="apDiv1" style="font-family:Lucida Grande; font-size:11px; color:red;">

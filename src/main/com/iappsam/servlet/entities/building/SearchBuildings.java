@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.building;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,15 +21,15 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.search.Searcher;
 
-@WebServlet("/entities/building/SearchAllBuildings.do")
-public class SearchAllBuildings extends HttpServlet{
+@WebServlet("/entities/building/SearchBuildings.do")
+public class SearchBuildings extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchAllBuildings() {
+	public SearchBuildings() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,11 +41,11 @@ public class SearchAllBuildings extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("SearchBuildings.jsp");
-		
+
 		List<Building> buildings = new ArrayList<Building>();
 
 		try {
@@ -54,7 +54,7 @@ public class SearchAllBuildings extends HttpServlet{
 			e.printStackTrace();
 		}
 		request.setAttribute("buildings", buildings);
-		
+
 		view.forward(request, response);
 
 	}

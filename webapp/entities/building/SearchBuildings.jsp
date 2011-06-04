@@ -98,8 +98,8 @@
 	width: 200px;
 	height: 29px;
 	z-index: 2;
-	left: 808px;
-	top: 288px;
+	left: 619px;
+	top: 292px;
 }
 
 #apDiv2 {
@@ -205,7 +205,9 @@
 }
 </style>
 </head>
-
+<%
+	List<Building> buildings = (List<Building>) request.getAttribute("buildings");
+%>
 <div id="logoHeader" style="width: 100%"><img name=""
 	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
@@ -232,24 +234,14 @@
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
-<div id="searchEmployeesDiv">
-<form id="form1" name="form1" method="post" action=""><label
-	for="searchBuildingField" class="labels">Search:</label> <input
-	name="searchBuildingField" type="text" id="searchBuildingField"
-	size="35" /> <input name="goSearchBtn" type="submit" class="maroon"
-	id="goSearchBtn" value="GO" /></form>
-</div>
 <div id="apDiv1">
-<form id="form2" name="form2" method="post"
+  <form id="form2" name="form2" method="post"
 	action="../../entities/building/AddBuilding.jsp"><input
 	name="addBuildingBtn" type="submit" class="maroon" id="addBuildingBtn"
 	value="Add Building &gt;&gt;" /></form>
 </div>
 <div id="apDiv10" style="width: 100%">
 <table width="100%" cellspacing="0" frame="box" class="resultTable">
-	<%
-		List<Building> buildings = (List<Building>) request.getAttribute("buildings");
-	%>
 	<%
 		for (int i = 0; i < buildings.size(); i++) {
 	%>
@@ -263,10 +255,10 @@
 	<td width="37%"><%=buildings.get(i).getBuildingName()%></td>
 	<td width="44%"><%=buildings.get(i).getBuildingAddress()%></td>
 	<td width="19%" align="center">
-	<form id="form3" name="form3" method="post" action=""><input
+	<form id="form3" name="form3" method="post" action="EditBuilding.do"><input
 		name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
-		value="Edit >>" disabled="disabled" /> <input type="hidden"
-		name="buildingID" value="<%=buildings.get(i).getBuildingID()%>"></input></form>
+		value="Edit >>" /> <input type="hidden" name="buildingID"
+		value="<%=buildings.get(i).getBuildingID()%>"></input></form>
 	</td>
 	</tr>
 	<%

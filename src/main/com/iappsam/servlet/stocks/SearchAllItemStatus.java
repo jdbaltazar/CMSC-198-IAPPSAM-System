@@ -35,7 +35,7 @@ public class SearchAllItemStatus extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewItemStatus.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewItemStatuses.jsp");
 		
 		ArrayList<String> itemStatus = new ArrayList<String>();
 		

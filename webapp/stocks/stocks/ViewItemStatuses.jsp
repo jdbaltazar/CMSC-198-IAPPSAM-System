@@ -149,8 +149,8 @@
 	width:102px;
 	height:26px;
 	z-index:16;
-	left: 840px;
-	top: 289px;
+	left: 667px;
+	top: 291px;
 }
 #resultTable {
 	position:absolute;
