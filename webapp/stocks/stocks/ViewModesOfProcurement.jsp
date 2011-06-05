@@ -233,7 +233,7 @@
 </div>
 <div id="apDiv1">
 <form id="form1" name="form1" method="post"
-	action="AddModeOfProcurement.jsp"><input name="addNewBtn"
+	action="AddModeOfProc.jsp"><input name="addNewBtn"
 	type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
 </form>
 </div>
@@ -254,7 +254,7 @@
 	<td width="83%"><%=m.getModeOfProcurement()%></td>
 	<td width="17%" align="center">
 	<form id="form4" name="form4" method="post"
-		action="EditModeofProcurement.do"><input name="editBtn_1"
+		action="EditModeOfProcurement.do"><input name="editBtn_1"
 		type="submit" class="maroon" id="editBtn_1"
 		value="Edit" /><input type="hidden" name="mopID"
 		value=<%="" + m.getId()%> /></form>

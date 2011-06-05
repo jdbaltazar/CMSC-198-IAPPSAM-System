@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.forms.ModeOfProcurement"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -153,7 +154,7 @@
 }
 #apDiv1 {
 	position:absolute;
-	width:419px;
+	width:356px;
 	height:131px;
 	z-index:17;
 	left: 550px;
@@ -164,8 +165,8 @@
 	width:60px;
 	height:35px;
 	z-index:18;
-	left: 148px;
-	top: 97px;
+	left: 153px;
+	top: 96px;
 }
 #apDiv3 {
 	position:absolute;
@@ -179,6 +180,10 @@
 </head>
 
 <body>
+
+<%
+	ModeOfProcurement mop = (ModeOfProcurement)request.getAttribute("mop");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -186,13 +191,13 @@
   </tr>
 </table>
 </div>
-<div id="logoHeader" style="width:100%"><img name="" src="../../../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
     <td width="22%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">View Mode of Procurement</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Edit Mode of Procurement</td>
       </tr>
     </table></td>
     <td width="74%">&nbsp;</td>
@@ -210,16 +215,18 @@
 <div id="header" style="background-color:#7B1113;"></div>
 <div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="">
+  <form id="form1" name="form1" method="post" action="SaveEditedModeOfProc.do">
     <p>
       <label for="modeOfProcurementField" class="labels">Mode of<br />
         Procurement
       :</label>
-      <input name="modeOfProcurementField" type="text" id="modeOfProcurementField" disabled="disabled" size="30" />
+      <input name="modeOfProcurementField" type="text" id="modeOfProcurementField" value="<%=mop.getModeOfProcurement()%>" size="30" />
+    	 <input type="hidden" name="mopID"
+		value=<%="" + mop.getId()%> />
     </p>
     <p>&nbsp;</p>
     <div id="apDiv2">
-      <input type="submit" name="updateBtn" id="updateBtn" value="Update" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
+      <input type="submit" name="updateBtn" id="updateBtn" value="Save" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
     </div>
     <p>&nbsp;</p>
   </form>

@@ -19,7 +19,7 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddModeOfProcurement.do")
+@WebServlet("/stocks/stocks/AddModeOfProc.do")
 public class AddModeOfProcurement extends HttpServlet {
 
 	/**
@@ -39,7 +39,7 @@ public class AddModeOfProcurement extends HttpServlet {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
 
-		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProcurement.jsp");
+		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProc.jsp");
 
 		String modeofP = (String) request.getParameter("modeOfProcurementField");
 
