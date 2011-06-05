@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.modeofprocurement;
 
 import java.io.IOException;
 
@@ -13,19 +13,21 @@ import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
+import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddMode.do")
-public class AddModeofProcurement extends HttpServlet {
+@WebServlet("/stocks/stocks/AddModeOfProcurement.do")
+public class AddModeOfProcurement extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddModeofProcurement() {
+	public AddModeOfProcurement() {
 		super();
 	}
 
@@ -37,25 +39,26 @@ public class AddModeofProcurement extends HttpServlet {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
 
-		RequestDispatcher add = request.getRequestDispatcher("SearchAllModes.do");
+		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProcurement.jsp");
 
 		String modeofP = (String) request.getParameter("modeOfProcurementField");
 
-		if (!modeofP.equals("")) {
+		if (Verifier.validEntry(modeofP)) {
 			modeofProc.setModeOfProcurement(modeofP);
-
-			request.setAttribute("modeofProc", modeofProc);
 
 			try {
 				poManager.addModeOfProcurement(modeofProc);
+				add= request.getRequestDispatcher("ViewModesOfProcurement.do");
+				System.out.println("mode was saved!!!!!!!!!!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (DuplicateEntryException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} else {
-			add = request.getRequestDispatcher("AddModeofProcurement.jsp");
 		}
-
+		
 		add.forward(request, response);
 
 	}

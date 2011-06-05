@@ -5,6 +5,7 @@ import java.util.List;
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.entities.forms.PurchaseOrder;
 import com.iappsam.entities.forms.PurchaseOrderLine;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface POManager {
@@ -25,7 +26,7 @@ public interface POManager {
 
 	// ModeOfProcurement
 
-	void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
+	void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException, DuplicateEntryException;
 
 	void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 

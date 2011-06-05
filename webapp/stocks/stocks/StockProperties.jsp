@@ -256,7 +256,7 @@
     </form>
   </div>
   <div id="divModOfProc">
-    <form id="form4" name="form4" method="post" action="SearchAllModes.do">
+    <form id="form4" name="form4" method="post" action="ViewModesOfProcurement.do">
       <input name="modOfProc" type="submit" class="menubtn" id="modOfProc" value="Mode of Procurement" />
     </form>
   </div>

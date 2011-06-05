@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.modeofprocurement;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,15 +19,15 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 
-@WebServlet("/stocks/stocks/SearchAllModes.do")
-public class SearchAllModes extends HttpServlet{
+@WebServlet("/stocks/stocks/ViewModesOfProcurement.do")
+public class ViewModesOfProcurement extends HttpServlet{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7700104491260715251L;
 
-	public SearchAllModes(){
+	public ViewModesOfProcurement(){
 		super();
 	}
 
@@ -37,9 +37,7 @@ public class SearchAllModes extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewModeOfProcurement.jsp");
-		
-		ArrayList<String> mode = new ArrayList<String>();
+		RequestDispatcher view = request.getRequestDispatcher("ViewModesOfProcurement.jsp");
 		
 		List<ModeOfProcurement> modes = new ArrayList<ModeOfProcurement>();
 		
@@ -50,11 +48,7 @@ public class SearchAllModes extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		for(ModeOfProcurement mop: modes){
-			mode.add(mop.getModeOfProcurement());
-		}
-		
-		request.setAttribute("mode", mode);
+		request.setAttribute("modes", modes);
 		
 		view.forward(request, response);
 	}

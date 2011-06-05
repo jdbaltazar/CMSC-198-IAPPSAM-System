@@ -1,10 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM :: View Mode of Procurement</title>
+<title>IAPPSAM :: Add Mode of Procurement</title>
 <style type="text/css">
 .menubtn{
 	height:20px;
@@ -108,18 +107,10 @@
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
 }
-#divTableheadr {
-	position:absolute;
-	width:200px;
-	height:22px;
-	z-index:1;
-	left: 1px;
-	top: 374px;
-}
 #pageLabel {
 	position:absolute;
 	width:200px;
-	height:50px;
+	height:43px;
 	z-index:1;
 	top:181px;
 	left: 13px;
@@ -141,49 +132,71 @@
 #footer{
 	position:absolute;
 	left: 1px;
-	top: 620px;
+	top: 623px;
 	width: 100%;
+}
+#header {
+	position:absolute;
+	width:445px;
+	height:21px;
+	z-index:1;
+	left: 509px;
+	top: 303px;
+}
+#background {
+	position:absolute;
+	width:446px;
+	height:162px;
+	z-index:16;
+	left: 509px;
+	top: 326px;
 }
 #apDiv1 {
 	position:absolute;
-	width:102px;
-	height:26px;
-	z-index:16;
-	left: 606px;
-	top: 303px;
-}
-#resultTable {
-	position:absolute;
-	width:521px;
-	height:164px;
+	width:419px;
+	height:131px;
 	z-index:17;
-	left: 1px;
-	top: 398px;
+	left: 550px;
+	top: 337px;
 }
 #apDiv2 {
 	position:absolute;
-	width:361px;
-	height:31px;
+	width:60px;
+	height:35px;
 	z-index:18;
-	left: 443px;
-	top: 287px;
+	left: 159px;
+	top: 96px;
+}
+#apDiv3 {
+	position:absolute;
+	width:447px;
+	height:9px;
+	z-index:18;
+	left: 509px;
+	top: 488px;
 }
 </style>
 </head>
 
 <body>
-
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
+ <tr>
+    <td>Copyright � 2011 All Rights Reserved</td>
+  </tr>
+</table>
+</div>
 <div id="logoHeader" style="width:100%"><img name="" src="../../images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width:100%;">
 <table width="100%" border="0">
   <tr>
-    <td width="18%"><table width="100%" frame="below">
+    <td width="22%"><table width="100%" frame="below">
       <tr>
-        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Mode of Procurement</td>
+        <td style="font-family:Lucida Grande; font-size:20px; font-weight:bold; color:#003300">Add Mode of Procurement</td>
       </tr>
     </table></td>
-    <td width="78%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../../stocks/stocks/StockProperties.jsp">
+    <td width="74%">&nbsp;</td>
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewModesOfProcurement.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -194,43 +207,23 @@
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
-<div id="divTableheadr" style="width:100%">
-  <table width="100%" border="1" cellspacing="0" class="tableheaders">
-    <tr>
-      <td width="83%">Mode of Procurement</td>
-      <td width="17%">Action</td>
-    </tr>
-  </table>
-</div>
+<div id="header" style="background-color:#7B1113;"></div>
+<div id="background" style="background-color:#EEE0E5"></div>
 <div id="apDiv1">
-  <form id="form1" name="form1" method="post" action="AddModeofProcurement.jsp">
-    <input name="addNewBtn" type="submit" class="maroon" id="addNewBtn" value="Add New &gt;&gt;" />
+  <form id="form1" name="form1" method="post" action="AddModeOfProcurement.do">
+    <p>
+      <label for="modeOfProcurementField" class="labels">Mode of<br />
+        Procurement
+      :</label>
+      <input name="modeOfProcurementField" type="text" id="modeOfProcurementField" size="30" maxlength="80" />
+    </p>
+    <p>&nbsp;</p>
+    <div id="apDiv2">
+      <input type="submit" name="addBtn" id="addBtn" value="Add" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;" />
+    </div>
+    <p>&nbsp;</p>
   </form>
 </div>
-<div id="resultTable" style="width:100%">
-<table width="100%" frame="box" cellspacing="0">
-          	<%ArrayList<String> modes = (ArrayList<String>) request.getAttribute("mode");
-  	int size = modes.size();%>
-  	
-  	<%for(int i = 0; i < size; i++)
-  	{ 
-  	%>
-  	<%
-		if (i % 2 == 0)
-				out.print("<tr class=\"tablerow_1\">");
-			else
-				out.print("<tr>");
-	%>
-
-      <td width="83%"><%=modes.get(i) %></td>
-      <td width="17%" align="center"><form id="form4" name="form4" method="post" action="EditModeofProcurement.jsp">
-        <input name="editBtn_1" type="submit" disabled="disabled" class="maroon" id="editBtn_1" value="Edit" />
-      </form></td>
-    </tr>
-    <%
-    }
-    %>
-  </table>
-</div>
+<div id="apDiv3" style="background-color:#7B1113;"></div>
 </body>
 </html>
