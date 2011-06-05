@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks.modeofprocurement;
+package com.iappsam.servlet.stocks.mop;
 
 import java.io.IOException;
 

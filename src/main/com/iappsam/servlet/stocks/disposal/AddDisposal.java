@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks.modeofprocurement;
+package com.iappsam.servlet.stocks.disposal;
 
 import java.io.IOException;
 
@@ -10,24 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.forms.ModeOfProcurement;
+import com.iappsam.entities.forms.Disposal;
 import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.POManager;
-import com.iappsam.managers.exceptions.DuplicateEntryException;
+import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.managers.sessions.POManagerSession;
+import com.iappsam.managers.sessions.WMRManagerSession;
 import com.iappsam.util.Verifier;
 
-@WebServlet("/stocks/stocks/AddModeOfProc.do")
-public class AddModeOfProcurement extends HttpServlet {
+@WebServlet("/stocks/stocks/AddDisposal.do")
+public class AddDisposal extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AddModeOfProcurement() {
+	public AddDisposal() {
 		super();
 	}
 
@@ -36,29 +35,31 @@ public class AddModeOfProcurement extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		POManager poManager = new POManagerSession();
-		ModeOfProcurement modeofProc = new ModeOfProcurement();
+		
+		System.out.println(".........inside adddisposal.java");
+		WMRManager wmrManager = new WMRManagerSession();
+		Disposal disposal = new Disposal();
 
-		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProc.jsp");
+		RequestDispatcher add = request.getRequestDispatcher("AddDisposal.jsp");
 
-		String modeofP = (String) request.getParameter("modeOfProcurementField");
+		String disposalInput = (String) request.getParameter("disposalField");
 
-		if (Verifier.validEntry(modeofP)) {
-			modeofProc.setModeOfProcurement(modeofP);
+		if (Verifier.validEntry(disposalInput)) {
+			disposal.setName(disposalInput);
 
 			try {
-				poManager.addModeOfProcurement(modeofProc);
-				add= request.getRequestDispatcher("ViewModesOfProcurement.do");
-				System.out.println("mode was saved!!!!!!!!!!!!");
+				wmrManager.addDisposal(disposal);
+				add = request.getRequestDispatcher("ViewDisposals.do");
+				System.out.println("disposal was saved!!");
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DuplicateEntryException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+
+		else {
+			add = request.getRequestDispatcher("AddDisposal.jsp");
+		}
 		add.forward(request, response);
 
 	}

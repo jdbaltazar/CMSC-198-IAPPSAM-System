@@ -1,6 +1,8 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.disposal;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,47 +19,36 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
-@WebServlet("/stocks/stocks/AddDisposal.do")
-public class AddDisposal extends HttpServlet {
+@WebServlet("/stocks/stocks/ViewDisposals.do")
+public class ViewDisposals extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7700104491260715251L;
 
-	public AddDisposal() {
+	public ViewDisposals() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WMRManager wmrManager = new WMRManagerSession();
-		Disposal disposal = new Disposal();
+		RequestDispatcher view = request.getRequestDispatcher("ViewDisposals.jsp");
 
-		RequestDispatcher add = request.getRequestDispatcher("SearchAllDisposal.do");
+		List<Disposal> disposals = new ArrayList<Disposal>();
 
-		String disposalInput = (String) request.getParameter("disposalField");
-
-		if (!disposalInput.equals("")) {
-			disposal.setName(disposalInput);
-
-			request.setAttribute("disposal", disposal);
-
-			try {
-				wmrManager.addDisposal(disposal);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			disposals = wmrManager.getAllDisposal();
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		else {
-			add = request.getRequestDispatcher("AddDisposal.jsp");
-		}
-		add.forward(request, response);
-
+		request.setAttribute("disposals", disposals);
+		view.forward(request, response);
 	}
 }

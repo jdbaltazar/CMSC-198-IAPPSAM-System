@@ -271,7 +271,7 @@
     </form>
   </div>
   <div id="divDisposal">
-    <form id="form7" name="form7" method="post" action="SearchAllDisposal.do">
+    <form id="form7" name="form7" method="post" action="ViewDisposals.do">
       <input name="disposalBtn" type="submit" class="menubtn" id="disposalBtn" value="Disposal" />
     </form>
   </div>

@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks;
+package com.iappsam.servlet.stocks.mop;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.forms.Disposal;
+import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.WMRManager;
+import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.managers.sessions.WMRManagerSession;
+import com.iappsam.managers.sessions.POManagerSession;
 
-@WebServlet("/stocks/stocks/SearchAllDisposal.do")
-public class SearchAllDisposals extends HttpServlet{
+@WebServlet("/stocks/stocks/ViewModesOfProcurement.do")
+public class ViewModesOfProcurement extends HttpServlet{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7700104491260715251L;
 
-	public SearchAllDisposals(){
+	public ViewModesOfProcurement(){
 		super();
 	}
 
@@ -36,25 +36,19 @@ public class SearchAllDisposals extends HttpServlet{
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		WMRManager wmrManager = new WMRManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewDisposal.jsp");
+		POManager poManager = new POManagerSession();
+		RequestDispatcher view = request.getRequestDispatcher("ViewModesOfProcurement.jsp");
 		
-		ArrayList<String> disposal = new ArrayList<String>();
-		
-		List<Disposal> disposals = new ArrayList<Disposal>();
+		List<ModeOfProcurement> modes = new ArrayList<ModeOfProcurement>();
 		
 		try {
-			disposals = wmrManager.getAllDisposal();
+			modes = poManager.getAllModeOfProcurement();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		for(Disposal d: disposals){
-			disposal.add(d.getName());
-		}
-		
-		request.setAttribute("disposal", disposal);
+		request.setAttribute("modes", modes);
 		
 		view.forward(request, response);
 	}

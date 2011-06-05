@@ -1,4 +1,4 @@
-package com.iappsam.servlet.stocks.modeofprocurement;
+package com.iappsam.servlet.stocks.disposal;
 
 import java.io.IOException;
 
@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.forms.ModeOfProcurement;
+import com.iappsam.entities.forms.Disposal;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ManagerBin;
 import com.iappsam.util.Verifier;
 
 /**
- * Servlet implementation class SaveEditedModeOfProc
+ * Servlet implementation class SaveEditedDisposal
  */
-@WebServlet("/stocks/stocks/SaveEditedModeOfProc.do")
-public class SaveEditedModeOfProc extends HttpServlet {
+@WebServlet("/stocks/stocks/SaveEditedDisposal.do")
+public class SaveEditedDisposal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SaveEditedModeOfProc() {
+	public SaveEditedDisposal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,27 +45,27 @@ public class SaveEditedModeOfProc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("inside saveeditedmop.java");
+		System.out.println(".....inside saveediteddisposal.java");
 
-		RequestDispatcher save = request.getRequestDispatcher("EditModeOfProcurement.do");
-		int mopID = Integer.parseInt((String) request.getParameter("mopID"));
-		String name = (String) request.getParameter("modeOfProcurementField");
+		RequestDispatcher save = request.getRequestDispatcher("EditDisposal.do");
+		int disposalID = Integer.parseInt((String) request.getParameter("disposalID"));
+		String name = (String) request.getParameter("disposalField");
 
-		ModeOfProcurement mop = null;
+		Disposal disposal = null;
 
 		try {
-			mop = ManagerBin.poManager.getModeOfProcurement(mopID);
+			disposal = ManagerBin.wmrManager.getDisposal(disposalID);
 			if (Verifier.validEntry(name)) {
-				mop.setModeOfProcurement(name);
-				ManagerBin.poManager.updateModeOfProcurement(mop);
-				save = request.getRequestDispatcher("ViewModesOfProcurement.do");
+				disposal.setName(name);
+				ManagerBin.wmrManager.updateDisposal(disposal);
+				save = request.getRequestDispatcher("ViewDisposals.do");
 			} else {
-				request.setAttribute("mop", mop);
+				request.setAttribute("disposal", disposal);
 			}
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			request.setAttribute("mop", mop);
+			request.setAttribute("disposal", disposal);
 		}
 
 		save.forward(request, response);
