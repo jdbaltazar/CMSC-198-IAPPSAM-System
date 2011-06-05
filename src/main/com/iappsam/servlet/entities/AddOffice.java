@@ -13,7 +13,7 @@ import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class AddOffice
@@ -50,7 +50,7 @@ public class AddOffice extends HttpServlet {
 		
 		DivisionOffice dOffice;
 		try {
-			dOffice = ManagerBin.doManager.getDivisionOffice(dOfficeID);
+			dOffice = Managers.doManager.getDivisionOffice(dOfficeID);
 			request.setAttribute("dOffice", dOffice);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block

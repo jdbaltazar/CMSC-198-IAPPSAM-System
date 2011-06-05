@@ -57,6 +57,7 @@ public class ItemStatus {
 		return result;
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,5 +73,10 @@ public class ItemStatus {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

@@ -23,7 +23,7 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class IIRUPForm
@@ -175,7 +175,7 @@ public class IIRUPForm extends HttpServlet {
 				iirupForm.setStation(station.getDivisionName());
 			ArrayList<Item> item = new ArrayList<Item>();
 			for (int i = 0; i < itemIDs.size(); i++) {
-				Item itemInstance = ManagerBin.iManager.getItem(Integer.parseInt(itemIDs.get(i)));
+				Item itemInstance = Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemIDs.get(i)));
 				item.add(itemInstance);
 			}
 			for (int i = 0; i < item.size(); i++) {
@@ -191,7 +191,7 @@ public class IIRUPForm extends HttpServlet {
 
 			}
 			try {
-				ManagerBin.iirupManager.addIIRUP(iirupForm);
+				Managers.iirupManager.addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
 				request.setAttribute("iirupForm", iirupForm);

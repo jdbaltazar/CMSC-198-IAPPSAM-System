@@ -17,26 +17,16 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.IIRUPSearcher;
 import com.iappsam.search.ItemSearcher;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
-/**
- * Servlet implementation class SearchPRItemList
- */
-@WebServlet({"/forms/purchase_request/search_pr_item_list.do","/forms/purchse_request/pr_form_additem.do"})
+@WebServlet({ "/forms/purchase_request/search_pr_item_list.do", "/forms/purchse_request/pr_form_additem.do" })
 public class SearchPRItemList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchPRItemList() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public SearchPRItemList() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AbstractSearcher iSearcher = new ItemSearcher();
 		List<Item> itemList = null;
@@ -44,7 +34,7 @@ public class SearchPRItemList extends HttpServlet {
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
-				itemList = ManagerBin.getInstance().iManager.getAllItems();
+				itemList = Managers.ITEM_MANAGER.getAllItems();
 			else
 				itemList = iSearcher.search((String) request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));
@@ -68,10 +58,11 @@ public class SearchPRItemList extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
 }

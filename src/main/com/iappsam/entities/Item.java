@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import jxl.StringFormulaCell;
+
+import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
@@ -122,6 +125,8 @@ public class Item {
 	}
 
 	public void setItemStatus(ItemStatus itemStatus) {
+		if (itemStatus == null)
+			throw new NullArgumentException("itemStatus");
 		this.itemStatus = itemStatus;
 	}
 
@@ -130,6 +135,8 @@ public class Item {
 	}
 
 	public void setItemCondition(ItemCondition itemCondition) {
+		if (itemCondition == null)
+			throw new NullArgumentException("category");
 		this.itemCondition = itemCondition;
 	}
 
@@ -138,14 +145,20 @@ public class Item {
 	}
 
 	public void setItemCategory(ItemCategory itemCategory) {
+		if (itemCategory == null)
+			throw new NullArgumentException("category");
 		this.itemCategory = itemCategory;
 	}
 
 	public void setUnit(Unit unit) {
+		if (unit == null)
+			throw new NullArgumentException("unit");
 		this.unit = unit;
 	}
 
 	public void setDescription(String description) {
+		if (description == null)
+			throw new NullArgumentException("description");
 		this.description = description;
 	}
 
@@ -197,5 +210,29 @@ public class Item {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public void setDateAcquired(String string) {
+		dateAcquired = java.sql.Date.valueOf(string);
+	}
+
+	public void setDateAcquired(String year, String month, String day) {
+		setDateAcquired(String.format("%s-%s-%s", year, month, day));
+	}
+
+	public static boolean isDateValid(String year, String month, String day) {
+		try {
+			java.sql.Date.valueOf(String.format("%s-%s-%s", year, month, day));
+			return true;
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
+	}
+
+	public void setPrice(String string) {
+		try {
+			price = Float.parseFloat(string);
+		} catch (NumberFormatException e) {
+		}
 	}
 }

@@ -13,16 +13,15 @@ import org.hibernate.search.FullTextQuery;
 import org.hibernate.search.FullTextSession;
 import org.hibernate.search.Search;
 
-import com.iappsam.entities.Item;
 import com.iappsam.util.HibernateUtil;
 
-public class AbstractSearcher {
+public class AbstractSearcher<T> {
 
 	private MultiFieldQueryParser queryParser;
 	protected FullTextSession fullSession;
-	protected Class<?> cl;
+	private Class<T> cl;
 
-	public <T> AbstractSearcher(Class<T> class1, String... string) {
+	public AbstractSearcher(Class<T> class1, String... string) {
 		super();
 		Session s = HibernateUtil.startSession();
 		fullSession = Search.getFullTextSession(s);
@@ -30,7 +29,7 @@ public class AbstractSearcher {
 		setEntity(class1);
 	}
 
-	protected <T> void setEntity(Class<T> class1) {
+	protected void setEntity(Class<T> class1) {
 		cl = class1;
 	}
 
@@ -40,7 +39,7 @@ public class AbstractSearcher {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected <T> List<T> searchWithWilcardIn(String string) {
+	protected List<T> searchWithWilcardIn(String string) {
 		Query searchQuery;
 		try {
 			searchQuery = queryParser.parse("*" + string + "*");
@@ -52,7 +51,7 @@ public class AbstractSearcher {
 		return new ArrayList<T>();
 	}
 
-	public <T> List<T> search(String string) {
+	public List<T> search(String string) {
 		return searchWithWilcardIn(string);
 	}
 

@@ -73,7 +73,7 @@ public class ItemManagerSessionTest {
 
 		try {
 			im.addItemStatus(status);
-			assertEquals(name, im.getItemStatus(name).getName());
+			assertEquals(name, im.getItemStatusByName(name).getName());
 		} finally {
 			im.removeItemStatus(status);
 		}

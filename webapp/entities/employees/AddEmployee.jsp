@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <%@page import="java.util.List"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -499,7 +499,7 @@
 					value="<%=name%>" <%}%> />
 				<%
 					if (name != null && name.isEmpty())
-						out.print("*");
+								out.print("*");
 				%>
 			</div>
 
@@ -512,7 +512,7 @@
 					value="<%=designation%>" <%}%> />
 				<%
 					if (designation != null && designation.isEmpty())
-						out.print("*");
+								out.print("*");
 				%>
 			</div>
 			<p>&nbsp;</p>
@@ -540,8 +540,8 @@
 					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
 				<select name="division" id="division3">
 					<%
-						List<DivisionOffice> dOffice = ManagerBin.doManager.getAllDivisionOffice();
-						for (int i = 0; i < dOffice.size(); i++) {
+						List<DivisionOffice> dOffice = Managers.doManager.getAllDivisionOffice();
+									for (int i = 0; i < dOffice.size(); i++) {
 					%>
 					<option id="<%=dOffice.get(i).getId()%>">
 						<%

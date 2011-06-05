@@ -149,7 +149,7 @@ public class HibernateUtil {
 		addItemDependencies();
 	}
 
-	private static void addItemDependencies() throws TransactionException {
+	public static void addItemDependencies() throws TransactionException {
 		ItemManager im = new ItemManagerSession();
 		im.addUnit("PCS");
 		im.addItemStatus("Not Available");
@@ -165,7 +165,7 @@ public class HibernateUtil {
 		im.addItemCategory("Others");
 	}
 
-	private static void addDisposals() throws TransactionException {
+	public static void addDisposals() throws TransactionException {
 		WMRManager wmrm = new WMRManagerSession();
 		wmrm.addDisposal(new Disposal("Destroyed"));
 		wmrm.addDisposal(new Disposal("Sold at private sale"));
@@ -173,7 +173,7 @@ public class HibernateUtil {
 		wmrm.addDisposal(new Disposal("Transferred Without Cost"));
 	}
 
-	private static void addAdminAccount() throws TransactionException {
+	public static void addAdminAccount() throws TransactionException {
 		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 

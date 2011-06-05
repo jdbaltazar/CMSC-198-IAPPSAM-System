@@ -89,6 +89,17 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
+	public List<Employee> getEmployeeByPerson(int personID) throws TransactionException {
+		List<Employee> employees = getAllEmployee();
+		List<Employee> results = new ArrayList<Employee>();
+		for (Employee emp : employees) {
+			if (emp.getId() == personID)
+				results.add(emp);
+		}
+		return results;
+	}
+
+	@Override
 	public void removeEmployee(Employee employee) throws TransactionException {
 		remove(employee);
 	}
@@ -101,17 +112,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	@Override
 	public List<Employee> getAllEmployee() throws TransactionException {
 		return getAll(Employee.class);
-	}
-
-	@Override
-	public List<Employee> getEmployeeByPerson(int personID) throws TransactionException {
-		List<Employee> employees = getAllEmployee();
-		List<Employee> results = new ArrayList<Employee>();
-		for (Employee emp : employees) {
-			if (emp.getId() == personID)
-				results.add(emp);
-		}
-		return results;
 	}
 
 	@Override
@@ -151,30 +151,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException {
-		List<Signatory> signatories = getAllSignatories();
-		List<Signatory> result = new ArrayList<Signatory>();
-		List<Employee> employees = getEmployeeByPerson(person.getId());
-		for (Signatory signatory : signatories) {
-			for (Employee emp : employees) {
-			}
-		}
-		return result;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Employee getEmployee(String name, String designation) throws TransactionException {
-		// TODO Auto-generated method stub
-
-		List<Person> persons = getAllPersons();
-		for (Person p : persons) {
-			if (p.getName() == name) {
-				List<Employee> employments = getEmployeeByPerson(p.getId());
-				for (Employee emp : employments) {
-					if (emp.getDesignation().equalsIgnoreCase(designation))
-						return emp;
-				}
-			}
-		}
-		return null;
+		throw new UnsupportedOperationException();
 	}
 }

@@ -40,11 +40,6 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public Item getItemByDescription(String description) throws TransactionException {
-		// Session session = HibernateUtil.startSession();
-		// Item item = (Item)
-		// session.createCriteria(Item.class).add(Restrictions.like("description",
-		// description)).uniqueResult();
-		// session.close();
 		List<Item> items = getAllItems();
 		for (Item i : items) {
 			if (i.getDescription().equalsIgnoreCase(description))
@@ -80,7 +75,6 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public List<Item> getAllExisitingItems() throws TransactionException {
-		// TODO Auto-generated method stub
 		List<Item> items = getAllItems();
 		List<Item> results = new ArrayList<Item>();
 		for (Item i : items) {
@@ -160,7 +154,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public ItemStatus getItemStatus(String name) throws TransactionException {
+	public ItemStatus getItemStatusByName(String name) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 
 		ItemStatus cat = (ItemStatus) session.createCriteria(ItemStatus.class).add(Restrictions.like("name", name)).uniqueResult();
@@ -215,7 +209,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public ItemCondition getItemCondition(String itemCondition) throws TransactionException {
+	public ItemCondition getItemConditionByName(String itemCondition) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 		ItemCondition cat = (ItemCondition) session.createCriteria(ItemCondition.class).add(Restrictions.like("name", itemCondition)).uniqueResult();
 		session.close();

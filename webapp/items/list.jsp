@@ -1,3 +1,4 @@
+<%@page import="com.iappsam.servlet.item.ItemAttribute"%>
 <%@page import="com.iappsam.entities.Item"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -30,15 +31,14 @@
 		</table>
 	</div>
 	<div id="searchEmployeesDiv">
-		<form id="form1" name="form1" method="post" action="/items/SearchAllItems.do">
-			<label for="searchItemField" class="labels">Search:</label> <input name="searchItemField" type="text" id="searchItemField" size="35" /> <input
-				name="goSearchBtn" type="submit" class="maroon" value="GO"
+		<form id="form1" name="form1" method="get" action="/items">
+			<label for="searchItemField" class="labels">Search:</label> <input name="q" type="text" id="searchItemField" size="35" /> <input name="search"
+				type="submit" class="maroon" value="GO"
 			/>
 		</form>
 	</div>
 	<div id="apDiv1">
-		<a href="/items?add=item">Add Item >></a>
-
+		<a href="/items?new=item">Add Item >></a>
 	</div>
 
 
@@ -46,7 +46,7 @@
 		<table width="100%" cellspacing="0" frame="box" class="resultTable">
 
 			<%
-				List<Item> items = (List<Item>) request.getAttribute("items");
+				List<Item> items = (List<Item>) request.getAttribute(ItemAttribute.ITEMS);
 
 				int i = 0;
 				for (Item item : items) {
@@ -60,10 +60,8 @@
 			<td width="46%"><%=item.getDescription()%></td>
 			<td width="35%"><%=item.getItemCategory().getName()%></td>
 			<td width="19%" align="center">
-				<form id="form3" name="form3" method="post" action="../items/ViewItem.do">
-					<input name="viewBtn" type="submit" class="viewbutton" id="viewBtn" value="View >>" /><input type="hidden" name="itemID"
-						value=<%="" + item.getId()%>
-					/>
+				<form id="form3" name="form3" method="post" action="/items">
+					<input name="view" type="submit" class="viewbutton" id="viewBtn" value="View >>" /> <input type="hidden" name="id" value=<%=item.getId()%> />
 				</form></td>
 			</tr>
 			<%

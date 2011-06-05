@@ -73,4 +73,9 @@ public class ItemCategory {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

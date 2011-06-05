@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class EditOffice
@@ -48,7 +48,7 @@ public class EditOffice extends HttpServlet {
 		int officeID = Integer.parseInt((String) request.getParameter("officeID"));
 		DivisionOffice office = null;
 		try {
-			office = ManagerBin.doManager.getDivisionOffice(officeID);
+			office = Managers.doManager.getDivisionOffice(officeID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

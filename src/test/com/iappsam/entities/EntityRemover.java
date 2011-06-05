@@ -30,6 +30,7 @@ import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
+import com.iappsam.util.HibernateUtil;
 
 public class EntityRemover {
 
@@ -147,4 +148,10 @@ public class EntityRemover {
 			pm.removeEmployee(e);
 	}
 
+	public static void reset() throws TransactionException {
+		removeAll();
+		HibernateUtil.addAdminAccount();
+		HibernateUtil.addItemDependencies();
+		HibernateUtil.addDisposals();
+	}
 }

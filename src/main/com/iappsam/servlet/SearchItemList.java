@@ -15,11 +15,8 @@ import com.iappsam.entities.Item;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
-/**
- * Servlet implementation class Search
- */
 @WebServlet(name = "Search.do", urlPatterns = { "/forms/iirup/SearchIIRUPItemList.do" })
 public class SearchItemList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,13 +26,8 @@ public class SearchItemList extends HttpServlet {
 	 */
 	public SearchItemList() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AbstractSearcher iSearcher = new ItemSearcher();
 		List<Item> itemList = null;
@@ -43,7 +35,7 @@ public class SearchItemList extends HttpServlet {
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
-				itemList = ManagerBin.getInstance().iManager.getAllItems();
+				itemList = Managers.ITEM_MANAGER.getAllItems();
 			else
 				itemList = iSearcher.search((String) request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));

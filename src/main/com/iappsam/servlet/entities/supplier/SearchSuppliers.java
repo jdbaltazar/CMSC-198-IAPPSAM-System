@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class SearchSuppliers
@@ -49,7 +49,7 @@ public class SearchSuppliers extends HttpServlet {
 		List<Supplier> suppliers = new ArrayList<Supplier>();
 
 		try {
-			suppliers = ManagerBin.sManager.getAllSuppliers();
+			suppliers = Managers.sManager.getAllSuppliers();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

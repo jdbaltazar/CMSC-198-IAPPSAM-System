@@ -73,4 +73,9 @@ public class ItemCondition {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

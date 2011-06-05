@@ -16,7 +16,7 @@ import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 @WebServlet("/entities/employees/ViewEmployee.do")
 public class ViewEmployee extends HttpServlet {
@@ -34,7 +34,7 @@ public class ViewEmployee extends HttpServlet {
 		ArrayList<String> mobile = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 		try {
-			Employee emp = ManagerBin.pManager.getEmployee(Integer.parseInt(employeeID));
+			Employee emp = Managers.PERSON_MANAGER.getEmployee(Integer.parseInt(employeeID));
 			if (emp != null) {
 				p = emp.getPerson();
 				request.setAttribute("title", p.getTitle());

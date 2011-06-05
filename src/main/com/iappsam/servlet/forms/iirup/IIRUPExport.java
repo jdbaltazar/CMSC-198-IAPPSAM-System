@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class IIRUPExport
@@ -43,7 +43,7 @@ public class IIRUPExport extends HttpServlet {
 		int iirupID = Integer.parseInt(iirup);
 		String iirupExport = (String) request.getParameter("exportType");
 		try {
-			IIRUP iirupForm = ManagerBin.iirupManager.getIIRUP(iirupID);
+			IIRUP iirupForm = Managers.iirupManager.getIIRUP(iirupID);
 			if(iirupExport.equalsIgnoreCase("pdf")){
 				System.out.println("Will export to pdf");
 				//PDF Export area use{

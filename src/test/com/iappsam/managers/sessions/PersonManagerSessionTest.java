@@ -41,24 +41,14 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
-	public void exactlyOneEmployee() throws TransactionException, DuplicateEntryException {
-		addPersonThenAssert();
-		addEmployeeThenAssert();
-
-		assertExactlyOneEmployeeInDatabase();
-	}
-
-	@Test
-	public void exactlyOneEmployeeWithDivision() throws TransactionException, DuplicateEntryException {
+	public void addEmployeeWithDivision() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 		addOfficeThenAssert();
 		addEmployeeWithDivisionThenAssert();
-
-		assertExactlyOneEmployeeInDatabase();
 	}
 
 	@Test
-	public void addPerson() throws TransactionException, DuplicateEntryException {
+	public void addPersonInDatabase() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 	}
 
@@ -107,10 +97,6 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 		pm.addPerson(person);
 	}
 
-	private void assertExactlyOneEmployeeInDatabase() throws TransactionException {
-		assertEquals(1, pm.getAllEmployee().size());
-	}
-
 	private void addEmployeeWithDivisionThenAssert() throws TransactionException, DuplicateEntryException {
 		employee = new Employee("Designation", person);
 		employee.setDivisionOffice(divisionOffice);
@@ -119,6 +105,7 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 
 		Employee employeeFromDb = pm.getEmployee(employee.getId());
 
+		assertEquals(1, pm.getAllEmployee().size());
 		assertEquals(employee, employeeFromDb);
 		assertEquals(person, employeeFromDb.getPerson());
 		assertEquals(divisionOffice, employeeFromDb.getDivisionOffice());
@@ -144,8 +131,16 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	private void addPersonThenAssert() throws TransactionException, DuplicateEntryException {
+		addPerson();
+		assertPersonInDatabase();
+	}
+
+	private void addPerson() throws TransactionException, DuplicateEntryException {
 		person = new Person("John");
 		pm.addPerson(person);
+	}
+
+	private void assertPersonInDatabase() throws TransactionException {
 		assertEquals(1, pm.getAllPersons().size());
 		Person personFromDb = pm.getPerson(person.getId());
 		assertEquals(person, personFromDb);

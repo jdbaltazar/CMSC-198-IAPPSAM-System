@@ -49,8 +49,6 @@ public interface PersonManager extends Manager {
 
 	List<Employee> getAllEmployee() throws TransactionException;
 
-	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
-
 	// Signatory
 
 	void addSignatory(Signatory signatory) throws TransactionException;
@@ -65,8 +63,11 @@ public interface PersonManager extends Manager {
 
 	List<Signatory> getAllSignatories() throws TransactionException;
 
+	@Deprecated
 	List<Signatory> getAllSignatoriesByPerson(Person person) throws TransactionException;
 
 	void removeSignatory(Signatory signatory) throws TransactionException;
+
+	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
 
 }

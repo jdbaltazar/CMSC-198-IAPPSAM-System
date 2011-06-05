@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Item;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 
 /**
  * Servlet implementation class IIRUPItemImber
@@ -64,7 +64,7 @@ public class IIRUPItemImbed extends HttpServlet {
 		ArrayList<String> dateAcquired = new ArrayList<String>();
 		try {
 			for (int i = 0; i < itemList.length; i++) {
-				Item item = ManagerBin.iManager.getItem(Integer.parseInt(itemList[i]));
+				Item item = Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemList[i]));
 				if (trueItemList.contains(itemList[i]))
 					continue;
 
@@ -73,7 +73,7 @@ public class IIRUPItemImbed extends HttpServlet {
 			}
 
 			for (int i = 0; i < trueItemList.size(); i++) {
-				Item item = ManagerBin.iManager.getItem(Integer.parseInt(trueItemList.get(i)));
+				Item item = Managers.ITEM_MANAGER.getItem(Integer.parseInt(trueItemList.get(i)));
 
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());

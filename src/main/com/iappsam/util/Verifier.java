@@ -30,7 +30,7 @@ public class Verifier {
 	public static boolean valid(String username) {
 		Account acc = null;
 		try {
-			acc = ManagerBin.aManager.getAccount(username);
+			acc = Managers.aManager.getAccount(username);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

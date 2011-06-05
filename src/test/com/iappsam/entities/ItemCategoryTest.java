@@ -13,4 +13,10 @@ public class ItemCategoryTest {
 
 		assertEquals(cat, cat2);
 	}
+
+	@Test
+	public void toStringIsName() {
+		ItemCategory cat = new ItemCategory("Cat");
+		assertEquals(cat.getName(), cat.toString());
+	}
 }

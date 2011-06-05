@@ -25,13 +25,13 @@ import com.iappsam.managers.sessions.RISManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
-public class ManagerBin {
-	public static PersonManager pManager = new PersonManagerSession();
+public class Managers {
+	public static PersonManager PERSON_MANAGER = new PersonManagerSession();
 	public static AccountManager aManager = new AccountManagerSession();
 	public static ContactManager cManager = new ContactManagerSession();
 	public static SupplierManager sManager = new SupplierManagerSession();
 	public static DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-	public static ItemManager iManager = new ItemManagerSession();
+	public static ItemManager ITEM_MANAGER = new ItemManagerSession();
 
 	// Forms
 	public static APPManager appManager = new APPManagerSession();
@@ -41,13 +41,8 @@ public class ManagerBin {
 	public static IIRUPManager iirupManager = new IIRUPManagerSession();
 	public static WMRManager wmrManager = new WMRManagerSession();
 
-	public final static ManagerBin INSTANCE = new ManagerBin();
 	
-	public ManagerBin() {
-	}
-
-	public static ManagerBin getInstance() {
-		return INSTANCE;
+	private Managers() {
 	}
 
 }

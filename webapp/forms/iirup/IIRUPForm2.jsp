@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <%@page import="com.iappsam.entities.forms.Disposal"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.util.ArrayList"%>
@@ -234,7 +234,7 @@
 	String station = (String) request.getParameter("station");
 	System.out.println("JK's Number:"+station);
 	if(station!=null){
-	DivisionOffice dOffice =ManagerBin.doManager.getDivisionOffice(Integer.parseInt(station));
+	DivisionOffice dOffice =Managers.doManager.getDivisionOffice(Integer.parseInt(station));
 	session.setAttribute("station", dOffice);
 	}
 	String accountableOfficer = (String) request.getParameter("accountableOfficer");

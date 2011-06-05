@@ -61,7 +61,7 @@ public interface ItemManager extends Manager {
 
 	void updateItemStatus(ItemStatus itemStatus) throws TransactionException;
 
-	ItemStatus getItemStatus(String itemStatus) throws TransactionException;
+	ItemStatus getItemStatusByName(String itemStatus) throws TransactionException;
 
 	void removeItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -79,7 +79,7 @@ public interface ItemManager extends Manager {
 
 	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
 
-	ItemCondition getItemCondition(String itemCondition) throws TransactionException;
+	ItemCondition getItemConditionByName(String itemCondition) throws TransactionException;
 
 	void removeItemCondition(ItemCondition itemCondition) throws TransactionException;
 

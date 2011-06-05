@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Date"%>
@@ -329,8 +329,8 @@ Acquired:</label> <select name="asOfMonth" id="month3">
 	<option selected="selected">YYYY</option>
 	<%
 		Date date = new Date();
-		int year = Integer.parseInt(date.toString().substring(date.toString().length() - 4, date.toString().length()));
-		for (int i = 1973; i <= year; i++) {
+			int year = Integer.parseInt(date.toString().substring(date.toString().length() - 4, date.toString().length()));
+			for (int i = 1973; i <= year; i++) {
 	%>
 	<option><%=i%></option>
 	<%
@@ -341,8 +341,8 @@ Acquired:</label> <select name="asOfMonth" id="month3">
 	name="accountableOfficer" id="accountableOfficer">
 	<%
 		IIRUPFormUtil get = new IIRUPFormUtil();
-		ArrayList<String> name = get.getNames();
-		for (int i = 0; i < name.size(); i++) {
+			ArrayList<String> name = get.getNames();
+			for (int i = 0; i < name.size(); i++) {
 	%>
 	<optgroup label="<%=name.get(i)%>">
 		<%
@@ -371,8 +371,8 @@ Acquired:</label> <select name="asOfMonth" id="month3">
 </input> <select name="station" id="requestedBy2">
 
 	<%
-		List<DivisionOffice> dOffice = ManagerBin.doManager.getAllDivisionOffice();
-		for (int i = 0; i < dOffice.size(); i++) {
+		List<DivisionOffice> dOffice = Managers.doManager.getAllDivisionOffice();
+			for (int i = 0; i < dOffice.size(); i++) {
 	%>
 	<option value="<%=dOffice.get(i).getId()%>">
 	<%

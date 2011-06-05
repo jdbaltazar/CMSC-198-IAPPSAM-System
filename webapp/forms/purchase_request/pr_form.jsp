@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.util.List"%>
 <%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.iappsam.util.DateUtil"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -280,8 +280,8 @@
 <div id="apDiv2"><label for="nameOfAcctableOfficer"></label> <select
 	name="deptAndSection" id="deptAndSection" style="width: 200px;">
 	<%
-		List<DivisionOffice> dOffice = (List<DivisionOffice>) ManagerBin.doManager.getAllDivisionOffice();
-		for (int i = 0; dOffice != null && i < dOffice.size(); i++) {
+		List<DivisionOffice> dOffice = (List<DivisionOffice>) Managers.doManager.getAllDivisionOffice();
+			for (int i = 0; dOffice != null && i < dOffice.size(); i++) {
 	%>
 	<option value="<%=dOffice.get(i).getId()%>">
 	<%

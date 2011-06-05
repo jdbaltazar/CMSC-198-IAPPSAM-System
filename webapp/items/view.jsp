@@ -39,7 +39,9 @@
 			</tr>
 		</table>
 	</div>
-	<c:import url="/logout-header.jsp" />
+
+	<jsp:include page="/logout-button.jsp" />
+
 	<div id="headerdiv" style="text-align: left; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Item Information</div>
 	<div id="background" style="background-color: #EEE0E5;"></div>
 	<div id="name">

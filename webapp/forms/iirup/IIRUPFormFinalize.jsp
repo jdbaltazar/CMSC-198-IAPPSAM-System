@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <%@page import="com.iappsam.entities.forms.Disposal"%>
 <%@page import="com.iappsam.entities.forms.IIRUPLine"%>
 <%@page import="java.util.Set"%>
@@ -62,16 +62,16 @@
 <table width="122%" border="1">
 	<%
 		IIRUP iirupForm = (IIRUP) request.getAttribute("iirupForm");
-		if (iirupForm == null) {
-			String iirupID = (String) request.getParameter("iirupID");
-			if(iirupID==null)
-				iirupID=(String)request.getAttribute("iirupID");
-			request.setAttribute("iirupID",iirupID);
-			iirupForm = ManagerBin.iirupManager.getIIRUP(Integer.parseInt(iirupID));
-		}
-		Set<IIRUPLine> iirupLines = iirupForm.getLines();
+			if (iirupForm == null) {
+		String iirupID = (String) request.getParameter("iirupID");
+		if(iirupID==null)
+			iirupID=(String)request.getAttribute("iirupID");
+		request.setAttribute("iirupID",iirupID);
+		iirupForm = Managers.iirupManager.getIIRUP(Integer.parseInt(iirupID));
+			}
+			Set<IIRUPLine> iirupLines = iirupForm.getLines();
 
-		int maxLines = iirupLines.size();
+			int maxLines = iirupLines.size();
 	%>
 	<tr>
 		<td>

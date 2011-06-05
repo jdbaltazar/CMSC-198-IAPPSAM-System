@@ -18,7 +18,7 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.search.Searcher;
-import com.iappsam.util.ManagerBin;
+import com.iappsam.util.Managers;
 import com.iappsam.util.Verifier;
 
 /**
@@ -59,7 +59,7 @@ public class SearchAllItems extends HttpServlet {
 
 		if (searchItemField == null || (searchItemField != null && searchItemField.equalsIgnoreCase(""))) {
 			try {
-				items = ManagerBin.iManager.getAllItems();
+				items = Managers.ITEM_MANAGER.getAllItems();
 				uniqueItems = items;
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block

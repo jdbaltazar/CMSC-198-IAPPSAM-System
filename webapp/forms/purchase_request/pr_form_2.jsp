@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.sql.Date"%>
 <%@page import="com.iappsam.entities.forms.PurchaseRequest"%>
-<%@page import="com.iappsam.util.ManagerBin"%>
+<%@page import="com.iappsam.util.Managers"%>
 <%@page import="com.iappsam.entities.DivisionOffice"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -183,7 +183,7 @@
 
 	DivisionOffice divisionOffice;
 	if (divisionOfficeID != null) {
-		divisionOffice = ManagerBin.doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID));
+		divisionOffice = Managers.doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID));
 		session.setAttribute("dOffice", divisionOffice);
 	} else
 		System.out.println("deptAndSection has returned null");
