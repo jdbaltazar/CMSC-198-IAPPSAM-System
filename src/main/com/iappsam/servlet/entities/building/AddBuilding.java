@@ -34,15 +34,18 @@ public class AddBuilding extends HttpServlet {
 		
 		System.out.println("...inside addbuilding");
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("AddBuilding.jsp");
-		
+		RequestDispatcher add = request.getRequestDispatcher("AddBuilding.jsp");
+		Building building = new Building();
 		String name = (String) request.getParameter("name");
 		String address = (String) request.getParameter("address");
 		
-		if(Verifier.validEntry(name)&&Verifier.validEntry(address)){
-			Building building = new Building(name, address);
+		if(Verifier.validEntry(name)){
+			building.setBuildingName(name);
+			building.setBuildingAddress(address);
 			try {
 				ManagerBin.doManager.addBuilding(building);
+				add = request.getRequestDispatcher("ViewBuildings.do");
+				System.out.println("building was saved!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -53,7 +56,7 @@ public class AddBuilding extends HttpServlet {
 			
 		}
 
-		requestDispatcher.forward(request, response);
+		add.forward(request, response);
 	}
 
 }

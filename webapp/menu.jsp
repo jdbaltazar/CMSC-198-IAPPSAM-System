@@ -447,7 +447,7 @@
 	</div>
 	<div id="backupDiv">
 		<form id="form3" name="form3" method="post"
-			action="database/backup.do">
+			action="database/Notes.txt">
 			<input name="backupBtn" type="submit" class="button" id="backupBtn"
 				value="Backup" />
 		</form>
@@ -536,7 +536,7 @@
 	</div>
 	<div id="apDiv5">
 		<form id="form15" name="form15" method="post"
-			action="entities/building/SearchBuildings.do">
+			action="entities/building/ViewBuildings.do">
 			<input name="buildingBtn" type="submit" class="button2"
 				id="buildingBtn" value="Building" />
 		</form>

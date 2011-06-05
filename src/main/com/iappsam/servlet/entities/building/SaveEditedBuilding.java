@@ -46,31 +46,34 @@ public class SaveEditedBuilding extends HttpServlet {
 
 		System.out.println("....inside save editedbuilding.java");
 
+		RequestDispatcher save = request.getRequestDispatcher("EditBuilding.do");
 		int buildingID = Integer.parseInt((String) request.getParameter("buildingID"));
 		String name = (String) request.getParameter("name");
 		String address = (String) request.getParameter("address");
-		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		Building building = null;
 		try {
 			building = ManagerBin.doManager.getBuilding(buildingID);
+			if (Verifier.validEntry(name)) {
+				building.setBuildingName(name);
+				building.setBuildingAddress(address);
+				try {
+					ManagerBin.doManager.updateBuilding(building);
+					save = request.getRequestDispatcher("ViewBuildings.do");
+				} catch (TransactionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				request.setAttribute("building", building);
+			}
+
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			request.setAttribute("building", building);
 		}
 
-		if (Verifier.validEntry(name) && Verifier.validEntry(address)) {
-			building.setBuildingName(name);
-			building.setBuildingAddress(address);
-			try {
-				ManagerBin.doManager.updateBuilding(building);
-				edit = request.getRequestDispatcher("SearchBuilding.do");
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		edit.forward(request, response);
+		save.forward(request, response);
 	}
 
 }

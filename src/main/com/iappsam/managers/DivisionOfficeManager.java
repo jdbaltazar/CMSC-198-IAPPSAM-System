@@ -38,6 +38,8 @@ public interface DivisionOfficeManager {
 	void updateBuilding(Building building) throws TransactionException;
 
 	Building getBuilding(int buildingId) throws TransactionException;
+	
+	Building getBuilding(String buildingName, String buildingAddress) throws TransactionException;
 
 	void removeBuilding(Building building) throws TransactionException;
 

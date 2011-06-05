@@ -21,15 +21,15 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.search.Searcher;
 
-@WebServlet("/entities/building/SearchBuildings.do")
-public class SearchBuildings extends HttpServlet {
+@WebServlet("/entities/building/ViewBuildings.do")
+public class ViewBuildings extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchBuildings() {
+	public ViewBuildings() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,7 +44,7 @@ public class SearchBuildings extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("SearchBuildings.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ViewBuildings.jsp");
 
 		List<Building> buildings = new ArrayList<Building>();
 
@@ -54,7 +54,6 @@ public class SearchBuildings extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("buildings", buildings);
-
 		view.forward(request, response);
 
 	}

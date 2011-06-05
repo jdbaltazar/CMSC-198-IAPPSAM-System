@@ -46,20 +46,16 @@ public class EditBuilding extends HttpServlet {
 		System.out.println("....inside editbuilding.java");
 
 		int buildingID = Integer.parseInt((String) request.getParameter("buildingID"));
-
-		System.out.println("buildingID: " + buildingID);
-
 		Building building = null;
+		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		try {
 			building = ManagerBin.doManager.getBuilding(buildingID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		request.setAttribute("building", building);
-
-		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
-
 		edit.forward(request, response);
 	}
 
