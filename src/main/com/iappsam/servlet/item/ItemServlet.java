@@ -1,6 +1,7 @@
 package com.iappsam.servlet.item;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -111,17 +112,6 @@ public class ItemServlet extends HttpServlet {
 			int itemID = Integer.parseInt(request.getParameter(ITEM_ID));
 			Item item = itemManager.getItem(itemID);
 			request.setAttribute(ItemAttribute.ITEM, item);
-
-			// if (item.getDateAcquired() != null) {
-			// Date date = item.getDateAcquired();
-			// String day = DateUtil.getDayEquivalent(date);
-			// String month = DateUtil.getMonthEquivalentInWords(date);
-			// String year = DateUtil.getYearEquivalent(date);
-			//
-			// request.setAttribute("day", day);
-			// request.setAttribute("month", month);
-			// request.setAttribute("year", year);
-			// }
 			request.getRequestDispatcher(VIEW_ITEM_JSP).forward(request, response);
 		} catch (TransactionException e1) {
 			e1.printStackTrace();

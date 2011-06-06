@@ -9,17 +9,8 @@
 </head>
 
 <body>
-	<%
-		Item item = (Item) request.getAttribute("item");
-		String day = (String) request.getAttribute("day");
-		String month = (String) request.getAttribute("month");
-		String year = (String) request.getAttribute("year");
-	%>
-
-
-	<div id="logoHeader" style="width: 100%">
-		<img name="" src="../images/header2.png" width="100%" height="115" alt="" />
-	</div>
+	<jsp:include page="/logo.jsp"/>
+	
 	<div id="pageLabel" style="width: 100%;">
 		<table width="100%" border="0">
 			<tr>
@@ -46,57 +37,28 @@
 
 			<div id="apDiv12">
 				<label for="itemDescription3" class="texts">Description:</label>
-				<textarea name="itemDescription" cols="30" disabled="disabled" id="itemDescription3"><%=item.getDescription()%></textarea>
+				<textarea name="itemDescription" cols="30" disabled="disabled" id="itemDescription3">${item.description}</textarea>
 			</div>
 			<div id="apDiv11">
 				<label for="itemUnit" class="texts">Unit:</label> <select name="itemUnit" disabled="disabled" id="itemUnit">
-					<option selected="selected"><%=item.getUnit()%></option>
+					<option selected="selected">${item.unit.name}</option>
 				</select>
 			</div>
 			<div id="apDiv13">
-				<label for="itemPrice3" class="texts">Price:</label> <input name="itemPrice" type="text" disabled="disabled" value="<%="" + item.getPrice()%>"
-					id="itemPrice3" size="10"
+				<label for="itemPrice3" class="texts">Price:</label> <input name="itemPrice" type="text" disabled="disabled" value="${item.price}" id="itemPrice3"
+					size="10"
 				/>
 			</div>
 			<div id="apDiv14">
 				<label for="month3" class="texts">Date Acquired:</label> <select name="month" disabled="disabled" id="month3">
-					<%
-						if (month != null) {
-					%>
+					<option selected="selected">${item.dateAcquired.month}</option>
 
-					<option selected="selected"><%=month%></option>
-					<%
-						} else {
-					%>
-					<option selected="selected">MM</option>
-					<%
-						}
-					%>
 
 				</select> <select name="dayAcquired" disabled="disabled" id="dayAcquired">
-					<%
-						if (day != null) {
-					%>
-					<option selected="selected"><%=day%></option>
-					<%
-						} else {
-					%>
-					<option selected="selected">DD</option>
-					<%
-						}
-					%>
+					<option selected="selected">${item.dateAcquired.day}</option>
+
 				</select> <select name="yearAcquired" disabled="disabled" id="yearAcquired">
-					<%
-						if (year != null) {
-					%>
-					<option selected="selected"><%=year%></option>
-					<%
-						} else {
-					%>
-					<option selected="selected">YYYY</option>
-					<%
-						}
-					%>
+					<option selected="selected">${date.dateAcquired.year}</option>
 				</select>
 			</div>
 			<p>&nbsp;</p>

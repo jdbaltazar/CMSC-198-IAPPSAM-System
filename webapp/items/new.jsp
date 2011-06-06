@@ -21,12 +21,9 @@
 	List<ItemCondition> conditions = new ArrayList<ItemCondition>();
 
 	boolean validInputs = (Boolean) request.getAttribute(ItemAttribute.VALID_INPUT_FOR_ITEM);
-	boolean finishedInputting = (Boolean) request.getAttribute(ItemAttribute.DONE);
-	boolean finished = false;
-	if (finishedInputting)
-		finished = true;
+	boolean done = (Boolean) request.getAttribute(ItemAttribute.DONE);
 
-	if (!finished) {
+	if (!done) {
 		units = (List<Unit>) request.getAttribute(ItemAttribute.UNITS);
 		categories = (List<ItemCategory>) request.getAttribute(ItemAttribute.CATEGORIES);
 		statuses = (List<ItemStatus>) request.getAttribute(ItemAttribute.STATUSES);
@@ -61,15 +58,15 @@
 		<span class="headerLabel">Item Information</span>
 	</div>
 	<div id="background" style="background-color: #EEE0E5;">
-		<form action="/items" method="post" name="form1" id="form1" <%if (finished) {%> disabled="disabled" <%}%>>
+		<form action="/items" method="post" name="form1" id="form1" <%if (done) {%> disabled="disabled" <%}%>>
 
 			<p>&nbsp;</p>
 			<p>
 				<label for="itemDescription3" class="texts">*Description:</label>
-				<textarea name="itemDescription" cols="30" id="itemDescription3" <%if (finished) {%> disabled="disabled" <%}%>></textarea>
+				<textarea name="itemDescription" cols="30" id="itemDescription3" <%if (done) {%> disabled="disabled" <%}%>></textarea>
 			</p>
 			<p>
-				<label for="itemUnit2" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit2" <%if (finished) {%> disabled="disabled" <%}%>>
+				<label for="itemUnit2" class="texts">*Unit:</label> <select name="itemUnit" id="itemUnit2" <%if (done) {%> disabled="disabled" <%}%>>
 					<%
 						for (Unit s : units) {
 					%>
@@ -80,7 +77,7 @@
 				</select>
 			</p>
 			<p>
-				<label for="itemCategory2" class="texts">*Category:</label> <select name="itemCategory" id="itemCategory2" <%if (finished) {%> disabled="disabled"
+				<label for="itemCategory2" class="texts">*Category:</label> <select name="itemCategory" id="itemCategory2" <%if (done) {%> disabled="disabled"
 					<%}%>
 				>
 					<%
@@ -93,12 +90,12 @@
 				</select>
 			</p>
 			<p>
-				<label for="itemPrice2" class="texts">Price:</label> <input name="itemPrice" type="text" id="itemPrice2" size="10" <%if (finished) {%>
+				<label for="itemPrice2" class="texts">Price:</label> <input name="itemPrice" type="text" id="itemPrice2" size="10" <%if (done) {%>
 					disabled="disabled" <%}%>
 				/>
 			</p>
 			<p>
-				<label for="month2" class="texts">Date Acquired:</label> <select name="month" id="month2" <%if (finished) {%> disabled="disabled" <%}%>>
+				<label for="month2" class="texts">Date Acquired:</label> <select name="month" id="month2" <%if (done) {%> disabled="disabled" <%}%>>
 					<option value="01">Jan</option>
 					<option value="02">Feb</option>
 					<option value="03">Mar</option>
@@ -111,7 +108,7 @@
 					<option value="10">Oct</option>
 					<option value="11">Nov</option>
 					<option value="12">Dec</option>
-				</select> <select name="day" id="dayAcquired" <%if (finished) {%> disabled="disabled" <%}%>>
+				</select> <select name="day" id="dayAcquired" <%if (done) {%> disabled="disabled" <%}%>>
 					<option>01</option>
 					<option>02</option>
 					<option>03</option>
@@ -143,7 +140,7 @@
 					<option>29</option>
 					<option>30</option>
 					<option>31</option>
-				</select> <select name="year" id="yearAcquired" <%if (finished) {%> disabled="disabled" <%}%>>
+				</select> <select name="year" id="yearAcquired" <%if (done) {%> disabled="disabled" <%}%>>
 					<option>2000</option>
 					<option>2001</option>
 					<option>2002</option>
@@ -167,18 +164,16 @@
 			</p>
 			<p>
 				<label for="inventoryItemNum3" class="texts">Inv. Item Number:</label> <input type="text" name="inventoryItemNum" id="inventoryItemNum3"
-					<%if (finished) {%> disabled="disabled" <%}%>
+					<%if (done) {%> disabled="disabled" <%}%>
 				/>
 			</p>
 			<p>
 				<label for="itemPropertyNumber3" class="texts">Property Number:</label> <input type="text" name="itemPropertyNumber" id="itemPropertyNumber3"
-					<%if (finished) {%> disabled="disabled" <%}%>
+					<%if (done) {%> disabled="disabled" <%}%>
 				/>
 			</p>
 			<p>
-				<label for="itemStatus3" class="texts">*Item Status:</label> <select name="itemStatus" id="itemStatus3" <%if (finished) {%> disabled="disabled"
-					<%}%>
-				>
+				<label for="itemStatus3" class="texts">*Item Status:</label> <select name="itemStatus" id="itemStatus3" <%if (done) {%> disabled="disabled" <%}%>>
 					<%
 						for (ItemStatus s : statuses) {
 					%>
@@ -189,7 +184,7 @@
 				</select>
 			</p>
 			<p>
-				<label for="itemCondition3" class="texts">*Item Condition:</label> <select name="itemCondition" id="itemCondition3" <%if (finished) {%>
+				<label for="itemCondition3" class="texts">*Item Condition:</label> <select name="itemCondition" id="itemCondition3" <%if (done) {%>
 					disabled="disabled" <%}%>
 				>
 					<%
@@ -203,7 +198,7 @@
 			</p>
 			<p>
 				<input type="submit" name="addItemBtn " id="addItemBtn"
-					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" value="Add" <%if (finished) {%> disabled="disabled"
+					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" value="Add" <%if (done) {%> disabled="disabled"
 					<%}%>
 				/>
 			</p>

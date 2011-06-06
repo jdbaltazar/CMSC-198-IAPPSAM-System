@@ -30,13 +30,15 @@
 			</tr>
 		</table>
 	</div>
-	<div id="searchEmployeesDiv">
+	
+	<div id="search">
 		<form id="form1" name="form1" method="get" action="/items">
 			<label for="searchItemField" class="labels">Search:</label> <input name="q" type="text" id="searchItemField" size="35" /> <input name="search"
 				type="submit" class="maroon" value="GO"
 			/>
 		</form>
 	</div>
+	
 	<div id="apDiv1">
 		<a href="/items?new=item">Add Item >></a>
 	</div>
@@ -60,9 +62,8 @@
 			<td width="46%"><%=item.getDescription()%></td>
 			<td width="35%"><%=item.getItemCategory().getName()%></td>
 			<td width="19%" align="center">
-				<form id="form3" name="form3" method="post" action="/items">
-					<input name="view" type="submit" class="viewbutton" id="viewBtn" value="View >>" /> <input type="hidden" name="id" value=<%=item.getId()%> />
-				</form></td>
+	           <a   id="viewBtn" class="viewbutton" href="/items?id=<%=item.getId()%>">View >></a>
+				</td>
 			</tr>
 			<%
 				i++;

@@ -29,38 +29,15 @@ import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 
-/**
- * Servlet implementation class ViewAccount
- */
 @WebServlet("/accounts/viewing/ViewAccount.do")
 public class ViewAccount extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1171906888802134732L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ViewAccount() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 		ContactManager cManager = new ContactManagerSession();
@@ -106,6 +83,10 @@ public class ViewAccount extends HttpServlet {
 		}
 		RequestDispatcher view = request.getRequestDispatcher("../viewing/ViewAccount.jsp");
 		view.forward(request, response);
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

@@ -17,27 +17,33 @@
 	<jsp:include page="logout-button.jsp" />
 
 	<!-- Account Management-->
-	<div id="account">
-		<a href="/accounts?view=all">Accounts</a>
-		<ul>
-			<li><a href="/accounts?add=account">New Account</a>
-			</li>
-		</ul>
+	<a href="/accounts/viewing/ViewAccount.do"><div id="account">Accounts</div> </a>
+
+	<div id="formsDiv">
+		<div align="center">Stocks</div>
 	</div>
-
-
-	<div id="stocks">Stocks</div>
-	<div id="database">Database</div>
-
+    
+    <a href="/items"> 
+    	<div id="items" class="button">Items</div>
+    </a>
+     
 	<div id="entities">Settings</div>
 
+	<a href="accounts/CreateAccount.jsp">
+		<div id="createNewAcctDiv" class="button">Create New</div>
+    </a>
+
+	<a href="accounts/ViewAccounts.do">
+    	<div id="viewAcctDiv" class="button">View Accounts</div>
+    </a>
+    
 	<div id="viewSysLogdiv">
 		<form id="form2" name="form2" method="post" action="database/ViewSystemLog.jsp">
 			<input name="viewSysLogBtn" type="submit" class="button" id="viewSysLogBtn" value="View System Log" />
 		</form>
 	</div>
 	<div id="backupDiv">
-		<form id="form3" name="form3" method="post" action="database/Notes.txt">
+		<form id="form3" name="form3" method="post" action="database/backup.do">
 			<input name="backupBtn" type="submit" class="button" id="backupBtn" value="Backup" />
 		</form>
 	</div>
@@ -46,11 +52,8 @@
 			<input name="recoverdbBtn" type="submit" class="button" id="recoverdbBtn" value="Recover" />
 		</form>
 	</div>
-	<div id="items">
-		<form id="form5" name="form5" method="post" action="items/SearchAllItems.do">
-			<input name="itemBtn" type="submit" class="button" id="itemBtn" value="Item" />
-		</form>
-	</div>
+
+     
 	<div id="appDiv">
 		<form id="form6" name="form6" method="post" action="">
 			<input name="appBtn" type="submit" class="button" id="appBtn" value="Annual Procurement Plan" disabled="disabled" />
@@ -71,8 +74,6 @@
 			<input name="viewFormBtn" type="submit" class="button" id="viewFormBtn" value="View" />
 		</form>
 	</div>
-
-
 	<div id="apDiv3">
 		<form id="form10" name="form10" method="post" action="stocks/stocks/StockProperties.jsp">
 			<input name="stockPropBtn" type="submit" class="button2" id="stockPropBtn" value="Stock Properties" />
@@ -95,15 +96,14 @@
 		<br /> Records:
 	</div>
 
-
-
+	<div id="stocks">Forms</div>
 	<div id="supplierDiv">
-		<form id="form11" name="form11" method="post" action="entities/supplier/SearchSuppliers.do">
-			<input name="supplierBtn" type="submit" class="button2" id="supplierBtn" value="Supplier" />
+		<form id="form11" name="form11" method="post" action="entities/supplier/ViewSuppliers.jsp">
+			<input name="supplierBtn" type="submit" class="button2" id="supplierBtn" value="Supplier" disabled="disabled" />
 		</form>
 	</div>
 	<div id="apDiv5">
-		<form id="form15" name="form15" method="post" action="entities/building/ViewBuildings.do">
+		<form id="form15" name="form15" method="post" action="entities/building/SearchAllBuildings.do">
 			<input name="buildingBtn" type="submit" class="button2" id="buildingBtn" value="Building" />
 		</form>
 	</div>

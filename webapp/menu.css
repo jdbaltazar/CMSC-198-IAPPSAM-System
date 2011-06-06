@@ -41,6 +41,7 @@
 	border-right: 1px solid lightgray;
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
+	text-align:	center;
 }
 
 .button:hover {
@@ -90,6 +91,11 @@
 	z-index: 1;
 	left: 494px;
 	top: 262px;
+	background-color: #7B1113;
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 16px;
+	font-weight: bold
 }
 
 #stocks {
@@ -99,6 +105,12 @@
 	z-index: 3;
 	left: 496px;
 	top: 373px;
+	text-align: center;
+	background-color: #7B1113;
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 16px;
+	font-weight: bold
 }
 
 #entities {
@@ -106,8 +118,14 @@
 	width: 405px;
 	height: 23px;
 	z-index: 4;
-	left: 496px;
-	top: 463px;
+	left: 498px;
+	top: 462px;
+	text-align: center;
+	background-color: #7B1113;
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 16px;
+	font-weight: bold
 }
 
 #account {
@@ -117,6 +135,12 @@
 	z-index: 6;
 	left: 498px;
 	top: 637px;
+	text-align: center;
+	background-color: #7B1113;
+	font-family: Lucida Grande;
+	color: #FFF;
+	font-size: 16px;
+	font-weight: bold
 }
 
 #stocks {
@@ -133,8 +157,8 @@
 	width: 405px;
 	height: 23px;
 	z-index: 9;
-	left: 499px;
-	top: 500px;
+	left: 495px;
+	top: 374px;
 }
 
 #database {
@@ -164,17 +188,16 @@
 
 #createNewAcctDiv {
 	position: absolute;
-	width: 385px;
-	height: 23px;
+	width: 405px;
+	height: 18px;
 	z-index: 14;
 	left: 498px;
 	top: 661px;
+
 }
 
 #viewAcctDiv {
 	position: absolute;
-	width: 200px;
-	height: 23px;
 	z-index: 15;
 	left: 498px;
 	top: 682px;
@@ -209,8 +232,9 @@
 
 #items {
 	position: absolute;
-	width: 200px;
-	height: 23px;
+	text-align:center;
+	width: 405px;
+	height: 21px;
 	z-index: 19;
 	left: 494px;
 	top: 286px;
@@ -283,7 +307,7 @@
 	height: 23px;
 	z-index: 26;
 	left: 596px;
-	top: 509px;
+	top: 512px;
 }
 
 #buildingDiv {
@@ -316,7 +340,7 @@
 #apDiv4 {
 	position: absolute;
 	width: 99px;
-	height: 41px;
+	height: 52px;
 	z-index: 30;
 	left: 496px;
 	top: 488px;
@@ -328,7 +352,7 @@
 	height: 62px;
 	z-index: 31;
 	left: 496px;
-	top: 536px;
+	top: 541px;
 }
 
 #logoHeader {
@@ -347,12 +371,7 @@
 	top: 143px;
 }
 
-#footer {
-	position: absolute;
-	left: 1px;
-	top: 918px;
-	width: 100%;
-}
+
 
 #apDiv5 {
 	position: absolute;
