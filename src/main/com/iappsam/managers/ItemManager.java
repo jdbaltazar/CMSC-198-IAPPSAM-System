@@ -7,6 +7,7 @@ import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface ItemManager extends Manager {
@@ -35,15 +36,17 @@ public interface ItemManager extends Manager {
 
 	// Unit
 
-	void addUnit(Unit unit) throws TransactionException;
+	void addUnit(Unit unit) throws TransactionException, DuplicateEntryException;
 
-	void addUnit(String unitName) throws TransactionException;
+	void addUnit(String unitName) throws TransactionException, DuplicateEntryException;
 
-	String saveUnit(Unit unit) throws TransactionException;
+	int saveUnit(Unit unit) throws TransactionException, DuplicateEntryException;
 
 	void updateUnit(Unit unit) throws TransactionException;
 
 	Unit getUnitByName(String unitName) throws TransactionException;
+
+	Unit getUnit(int unitID) throws TransactionException;
 
 	void removeUnit(Unit unit) throws TransactionException;
 
@@ -55,13 +58,15 @@ public interface ItemManager extends Manager {
 
 	// ItemStatus
 
-	void addItemStatus(ItemStatus itemStatus) throws TransactionException;
+	void addItemStatus(ItemStatus itemStatus) throws TransactionException, DuplicateEntryException;
 
-	String saveItemStatus(ItemStatus itemStatus) throws TransactionException;
+	void addItemStatus(String name) throws TransactionException, DuplicateEntryException;
 
 	void updateItemStatus(ItemStatus itemStatus) throws TransactionException;
 
 	ItemStatus getItemStatusByName(String itemStatus) throws TransactionException;
+
+	ItemStatus getItemStatus(int itemStatusID) throws TransactionException;
 
 	void removeItemStatus(ItemStatus itemStatus) throws TransactionException;
 
@@ -73,13 +78,15 @@ public interface ItemManager extends Manager {
 
 	// ItemCondition
 
-	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
+	void addItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException;
 
-	String saveItemCondition(ItemCondition itemCondition) throws TransactionException;
+	void addItemCondition(String name) throws TransactionException, DuplicateEntryException;
 
 	void updateItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	ItemCondition getItemConditionByName(String itemCondition) throws TransactionException;
+
+	ItemCondition getItemCondition(int itemConditionID) throws TransactionException;
 
 	void removeItemCondition(ItemCondition itemCondition) throws TransactionException;
 
@@ -91,20 +98,20 @@ public interface ItemManager extends Manager {
 
 	// ItemCategory
 
-	void addItemCategory(ItemCategory category) throws TransactionException;
+	void addItemCategory(ItemCategory category) throws TransactionException, DuplicateEntryException;
+
+	void addItemCategory(String name) throws TransactionException, DuplicateEntryException;
+
+	void updateItemCategory(ItemCategory category) throws TransactionException;
+
+	ItemCategory getItemCategoryByName(String name) throws TransactionException;
+
+	ItemCategory getItemCategory(int itemCategoryID) throws TransactionException;
 
 	boolean containsItemCategory(ItemCategory category) throws TransactionException;
-
-	ItemCategory getItemCategoryByName(String name);
 
 	void removeItemCategory(ItemCategory category) throws TransactionException;
 
 	List<ItemCategory> getAllItemCategory() throws TransactionException;
-
-	void addItemStatus(String name) throws TransactionException;
-
-	void addItemCondition(String name) throws TransactionException;
-
-	void addItemCategory(String name) throws TransactionException;
 
 }

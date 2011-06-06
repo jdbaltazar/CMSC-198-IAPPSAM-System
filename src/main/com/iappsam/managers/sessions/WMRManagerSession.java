@@ -44,7 +44,8 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 
 	@Override
 	public void addDisposal(Disposal disposal) throws TransactionException {
-		add(disposal);
+		if (getDisposal(disposal.getName()) == null)
+			add(disposal);
 	}
 
 	@Override
@@ -65,6 +66,29 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 	@Override
 	public List<Disposal> getAllDisposal() throws TransactionException {
 		return getAll(Disposal.class);
+	}
+
+	@Override
+	public void updateDisposal(Disposal disposal) throws TransactionException {
+		// TODO Auto-generated method stub
+		update(disposal);
+	}
+
+	@Override
+	public Disposal getDisposal(int disposalID) throws TransactionException {
+		// TODO Auto-generated method stub
+		return (Disposal) get(Disposal.class, disposalID);
+	}
+
+	@Override
+	public Disposal getDisposal(String disposal) throws TransactionException {
+		// TODO Auto-generated method stub
+		List<Disposal> disposals = getAllDisposal();
+		for (Disposal d : disposals) {
+			if (d.getName().equalsIgnoreCase(disposal))
+				return d;
+		}
+		return null;
 	}
 
 }

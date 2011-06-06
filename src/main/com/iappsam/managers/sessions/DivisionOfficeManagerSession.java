@@ -81,19 +81,13 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public void addBuilding(Building building) throws TransactionException, DuplicateEntryException {
-		if (!containsBuilding(building))
+		if (getBuilding(building.getBuildingName(), building.getBuildingAddress()) == null)
 			add(building);
-		else
-			throw new DuplicateEntryException();
-
 	}
 
 	@Override
 	public int saveBuilding(Building building) throws TransactionException, DuplicateEntryException {
-		if (!contains(building))
-			return (Integer) save(building);
-		else
-			throw new DuplicateEntryException();
+		return (Integer) save(building);
 	}
 
 	@Override
@@ -104,6 +98,20 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	@Override
 	public Building getBuilding(int buildingId) throws TransactionException {
 		return (Building) get(Building.class, buildingId);
+	}
+
+	@Override
+	public Building getBuilding(String buildingName, String buildingAddress) throws TransactionException {
+		List<Building> buildings = getAllBuildings();
+		for (Building b : buildings) {
+			if (b.getBuildingName().equalsIgnoreCase(buildingName))
+				if (b.getBuildingAddress() != null && b.getBuildingAddress().equalsIgnoreCase(buildingAddress)) {
+					return b;
+				}
+			if (b.getBuildingAddress() == null && buildingAddress == null)
+				return b;
+		}
+		return null;
 	}
 
 	@Override

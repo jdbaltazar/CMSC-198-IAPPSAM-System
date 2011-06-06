@@ -21,6 +21,7 @@ import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
@@ -148,7 +149,7 @@ public class EntityRemover {
 			pm.removeEmployee(e);
 	}
 
-	public static void reset() throws TransactionException {
+	public static void reset() throws TransactionException, DuplicateEntryException {
 		removeAll();
 		HibernateUtil.addAdminAccount();
 		HibernateUtil.addItemDependencies();

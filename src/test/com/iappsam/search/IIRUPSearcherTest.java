@@ -15,6 +15,7 @@ import com.iappsam.entities.ItemBuilder;
 import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.IIRUPManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 
@@ -32,7 +33,7 @@ public class IIRUPSearcherTest {
 	}
 
 	@Before
-	public void initSearcher() throws TransactionException {
+	public void initSearcher() throws TransactionException, DuplicateEntryException {
 		EntityRemover.removeAll();
 
 		searcher = new IIRUPSearcher();

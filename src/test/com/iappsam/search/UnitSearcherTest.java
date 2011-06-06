@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.iappsam.entities.Unit;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class UnitSearcherTest extends ItemManagerTestSuite {
@@ -21,7 +22,7 @@ public class UnitSearcherTest extends ItemManagerTestSuite {
 	}
 
 	@Test
-	public void searchCategory() throws TransactionException {
+	public void searchCategory() throws TransactionException, DuplicateEntryException {
 		Unit unit = new Unit("Unit");
 		im.addUnit(unit);
 

@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.iappsam.entities.ItemCategory;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemCategorySearcherTest extends ItemManagerTestSuite {
@@ -20,7 +21,7 @@ public class ItemCategorySearcherTest extends ItemManagerTestSuite {
 	}
 
 	@Test
-	public void searchCategory() throws TransactionException {
+	public void searchCategory() throws TransactionException, DuplicateEntryException {
 		ItemCategory category = new ItemCategory("Category");
 		im.addItemCategory(category);
 

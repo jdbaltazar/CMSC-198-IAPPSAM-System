@@ -13,6 +13,7 @@ import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.AbstractManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.HibernateUtil;
 
@@ -86,18 +87,29 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addUnit(Unit unit) throws TransactionException {
-		add(unit);
+	public void addUnit(Unit unit) throws TransactionException, DuplicateEntryException {
+		if (getUnitByName(unit.getName()) == null)
+			add(unit);
+		// else
+		// throw new DuplicateEntryException();
 	}
 
 	@Override
-	public void addUnit(String name) throws TransactionException {
-		addUnit(new Unit(name));
+	public void addUnit(String name) throws TransactionException, DuplicateEntryException {
+		if (getUnitByName(name) == null)
+			add(new Unit(name));
+		// else
+		// throw new DuplicateEntryException();
+
 	}
 
 	@Override
-	public String saveUnit(Unit unit) throws TransactionException {
-		return (String) save(unit);
+	public int saveUnit(Unit unit) throws TransactionException, DuplicateEntryException {
+		if (getUnitByName(unit.getName()) == null)
+			return (Integer) save(unit);
+		else
+			throw new DuplicateEntryException();
+
 	}
 
 	@Override
@@ -134,18 +146,15 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemStatus(ItemStatus itemStatus) throws TransactionException {
-		add(itemStatus);
+	public void addItemStatus(ItemStatus itemStatus) throws TransactionException, DuplicateEntryException {
+		if (getItemStatusByName(itemStatus.getName()) == null)
+			add(itemStatus);
 	}
 
 	@Override
-	public void addItemStatus(String name) throws TransactionException {
-		addItemStatus(new ItemStatus(name));
-	}
-
-	@Override
-	public String saveItemStatus(ItemStatus itemStatus) throws TransactionException {
-		return (String) saveItemStatus(itemStatus);
+	public void addItemStatus(String name) throws TransactionException, DuplicateEntryException {
+		if (getItemStatusByName(name) == null)
+			add(new ItemStatus(name));
 	}
 
 	@Override
@@ -156,9 +165,7 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	@Override
 	public ItemStatus getItemStatusByName(String name) throws TransactionException {
 		Session session = HibernateUtil.startSession();
-
 		ItemStatus cat = (ItemStatus) session.createCriteria(ItemStatus.class).add(Restrictions.like("name", name)).uniqueResult();
-
 		session.close();
 		return cat;
 	}
@@ -189,18 +196,14 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public void addItemCondition(ItemCondition itemCondition) throws TransactionException {
-		add(itemCondition);
+	public void addItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException {
+		addItemCondition(itemCondition.getName());
 	}
 
 	@Override
-	public void addItemCondition(String name) throws TransactionException {
-		addItemCondition(new ItemCondition(name));
-	}
-
-	@Override
-	public String saveItemCondition(ItemCondition itemCondition) throws TransactionException {
-		return (String) save(itemCondition);
+	public void addItemCondition(String name) throws TransactionException, DuplicateEntryException {
+		if (getItemConditionByName(name) == null)
+			add(new ItemCondition(name));
 	}
 
 	@Override
@@ -243,12 +246,20 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 
 	@Override
 	public void addItemCategory(ItemCategory category) throws TransactionException {
-		add(category);
+		if (getItemCategoryByName(category.getName()) == null)
+			add(category);
 	}
 
 	@Override
 	public void addItemCategory(String name) throws TransactionException {
-		addItemCategory(new ItemCategory(name));
+		if (getItemCategoryByName(name) == null)
+			add(new ItemCategory(name));
+
+	}
+
+	@Override
+	public void updateItemCategory(ItemCategory category) throws TransactionException {
+		update(category);
 	}
 
 	@Override
@@ -267,10 +278,30 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public ItemCategory getItemCategoryByName(String name) {
+	public ItemCategory getItemCategoryByName(String name) throws TransactionException {
 		Session session = HibernateUtil.startSession();
 		ItemCategory cat = (ItemCategory) session.createCriteria(ItemCategory.class).add(Restrictions.like("name", name)).uniqueResult();
 		session.close();
 		return cat;
+	}
+
+	@Override
+	public ItemCategory getItemCategory(int itemCategoryID) throws TransactionException {
+		return (ItemCategory) get(ItemCategory.class, itemCategoryID);
+	}
+
+	@Override
+	public Unit getUnit(int unitID) throws TransactionException {
+		return (Unit) get(Unit.class, unitID);
+	}
+
+	@Override
+	public ItemStatus getItemStatus(int itemStatusID) throws TransactionException {
+		return (ItemStatus) get(ItemStatus.class, itemStatusID);
+	}
+
+	@Override
+	public ItemCondition getItemCondition(int itemConditionID) throws TransactionException {
+		return (ItemCondition) get(ItemCondition.class, itemConditionID);
 	}
 }

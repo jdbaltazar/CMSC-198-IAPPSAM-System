@@ -1,6 +1,7 @@
 package com.iappsam.entities;
 
 import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 
@@ -46,7 +47,7 @@ public class ItemBuilder {
 		return category != null && unit != null && status != null && condition != null;
 	}
 
-	public void addToDatabase() throws TransactionException {
+	public void addToDatabase() throws TransactionException, DuplicateEntryException {
 
 		if (item == null || !isDependenciesAdded())
 			throw new IllegalStateException();

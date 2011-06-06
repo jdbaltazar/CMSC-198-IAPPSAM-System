@@ -236,7 +236,7 @@
       </tr>
     </table></td>
     <td width="84%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="SearchAllBuildings.do">
+    <td width="4%"><form id="form15" name="form15" method="post" action="ViewBuildings.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>
@@ -250,7 +250,7 @@
 <div id="background"  style="background-color:#EEE0E5;"></div>
 <div id="headerDiv" style="text-align:left; background-color:#7B1113; font-family:Lucida Grande; color:white; font-size:16px; font-weight:bold"></div>
 <div id="nameDiv">
-  <form id="form1" name="form1" method="post" action="saveBuilding.do">
+  <form id="form1" name="form1" method="post" action="AddBuilding.do">
     <p>
       <label for="name" style="font-family:Lucida Grande; font-size:16px; font-weight:bold">*Name:</label>
       <input name="name" type="text" id="name" value="" size="30" maxlength="80" />

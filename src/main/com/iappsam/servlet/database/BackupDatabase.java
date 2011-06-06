@@ -13,7 +13,7 @@ import java.text.DateFormat;
 /**
  * Servlet implementation class CreateAccount
  */
-@WebServlet("/database/backup.do")
+@WebServlet("/database/Notes.txt")
 public class BackupDatabase extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,9 +22,9 @@ public class BackupDatabase extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		BackupDatabaseTool bdTool = new BackupDatabaseTool();
-		String fileName = bdTool.getFileName();
-		String filePath = bdTool.getFilePath();
+		// BackupDatabaseTool bdTool = new BackupDatabaseTool();
+		String fileName = "Notes.txt";// bdTool.getFileName();
+		// String filePath = bdTool.getFilePath();
 
 		// String filePath =
 		// "C:\\Users\\JDB\\workspace\\CMSC-198-IAPPSAM-Sytem\\";
@@ -35,10 +35,11 @@ public class BackupDatabase extends HttpServlet {
 		try {
 
 			stream = response.getOutputStream();
-			File file = new File(filePath + fileName);
+			// File file = new File(filePath + fileName);
+			File file = new File("C:\\Users\\JDB\\workspace\\CMSC-198-IAPPSAM-Sytem\\Notes.txt");
 
 			// set response headers
-			response.setContentType("text/sql");
+			response.setContentType("text/plain");
 			response.addHeader("Content-Disposition", "attachment; filename=" + fileName);
 			response.setContentLength((int) file.length());
 

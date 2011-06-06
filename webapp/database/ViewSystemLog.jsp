@@ -241,7 +241,7 @@
       </tr>
     </table></td>
     <td width="81%">&nbsp;</td>
-    <td width="4%"><form id="form15" name="form15" method="post" action="../MenuFrame.jsp">
+    <td width="4%"><form id="form15" name="form15" method="post" action="../menu">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
     </form></td>
   </tr>

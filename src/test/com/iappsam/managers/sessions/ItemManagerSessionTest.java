@@ -12,6 +12,7 @@ import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemManagerSessionTest {
@@ -30,12 +31,12 @@ public class ItemManagerSessionTest {
 	}
 
 	@Test
-	public void addItemAndRemove() throws TransactionException {
+	public void addItemAndRemove() throws TransactionException, DuplicateEntryException {
 		addEntities();
 	}
 
 	@Test(expected = TransactionException.class)
-	public void addItemThenRemoveTwice() throws TransactionException {
+	public void addItemThenRemoveTwice() throws TransactionException, DuplicateEntryException {
 		addEntities();
 
 		im.removeItem(item);
@@ -43,7 +44,7 @@ public class ItemManagerSessionTest {
 	}
 
 	@Test
-	public void getItemCategoryByName() throws TransactionException {
+	public void getItemCategoryByName() throws TransactionException, DuplicateEntryException {
 		String name = "category name";
 		ItemCategory category = new ItemCategory(name);
 		im.addItemCategory(category);
@@ -54,7 +55,7 @@ public class ItemManagerSessionTest {
 	}
 
 	@Test
-	public void getUnitByName() throws TransactionException {
+	public void getUnitByName() throws TransactionException, DuplicateEntryException {
 		String name = "unit name";
 		Unit unit = new Unit(name);
 
@@ -67,7 +68,7 @@ public class ItemManagerSessionTest {
 	}
 
 	@Test
-	public void getItemStatusByName() throws TransactionException {
+	public void getItemStatusByName() throws TransactionException, DuplicateEntryException {
 		String name = "Status Name";
 		ItemStatus status = new ItemStatus(name);
 
@@ -80,7 +81,7 @@ public class ItemManagerSessionTest {
 	}
 
 	@Test
-	public void getItemByDescription() throws TransactionException {
+	public void getItemByDescription() throws TransactionException, DuplicateEntryException {
 
 		String description = "Item Description";
 
@@ -95,7 +96,7 @@ public class ItemManagerSessionTest {
 		}
 	}
 
-	private void addEntities() throws TransactionException {
+	private void addEntities() throws TransactionException, DuplicateEntryException {
 		im.addItemCategory(category);
 		im.addItemCondition(condition);
 		im.addItemStatus(status);

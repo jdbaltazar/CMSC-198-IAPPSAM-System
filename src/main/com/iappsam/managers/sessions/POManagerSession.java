@@ -8,6 +8,7 @@ import com.iappsam.entities.forms.PurchaseOrder;
 import com.iappsam.entities.forms.PurchaseOrderLine;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.POManager;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class POManagerSession extends AbstractManager implements POManager {
@@ -43,8 +44,9 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
-		add(modeOfProcurement);
+	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException, DuplicateEntryException {
+		if (getModeOfProcurement(modeOfProcurement.getModeOfProcurement()) == null)
+			add(modeOfProcurement);
 	}
 
 	@Override
