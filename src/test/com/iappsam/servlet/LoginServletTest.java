@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
-public class LoginControllerTest {
+public class LoginServletTest {
 
 	@Test
 	public void login() throws ServletException, IOException {
@@ -19,11 +19,11 @@ public class LoginControllerTest {
 		HttpSession session = mock(HttpSession.class);
 
 		when(request.getRequestDispatcher("menu.jsp")).thenReturn(dispatcher);
-		when(request.getParameter(LoginController.USERNAME)).thenReturn("admin");
-		when(request.getParameter(LoginController.PASSWORD)).thenReturn("admin");
+		when(request.getParameter(LoginServlet.USERNAME)).thenReturn("admin");
+		when(request.getParameter(LoginServlet.PASSWORD)).thenReturn("admin");
 		when(request.getSession()).thenReturn(session);
 
-		LoginController controller = new LoginController();
+		LoginServlet controller = new LoginServlet();
 		controller.doPost(request, null);
 
 		verify(request.getRequestDispatcher("menu.jsp"));

@@ -2,6 +2,7 @@ package com.iappsam.test;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sourceforge.jwebunit.junit.WebTester;
@@ -14,13 +15,29 @@ public class AcceptanceTest {
 	public void setup() throws Exception {
 		tester = new WebTester();
 		tester.setBaseUrl("http://localhost/");
-	}
 
-	@Test
-	public void loginAdminAccount() {
 		tester.beginAt("/login");
 		assertIsInLoginPage();
 		tryTologinWith("admin", "admin");
+	}
+
+	@Test
+	public void navigateToItemPage() {
+		clickItemLink();
+		tester.assertTitleEquals("IAPPSAM :: Items");
+	}
+
+	@Test
+	public void navigateToAddItemPage() {
+		clickItemLink();
+		clickAddItemLink();
+		tester.assertTitleEquals("IAPPSAM :: Add Item");
+	}
+
+	@Ignore
+	@Test
+	public void backToMenuFromItemList() {
+		clickItemLink();
 	}
 
 	@After
@@ -31,10 +48,20 @@ public class AcceptanceTest {
 		assertIsInLoginPage();
 	}
 
+	private void clickAddItemLink() {
+		tester.assertLinkPresentWithExactText("Add Item >>");
+		tester.clickLinkWithText("Add Item >>");
+	}
+
 	private void assertIsInLoginPage() {
 		tester.assertTitleEquals("IAPPSAM :: Login");
 		tester.assertTextPresent("Username");
 		tester.assertTextPresent("Password");
+	}
+
+	private void clickItemLink() {
+		tester.assertLinkPresentWithExactText("Items");
+		tester.clickLinkWithExactText("Items");
 	}
 
 	private void tryTologinWith(String username, String password) {
