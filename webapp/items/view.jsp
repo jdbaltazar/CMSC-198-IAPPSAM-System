@@ -5,7 +5,7 @@
 <link rel="shortcut icon" href=".favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: View Item</title>
-
+<link href="/items/view.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -28,14 +28,9 @@
 						<tr>
 							<td style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View Item</td>
 						</tr>
-					</table>
-				</td>
+					</table></td>
 				<td width="86%">&nbsp;</td>
-				<td width="4%">
-					<form id="form15" name="form15" method="post" action="/items/SearchAllItems.do">
-						<input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
-					</form>
-				</td>
+				<td width="4%"><a class="button" href="/items">Back</a></td>
 			</tr>
 		</table>
 	</div>
@@ -68,6 +63,7 @@
 					<%
 						if (month != null) {
 					%>
+
 					<option selected="selected"><%=month%></option>
 					<%
 						} else {
@@ -106,7 +102,7 @@
 			<p>&nbsp;</p>
 			<div id="apDiv21">
 				<label for="itemCategory" class="texts">Category:</label> <select name="itemCategory" disabled="disabled" id="itemCategory">
-					<option><%=item.getItemCategory().getName()%></option>
+					<option>${item.itemCategory.name}</option>
 				</select>
 			</div>
 			<p>&nbsp;</p>
@@ -115,32 +111,32 @@
 			<p>&nbsp;</p>
 			<div id="apDiv15">
 				<label for="stockNumber2" class="texts">Stock Number:</label> <input name="stockNumber" type="text" disabled="disabled"
-					value="<%=item.getStockNumber()%>" id="stockNumber2" size="20"
+					value="${item.stockNumber}" id="stockNumber2" size="20"
 				/>
 			</div>
 			<div id="apDiv16">
 				<label for="inventoryItemNum2" class="texts">Inv. Item Number:</label> <input type="text" name="inventoryItemNum" disabled="disabled"
-					value="<%=item.getInventoryItemNumber()%>" id="inventoryItemNum2"
+					value="${item.inventoryItemNumber}" id="inventoryItemNum2"
 				/>
 			</div>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<div id="apDiv17">
 				<label for="itemPropertyNumber2" class="texts">Property Number:</label> <input type="text" name="itemPropertyNumber" disabled="disabled"
-					value="<%=item.getPropertyNumber()%>" id="itemPropertyNumber2"
+					value="${item.propertyNumber}" id="itemPropertyNumber2"
 				/>
 			</div>
 			<p>&nbsp;</p>
 			<div id="apDiv18">
 				<label for="itemStatus2" class="texts">Item Status:</label> <select name="itemStatus" disabled="disabled" id="itemStatus2">
 
-					<option selected="selected"><%=item.getItemStatus().getName()%></option>
+					<option selected="selected">${item.itemStatus.name}</option>
 				</select>
 			</div>
 			<p>&nbsp;</p>
 			<div id="apDiv19">
 				<label for="itemCondition2" class="texts">Item Condition:</label> <select name="itemCondition" disabled="disabled" id="itemCondition2">
-					<option selected="selected"><%=item.getItemCondition().getName()%></option>
+					<option selected="selected">${item.itemCondition.name}%></option>
 				</select>
 			</div>
 			<p>&nbsp;</p>
