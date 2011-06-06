@@ -15,4 +15,5 @@ public interface ItemParameter {
 	public static final String DESCRIPTION = "itemDescription";
 	public static final String ITEM_ID = "id";
 	public static final String QUERY = "q";
+	public static final String NEW_ITEM = "new";
 }

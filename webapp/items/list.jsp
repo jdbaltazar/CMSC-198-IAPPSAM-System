@@ -50,13 +50,13 @@
 			<%
 				List<Item> items = (List<Item>) request.getAttribute(ItemAttribute.ITEMS);
 
-				int i = 0;
-				for (Item item : items) {
+						int i = 0;
+						for (Item item : items) {
 
-					if (i % 2 == 0)
-						out.print("<tr class=\"tablerow_1\">");
-					else
-						out.print("<tr>");
+							if (i % 2 == 0)
+								out.print("<tr class=\"tablerow_1\">");
+							else
+								out.print("<tr>");
 			%>
 
 			<td width="46%"><%=item.getDescription()%></td>
