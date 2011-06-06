@@ -53,10 +53,15 @@
 		</form>
 	</div>
 	<div id="backupDiv">
+<<<<<<< HEAD
 		<form id="form3" name="form3" method="post"
 			action="database/Notes.txt">
 			<input name="backupBtn" type="submit" class="button" id="backupBtn"
 				value="Backup" />
+=======
+		<form id="form3" name="form3" method="post" action="database/backup.do">
+			<input name="backupBtn" type="submit" class="button" id="backupBtn" value="Backup" />
+>>>>>>> refs/remotes/github.com/master
 		</form>
 	</div>
 	<div id="recoverdbDiv">
