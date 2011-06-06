@@ -25,23 +25,11 @@
 		</ul>
 	</div>
 
-	<div id="items">
-		<a id="view-items" href="/items">Items</a>
-		<ul>
-			<li><a href="/items?new=item">New Item</a></li>
-			<li><a href="/items?view=categories">Item Categories</a></li>
-			<li><a href="/items?view=conditions">Item Conditions</a></li>
-			<li><a href="/items?view=statuses">Item Statuses</a></li>
-			<li><a href="/items?view=units">Units</a></li>
-		</ul>
-	</div>
 
 	<div id="stocks">Stocks</div>
 	<div id="database">Database</div>
 
-
-
-	<div id="entitiesDiv">Settings</div>
+	<div id="entities">Settings</div>
 
 	<div id="viewSysLogdiv">
 		<form id="form2" name="form2" method="post" action="database/ViewSystemLog.jsp">
@@ -49,15 +37,38 @@
 		</form>
 	</div>
 	<div id="backupDiv">
-		<form id="form3" name="form3" method="post"
-			action="database/Notes.txt">
-			<input name="backupBtn" type="submit" class="button" id="backupBtn"
-				value="Backup" />
+		<form id="form3" name="form3" method="post" action="database/Notes.txt">
+			<input name="backupBtn" type="submit" class="button" id="backupBtn" value="Backup" />
 		</form>
 	</div>
 	<div id="recoverdbDiv">
 		<form id="form4" name="form4" method="post" action="">
 			<input name="recoverdbBtn" type="submit" class="button" id="recoverdbBtn" value="Recover" />
+		</form>
+	</div>
+	<div id="items">
+		<form id="form5" name="form5" method="post" action="items/SearchAllItems.do">
+			<input name="itemBtn" type="submit" class="button" id="itemBtn" value="Item" />
+		</form>
+	</div>
+	<div id="appDiv">
+		<form id="form6" name="form6" method="post" action="">
+			<input name="appBtn" type="submit" class="button" id="appBtn" value="Annual Procurement Plan" disabled="disabled" />
+		</form>
+	</div>
+	<div id="inventoryDiv">
+		<form id="form7" name="form7" method="post" action="">
+			<input name="inventoryBtn" type="submit" class="button" id="inventoryBtn" value="Inventory" />
+		</form>
+	</div>
+	<div id="fillupDiv">
+		<form id="form8" name="form8" method="post" action="forms/FormsMenuPage.jsp">
+			<input name="fillupBtn" type="submit" class="button" id="fillupBtn" value="Fillup" />
+		</form>
+	</div>
+	<div id="viewFormDiv">
+		<form id="form9" name="form9" method="post" action="forms/ViewFormsMenuPage.jsp">
+			<input name="viewFormBtn" type="submit" class="button" id="viewFormBtn" value="View" />
 		</form>
 	</div>
 
@@ -92,10 +103,8 @@
 		</form>
 	</div>
 	<div id="apDiv5">
-		<form id="form15" name="form15" method="post"
-			action="entities/building/ViewBuildings.do">
-			<input name="buildingBtn" type="submit" class="button2"
-				id="buildingBtn" value="Building" />
+		<form id="form15" name="form15" method="post" action="entities/building/ViewBuildings.do">
+			<input name="buildingBtn" type="submit" class="button2" id="buildingBtn" value="Building" />
 		</form>
 	</div>
 
