@@ -36,7 +36,7 @@ public class ItemServlet extends HttpServlet {
 		addItem = new AddItemAction(itemManager);
 		newItem = new NewItemAction(itemManager);
 		viewItem = new ViewItemAction(itemManager);
-		searchItems = new SearchItemsAction(itemManager, searcher);
+		searchItems = new SearchItemsAction(searcher);
 		listItems = new ListItemsAction(itemManager);
 	}
 

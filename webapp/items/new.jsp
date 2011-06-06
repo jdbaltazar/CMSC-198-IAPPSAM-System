@@ -14,6 +14,7 @@
 <title>IAPPSAM :: Add Item</title>
 <link href="/items/items.css" rel="stylesheet" type="text/css" />
 <link href="/items/add-item.css" rel="stylesheet" type="text/css" />
+<link href="../style.css" rel="stylesheet" type="text/css" />
 <%
 	List<Unit> units = new ArrayList<Unit>();
 	List<ItemCategory> categories = new ArrayList<ItemCategory>();
@@ -38,22 +39,11 @@
 	<jsp:include page="../logo.jsp" />
 	<jsp:include page="../logout-button.jsp" />
 
-	<div id="pageLabel" style="width: 100%;">
-		<table width="100%" border="0">
-			<tr>
-				<td width="9%">
-					<table width="100%" frame="below">
-						<tr>
-							<td class="title-label">Add Item</td>
-						</tr>
-					</table>
-				</td>
-				<td width="87%">&nbsp;</td>
-				<td width="4%"><a class="button" href="/items">Back</a>
-				</td>
-			</tr>
-		</table>
+	<!-- Breadcrumbs -->
+	<div class="Breadcrumbs">
+		<a href="/menu">Menu</a> > <a href="/items">Items</a> > <a href="/items?new=item">New Item</a>
 	</div>
+
 	<div id="headerdiv" style="font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
 		<span class="headerLabel">Item Information</span>
 	</div>

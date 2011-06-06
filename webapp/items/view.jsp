@@ -6,24 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: View Item</title>
 <link href="/items/view.css" rel="stylesheet" type="text/css" />
+<link href="../style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	<jsp:include page="/logo.jsp"/>
-	
-	<div id="pageLabel" style="width: 100%;">
-		<table width="100%" border="0">
-			<tr>
-				<td width="10%">
-					<table width="100%" frame="below">
-						<tr>
-							<td style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">View Item</td>
-						</tr>
-					</table></td>
-				<td width="86%">&nbsp;</td>
-				<td width="4%"><a class="button" href="/items">Back</a></td>
-			</tr>
-		</table>
+	<jsp:include page="/logo.jsp" />
+	<jsp:include page="/logout-button.jsp" />
+
+	<!-- Breadcrumbs -->
+	<div class="Breadcrumbs">
+		<a href="/menu">Menu</a> > <a href="/items">Items</a> > <a href="/items?id=${item.id}">View Item</a>
 	</div>
 
 	<jsp:include page="/logout-button.jsp" />
