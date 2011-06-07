@@ -41,5 +41,16 @@
 	<classpathentry kind="lib" path="lib/xercesImpl-2.9.1.jar"/>
 	<classpathentry kind="lib" path="lib/xml-apis-1.3.04.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-2.0rc2.jar" sourcepath="G:/Java Libraries/Selenium 2.0/selenium-java-2.0rc2/selenium-java-2.0rc2-srcs.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/bsh-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/cssparser-0.9.5.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/guava-r09.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/hamcrest-all-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/jcommander-1.13.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/jna.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/json-20080701.jar"/>
+	<classpathentry kind="lib" path="lib/selenium/xalan-2.7.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
