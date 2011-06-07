@@ -90,7 +90,7 @@
 			<p>&nbsp;</p>
 			<div id="apDiv19">
 				<label for="itemCondition2" class="texts">Item Condition:</label> <select name="itemCondition" disabled="disabled" id="itemCondition2">
-					<option selected="selected">${item.itemCondition.name}%></option>
+					<option selected="selected">${item.itemCondition.name}</option>
 				</select>
 			</div>
 			<p>&nbsp;</p>
