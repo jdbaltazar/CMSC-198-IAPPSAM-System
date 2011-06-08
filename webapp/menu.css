@@ -268,10 +268,10 @@
 	top: 487px;
 }
 
-#fillupDiv {
+#FormDiv {
 	position: absolute;
-	width: 200px;
-	height: 23px;
+	width: 405px;
+	height: 21px;
 	z-index: 23;
 	left: 496px;
 	top: 397px;

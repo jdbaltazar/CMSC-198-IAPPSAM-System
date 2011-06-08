@@ -60,21 +60,14 @@
 			<input name="inventoryBtn" type="submit" class="button" id="inventoryBtn" value="Inventory" />
 		</form>
 	</div>
-	<div id="fillupDiv">
-		<form id="form8" name="form8" method="post" action="forms/FormsMenuPage.jsp">
-			<input name="fillupBtn" type="submit" class="button" id="fillupBtn" value="Fillup" />
-		</form>
-	</div>
-	<div id="viewFormDiv">
-		<form id="form9" name="form9" method="post" action="forms/ViewFormsMenuPage.jsp">
-			<input name="viewFormBtn" type="submit" class="button" id="viewFormBtn" value="View" />
-		</form>
+	<div id="FormDiv">
+		Purchase Request <a href="/pr?new=pr">Add</a>
 	</div>
 	<div id="apDiv3">
-		<form id="form10" name="form10" method="post" action="stocks/stocks/StockProperties.jsp">
+<form id="form10" name="form10" method="post" action="stocks/stocks/StockProperties.jsp">
 			<input name="stockPropBtn" type="submit" class="button2" id="stockPropBtn" value="Stock Properties" />
-		</form>
-	</div>
+	  </form>
+</div>
 	<div id="divisionOfficeDiv">
 		<form id="form13" name="form13" method="post" action="entities/division/SearchDivisions.do">
 			<input name="divisionOfficeBtn" type="submit" class="button2" id="divisionOfficeBtn" value="Division/Office" />

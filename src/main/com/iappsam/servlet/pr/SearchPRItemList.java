@@ -1,4 +1,4 @@
-package com.iappsam.servlet.forms.pr;
+package com.iappsam.servlet.pr;
 
 import java.io.IOException;
 import java.util.ArrayList;

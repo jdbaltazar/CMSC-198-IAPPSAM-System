@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: New Purchase Request</title>
-<link href="pr.css" rel="stylesheet" type="text/css" />
+<link href="../pr/pr.css" rel="stylesheet" type="text/css" />
 <link href="../style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -16,6 +16,9 @@
 	<jsp:include page="/navigation.jsp" />
 
 	<!-- Breadcrubms should be here --->
+	<div class="Breadcrumbs">
+		<a href="/menu">Menu</a> > <a href="/pr">Purchase Request List</a> > <a href="/pr?new=pr">New Purchase Request</a>
+	</div>
 
 	<div id="Title" class="Form"></div>
 
@@ -51,7 +54,7 @@
 				<option value="10">Oct</option>
 				<option value="11">Nov</option>
 				<option value="12">Dec</option>
-			</select> <select name="PRday" id="PRday">
+			</select> <select name="day" id="day">
 				<%
 					for (int i = 1; i < 32; i++) {
 				%>
@@ -59,19 +62,18 @@
 				<%
 					}
 				%>
-			</select> <select name="PRyear" id="PRyear">
+			</select> <select name="year" id="year">
 				<%
 					Date date = new Date();
-					System.out.println(date.getYear());
 					for (int i = 0; i < 38; i++) {
 				%>
 				<option value="<%=i%>"><%=(1900 + date.getYear() - i)%></option>
 				<%
 					}
 				%>
-			</select> <br /> <label for="saiNumber3" class="labels">SAI No.:</label> <input name="saiNumber" type="text" id="saiNumber3" size="15" maxlength="15" /> <label
-				for="SAImonth3" class="labels"
-			>Date:</label> <select name="SAImonth" id="SAImonth3">
+			</select> <br /> <label for="saiNumber" class="labels">SAI No.:</label> <input name="saiNumber" type="text" id="saiNumber" size="15" maxlength="15" /> <label
+				for="saiMonth" class="labels"
+			>Date:</label> <select name="saiMonth" id="saiMonth">
 				<option value="1">Jan</option>
 				<option value="2">Feb</option>
 				<option value="3">Mar</option>
@@ -137,21 +139,16 @@
 		</form>
 	</div>
 
-
-
-	<jsp:include page="../copyright.jsp" />
 	<div id="line" class="Form">
 		<table width="100%" border="0" cellspacing="0" id="TableHeader">
-			<tr>
+			<tr class="ColumnHeader">
 				<td width="7%">Quantity</td>
 				<td width="9%">Unit of Issue</td>
 				<td width="34%">Item Description</td>
 				<td width="13%">Stock No.</td>
 				<td width="13%">Estimated Unit<br /> Cost</td>
 			</tr>
-		</table>
 
-		<table width="100%" frame="box" cellspacing="0">
 			<tr class="tablerow_1">
 				<td width="7%" align="center"><input name="quantity_1" type="text" class="textfields_1" id="quantity_1" size="4" />
 				</td>
@@ -168,7 +165,7 @@
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
-			<tr tr class="tablerow_1">
+			<tr class="tablerow_1">
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -179,8 +176,8 @@
 	</div>
 
 	<div id="LineAction" class="Form">
-		<a href="add-item.jsp">Add Item</a> <a href="rem-item.jsp">Remove Item</a>
-	</div>
+		<a href="?add=item">Add Item</a>
+</div>
 
 	<div id="PageFooter" class="Form">
 
@@ -192,5 +189,6 @@
 	</div>
 
 	<div>Save</div>
+	<jsp:include page="../copyright.jsp" />
 </body>
 </html>

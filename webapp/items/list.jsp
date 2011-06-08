@@ -11,6 +11,17 @@
 <title>IAPPSAM :: Items</title>
 <link href="../items/items.css" rel="stylesheet" type="text/css" />
 <link href="../style.css" rel="stylesheet" type="text/css" />
+<script>
+	function emphasize(div) {
+		div.style.backgroundColor = "#dbb4c2";
+	}
+	function deEmphasize(div) {
+		div.style.backgroundColor = "#FFFFFF";
+	}
+	function deEmphasizeEven(div) {
+		div.style.backgroundColor = "#EEE0E5";
+	}
+</script>
 </head>
 
 <body>
@@ -56,9 +67,9 @@
 
 		<a href="/items?id=<%=item.getId()%>"> <%
  	if (i % 2 == 0)
- 			out.print("<div class=\"tablerow_1\">");
+ 			out.print("<div class=\"tablerow_1\" onmouseover=\"emphasize(this)\" onmouseout=\"deEmphasizeEven(this)\">");
  		else
- 			out.print("<div>");
+ 			out.print("<div onmouseover=\"emphasize(this)\"  onmouseout=\"deEmphasize(this)\" >");
  %>
 			<table class="result">
 				<tr>
