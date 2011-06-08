@@ -16,6 +16,7 @@ import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 import org.hibernate.search.annotations.Resolution;
 
 @Entity
@@ -48,18 +49,22 @@ public class Item {
 	@Column(name = "Property_Number")
 	private String propertyNumber;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Unit_ID")
 	private Unit unit;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Item_Status_ID")
 	private ItemStatus itemStatus;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Item_Condition_ID")
 	private ItemCondition itemCondition;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Item_Category_ID")
 	private ItemCategory itemCategory;

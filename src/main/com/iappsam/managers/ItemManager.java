@@ -36,11 +36,9 @@ public interface ItemManager extends Manager {
 
 	// Unit
 
-	void addUnit(Unit unit) throws TransactionException, DuplicateEntryException;
+	void addUnit(Unit unit) throws TransactionException;
 
-	void addUnit(String unitName) throws TransactionException, DuplicateEntryException;
-
-	int saveUnit(Unit unit) throws TransactionException, DuplicateEntryException;
+	void addUnit(String unitName) throws TransactionException;
 
 	void updateUnit(Unit unit) throws TransactionException;
 
@@ -58,7 +56,7 @@ public interface ItemManager extends Manager {
 
 	// ItemStatus
 
-	void addItemStatus(ItemStatus itemStatus) throws TransactionException, DuplicateEntryException;
+	void addItemStatus(ItemStatus itemStatus) throws TransactionException;
 
 	void addItemStatus(String name) throws TransactionException, DuplicateEntryException;
 
@@ -78,7 +76,7 @@ public interface ItemManager extends Manager {
 
 	// ItemCondition
 
-	void addItemCondition(ItemCondition itemCondition) throws TransactionException, DuplicateEntryException;
+	void addItemCondition(ItemCondition itemCondition) throws TransactionException;
 
 	void addItemCondition(String name) throws TransactionException, DuplicateEntryException;
 
@@ -98,7 +96,7 @@ public interface ItemManager extends Manager {
 
 	// ItemCategory
 
-	void addItemCategory(ItemCategory category) throws TransactionException, DuplicateEntryException;
+	void addItemCategory(ItemCategory category) throws TransactionException;
 
 	void addItemCategory(String name) throws TransactionException, DuplicateEntryException;
 

@@ -2,48 +2,67 @@ package com.iappsam.search;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;
 import com.iappsam.entities.ItemStatus;
 import com.iappsam.entities.Unit;
-import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ItemSearcherTest extends ItemManagerTestSuite {
 
-	private static AbstractSearcher s;
+	private static AbstractSearcher<Item> s;
 
-	private final ItemCategory category = new ItemCategory("Category");
-	private final Unit unit = new Unit("Unit");
-	private final ItemStatus status = new ItemStatus("Status");
-	private final ItemCondition condition = new ItemCondition("Condition");
+	private static final ItemCategory category = new ItemCategory("Category");
+	private static final Unit unit = new Unit("Unit");
+	private static final ItemStatus status = new ItemStatus("Status");
+	private static final ItemCondition condition = new ItemCondition("Condition");
 
-	private final Item item = new Item("item", category, unit, status, condition);
-	private final Item item2 = new Item("Description item", category, unit, status, condition);
-	private final Item itemQuickBrownFox = new Item("Quick Brown Fox", category, unit, status, condition);
-	private final Item itemTermName = new Item("Descriptions second", category, unit, status, condition);
-	private final Item itemDate = new Item("Date1", category, unit, status, condition);
-	private final Item itemDate2 = new Item("Date2", category, unit, status, condition);
+	private static final Item item = new Item("item", category, unit, status, condition);
+	private static final Item item2 = new Item("Description item", category, unit, status, condition);
+	private static final Item itemQuickBrownFox = new Item("Quick Brown Fox", category, unit, status, condition);
+	private static final Item itemTermName = new Item("Descriptions second", category, unit, status, condition);
+	private static final Item itemDate = new Item("Date1", category, unit, status, condition);
+	private static final Item itemDate2 = new Item("Date2", category, unit, status, condition);
 
 	@BeforeClass
-	public static void initSearcher() {
+	public static void initSearcher() throws TransactionException {
 		s = new ItemSearcher();
+		EntityRemover.removeAll();
+		itemDate.setDateAcquired("2010-01-01");
+		itemDate2.setDateAcquired("2010-01-02");
+		addAll();
 	}
 
-	@Override
-	public void initAfter() throws TransactionException, DuplicateEntryException {
-		itemDate.setDateAcquired(Date.valueOf("2010-01-01"));
-		itemDate2.setDateAcquired(Date.valueOf("2010-01-02"));
-		addAll();
+	@Test
+	public void searchStatus() {
+		List<Item> result = s.search("Status");
+		assertEquals(6, result.size());
+	}
+
+	@Test
+	public void searchUnit() {
+		List<Item> result = s.search("Unit");
+		assertEquals(6, result.size());
+	}
+
+	@Test
+	public void searchCategory() {
+		List<Item> result = s.search("Category");
+		assertEquals(6, result.size());
+	}
+
+	@Test
+	public void searchCondition() {
+		List<Item> result = s.search("condition");
+		assertEquals(6, result.size());
 	}
 
 	@Test
@@ -117,7 +136,7 @@ public class ItemSearcherTest extends ItemManagerTestSuite {
 		assertTrue(result.contains(itemTermName));
 	}
 
-	private void addAll() throws TransactionException, DuplicateEntryException {
+	private static void addAll() throws TransactionException {
 		im.addItemCategory(category);
 		im.addItemCondition(condition);
 		im.addItemStatus(status);
