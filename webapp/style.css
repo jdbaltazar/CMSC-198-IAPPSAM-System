@@ -15,11 +15,9 @@ a:active {
 }
 
 div.Breadcrumbs {
-	position: absolute;
 	z-index: 1;
 	width: 100%;
-	top: 181px;
-	left: 13px;
+	
 	font-size: 14px;
 	font-weight: bold;
 	color: #003300;

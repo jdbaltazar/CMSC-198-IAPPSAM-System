@@ -5,16 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Menu</title>
 <link href="menu.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 	<jsp:include page="logo.jsp" />
+	<jsp:include page="navigation.jsp" />
 
 	<!-- Welcome User -->
-	<div id="welcome">Welcome, ${sessionScope.username}!</div>
-
-	<jsp:include page="help-button.jsp" />
-	<jsp:include page="logout-button.jsp" />
+	<div id="welcome"></div>
 
 	<!-- Account Management-->
 	<a href="/accounts/viewing/ViewAccount.do"><div id="account">Accounts</div> </a>
@@ -22,21 +21,18 @@
 	<div id="formsDiv">
 		<div align="center">Stocks</div>
 	</div>
-    
-    <a href="/items"> 
-    	<div id="items" class="button">Items</div>
-    </a>
-     
+
+	<a href="/items">
+		<div id="items" class="button">Items</div> </a>
+
 	<div id="entities">Settings</div>
 
 	<a href="accounts/CreateAccount.jsp">
-		<div id="createNewAcctDiv" class="button">Create New</div>
-    </a>
+		<div id="createNewAcctDiv" class="button">Create New</div> </a>
 
 	<a href="accounts/ViewAccounts.do">
-    	<div id="viewAcctDiv" class="button">View Accounts</div>
-    </a>
-    
+		<div id="viewAcctDiv" class="button">View Accounts</div> </a>
+
 	<div id="viewSysLogdiv">
 		<form id="form2" name="form2" method="post" action="database/ViewSystemLog.jsp">
 			<input name="viewSysLogBtn" type="submit" class="button" id="viewSysLogBtn" value="View System Log" />
@@ -53,7 +49,7 @@
 		</form>
 	</div>
 
-     
+
 	<div id="appDiv">
 		<form id="form6" name="form6" method="post" action="">
 			<input name="appBtn" type="submit" class="button" id="appBtn" value="Annual Procurement Plan" disabled="disabled" />

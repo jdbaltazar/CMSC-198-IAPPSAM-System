@@ -5,20 +5,18 @@
 <link rel="shortcut icon" href=".favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: View Item</title>
-<link href="/items/view.css" rel="stylesheet" type="text/css" />
+<link href="../items/view.css" rel="stylesheet" type="text/css" />
 <link href="../style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<jsp:include page="/logo.jsp" />
-	<jsp:include page="/logout-button.jsp" />
+	<jsp:include page="/navigation.jsp" />
 
 	<!-- Breadcrumbs -->
 	<div class="Breadcrumbs">
 		<a href="/menu">Menu</a> > <a href="/items">Items</a> > <a href="/items?id=${item.id}">View Item</a>
 	</div>
-
-	<jsp:include page="/logout-button.jsp" />
 
 	<div id="headerdiv" style="text-align: left; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Item Information</div>
 	<div id="background" style="background-color: #EEE0E5;"></div>

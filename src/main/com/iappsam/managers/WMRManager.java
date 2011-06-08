@@ -27,11 +27,11 @@ public interface WMRManager {
 	void addDisposal(Disposal disposal) throws TransactionException;
 
 	String saveDisposal(Disposal disposal) throws TransactionException;
-	
+
 	void updateDisposal(Disposal disposal) throws TransactionException;
-	
+
 	Disposal getDisposal(int disposalID) throws TransactionException;
-	
+
 	Disposal getDisposal(String disposal) throws TransactionException;
 
 	void removeDisposal(Disposal disposal) throws TransactionException;
@@ -39,5 +39,7 @@ public interface WMRManager {
 	boolean containsDisposal(Disposal disposal) throws TransactionException;
 
 	List<Disposal> getAllDisposal() throws TransactionException;
+
+	void addDisposal(String string) throws TransactionException;
 
 }

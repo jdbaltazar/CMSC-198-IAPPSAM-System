@@ -11,7 +11,8 @@ public class AccountManagerSession extends AbstractManager implements AccountMan
 
 	@Override
 	public void addAccount(Account account) throws TransactionException {
-		add(account);
+		if (getAccount(account.getUsername()) == null)
+			add(account);
 	}
 
 	@Override

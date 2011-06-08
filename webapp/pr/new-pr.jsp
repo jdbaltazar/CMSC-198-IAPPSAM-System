@@ -13,7 +13,7 @@
 </head>
 <body>
 	<jsp:include page="/logo.jsp" />
-	<jsp:include page="/logout-button.jsp" />
+	<jsp:include page="/navigation.jsp" />
 
 	<!-- Breadcrubms should be here --->
 
@@ -153,11 +153,13 @@
 
 		<table width="100%" frame="box" cellspacing="0">
 			<tr class="tablerow_1">
-				<td width="7%" align="center"><input name="quantity_1" type="text" class="textfields_1" id="quantity_1" size="4" /></td>
+				<td width="7%" align="center"><input name="quantity_1" type="text" class="textfields_1" id="quantity_1" size="4" />
+				</td>
 				<td width="9%">&nbsp;</td>
 				<td width="34%">&nbsp;</td>
 				<td width="13%">&nbsp;</td>
-				<td width="13%" align="center"><input name="estUnitCost" type="text" class="textfields_1" id="estUnitCost" size="8" /></td>
+				<td width="13%" align="center"><input name="estUnitCost" type="text" class="textfields_1" id="estUnitCost" size="8" />
+				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>

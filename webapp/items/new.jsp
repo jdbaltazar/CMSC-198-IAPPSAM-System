@@ -12,8 +12,8 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Add Item</title>
-<link href="/items/items.css" rel="stylesheet" type="text/css" />
-<link href="/items/add-item.css" rel="stylesheet" type="text/css" />
+<link href="../items/items.css" rel="stylesheet" type="text/css" />
+<link href="../items/add-item.css" rel="stylesheet" type="text/css" />
 <link href="../style.css" rel="stylesheet" type="text/css" />
 <%
 	List<Unit> units = new ArrayList<Unit>();
@@ -37,7 +37,7 @@
 <body>
 
 	<jsp:include page="../logo.jsp" />
-	<jsp:include page="../logout-button.jsp" />
+	<jsp:include page="../navigation.jsp" />
 
 	<!-- Breadcrumbs -->
 	<div class="Breadcrumbs">

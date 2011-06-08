@@ -329,13 +329,6 @@
 	left: 13px;
 }
 
-#logoHeader {
-	position: absolute;
-	width: 200px;
-	height: 115px;
-	z-index: 1;
-}
-
 #logoutiv {
 	position: absolute;
 	width: 200px;
