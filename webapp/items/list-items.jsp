@@ -76,8 +76,8 @@
 					<td class=title-label width="29%"><%=item.getDescription()%></td>
 					<td class=title-label width="7%"><%=item.getUnit()%></td>
 					<td class=title-label width="11%"><%=item.getPrice()%></td>
-					<td class=title-label width="34%"><%=item.getItemCategory()%></td>
-					<td class=title-label width="19%"><%=item.getItemStatus()%></td>
+					<td class=title-label width="34%"><%=item.getCategory()%></td>
+					<td class=title-label width="19%"><%=item.getStatus()%></td>
 				</tr>
 			</table>
 	</div>

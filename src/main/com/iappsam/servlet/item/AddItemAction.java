@@ -61,9 +61,9 @@ public class AddItemAction implements Action {
 			item.setInventoryItemNumber(inventoryItemNumber);
 			item.setPropertyNumber(propertyNumber);
 			item.setUnit(itemManager.getUnitByName(unit));
-			item.setItemStatus(itemManager.getItemStatusByName(statusName));
-			item.setItemCondition(itemManager.getItemConditionByName(conditionName));
-			item.setItemCategory(itemManager.getItemCategoryByName(categoryName));
+			item.setStatus(itemManager.getItemStatusByName(statusName));
+			item.setCondition(itemManager.getItemConditionByName(conditionName));
+			item.setCategory(itemManager.getItemCategoryByName(categoryName));
 
 			itemManager.addItem(item);
 			response.sendRedirect("/items?id=" + item.getId());

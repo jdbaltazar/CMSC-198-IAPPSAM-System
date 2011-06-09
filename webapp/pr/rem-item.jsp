@@ -294,7 +294,7 @@
 					></label>
 					</td>
 					<td width="54%"><%=itemList.get(i).getDescription()%></td>
-					<td width="37%"><%=itemList.get(i).getItemCategory().getName()%></td>
+					<td width="37%"><%=itemList.get(i).getCategory().getName()%></td>
 				</tr>
 				<%
 					}

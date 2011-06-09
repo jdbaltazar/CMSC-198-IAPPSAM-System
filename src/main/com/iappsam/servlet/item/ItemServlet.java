@@ -15,9 +15,9 @@ import com.iappsam.util.Managers;
 @WebServlet("/items")
 public class ItemServlet extends HttpServlet {
 
-	public static final String LIST_ITEMS_JSP = "/items/list.jsp";
-	public static final String NEW_ITEM_JSP = "/items/new.jsp";
-	public static final String VIEW_ITEM_JSP = "/items/view.jsp";
+	public static final String LIST_ITEMS_JSP = "/items/list-items.jsp";
+	public static final String NEW_ITEM_JSP = "/items/new-item.jsp";
+	public static final String VIEW_ITEM_JSP = "/items/view-item.jsp";
 
 	private static final long serialVersionUID = 1L;
 

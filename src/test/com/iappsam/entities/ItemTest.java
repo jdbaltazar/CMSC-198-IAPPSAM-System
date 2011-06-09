@@ -33,7 +33,7 @@ public class ItemTest {
 
 	@Test(expected = RuntimeException.class)
 	public void nullCategoryNotAllowed() {
-		item.setItemCategory(null);
+		item.setCategory(null);
 	}
 
 	@Test(expected = RuntimeException.class)
@@ -43,12 +43,12 @@ public class ItemTest {
 
 	@Test(expected = RuntimeException.class)
 	public void nullStatusNotAllowed() {
-		item.setItemStatus(null);
+		item.setStatus(null);
 	}
 
 	@Test(expected = RuntimeException.class)
 	public void nullConditionNotAllowed() {
-		item.setItemCondition(null);
+		item.setCondition(null);
 	}
 
 	@Test

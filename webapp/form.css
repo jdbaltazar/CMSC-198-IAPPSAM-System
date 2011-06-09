@@ -1,0 +1,76 @@
+
+div#form_table {
+	margin: 0 auto;
+	width: 500px; 
+	height: 70%;
+}
+
+.button {
+	font-size: 14px;
+	font-family: Lucida Grande;
+	background-color: white;
+	color: #7B1113;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.button:hover {
+	font-weight: bold;
+	color: #060;
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
+.required {
+	background-color: #FFC;
+}
+
+select {
+	width: 200px;
+}
+
+.align_right {
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+	width: 45%;
+}
+
+.align_left {
+	text-align: left;
+}
+
+#table {
+	background-color: #EEE0E5;
+}
+
+#tableheadername {
+	height: 4%;
+	width: 35%;
+	left: 35%;
+	top: 50.8%;
+	position: absolute;
+	margin: 0 auto;
+	font-family: Lucida Grande;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.button {
+	font-size: 14px;
+	background-color: #7B1113;
+	color: white;
+
+}
+
+.button:hover {
+	font-weight: bold;
+color: white;
+}
+
+

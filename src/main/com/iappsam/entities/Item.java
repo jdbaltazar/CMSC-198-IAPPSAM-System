@@ -1,6 +1,6 @@
 package com.iappsam.entities;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import jxl.StringFormulaCell;
 
 import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.search.annotations.DateBridge;
@@ -125,31 +123,31 @@ public class Item {
 		return propertyNumber;
 	}
 
-	public ItemStatus getItemStatus() {
+	public ItemStatus getStatus() {
 		return itemStatus;
 	}
 
-	public void setItemStatus(ItemStatus itemStatus) {
+	public void setStatus(ItemStatus itemStatus) {
 		if (itemStatus == null)
 			throw new NullArgumentException("itemStatus");
 		this.itemStatus = itemStatus;
 	}
 
-	public ItemCondition getItemCondition() {
+	public ItemCondition getCondition() {
 		return itemCondition;
 	}
 
-	public void setItemCondition(ItemCondition itemCondition) {
+	public void setCondition(ItemCondition itemCondition) {
 		if (itemCondition == null)
 			throw new NullArgumentException("category");
 		this.itemCondition = itemCondition;
 	}
 
-	public ItemCategory getItemCategory() {
+	public ItemCategory getCategory() {
 		return itemCategory;
 	}
 
-	public void setItemCategory(ItemCategory itemCategory) {
+	public void setCategory(ItemCategory itemCategory) {
 		if (itemCategory == null)
 			throw new NullArgumentException("category");
 		this.itemCategory = itemCategory;
