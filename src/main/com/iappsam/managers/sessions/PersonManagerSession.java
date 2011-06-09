@@ -93,7 +93,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getAllEmployee();
 		List<Employee> results = new ArrayList<Employee>();
 		for (Employee emp : employees) {
-			if (emp.getId() == personID)
+			if (emp.getPerson().getId() == personID)
 				results.add(emp);
 		}
 		return results;

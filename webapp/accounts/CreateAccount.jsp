@@ -1,16 +1,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="java.util.List"%>
+<%@page
+	import="com.iappsam.managers.sessions.DivisionOfficeManagerSession"%>
+<%@page import="com.iappsam.managers.DivisionOfficeManager"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Create Account</title>
+<title>Untitled Document</title>
 <style type="text/css">
-.headers{
-font-family: Lucida Grande;
- color: white; 
-font-size: 16px; 
-font-weight: bold;	
+.tableheaders { /*background-color:#5E2605;
+	color:white;*/
+	font-family: Lucida Grande;
+	font-size: 14px;
+	text-align: center;
 }
+
 .maroon {
 	font-size: 12px;
 	font-family: Lucida Grande;
@@ -23,9 +28,8 @@ font-weight: bold;
 }
 
 .maroon:hover {
-	color:#999;
-	/*font-weight: bold;
-		background:#EEE0E5;;*/
+	font-weight: bold;
+	/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
 	border-right: 1px solid #7B1113;
 	border-top: 1px solid #7B1113;
@@ -83,7 +87,7 @@ font-weight: bold;
 #background {
 	position: absolute;
 	width: 578px;
-	height: 809px;
+	height: 886px;
 	z-index: 3;
 	left: 439px;
 	top: 278px;
@@ -137,8 +141,8 @@ font-weight: bold;
 	width: 578px;
 	height: 25px;
 	z-index: 7;
-	left: 440px;
-	top: 776px;
+	left: 439px;
+	top: 856px;
 }
 
 #apDiv2 {
@@ -199,7 +203,7 @@ font-weight: bold;
 	height: 9px;
 	z-index: 13;
 	left: 439px;
-	top: 1087px;
+	top: 1164px;
 }
 
 #border {
@@ -216,8 +220,8 @@ font-weight: bold;
 	width: 578px;
 	height: 25px;
 	z-index: 14;
-	left: 440px;
-	top: 590px;
+	left: 438px;
+	top: 654px;
 }
 
 #apDiv4 {
@@ -252,8 +256,8 @@ font-weight: bold;
 	width: 200px;
 	height: 18px;
 	z-index: 18;
-	left: 474px;
-	top: 1045px;
+	left: 472px;
+	top: 1123px;
 }
 
 #acctTypediv {
@@ -316,7 +320,7 @@ font-weight: bold;
 	height: 28px;
 	z-index: 19;
 	left: -77px;
-	top: 352px;
+	top: 417px;
 }
 
 #apDiv14 {
@@ -325,7 +329,7 @@ font-weight: bold;
 	height: 25px;
 	z-index: 19;
 	left: 5px;
-	top: 397px;
+	top: 468px;
 }
 
 #apDiv15 {
@@ -334,7 +338,7 @@ font-weight: bold;
 	height: 31px;
 	z-index: 19;
 	left: -51px;
-	top: 418px;
+	top: 492px;
 }
 
 #apDiv16 {
@@ -342,8 +346,8 @@ font-weight: bold;
 	width: 483px;
 	height: 29px;
 	z-index: 19;
-	left: -3px;
-	top: 541px;
+	left: -7px;
+	top: 619px;
 }
 
 #apDiv17 {
@@ -351,8 +355,8 @@ font-weight: bold;
 	width: 404px;
 	height: 28px;
 	z-index: 19;
-	left: -1px;
-	top: 592px;
+	left: -5px;
+	top: 668px;
 }
 
 #apDiv18 {
@@ -360,8 +364,8 @@ font-weight: bold;
 	width: 482px;
 	height: 27px;
 	z-index: 19;
-	left: -76px;
-	top: 644px;
+	left: -81px;
+	top: 717px;
 }
 
 #apDiv19 {
@@ -369,23 +373,23 @@ font-weight: bold;
 	width: 500px;
 	height: 30px;
 	z-index: 19;
-	left: -34px;
-	top: 688px;
+	left: -41px;
+	top: 764px;
 }
 
 #apDiv20 {
 	position: absolute;
-	width: 121px;
-	height: 48px;
+	width: 64px;
+	height: 35px;
 	z-index: 19;
-	left: 134px;
-	top: 745px;
+	left: 132px;
+	top: 818px;
 }
 
 #pageLabel {
 	position: absolute;
 	width: 200px;
-	height: 50px;
+	height: 45px;
 	z-index: 1;
 	top: 181px;
 	left: 13px;
@@ -410,64 +414,17 @@ font-weight: bold;
 #footer {
 	position: absolute;
 	left: 2px;
-	top: 1249px;
+	top: 1234px;
 	width: 100%;
 }
+
 #apDiv21 {
-	position:absolute;
-	width:245px;
-	height:26px;
-	z-index:19;
-	left: 776px;
-	top: 252px;
-}
-#apDiv22 {
-	position:absolute;
-	width:100%;
-	height:200%;
-	z-index:0;
-	left: 11px;
-	top: 234px;
-}
-#apDiv23 {
-	position:absolute;
-	width:200px;
-	height:25px;
-	z-index:20;
-	left: 442px;
-	top: 19px;
-}
-#apDiv24 {
-	position:absolute;
-	width:200px;
-	height:22px;
-	z-index:20;
-	left: 455px;
-	top: 254px;
-}
-#apDiv25 {
-	position:absolute;
-	width:200px;
-	height:22px;
-	z-index:21;
-	left: 453px;
-	top: 407px;
-}
-#apDiv26 {
-	position:absolute;
-	width:200px;
-	height:21px;
-	z-index:22;
-	left: 453px;
-	top: 592px;
-}
-#apDiv27 {
-	position:absolute;
-	width:200px;
-	height:20px;
-	z-index:23;
-	left: 452px;
-	top: 778px;
+	position: absolute;
+	width: 557px;
+	height: 144px;
+	z-index: 19;
+	left: -106px;
+	top: 155px;
 }
 </style>
 </head>
@@ -477,7 +434,7 @@ font-weight: bold;
 <table width="100%" frame="above" bordercolor="#333333"
 	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
 	<tr>
-		<td>Copyright ï¿½ 2011 All Rights Reserved</td>
+		<td>Copyright © 2011 All Rights Reserved</td>
 	</tr>
 </table>
 </div>
@@ -497,74 +454,156 @@ font-weight: bold;
 		</td>
 		<td width="77%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="../menu"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="../menu.jsp"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../logout"><input
+<form id="form2" name="form2" method="post" action=""><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
 <div id="background" style="background-color: #EEE0E5;"></div>
 <div id="accountInfoHeader"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
+Information</div>
 <div id="employmentDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
+Information</div>
 <div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
 <div id="contactInfoDiv"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
+Information</div>
 <div id="apDiv7"
 	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
 field</em></div>
 <p>&nbsp;</p>
 <div align="center" id="personalInfo"
-	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold"></div>
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
+Information</div>
 <div id="titleDiv">
-<form id="form1" name="form1" method="post" action="AccountCreation.do">
+<%
+	DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
+	List<DivisionOffice> dList = dManager.getAllDivisionOffice();
+%>
+<form id="form1" name="form1" method="post" action="CreateAccount.do">
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-	
-<!-- Title -->
-<input name="title" type="text" id="title" size="20" maxlength="10" /></p>
+<input name="title" type="text" id="title" size="20" /></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-
-<!-- Name -->
+<p>&nbsp;</p>
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40" maxlength="80" /></div>
+<input name="name" type="text" id="name" size="40" /></div>
+<p><label for="employeeNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
 <p>&nbsp;</p>
+<div id="apDiv21">
+<table width="100%" border="1" text-align="center" cellspacing="0">
+	<tr class="tableheaders">
+		<td width="37%">*Designation</td>
+		<td width="13%">Employee No.</td>
+		<td width="50%">Division/Office</td>
+	</tr>
+	<tr>
+		<td>
+		<div align="center"><label for="designation_1"></label> <input
+			type="text" name="designation" id="designation_1" /></div>
+		</td>
+		<td>
+		<div align="center"><input name="employeeNo" type="text"
+			id="employeeNo._1" size="4" /></div>
+		</td>
+		<td>
+		<div align="center"><select name="divisionOfficeDropdown"
+			id="divisionOfficeDropdown">
 
-<!-- Designation -->
-<div id="apDiv9"><label for="designation3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-<input name="designation" type="text" id="designation3" size="30" maxlength="45" /></div>
+			<%
+				for (int i = 0; i < dList.size(); i++) {
+			%>
+			<option value="<%=dList.get(i).getId()%>">
+			<%
+				if (dList.get(i).getOfficeName() != null)
+						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+					else
+						out.print(dList.get(i).getDivisionName());
+			%>
+			</option>
+			<%
+				}
+			%>
+		</select></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<div align="center"><label for="designation_1"></label> <input
+			type="text" name="designation" id="designation_1" /></div>
+		</td>
+		<td>
+		<div align="center"><input name="employeeNo" type="text"
+			id="employeeNo._1" size="4" /></div>
+		</td>
+		<td>
+		<div align="center"><select name="divisionOfficeDropdown"
+			id="divisionOfficeDropdown">
 
-<!-- EmployeeNumber -->
-<p><label for="employeeNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv10"><label for="employeeNumber3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-No.:</label> <input name="employeeNumber" type="text" id="employeeNumber3" maxlength="45" /></div>
-<p><label for="employeeNumber2"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
-</label></p>
-<div id="apDiv11"><label for="division3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
-<select name="division" id="division3">
-	<option>Natural Sciences and Mathematics</option>
-	<option>Humanities</option>
-	<option>Management</option>
-	<option>Social Sciences</option>
-	<option>Administrative</option>
-</select> <label for="office3"
-	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"></label>
+			<%
+				for (int i = 0; i < dList.size(); i++) {
+			%>
+			<option value="<%=dList.get(i).getId()%>">
+			<%
+				if (dList.get(i).getOfficeName() != null)
+						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+					else
+						out.print(dList.get(i).getDivisionName());
+			%>
+			</option>
+			<%
+				}
+			%>
+		</select></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<div align="center"><label for="designation_1"></label> <input
+			type="text" name="designation" id="designation_1" /></div>
+		</td>
+		<td>
+		<div align="center"><input name="employeeNo" type="text"
+			id="employeeNo._1" size="4" /></div>
+		</td>
+		<td>
+		<div align="center"><select name="divisionOfficeDropdown"
+			id="divisionOfficeDropdown">
+
+			<%
+				for (int i = 0; i < dList.size(); i++) {
+			%>
+			<option value="<%=dList.get(i).getId()%>">
+			<%
+				if (dList.get(i).getOfficeName() != null)
+						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+					else
+						out.print(dList.get(i).getDivisionName());
+			%>
+			</option>
+			<%
+				}
+			%>
+		</select></div>
+		</td>
+	</tr>
+</table>
 </div>
+<p><label for="employeeNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
 <p><label for="division2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label> <label for="office2"
@@ -579,40 +618,75 @@ No.:</label> <input name="employeeNumber" type="text" id="employeeNumber3" maxle
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" maxlength="45" /></div>
+	size="25"
+	<%String mobileNumber = (String) request.getAttribute("mobileNumber");
+			if (mobileNumber != null && !mobileNumber.isEmpty()) {
+				out.print("value=" + '"' + mobileNumber + '"');
+			}%> /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-<input name="landline" type="text" id="landline3" size="25" maxlength="45" /></div>
+<input name="landline" type="text" id="landline3" size="25"
+	<%String landline = (String) request.getAttribute("landline");
+			if (landline != null && !landline.isEmpty()) {
+				out.print("value=" + '"' + landline + '"');
+			}%> /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" maxlength="45" /></div>
+	size="25"
+	<%String emailad = (String) request.getAttribute("emailad");
+			if (emailad != null && !emailad.isEmpty()) {
+				out.print("value=" + '"' + emailad + '"');
+			}%> /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv16"><label for="userName3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
-<input name="userName" type="text" id="userName3" size="35" maxlength="60" /></div>
+<input name="username" type="text" id="userName3" size="35"
+	<%String usernameOk = (String) request.getAttribute("usernameOK");
+			String username = (String) request.getAttribute("username");
+			if (usernameOk != null && !usernameOk.isEmpty() && !usernameOk.equalsIgnoreCase("false")) {
+				out.print("value=" + '"' + username + '"');
+			}%> />
+<%
+	if (usernameOk != null && !usernameOk.isEmpty() && usernameOk.equalsIgnoreCase("false")) {
+		out.print("*Invalid Input");
+	}
+%>
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv17"><label for="password3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
-<input name="password" type="password" id="password3" size="30" maxlength="80" /></div>
+<input name="password" type="password" id="password3" size="30"
+	<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
+<%
+	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+		out.print("*Invalid Input");
+	}
+%>
+</div>
 <p>&nbsp;</p>
 <div id="apDiv18"><label for="reenterPassword3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Re-enter
 Password:</label> <input name="reenterPassword" type="password"
-	id="reenterPassword3" size="30" maxlength="80" /></div>
+	id="reenterPassword3" size="30" /> <%
+ 	if (passwordOk != null && !passwordOk.isEmpty()&& passwordOk.equalsIgnoreCase("false")) {
+ 		out.print("*Invalid Input");
+ 	}
+ %>
+</div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
 Type: </label> <select name="acctType" id="acctType3">
 	<option>Non-SPSO Personnel (Employee)</option>
 	<option>Non-SPSO Personnel (Head)</option>
-	<option selected="selected">SPSO Personnel</option>
+	<option>SPSO Personnel</option>
 	<option>System Admin</option>
 </select></div>
 <p>&nbsp;</p>
@@ -625,15 +699,5 @@ Type: </label> <select name="acctType" id="acctType3">
 </p>
 </form>
 </div>
-<div id="apDiv21">
-  <form id="form3" name="form3" method="post" action="">
-    <input name="addForCurrentBtn" type="submit" class="maroon" id="addForCurrentBtn" value="Create Account For Existing Person &gt;&gt;" />
-  </form>
-</div>
-<div class="headers" id="apDiv24">Personal Information</div>
-<div id="apDiv22"></div>
-<div class="headers" id="apDiv26">Contact Information</div>
-<div class="headers" id="apDiv27">Account Information</div>
-<div class="headers" id="apDiv25">Work Information</div>
 </body>
 </html>

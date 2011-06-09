@@ -29,7 +29,8 @@ public class AccountsView extends HttpServlet {
 		ArrayList<String> userName = new ArrayList<String>();
 		ArrayList<String> acctType = new ArrayList<String>();
 		ArrayList<String> name = new ArrayList<String>();
-
+		
+		
 		try {
 			List<Account> accounts = aManager.getAllAccounts();
 			for (int i = 0; i < accounts.size(); i++) {
@@ -37,6 +38,8 @@ public class AccountsView extends HttpServlet {
 				acctType.add(accounts.get(i).getType().toString());
 				name.add(accounts.get(i).getPerson().getName());
 			}
+			
+			request.setAttribute("accounts", accounts);
 		} catch (org.hibernate.TransactionException e) {
 			e.printStackTrace();
 		} catch (TransactionException e) {

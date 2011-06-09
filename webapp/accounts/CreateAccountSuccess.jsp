@@ -1,26 +1,83 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.entities.Contact"%>
+<%@page import="com.iappsam.entities.Employee"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.iappsam.entities.Person"%>
+<%@page import="com.iappsam.entities.Account"%>
+<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="java.util.List"%>
+<%@page
+	import="com.iappsam.managers.sessions.DivisionOfficeManagerSession"%>
+<%@page import="com.iappsam.managers.DivisionOfficeManager"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="shortcut icon" href="../favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
+.tableheaders { /*background-color:#5E2605;
+	color:white;*/
+	font-family: Lucida Grande;
+	font-size: 14px;
+	text-align: center;
+}
+
+.maroon {
+	font-size: 12px;
+	font-family: Lucida Grande;
+	background-color: #7B1113;
+	color: white;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.maroon:hover {
+	font-weight: bold;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
+.button {
+	font-size: 14px;
+	font-family: Lucida Grande;
+	background-color: white;
+	color: #7B1113;
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+}
+
+.button:hover {
+	font-weight: bold;
+	color: #060;
+	/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+	border-right: 1px solid #7B1113;
+	border-top: 1px solid #7B1113;
+	border-bottom: 1px solid #7B1113;
+}
+
 #personalInfo {
 	position: absolute;
 	width: 578px;
 	height: 25px;
 	z-index: 1;
-	left: 353px;
-	top: 176px;
+	left: 440px;
+	top: 252px;
 }
 
 #titleDiv {
 	position: absolute;
 	width: 388px;
-	height: 27px;
+	height: 879px;
 	z-index: 3;
-	left: 460px;
-	top: 222px;
+	left: 555px;
+	top: 287px;
 }
 
 #nameDiv {
@@ -28,17 +85,17 @@
 	width: 462px;
 	height: 24px;
 	z-index: 3;
-	left: 444px;
-	top: 270px;
+	left: 461px;
+	top: 278px;
 }
 
 #background {
 	position: absolute;
 	width: 578px;
-	height: 831px;
+	height: 886px;
 	z-index: 3;
-	left: 353px;
-	top: 202px;
+	left: 439px;
+	top: 278px;
 }
 
 #designationDiv {
@@ -46,8 +103,8 @@
 	width: 455px;
 	height: 24px;
 	z-index: 3;
-	left: 422px;
-	top: 364px;
+	left: 829px;
+	top: 119px;
 }
 
 #apDiv1 {
@@ -62,8 +119,8 @@
 	width: 447px;
 	height: 25px;
 	z-index: 4;
-	left: 403px;
-	top: 405px;
+	left: 671px;
+	top: 378px;
 }
 
 #Division {
@@ -71,8 +128,8 @@
 	width: 535px;
 	height: 28px;
 	z-index: 5;
-	left: 452px;
-	top: 452px;
+	left: 459px;
+	top: 451px;
 }
 
 #officeDiv {
@@ -80,7 +137,7 @@
 	width: 426px;
 	height: 25px;
 	z-index: 6;
-	left: 469px;
+	left: 475px;
 	top: 498px;
 }
 
@@ -89,8 +146,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 7;
-	left: 354px;
-	top: 730px;
+	left: 439px;
+	top: 856px;
 }
 
 #apDiv2 {
@@ -123,8 +180,8 @@
 	width: 469px;
 	height: 24px;
 	z-index: 10;
-	left: 399px;
-	top: 883px;
+	left: 927px;
+	top: 725px;
 }
 
 #sumbmitDivBtn {
@@ -141,8 +198,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 12;
-	left: 353px;
-	top: 321px;
+	left: 440px;
+	top: 405px;
 }
 
 #apDiv3 {
@@ -150,8 +207,8 @@
 	width: 578px;
 	height: 9px;
 	z-index: 13;
-	left: 354px;
-	top: 1035px;
+	left: 439px;
+	top: 1164px;
 }
 
 #border {
@@ -159,8 +216,8 @@
 	width: 585px;
 	height: 922px;
 	z-index: 1;
-	left: 350px;
-	top: 173px;
+	left: 319px;
+	top: 184px;
 }
 
 #contactInfoDiv {
@@ -168,8 +225,8 @@
 	width: 578px;
 	height: 25px;
 	z-index: 14;
-	left: 353px;
-	top: 542px;
+	left: 438px;
+	top: 654px;
 }
 
 #apDiv4 {
@@ -204,8 +261,8 @@
 	width: 200px;
 	height: 18px;
 	z-index: 18;
-	left: 379px;
-	top: 994px;
+	left: 472px;
+	top: 1123px;
 }
 
 #acctTypediv {
@@ -216,191 +273,338 @@
 	left: 439px;
 	top: 928px;
 }
+
+#apDiv8 {
+	position: absolute;
+	width: 480px;
+	height: 32px;
+	z-index: 19;
+	left: -18px;
+	top: 65px;
+}
+
+#apDiv9 {
+	position: absolute;
+	width: 380px;
+	height: 29px;
+	z-index: 19;
+	top: 163px;
+	left: -55px;
+}
+
+#apDiv10 {
+	position: absolute;
+	width: 313px;
+	height: 28px;
+	z-index: 19;
+	left: -60px;
+	top: 208px;
+}
+
+#apDiv11 {
+	position: absolute;
+	width: 706px;
+	height: 27px;
+	z-index: 19;
+	left: -75px;
+	top: 251px;
+}
+
+#apDiv12 {
+	position: absolute;
+	width: 314px;
+	height: 34px;
+	z-index: 19;
+	left: -2px;
+	top: 298px;
+}
+
+#apDiv13 {
+	position: absolute;
+	width: 453px;
+	height: 28px;
+	z-index: 19;
+	left: -77px;
+	top: 417px;
+}
+
+#apDiv14 {
+	position: absolute;
+	width: 394px;
+	height: 25px;
+	z-index: 19;
+	left: 5px;
+	top: 468px;
+}
+
+#apDiv15 {
+	position: absolute;
+	width: 429px;
+	height: 31px;
+	z-index: 19;
+	left: -51px;
+	top: 492px;
+}
+
+#apDiv16 {
+	position: absolute;
+	width: 483px;
+	height: 29px;
+	z-index: 19;
+	left: -7px;
+	top: 619px;
+}
+
+#apDiv17 {
+	position: absolute;
+	width: 404px;
+	height: 28px;
+	z-index: 19;
+	left: -5px;
+	top: 668px;
+}
+
+#apDiv18 {
+	position: absolute;
+	width: 482px;
+	height: 27px;
+	z-index: 19;
+	left: -81px;
+	top: 717px;
+}
+
+#apDiv19 {
+	position: absolute;
+	width: 500px;
+	height: 30px;
+	z-index: 19;
+	left: -41px;
+	top: 764px;
+}
+
+#apDiv20 {
+	position: absolute;
+	width: 64px;
+	height: 35px;
+	z-index: 19;
+	left: 132px;
+	top: 818px;
+}
+
+#pageLabel {
+	position: absolute;
+	width: 200px;
+	height: 45px;
+	z-index: 1;
+	top: 181px;
+	left: 13px;
+}
+
+#logoHeader {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+
+#logoutiv {
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	z-index: 15;
+	left: 14px;
+	top: 143px;
+}
+
+#footer {
+	position: absolute;
+	left: 2px;
+	top: 1234px;
+	width: 100%;
+}
+
+#apDiv21 {
+	position: absolute;
+	width: 557px;
+	height: 144px;
+	z-index: 19;
+	left: -106px;
+	top: 155px;
+}
 </style>
 </head>
 
 <body>
-	<table width="100%" border="0">
-		<tr>
-			<td width="19%">
-				<table width="100%" frame="below">
-					<tr>
-						<td
-							style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Create
-							New Account</td>
-					</tr>
-				</table></td>
-			<td width="77%">&nbsp;</td>
-			<td width="4%"><a href="/menu" title="Back to main menu"
-				target="main_frame">Home</a>
-			</td>
-		</tr>
-	</table>
-	<div id="background" style="background-color: #EEE0E5;"></div>
-	<div id="designationDiv">
-		<form id="form3" name="form3" method="post"
-			action="../accounts/accountCreate.do">
-			<label for="designation"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Designation:</label>
-			<%
-				String designation = (String) request.getAttribute("designation");
-			%>
-			<%=designation%></form>
-	</div>
-	<div id="empNumDiv">
-		<form id="form4" name="form4" method="post" action="">
-			<label for="employeeNumber"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Employee
-				Num:</label>
-			<%
-				String employeeNumber = (String) request.getAttribute("employeeNumber");
-			%>
-			<%=employeeNumber%></form>
-	</div>
-	<div id="Division">
-		<form id="form5" name="form5" method="post" action="">
-			<label for="division"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division:</label>
-			<%
-				String division = (String) request.getAttribute("division");
-			%>
-			<%=division%></form>
-	</div>
+<div id="footer">
+<table width="100%" frame="above" bordercolor="#333333"
+	style="font-family: Verdana, Geneva, sans-serif; color: #333333; font-size: 9px">
+	<tr>
+		<td>Copyright © 2011 All Rights Reserved</td>
+	</tr>
+</table>
+</div>
+<div id="logoHeader" style="width: 100%"><img name=""
+	src="../images/header2.png" width="100%" height="115" alt="" /></div>
+<div id="pageLabel" style="width: 100%;">
+<table width="100%" border="0">
+	<tr>
+		<td width="19%">
+		<table width="100%" frame="below">
+			<tr>
+				<td
+					style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Create
+				New Account</td>
+			</tr>
+		</table>
+		</td>
+		<td width="77%">&nbsp;</td>
+		<td width="4%">
+		<form id="form15" name="form15" method="post" action="../menu.jsp"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" /></form>
+		</td>
+	</tr>
+</table>
+</div>
+<div id="logoutiv" style="width: 90%">
+<form id="form2" name="form2" method="post" action=""><input
+	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
+</form>
+</div>
+<div id="background" style="background-color: #EEE0E5;"></div>
+<div id="accountInfoHeader"
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
+Information</div>
+<div id="employmentDiv"
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
+Information</div>
+<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
+<div id="contactInfoDiv"
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
+Information</div>
+<div id="apDiv7"
+	style="font-family: Lucida Grande; color: red; font-size: 11px;"><em>*required
+field</em></div>
+<p>&nbsp;</p>
+<div align="center" id="personalInfo"
+	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
+Information</div>
+<div id="titleDiv">
+<%
+	Account account = (Account) request.getAttribute("account");
+	Person person = (Person) request.getAttribute("person");
+	ArrayList<Employee> empList = (ArrayList<Employee>) request.getAttribute("empList");
+	Contact mobile = (Contact) request.getAttribute("mobile");
+	Contact landline = (Contact) request.getAttribute("landline");
+	Contact email = (Contact) request.getAttribute("email");
+%>
+<form id="form1" name="form1" method="post" action="CreateAccount.do">
+<p><label for="title"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
+<input name="title" type="text" id="title" size="20" disabled="disabled"
+	value="<%=person.getTitle()%>" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv8"><label for="name"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
+<input name="name" type="text" id="name" size="40" disabled="disabled"
+	value="<%=person.getName()%>" /></div>
+<p><label for="employeeNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<p>&nbsp;</p>
+<div id="apDiv21">
+<table width="100%" border="1" text-align="center" cellspacing="0">
+	<tr class="tableheaders">
+		<td width="37%">*Designation</td>
+		<td width="13%">Employee No.</td>
+		<td width="50%">Division/Office</td>
+	</tr>
 	<%
-		String office = (String) request.getAttribute("office");
+		for (int i = empList.size(); i > 0; i--) {
 	%>
-	<%
-		if (office != null) {
-	%>
-	<div id="officeDiv">
-		<form id="form6" name="form6" method="post" action="">
-			<label for="office"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Office:</label>
-
-			<%=office%></form>
-	</div>
+	<tr>
+		<td>
+		<div align="center"><label for="designation_1"></label> <input
+			type="text" name="designation" id="designation_1"
+			value="<%=empList.get(empList.size() - i).getDesignation()%>"
+			style="font-size: 8" disabled="disabled"/></div>
+		</td>
+		<td>
+		<div align="center"><input name="employeeNo" type="text"
+			id="employeeNo._1" size="4"
+			value="<%=empList.get(empList.size() - i).getEmployeeNumber()%>"
+			style="font-size: 8"  disabled="disabled"/></div>
+		</td>
+		<td>
+		<div align="center"><input size="20" type="text"
+			value="<%out.print(empList.get(empList.size() - i).getDivisionOffice().getDivisionName());
+				if (empList.get(empList.size() - i).getDivisionOffice().getOfficeName() != null && !empList.get(empList.size() - i).getDivisionOffice().getOfficeName().isEmpty())
+					out.print("," + empList.get(empList.size() - i).getDivisionOffice().getOfficeName());%>"
+			style="font-size: 8" disabled="disabled"/></div>
+		</td>
+	</tr>
 	<%
 		}
 	%>
-	<div id="accountInfoHeader"
-		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Account
-		Info</div>
-	<div id="userNameDiv">
-		<div>
-			<form id="form7" name="form7" method="post" action="">
-				<label for="userName"
-					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
-				<%
-					String userName = (String) request.getAttribute("userName");
-				%>
-				<%=userName%></form>
-		</div>
-	</div>
-	<div id="passwordDiv">
-		<div>
-			<form id="form8" name="form8" method="post" action="">
-				<label for="password"
-					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
-				<%
-					String password = (String) request.getAttribute("password");
-				%>
-				<%
-					for (int i = 0; i < password.length(); i++)
-						out.print("*");
-				%>
-			</form>
-		</div>
-	</div>
-	<div id="sumbmitDivBtn">
-		<form id="form10" name="form10" method="post"
-			action="../MenuFrame.html">
-			<p>
-				<input type="submit" name="submit" id="submit" value="Back"
-					style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-			</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-		</form>
-	</div>
-	<div id="employmentDiv"
-		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Work
-		Info</div>
-	<div id="apDiv3" style="text-align: left; background-color: #7B1113;"></div>
-	<div id="border">
-		<table width="100%" height="870" border="1">
-			<tr>
-				<td height="864">&nbsp;</td>
-			</tr>
-		</table>
-	</div>
-	<div id="contactInfoDiv"
-		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
-		Info</div>
-	<div id="apDiv4">
-		<form id="form11" name="form11" method="post" action="">
-			<label for="mobileNumber"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
-				Number:</label>
-			<%
-				String mobileNumber = (String) request.getAttribute("mobileNumber");
-			%>
-			<%=mobileNumber%></form>
-	</div>
-	<div id="apDiv5">
-		<form id="form12" name="form12" method="post" action="">
-			<label for="landline"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
-			<%
-				String landline = (String) request.getAttribute("landline");
-			%>
-			<%=landline%></form>
-	</div>
-	<div id="apDiv6">
-		<form id="form13" name="form13" method="post" action="">
-			<label for="emailad"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">E-mail
-				Address:</label>
-			<%
-				String emailad = (String) request.getAttribute("emailad");
-			%>
-			<%=emailad%></form>
-	</div>
-	<div id="apDiv7"
-		style="font-family: Lucida Grande; color: red; font-size: 11px;">
-		<em>*required field</em>
-	</div>
-	<div id="acctTypediv">
-		<form id="form14" name="form14" method="post" action="">
-			<label for="acctType"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
-				Type: </label>
-			<%
-				String acctType = (String) request.getAttribute("acctType");
-			%>
-			<%=acctType%></form>
-	</div>
-	<p>&nbsp;</p>
-	<div id="personalInfo"
-		style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Personal
-		Info</div>
-	<div id="titleDiv">
-		<form id="form1" name="form1" method="post" action="">
-			<label for="title"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-			<%
-				String title = (String) request.getAttribute("title");
-			%>
-			<%=title%>
-			<br />
-		</form>
-	</div>
-	<div id="nameDiv">
-		<form id="form2" name="form2" method="post" action="">
-			<label for="name"
-				style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-			<%
-				String name = (String) request.getAttribute("name");
-			%>
-			<%=name%></form>
+</table>
+</div>
+<p><label for="employeeNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<p><label for="division2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label> <label for="office2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<p><label for="office2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<p><label for="mobileNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<div id="apDiv13"><label for="mobileNumber3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
+Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
+	size="25" disabled="disabled" value="<%=mobile.getData()%>" /></div>
+<p><label for="mobileNumber2"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+</label></p>
+<div id="apDiv14"><label for="landline3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
+<input name="landline" type="text" id="landline3" size="25"
+	disabled="disabled" value="<%=landline.getData()%>" /></div>
+<div id="apDiv15"><label for="emailad3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
+E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
+	size="25" disabled="disabled" value="<%=email.getData()%>" /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv16"><label for="userName3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
+<input name="userName" type="text" id="userName3" size="35"
+	disabled="disabled" value="<%=account.getUsername()%>" /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv17"><label for="password3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Password:</label>
+<input name="password" type="password" id="password3" size="30"
+	disabled="disabled" value="*********" /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="apDiv19"><label for="acctType3"
+	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
+Type: </label> <select name="acctType" id="acctType3" disabled="disabled">
+	<option>
+	<%=account.getType().toString()%>
+	</option>
+</select></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><br />
+</p>
+</form>
+</div>
 </body>
 </html>
