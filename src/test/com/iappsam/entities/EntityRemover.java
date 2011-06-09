@@ -13,12 +13,15 @@ import com.iappsam.entities.Signatory;
 import com.iappsam.entities.Unit;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.entities.forms.ModeOfProcurement;
+import com.iappsam.entities.forms.PurchaseOrder;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -29,6 +32,7 @@ import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.managers.sessions.POManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.util.HibernateUtil;
@@ -43,19 +47,35 @@ public class EntityRemover {
 	private static ContactManager cm = new ContactManagerSession();
 	private static AccountManager am = new AccountManagerSession();
 	private static SupplierManager sm = new SupplierManagerSession();
+	private static POManager pom = new POManagerSession();
 
 	public static void removeAll() throws TransactionException {
+		removePOs();
 		removeAPPs();
 		removeIIRUPs();
 		removeItems();
 		removeSuppliers();
 		removeItemDependencies();
+		removeModeOfProcurements();
 		removeSignatories();
 		removeEmployees();
 		removeAccounts();
 		removePersons();
 		removeContacts();
 		removeDivisionOffices();
+	}
+
+	private static void removeModeOfProcurements() throws TransactionException {
+		List<ModeOfProcurement> mops = pom.getAllModeOfProcurement();
+		for (ModeOfProcurement mop : mops)
+			pom.removeModeOfProcurement(mop);
+		
+	}
+
+	private static void removePOs() throws TransactionException {
+		List<PurchaseOrder> pos = pom.getAllPO();
+		for (PurchaseOrder po : pos)
+			pom.removePurchaseOrder(po);
 	}
 
 	private static void removeSuppliers() throws TransactionException {

@@ -19,11 +19,6 @@ public class ContactManagerSession extends AbstractManager implements ContactMan
 	}
 
 	@Override
-	public int saveContact(Contact contact) throws TransactionException {
-		return (Integer) save(contact);
-	}
-
-	@Override
 	public void updateContact(Contact contact) throws TransactionException {
 		update(contact);
 	}

@@ -7,7 +7,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.entities.Person;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.HibernateUtil;
 
@@ -23,22 +22,6 @@ public abstract class AbstractManager implements Manager {
 		try {
 			session.saveOrUpdate(entity);
 			tx.commit();
-		} catch (HibernateException ex) {
-			tx.rollback();
-			ex.printStackTrace();
-			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
-		}
-	}
-
-	protected Object save(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
-		Transaction tx = session.beginTransaction();
-		try {
-			Object o = session.save(entity);
-			tx.commit();
-			return o;
 		} catch (HibernateException ex) {
 			tx.rollback();
 			ex.printStackTrace();
@@ -72,22 +55,6 @@ public abstract class AbstractManager implements Manager {
 		} catch (HibernateException ex) {
 			ex.printStackTrace();
 			tx.rollback();
-			throw new TransactionException(ex.getMessage());
-		} finally {
-			session.close();
-		}
-	}
-
-	protected boolean contains(Object entity) throws TransactionException {
-		Session session = HibernateUtil.startSession();
-		Transaction tx = session.beginTransaction();
-		try {
-			boolean b = session.contains(entity);
-			tx.commit();
-			return b;
-		} catch (HibernateException ex) {
-			tx.rollback();
-			ex.printStackTrace();
 			throw new TransactionException(ex.getMessage());
 		} finally {
 			session.close();

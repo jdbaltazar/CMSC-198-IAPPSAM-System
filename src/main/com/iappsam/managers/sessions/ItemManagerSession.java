@@ -25,11 +25,6 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
-	public int saveItem(Item item) throws TransactionException {
-		return (Integer) save(item);
-	}
-
-	@Override
 	public void updateItem(Item item) throws TransactionException {
 		update(item);
 	}

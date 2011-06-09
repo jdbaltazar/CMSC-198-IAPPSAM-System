@@ -13,8 +13,6 @@ public interface DivisionOfficeManager {
 
 	void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException;
 
-	int saveDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException;
-
 	void updateDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
 
 	DivisionOffice getDivisionOffice(int divisionOfficeId) throws TransactionException;
@@ -32,8 +30,6 @@ public interface DivisionOfficeManager {
 	// Building
 
 	void addBuilding(Building building) throws TransactionException, DuplicateEntryException;
-
-	int saveBuilding(Building building) throws TransactionException, DuplicateEntryException;
 
 	void updateBuilding(Building building) throws TransactionException;
 

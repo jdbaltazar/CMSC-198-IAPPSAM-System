@@ -18,11 +18,6 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 	}
 
 	@Override
-	public int saveSupplier(Supplier supplier) throws TransactionException {
-		return (Integer) save(supplier);
-	}
-
-	@Override
 	public void updateSupplier(Supplier supplier) throws TransactionException {
 		update(supplier);
 	}
@@ -54,7 +49,7 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 
 	@Override
 	public boolean containsSupplier(Supplier supplier) throws TransactionException {
-		return contains(supplier);
+		return getSupplier(supplier.getId()) != null;
 	}
 
 	@Override

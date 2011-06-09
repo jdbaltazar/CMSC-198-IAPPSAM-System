@@ -17,8 +17,6 @@ public interface PersonManager extends Manager {
 
 	void addPerson(Person person) throws TransactionException, DuplicateEntryException;
 
-	int savePerson(Person person) throws TransactionException, DuplicateEntryException;
-
 	void updatePerson(Person person) throws TransactionException, DuplicateEntryException;
 
 	Person getPerson(int personId) throws TransactionException;
@@ -37,8 +35,6 @@ public interface PersonManager extends Manager {
 
 	void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
 
-	int saveEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
-
 	Employee getEmployee(int employeeID) throws TransactionException;
 
 	Employee getEmployee(String name, String designation) throws TransactionException;
@@ -52,8 +48,6 @@ public interface PersonManager extends Manager {
 	// Signatory
 
 	void addSignatory(Signatory signatory) throws TransactionException;
-
-	int saveSignatory(Signatory signatory) throws TransactionException;
 
 	void updateSignatory(Signatory signatory) throws TransactionException;
 

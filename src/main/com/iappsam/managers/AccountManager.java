@@ -9,8 +9,6 @@ public interface AccountManager {
 
 	void addAccount(Account account) throws TransactionException;
 
-	String saveAccount(Account account) throws TransactionException;
-
 	void updateAccount(Account account) throws TransactionException;
 
 	// void updateAccountUsername(String username, String newUsername) throws

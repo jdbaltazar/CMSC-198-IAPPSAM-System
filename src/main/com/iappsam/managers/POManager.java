@@ -14,8 +14,6 @@ public interface POManager {
 
 	void addPO(PurchaseOrder purchaseOrder) throws TransactionException;
 
-	String savePO(PurchaseOrder purchaseOrder) throws TransactionException;
-
 	void updatePO(PurchaseOrder purchaseOrder) throws TransactionException;
 
 	PurchaseOrder getPO(String poNumber) throws TransactionException;
@@ -37,4 +35,9 @@ public interface POManager {
 	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
 	List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException;
+
+	void removePurchaseOrder(PurchaseOrder po) throws TransactionException;
+
+	void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException;
+
 }

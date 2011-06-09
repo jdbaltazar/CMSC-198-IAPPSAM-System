@@ -20,11 +20,6 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public int saveAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
-		return (Integer) save(annualProcurementPlan);
-	}
-
-	@Override
 	public void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
 		update(annualProcurementPlan);
 	}
@@ -36,7 +31,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
 	public boolean containsAPP(AnnualProcurementPlan app) throws TransactionException {
-		return contains(app);
+		return getAPP(app.getId()) != null;
 	}
 
 	@Override

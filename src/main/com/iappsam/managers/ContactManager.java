@@ -9,8 +9,6 @@ public interface ContactManager {
 
 	void addContact(Contact contact) throws TransactionException;
 
-	int saveContact(Contact contact) throws TransactionException;
-
 	void updateContact(Contact contact) throws TransactionException;
 
 	Contact getContact(int contactID) throws TransactionException;

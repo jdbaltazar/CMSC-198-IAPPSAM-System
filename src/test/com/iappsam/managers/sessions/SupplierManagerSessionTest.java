@@ -2,6 +2,7 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.Employee;
@@ -18,8 +19,9 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 	private Supplier supplier;
 	private PersonManager pm;
 
-	@Override
-	protected void afterInit() {
+	@Before
+	public void init() throws TransactionException {
+		super.init();
 		su = new SupplierManagerSession();
 		pm = new PersonManagerSession();
 

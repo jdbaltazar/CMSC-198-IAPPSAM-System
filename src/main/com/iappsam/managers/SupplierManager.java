@@ -11,8 +11,6 @@ public interface SupplierManager{
 	
 	void addSupplier(Supplier supplier) throws TransactionException, DuplicateEntryException;
 
-	int saveSupplier(Supplier supplier) throws TransactionException, DuplicateEntryException;
-
 	void updateSupplier(Supplier supplier) throws TransactionException;
 
 	Supplier getSupplier(int supplierId) throws TransactionException;
