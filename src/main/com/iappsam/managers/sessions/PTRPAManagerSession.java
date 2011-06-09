@@ -15,11 +15,6 @@ public class PTRPAManagerSession extends AbstractManager implements PTRPAManager
 	}
 
 	@Override
-	public int savePTRPA(PTRPA ptrpa) throws TransactionException {
-		return (Integer) save(ptrpa);
-	}
-
-	@Override
 	public void updatePTRPA(PTRPA ptrpa) throws TransactionException {
 		update(ptrpa);
 	}
@@ -31,7 +26,7 @@ public class PTRPAManagerSession extends AbstractManager implements PTRPAManager
 
 	@Override
 	public boolean containsPTRPA(PTRPA ptrpa) throws TransactionException {
-		return contains(ptrpa);
+		return getPTRPA(ptrpa.getID()) != null;
 	}
 
 	@Override

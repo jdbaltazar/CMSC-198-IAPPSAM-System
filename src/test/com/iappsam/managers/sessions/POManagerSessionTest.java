@@ -30,10 +30,19 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 	private Employee dean;
 	private PurchaseOrder po;
 	private Employee contactPerson;
+	private PersonManager pm;
+	private SupplierManager sm;
+	private POManager pom;
+	private DivisionOfficeManager dom;
 
 	@Before
-	public void init() throws TransactionException {
+	public void init() throws Exception {
 		super.init();
+		pm = new PersonManagerSession();
+		sm = new SupplierManagerSession();
+		pom = new POManagerSession();
+		dom = new DivisionOfficeManagerSession();
+
 		contactPerson = Employee.create("Des", "Title", "Name");
 		supplier = new Supplier("Name", "address", contactPerson);
 		modeOfProcurement = new ModeOfProcurement("Mode");
@@ -43,26 +52,19 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		dean = Employee.create("Dean", "Mrs", "Dean");
 		po = new PurchaseOrder("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"),
 				supplierName, accountant, dean);
+		pm.addEmployee(contactPerson);
+		pm.addEmployee(accountant);
+		pm.addEmployee(dean);
+		sm.addSupplier(supplier);
+
+		pom.addModeOfProcurement(modeOfProcurement);
+
+		dom.addDivisionOffice(divisionOffice);
 	}
 
 	@Test
 	public void addPO() throws TransactionException, DuplicateEntryException {
-		PersonManager pm = new PersonManagerSession();
-		pm.addEmployee(contactPerson);
-		pm.addEmployee(accountant);
-		pm.addEmployee(dean);
-
-		SupplierManager sm = new SupplierManagerSession();
-		sm.addSupplier(supplier);
-
-		POManager pom = new POManagerSession();
-		pom.addModeOfProcurement(modeOfProcurement);
-
-		DivisionOfficeManager dom = new DivisionOfficeManagerSession();
-		dom.addDivisionOffice(divisionOffice);
-
 		pom.addPO(po);
-
 		assertTrue(pom.containsPO(po));
 	}
 }

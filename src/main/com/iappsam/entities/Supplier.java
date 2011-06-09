@@ -44,7 +44,7 @@ public class Supplier {
 		setTin(tin);
 		setContactPerson(employee);
 	}
-	
+
 	public Supplier(String supplierName, String address, Employee employee) {
 		super();
 		setSupplierName(supplierName);

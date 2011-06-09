@@ -12,8 +12,6 @@ public interface RISManager {
 	
 	void addRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
 	
-	int saveRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
-	
 	void updateRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
 	
 	RequisitionAndIssueSlip getRIS(String requisitionAndIssueSlipID) throws TransactionException;

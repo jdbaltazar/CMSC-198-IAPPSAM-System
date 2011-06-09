@@ -17,11 +17,6 @@ public class RISManagerSession extends AbstractManager implements RISManager {
 	}
 
 	@Override
-	public int saveRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException {
-		return (Integer) save(requisitionAndIssueSlip);
-	}
-
-	@Override
 	public void updateRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException {
 		update(requisitionAndIssueSlip);
 	}
@@ -32,8 +27,8 @@ public class RISManagerSession extends AbstractManager implements RISManager {
 	}
 
 	@Override
-	public boolean containsRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException {
-		return contains(requisitionAndIssueSlip);
+	public boolean containsRIS(RequisitionAndIssueSlip ris) throws TransactionException {
+		return getRIS(ris.getRisNumber()) != null;
 	}
 
 	@Override

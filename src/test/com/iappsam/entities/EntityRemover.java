@@ -54,10 +54,10 @@ public class EntityRemover {
 		removeAPPs();
 		removeIIRUPs();
 		removeItems();
-		removeSuppliers();
 		removeItemDependencies();
 		removeModeOfProcurements();
 		removeSignatories();
+		removeSuppliers();
 		removeEmployees();
 		removeAccounts();
 		removePersons();
@@ -69,7 +69,7 @@ public class EntityRemover {
 		List<ModeOfProcurement> mops = pom.getAllModeOfProcurement();
 		for (ModeOfProcurement mop : mops)
 			pom.removeModeOfProcurement(mop);
-		
+
 	}
 
 	private static void removePOs() throws TransactionException {

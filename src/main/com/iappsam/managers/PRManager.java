@@ -12,8 +12,6 @@ public interface PRManager {
 
 	void addPR(PurchaseRequest purchaseRequest) throws TransactionException;
 
-	int savePR(PurchaseRequest purchaseRequest) throws TransactionException;
-
 	void updatePR(PurchaseRequest purchaseRequest) throws TransactionException;
 
 	PurchaseRequest getPR(int purchaseRequestID) throws TransactionException;

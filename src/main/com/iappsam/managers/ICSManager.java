@@ -9,8 +9,6 @@ public interface ICSManager {
 
 	void addICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
 
-	int saveICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
-
 	void updateICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
 
 	InventoryCustodianSlip getICS(int inventoryCustodianSlipID) throws TransactionException;
