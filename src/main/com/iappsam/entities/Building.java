@@ -31,7 +31,7 @@ public class Building {
 		this.buildingAddress = buildingAddress;
 	}
 
-	public int getBuildingID() {
+	public int getID() {
 		return buildingID;
 	}
 

@@ -39,45 +39,32 @@ public class ViewAccount extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
-		PersonManager pManager = new PersonManagerSession();
-		ContactManager cManager = new ContactManagerSession();
-		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
-		String userName = (String) request.getParameter("userName");
+		PersonManager pManager= new PersonManagerSession();
+		String userName =  request.getParameter("userName");
 
-		String title;
-		String name;
 
-		ArrayList<String> mobileNumber = new ArrayList<String>();
-		ArrayList<String> landline = new ArrayList<String>();
-		ArrayList<String> emailad = new ArrayList<String>();
+		ArrayList<Contact> mobileNumber = new ArrayList<Contact>();
+		ArrayList<Contact> landline = new ArrayList<Contact>();
+		ArrayList<Contact> emailad = new ArrayList<Contact>();
 
-		String username;
-		AccountType acctType;
 
 		try {
 			Account account = aManager.getAccount(userName);
 			Set<Contact> contacts = account.getPerson().getContacts();
-
-			username = account.getUsername();
-			acctType = account.getType();
-			title = account.getPerson().getTitle();
-			name = account.getPerson().getName();
+			List<Employee> empList = pManager.getEmployeeByPerson(account.getPerson().getId());
 
 			for (Contact contact : contacts)
 				if (contact.getType() == ContactType.MOBILE)
-					mobileNumber.add(contact.getData());
+					mobileNumber.add(contact);
 				else if (contact.getType() == ContactType.LANDLINE)
-					landline.add(contact.getData());
+					landline.add(contact);
 				else if (contact.getType() == ContactType.EMAIL)
-					landline.add(contact.getData());
-
-			request.setAttribute("title", title);
-			request.setAttribute("name", name);
-			request.setAttribute("mobileNumber", mobileNumber);
+					landline.add(contact);
+			request.setAttribute("account", account);
+			request.setAttribute("empList",empList);
+			request.setAttribute("mobile", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
-			request.setAttribute("userName", username);
-			request.setAttribute("acctType", acctType);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

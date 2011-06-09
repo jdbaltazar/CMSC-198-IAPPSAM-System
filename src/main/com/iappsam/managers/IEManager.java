@@ -10,7 +10,6 @@ public interface IEManager {
 
 	void addIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 
-	int saveIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 
 	void updateIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
 

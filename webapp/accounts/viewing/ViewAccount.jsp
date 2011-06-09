@@ -1,5 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.List"%>
+<%@page import="com.iappsam.entities.Contact"%>
+<%@page import="com.iappsam.entities.Employee"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.iappsam.entities.Person"%>
+<%@page import="com.iappsam.entities.Account"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -488,15 +493,15 @@
 		</td>
 		<td width="77%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post"
-			action="ViewAccounts.do"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+		<form id="form15" name="form15" method="post" action="ViewAccounts.do">
+		<input name="backBtn" type="submit" class="button" id="backBtn"
+			value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../logout"><input
+<form id="form2" name="form2" method="post" action=""><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
@@ -512,10 +517,20 @@ Information</div>
 	style="text-align: left; background-color: #7B1113; font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">Contact
 Information</div>
 <div id="apDiv23">
-<form id="form2" name="form2" method="post" action="ViewWorkInformation.do"><input type="hidden" name ="name" value="<%=request.getAttribute("name") %>"/><input
+<%
+	Account account = (Account) request.getAttribute("account");
+	List<Employee> empList = (List<Employee>) request.getAttribute("empList");
+
+	ArrayList<Contact> mobile = (ArrayList<Contact>) request.getAttribute("mobile");
+	ArrayList<Contact> landline = (ArrayList<Contact>) request.getAttribute("landline");
+	ArrayList<Contact> email = (ArrayList<Contact>) request.getAttribute("emailad");
+%>
+<form id="form2" name="form2" method="post" action="view_work_info.jsp">
+<input name="personID" type="hidden"
+	value="<%=account.getPerson().getId()%>" /> <input name="username"
+	type="hidden" value="<%=account.getUsername()%>" /> <input
 	name="addWorkInfoBtn" type="submit" class="addbtn" id="addWorkInfoBtn"
-	title="Click to view work info." value="Work Information &gt;&gt;" />
-</form>
+	title="Click to view work info." value="Work Information &gt;&gt;" /></form>
 </div>
 <div id="apDiv24">
 <form id="form3" name="form3" method="post" action=""><input
@@ -531,23 +546,21 @@ Personal Information</div>
 <p>&nbsp;</p>
 <div id="apDiv20"><label for="title2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<%=request.getAttribute("title")%></div>
+<input name="title" type="text" disabled="disabled" id="title2"
+	size="20" value="<%=account.getPerson().getTitle()%>" /></div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Name:</label>
-<%=request.getAttribute("name")%>
-</div>
+<input name="name" type="text" disabled="disabled" id="name" size="40"
+	value="<%=account.getPerson().getName()%>" /></div>
 
 <div id="apDiv12"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">E-mail
 Address:</label> <select name="emailAds" id="emailAds">
 	<%
-		int emailAdNum = 0;
-		ArrayList<String> emailAd = (ArrayList<String>) request.getAttribute("emailad");
-		emailAdNum = emailAd.size();
-		for (int i = 0; i < emailAdNum; i++) {
+		for (int i = 0; i < email.size(); i++) {
 	%>
-	<option><%=emailAd.get(i)%></option>
+	<option><%=email.get(i).getData()%></option>
 	<%
 		}
 	%>
@@ -557,12 +570,9 @@ Address:</label> <select name="emailAds" id="emailAds">
 
 <select name="landlineNums" id="landlineNums">
 	<%
-		int landLineNum = 0;
-		ArrayList<String> landline = (ArrayList<String>) request.getAttribute("landline");
-		landLineNum = landline.size();
-		for (int i = 0; i < landLineNum; i++) {
+		for (int i = 0; i < landline.size(); i++) {
 	%>
-	<option><%=landline.get(i)%></option>
+	<option><%=landline.get(i).getData()%></option>
 	<%
 		}
 	%>
@@ -571,12 +581,9 @@ Address:</label> <select name="emailAds" id="emailAds">
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <select name="cellNumbers" id="cellNumbers">
 	<%
-		int mobileNum = 0;
-		ArrayList<String> mobile = (ArrayList<String>) request.getAttribute("mobileNumber");
-		mobileNum = mobile.size();
-		for (int i = 0; i < mobileNum; i++) {
+		for (int i = 0; i < mobile.size(); i++) {
 	%>
-	<option><%=mobile.get(i)%></option>
+	<option><%=mobile.get(i).getData()%></option>
 	<%
 		}
 	%>
@@ -586,7 +593,8 @@ Number:</label> <select name="cellNumbers" id="cellNumbers">
 <p>&nbsp;</p>
 <div id="apDiv11"><label for="userName3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Username:</label>
-<%=request.getAttribute("userName") %></div>
+<input name="userName" type="text" id="userName3" disabled="disabled"
+	value="<%=account.getUsername()%>" size="35" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -594,20 +602,20 @@ Number:</label> <select name="cellNumbers" id="cellNumbers">
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<div id="apDiv21"><input type="submit" name="updateBtn"
+	id="updateBtn" value="Update"
+	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
+</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><br />
 </p>
 </form>
-
-<div id="apDiv21"><input type="submit" name="updateBtn"
-	id="updateBtn" value="Update"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</div>
 <div id="apDiv10"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Account
-Type: </label> <%=request.getAttribute("acctType") %></div>
+Type: </label> <input type="text" maxlength="20" size="20"
+	value="<%=account.getType().toString()%>" /></div>
 </div>
 </body>
 </html>

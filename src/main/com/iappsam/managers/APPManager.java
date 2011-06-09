@@ -12,7 +12,6 @@ public interface APPManager {
 
 	void addAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
-	int saveAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 
 	void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
 

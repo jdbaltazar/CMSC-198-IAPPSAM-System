@@ -13,8 +13,6 @@ public interface RSMIManager {
 
 	void addRSMI(RSMI rsmi) throws TransactionException;
 
-	int saveRSMI(RSMI rsmi) throws TransactionException;
-
 	void updateRSMI(RSMI rsmi) throws TransactionException;
 
 	RSMI getRSMI(int rsmiID) throws TransactionException;
@@ -22,17 +20,4 @@ public interface RSMIManager {
 	boolean containsRSMI(RSMI rsmi) throws TransactionException;
 
 	List<RSMI> getAllRSMI() throws TransactionException;
-
-	// RecapitulationLine
-
-	void addRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException;
-
-	void updateRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException;
-
-	List<RecapitulationLine> getRecapitulationLineByRSMI(int rsmiID) throws TransactionException;
-
-	boolean containsRecapitulationLine(RecapitulationLine recapitulationLine) throws TransactionException;
-
-	List<RecapitulationLine> getAllRecapitulationLine() throws TransactionException;
-
 }

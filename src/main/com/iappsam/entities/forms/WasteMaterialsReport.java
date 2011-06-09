@@ -65,7 +65,7 @@ public class WasteMaterialsReport {
 		this.witnessToSignatoryID = witnessToSignatoryID;
 	}
 
-	public int getWmrID() {
+	public int getID() {
 		return wmrID;
 	}
 

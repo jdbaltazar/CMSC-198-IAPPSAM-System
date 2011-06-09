@@ -4,30 +4,37 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Employee;
+import com.iappsam.entities.Supplier;
 
 @Entity
 @Table(name = "Purchase_Order")
 public class PurchaseOrder {
 
-	@Column(name = "Supplier_ID")
-	private int supplierID;
-
 	@Id
 	@Column(name = "PO_Number")
 	private String poNumber;
 
+	@ManyToOne
+	@JoinColumn(name = "Supplier_ID")
+	private Supplier supplier;
+
 	@Column(name = "Date")
 	private Date date;
 
-	@Column(name = "Mode_Of_Procurement_ID")
-	private int modeOfProcurementID;
+	@ManyToOne
+	@JoinColumn(name = "Mode_Of_Procurement_ID")
+	private ModeOfProcurement modeOfProcurement;
 
-	@Column(name = "DivisionOffice_ID")
-	private int divisionOfficeID;
+	@ManyToOne
+	@JoinColumn(name = "DivisionOffice_ID")
+	private DivisionOffice divisionOffice;
 
 	@Column(name = "Date_Of_Delivery")
 	private Date dateOfDelivery;
@@ -47,54 +54,33 @@ public class PurchaseOrder {
 	@Column(name = "Amount")
 	private long amount;
 
-	@Column(name = "Signatory_ID")
-	private int supplierSignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Supplier_Name_ID")
+	private Employee supplierName;
 
-	@Column(name = "Signatory_ID1")
-	private int deanSignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Accountant_ID")
+	private Employee accountant;
 
-	@Column(name = "Signatory_ID2")
-	private int accountantSignatoryID;
+	@ManyToOne
+	@JoinColumn(name = "Dean_ID")
+	private Employee dean;
 
 	public PurchaseOrder() {
-
 	}
 
-	public PurchaseOrder(int supplierID, String poNumber, Date date, int modeOfProcurementID, int divisionOfficeID, Date dateOfDelivery, String paymentTerm, String deliveryTerm, String totalAmountInWords, String orNumber, long amount,
-			int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
+	public PurchaseOrder(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice,
+			Date dateOfDelivery, Employee supplierName, Employee accountant, Employee dean) {
 		super();
-		this.supplierID = supplierID;
 		this.poNumber = poNumber;
+		this.supplier = supplier;
 		this.date = date;
-		this.modeOfProcurementID = modeOfProcurementID;
-		this.divisionOfficeID = divisionOfficeID;
+		this.modeOfProcurement = modeOfProcurement;
+		this.divisionOffice = divisionOffice;
 		this.dateOfDelivery = dateOfDelivery;
-		this.paymentTerm = paymentTerm;
-		this.deliveryTerm = deliveryTerm;
-		this.totalAmountInWords = totalAmountInWords;
-		this.orNumber = orNumber;
-		this.amount = amount;
-		this.supplierSignatoryID = supplierSignatoryID;
-		this.deanSignatoryID = deanSignatoryID;
-		this.accountantSignatoryID = accountantSignatoryID;
-	}
-
-	public PurchaseOrder(int supplierID, String poNumber, Date date, int modeOfProcurementID, int divisionOfficeID, Date dateOfDelivery, String totalAmountInWords, int supplierSignatoryID, int deanSignatoryID, int accountantSignatoryID) {
-		super();
-		this.supplierID = supplierID;
-		this.poNumber = poNumber;
-		this.date = date;
-		this.modeOfProcurementID = modeOfProcurementID;
-		this.divisionOfficeID = divisionOfficeID;
-		this.dateOfDelivery = dateOfDelivery;
-		this.totalAmountInWords = totalAmountInWords;
-		this.supplierSignatoryID = supplierSignatoryID;
-		this.deanSignatoryID = deanSignatoryID;
-		this.accountantSignatoryID = accountantSignatoryID;
-	}
-
-	public int getSupplierID() {
-		return supplierID;
+		this.supplierName = supplierName;
+		this.accountant = accountant;
+		this.dean = dean;
 	}
 
 	public String getPoNumber() {
@@ -103,14 +89,6 @@ public class PurchaseOrder {
 
 	public Date getDate() {
 		return date;
-	}
-
-	public int getModeOfProcurementID() {
-		return modeOfProcurementID;
-	}
-
-	public int getDivisionOfficeID() {
-		return divisionOfficeID;
 	}
 
 	public Date getDateOfDelivery() {
@@ -137,22 +115,6 @@ public class PurchaseOrder {
 		return amount;
 	}
 
-	public int getSupplierSignatoryID() {
-		return supplierSignatoryID;
-	}
-
-	public int getDeanSignatoryID() {
-		return deanSignatoryID;
-	}
-
-	public int getAccountantSignatoryID() {
-		return accountantSignatoryID;
-	}
-
-	public void setSupplierID(int supplierID) {
-		this.supplierID = supplierID;
-	}
-
 	public void setPoNumber(String poNumber) {
 		this.poNumber = poNumber;
 	}
@@ -161,12 +123,12 @@ public class PurchaseOrder {
 		this.date = date;
 	}
 
-	public void setModeOfProcurementID(int modeOfProcurementID) {
-		this.modeOfProcurementID = modeOfProcurementID;
+	public DivisionOffice getDivisionOffice() {
+		return divisionOffice;
 	}
 
-	public void setDivisionOfficeID(int divisionOfficeID) {
-		this.divisionOfficeID = divisionOfficeID;
+	public void setDivisionOffice(DivisionOffice divisionOffice) {
+		this.divisionOffice = divisionOffice;
 	}
 
 	public void setDateOfDelivery(Date dateOfDelivery) {
@@ -175,6 +137,46 @@ public class PurchaseOrder {
 
 	public void setPaymentTerm(String paymentTerm) {
 		this.paymentTerm = paymentTerm;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	public ModeOfProcurement getModeOfProcurement() {
+		return modeOfProcurement;
+	}
+
+	public void setModeOfProcurement(ModeOfProcurement modeOfProcurement) {
+		this.modeOfProcurement = modeOfProcurement;
+	}
+
+	public Employee getSupplierName() {
+		return supplierName;
+	}
+
+	public void setSupplierName(Employee supplierName) {
+		this.supplierName = supplierName;
+	}
+
+	public Employee getAccountant() {
+		return accountant;
+	}
+
+	public void setAccountant(Employee accountant) {
+		this.accountant = accountant;
+	}
+
+	public Employee getDean() {
+		return dean;
+	}
+
+	public void setDean(Employee dean) {
+		this.dean = dean;
 	}
 
 	public void setDeliveryTerm(String deliveryTerm) {
@@ -193,16 +195,28 @@ public class PurchaseOrder {
 		this.amount = amount;
 	}
 
-	public void setSupplierSignatoryID(int supplierSignatoryID) {
-		this.supplierSignatoryID = supplierSignatoryID;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((poNumber == null) ? 0 : poNumber.hashCode());
+		return result;
 	}
 
-	public void setDeanSignatoryID(int deanSignatoryID) {
-		this.deanSignatoryID = deanSignatoryID;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PurchaseOrder other = (PurchaseOrder) obj;
+		if (poNumber == null) {
+			if (other.poNumber != null)
+				return false;
+		} else if (!poNumber.equals(other.poNumber))
+			return false;
+		return true;
 	}
-
-	public void setAccountantSignatoryID(int accountantSignatoryID) {
-		this.accountantSignatoryID = accountantSignatoryID;
-	}
-
 }

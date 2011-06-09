@@ -19,11 +19,6 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public String savePO(PurchaseOrder purchaseOrder) throws TransactionException {
-		return (String) save(purchaseOrder);
-	}
-
-	@Override
 	public void updatePO(PurchaseOrder purchaseOrder) throws TransactionException {
 		update(purchaseOrder);
 	}
@@ -34,8 +29,8 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public boolean containsPO(PurchaseOrder purchaseOrder) throws TransactionException {
-		return contains(purchaseOrder);
+	public boolean containsPO(PurchaseOrder po) throws TransactionException {
+		return getPO(po.getPoNumber()) != null;
 	}
 
 	@Override
@@ -44,19 +39,27 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
+	public void removePurchaseOrder(PurchaseOrder po) throws TransactionException {
+		remove(po);
+	}
+
+	@Override
 	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException, DuplicateEntryException {
-		if (getModeOfProcurement(modeOfProcurement.getModeOfProcurement()) == null)
+		ModeOfProcurement mop = getModeOfProcurement(modeOfProcurement.getName());
+		if (mop == null)
 			add(modeOfProcurement);
+		else
+			modeOfProcurement.setId(mop.getId());
 	}
 
 	@Override
-	public void updateModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
-		update(modeOfProcurement);
+	public void updateModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
+		update(mop);
 	}
 
 	@Override
-	public boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException {
-		return contains(modeOfProcurement);
+	public boolean containsModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
+		return getModeOfProcurement(mop.getId()) != null;
 	}
 
 	@Override
@@ -71,13 +74,16 @@ public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
 	public ModeOfProcurement getModeOfProcurement(String name) throws TransactionException {
-		// TODO Auto-generated method stub
 		List<ModeOfProcurement> mops = getAllModeOfProcurement();
 		for (ModeOfProcurement m : mops) {
-			if (m.getModeOfProcurement().equalsIgnoreCase(name))
+			if (m.getName().equalsIgnoreCase(name))
 				return m;
 		}
 		return null;
 	}
 
+	@Override
+	public void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
+		remove(mop);
+	}
 }

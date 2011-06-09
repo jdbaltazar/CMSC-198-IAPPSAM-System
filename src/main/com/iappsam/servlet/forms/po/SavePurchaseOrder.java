@@ -93,16 +93,16 @@ public class SavePurchaseOrder extends HttpServlet {
 			if (validInputs(supplierName, poNumber, dateAccomplished, mop.getId(), divisionName, officeName, dateOfDelivery, totalAmountInWords, supplierContactName, supplierContactDesignation,
 					deanName, deanDesignation, accountantName, accountantDesignation, itemIDs, amount)) {
 
-				PurchaseOrder po = new PurchaseOrder(supplier.getId(), poNumber, dateAccomplished, mop.getId(), dOffice.getId(), dateOfDelivery, paymentTerm, deliveryTerm, totalAmountInWords,
-						orNumber, amount, supplierSignatory.getId(), deanSignatory.getId(), accountantSignatory.getId());
-				poManager.addPO(po);
+//				PurchaseOrder po = new PurchaseOrder(supplier.getId(), poNumber, dateAccomplished, mop.getId(), dOffice.getId(), dateOfDelivery, paymentTerm, deliveryTerm, totalAmountInWords,
+//						orNumber, amount, supplierSignatory.getId(), deanSignatory.getId(), accountantSignatory.getId());
+//				poManager.addPO(po);
 
 				// poLines
 
 				for (String itemID : itemIDs) {
 					Item item = iManager.getItem(Integer.parseInt(itemID));
 					if (item != null) {
-						PurchaseOrderLine poLine = new PurchaseOrderLine(item.getId(), po.getPoNumber());
+//						PurchaseOrderLine poLine = new PurchaseOrderLine(item.getId(), po.getPoNumber());
 						// poManager.addLine(poLine);
 					}
 				}

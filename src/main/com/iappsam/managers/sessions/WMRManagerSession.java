@@ -18,11 +18,6 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 	}
 
 	@Override
-	public int saveWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
-		return (Integer) save(wasteMaterialsReport);
-	}
-
-	@Override
 	public void updateWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
 		update(wasteMaterialsReport);
 	}
@@ -34,7 +29,7 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 
 	@Override
 	public boolean containsWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
-		return contains(wasteMaterialsReport);
+		return getWMR(wasteMaterialsReport.getID()) != null;
 	}
 
 	@Override
@@ -57,18 +52,13 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 	}
 
 	@Override
-	public String saveDisposal(Disposal disposal) throws TransactionException {
-		return (String) save(disposal);
-	}
-
-	@Override
 	public void removeDisposal(Disposal disposal) throws TransactionException {
 		remove(disposal);
 	}
 
 	@Override
 	public boolean containsDisposal(Disposal disposal) throws TransactionException {
-		return contains(disposal);
+		return getDisposal(disposal.getId()) != null;
 	}
 
 	@Override

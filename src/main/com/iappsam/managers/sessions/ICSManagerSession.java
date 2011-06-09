@@ -15,11 +15,6 @@ public class ICSManagerSession extends AbstractManager implements ICSManager {
 	}
 
 	@Override
-	public int saveICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException {
-		return (Integer) save(inventoryCustodianSlip);
-	}
-
-	@Override
 	public void updateICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException {
 		update(inventoryCustodianSlip);
 	}
@@ -31,7 +26,7 @@ public class ICSManagerSession extends AbstractManager implements ICSManager {
 
 	@Override
 	public boolean containsICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException {
-		return contains(inventoryCustodianSlip);
+		return getICS(inventoryCustodianSlip.getIcsID()) != null;
 	}
 
 	@Override

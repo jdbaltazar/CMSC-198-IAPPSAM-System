@@ -58,7 +58,7 @@ public class PTRPA {
 		this.upControlNumber = upControlNumber;
 	}
 
-	public int getPtrpaID() {
+	public int getID() {
 		return ptrpaID;
 	}
 

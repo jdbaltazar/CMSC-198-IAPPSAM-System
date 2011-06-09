@@ -2,6 +2,7 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.Employee;
@@ -18,13 +19,24 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 	private Supplier supplier;
 	private PersonManager pm;
 
-	@Override
-	protected void afterInit() {
+	@Before
+	public void init() throws Exception {
+		super.init();
 		su = new SupplierManagerSession();
 		pm = new PersonManagerSession();
 
 		contactPerson = Employee.create("designation", "title", "name");
 		supplier = new Supplier("Supplier Name", "Address", contactPerson);
+	}
+
+	@Test
+	public void addTwoSupplier() throws TransactionException, DuplicateEntryException {
+		Supplier supplier2 = new Supplier("Name", "address2", contactPerson);
+
+		su.addSupplier(supplier);
+		su.addSupplier(supplier2);
+
+		assertEquals(2, su.getAllSuppliers().size());
 	}
 
 	@Test
@@ -36,6 +48,7 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 		assertTrue(contactPerson.hasSuppliers());
 		assertTrue(contactPerson.getSuppliers().contains(supplier));
 	}
+
 
 	@Test
 	public void cascadeDeleteEmployeeOnSupplierRemoval() throws TransactionException, DuplicateEntryException {

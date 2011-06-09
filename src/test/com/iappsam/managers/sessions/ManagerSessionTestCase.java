@@ -1,8 +1,7 @@
 package com.iappsam.managers.sessions;
 
-import org.junit.Before;
-
 import com.iappsam.entities.EntityRemover;
+import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class ManagerSessionTestCase {
@@ -11,13 +10,8 @@ public class ManagerSessionTestCase {
 		super();
 	}
 
-	@Before
-	public void init() throws TransactionException {
+	public void init() throws Exception {
 		EntityRemover.removeAll();
-		afterInit();
 	}
 
-	protected void afterInit() {
-
-	}
 }

@@ -16,11 +16,6 @@ public class AccountManagerSession extends AbstractManager implements AccountMan
 	}
 
 	@Override
-	public String saveAccount(Account account) throws TransactionException {
-		return (String) save(account);
-	}
-
-	@Override
 	public void updateAccount(Account account) throws TransactionException {
 		update(account);
 	}
@@ -37,12 +32,12 @@ public class AccountManagerSession extends AbstractManager implements AccountMan
 
 	@Override
 	public boolean containsAccount(Account account) throws TransactionException {
-		return contains(account);
+		return getAccount(account.getUsername()) != null;
 	}
 
 	@Override
 	public boolean containsAccount(String username) throws TransactionException {
-		return (getAccount(username) != null);
+		return getAccount(username) != null;
 	}
 
 	@Override

@@ -17,23 +17,23 @@ public class ModeOfProcurement {
 	private int id;
 
 	@Column(name = "Name")
-	private String modeOfProcurement;
+	private String name;
 
 	public ModeOfProcurement() {
 		super();
 	}
 
-	public ModeOfProcurement(String modeOfProcurement) {
+	public ModeOfProcurement(String name) {
 		super();
-		this.modeOfProcurement = modeOfProcurement;
+		this.name = name;
 	}
 
-	public String getModeOfProcurement() {
-		return modeOfProcurement;
+	public String getName() {
+		return name;
 	}
 
-	public void setModeOfProcurement(String modeOfProcurement) {
-		this.modeOfProcurement = modeOfProcurement;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getId() {

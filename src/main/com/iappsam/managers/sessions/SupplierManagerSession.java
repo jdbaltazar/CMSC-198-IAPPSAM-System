@@ -18,11 +18,6 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 	}
 
 	@Override
-	public int saveSupplier(Supplier supplier) throws TransactionException {
-		return (Integer) save(supplier);
-	}
-
-	@Override
 	public void updateSupplier(Supplier supplier) throws TransactionException {
 		update(supplier);
 	}
@@ -45,16 +40,18 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 	@Override
 	public void removeSupplier(Supplier supplier) throws TransactionException {
 
-		remove(supplier);
 		Employee contactPerson = supplier.getContactPerson();
 
-		if (contactPerson.getSupplierCount() == 1)
+		if (contactPerson.getSupplierCount() == 1) {
+			remove(supplier);
 			remove(contactPerson);
+		} else
+			remove(supplier);
 	}
 
 	@Override
 	public boolean containsSupplier(Supplier supplier) throws TransactionException {
-		return contains(supplier);
+		return getSupplier(supplier.getId()) != null;
 	}
 
 	@Override

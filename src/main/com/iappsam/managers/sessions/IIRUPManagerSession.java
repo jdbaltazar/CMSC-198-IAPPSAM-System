@@ -16,11 +16,6 @@ public class IIRUPManagerSession extends AbstractManager implements IIRUPManager
 	}
 
 	@Override
-	public int saveIIRUP(IIRUP iirup) throws TransactionException {
-		return (Integer) save(iirup);
-	}
-
-	@Override
 	public void updateIIRUP(IIRUP iirup) throws TransactionException {
 		update(iirup);
 	}

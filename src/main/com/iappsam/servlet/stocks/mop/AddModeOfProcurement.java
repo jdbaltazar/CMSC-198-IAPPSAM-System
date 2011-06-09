@@ -44,7 +44,7 @@ public class AddModeOfProcurement extends HttpServlet {
 		String modeofP = (String) request.getParameter("modeOfProcurementField");
 
 		if (Verifier.validEntry(modeofP)) {
-			modeofProc.setModeOfProcurement(modeofP);
+			modeofProc.setName(modeofP);
 
 			try {
 				poManager.addModeOfProcurement(modeofProc);

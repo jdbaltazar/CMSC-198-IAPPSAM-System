@@ -16,8 +16,6 @@ public interface ItemManager extends Manager {
 
 	void addItem(Item item) throws TransactionException;
 
-	int saveItem(Item item) throws TransactionException;
-
 	void updateItem(Item item) throws TransactionException;
 
 	Item getItem(int itemID) throws TransactionException;

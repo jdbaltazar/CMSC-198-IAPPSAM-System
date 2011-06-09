@@ -19,14 +19,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
-	public int savePerson(Person person) throws TransactionException, DuplicateEntryException {
-		if (!contains(person.getName()))
-			return (Integer) save(person);
-		else
-			throw new DuplicateEntryException();
-	}
-
-	@Override
 	public void updatePerson(Person person) throws TransactionException {
 		update(person);
 	}
@@ -69,16 +61,8 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException {
-		if (!contains(employee))
+		if (!containsEmployee(employee))
 			add(employee);
-		else
-			throw new DuplicateEntryException();
-	}
-
-	@Override
-	public int saveEmployee(Employee employee) throws TransactionException, DuplicateEntryException {
-		if (!contains(employee))
-			return (Integer) save(employee);
 		else
 			throw new DuplicateEntryException();
 	}
@@ -93,7 +77,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		List<Employee> employees = getAllEmployee();
 		List<Employee> results = new ArrayList<Employee>();
 		for (Employee emp : employees) {
-			if (emp.getId() == personID)
+			if (emp.getPerson().getId() == personID)
 				results.add(emp);
 		}
 		return results;
@@ -106,7 +90,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public boolean containsEmployee(Employee employee) throws TransactionException {
-		return contains(employee);
+		return getEmployee(employee.getId()) != null;
 	}
 
 	@Override
@@ -117,11 +101,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	@Override
 	public void addSignatory(Signatory signatory) throws TransactionException {
 		add(signatory);
-	}
-
-	@Override
-	public int saveSignatory(Signatory signatory) throws TransactionException {
-		return (Integer) save(signatory);
 	}
 
 	@Override
@@ -136,7 +115,7 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public boolean containsSignatory(Signatory signatory) throws TransactionException {
-		return contains(signatory);
+		return getSignatory(signatory.getId()) != null;
 	}
 
 	@Override

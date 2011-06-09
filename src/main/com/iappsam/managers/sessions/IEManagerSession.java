@@ -17,11 +17,6 @@ public class IEManagerSession extends AbstractManager implements IEManager {
 	}
 
 	@Override
-	public int saveIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException {
-		return (Integer) save(inventoryOfEquipment);
-	}
-
-	@Override
 	public void updateIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException {
 		update(inventoryOfEquipment);
 	}
@@ -33,7 +28,7 @@ public class IEManagerSession extends AbstractManager implements IEManager {
 
 	@Override
 	public boolean containsIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException {
-		return contains(inventoryOfEquipment);
+		return getIE(inventoryOfEquipment.getIeID()) != null;
 	}
 
 	@Override

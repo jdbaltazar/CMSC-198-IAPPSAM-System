@@ -12,8 +12,6 @@ public interface WMRManager {
 
 	void addWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
 
-	int saveWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
-
 	void updateWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
 
 	WasteMaterialsReport getWMR(int wasteMaterialsReportID) throws TransactionException;
@@ -25,8 +23,6 @@ public interface WMRManager {
 	// Disposal
 
 	void addDisposal(Disposal disposal) throws TransactionException;
-
-	String saveDisposal(Disposal disposal) throws TransactionException;
 
 	void updateDisposal(Disposal disposal) throws TransactionException;
 
