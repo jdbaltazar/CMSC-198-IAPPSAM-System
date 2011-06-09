@@ -2,30 +2,43 @@ package com.iappsam.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
+import org.mockito.Mock;
 
-public class LoginServletTest {
+import com.iappsam.LoginModule;
+import com.iappsam.servlet.item.ServletTestCase;
+
+import static org.mockito.BDDMockito.*;
+
+public class LoginServletTest extends ServletTestCase {
+
+	@Mock
+	private HttpSession session;
+	@Mock
+	private LoginModule loginModule;
+
+	private LoginServlet loginServlet;
+
+	@Before
+	public void init() {
+		loginServlet = new LoginServlet(loginModule);
+	}
 
 	@Test
 	public void login() throws ServletException, IOException {
-		HttpServletRequest request = mock(HttpServletRequest.class);
-		RequestDispatcher dispatcher = mock(RequestDispatcher.class);
-		HttpSession session = mock(HttpSession.class);
 
-		when(request.getRequestDispatcher("menu.jsp")).thenReturn(dispatcher);
-		when(request.getParameter(LoginServlet.USERNAME)).thenReturn("admin");
-		when(request.getParameter(LoginServlet.PASSWORD)).thenReturn("admin");
-		when(request.getSession()).thenReturn(session);
+		givenRequestDispatcher("menu.jsp", dispatcher);
+		givenParam(LoginServlet.USERNAME, "admin");
+		givenParam(LoginServlet.PASSWORD, "admin");
+		given(loginModule.login("admin", "admin")).willReturn(true);
+		given(request.getSession()).willReturn(session);
 
-		LoginServlet controller = new LoginServlet();
-		controller.doPost(request, null);
+		loginServlet.doPost(request, response);
 
-		verify(request.getRequestDispatcher("menu.jsp"));
+		verifyForwardedTo("menu.jsp");
 	}
 }

@@ -19,8 +19,15 @@ public class LoginServlet extends HttpServlet {
 	public static final String USERNAME = "username";
 	public static final String PASSWORD = "password";
 
+	private LoginModule loginModule;
+
 	public LoginServlet() {
+		this(new LoginModule());
+	}
+
+	public LoginServlet(LoginModule loginModule) {
 		super();
+		this.loginModule = loginModule;
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +38,6 @@ public class LoginServlet extends HttpServlet {
 		String username = (String) request.getParameter(USERNAME);
 		String password = (String) request.getParameter(PASSWORD);
 
-		LoginModule loginModule = new LoginModule();
 		if (loginModule.login(username, password))
 			forwardToMenuFrameJsp(request, response, username);
 		else

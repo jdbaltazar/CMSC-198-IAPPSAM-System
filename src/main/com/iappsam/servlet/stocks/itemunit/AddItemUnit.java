@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.util.Verifier;
 
 @WebServlet("/stocks/stocks/AddItemUnit.do")
 public class AddItemUnit extends HttpServlet {
+
+	private static final long serialVersionUID = 2810822469770975662L;
 
 	public AddItemUnit() {
 		super();
@@ -28,9 +29,7 @@ public class AddItemUnit extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("......inside aaditemunit.java");
-		
+
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 
@@ -42,16 +41,10 @@ public class AddItemUnit extends HttpServlet {
 			try {
 				itemManager.addUnit(unit);
 				add = request.getRequestDispatcher("ViewItemUnits.do");
-				System.out.println("item unit was saved!!!");
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DuplicateEntryException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		add.forward(request, response);
-		
 	}
 }

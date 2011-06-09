@@ -96,7 +96,7 @@ public class ItemManagerSessionTest {
 		}
 	}
 
-	private void addEntities() throws TransactionException, DuplicateEntryException {
+	private void addEntities() throws TransactionException {
 		im.addItemCategory(category);
 		im.addItemCondition(condition);
 		im.addItemStatus(status);

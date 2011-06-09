@@ -170,12 +170,6 @@
 	top: 737px;
 }
 
-#welcome {
-	position: relative;
-	z-index: 11;
-	left: 16px;
-	top: 179px;
-}
 
 #gap {
 	position: absolute;
@@ -274,10 +268,10 @@
 	top: 487px;
 }
 
-#fillupDiv {
+#FormDiv {
 	position: absolute;
-	width: 200px;
-	height: 23px;
+	width: 405px;
+	height: 21px;
 	z-index: 23;
 	left: 496px;
 	top: 397px;
@@ -355,13 +349,6 @@
 	top: 541px;
 }
 
-#logoHeader {
-	position: absolute;
-	width: 200px;
-	height: 115px;
-	z-index: 1;
-}
-
 #apDiv2 {
 	position: absolute;
 	width: 200px;
@@ -382,14 +369,6 @@
 	top: 536px;
 }
 
-#apDiv6 {
-	position: relative;
-	width: 100%;
-	height: 160%;
-	z-index: 1;
-	left: 11px;
-	top: 173px;
-}
 
 #apDiv7 {
 	width: 43px;

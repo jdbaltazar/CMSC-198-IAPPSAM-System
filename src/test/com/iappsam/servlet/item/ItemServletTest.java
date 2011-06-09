@@ -4,16 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
@@ -24,24 +19,13 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 import static com.iappsam.servlet.item.ItemParameter.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ItemServletTest {
-
-	@Mock
-	private HttpServletRequest request;
-
-	@Mock
-	private HttpServletResponse response;
-
-	@Mock
-	private RequestDispatcher dispatcher;
+public class ItemServletTest extends ServletTestCase {
 
 	@Mock
 	private ItemManager itemManager;
-
 	@Mock
 	private ItemSearcher searcher;
 
@@ -55,7 +39,7 @@ public class ItemServletTest {
 	private ItemServlet servlet;
 
 	@Before
-	public void init() throws TransactionException {
+	public void init() {
 		servlet = new ItemServlet(itemManager, searcher);
 		item.setId(1);
 	}
@@ -64,8 +48,8 @@ public class ItemServletTest {
 	public void listItems() throws ServletException, IOException, TransactionException {
 		List<Item> items = new ArrayList<Item>();
 
-		when(itemManager.getAllItems()).thenReturn(items);
-		when(request.getRequestDispatcher(ItemServlet.LIST_ITEMS_JSP)).thenReturn(dispatcher);
+		given(itemManager.getAllItems()).willReturn(items);
+		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP, dispatcher);
 
 		servlet.doGet(request, response);
 
@@ -77,9 +61,9 @@ public class ItemServletTest {
 	public void searchItems() throws ServletException, IOException {
 		ArrayList<Item> list = new ArrayList<Item>();
 
-		when(request.getParameter(ItemParameter.QUERY)).thenReturn("search");
-		when(searcher.search("search")).thenReturn(list);
-		when(request.getRequestDispatcher(ItemServlet.LIST_ITEMS_JSP)).thenReturn(dispatcher);
+		givenParam(ItemParameter.QUERY, "search");
+		given(searcher.search("search")).willReturn(list);
+		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP, dispatcher);
 
 		servlet.doGet(request, response);
 
@@ -88,15 +72,10 @@ public class ItemServletTest {
 		verifyForwardedTo(ItemServlet.LIST_ITEMS_JSP);
 	}
 
-	private void verifyForwardedTo(String jsp) throws ServletException, IOException {
-		verify(request).getRequestDispatcher(jsp);
-		verify(dispatcher).forward(request, response);
-	}
-
 	@Test
 	public void newItem() throws ServletException, IOException {
-		when(request.getParameter("new")).thenReturn("item");
-		when(request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP)).thenReturn(dispatcher);
+		givenParam("new", "item");
+		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP, dispatcher);
 
 		servlet.doGet(request, response);
 
@@ -105,8 +84,8 @@ public class ItemServletTest {
 
 	@Test
 	public void viewItem() throws ServletException, IOException, TransactionException {
-		mockRequestToViewItem();
-		mockItemManager();
+		givenRequestToViewItem();
+		givenItemManager();
 
 		servlet.doGet(request, response);
 
@@ -115,17 +94,10 @@ public class ItemServletTest {
 		verifyForwardedTo(ItemServlet.VIEW_ITEM_JSP);
 	}
 
-	private void mockRequestToViewItem() {
-		when(request.getParameter(ItemParameter.ITEM_ID)).thenReturn("1");
-		when(request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP)).thenReturn(dispatcher);
-	}
-
 	@Test
 	public void itemWasAddedSuccessfully() throws ServletException, IOException, TransactionException {
-		mockRequestToFillupForm();
-		mockItemManager();
-
-		when(request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP)).thenReturn(dispatcher);
+		givenRequestToFillupForm();
+		givenItemManager();
 
 		servlet.doPost(request, response);
 
@@ -135,34 +107,40 @@ public class ItemServletTest {
 
 	@Test
 	public void itemWasNotAdded() throws ServletException, IOException {
-		when(request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP)).thenReturn(dispatcher);
+		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP, dispatcher);
+
 		servlet.doPost(request, response);
 
 		verifyForwardedTo(ItemServlet.NEW_ITEM_JSP);
 	}
 
-	private void mockItemManager() throws TransactionException {
-		when(itemManager.getUnitByName(unit.getName())).thenReturn(unit);
-		when(itemManager.getItemConditionByName(con.getName())).thenReturn(con);
-		when(itemManager.getItemCategoryByName(cat.getName())).thenReturn(cat);
-		when(itemManager.getItemStatusByName(stat.getName())).thenReturn(stat);
-		when(itemManager.getItem(item.getId())).thenReturn(item);
+	private void givenRequestToViewItem() {
+		given(request.getParameter(ItemParameter.ITEM_ID)).willReturn("1");
+		given(request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP)).willReturn(dispatcher);
 	}
 
-	private void mockRequestToFillupForm() {
-		when(request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP)).thenReturn(dispatcher);
-		when(request.getParameter(DESCRIPTION)).thenReturn("des");
-		when(request.getParameter(STOCK_NUMBER)).thenReturn("10");
-		when(request.getParameter(PRICE)).thenReturn("des");
-		when(request.getParameter(YEAR)).thenReturn("2011");
-		when(request.getParameter(MONTH)).thenReturn("01");
-		when(request.getParameter(DAY)).thenReturn("01");
-		when(request.getParameter(INVENTORY_ITEM_NUM)).thenReturn("inv");
-		when(request.getParameter(PROPERTY_NUM)).thenReturn("proper");
-		when(request.getParameter(UNIT)).thenReturn(unit.getName());
-		when(request.getParameter(CONDITION)).thenReturn(con.getName());
-		when(request.getParameter(CATEGORY)).thenReturn(cat.getName());
-		when(request.getParameter(STATUS)).thenReturn(stat.getName());
-		when(request.getParameter(ITEM_ID)).thenReturn(item.getId() + "");
+	private void givenItemManager() throws TransactionException {
+		given(itemManager.getUnitByName(unit.getName())).willReturn(unit);
+		given(itemManager.getItemConditionByName(con.getName())).willReturn(con);
+		given(itemManager.getItemCategoryByName(cat.getName())).willReturn(cat);
+		given(itemManager.getItemStatusByName(stat.getName())).willReturn(stat);
+		given(itemManager.getItem(item.getId())).willReturn(item);
+	}
+
+	private void givenRequestToFillupForm() {
+		given(request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP)).willReturn(dispatcher);
+		given(request.getParameter(DESCRIPTION)).willReturn("des");
+		given(request.getParameter(STOCK_NUMBER)).willReturn("10");
+		given(request.getParameter(PRICE)).willReturn("des");
+		given(request.getParameter(YEAR)).willReturn("2011");
+		given(request.getParameter(MONTH)).willReturn("01");
+		given(request.getParameter(DAY)).willReturn("01");
+		given(request.getParameter(INVENTORY_ITEM_NUM)).willReturn("inv");
+		given(request.getParameter(PROPERTY_NUM)).willReturn("proper");
+		given(request.getParameter(UNIT)).willReturn(unit.getName());
+		given(request.getParameter(CONDITION)).willReturn(con.getName());
+		given(request.getParameter(CATEGORY)).willReturn(cat.getName());
+		given(request.getParameter(STATUS)).willReturn(stat.getName());
+		given(request.getParameter(ITEM_ID)).willReturn(item.getId() + "");
 	}
 }

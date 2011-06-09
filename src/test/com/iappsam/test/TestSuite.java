@@ -22,12 +22,7 @@ import com.iappsam.managers.sessions.PersonManagerSessionTest;
 import com.iappsam.managers.sessions.SupplierManagerSessionTest;
 import com.iappsam.reporting.APPReportTest;
 import com.iappsam.search.IIRUPSearcherTest;
-import com.iappsam.search.ItemCategorySearcherTest;
-import com.iappsam.search.ItemConditionSearcherTest;
 import com.iappsam.search.ItemSearcherTest;
-import com.iappsam.search.ItemStatusSearcherTest;
-import com.iappsam.search.UnitSearcherTest;
-import com.iappsam.servlet.LoginServlet;
 import com.iappsam.servlet.LoginServletTest;
 import com.iappsam.servlet.item.ItemServletTest;
 import com.iappsam.util.HibernateUtilTest;
@@ -52,10 +47,6 @@ import com.iappsam.util.HibernateUtilTest;
 		ItemManagerSessionTest.class, //
 		APPManagerSessionTest.class, //
 		ItemSearcherTest.class, //
-		ItemCategorySearcherTest.class,//
-		ItemConditionSearcherTest.class, //
-		ItemStatusSearcherTest.class, //
-		UnitSearcherTest.class, //
 		IIRUPSearcherTest.class, //
 		ItemServletTest.class, //
 		APPReportTest.class })

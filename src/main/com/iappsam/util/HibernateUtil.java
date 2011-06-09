@@ -134,8 +134,7 @@ public class HibernateUtil {
 
 			sessionFactory = conf.buildSessionFactory();
 
-			EntityRemover.removeAll();
-			persistDefaultEntities();
+			addDefaulEntities();
 			return true;
 		} catch (Throwable ex) {
 			ex.printStackTrace();
@@ -144,7 +143,7 @@ public class HibernateUtil {
 		}
 	}
 
-	private static void persistDefaultEntities() throws TransactionException, DuplicateEntryException {
+	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();
@@ -168,14 +167,15 @@ public class HibernateUtil {
 
 	public static void addDisposals() throws TransactionException {
 		WMRManager wmrm = new WMRManagerSession();
-		wmrm.addDisposal(new Disposal("Destroyed"));
-		wmrm.addDisposal(new Disposal("Sold at private sale"));
-		wmrm.addDisposal(new Disposal("Sold at public auction"));
-		wmrm.addDisposal(new Disposal("Transferred Without Cost"));
+		wmrm.addDisposal("Destroyed");
+		wmrm.addDisposal("Sold at private sale");
+		wmrm.addDisposal("Sold at public auction");
+		wmrm.addDisposal("Transferred Without Cost");
 	}
 
 	public static void addAdminAccount() throws TransactionException {
-		new AccountManagerSession().addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
+		AccountManagerSession am = new AccountManagerSession();
+		am.addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 
 	public static Session startSession() throws HibernateException {
