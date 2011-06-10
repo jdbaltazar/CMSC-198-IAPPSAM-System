@@ -52,12 +52,12 @@ public class SaveEditedBuilding extends HttpServlet {
 		String address = (String) request.getParameter("address");
 		Building building = null;
 		try {
-			building = Managers.doManager.getBuilding(buildingID);
+			building = Managers.DIVISION_OFFICE_MANAGER.getBuilding(buildingID);
 			if (Verifier.validEntry(name)) {
 				building.setBuildingName(name);
 				building.setBuildingAddress(address);
 				try {
-					Managers.doManager.updateBuilding(building);
+					Managers.DIVISION_OFFICE_MANAGER.updateBuilding(building);
 					save = request.getRequestDispatcher("ViewBuildings.do");
 				} catch (TransactionException e) {
 					e.printStackTrace();

@@ -7,9 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.item.Action;
 
-public class AddItemToPrAction implements Action {
+public class AddingItemToPrAction implements Action {
+
+	private PersonManager pm;
+
+	public AddingItemToPrAction(PersonManager personManagerSession) {
+		this.pm = personManagerSession;
+	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

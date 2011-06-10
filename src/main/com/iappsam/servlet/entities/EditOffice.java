@@ -48,7 +48,7 @@ public class EditOffice extends HttpServlet {
 		int officeID = Integer.parseInt((String) request.getParameter("officeID"));
 		DivisionOffice office = null;
 		try {
-			office = Managers.doManager.getDivisionOffice(officeID);
+			office = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(officeID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

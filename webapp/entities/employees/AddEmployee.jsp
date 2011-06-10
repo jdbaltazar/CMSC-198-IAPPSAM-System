@@ -540,7 +540,7 @@
 					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
 				<select name="division" id="division3">
 					<%
-						List<DivisionOffice> dOffice = Managers.doManager.getAllDivisionOffice();
+						List<DivisionOffice> dOffice = Managers.DIVISION_OFFICE_MANAGER.getAllDivisionOffice();
 									for (int i = 0; i < dOffice.size(); i++) {
 					%>
 					<option id="<%=dOffice.get(i).getId()%>">

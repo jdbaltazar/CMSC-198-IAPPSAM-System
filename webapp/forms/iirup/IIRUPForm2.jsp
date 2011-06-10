@@ -234,7 +234,7 @@
 	String station = (String) request.getParameter("station");
 	System.out.println("JK's Number:"+station);
 	if(station!=null){
-	DivisionOffice dOffice =Managers.doManager.getDivisionOffice(Integer.parseInt(station));
+	DivisionOffice dOffice =Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(Integer.parseInt(station));
 	session.setAttribute("station", dOffice);
 	}
 	String accountableOfficer = (String) request.getParameter("accountableOfficer");

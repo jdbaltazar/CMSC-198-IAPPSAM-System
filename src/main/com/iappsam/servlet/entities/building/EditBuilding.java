@@ -49,7 +49,7 @@ public class EditBuilding extends HttpServlet {
 		Building building = null;
 		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		try {
-			building = Managers.doManager.getBuilding(buildingID);
+			building = Managers.DIVISION_OFFICE_MANAGER.getBuilding(buildingID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
