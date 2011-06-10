@@ -18,7 +18,7 @@
 	$(function() {
 		$("#datepicker").datepicker({
 			dateFormat : "yy-mm-dd",
-			numberOfMonths : 3,
+			numberOfMonths : 1,
 			showButtonPanel : true
 		});
 	});
