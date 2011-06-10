@@ -38,4 +38,9 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 	public void removePR(PurchaseRequest pr) throws TransactionException {
 		remove(pr);
 	}
+
+	@Override
+	public PurchaseRequest getPR(PurchaseRequest pr) throws TransactionException {
+		return getPR(pr.getId());
+	}
 }

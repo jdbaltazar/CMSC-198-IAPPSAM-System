@@ -135,25 +135,25 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Request` (
   `ALOBS_Number` VARCHAR(45) NULL ,
   `ALOBS_Date` DATE NULL ,
   `Purpose` VARCHAR(200) NOT NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
+  `Requested_by` INT NOT NULL ,
+  `Approved_by` INT NOT NULL ,
   PRIMARY KEY (`Purchase_Request_ID`) ,
   INDEX `fk_Purchase_Request_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Purchase_Request_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_Purchase_Request_Signatory2` (`Signatory_ID1` ASC) ,
+  INDEX `fk_Purchase_Request_Employee1` (`Requested_by` ASC) ,
+  INDEX `fk_Purchase_Request_Employee2` (`Approved_by` ASC) ,
   CONSTRAINT `fk_Purchase_Request_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Request_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Purchase_Request_Employee1`
+    FOREIGN KEY (`Requested_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Request_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Purchase_Request_Employee2`
+    FOREIGN KEY (`Approved_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -310,19 +310,19 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `Date_Of_Delivery` VARCHAR(100) NOT NULL ,
   `Payment_Term` VARCHAR(80) NULL ,
   `Delivery_Term` VARCHAR(80) NULL ,
-  `Total_Amount_In_Words` VARCHAR(100) NOT NULL ,
+  `Total_Amount_In_Words` VARCHAR(100) NULL ,
   `OR_Number` VARCHAR(60) NULL ,
   `Amount` DECIMAL(50,2) NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
-  `Signatory_ID2` INT NOT NULL ,
+  `Supplier_Name_ID` INT NOT NULL ,
+  `Accountant_ID` INT NOT NULL ,
+  `Dean_ID` INT NOT NULL ,
   PRIMARY KEY (`PO_Number`) ,
   INDEX `fk_Purchase_Order_Supplier1` (`Supplier_ID` ASC) ,
   INDEX `fk_Purchase_Order_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Purchase_Order_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_Purchase_Order_Signatory2` (`Signatory_ID1` ASC) ,
-  INDEX `fk_Purchase_Order_Signatory3` (`Signatory_ID2` ASC) ,
   INDEX `fk_Purchase_Order_Mode_Of_Procurement1` (`Mode_Of_Procurement_ID` ASC) ,
+  INDEX `fk_Purchase_Order_Employee1` (`Supplier_Name_ID` ASC) ,
+  INDEX `fk_Purchase_Order_Employee2` (`Accountant_ID` ASC) ,
+  INDEX `fk_Purchase_Order_Employee3` (`Dean_ID` ASC) ,
   CONSTRAINT `fk_Purchase_Order_Supplier1`
     FOREIGN KEY (`Supplier_ID` )
     REFERENCES `IAPPSAM`.`Supplier` (`Supplier_ID` )
@@ -333,24 +333,24 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Order_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Order_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_Purchase_Order_Signatory3`
-    FOREIGN KEY (`Signatory_ID2` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_Mode_Of_Procurement1`
     FOREIGN KEY (`Mode_Of_Procurement_ID` )
     REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Mode_Of_Procurement_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Purchase_Order_Employee1`
+    FOREIGN KEY (`Supplier_Name_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Purchase_Order_Employee2`
+    FOREIGN KEY (`Accountant_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Purchase_Order_Employee3`
+    FOREIGN KEY (`Dean_ID` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

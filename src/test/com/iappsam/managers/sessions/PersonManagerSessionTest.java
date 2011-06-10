@@ -2,6 +2,8 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.iappsam.entities.Contact;
@@ -16,7 +18,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public class PersonManagerSessionTest extends ManagerSessionTestCase {
 
-	private PersonManagerSession pm;
+	private static PersonManagerSession pm;
 	private Person person;
 	private Employee employee;
 	private DivisionOfficeManager dom;
@@ -25,8 +27,14 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	private Contact contact;
 	private Person person2;
 
-	protected void afterInit() {
+	@BeforeClass
+	public static void initClass() {
 		pm = new PersonManagerSession();
+	}
+
+	@Before
+	public void init() throws Exception {
+		super.init();
 	}
 
 	@Test

@@ -22,4 +22,6 @@ public interface PRManager {
 
 	void removePR(PurchaseRequest pr) throws TransactionException;
 
+	PurchaseRequest getPR(PurchaseRequest pr) throws TransactionException;
+
 }

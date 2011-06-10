@@ -11,42 +11,46 @@ import org.junit.Test;
 
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.ItemBuilder;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.IIRUPManager;
+import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
+import com.iappsam.managers.sessions.ItemManagerSession;
 
 public class IIRUPSearcherTest {
 
 	private static final String ITEM_DESCRIPTION = "description";
 
 	private static IIRUPManager iirupm;
-	private IIRUPSearcher searcher;
+	private static ItemManager im;
+
+	private static IIRUPSearcher searcher;
 	private IIRUP iirup;
 
 	@BeforeClass
 	public static void initManager() throws TransactionException {
 		iirupm = new IIRUPManagerSession();
+		im = new ItemManagerSession();
+		searcher = new IIRUPSearcher();
 	}
 
 	@Before
 	public void initSearcher() throws TransactionException, DuplicateEntryException {
 		EntityRemover.removeAll();
 
-		searcher = new IIRUPSearcher();
 		Employee em = Employee.create("Dean", "Mr", "John");
 
 		iirup = new IIRUP(Date.valueOf("2010-01-01"), em, em, em, em, em);
 		iirup.setStation("station");
 
-		ItemBuilder builder = new ItemBuilder();
-		builder.addCategory("cat").addCondition("con").addStatus("stat").addUnit("unit").addItem(ITEM_DESCRIPTION);
-		builder.addToDatabase();
+		Item item = Item.create(ITEM_DESCRIPTION, "cat", "unit", "st", "con");
+		im.addItem(item);
 
-		iirup.addLine(builder.getItem(), 1, 2, 1.0f, new Disposal("Disposal"), "0101");
+		iirup.addLine(item, 1, 2, 1.0f, new Disposal("Disposal"), "0101");
 
 		iirupm.addIIRUP(iirup);
 	}

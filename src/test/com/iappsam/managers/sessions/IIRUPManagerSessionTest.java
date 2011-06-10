@@ -8,29 +8,33 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.ItemBuilder;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.managers.IIRUPManager;
+import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
-public class IIRUPManagerSessionTest {
+public class IIRUPManagerSessionTest extends ManagerSessionTestCase {
 
 	private PersonManager pm;
 	private Employee employee;
 	private IIRUPManager iirupm;
 	private IIRUP iirup;
+	private ItemManager im;
 
 	@Before
-	public void init() {
+	public void init() throws Exception {
+		super.init();
 		iirupm = new IIRUPManagerSession();
+		persistEmployee();
+		im = new ItemManagerSession();
 	}
 
 	@Test
 	public void addIIRUP() throws TransactionException, DuplicateEntryException {
-		persistEmployee();
 
 		iirup = new IIRUP(new Date(0), employee, employee, employee, employee, employee);
 		iirupm.addIIRUP(iirup);
@@ -39,25 +43,16 @@ public class IIRUPManagerSessionTest {
 	}
 
 	@Test
-	public void addIIRUPwithLine() throws TransactionException, DuplicateEntryException {
-		persistEmployee();
+	public void addIIRUPwithLine() throws TransactionException {
 
-		ItemBuilder builder = new ItemBuilder();
-		builder.addUnit("Unit");
-		builder.addCategory("Cat");
-		builder.addCondition("Condition");
-		builder.addStatus("Status");
-		builder.addItem("Desc");
-		builder.addToDatabase();
+		Item item = Item.create("desc", "cat", "unit", "status", "condition");
+		im.addItem(item);
 
 		iirup = new IIRUP(new Date(0), employee, employee, employee, employee, employee);
-		iirup.addLine(builder.getItem(), 1, 1, 1, new Disposal("Disposal"), "111");
+		iirup.addLine(item, 1, 1, 1, new Disposal("Disposal"), "111");
 		iirupm.addIIRUP(iirup);
 
 		assertIIRUPExistInDatabase();
-
-		iirupm.removeIIRUP(iirup);
-		builder.removeFromDatabase();
 	}
 
 	private void assertIIRUPExistInDatabase() throws TransactionException {

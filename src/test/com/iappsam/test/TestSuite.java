@@ -17,6 +17,7 @@ import com.iappsam.entities.SignatoryTest;
 import com.iappsam.entities.SupplierTest;
 import com.iappsam.entities.forms.AnnualProcurementPlanTest;
 import com.iappsam.managers.sessions.APPManagerSessionTest;
+import com.iappsam.managers.sessions.IIRUPManagerSessionTest;
 import com.iappsam.managers.sessions.ItemManagerSessionTest;
 import com.iappsam.managers.sessions.PersonManagerSessionTest;
 import com.iappsam.managers.sessions.SupplierManagerSessionTest;
@@ -25,31 +26,18 @@ import com.iappsam.search.IIRUPSearcherTest;
 import com.iappsam.search.ItemSearcherTest;
 import com.iappsam.servlet.LoginServletTest;
 import com.iappsam.servlet.item.ItemServletTest;
+import com.iappsam.servlet.pr.PurchaseRequestServlet;
+import com.iappsam.servlet.pr.PurchaseRequestServletTest;
 import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ LoginModuleTest.class, //
-		LoginServletTest.class, //
 		HibernateUtilTest.class, //
-		ItemTest.class,//
-		ContactTest.class, //
-		DivisionOfficeTest.class, //
-		EmployeeTest.class,//
-		ItemCategoryTest.class, //
-		ItemConditionTest.class, //
-		ItemStatusTest.class, //
-		PersonTest.class, //
-		SignatoryTest.class, //
-		SupplierTest.class, //
-		AnnualProcurementPlanTest.class, //
-		PersonManagerSessionTest.class, //
-		SupplierManagerSessionTest.class, //
-		ItemManagerSessionTest.class, //
-		APPManagerSessionTest.class, //
-		ItemSearcherTest.class, //
-		IIRUPSearcherTest.class, //
-		ItemServletTest.class, //
-		APPReportTest.class })
+		EntityTestSuite.class, //
+		SessionTestSuite.class, //
+		SearcherTestSuite.class, //
+		APPReportTest.class, // Report
+		ServletTestSuite.class })
 public class TestSuite {
 
 }

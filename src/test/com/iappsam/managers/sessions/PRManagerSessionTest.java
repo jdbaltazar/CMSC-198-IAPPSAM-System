@@ -2,17 +2,17 @@ package com.iappsam.managers.sessions;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.ItemBuilder;
-import com.iappsam.entities.Signatory;
-import com.iappsam.entities.SignatoryBuilder;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.forms.PurchaseRequest;
-import com.iappsam.entities.forms.PurchaseRequestLine;
+import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -25,12 +25,14 @@ public class PRManagerSessionTest {
 	private PRManager prm;
 	private PurchaseRequest pr;
 	private PersonManager pm;
+	private ItemManager im;
 
 	@Before
 	public void addPR() throws TransactionException, DuplicateEntryException {
 		EntityRemover.removeAll();
 		prm = new PRManagerSession();
 		pm = new PersonManagerSession();
+		im = new ItemManagerSession();
 
 		divisionOffice = new DivisionOffice("Division", "Office");
 		dom = new DivisionOfficeManagerSession();
@@ -46,26 +48,33 @@ public class PRManagerSessionTest {
 	}
 
 	@Test
-	public void PRAdded() throws TransactionException {
+	public void shouldAddPurchaseRequestRequiredFields() throws TransactionException {
 		prm.addPR(pr);
-		assertPurchaseRequestAdded();
+		assertEquals(pr, prm.getPR(pr));
 	}
 
 	@Test
-	public void PRwithLineAdded() throws TransactionException, DuplicateEntryException {
-		assertPurchaseRequestAdded();
+	public void shouldAddPurchaseRequestAllFields() throws TransactionException {
+		pr.setPrNumber("PR Num");
+		pr.setPrDate(Date.valueOf("2011-01-01"));
+		pr.setSaiNumber("Sai Num");
+		pr.setSaiDate(Date.valueOf("2011-01-01"));
+		pr.setAlobsNumber("alob num");
+		pr.setAlobsDate(Date.valueOf("2011-01-01"));
 
-		ItemBuilder builder = new ItemBuilder();
-		builder.addCategory("Cat").addStatus("Status").addUnit("Unit").addCondition("Condition").addItem("Description").addToDatabase();
-		pr.addLine(1, builder.getItem());
 		prm.addPR(pr);
 
-		PurchaseRequest prfromDb = prm.getPR(pr.getId());
-		assertEquals(1, prfromDb.getLines().size());
+		assertEquals(pr, prm.getPR(pr));
 	}
 
-	private void assertPurchaseRequestAdded() throws TransactionException {
-		PurchaseRequest prfromDb = prm.getPR(pr.getId());
-		assertEquals(pr, prfromDb);
+	@Test
+	public void shouldAddPurchaseRequestWithLine() throws TransactionException {
+		Item it = Item.create("desc", "cat", "unit", "stat", "con");
+		im.addItem(it);
+		pr.addLine(1, it);
+		prm.addPR(pr);
+
+		PurchaseRequest prdb = prm.getPR(pr);
+		assertEquals(1, prdb.getLines().size());
 	}
 }

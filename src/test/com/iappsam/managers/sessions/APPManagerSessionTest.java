@@ -9,13 +9,14 @@ import org.junit.Test;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.ItemBuilder;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.entities.forms.AnnualProcurementPlanLine;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -31,6 +32,7 @@ public class APPManagerSessionTest {
 	private DivisionOffice office;
 	private AnnualProcurementPlan app;
 	private APPManager appManager;
+	private ItemManager im;
 
 	@Before
 	public void addAPPDepedencies() throws TransactionException, DuplicateEntryException {
@@ -53,6 +55,7 @@ public class APPManagerSessionTest {
 
 		appManager = new APPManagerSession();
 		app = new AnnualProcurementPlan(2011, office, signatory, signatory);
+		im = new ItemManagerSession();
 	}
 
 	@Test
@@ -70,25 +73,14 @@ public class APPManagerSessionTest {
 
 	@Test
 	public void addAPPWithLine() throws TransactionException, DuplicateEntryException {
+		Item item = Item.create("desc", "cat", "unit", "stat", "con");
+		im.addItem(item);
 
-		// build item
-		ItemBuilder builder = new ItemBuilder();
-		builder.addCategory("Cat");
-		builder.addStatus("Status");
-		builder.addUnit("Unit");
-		builder.addCondition("Condition");
-		builder.addItem("Description");
-		builder.addToDatabase();
-
-		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(app, builder.getItem(), 1, 2, 3, 4);
+		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(app, item, 1, 2, 3, 4);
 		app.addLine(line);
 		appManager.addAPP(app);
 
 		assertAPPContains(line);
-
-		appManager.removeAPP(app);
-
-		builder.removeFromDatabase();
 	}
 
 	private void assertAPPContains(AnnualProcurementPlanLine line1) throws TransactionException {
@@ -96,11 +88,4 @@ public class APPManagerSessionTest {
 		assertTrue(appFromDb.getLines().contains(line1));
 	}
 
-	// @After
-	// public void removeAPPDependencies() throws TransactionException {
-	// dom.removeDivisionOffice(office);
-	// pm.removeSignatory(signatory);
-	// pm.removeEmployee(employee);
-	// pm.removePerson(person);
-	// }
 }

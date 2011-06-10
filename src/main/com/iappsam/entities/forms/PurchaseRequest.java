@@ -185,7 +185,16 @@ public class PurchaseRequest {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((alobsDate == null) ? 0 : alobsDate.hashCode());
+		result = prime * result + ((alobsNumber == null) ? 0 : alobsNumber.hashCode());
+		result = prime * result + ((approvedBy == null) ? 0 : approvedBy.hashCode());
+		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
+		result = prime * result + ((prDate == null) ? 0 : prDate.hashCode());
+		result = prime * result + ((prNumber == null) ? 0 : prNumber.hashCode());
+		result = prime * result + ((purpose == null) ? 0 : purpose.hashCode());
+		result = prime * result + ((requestedBy == null) ? 0 : requestedBy.hashCode());
+		result = prime * result + ((saiDate == null) ? 0 : saiDate.hashCode());
+		result = prime * result + ((saiNumber == null) ? 0 : saiNumber.hashCode());
 		return result;
 	}
 
@@ -198,7 +207,55 @@ public class PurchaseRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		PurchaseRequest other = (PurchaseRequest) obj;
-		if (id != other.id)
+		if (alobsDate == null) {
+			if (other.alobsDate != null)
+				return false;
+		} else if (!alobsDate.equals(other.alobsDate))
+			return false;
+		if (alobsNumber == null) {
+			if (other.alobsNumber != null)
+				return false;
+		} else if (!alobsNumber.equals(other.alobsNumber))
+			return false;
+		if (approvedBy == null) {
+			if (other.approvedBy != null)
+				return false;
+		} else if (!approvedBy.equals(other.approvedBy))
+			return false;
+		if (divisionOffice == null) {
+			if (other.divisionOffice != null)
+				return false;
+		} else if (!divisionOffice.equals(other.divisionOffice))
+			return false;
+		if (prDate == null) {
+			if (other.prDate != null)
+				return false;
+		} else if (!prDate.equals(other.prDate))
+			return false;
+		if (prNumber == null) {
+			if (other.prNumber != null)
+				return false;
+		} else if (!prNumber.equals(other.prNumber))
+			return false;
+		if (purpose == null) {
+			if (other.purpose != null)
+				return false;
+		} else if (!purpose.equals(other.purpose))
+			return false;
+		if (requestedBy == null) {
+			if (other.requestedBy != null)
+				return false;
+		} else if (!requestedBy.equals(other.requestedBy))
+			return false;
+		if (saiDate == null) {
+			if (other.saiDate != null)
+				return false;
+		} else if (!saiDate.equals(other.saiDate))
+			return false;
+		if (saiNumber == null) {
+			if (other.saiNumber != null)
+				return false;
+		} else if (!saiNumber.equals(other.saiNumber))
 			return false;
 		return true;
 	}
