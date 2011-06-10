@@ -272,8 +272,8 @@
 		<td width="84%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="ViewBuildings.do"><input name="backBtn"
-			type="submit" class="button" id="backBtn" value="Back" /></form>
+			action="ViewBuildings.do"><input name="backBtn" type="submit"
+			class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
@@ -308,8 +308,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<input type="hidden" name="buildingID"
-	value="<%=building.getBuildingID()%>"></input></form>
+<input type="hidden" name="buildingID" value="<%=building.getID()%>"></input></form>
 </div>
 <div id="apDiv1"
 	style="font-family: Lucida Grande; font-size: 11px; color: red;">

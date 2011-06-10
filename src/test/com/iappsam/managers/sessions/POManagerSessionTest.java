@@ -67,4 +67,9 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		pom.addPO(po);
 		assertTrue(pom.containsPO(po));
 	}
+
+	@Test
+	public void addPOWithLine() {
+		// po.addLine();
+	}
 }

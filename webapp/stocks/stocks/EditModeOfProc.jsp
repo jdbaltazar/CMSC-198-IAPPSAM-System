@@ -220,7 +220,7 @@
       <label for="modeOfProcurementField" class="labels">Mode of<br />
         Procurement
       :</label>
-      <input name="modeOfProcurementField" type="text" id="modeOfProcurementField" value="<%=mop.getModeOfProcurement()%>" size="30" />
+      <input name="modeOfProcurementField" type="text" id="modeOfProcurementField" value="<%=mop.getName()%>" size="30" />
     	 <input type="hidden" name="mopID"
 		value=<%="" + mop.getId()%> />
     </p>

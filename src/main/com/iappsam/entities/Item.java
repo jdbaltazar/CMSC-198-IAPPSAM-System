@@ -2,6 +2,7 @@ package com.iappsam.entities;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang.NullArgumentException;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
@@ -20,6 +22,10 @@ import org.hibernate.search.annotations.Resolution;
 @Entity
 @Indexed
 public class Item {
+
+	public static Item create(String description, String category, String unit, String status, String condition) {
+		return new Item(description, new ItemCategory(category), new Unit(unit), new ItemStatus(status), new ItemCondition(condition));
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,22 +54,26 @@ public class Item {
 	private String propertyNumber;
 
 	@IndexedEmbedded
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Unit_ID")
 	private Unit unit;
 
 	@IndexedEmbedded
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Item_Status_ID")
 	private ItemStatus itemStatus;
 
 	@IndexedEmbedded
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Item_Condition_ID")
 	private ItemCondition itemCondition;
 
 	@IndexedEmbedded
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Item_Category_ID")
 	private ItemCategory itemCategory;
 
@@ -71,8 +81,8 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired, String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus,
-			ItemCondition itemCondition) {
+	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired,
+			String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus, ItemCondition itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -197,7 +207,11 @@ public class Item {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((itemCategory == null) ? 0 : itemCategory.hashCode());
+		result = prime * result + ((itemCondition == null) ? 0 : itemCondition.hashCode());
+		result = prime * result + ((itemStatus == null) ? 0 : itemStatus.hashCode());
+		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
 		return result;
 	}
 
@@ -210,7 +224,30 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		if (id != other.id)
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (itemCategory == null) {
+			if (other.itemCategory != null)
+				return false;
+		} else if (!itemCategory.equals(other.itemCategory))
+			return false;
+		if (itemCondition == null) {
+			if (other.itemCondition != null)
+				return false;
+		} else if (!itemCondition.equals(other.itemCondition))
+			return false;
+		if (itemStatus == null) {
+			if (other.itemStatus != null)
+				return false;
+		} else if (!itemStatus.equals(other.itemStatus))
+			return false;
+		if (unit == null) {
+			if (other.unit != null)
+				return false;
+		} else if (!unit.equals(other.unit))
 			return false;
 		return true;
 	}

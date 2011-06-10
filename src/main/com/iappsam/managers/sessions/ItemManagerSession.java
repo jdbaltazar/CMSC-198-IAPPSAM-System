@@ -298,4 +298,9 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public ItemCondition getItemCondition(int itemConditionID) throws TransactionException {
 		return (ItemCondition) get(ItemCondition.class, itemConditionID);
 	}
+
+	@Override
+	public Item getItem(Item item) throws TransactionException {
+		return getItemByDescription(item.getDescription());
+	}
 }

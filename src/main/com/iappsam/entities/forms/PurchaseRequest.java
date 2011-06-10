@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.iappsam.entities.DivisionOffice;
+import com.iappsam.entities.Employee;
+import com.iappsam.entities.Item;
 import com.iappsam.entities.Signatory;
 
 @Entity
@@ -54,13 +56,13 @@ public class PurchaseRequest {
 	@JoinColumn(name = "DivisionOffice_ID")
 	private DivisionOffice divisionOffice;
 
-	@OneToOne
-	@JoinColumn(name = "Signatory_ID")
-	private Signatory requestedBy;
+	@ManyToOne
+	@JoinColumn(name = "Requested_by")
+	private Employee requestedBy;
 
-	@OneToOne
-	@JoinColumn(name = "Signatory_ID1")
-	private Signatory approvedBy;
+	@ManyToOne
+	@JoinColumn(name = "Approved_by")
+	private Employee approvedBy;
 
 	@OneToMany(mappedBy = "purchaseRequest", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<PurchaseRequestLine> lines = new HashSet<PurchaseRequestLine>();
@@ -69,24 +71,9 @@ public class PurchaseRequest {
 		super();
 	}
 
-	public PurchaseRequest(DivisionOffice divisionOffice, String prNumber, Date prDate, String saiNumber, Date saiDate, String alobsNumber, Date alobsDate, String purpose, Signatory requestedBy,
-			Signatory approvedBy) {
+	public PurchaseRequest(DivisionOffice divisionOffice, String purpose, Employee requestedBy, Employee approvedBy) {
 		super();
 
-		this.divisionOffice = divisionOffice;
-		this.prNumber = prNumber;
-		this.prDate = prDate;
-		this.saiNumber = saiNumber;
-		this.saiDate = saiDate;
-		this.alobsNumber = alobsNumber;
-		this.alobsDate = alobsDate;
-		this.purpose = purpose;
-		this.requestedBy = requestedBy;
-		this.approvedBy = approvedBy;
-	}
-
-	public PurchaseRequest(DivisionOffice divisionOffice, String purpose, Signatory requestedBy, Signatory approvedBy) {
-		super();
 		this.divisionOffice = divisionOffice;
 		this.purpose = purpose;
 		this.requestedBy = requestedBy;
@@ -134,32 +121,36 @@ public class PurchaseRequest {
 		lines.add(line);
 	}
 
+	public void addLine(int quantity, Item item) {
+		addLine(new PurchaseRequestLine(this, quantity, item));
+	}
+
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Signatory getRequestedBy() {
-		return requestedBy;
-	}
-
-	public void setRequestedBy(Signatory requestedBy) {
-		this.requestedBy = requestedBy;
-	}
-
-	public Signatory getApprovedBy() {
-		return approvedBy;
 	}
 
 	public DivisionOffice getDivisionOffice() {
 		return divisionOffice;
 	}
 
-	public void setDivisionOffice(DivisionOffice divisionOffice) {
-		this.divisionOffice = divisionOffice;
+	public Employee getRequestedBy() {
+		return requestedBy;
 	}
 
-	public void setApprovedBy(Signatory approvedBy) {
+	public void setRequestedBy(Employee requestedBy) {
+		this.requestedBy = requestedBy;
+	}
+
+	public Employee getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(Employee approvedBy) {
 		this.approvedBy = approvedBy;
+	}
+
+	public void setDivisionOffice(DivisionOffice divisionOffice) {
+		this.divisionOffice = divisionOffice;
 	}
 
 	public void setPrNumber(String prNumber) {

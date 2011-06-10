@@ -12,12 +12,12 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class DivisionOfficeManagerSession extends AbstractManager implements DivisionOfficeManager {
 
 	@Override
-	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException, DuplicateEntryException {
-		if (getDivisionOffice(divisionOffice.getDivisionName(), divisionOffice.getOfficeName()) == null) {
+	public void addDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+		DivisionOffice office = getDivisionOffice(divisionOffice.getDivisionName(), divisionOffice.getOfficeName());
+		if (office == null)
 			add(divisionOffice);
-		} else {
-			throw new DuplicateEntryException();
-		}
+		else
+			divisionOffice.setId(office.getId());
 	}
 
 	@Override

@@ -110,4 +110,6 @@ public interface ItemManager extends Manager {
 
 	List<ItemCategory> getAllItemCategory() throws TransactionException;
 
+	Item getItem(Item item) throws TransactionException;
+
 }

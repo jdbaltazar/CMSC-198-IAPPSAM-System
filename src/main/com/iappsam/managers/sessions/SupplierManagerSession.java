@@ -39,14 +39,7 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 
 	@Override
 	public void removeSupplier(Supplier supplier) throws TransactionException {
-
-		Employee contactPerson = supplier.getContactPerson();
-
-		if (contactPerson.getSupplierCount() == 1) {
-			remove(supplier);
-			remove(contactPerson);
-		} else
-			remove(supplier);
+		remove(supplier);
 	}
 
 	@Override

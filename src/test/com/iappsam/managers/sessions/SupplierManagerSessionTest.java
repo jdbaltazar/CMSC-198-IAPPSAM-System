@@ -49,16 +49,6 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 		assertTrue(contactPerson.getSuppliers().contains(supplier));
 	}
 
-
-	@Test
-	public void cascadeDeleteEmployeeOnSupplierRemoval() throws TransactionException, DuplicateEntryException {
-		su.addSupplier(supplier);
-		assertSupplierAdded();
-
-		su.removeSupplier(supplier);
-		assertEmployeeRemoved();
-	}
-
 	@Test
 	public void employeeNotDeletedAfterOneSupplierRemoved() throws TransactionException, DuplicateEntryException {
 		su.addSupplier(supplier);

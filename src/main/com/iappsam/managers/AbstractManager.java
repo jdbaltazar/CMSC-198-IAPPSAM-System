@@ -93,5 +93,4 @@ public abstract class AbstractManager implements Manager {
 			session.close();
 		}
 	}
-
 }

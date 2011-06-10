@@ -235,7 +235,7 @@
 </form>
 </div>
 <div id="apDiv1">
-  <form id="form2" name="form2" method="post"
+<form id="form2" name="form2" method="post"
 	action="../../entities/building/AddBuilding.jsp"><input
 	name="addBuildingBtn" type="submit" class="maroon" id="addBuildingBtn"
 	value="Add Building &gt;&gt;" /></form>
@@ -258,7 +258,7 @@
 	<form id="form3" name="form3" method="post" action="EditBuilding.do"><input
 		name="viewBtn" type="submit" class="viewbutton" id="viewBtn"
 		value="Edit >>" /> <input type="hidden" name="buildingID"
-		value="<%=buildings.get(i).getBuildingID()%>"></input></form>
+		value="<%=buildings.get(i).getID()%>"></input></form>
 	</td>
 	</tr>
 	<%
