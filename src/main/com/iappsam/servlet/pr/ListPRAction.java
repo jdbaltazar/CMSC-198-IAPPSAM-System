@@ -10,11 +10,11 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 
-public class ListPurchaseRequestAction implements Action {
+public class ListPRAction implements Action {
 
 	private PRManager prm;
 
-	public ListPurchaseRequestAction(PRManager prm) {
+	public ListPRAction(PRManager prm) {
 		super();
 		this.prm = prm;
 	}
@@ -23,7 +23,7 @@ public class ListPurchaseRequestAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setAttribute("PRs", prm.getAllPR());
-			request.getRequestDispatcher(PurchaseRequestServlet.LIST_PR_JSP).forward(request, response);
+			request.getRequestDispatcher(PRServlet.LIST_PR_JSP).forward(request, response);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

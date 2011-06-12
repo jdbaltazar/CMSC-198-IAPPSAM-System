@@ -1,7 +1,9 @@
 package com.iappsam.entities.forms;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,15 +18,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.Signatory;
+import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.forms.Form;
 
 @Entity
 @Table(name = "Purchase_Request")
-public class PurchaseRequest {
+public class PurchaseRequest implements Form {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -125,8 +133,40 @@ public class PurchaseRequest {
 		addLine(new PurchaseRequestLine(this, quantity, item));
 	}
 
+	public void removeLine(int itemId) {
+
+		PurchaseRequestLine delete = null;
+
+		for (PurchaseRequestLine line : lines)
+			if (line.getItem().getId() == itemId)
+				delete = line;
+
+		lines.remove(delete);
+	}
+
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setAlobsDate(String parameter) {
+		try {
+			alobsDate = Date.valueOf(parameter);
+		} catch (Exception e) {
+		}
+	}
+
+	public void setSaiDate(String parameter) {
+		try {
+			saiDate = Date.valueOf(parameter);
+		} catch (Exception e) {
+		}
+	}
+
+	public void setPrDate(String date) {
+		try {
+			prDate = Date.valueOf(date);
+		} catch (Exception e) {
+		}
 	}
 
 	public DivisionOffice getDivisionOffice() {
@@ -258,5 +298,58 @@ public class PurchaseRequest {
 		} else if (!saiNumber.equals(other.saiNumber))
 			return false;
 		return true;
+	}
+
+	@Override
+	public List<Item> getItems() {
+		List<Item> items = new ArrayList<Item>();
+		for (PurchaseRequestLine line : lines)
+			items.add(line.getItem());
+		return items;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		addLine(0, item);
+	}
+
+	public static PurchaseRequest create(HttpServletRequest request, ItemManager im, DivisionOfficeManager dom, PersonManager pm) throws TransactionException {
+
+		PurchaseRequest pr = new PurchaseRequest();
+
+		String divisionOfficeId = request.getParameter("deptAndSection");
+		if (divisionOfficeId != null)
+			pr.setDivisionOffice(dom.getDivisionOffice(Integer.parseInt(divisionOfficeId)));
+
+		pr.setPrNumber(request.getParameter("prNumber"));
+		pr.setPrDate(request.getParameter("prDate"));
+		pr.setSaiNumber(request.getParameter("saiNumber"));
+		pr.setSaiDate(request.getParameter("saiDate"));
+		pr.setAlobsNumber(request.getParameter("alobsNumber"));
+		pr.setAlobsDate(request.getParameter("alobsDate"));
+		pr.setPurpose(request.getParameter("purpose"));
+
+		String reqId = request.getParameter("requestedBy");
+		if (reqId != null)
+			pr.setRequestedBy(pm.getEmployee(Integer.parseInt(reqId)));
+
+		String aprid = request.getParameter("approvedby");
+		if (aprid != null)
+			pr.setApprovedBy(pm.getEmployee(Integer.parseInt(aprid)));
+
+		String[] quantities = request.getParameterValues("quantity");
+		String[] items = request.getParameterValues("items");
+
+		if (items != null)
+			for (int i = 0; i < items.length; i++) {
+				String q = null;
+				if (quantities != null)
+					q = quantities[i];
+				if (q == null)
+					q = "0";
+				pr.addLine(Integer.parseInt(q), im.getItem(Integer.parseInt(items[i])));
+			}
+
+		return pr;
 	}
 }

@@ -3,6 +3,10 @@ package com.iappsam.managers.sessions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Person;
 import com.iappsam.entities.Signatory;
@@ -10,6 +14,7 @@ import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.util.HibernateUtil;
 
 public class PersonManagerSession extends AbstractManager implements PersonManager {
 
@@ -136,5 +141,20 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	@Override
 	public Employee getEmployee(String name, String designation) throws TransactionException {
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Employee getEmployeeByName(String name) throws TransactionException {
+		Session s = HibernateUtil.startSession();
+		Transaction tx = s.beginTransaction();
+		try {
+			Query q = s.createQuery("Select emp from Employee as emp join emp.person as p where p.name = '" + name + "'");
+			Employee emp = (Employee) q.uniqueResult();
+			tx.commit();
+			return emp;
+		} catch (Exception e) {
+			tx.rollback();
+			throw new TransactionException();
+		}
 	}
 }

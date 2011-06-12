@@ -49,7 +49,7 @@ public class ItemServletTest extends ServletTestCase {
 		List<Item> items = new ArrayList<Item>();
 
 		given(itemManager.getAllItems()).willReturn(items);
-		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP, dispatcher);
+		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP);
 
 		servlet.doGet(request, response);
 
@@ -63,7 +63,7 @@ public class ItemServletTest extends ServletTestCase {
 
 		givenParam(ItemParameter.QUERY, "search");
 		given(searcher.search("search")).willReturn(list);
-		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP, dispatcher);
+		givenRequestDispatcher(ItemServlet.LIST_ITEMS_JSP);
 
 		servlet.doGet(request, response);
 
@@ -75,7 +75,7 @@ public class ItemServletTest extends ServletTestCase {
 	@Test
 	public void newItem() throws ServletException, IOException {
 		givenParam("new", "item");
-		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP, dispatcher);
+		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
 
 		servlet.doGet(request, response);
 
@@ -107,7 +107,7 @@ public class ItemServletTest extends ServletTestCase {
 
 	@Test
 	public void itemWasNotAdded() throws ServletException, IOException {
-		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP, dispatcher);
+		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
 
 		servlet.doPost(request, response);
 

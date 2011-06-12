@@ -1,5 +1,7 @@
 package com.iappsam.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +15,9 @@ import org.hibernate.search.annotations.Indexed;
 @Indexed
 @Entity
 @Table(name = "Item_Status")
-public class ItemStatus {
+public class ItemStatus implements Serializable{
+
+	private static final long serialVersionUID = 2409352590535823393L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

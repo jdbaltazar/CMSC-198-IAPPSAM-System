@@ -63,7 +63,8 @@ public class DivisionOffice {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((divisionName == null) ? 0 : divisionName.hashCode());
+		result = prime * result + ((officeName == null) ? 0 : officeName.hashCode());
 		return result;
 	}
 
@@ -76,7 +77,15 @@ public class DivisionOffice {
 		if (getClass() != obj.getClass())
 			return false;
 		DivisionOffice other = (DivisionOffice) obj;
-		if (id != other.id)
+		if (divisionName == null) {
+			if (other.divisionName != null)
+				return false;
+		} else if (!divisionName.equals(other.divisionName))
+			return false;
+		if (officeName == null) {
+			if (other.officeName != null)
+				return false;
+		} else if (!officeName.equals(other.officeName))
 			return false;
 		return true;
 	}

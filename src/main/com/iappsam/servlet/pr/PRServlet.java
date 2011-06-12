@@ -15,27 +15,30 @@ import com.iappsam.servlet.item.Action;
 import com.iappsam.util.Managers;
 
 @WebServlet("/pr")
-public class PurchaseRequestServlet extends HttpServlet {
+public class PRServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1617728781320146937L;
 	public static final String NEW_PR_JSP = "/pr/new-pr.jsp";
-	public static final String ADD_ITEM_JSP = "/pr/add-item.jsp";
+	public static final String ADD_ITEM_JSP = "/pr/line/add-item.jsp";
 	public static final String LIST_PR_JSP = null;
 
 	private Action newPr;
 	private Action addItem;
 	private Action list;
+	private Action removeItem;
 
-	public PurchaseRequestServlet() {
-		this(new ListPurchaseRequestAction(Managers.PR_MANAGER), //
-				new NewPurchaseRequestAction(Managers.PERSON_MANAGER, Managers.DIVISION_OFFICE_MANAGER), //
-				new AddingItemToPrAction(Managers.PERSON_MANAGER));
+	public PRServlet() {
+		this(new ListPRAction(Managers.PR_MANAGER), //
+				new NewPRAction(Managers.PERSON_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.ITEM_MANAGER), //
+				new AddingItemToPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER), new RemoveItemFromPRAction(Managers.ITEM_MANAGER,
+						Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER));
 	}
 
-	public PurchaseRequestServlet(ListPurchaseRequestAction list, NewPurchaseRequestAction newPr, AddingItemToPrAction addItem) {
+	public PRServlet(ListPRAction list, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem) {
 		this.list = list;
 		this.newPr = newPr;
 		this.addItem = addItem;
+		this.removeItem = removeItem;
 	}
 
 	@Override
@@ -43,14 +46,22 @@ public class PurchaseRequestServlet extends HttpServlet {
 		parseAction(request).process(request, response);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		parseAction(req).process(req, resp);
+	}
+
 	private Action parseAction(HttpServletRequest request) {
 		String newParam = request.getParameter("new");
-		String addItemParam = request.getParameter("add");
+		String addItemParam = request.getParameter("addItems");
+		String removeItemParam = request.getParameter("removeItems");
 
-		if (newParam != null && newParam.equals("pr"))
+		if (newParam != null)
 			return newPr;
-		else if (addItemParam != null && addItemParam.equals("item"))
+		else if (addItemParam != null)
 			return addItem;
+		else if (removeItemParam != null)
+			return removeItem;
 		else
 			return list;
 	}
