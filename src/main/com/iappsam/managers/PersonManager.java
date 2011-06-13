@@ -64,4 +64,6 @@ public interface PersonManager extends Manager {
 
 	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
 
+	Employee getEmployeeByName(String name) throws TransactionException;
+
 }

@@ -1,9 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="java.util.List"%>
-<%@page import="com.iappsam.entities.DivisionOffice"%>
-<%@page import="com.iappsam.util.Managers"%>
-<%@page import="java.util.Date"%>
-<%@page import="com.iappsam.util.DateUtil"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,183 +8,107 @@
 <link href="../style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<jsp:include page="/logo.jsp" />
-	<jsp:include page="/navigation.jsp" />
+<jsp:include page="/logo.jsp" />
+<jsp:include page="/navigation.jsp" />
 
-	<!-- Breadcrubms should be here --->
-	<div class="Breadcrumbs">
-		<a href="/menu">Menu</a> > <a href="/pr">Purchase Request List</a> > <a href="/pr?new=pr">New Purchase Request</a>
+<!-- Breadcrubms should be here --->
+<div class="Breadcrumbs"> <a href="/menu">Menu</a> > <a href="/pr">Purchase Request List</a> > <a href="/pr?new=pr">New Purchase Request</a> </div>
+<div id="Title" class="Form"></div>
+<form id="form1" name="form1" method="post" action="/pr">
+	<div id="PageHeader" class="Form"> 
+		<!-- Division Office -->
+		<label for="deptAndSection" class="labels">Department &amp; Section: </label>
+		<select name="deptAndSection" id="deptAndSection" style="width: 200px;">
+			<c:forEach var="office" items="${offices}">
+				<c:choose>
+					<c:when test="${office.id eq form.divisionOffice.id}">
+						<option value="${office.id}" selected="selected">${office.divisionName}, ${office.officeName}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${office.id}">${office.divisionName}, ${office.officeName}</option>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</select>
+		<br />
+		<!-- PR -->
+		<label for="prNumber" class="labels">PR.No.:</label>
+		<input type="text" name="prNumber" id="PrNumber" size="15" maxlength="15" value="${form.prNumber}"/>
+		<label for="prdate" class="labels">Date:</label>
+		<input type="text" name="prDate" id="prDate" value="${form.prDate}"/>
+		<br />
+		<!-- SAI -->
+		<label for="saiNumber" class="labels">SAI No.:</label>
+		<input name="saiNumber" type="text" id="saiNumber" size="15" maxlength="15" value="${form.saiNumber}"/>
+		<label for="saiDate" class="labels">Date:</label>
+		<input type="text" name="saiDate" id="saiDate" value="${form.saiDate}" />
+		<br />
+		<!-- ALOBS -->
+		<label for="alobsNumber" class="labels">ALOBS No.:</label>
+		<input name="alobsNumber" type="text" id="alobsNumber" size="15" maxlength="15" value="${form.alobsNumber}" />
+		<label for="alobsDate" class="labels">Date:</label>
+		<input name="alobsDate" type="text" id="alobsDate" value="${form.alobsDate}" />
 	</div>
-
-	<div id="Title" class="Form"></div>
-
-	<div id="PageHeader" class="Form">
-		<form id="form1" name="form1" method="post" action="">
-			<label for="prNumber" class="labels">Department &amp; Section: <select name="deptAndSection" id="deptAndSection" style="width: 200px;">
-					<%
-						List<DivisionOffice> dOffice = (List<DivisionOffice>) Managers.doManager.getAllDivisionOffice();
-						for (int i = 0; dOffice != null && i < dOffice.size(); i++) {
-					%>
-					<option value="<%=dOffice.get(i).getId()%>">
-						<%
-							out.print(dOffice.get(i).getDivisionName());
-								if (dOffice.get(i).getOfficeName() != null && !dOffice.get(i).getOfficeName().isEmpty())
-									out.print("," + dOffice.get(i).getOfficeName());
-						%>
-					</option>
-					<%
-						}
-					%>
-			</select> <br /> PR.No.:</label> <input name="prNumber" type="text" id="prNumber" size="15" maxlength="15" /> <label for="PRmonth" class="labels">Date:</label> <select
-				name="PRmonth" id="PRmonth"
-			>
-				<option value="1">Jan</option>
-				<option value="2">Feb</option>
-				<option value="3">Mar</option>
-				<option value="4">Apr</option>
-				<option value="5">May</option>
-				<option value="6">Jun</option>
-				<option value="7">Jul</option>
-				<option value="8">Aug</option>
-				<option value="9">Sep</option>
-				<option value="10">Oct</option>
-				<option value="11">Nov</option>
-				<option value="12">Dec</option>
-			</select> <select name="day" id="day">
-				<%
-					for (int i = 1; i < 32; i++) {
-				%>
-				<option value="<%=i%>"><%=i%></option>
-				<%
-					}
-				%>
-			</select> <select name="year" id="year">
-				<%
-					Date date = new Date();
-					for (int i = 0; i < 38; i++) {
-				%>
-				<option value="<%=i%>"><%=(1900 + date.getYear() - i)%></option>
-				<%
-					}
-				%>
-			</select> <br /> <label for="saiNumber" class="labels">SAI No.:</label> <input name="saiNumber" type="text" id="saiNumber" size="15" maxlength="15" /> <label
-				for="saiMonth" class="labels"
-			>Date:</label> <select name="saiMonth" id="saiMonth">
-				<option value="1">Jan</option>
-				<option value="2">Feb</option>
-				<option value="3">Mar</option>
-				<option value="4">Apr</option>
-				<option value="5">May</option>
-				<option value="6">Jun</option>
-				<option value="7">Jul</option>
-				<option value="8">Aug</option>
-				<option value="9">Sep</option>
-				<option value="10">Oct</option>
-				<option value="11">Nov</option>
-				<option value="12">Dec</option>
-			</select> <select name="SAIday" id="SAIday">
-				<%
-					for (int i = 1; i < 32; i++) {
-				%>
-				<option value="<%=i%>"><%=i%></option>
-				<%
-					}
-				%>
-			</select> <select name="SAIyear" id="SAIyear">
-				<%
-					System.out.println(date.getYear());
-					for (int i = 0; i < 38; i++) {
-				%>
-				<option value="<%=i%>"><%=(1900 + date.getYear() - i)%></option>
-				<%
-					}
-				%>
-			</select> <br /> <label for="alobsNumber2" class="labels">ALOBS No.:</label> <input name="alobsNumber" type="text" id="alobsNumber2" size="15"
-				maxlength="15"
-			/> <label for="ALOBSmonth2" class="labels">Date:</label> <select name="ALOBSmonth" id="ALOBSmonth2">
-				<option value="1">Jan</option>
-				<option value="2">Feb</option>
-				<option value="3">Mar</option>
-				<option value="4">Apr</option>
-				<option value="5">May</option>
-				<option value="6">Jun</option>
-				<option value="7">Jul</option>
-				<option value="8">Aug</option>
-				<option value="9">Sep</option>
-				<option value="10">Oct</option>
-				<option value="11">Nov</option>
-				<option value="12">Dec</option>
-			</select> <select name="ALOBSday" id="ALOBSday">
-				<%
-					for (int i = 1; i < 32; i++) {
-				%>
-				<option value="<%=i%>"><%=i%></option>
-				<%
-					}
-				%>
-			</select> <select name="ALOBSyear" id="ALOBSyear">
-				<%
-					for (int i = 0; i < 38; i++) {
-				%>
-				<option value="<%=i%>"><%=(1900 + date.getYear() - i)%></option>
-				<%
-					}
-				%>
-			</select>
-			</p>
-		</form>
-	</div>
-
-	<div id="line" class="Form">
+	<div id="line">
 		<table width="100%" border="0" cellspacing="0" id="TableHeader">
 			<tr class="ColumnHeader">
-				<td width="7%">Quantity</td>
+				<td width="4%">&nbsp;</td>
+				<td width="5%">Quantity</td>
 				<td width="9%">Unit of Issue</td>
-				<td width="34%">Item Description</td>
-				<td width="13%">Stock No.</td>
-				<td width="13%">Estimated Unit<br /> Cost</td>
+				<td width="42%">Item Description</td>
+				<td width="22%">Stock No.</td>
+				<td width="18%">Estimated Unit Cost</td>
 			</tr>
-
-			<tr class="tablerow_1">
-				<td width="7%" align="center"><input name="quantity_1" type="text" class="textfields_1" id="quantity_1" size="4" />
-				</td>
-				<td width="9%">&nbsp;</td>
-				<td width="34%">&nbsp;</td>
-				<td width="13%">&nbsp;</td>
-				<td width="13%" align="center"><input name="estUnitCost" type="text" class="textfields_1" id="estUnitCost" size="8" />
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr class="tablerow_1">
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
+			<c:forEach var="line" items="${form.lines}" varStatus="loop">
+				<tr ><!-- class="tablerow_1" -->
+					<td width="4%" ><input type="checkbox" name="checkedItems" id="items" value="${line.item.id}"/>
+						<input type="hidden" name="items" value="${line.item.id}"/></td>
+					<td width="5%" ><input name="quantity" type="text" class="textfields_1" id="Quantity" size="4" value="${line.quantity}"/></td>
+					<td width="9%">${line.item.unit}</td>
+					<td width="42%">${line.item.description}</td>
+					<td width="22%">${line.item.stockNumber}</td>
+					<td width="18%"></td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
-
 	<div id="LineAction" class="Form">
-		<a href="?add=item">Add Item</a>
-</div>
-
+		<input type="submit" name="addItems" id="additem" value="Add Items" />
+		<input type="submit" name="removeItems" id="removeItem" value="Remove Items" />
+	</div>
 	<div id="PageFooter" class="Form">
-
 		<label for="purpose" class="labels">Purpose:</label>
-		<textarea name="purpose" id="purpose"></textarea>
-		<br /> <label for="requestedBy" class="labels">Requested by:</label> <select name="requestedBy" id="requestedBy">
-		</select> <label for="approvedby" class="labels">Approved by:</label> <select name="approvedby" id="approvedby">
+		<textarea name="purpose" id="purpose" >${form.purpose}</textarea>
+		<br />
+		<label for="requestedBy" class="labels">Requested by:</label>
+		<select name="requestedBy" id="requestedBy">
+			<c:forEach var="employee" items="${employees}">
+				<c:choose>
+					<c:when test="${employee.id eq form.requestedBy.id}">
+						<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${employee.id}">${employee.person.name}</option>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</select>
+		<label for="approvedby" class="labels">Approved by:</label>
+		<select name="approvedby" id="approvedby">
+			<c:forEach var="employee" items="${employees}">
+				<c:choose>
+					<c:when test="${employee.id eq form.approvedBy.id}">
+						<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${employee.id}">${employee.person.name}</option>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</select>
 	</div>
-
 	<div>Save</div>
-	<jsp:include page="../copyright.jsp" />
+</form>
+<jsp:include page="../copyright.jsp" />
 </body>
 </html>

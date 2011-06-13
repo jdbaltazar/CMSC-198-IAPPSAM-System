@@ -371,7 +371,7 @@ Acquired:</label> <select name="asOfMonth" id="month3">
 </input> <select name="station" id="requestedBy2">
 
 	<%
-		List<DivisionOffice> dOffice = Managers.doManager.getAllDivisionOffice();
+		List<DivisionOffice> dOffice = Managers.DIVISION_OFFICE_MANAGER.getAllDivisionOffice();
 			for (int i = 0; i < dOffice.size(); i++) {
 	%>
 	<option value="<%=dOffice.get(i).getId()%>">

@@ -104,7 +104,7 @@ public class EmployeeCreation extends HttpServlet {
 			System.out.println("Division Name:" + getDivisionNameFromString(division));
 			if (getOfficeNameFromString(division) != null)
 				System.out.println("Office Name:" + getOfficeNameFromString(division));
-			DivisionOffice dOffice = Managers.doManager.getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
+			DivisionOffice dOffice = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
 		
 			System.out.println("Email"+emailad);
 			System.out.println("LandLine"+landline);

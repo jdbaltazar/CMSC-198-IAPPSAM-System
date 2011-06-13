@@ -30,12 +30,12 @@ public class Managers {
 	public static AccountManager aManager = new AccountManagerSession();
 	public static ContactManager cManager = new ContactManagerSession();
 	public static SupplierManager sManager = new SupplierManagerSession();
-	public static DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+	public static DivisionOfficeManager DIVISION_OFFICE_MANAGER = new DivisionOfficeManagerSession();
 	public static ItemManager ITEM_MANAGER = new ItemManagerSession();
 
 	// Forms
 	public static APPManager appManager = new APPManagerSession();
-	public static PRManager prManager = new PRManagerSession();
+	public static PRManager PR_MANAGER = new PRManagerSession();
 	public static POManager poManager = new POManagerSession();
 	public static RISManager risManager = new RISManagerSession();
 	public static IIRUPManager iirupManager = new IIRUPManagerSession();

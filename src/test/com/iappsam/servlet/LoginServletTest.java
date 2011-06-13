@@ -31,7 +31,7 @@ public class LoginServletTest extends ServletTestCase {
 	@Test
 	public void login() throws ServletException, IOException {
 
-		givenRequestDispatcher("menu.jsp", dispatcher);
+		givenRequestDispatcher("menu.jsp");
 		givenParam(LoginServlet.USERNAME, "admin");
 		givenParam(LoginServlet.PASSWORD, "admin");
 		given(loginModule.login("admin", "admin")).willReturn(true);

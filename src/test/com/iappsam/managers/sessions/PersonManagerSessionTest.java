@@ -56,6 +56,13 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
+	public void getEmployeeByName() throws TransactionException, DuplicateEntryException {
+		Employee em = Employee.create("de", "mr", "john");
+		pm.addEmployee(em);
+		assertEquals(em, pm.getEmployeeByName("john"));
+	}
+
+	@Test
 	public void addPersonInDatabase() throws TransactionException, DuplicateEntryException {
 		addPersonThenAssert();
 	}

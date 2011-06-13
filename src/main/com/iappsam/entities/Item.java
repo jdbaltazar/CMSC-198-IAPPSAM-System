@@ -1,5 +1,6 @@
 package com.iappsam.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,9 @@ import org.hibernate.search.annotations.Resolution;
 
 @Entity
 @Indexed
-public class Item {
+public class Item implements Serializable {
+
+	private static final long serialVersionUID = 4853030420797406210L;
 
 	public static Item create(String description, String category, String unit, String status, String condition) {
 		return new Item(description, new ItemCategory(category), new Unit(unit), new ItemStatus(status), new ItemCondition(condition));
@@ -81,8 +84,8 @@ public class Item {
 		super();
 	}
 
-	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired,
-			String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus, ItemCondition itemCondition) {
+	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired, String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus,
+			ItemCondition itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;

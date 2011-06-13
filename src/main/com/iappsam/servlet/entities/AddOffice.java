@@ -50,7 +50,7 @@ public class AddOffice extends HttpServlet {
 		
 		DivisionOffice dOffice;
 		try {
-			dOffice = Managers.doManager.getDivisionOffice(dOfficeID);
+			dOffice = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(dOfficeID);
 			request.setAttribute("dOffice", dOffice);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
