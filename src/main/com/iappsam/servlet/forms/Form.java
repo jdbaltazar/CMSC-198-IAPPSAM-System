@@ -10,8 +10,4 @@ public interface Form {
 
 	public void addItem(Item item);
 
-//	public void removeItem(int id);
-//
-//	public void addItem(int id);
-
 }

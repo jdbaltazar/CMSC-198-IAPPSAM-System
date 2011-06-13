@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import com.iappsam.LoginModule;
-import com.iappsam.servlet.item.ServletTestCase;
 
 import static org.mockito.BDDMockito.*;
 

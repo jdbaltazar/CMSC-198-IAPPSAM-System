@@ -32,7 +32,7 @@ public class RemoveItemFromPRAction implements Action {
 			String[] indexesToRemove = request.getParameterValues("checkedItems");
 
 			if (indexesToRemove != null) {
-				PurchaseRequest pr = PurchaseRequest.create(request, im, dom, pm);
+				PurchaseRequest pr = PRServlet.createPR(request, im, dom, pm);
 				request.getSession().setAttribute("form", pr);
 				for (String i : indexesToRemove)
 					pr.removeLine(Integer.parseInt(i));

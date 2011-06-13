@@ -20,7 +20,7 @@ import org.hibernate.annotations.Cascade;
 import com.iappsam.managers.AbstractManager;
 
 @Entity
-public class Employee {
+public class Employee implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -132,6 +132,10 @@ public class Employee {
 		return new Employee(designation, new Person(title, name));
 	}
 
+	public static Employee create(String designation, String name) {
+		return new Employee(designation, new Person(name));
+	}
+
 	public Set<Supplier> getSuppliers() {
 		return suppliers;
 	}
@@ -154,4 +158,11 @@ public class Employee {
 	public int getSupplierCount() {
 		return getSuppliers().size();
 	}
+
+	public boolean validate() {
+		boolean validDesignation = designation != null && !designation.equals("");
+		boolean validPerson = person != null && person.validate();
+		return validDesignation && validPerson;
+	}
+
 }

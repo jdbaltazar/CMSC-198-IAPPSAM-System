@@ -526,12 +526,12 @@ public class Tester {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-
-		BackupDatabaseTool bdTool = new BackupDatabaseTool();
-		String fileName = bdTool.getFileName();
-		String filePath = bdTool.getFilePath();
-		
-		System.out.println("filePath: "+filePath);
+		//
+		// BackupDatabaseTool bdTool = new BackupDatabaseTool();
+		// String fileName = bdTool.getFileName();
+		// String filePath = bdTool.getFilePath();
+		//
+		// System.out.println("filePath: "+filePath);
 
 	}
 }

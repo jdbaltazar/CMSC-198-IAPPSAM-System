@@ -1,4 +1,4 @@
-package com.iappsam.servlet.item;
+package com.iappsam.servlet;
 
 import static org.mockito.BDDMockito.*;
 

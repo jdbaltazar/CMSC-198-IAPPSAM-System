@@ -19,7 +19,7 @@ import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
-import com.iappsam.servlet.item.ServletTestCase;
+import com.iappsam.servlet.ServletTestCase;
 
 public class PRLineServletTest extends ServletTestCase {
 
@@ -106,9 +106,13 @@ public class PRLineServletTest extends ServletTestCase {
 	@Test
 	public void processSearchItem() throws ServletException, IOException {
 		givenParam("q", "item");
+
+		// given result from searching item
 		ArrayList<Item> res = new ArrayList<Item>();
 		given(itemSearcher.search("item")).willReturn(res);
 		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
+
+		given(session.getAttribute("form")).willReturn(pr);
 
 		new PRSearchItemAction(itemSearcher).process(request, response);
 

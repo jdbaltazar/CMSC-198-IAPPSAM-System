@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class DivisionOffice {
+public class DivisionOffice implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,5 +88,11 @@ public class DivisionOffice {
 		} else if (!officeName.equals(other.officeName))
 			return false;
 		return true;
+	}
+
+	public boolean validate() {
+		boolean validDivisionName = divisionName != null && !divisionName.equals("");
+		boolean validOfficeName = officeName != null && !officeName.equals("");
+		return validDivisionName && validOfficeName;
 	}
 }

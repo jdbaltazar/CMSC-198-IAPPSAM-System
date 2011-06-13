@@ -22,7 +22,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.ServletTestCase;
+import com.iappsam.servlet.ServletTestCase;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
@@ -47,13 +47,15 @@ public class PRServletTest extends ServletTestCase {
 	private ItemManager im;
 	@Mock
 	private RemoveItemFromPRAction removeItems;
+	@Mock
+	private AddPRAction addPr;
 
 	private PurchaseRequest pr;
 
 	@Before
 	public void init() {
 		super.init();
-		servlet = new PRServlet(listPR, newPurchase, addItem, removeItems);
+		servlet = new PRServlet(listPR, addPr, newPurchase, addItem, removeItems);
 	}
 
 	@Test
@@ -94,6 +96,28 @@ public class PRServletTest extends ServletTestCase {
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
 		verifyForwardedTo(PRServlet.NEW_PR_JSP);
+	}
+
+	@Test
+	public void addPurchaseRequest() throws ServletException, IOException {
+		givenParam("savePr", "");
+		servlet.doPost(request, response);
+		verify(addPr).process(request, response);
+	}
+
+	@Test
+	public void processAddPurchaseRequest() throws ServletException, IOException, TransactionException {
+		givenParam("deptAndSection", "1");
+		givenParam("purpose", "purpose");
+		givenParam("requestedBy", "1");
+		givenParam("approvedby", "2");
+		givenParams("quantity", new String[] { "1" });
+		givenParams("items", new String[] { "1" });
+
+		new AddPRAction(prm, im, dom, pm).process(request, response);
+
+		verify(prm).addPR(any(PurchaseRequest.class));
+		verify(response).sendRedirect(startsWith("/pr?id="));
 	}
 
 	@Test

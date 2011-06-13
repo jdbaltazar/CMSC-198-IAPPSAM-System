@@ -39,8 +39,8 @@
 
 
 	<target name="clean.classes">
-		<delete dir="classes">
-		</delete>
+		<delete dir="build/classes"/>
+		<mkdir dir="build/classes"/>
 	</target>
 
 	<target name="clean.webapps">
@@ -49,7 +49,7 @@
 	</target>
 
 	<target name="compile" depends="env.check, clean">
-		<javac srcdir="src" destdir="build/classes">
+		<javac srcdir="src" destdir="build/classes/">
 			<classpath path="${lib}" />
 			<classpath path="${lib2}" />
 		</javac>

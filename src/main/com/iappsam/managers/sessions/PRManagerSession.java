@@ -10,23 +10,24 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
-	public void addPR(PurchaseRequest purchaseRequest) throws TransactionException {
-		add(purchaseRequest);
+	public void addPR(PurchaseRequest pr) throws TransactionException {
+		if (pr.validate())
+			add(pr);
 	}
 
 	@Override
-	public void updatePR(PurchaseRequest purchaseRequest) throws TransactionException {
-		update(purchaseRequest);
+	public void updatePR(PurchaseRequest pr) throws TransactionException {
+		update(pr);
 	}
 
 	@Override
-	public PurchaseRequest getPR(int purchaseRequestID) throws TransactionException {
-		return (PurchaseRequest) get(PurchaseRequest.class, purchaseRequestID);
+	public PurchaseRequest getPR(int id) throws TransactionException {
+		return (PurchaseRequest) get(PurchaseRequest.class, id);
 	}
 
 	@Override
-	public boolean containsPR(PurchaseRequest purchaseRequest) throws TransactionException {
-		return getPR(purchaseRequest.getId()) != null;
+	public boolean containsPR(PurchaseRequest pr) throws TransactionException {
+		return getPR(pr.getId()) != null;
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Person {
+public class Person implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -104,5 +104,9 @@ public class Person {
 
 	public void removeContact(Contact contact) {
 		contacts.remove(contact);
+	}
+
+	public boolean validate() {
+		return name != null && !name.equals("");
 	}
 }

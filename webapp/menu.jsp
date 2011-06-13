@@ -39,7 +39,7 @@
 		</form>
 	</div>
 	<div id="backupDiv">
-		<form id="form3" name="form3" method="post" action="database/backup.do">
+		<form id="form3" name="form3" method="post" action="database/backup.sql">
 			<input name="backupBtn" type="submit" class="button" id="backupBtn" value="Backup" />
 		</form>
 	</div>

@@ -18,6 +18,7 @@ import com.iappsam.entities.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;
+import com.iappsam.servlet.ServletTestCase;
 
 import static org.mockito.BDDMockito.*;
 import static com.iappsam.servlet.item.ItemParameter.*;
