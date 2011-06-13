@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+div#form_table {
+  /* let's say you want to center this <div id="centerme">Something</div>
+	   and make it 60% wide but centered on the screen.*/
+ /* background-color:#FFFFCC;*/
+  margin:0 auto;
+  width:35%; /* 60% - 4% = 56% */
+  height:inherit; /* see above */
+  border:none;
+	position:absolute;
+	top:54%; /* 100% - 60% = 40% / 2 = 20% */
+	left:34%;  /* same as above */
+/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
+}
+
+.align_right{
+	text-align:right;
+	font-family:Lucida Grande; 
+	font-size:12px; 
+	font-weight:bold;
+	width:45%;
+}
+
+#align_left{
+	text-align:left;
+}
+
+#table{
+	background-color:#EEE0E5;
+	border:none;
+}
+
+#tableheader{
+	height:4%;
+	width:35%;
+	left:34%;
+	top:50.5%;
+	position:absolute;
+	margin:0 auto;
+	
+	background-color:#7B1113;
+}
+
+#tableheadername{
+	height:4%;
+	width:35%;
+	left:35%;
+	top:50.8%;
+	position:absolute;
+	margin:0 auto;
+	font-family:Lucida Grande;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+}
+.button{
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:#7B1113;
+	color:white;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.button:hover{
+	font-weight:bold;
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+
+#requiredLabel{
+	font-family:Lucida Grande;
+	font-size:11px;
+	color:red;
+	font-style:italic;
+}
+
+.table_footer{
+	height:6px;
+	margin:0 auto;
+	background-color:#7B1113;
+}
+
+.menulist{
+	width:120px;
+}
+
+.header_1{
+	font-family:Lucida Grande;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+	background-color:#7B1113;
+	
+	margin-left:10px;
+}
+
+.header_rows{
+	background-color:#7B1113;
+}
+
+.no_border_table{
+	border:none;
+}
+	

@@ -18,11 +18,11 @@ import com.iappsam.entities.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
-@WebServlet("/entities/supplier/ViewSuppliers.do")
-public class ViewSuppliers extends HttpServlet {
+@WebServlet("/entities/supplier/ViewSupplier.do")
+public class ViewSupplier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ViewSuppliers() {
+	public ViewSupplier() {
 		super();
 	}
 
@@ -30,6 +30,7 @@ public class ViewSuppliers extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String sID = (String) request.getParameter("supplierID");
 		if (sID == null) {
 			sID = (String) request.getAttribute("supplierID");
