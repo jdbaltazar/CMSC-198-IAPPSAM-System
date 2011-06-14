@@ -19,8 +19,13 @@ import com.iappsam.util.HibernateUtil;
 public class PersonManagerSession extends AbstractManager implements PersonManager {
 
 	@Override
-	public void addPerson(Person person) throws TransactionException, DuplicateEntryException {
-		add(person);
+	public void addPerson(Person person) throws TransactionException {
+
+		Person p = getPerson(person);
+		if (p == null)
+			add(person);
+		else
+			person.setPerson(person);
 	}
 
 	@Override

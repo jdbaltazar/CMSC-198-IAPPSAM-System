@@ -124,4 +124,11 @@ public class Person implements Validatable {
 	public boolean isValid() {
 		return name != null && !name.equals("");
 	}
+
+	public void setPerson(Person person) {
+		id = person.id;
+		title = person.title;
+		name = person.name;
+		contacts = person.contacts;
+	}
 }

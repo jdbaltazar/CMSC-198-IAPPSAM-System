@@ -15,7 +15,7 @@ import org.hibernate.search.annotations.Indexed;
 @Indexed
 @Entity
 @Table(name = "Item_Condition")
-public class ItemCondition implements Serializable{
+public class ItemCondition implements Serializable, Validatable {
 
 	private static final long serialVersionUID = -7228965828571929453L;
 
@@ -81,5 +81,9 @@ public class ItemCondition implements Serializable{
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	public boolean isValid() {
+		return name != null && !name.equals("");
 	}
 }

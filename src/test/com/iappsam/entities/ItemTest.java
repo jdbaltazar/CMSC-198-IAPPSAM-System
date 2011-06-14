@@ -13,42 +13,48 @@ public class ItemTest {
 
 	@Before
 	public void init() {
-		item = new Item();
+		item = Item.create("des", "cat", "unit", "stat", "con");
 	}
 
 	@Test
-	public void sameItem() {
-		item.setId(1);
-
-		Item item2 = new Item();
-		item2.setId(1);
-
-		assertEquals(item, item2);
+	public void shouldBeValidIfRequiredFieldsFilled() {
+		assertTrue(item.isValid());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void nullDescriptionNotAllowed() {
+	@Test
+	public void shouldNotBeValidIfNullDescription() {
 		item.setDescription(null);
+		assertFalse(item.isValid());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void nullCategoryNotAllowed() {
+	@Test
+	public void shouldNotBeValidIfEmptyDescription() {
+		item.setDescription("");
+		assertFalse(item.isValid());
+	}
+
+	@Test
+	public void shouldNotBeValidIfNullCategory() {
 		item.setCategory(null);
+		assertFalse(item.isValid());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void nullUnitNotAllowed() {
+	@Test
+	public void shouldNotBeValidIfNullUnit() {
 		item.setUnit(null);
+		assertFalse(item.isValid());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void nullStatusNotAllowed() {
+	@Test
+	public void shouldNotBeValidIfNullStatus() {
 		item.setStatus(null);
+		assertFalse(item.isValid());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void nullConditionNotAllowed() {
+	@Test
+	public void shouldNotBeValidIfNullCondition() {
 		item.setCondition(null);
+		assertFalse(item.isValid());
 	}
 
 	@Test
@@ -76,13 +82,13 @@ public class ItemTest {
 	}
 
 	@Test
-	public void priceNotChangedIfNotFloat() {
+	public void shouldNotChangedPriceIfNotFloat() {
 		item.setPrice("a");
 		assertEquals(0.0f, item.getPrice(), 0);
 	}
 
 	@Test
-	public void setPriceByString() {
+	public void shouldSetPriceByString() {
 		item.setPrice("1.50");
 		assertEquals(1.50, item.getPrice(), 0);
 	}

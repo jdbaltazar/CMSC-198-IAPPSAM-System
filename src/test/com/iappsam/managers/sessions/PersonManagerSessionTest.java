@@ -38,12 +38,7 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	@Override
 	@Before
 	public void init() throws Exception {
-		EntityRemover.removeAccounts();
-		EntityRemover.removeEmployees();
-		EntityRemover.removePersons();
-		EntityRemover.removeContacts();
-		EntityRemover.removeDivisionOffices();
-
+		super.init();
 		person = new Person("John");
 		employee = new Employee("Designation", person);
 		divisionOffice = new DivisionOffice("Division", "Office");
@@ -74,7 +69,7 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
-	public void getEmployeeByName() throws TransactionException, DuplicateEntryException {
+	public void shouldGetEmployeeByName() throws TransactionException, DuplicateEntryException {
 		Employee em = Employee.create("de", "mr", "john");
 		pm.addEmployee(em);
 		assertEquals(em, pm.getEmployeeByName("john"));
@@ -106,10 +101,18 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
-	public void shouldUpdatePerson() throws TransactionException, DuplicateEntryException {
+	public void shouldUpdateModifiedPerson() throws TransactionException, DuplicateEntryException {
 		pm.addPerson(person);
 		person.setName("name updated");
 		pm.updatePerson(person);
 		assertEquals(person, pm.getPerson(person));
 	}
+
+	@Test
+	public void shouldUpdateUnmodifiedPerson() throws TransactionException {
+		pm.addPerson(person);
+		pm.updatePerson(person);
+		assertEquals(person, pm.getPerson(person));
+	}
+
 }

@@ -22,7 +22,7 @@ import org.hibernate.search.annotations.Resolution;
 
 @Entity
 @Indexed
-public class Item implements Serializable {
+public class Item implements Serializable, Validatable {
 
 	private static final long serialVersionUID = 4853030420797406210L;
 
@@ -84,8 +84,8 @@ public class Item implements Serializable {
 		super();
 	}
 
-	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired, String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus,
-			ItemCondition itemCondition) {
+	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired,
+			String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus, ItemCondition itemCondition) {
 		super();
 		this.description = description;
 		this.stockNumber = stockNumber;
@@ -141,8 +141,6 @@ public class Item implements Serializable {
 	}
 
 	public void setStatus(ItemStatus itemStatus) {
-		if (itemStatus == null)
-			throw new NullArgumentException("itemStatus");
 		this.itemStatus = itemStatus;
 	}
 
@@ -151,8 +149,6 @@ public class Item implements Serializable {
 	}
 
 	public void setCondition(ItemCondition itemCondition) {
-		if (itemCondition == null)
-			throw new NullArgumentException("category");
 		this.itemCondition = itemCondition;
 	}
 
@@ -161,20 +157,14 @@ public class Item implements Serializable {
 	}
 
 	public void setCategory(ItemCategory itemCategory) {
-		if (itemCategory == null)
-			throw new NullArgumentException("category");
 		this.itemCategory = itemCategory;
 	}
 
 	public void setUnit(Unit unit) {
-		if (unit == null)
-			throw new NullArgumentException("unit");
 		this.unit = unit;
 	}
 
 	public void setDescription(String description) {
-		if (description == null)
-			throw new NullArgumentException("description");
 		this.description = description;
 	}
 
@@ -210,10 +200,15 @@ public class Item implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dateAcquired == null) ? 0 : dateAcquired.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((inventoryItemNumber == null) ? 0 : inventoryItemNumber.hashCode());
 		result = prime * result + ((itemCategory == null) ? 0 : itemCategory.hashCode());
 		result = prime * result + ((itemCondition == null) ? 0 : itemCondition.hashCode());
 		result = prime * result + ((itemStatus == null) ? 0 : itemStatus.hashCode());
+		result = prime * result + Float.floatToIntBits(price);
+		result = prime * result + ((propertyNumber == null) ? 0 : propertyNumber.hashCode());
+		result = prime * result + ((stockNumber == null) ? 0 : stockNumber.hashCode());
 		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
 		return result;
 	}
@@ -227,10 +222,20 @@ public class Item implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
+		if (dateAcquired == null) {
+			if (other.dateAcquired != null)
+				return false;
+		} else if (!dateAcquired.equals(other.dateAcquired))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (inventoryItemNumber == null) {
+			if (other.inventoryItemNumber != null)
+				return false;
+		} else if (!inventoryItemNumber.equals(other.inventoryItemNumber))
 			return false;
 		if (itemCategory == null) {
 			if (other.itemCategory != null)
@@ -246,6 +251,18 @@ public class Item implements Serializable {
 			if (other.itemStatus != null)
 				return false;
 		} else if (!itemStatus.equals(other.itemStatus))
+			return false;
+		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+			return false;
+		if (propertyNumber == null) {
+			if (other.propertyNumber != null)
+				return false;
+		} else if (!propertyNumber.equals(other.propertyNumber))
+			return false;
+		if (stockNumber == null) {
+			if (other.stockNumber != null)
+				return false;
+		} else if (!stockNumber.equals(other.stockNumber))
 			return false;
 		if (unit == null) {
 			if (other.unit != null)
@@ -277,5 +294,15 @@ public class Item implements Serializable {
 			price = Float.parseFloat(string);
 		} catch (NumberFormatException e) {
 		}
+	}
+
+	@Override
+	public boolean isValid() {
+		boolean validDescription = description != null && !description.equals("");
+		boolean validCategory = itemCategory != null && itemCategory.isValid();
+		boolean validUnit = unit != null && unit.isValid();
+		boolean validStatus = itemStatus != null && itemStatus.isValid();
+		boolean validCondition = itemCondition != null && itemCondition.isValid();
+		return validDescription && validCategory && validUnit && validStatus && validCondition;
 	}
 }

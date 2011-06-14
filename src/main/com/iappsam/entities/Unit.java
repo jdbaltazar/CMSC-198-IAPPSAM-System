@@ -13,7 +13,7 @@ import org.hibernate.search.annotations.Indexed;
 
 @Indexed
 @Entity
-public class Unit implements Serializable{
+public class Unit implements Serializable, Validatable {
 
 	private static final long serialVersionUID = -1860740504977822883L;
 
@@ -79,5 +79,10 @@ public class Unit implements Serializable{
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean isValid() {
+		return name != null && !name.equals("");
 	}
 }

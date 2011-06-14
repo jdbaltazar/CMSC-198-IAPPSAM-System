@@ -15,7 +15,7 @@ import org.hibernate.search.annotations.Indexed;
 @Indexed
 @Entity
 @Table(name = "Item_Category")
-public class ItemCategory implements Serializable{
+public class ItemCategory implements Serializable, Validatable {
 
 	private static final long serialVersionUID = -2358642749848823875L;
 
@@ -81,5 +81,10 @@ public class ItemCategory implements Serializable{
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public boolean isValid() {
+		return name != null && !name.equals("");
 	}
 }
