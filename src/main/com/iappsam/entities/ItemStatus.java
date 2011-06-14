@@ -83,7 +83,7 @@ public class ItemStatus implements Serializable, Validatable {
 		return name;
 	}
 
-	public boolean isValid() {
+	public boolean validate() {
 		return name != null && !name.equals("");
 	}
 }

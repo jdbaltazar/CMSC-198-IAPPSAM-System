@@ -118,4 +118,10 @@ public class PurchaseRequestLine {
 			return false;
 		return true;
 	}
+
+	public boolean isValid() {
+		boolean validItem = item != null && item.validate();
+		boolean validPr = purchaseRequest != null;
+		return validItem && validPr;
+	}
 }

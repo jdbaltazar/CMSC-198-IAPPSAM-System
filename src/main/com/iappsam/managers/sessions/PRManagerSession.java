@@ -11,7 +11,7 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
 	public void addPR(PurchaseRequest pr) throws TransactionException {
-		if (pr.isValid())
+		if (pr.validate())
 			add(pr);
 	}
 

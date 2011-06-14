@@ -35,7 +35,7 @@ public class AddPRAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
-			if (pr.isValid()) {
+			if (pr.validate()) {
 				prm.addPR(pr);
 				response.sendRedirect("/pr?id=" + pr.getId());
 			} else

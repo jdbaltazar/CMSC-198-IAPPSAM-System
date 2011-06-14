@@ -179,9 +179,9 @@ public class Employee implements Validatable {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean validate() {
 		boolean validDesignation = designation != null && !designation.equals("");
-		boolean validPerson = person != null && person.isValid();
+		boolean validPerson = person != null && person.validate();
 		return validDesignation && validPerson;
 	}
 

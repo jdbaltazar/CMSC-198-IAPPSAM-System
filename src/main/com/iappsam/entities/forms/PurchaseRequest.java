@@ -192,7 +192,8 @@ public class PurchaseRequest implements Form, Validatable {
 	}
 
 	public void setPrDate(Date prDate) {
-		this.prDate = prDate;
+		if (prNumber != null && !prNumber.isEmpty())
+			this.prDate = prDate;
 	}
 
 	public void setSaiNumber(String saiNumber) {
@@ -314,12 +315,16 @@ public class PurchaseRequest implements Form, Validatable {
 	}
 
 	@Override
-	public boolean isValid() {
-		boolean validDivisionOffice = divisionOffice != null && divisionOffice.isValid();
-		boolean validPurpose = purpose != null && !purpose.equals("");
-		boolean validRequestedBy = requestedBy != null && requestedBy.isValid();
-		boolean validApprovedBy = approvedBy != null && approvedBy.isValid();
+	public boolean validate() {
+		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
+		boolean validPurpose = purpose != null && !purpose.isEmpty();
+		boolean validRequestedBy = requestedBy != null && requestedBy.validate();
+		boolean validApprovedBy = approvedBy != null && approvedBy.validate();
+		boolean validLines = !lines.isEmpty();
 
-		return validDivisionOffice && validPurpose && validRequestedBy && validApprovedBy;
+		for (PurchaseRequestLine line : lines)
+			validLines &= line.isValid();
+
+		return validDivisionOffice && validLines && validPurpose && validRequestedBy && validApprovedBy;
 	}
 }

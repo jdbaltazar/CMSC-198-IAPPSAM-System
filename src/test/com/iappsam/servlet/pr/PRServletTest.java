@@ -49,8 +49,6 @@ public class PRServletTest extends ServletTestCase {
 	@Mock
 	private PRFactory factory;
 
-	private PurchaseRequest pr;
-
 	@Override
 	@Before
 	public void init() {
@@ -115,7 +113,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParams("items", new String[] { "1" });
 		// given valid PR from factory
 		PurchaseRequest pr = mock(PurchaseRequest.class);
-		given(pr.isValid()).willReturn(true);
+		given(pr.validate()).willReturn(true);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
 		new AddPRAction(prm, im, dom, pm, factory).process(request, response);
@@ -171,12 +169,36 @@ public class PRServletTest extends ServletTestCase {
 	@Test
 	public void processViewPR() throws TransactionException, ServletException, IOException {
 		givenParam("id", "1");
+		// given pr with id=1
 		PurchaseRequest pr = new PurchaseRequest();
 		given(prm.getPR(1)).willReturn(pr);
+
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+
 		new ViewPRAction(prm).process(request, response);
+
 		verify(request).setAttribute(eq("form"), eq(pr));
 		verifyForwardedTo(PRServlet.VIEW_PR_JSP);
+	}
+
+	@Test
+	public void shouldRedirectToPRListWhenPRDoesNotExist() throws ServletException, IOException {
+		givenParam("id", "1");
+		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+
+		new ViewPRAction(prm).process(request, response);
+
+		verify(response).sendRedirect(eq("/pr"));
+	}
+
+	@Test
+	public void shouldRedirectToPRListWhenIDParamNotInteger() throws ServletException, IOException {
+		givenParam("id", ".");
+		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+
+		new ViewPRAction(prm).process(request, response);
+
+		verify(response).sendRedirect(eq("/pr"));
 	}
 
 	@Test

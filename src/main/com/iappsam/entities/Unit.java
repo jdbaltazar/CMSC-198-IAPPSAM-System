@@ -82,7 +82,7 @@ public class Unit implements Serializable, Validatable {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean validate() {
 		return name != null && !name.equals("");
 	}
 }

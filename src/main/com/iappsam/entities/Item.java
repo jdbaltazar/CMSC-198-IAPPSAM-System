@@ -297,12 +297,12 @@ public class Item implements Serializable, Validatable {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean validate() {
 		boolean validDescription = description != null && !description.equals("");
-		boolean validCategory = itemCategory != null && itemCategory.isValid();
-		boolean validUnit = unit != null && unit.isValid();
-		boolean validStatus = itemStatus != null && itemStatus.isValid();
-		boolean validCondition = itemCondition != null && itemCondition.isValid();
+		boolean validCategory = itemCategory != null && itemCategory.validate();
+		boolean validUnit = unit != null && unit.validate();
+		boolean validStatus = itemStatus != null && itemStatus.validate();
+		boolean validCondition = itemCondition != null && itemCondition.validate();
 		return validDescription && validCategory && validUnit && validStatus && validCondition;
 	}
 }

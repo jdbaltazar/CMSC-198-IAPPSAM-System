@@ -121,7 +121,7 @@ public class Person implements Validatable {
 	}
 
 	@Override
-	public boolean isValid() {
+	public boolean validate() {
 		return name != null && !name.equals("");
 	}
 

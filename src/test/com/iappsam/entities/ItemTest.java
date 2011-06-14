@@ -18,43 +18,43 @@ public class ItemTest {
 
 	@Test
 	public void shouldBeValidIfRequiredFieldsFilled() {
-		assertTrue(item.isValid());
+		assertTrue(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfNullDescription() {
 		item.setDescription(null);
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfEmptyDescription() {
 		item.setDescription("");
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfNullCategory() {
 		item.setCategory(null);
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfNullUnit() {
 		item.setUnit(null);
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfNullStatus() {
 		item.setStatus(null);
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
 	public void shouldNotBeValidIfNullCondition() {
 		item.setCondition(null);
-		assertFalse(item.isValid());
+		assertFalse(item.validate());
 	}
 
 	@Test
