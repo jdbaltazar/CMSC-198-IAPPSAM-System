@@ -31,6 +31,7 @@ public class IIRUPExport extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -38,10 +39,11 @@ public class IIRUPExport extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String iirup = (String)request.getAttribute("iirupID");
 		int iirupID = Integer.parseInt(iirup);
-		String iirupExport = (String) request.getParameter("exportType");
+		String iirupExport = request.getParameter("exportType");
 		try {
 			IIRUP iirupForm = Managers.iirupManager.getIIRUP(iirupID);
 			if(iirupExport.equalsIgnoreCase("pdf")){

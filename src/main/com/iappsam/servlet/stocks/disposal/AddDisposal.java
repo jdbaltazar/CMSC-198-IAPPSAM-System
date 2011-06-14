@@ -9,12 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.forms.Disposal;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 import com.iappsam.util.Verifier;
 
@@ -30,10 +27,12 @@ public class AddDisposal extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println(".........inside adddisposal.java");
@@ -42,7 +41,7 @@ public class AddDisposal extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddDisposal.jsp");
 
-		String disposalInput = (String) request.getParameter("disposalField");
+		String disposalInput = request.getParameter("disposalField");
 
 		if (Verifier.validEntry(disposalInput)) {
 			disposal.setName(disposalInput);

@@ -19,6 +19,7 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 	private Supplier supplier;
 	private PersonManager pm;
 
+	@Override
 	@Before
 	public void init() throws Exception {
 		super.init();

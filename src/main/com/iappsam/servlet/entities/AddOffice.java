@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.DivisionOffice;
-import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.util.Managers;
 
 /**
@@ -34,6 +32,7 @@ public class AddOffice extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -42,11 +41,12 @@ public class AddOffice extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("....inside addoffice.java");
 		
-		int dOfficeID = Integer.parseInt((String) request.getParameter("dOfficeID"));
+		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
 		
 		DivisionOffice dOffice;
 		try {

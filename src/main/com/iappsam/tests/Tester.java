@@ -1,63 +1,6 @@
 package com.iappsam.tests;
 
-import java.sql.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import com.iappsam.database.BackupDatabaseTool;
-import com.iappsam.entities.Account;
-import com.iappsam.entities.Building;
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Signatory;
-import com.iappsam.entities.Supplier;
-import com.iappsam.entities.Unit;
-import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.AnnualProcurementPlanLine;
-import com.iappsam.entities.forms.Disposal;
-import com.iappsam.entities.forms.IIRUP;
-import com.iappsam.entities.forms.IIRUPLine;
-import com.iappsam.entities.forms.PurchaseOrder;
-import com.iappsam.entities.forms.PurchaseOrderLine;
-import com.iappsam.entities.forms.PurchaseRequest;
-import com.iappsam.entities.forms.PurchaseRequestLine;
-import com.iappsam.entities.forms.RequisitionAndIssueSlip;
-import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
-import com.iappsam.entities.forms.WasteMaterialsReport;
-import com.iappsam.entities.forms.WasteMaterialsReportLine;
-import com.iappsam.managers.APPManager;
-import com.iappsam.managers.AccountManager;
-import com.iappsam.managers.ContactManager;
-import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.IIRUPManager;
-import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.POManager;
-import com.iappsam.managers.PRManager;
-import com.iappsam.managers.PersonManager;
-import com.iappsam.managers.RISManager;
-import com.iappsam.managers.SupplierManager;
-import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
-import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.APPManagerSession;
-import com.iappsam.managers.sessions.AccountManagerSession;
-import com.iappsam.managers.sessions.ContactManagerSession;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.managers.sessions.IIRUPManagerSession;
-import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.managers.sessions.POManagerSession;
-import com.iappsam.managers.sessions.PRManagerSession;
-import com.iappsam.managers.sessions.PersonManagerSession;
-import com.iappsam.managers.sessions.RISManagerSession;
-import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.managers.sessions.WMRManagerSession;
 
 public class Tester {
 

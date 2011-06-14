@@ -12,14 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Building;
-import com.iappsam.entities.Item;
 import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.search.ItemSearcher;
-import com.iappsam.search.Searcher;
 
 @WebServlet("/entities/building/ViewBuildings.do")
 public class ViewBuildings extends HttpServlet {
@@ -38,10 +33,12 @@ public class ViewBuildings extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("ViewBuildings.jsp");

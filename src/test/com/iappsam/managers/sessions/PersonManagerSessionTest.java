@@ -32,6 +32,7 @@ public class PersonManagerSessionTest extends ManagerSessionTestCase {
 		pm = new PersonManagerSession();
 	}
 
+	@Override
 	@Before
 	public void init() throws Exception {
 		super.init();

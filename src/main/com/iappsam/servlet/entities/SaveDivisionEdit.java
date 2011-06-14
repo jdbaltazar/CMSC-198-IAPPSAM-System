@@ -34,6 +34,7 @@ public class SaveDivisionEdit extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -42,15 +43,16 @@ public class SaveDivisionEdit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("inside savedivisionedit........");
 		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");
 
-		String dOfficeID = (String) request.getParameter("dOfficeID");
+		String dOfficeID = request.getParameter("dOfficeID");
 		System.out.println("dOfficeID: " + dOfficeID);
-		String newName = (String) request.getParameter("newName");
+		String newName = request.getParameter("newName");
 		System.out.println("new name: " + newName);
 
 		if (dOfficeID != null) {

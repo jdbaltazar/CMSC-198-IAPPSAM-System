@@ -1,10 +1,8 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.RequisitionAndIssueSlip;
-import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.RISManager;
 import com.iappsam.managers.exceptions.TransactionException;

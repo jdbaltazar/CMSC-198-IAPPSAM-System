@@ -20,21 +20,26 @@ public class AddPRAction implements Action {
 	private ItemManager im;
 	private DivisionOfficeManager dom;
 	private PersonManager pm;
+	private PRFactory factory;
 
-	public AddPRAction(PRManager prm, ItemManager im, DivisionOfficeManager dom, PersonManager pm) {
+	public AddPRAction(PRManager prm, ItemManager im, DivisionOfficeManager dom, PersonManager pm, PRFactory factory) {
 		super();
 		this.prm = prm;
 		this.im = im;
 		this.dom = dom;
 		this.pm = pm;
+		this.factory = factory;
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PurchaseRequest pr = PRServlet.createPR(request, im, dom, pm);
-			prm.addPR(pr);
-			response.sendRedirect("/pr?id=" + pr.getId());
+			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
+			if (pr.isValid()) {
+				prm.addPR(pr);
+				response.sendRedirect("/pr?id=" + pr.getId());
+			} else
+				response.sendRedirect("/pr?new=pr");
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

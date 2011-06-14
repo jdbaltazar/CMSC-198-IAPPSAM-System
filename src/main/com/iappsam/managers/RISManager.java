@@ -3,7 +3,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.forms.RequisitionAndIssueSlip;
-import com.iappsam.entities.forms.RequisitionAndIssueSlipLine;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface RISManager {

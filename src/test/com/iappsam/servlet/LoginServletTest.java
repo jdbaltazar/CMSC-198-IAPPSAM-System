@@ -11,7 +11,7 @@ import org.mockito.Mock;
 
 import com.iappsam.LoginModule;
 
-import static org.mockito.BDDMockito.*;
+import static org.junit.Assert.*;
 
 public class LoginServletTest extends ServletTestCase {
 
@@ -22,6 +22,7 @@ public class LoginServletTest extends ServletTestCase {
 
 	private LoginServlet loginServlet;
 
+	@Override
 	@Before
 	public void init() {
 		loginServlet = new LoginServlet(loginModule);
@@ -30,14 +31,16 @@ public class LoginServletTest extends ServletTestCase {
 	@Test
 	public void login() throws ServletException, IOException {
 
-		givenRequestDispatcher("menu.jsp");
-		givenParam(LoginServlet.USERNAME, "admin");
-		givenParam(LoginServlet.PASSWORD, "admin");
-		given(loginModule.login("admin", "admin")).willReturn(true);
-		given(request.getSession()).willReturn(session);
-
-		loginServlet.doPost(request, response);
-
-		verifyForwardedTo("menu.jsp");
+//		givenRequestDispatcher("menu.jsp");
+//		givenParam(LoginServlet.USERNAME, "admin");
+//		givenParam(LoginServlet.PASSWORD, "admin");
+//		given(loginModule.login("admin", "admin")).willReturn(true);
+//		given(request.getSession()).willReturn(session);
+//
+//		loginServlet.doPost(request, response);
+//
+//		verifyForwardedTo("menu.jsp");
+		
+		fail();
 	}
 }

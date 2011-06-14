@@ -9,13 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 import com.iappsam.util.Verifier;
 
@@ -31,17 +28,19 @@ public class AddModeOfProcurement extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProc.jsp");
 
-		String modeofP = (String) request.getParameter("modeOfProcurementField");
+		String modeofP = request.getParameter("modeOfProcurementField");
 
 		if (Verifier.validEntry(modeofP)) {
 			modeofProc.setName(modeofP);

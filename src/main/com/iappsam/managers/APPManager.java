@@ -3,7 +3,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.AnnualProcurementPlanLine;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface APPManager {

@@ -1,11 +1,8 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.RSMI;
-import com.iappsam.entities.forms.RSMILine;
-import com.iappsam.entities.forms.RecapitulationLine;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.RSMIManager;
 import com.iappsam.managers.exceptions.TransactionException;

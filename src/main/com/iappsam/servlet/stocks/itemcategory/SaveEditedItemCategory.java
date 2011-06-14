@@ -33,6 +33,7 @@ public class SaveEditedItemCategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -41,14 +42,15 @@ public class SaveEditedItemCategory extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("inside saveediteditemcategory.java");
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemCategory.do");
-		int itemCategoryID = Integer.parseInt((String) request.getParameter("itemCategoryID"));
-		String name = (String) request.getParameter("categoryField");
+		int itemCategoryID = Integer.parseInt(request.getParameter("itemCategoryID"));
+		String name = request.getParameter("categoryField");
 
 		ItemCategory itemCategory = null;
 

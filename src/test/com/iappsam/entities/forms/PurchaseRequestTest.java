@@ -24,6 +24,6 @@ public class PurchaseRequestTest {
 	public void shouldSucessValidateOnRequiredFields() {
 		PurchaseRequest pr = new PurchaseRequest(new DivisionOffice("division", "office"), "purpose", Employee.create("des", "name"), Employee.create(
 				"des", "name"));
-		assertTrue(pr.validate());
+		assertTrue(pr.isValid());
 	}
 }

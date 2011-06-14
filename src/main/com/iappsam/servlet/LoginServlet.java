@@ -30,15 +30,17 @@ public class LoginServlet extends HttpServlet {
 		this.loginModule = loginModule;
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		forwardToIndexJsp(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = (String) request.getParameter(USERNAME);
-		String password = (String) request.getParameter(PASSWORD);
+		String username = request.getParameter(USERNAME);
+		String password = request.getParameter(PASSWORD);
 
-		if (loginModule.login(username, password))
+		if (loginModule.login(request))
 			forwardToMenuFrameJsp(request, response, username);
 		else
 			logInFail(request, response);

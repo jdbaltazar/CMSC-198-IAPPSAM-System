@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Building;
-import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.util.Managers;
 import com.iappsam.util.Verifier;
 
@@ -25,18 +23,20 @@ public class AddBuilding extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("...inside addbuilding");
 
 		RequestDispatcher add = request.getRequestDispatcher("AddBuilding.jsp");
 		Building building = new Building();
-		String name = (String) request.getParameter("name");
-		String address = (String) request.getParameter("address");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
 
 		if (Verifier.validEntry(name)) {
 			building.setBuildingName(name);

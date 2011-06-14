@@ -16,10 +16,12 @@ import com.iappsam.database.BackupDatabaseTool;
 @WebServlet("/database/backup.sql")
 public class BackupDatabase extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		BackupDatabaseTool bdTool = new BackupDatabaseTool();

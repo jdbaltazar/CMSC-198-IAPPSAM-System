@@ -9,12 +9,13 @@ public class WebCallbackHandler implements CallbackHandler {
     
   public WebCallbackHandler(ServletRequest request){
     
-      userName = request.getParameter("userName");
-      password = request.getParameter("password");
+      userName = request.getParameter("USERNAME");
+      password = request.getParameter("PASSWORD");
         
   }
     
-  public void handle(Callback[] callbacks) throws java.io.IOException,
+  @Override
+public void handle(Callback[] callbacks) throws java.io.IOException,
     UnsupportedCallbackException {
                                    
       //Add the username and password from the request parameters to

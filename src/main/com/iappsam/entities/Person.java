@@ -106,7 +106,8 @@ public class Person implements Validatable {
 		contacts.remove(contact);
 	}
 
-	public boolean validate() {
+	@Override
+	public boolean isValid() {
 		return name != null && !name.equals("");
 	}
 }

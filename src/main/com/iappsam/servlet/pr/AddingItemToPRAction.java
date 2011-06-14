@@ -18,18 +18,20 @@ public class AddingItemToPRAction implements Action {
 	private ItemManager im;
 	private DivisionOfficeManager dom;
 	private PersonManager pm;
+	private PRFactory factory;
 
-	public AddingItemToPRAction(ItemManager im, DivisionOfficeManager dom, PersonManager pm) {
+	public AddingItemToPRAction(ItemManager im, DivisionOfficeManager dom, PersonManager pm, PRFactory factory) {
 		super();
 		this.im = im;
 		this.dom = dom;
 		this.pm = pm;
+		this.factory = factory;
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PurchaseRequest pr = PRServlet.createPR(request, im, dom, pm);
+			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
 			request.getSession().setAttribute("form", pr);
 			response.sendRedirect("/pr/line");
 		} catch (TransactionException e) {

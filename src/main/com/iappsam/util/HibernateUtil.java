@@ -14,7 +14,6 @@ import com.iappsam.entities.ContactType;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.DivisionOfficeContact;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Item;
 import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.ItemCondition;

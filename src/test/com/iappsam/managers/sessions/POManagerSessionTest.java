@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.EntityRemover;
 import com.iappsam.entities.Supplier;
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.entities.forms.PurchaseOrder;
@@ -35,6 +34,7 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 	private POManager pom;
 	private DivisionOfficeManager dom;
 
+	@Override
 	@Before
 	public void init() throws Exception {
 		super.init();

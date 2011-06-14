@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
@@ -34,6 +33,7 @@ public class SaveEditedItemUnit extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -42,14 +42,15 @@ public class SaveEditedItemUnit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("....inside saveediteditemunit.java");
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemUnit.do");
-		int itemUnitID = Integer.parseInt((String) request.getParameter("itemUnitID"));
-		String name = (String) request.getParameter("unitField");
+		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));
+		String name = request.getParameter("unitField");
 
 		Unit unit = null;
 		try {

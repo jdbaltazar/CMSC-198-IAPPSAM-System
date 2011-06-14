@@ -18,12 +18,14 @@ public class RemoveItemFromPRAction implements Action {
 	private ItemManager im;
 	private DivisionOfficeManager dom;
 	private PersonManager pm;
+	private PRFactory factory;
 
-	public RemoveItemFromPRAction(ItemManager im, DivisionOfficeManager dom, PersonManager pm) {
+	public RemoveItemFromPRAction(ItemManager im, DivisionOfficeManager dom, PersonManager pm, PRFactory factory) {
 		super();
 		this.im = im;
 		this.dom = dom;
 		this.pm = pm;
+		this.factory = factory;
 	}
 
 	@Override
@@ -32,7 +34,7 @@ public class RemoveItemFromPRAction implements Action {
 			String[] indexesToRemove = request.getParameterValues("checkedItems");
 
 			if (indexesToRemove != null) {
-				PurchaseRequest pr = PRServlet.createPR(request, im, dom, pm);
+				PurchaseRequest pr = factory.createPR(request, im, dom, pm);
 				request.getSession().setAttribute("form", pr);
 				for (String i : indexesToRemove)
 					pr.removeLine(Integer.parseInt(i));

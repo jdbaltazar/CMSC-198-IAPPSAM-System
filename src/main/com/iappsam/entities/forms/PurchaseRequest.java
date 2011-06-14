@@ -16,15 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
-import com.iappsam.entities.Signatory;
 import com.iappsam.entities.Validatable;
 import com.iappsam.servlet.forms.Form;
 
@@ -130,7 +126,7 @@ public class PurchaseRequest implements Form, Validatable {
 	public void addLine(int quantity, Item item) {
 		addLine(new PurchaseRequestLine(this, quantity, item));
 	}
-
+	
 	public void removeLine(int itemId) {
 
 		PurchaseRequestLine delete = null;
@@ -312,11 +308,11 @@ public class PurchaseRequest implements Form, Validatable {
 	}
 
 	@Override
-	public boolean validate() {
-		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
+	public boolean isValid() {
+		boolean validDivisionOffice = divisionOffice != null && divisionOffice.isValid();
 		boolean validPurpose = purpose != null && !purpose.equals("");
-		boolean validRequestedBy = requestedBy != null && requestedBy.validate();
-		boolean validApprovedBy = approvedBy != null && approvedBy.validate();
+		boolean validRequestedBy = requestedBy != null && requestedBy.isValid();
+		boolean validApprovedBy = approvedBy != null && approvedBy.isValid();
 
 		return validDivisionOffice && validPurpose && validRequestedBy && validApprovedBy;
 	}

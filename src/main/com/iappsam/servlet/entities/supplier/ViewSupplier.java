@@ -26,12 +26,14 @@ public class ViewSupplier extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String sID = (String) request.getParameter("supplierID");
+		String sID = request.getParameter("supplierID");
 		if (sID == null) {
 			sID = (String) request.getAttribute("supplierID");
 		}

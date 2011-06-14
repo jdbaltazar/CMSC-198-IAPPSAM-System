@@ -24,17 +24,19 @@ public class AddItemUnit extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
-		String unitInput = (String) request.getParameter("unitField");
+		String unitInput = request.getParameter("unitField");
 
 		if (Verifier.validEntry(unitInput)) {
 			unit.setName(unitInput);

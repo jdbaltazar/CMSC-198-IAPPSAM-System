@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
 import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
 
 @WebServlet("/stocks/stocks/ViewModesOfProcurement.do")
@@ -31,10 +28,12 @@ public class ViewModesOfProcurement extends HttpServlet{
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher("ViewModesOfProcurement.jsp");

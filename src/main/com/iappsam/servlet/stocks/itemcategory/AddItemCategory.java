@@ -24,10 +24,12 @@ public class AddItemCategory extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ItemManager itemManager = new ItemManagerSession();
@@ -35,7 +37,7 @@ public class AddItemCategory extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCategory.jsp");
 
-		String categoryInput = (String) request.getParameter("categoryField");
+		String categoryInput = request.getParameter("categoryField");
 		if (Verifier.validEntry(categoryInput)) {
 			category.setName(categoryInput);
 			try {

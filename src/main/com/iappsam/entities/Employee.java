@@ -17,8 +17,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 
-import com.iappsam.managers.AbstractManager;
-
 @Entity
 public class Employee implements Validatable {
 
@@ -159,9 +157,10 @@ public class Employee implements Validatable {
 		return getSuppliers().size();
 	}
 
-	public boolean validate() {
+	@Override
+	public boolean isValid() {
 		boolean validDesignation = designation != null && !designation.equals("");
-		boolean validPerson = person != null && person.validate();
+		boolean validPerson = person != null && person.isValid();
 		return validDesignation && validPerson;
 	}
 

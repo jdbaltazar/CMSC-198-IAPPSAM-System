@@ -1,11 +1,9 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.WasteMaterialsReport;
-import com.iappsam.entities.forms.WasteMaterialsReportLine;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;

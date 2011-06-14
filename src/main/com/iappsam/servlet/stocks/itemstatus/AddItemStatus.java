@@ -24,17 +24,19 @@ public class AddItemStatus extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		ItemManager itemManager = new ItemManagerSession();
 		ItemStatus status = new ItemStatus();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemStatus.jsp");
-		String statusInput = (String) request.getParameter("statusField");
+		String statusInput = request.getParameter("statusField");
 
 		if (Verifier.validEntry(statusInput)) {
 			status.setName(statusInput);

@@ -32,6 +32,7 @@ public class EditItemCondition extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -40,12 +41,13 @@ public class EditItemCondition extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("inside edititemcondition.java");
 
-		int itemConditionID = Integer.parseInt((String) request.getParameter("itemConditionID"));
+		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
 		ItemCondition itemCondition = new ItemCondition();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCondition.jsp");
 		try {

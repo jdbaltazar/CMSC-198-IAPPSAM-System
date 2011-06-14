@@ -2,7 +2,6 @@ package com.iappsam.servlet.account;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Set;
 
@@ -14,19 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.Account;
-import com.iappsam.entities.AccountType;
 import com.iappsam.entities.Contact;
 import com.iappsam.entities.ContactType;
 import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
 import com.iappsam.managers.AccountManager;
-import com.iappsam.managers.ContactManager;
-import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
-import com.iappsam.managers.sessions.ContactManagerSession;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 
 @WebServlet("/accounts/viewing/ViewAccount.do")
@@ -37,6 +30,7 @@ public class ViewAccount extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager= new PersonManagerSession();
@@ -73,6 +67,7 @@ public class ViewAccount extends HttpServlet {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}

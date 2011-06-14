@@ -1,10 +1,8 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.InventoryOfEquipment;
-import com.iappsam.entities.forms.InventoryOfEquipmentLine;
 import com.iappsam.managers.IEManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;

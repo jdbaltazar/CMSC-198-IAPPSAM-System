@@ -33,6 +33,7 @@ public class SaveEditedItemCondition extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -41,14 +42,15 @@ public class SaveEditedItemCondition extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("inside saveediteditemcondition.java");
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemCondition.do");
-		int itemConditionID = Integer.parseInt((String) request.getParameter("itemConditionID"));
-		String name = (String) request.getParameter("conditionField");
+		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
+		String name = request.getParameter("conditionField");
 
 		ItemCondition itemCondition = null;
 

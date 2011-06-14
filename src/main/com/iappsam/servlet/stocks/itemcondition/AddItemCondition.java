@@ -24,10 +24,12 @@ public class AddItemCondition extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ItemManager itemManager = new ItemManagerSession();
@@ -35,7 +37,7 @@ public class AddItemCondition extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCondition.jsp");
 
-		String conditionInput = (String) request.getParameter("conditionField");
+		String conditionInput = request.getParameter("conditionField");
 
 		if (Verifier.validEntry(conditionInput)) {
 			condition.setName(conditionInput);

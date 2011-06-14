@@ -25,6 +25,7 @@ public class IIRUPManagerSessionTest extends ManagerSessionTestCase {
 	private IIRUP iirup;
 	private ItemManager im;
 
+	@Override
 	@Before
 	public void init() throws Exception {
 		super.init();

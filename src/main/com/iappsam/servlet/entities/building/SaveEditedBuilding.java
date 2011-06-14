@@ -33,6 +33,7 @@ public class SaveEditedBuilding extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -41,15 +42,16 @@ public class SaveEditedBuilding extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("....inside save editedbuilding.java");
 
 		RequestDispatcher save = request.getRequestDispatcher("EditBuilding.do");
-		int buildingID = Integer.parseInt((String) request.getParameter("buildingID"));
-		String name = (String) request.getParameter("name");
-		String address = (String) request.getParameter("address");
+		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
 		Building building = null;
 		try {
 			building = Managers.DIVISION_OFFICE_MANAGER.getBuilding(buildingID);

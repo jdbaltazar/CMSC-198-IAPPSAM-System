@@ -3,7 +3,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.forms.PurchaseRequest;
-import com.iappsam.entities.forms.PurchaseRequestLine;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface PRManager {

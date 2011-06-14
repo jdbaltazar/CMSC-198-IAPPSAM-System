@@ -37,6 +37,7 @@ public class PRLineServletTest extends ServletTestCase {
 	@Mock
 	private PurchaseRequest pr;
 
+	@Override
 	@Before
 	public void init() {
 		super.init();

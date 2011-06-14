@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.entities.forms.PurchaseOrder;
-import com.iappsam.entities.forms.PurchaseOrderLine;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 

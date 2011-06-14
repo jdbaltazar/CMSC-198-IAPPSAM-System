@@ -7,10 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.jasperreports.engine.data.ListOfArrayDataSource;
-
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.iappsam.entities.DivisionOffice;

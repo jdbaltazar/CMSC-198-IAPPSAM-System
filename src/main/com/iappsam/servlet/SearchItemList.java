@@ -28,16 +28,17 @@ public class SearchItemList extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AbstractSearcher iSearcher = new ItemSearcher();
 		List<Item> itemList = null;
-		String searchItemField = (String) request.getParameter("searchItemField");
+		String searchItemField = request.getParameter("searchItemField");
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
 				itemList = Managers.ITEM_MANAGER.getAllItems();
 			else
-				itemList = iSearcher.search((String) request.getParameter("searchItemField"));
+				itemList = iSearcher.search(request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));
 			ArrayList<String> itemDescription = new ArrayList<String>();
 			ArrayList<String> itemCategory = new ArrayList<String>();
@@ -71,6 +72,7 @@ public class SearchItemList extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

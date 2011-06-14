@@ -16,8 +16,6 @@ import com.iappsam.entities.Item;
 import com.iappsam.entities.Signatory;
 import com.iappsam.entities.Supplier;
 import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.entities.forms.PurchaseOrder;
-import com.iappsam.entities.forms.PurchaseOrderLine;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
@@ -38,10 +36,12 @@ public class SavePurchaseOrder extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PersonManager pManager = new PersonManagerSession();

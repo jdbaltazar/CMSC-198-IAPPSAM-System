@@ -34,6 +34,7 @@ public class SearchIIRUPForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -42,8 +43,9 @@ public class SearchIIRUPForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String query = (String) request.getParameter("searchField");
+		String query = request.getParameter("searchField");
 		if (query != null && !query.isEmpty()) {
 			IIRUPSearcher searcher = new IIRUPSearcher();
 			List<IIRUP> iirupList = searcher.search(query);

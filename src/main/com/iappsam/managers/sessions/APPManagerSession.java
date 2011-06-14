@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.entities.Person;
 import com.iappsam.entities.forms.AnnualProcurementPlan;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AbstractManager;

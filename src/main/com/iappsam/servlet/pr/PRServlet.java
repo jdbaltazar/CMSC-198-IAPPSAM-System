@@ -8,14 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
-import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.PersonManager;
-import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.managers.sessions.PRManagerSession;
-import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.Managers;
 
@@ -26,26 +18,32 @@ public class PRServlet extends HttpServlet {
 	public static final String NEW_PR_JSP = "/pr/new-pr.jsp";
 	public static final String ADD_ITEM_JSP = "/pr/line/add-item.jsp";
 	public static final String LIST_PR_JSP = null;
+	public static final String VIEW_PR_JSP = "/pr/view-pr.jsp";
 
-	private Action newPr;
-	private Action addItem;
-	private Action list;
-	private Action removeItem;
-	private Action savePr;
+	private NewPRAction newPr;
+	private AddingItemToPRAction addItem;
+	private ListPRAction list;
+	private RemoveItemFromPRAction removeItem;
+	private AddPRAction addPr;
+	private ViewPRAction viewPr;
 
 	public PRServlet() {
-		this(new ListPRAction(Managers.PR_MANAGER), new AddPRAction(Managers.PR_MANAGER, Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER,
-				Managers.PERSON_MANAGER), new NewPRAction(Managers.PERSON_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.ITEM_MANAGER), //
-				new AddingItemToPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER), new RemoveItemFromPRAction(
-						Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER));
+		this(new ListPRAction(Managers.PR_MANAGER),
+				new AddPRAction(Managers.PR_MANAGER, Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
+				new NewPRAction(Managers.PERSON_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.ITEM_MANAGER), //
+				new AddingItemToPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
+				new RemoveItemFromPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
+				new ViewPRAction(Managers.PR_MANAGER));
 	}
 
-	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem) {
+	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem,
+			ViewPRAction viewPr) {
 		this.list = list;
 		this.newPr = newPr;
 		this.addItem = addItem;
 		this.removeItem = removeItem;
-		this.savePr = addPr;
+		this.addPr = addPr;
+		this.viewPr = viewPr;
 	}
 
 	@Override
@@ -63,6 +61,7 @@ public class PRServlet extends HttpServlet {
 		String addItemParam = request.getParameter("addItems");
 		String removeItemParam = request.getParameter("removeItems");
 		String savePrParam = request.getParameter("savePr");
+		String idParam = request.getParameter("id");
 
 		if (newParam != null)
 			return newPr;
@@ -71,48 +70,10 @@ public class PRServlet extends HttpServlet {
 		else if (removeItemParam != null)
 			return removeItem;
 		else if (savePrParam != null)
-			return savePr;
+			return addPr;
+		else if (idParam != null)
+			return viewPr;
 		return list;
 	}
 
-	public static PurchaseRequest createPR(HttpServletRequest request, ItemManager im, DivisionOfficeManager dom, PersonManager pm)
-			throws TransactionException {
-
-		PurchaseRequest pr = new PurchaseRequest();
-
-		String divisionOfficeId = request.getParameter("deptAndSection");
-		if (divisionOfficeId != null)
-			pr.setDivisionOffice(dom.getDivisionOffice(Integer.parseInt(divisionOfficeId)));
-
-		pr.setPrNumber(request.getParameter("prNumber"));
-		pr.setPrDate(request.getParameter("prDate"));
-		pr.setSaiNumber(request.getParameter("saiNumber"));
-		pr.setSaiDate(request.getParameter("saiDate"));
-		pr.setAlobsNumber(request.getParameter("alobsNumber"));
-		pr.setAlobsDate(request.getParameter("alobsDate"));
-		pr.setPurpose(request.getParameter("purpose"));
-
-		String reqId = request.getParameter("requestedBy");
-		if (reqId != null)
-			pr.setRequestedBy(pm.getEmployee(Integer.parseInt(reqId)));
-
-		String aprid = request.getParameter("approvedby");
-		if (aprid != null)
-			pr.setApprovedBy(pm.getEmployee(Integer.parseInt(aprid)));
-
-		String[] quantities = request.getParameterValues("quantity");
-		String[] items = request.getParameterValues("items");
-
-		if (items != null)
-			for (int i = 0; i < items.length; i++) {
-				String q = null;
-				if (quantities != null)
-					q = quantities[i];
-				if (q == null)
-					q = "0";
-				pr.addLine(Integer.parseInt(q), im.getItem(Integer.parseInt(items[i])));
-			}
-
-		return pr;
-	}
 }

@@ -12,10 +12,12 @@ import com.iappsam.util.Cleaner;
 @WebServlet("/menu")
 public class Menu extends HttpServlet {
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String username = (String) request.getAttribute("username");

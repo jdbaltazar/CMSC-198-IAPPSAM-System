@@ -10,7 +10,6 @@ import org.hibernate.search.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.hibernate.search.query.dsl.TermMatchingContext;
 
-import com.iappsam.entities.Item;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.util.HibernateUtil;
 

@@ -21,13 +21,15 @@ public class EditModeOfProcurement extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println(".........inside editmop.java");
-		int mopID = Integer.parseInt((String) request.getParameter("mopID"));
+		int mopID = Integer.parseInt(request.getParameter("mopID"));
 		ModeOfProcurement mop = new ModeOfProcurement();
 		RequestDispatcher edit = request.getRequestDispatcher("EditModeOfProc.jsp");
 		try {

@@ -1,11 +1,9 @@
 package com.iappsam.managers.sessions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.entities.forms.ModeOfProcurement;
 import com.iappsam.entities.forms.PurchaseOrder;
-import com.iappsam.entities.forms.PurchaseOrderLine;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.entities.DivisionOffice;
 import com.iappsam.entities.Employee;
 import com.iappsam.entities.Item;
-import com.iappsam.entities.Signatory;
 import com.iappsam.entities.forms.Disposal;
 import com.iappsam.entities.forms.IIRUP;
 import com.iappsam.entities.forms.IIRUPLine;
@@ -61,6 +60,7 @@ public class IIRUPForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -89,6 +89,7 @@ public class IIRUPForm extends HttpServlet {
 		return null;
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IIRUPManager iManage = new IIRUPManagerSession();
 		PersonManager pManager = new PersonManagerSession();
@@ -98,9 +99,9 @@ public class IIRUPForm extends HttpServlet {
 		Date asOfDate = (Date) request.getSession().getAttribute("asOfDate");
 
 		DivisionOffice station = (DivisionOffice) request.getSession().getAttribute("station");
-		approvedBy = (String) request.getParameter("approvedBy");
-		nameOfInspector = (String) request.getParameter("nameOfInspector");
-		nameOfWitness = (String) request.getParameter("nameOfWitness");
+		approvedBy = request.getParameter("approvedBy");
+		nameOfInspector = request.getParameter("nameOfInspector");
+		nameOfWitness = request.getParameter("nameOfWitness");
 		requestedBy = (String) request.getSession().getAttribute("requestedBy");
 		itemIDs = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		quantity = (ArrayList<String>) request.getSession().getAttribute("quantity");

@@ -39,6 +39,7 @@ public class ItemServletTest extends ServletTestCase {
 
 	private ItemServlet servlet;
 
+	@Override
 	@Before
 	public void init() {
 		servlet = new ItemServlet(itemManager, searcher);

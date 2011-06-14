@@ -22,16 +22,18 @@ public class SaveEditedModeOfProc extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("inside saveeditedmop.java");
 
 		RequestDispatcher save = request.getRequestDispatcher("EditModeOfProcurement.do");
-		int mopID = Integer.parseInt((String) request.getParameter("mopID"));
-		String name = (String) request.getParameter("modeOfProcurementField");
+		int mopID = Integer.parseInt(request.getParameter("mopID"));
+		String name = request.getParameter("modeOfProcurementField");
 
 		ModeOfProcurement mop = null;
 

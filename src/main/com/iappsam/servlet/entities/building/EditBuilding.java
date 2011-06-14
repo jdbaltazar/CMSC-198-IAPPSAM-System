@@ -32,6 +32,7 @@ public class EditBuilding extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -40,12 +41,13 @@ public class EditBuilding extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println("....inside editbuilding.java");
 
-		int buildingID = Integer.parseInt((String) request.getParameter("buildingID"));
+		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
 		Building building = null;
 		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		try {

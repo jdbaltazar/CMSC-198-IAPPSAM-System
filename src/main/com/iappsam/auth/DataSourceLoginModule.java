@@ -5,8 +5,6 @@ import java.sql.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import javax.security.auth.spi.LoginModule;
 import javax.security.auth.*;
 import javax.security.auth.callback.*;
@@ -28,6 +26,7 @@ public class DataSourceLoginModule implements LoginModule {
 	public DataSourceLoginModule() {
 	}// no-arguments constructor
 
+	@Override
 	public void initialize(Subject subject, CallbackHandler handler, Map sharedState, Map options) {
 		this.subject = subject;
 		this.handler = handler;
@@ -35,6 +34,7 @@ public class DataSourceLoginModule implements LoginModule {
 		this.options = options;
 	}
 
+	@Override
 	public boolean login() throws LoginException {
 
 		String name = "";
@@ -145,6 +145,7 @@ public class DataSourceLoginModule implements LoginModule {
 
 	} // login
 
+	@Override
 	public boolean commit() throws LoginException {
 
 		// We're not doing anything special here, since this class
@@ -153,6 +154,7 @@ public class DataSourceLoginModule implements LoginModule {
 		return loginPassed;
 	}
 
+	@Override
 	public boolean abort() throws LoginException {
 
 		// Reset state
@@ -162,6 +164,7 @@ public class DataSourceLoginModule implements LoginModule {
 		return bool;
 	}
 
+	@Override
 	public boolean logout() throws LoginException {
 
 		// Reset state

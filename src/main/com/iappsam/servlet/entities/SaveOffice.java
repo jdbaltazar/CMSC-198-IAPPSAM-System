@@ -34,6 +34,7 @@ public class SaveOffice extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -42,6 +43,7 @@ public class SaveOffice extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("....inside saveoffice.java");
@@ -54,8 +56,8 @@ public class SaveOffice extends HttpServlet {
 		// System.out.println("divisionname: "+divisionName);
 		// System.out.println("officename: "+officeName);
 
-		int dOfficeID = Integer.parseInt((String) request.getParameter("dOfficeID"));
-		String officeName = (String) request.getParameter("officeName");
+		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
+		String officeName = request.getParameter("officeName");
 
 		if (officeName != null) {
 			if (!officeName.equalsIgnoreCase("")) {

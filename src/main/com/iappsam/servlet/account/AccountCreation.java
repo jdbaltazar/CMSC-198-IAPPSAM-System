@@ -45,6 +45,7 @@ public class AccountCreation extends HttpServlet {
 	String emailad;
 	String acctType;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
@@ -83,6 +84,7 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");

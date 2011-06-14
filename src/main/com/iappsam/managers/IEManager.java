@@ -3,7 +3,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.forms.InventoryOfEquipment;
-import com.iappsam.entities.forms.InventoryOfEquipmentLine;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface IEManager {

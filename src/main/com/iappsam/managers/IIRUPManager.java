@@ -3,7 +3,6 @@ package com.iappsam.managers;
 import java.util.List;
 
 import com.iappsam.entities.forms.IIRUP;
-import com.iappsam.entities.forms.IIRUPLine;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface IIRUPManager {

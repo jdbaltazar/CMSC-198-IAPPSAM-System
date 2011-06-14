@@ -17,7 +17,6 @@ import com.iappsam.entities.Supplier;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
-import com.iappsam.util.Verifier;
 
 /**
  * Servlet implementation class SaveSupplier
@@ -38,6 +37,7 @@ public class SaveSupplier extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
@@ -46,23 +46,24 @@ public class SaveSupplier extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		System.out.println(".............inside savesupplier.java");
 		
 		
-		String supplierName = (String) request.getParameter("supplierName");
-		String address = (String) request.getParameter("supplierAddress");
-		String tin = (String) request.getParameter("tin");
+		String supplierName = request.getParameter("supplierName");
+		String address = request.getParameter("supplierAddress");
+		String tin = request.getParameter("tin");
 
-		String title = (String) request.getParameter("title");
-		String name = (String) request.getParameter("name");
-		String designation = (String) request.getParameter("designation2");
-		String employeeNumber = (String) request.getParameter("employeeNumber");
-		String mobileNumber = (String) request.getParameter("mobileNumber");
-		String landline = (String) request.getParameter("landline");
-		String emailad = (String) request.getParameter("emailad");
+		String title = request.getParameter("title");
+		String name = request.getParameter("name");
+		String designation = request.getParameter("designation2");
+		String employeeNumber = request.getParameter("employeeNumber");
+		String mobileNumber = request.getParameter("mobileNumber");
+		String landline = request.getParameter("landline");
+		String emailad = request.getParameter("emailad");
 
 		RequestDispatcher view = request.getRequestDispatcher("AddSupplier.jsp");
 
