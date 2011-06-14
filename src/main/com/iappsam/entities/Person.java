@@ -75,7 +75,9 @@ public class Person implements Validatable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((contacts == null) ? 0 : contacts.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
@@ -88,13 +90,25 @@ public class Person implements Validatable {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (id != other.id)
+		if (contacts == null) {
+			if (other.contacts != null)
+				return false;
+		} else if (!contacts.equals(other.contacts))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
 			return false;
 		return true;
 	}
 
 	public void addContact(Contact contact) {
-		// contact.setPerson(this);
 		contacts.add(contact);
 	}
 

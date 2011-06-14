@@ -45,4 +45,6 @@ public interface DivisionOfficeManager {
 
 	List<Building> getAllBuildings() throws TransactionException;
 
+	DivisionOffice getDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
+
 }

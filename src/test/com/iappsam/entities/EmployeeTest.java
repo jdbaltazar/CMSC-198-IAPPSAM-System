@@ -8,11 +8,13 @@ public class EmployeeTest {
 
 	@Test
 	public void sameEmployee() {
-		Employee e = new Employee();
-		e.setId(1);
+		Employee e = new Employee("designation", new Person("person"));
+		e.setDivisionOffice(new DivisionOffice("division", "office"));
+		e.setEmployeeNumber("number");
 
-		Employee e2 = new Employee();
-		e2.setId(1);
+		Employee e2 = new Employee("designation", new Person("person"));
+		e2.setDivisionOffice(new DivisionOffice("division", "office"));
+		e2.setEmployeeNumber("number");
 
 		assertEquals(e, e2);
 	}
@@ -44,7 +46,6 @@ public class EmployeeTest {
 		employee.addSupplier(supplier);
 		employee.removeSupplier(supplier);
 
-		
-		assertEquals(0 , employee.getSuppliers().size());
+		assertEquals(0, employee.getSuppliers().size());
 	}
 }

@@ -108,7 +108,10 @@ public class Employee implements Validatable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((designation == null) ? 0 : designation.hashCode());
+		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
+		result = prime * result + ((employeeNumber == null) ? 0 : employeeNumber.hashCode());
+		result = prime * result + ((person == null) ? 0 : person.hashCode());
 		return result;
 	}
 
@@ -121,7 +124,25 @@ public class Employee implements Validatable {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (id != other.id)
+		if (designation == null) {
+			if (other.designation != null)
+				return false;
+		} else if (!designation.equals(other.designation))
+			return false;
+		if (divisionOffice == null) {
+			if (other.divisionOffice != null)
+				return false;
+		} else if (!divisionOffice.equals(other.divisionOffice))
+			return false;
+		if (employeeNumber == null) {
+			if (other.employeeNumber != null)
+				return false;
+		} else if (!employeeNumber.equals(other.employeeNumber))
+			return false;
+		if (person == null) {
+			if (other.person != null)
+				return false;
+		} else if (!person.equals(other.person))
 			return false;
 		return true;
 	}

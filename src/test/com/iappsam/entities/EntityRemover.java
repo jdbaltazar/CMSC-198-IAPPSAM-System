@@ -70,62 +70,62 @@ public class EntityRemover {
 		removeDivisionOffices();
 	}
 
-	private static void removePRs() throws TransactionException {
+	public static void removePRs() throws TransactionException {
 		List<PurchaseRequest> prs = prm.getAllPR();
 		for (PurchaseRequest pr : prs)
 			prm.removePR(pr);
 	}
 
-	private static void removeModeOfProcurements() throws TransactionException {
+	public static void removeModeOfProcurements() throws TransactionException {
 		List<ModeOfProcurement> mops = pom.getAllModeOfProcurement();
 		for (ModeOfProcurement mop : mops)
 			pom.removeModeOfProcurement(mop);
 
 	}
 
-	private static void removePOs() throws TransactionException {
+	public static void removePOs() throws TransactionException {
 		List<PurchaseOrder> pos = pom.getAllPO();
 		for (PurchaseOrder po : pos)
 			pom.removePurchaseOrder(po);
 	}
 
-	private static void removeSuppliers() throws TransactionException {
+	public static void removeSuppliers() throws TransactionException {
 		List<Supplier> suppliers = sm.getAllSuppliers();
 		for (Supplier s : suppliers)
 			sm.removeSupplier(s);
 	}
 
-	private static void removeAccounts() throws TransactionException {
+	public static void removeAccounts() throws TransactionException {
 		List<Account> accounts = am.getAllAccounts();
 		for (Account i : accounts)
 			am.removeAccount(i);
 	}
 
-	private static void removeContacts() throws TransactionException {
+	public static void removeContacts() throws TransactionException {
 		List<Contact> contacts = cm.getAllContacts();
 		for (Contact i : contacts)
 			cm.removeContact(i);
 	}
 
-	private static void removeDivisionOffices() throws TransactionException {
+	public static void removeDivisionOffices() throws TransactionException {
 		List<DivisionOffice> offices = dom.getAllDivisionOffice();
 		for (DivisionOffice i : offices)
 			dom.removeDivisionOffice(i);
 	}
 
-	private static void removeAPPs() throws TransactionException {
+	public static void removeAPPs() throws TransactionException {
 		List<AnnualProcurementPlan> persons = appm.getAllAPP();
 		for (AnnualProcurementPlan i : persons)
 			appm.removeAPP(i);
 	}
 
-	private static void removePersons() throws TransactionException {
+	public static void removePersons() throws TransactionException {
 		List<Person> persons = pm.getAllPersons();
 		for (Person i : persons)
 			pm.removePerson(i);
 	}
 
-	private static void removeSignatories() throws TransactionException {
+	public static void removeSignatories() throws TransactionException {
 		List<Signatory> signatories = pm.getAllSignatories();
 		for (Signatory i : signatories)
 			pm.removeSignatory(i);
@@ -138,25 +138,25 @@ public class EntityRemover {
 		removeItemStatuses();
 	}
 
-	private static void removeItemStatuses() throws TransactionException {
+	public static void removeItemStatuses() throws TransactionException {
 		List<ItemStatus> statuses = im.getAllItemStatus();
 		for (ItemStatus i : statuses)
 			im.removeItemStatus(i);
 	}
 
-	private static void removeUnits() throws TransactionException {
+	public static void removeUnits() throws TransactionException {
 		List<Unit> units = im.getAllUnits();
 		for (Unit i : units)
 			im.removeUnit(i);
 	}
 
-	private static void removeCategories() throws TransactionException {
+	public static void removeCategories() throws TransactionException {
 		List<ItemCategory> conditions = im.getAllItemCategory();
 		for (ItemCategory i : conditions)
 			im.removeItemCategory(i);
 	}
 
-	private static void removeItemConditions() throws TransactionException {
+	public static void removeItemConditions() throws TransactionException {
 		List<ItemCondition> conditions = im.getAllItemCondition();
 		for (ItemCondition i : conditions)
 			im.removeItemCondition(i);

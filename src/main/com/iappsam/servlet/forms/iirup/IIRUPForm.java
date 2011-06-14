@@ -192,7 +192,7 @@ public class IIRUPForm extends HttpServlet {
 
 			}
 			try {
-				Managers.iirupManager.addIIRUP(iirupForm);
+				Managers.IIRUP_MANAGER.addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
 				request.setAttribute("iirupForm", iirupForm);

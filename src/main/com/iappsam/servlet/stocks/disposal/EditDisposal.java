@@ -51,7 +51,7 @@ public class EditDisposal extends HttpServlet {
 		Disposal disposal = new Disposal();
 		RequestDispatcher edit = request.getRequestDispatcher("EditDisposal.jsp");
 		try {
-			disposal = Managers.wmrManager.getDisposal(disposalID);
+			disposal = Managers.WMR_MANAGER.getDisposal(disposalID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -28,20 +28,19 @@ import com.iappsam.managers.sessions.WMRManagerSession;
 public class Managers {
 	public static PersonManager PERSON_MANAGER = new PersonManagerSession();
 	public static AccountManager aManager = new AccountManagerSession();
-	public static ContactManager cManager = new ContactManagerSession();
-	public static SupplierManager sManager = new SupplierManagerSession();
+	public static ContactManager COUNTACT_MANAGER = new ContactManagerSession();
+	public static SupplierManager SUPPLIER_MANAGER = new SupplierManagerSession();
 	public static DivisionOfficeManager DIVISION_OFFICE_MANAGER = new DivisionOfficeManagerSession();
 	public static ItemManager ITEM_MANAGER = new ItemManagerSession();
 
 	// Forms
-	public static APPManager appManager = new APPManagerSession();
+	public static APPManager APP_MANAGEAR = new APPManagerSession();
 	public static PRManager PR_MANAGER = new PRManagerSession();
-	public static POManager poManager = new POManagerSession();
-	public static RISManager risManager = new RISManagerSession();
-	public static IIRUPManager iirupManager = new IIRUPManagerSession();
-	public static WMRManager wmrManager = new WMRManagerSession();
+	public static POManager PO_MANAGER = new POManagerSession();
+	public static RISManager RIS_MANAGER = new RISManagerSession();
+	public static IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
+	public static WMRManager WMR_MANAGER = new WMRManagerSession();
 
-	
 	private Managers() {
 	}
 

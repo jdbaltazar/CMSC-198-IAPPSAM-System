@@ -45,7 +45,7 @@ public class IIRUPExport extends HttpServlet {
 		int iirupID = Integer.parseInt(iirup);
 		String iirupExport = request.getParameter("exportType");
 		try {
-			IIRUP iirupForm = Managers.iirupManager.getIIRUP(iirupID);
+			IIRUP iirupForm = Managers.IIRUP_MANAGER.getIIRUP(iirupID);
 			if(iirupExport.equalsIgnoreCase("pdf")){
 				System.out.println("Will export to pdf");
 				//PDF Export area use{

@@ -33,7 +33,7 @@ public class EditModeOfProcurement extends HttpServlet {
 		ModeOfProcurement mop = new ModeOfProcurement();
 		RequestDispatcher edit = request.getRequestDispatcher("EditModeOfProc.jsp");
 		try {
-			mop = Managers.poManager.getModeOfProcurement(mopID);
+			mop = Managers.PO_MANAGER.getModeOfProcurement(mopID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

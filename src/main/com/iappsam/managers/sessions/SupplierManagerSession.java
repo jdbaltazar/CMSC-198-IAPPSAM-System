@@ -58,4 +58,9 @@ public class SupplierManagerSession extends AbstractManager implements SupplierM
 	public List<Supplier> getAllSuppliers() throws TransactionException {
 		return getAll(Supplier.class);
 	}
+
+	@Override
+	public Supplier getSupplier(Supplier supplier) throws TransactionException {
+		return getSupplier(supplier.getId());
+	}
 }

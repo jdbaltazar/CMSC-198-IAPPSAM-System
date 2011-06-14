@@ -34,6 +34,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
+	public Person getPerson(Person p) throws TransactionException {
+		return getPerson(p.getId());
+	}
+
+	@Override
 	public Person getPerson(String name) throws TransactionException {
 		List<Person> persons = getAllPersons();
 		for (Person p : persons) {
@@ -86,6 +91,11 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 				results.add(emp);
 		}
 		return results;
+	}
+
+	@Override
+	public Employee getEmployee(Employee em) throws TransactionException {
+		return getEmployee(em.getId());
 	}
 
 	@Override
@@ -157,4 +167,5 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 			throw new TransactionException();
 		}
 	}
+
 }

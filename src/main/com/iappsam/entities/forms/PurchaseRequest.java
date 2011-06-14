@@ -126,7 +126,7 @@ public class PurchaseRequest implements Form, Validatable {
 	public void addLine(int quantity, Item item) {
 		addLine(new PurchaseRequestLine(this, quantity, item));
 	}
-	
+
 	public void removeLine(int itemId) {
 
 		PurchaseRequestLine delete = null;
@@ -223,6 +223,7 @@ public class PurchaseRequest implements Form, Validatable {
 		result = prime * result + ((alobsNumber == null) ? 0 : alobsNumber.hashCode());
 		result = prime * result + ((approvedBy == null) ? 0 : approvedBy.hashCode());
 		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
+		result = prime * result + ((lines == null) ? 0 : lines.hashCode());
 		result = prime * result + ((prDate == null) ? 0 : prDate.hashCode());
 		result = prime * result + ((prNumber == null) ? 0 : prNumber.hashCode());
 		result = prime * result + ((purpose == null) ? 0 : purpose.hashCode());
@@ -260,6 +261,11 @@ public class PurchaseRequest implements Form, Validatable {
 			if (other.divisionOffice != null)
 				return false;
 		} else if (!divisionOffice.equals(other.divisionOffice))
+			return false;
+		if (lines == null) {
+			if (other.lines != null)
+				return false;
+		} else if (!lines.equals(other.lines))
 			return false;
 		if (prDate == null) {
 			if (other.prDate != null)

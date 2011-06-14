@@ -31,11 +31,9 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
-	public void addTwoSupplier() throws TransactionException, DuplicateEntryException {
-		Supplier supplier2 = new Supplier("Name", "address2", contactPerson);
-
+	public void shouldContain2Suppliers() throws TransactionException, DuplicateEntryException {
 		su.addSupplier(supplier);
-		su.addSupplier(supplier2);
+		su.addSupplier(new Supplier("Name", "address2", contactPerson));
 
 		assertEquals(2, su.getAllSuppliers().size());
 	}
@@ -43,38 +41,15 @@ public class SupplierManagerSessionTest extends ManagerSessionTestCase {
 	@Test
 	public void addSupplier() throws TransactionException, DuplicateEntryException {
 		su.addSupplier(supplier);
-		assertSupplierAdded();
-
-		assertEquals(contactPerson, supplier.getContactPerson());
-		assertTrue(contactPerson.hasSuppliers());
-		assertTrue(contactPerson.getSuppliers().contains(supplier));
+		assertEquals(supplier, su.getSupplier(supplier));
 	}
 
 	@Test
 	public void employeeNotDeletedAfterOneSupplierRemoved() throws TransactionException, DuplicateEntryException {
 		su.addSupplier(supplier);
-		assertSupplierAdded();
-
-		Supplier supplier2 = new Supplier("Supp", "Add", contactPerson);
-		su.addSupplier(supplier2);
-
+		su.addSupplier(new Supplier("Supp", "Add", contactPerson));
 		su.removeSupplier(supplier);
-		assertEmployeeNotRemoved();
-	}
 
-	private void assertEmployeeNotRemoved() throws TransactionException {
-		Employee employeeFromDb = pm.getEmployee(contactPerson.getId());
-		assertEquals(contactPerson, employeeFromDb);
-	}
-
-	private void assertEmployeeRemoved() throws TransactionException {
-		Employee employeeFromDb = pm.getEmployee(contactPerson.getId());
-		assertNull(employeeFromDb);
-	}
-
-	private void assertSupplierAdded() throws TransactionException {
-		Supplier supplierFromDb = su.getSupplier(supplier.getId());
-		assertEquals(supplier, supplierFromDb);
-		assertEquals(contactPerson, supplierFromDb.getContactPerson());
+		assertEquals(contactPerson, pm.getEmployee(contactPerson));
 	}
 }

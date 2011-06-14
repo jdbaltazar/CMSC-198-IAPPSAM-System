@@ -55,10 +55,10 @@ public class SaveEditedDisposal extends HttpServlet {
 		Disposal disposal = null;
 
 		try {
-			disposal = Managers.wmrManager.getDisposal(disposalID);
+			disposal = Managers.WMR_MANAGER.getDisposal(disposalID);
 			if (Verifier.validEntry(name)) {
 				disposal.setName(name);
-				Managers.wmrManager.updateDisposal(disposal);
+				Managers.WMR_MANAGER.updateDisposal(disposal);
 				save = request.getRequestDispatcher("ViewDisposals.do");
 			} else {
 				request.setAttribute("disposal", disposal);

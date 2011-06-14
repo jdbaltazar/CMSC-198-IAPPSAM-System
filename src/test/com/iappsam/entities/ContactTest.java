@@ -7,10 +7,18 @@ import org.junit.Test;
 public class ContactTest {
 
 	@Test
-	public void sameContact() {
-		Contact contact = new Contact("data", ContactType.EMAIL);
+	public void shouldNotBeEqualWithDiffData() {
+		Contact contact = new Contact("data2", ContactType.EMAIL);
 		Contact contact2 = new Contact("data", ContactType.EMAIL);
 
-		assertEquals(contact, contact2);
+		assertFalse(contact.equals(contact2));
+	}
+
+	@Test
+	public void shouldNotBeEqualWithDiffType() {
+		Contact contact = new Contact("data", ContactType.FAX);
+		Contact contact2 = new Contact("data", ContactType.EMAIL);
+
+		assertFalse(contact.equals(contact2));
 	}
 }

@@ -51,7 +51,7 @@ public class SearchSuppliers extends HttpServlet {
 		List<Supplier> suppliers = new ArrayList<Supplier>();
 
 		try {
-			suppliers = Managers.sManager.getAllSuppliers();
+			suppliers = Managers.SUPPLIER_MANAGER.getAllSuppliers();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

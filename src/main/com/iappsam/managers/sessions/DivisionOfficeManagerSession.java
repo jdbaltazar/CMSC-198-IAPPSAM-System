@@ -124,4 +124,9 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	public List<Building> getAllBuildings() throws TransactionException {
 		return getAll(Building.class);
 	}
+
+	@Override
+	public DivisionOffice getDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
+		return getDivisionOffice(divisionOffice.getId());
+	}
 }

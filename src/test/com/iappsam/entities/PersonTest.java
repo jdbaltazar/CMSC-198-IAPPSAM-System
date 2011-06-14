@@ -2,18 +2,36 @@ package com.iappsam.entities;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class PersonTest {
 
+	private Person p;
+	private Person p2;
+
+	@Before
+	public void init() {
+		p = new Person("title", "name");
+		p2 = new Person("title", "name");
+	}
+
 	@Test
-	public void samePerson() {
-		Person p = new Person();
-		p.setId(1);
+	public void shouldNotBeEqualWithDiffTitle() {
+		p2.setTitle("title2");
+		assertFalse(p.equals(p2));
+	}
 
-		Person p2 = new Person();
-		p2.setId(1);
+	@Test
+	public void shouldNotBeEqualWithDiffName() {
+		p2.setName("name2");
+		assertFalse(p.equals(p2));
+	}
 
-		assertEquals(p, p2);
+	@Test
+	public void shouldNotBeEqualWithDifferentContact() {
+		p.addContact(new Contact("data", ContactType.EMAIL));
+		p2.addContact(new Contact("data2", ContactType.EMAIL));
+		assertFalse(p.equals(p2));
 	}
 }

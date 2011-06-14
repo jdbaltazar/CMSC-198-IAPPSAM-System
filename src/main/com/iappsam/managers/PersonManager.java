@@ -31,6 +31,8 @@ public interface PersonManager extends Manager {
 
 	List<Person> getAllPersons() throws TransactionException;
 
+	Person getPerson(Person p) throws TransactionException;
+
 	// Employee
 
 	void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
@@ -65,5 +67,7 @@ public interface PersonManager extends Manager {
 	List<Employee> getEmployeeByPerson(int personID) throws TransactionException;
 
 	Employee getEmployeeByName(String name) throws TransactionException;
+
+	Employee getEmployee(Employee em) throws TransactionException;
 
 }
