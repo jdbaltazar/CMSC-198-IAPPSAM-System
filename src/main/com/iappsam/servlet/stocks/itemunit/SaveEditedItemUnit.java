@@ -54,10 +54,10 @@ public class SaveEditedItemUnit extends HttpServlet {
 
 		Unit unit = null;
 		try {
-			unit = Managers.ITEM_MANAGER.getUnit(itemUnitID);
+			unit = Managers.INSTANCE.getItemManager().getUnit(itemUnitID);
 			if (Verifier.validEntry(name)) {
 				unit.setName(name);
-				Managers.ITEM_MANAGER.updateUnit(unit);
+				Managers.INSTANCE.getItemManager().updateUnit(unit);
 				save = request.getRequestDispatcher("ViewItemUnits.do");
 			} else {
 				request.setAttribute("itemUnit", unit);

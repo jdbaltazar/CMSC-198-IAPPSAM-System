@@ -81,7 +81,7 @@ public class SaveSupplier extends HttpServlet {
 				employee.setEmployeeNumber(employeeNumber);
 			Supplier supplier = new Supplier(supplierName, address, tin, employee);
 			try {
-				Managers.SUPPLIER_MANAGER.addSupplier(supplier);
+				Managers.INSTANCE.getSupplierManager().addSupplier(supplier);
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("ViewSupplier.do");
 				System.out.println("supplier was saved!!!");

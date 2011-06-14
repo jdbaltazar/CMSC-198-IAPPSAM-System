@@ -1,4 +1,4 @@
-package com.iappsam.servlet.forms.po;
+package com.iappsam.servlet.po;
 
 import java.io.IOException;
 import java.sql.Date;

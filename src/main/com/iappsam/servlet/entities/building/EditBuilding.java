@@ -51,7 +51,7 @@ public class EditBuilding extends HttpServlet {
 		Building building = null;
 		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		try {
-			building = Managers.DIVISION_OFFICE_MANAGER.getBuilding(buildingID);
+			building = Managers.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

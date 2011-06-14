@@ -52,7 +52,7 @@ public class SearchIIRUPForm extends HttpServlet {
 			request.setAttribute("iirupList", iirupList);
 		} else {
 			try {
-				request.setAttribute("iirupList", Managers.IIRUP_MANAGER.getAllIIRUP());
+				request.setAttribute("iirupList", Managers.INSTANCE.getIIRUPManager().getAllIIRUP());
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

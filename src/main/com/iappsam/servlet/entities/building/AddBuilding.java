@@ -42,7 +42,7 @@ public class AddBuilding extends HttpServlet {
 			building.setBuildingName(name);
 			building.setBuildingAddress(address);
 			try {
-				Managers.DIVISION_OFFICE_MANAGER.addBuilding(building);
+				Managers.INSTANCE.getDivisionOfficeManager().addBuilding(building);
 				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
 			} catch (TransactionException e) {

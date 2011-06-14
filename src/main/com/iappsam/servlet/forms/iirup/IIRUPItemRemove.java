@@ -58,7 +58,7 @@ public class IIRUPItemRemove extends HttpServlet {
 		try {
 			for (int i = 0; i < itemList.size(); i++) {
 
-				Item item = Managers.ITEM_MANAGER.getItem(Integer
+				Item item = Managers.INSTANCE.getItemManager().getItem(Integer
 						.parseInt(itemList.get(i)));
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());

@@ -34,7 +34,7 @@ public class EditItemUnit extends HttpServlet {
 		Unit unit = new Unit();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemUnit.jsp");
 		try {
-			unit = Managers.ITEM_MANAGER.getUnit(itemUnitID);
+			unit = Managers.INSTANCE.getItemManager().getUnit(itemUnitID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

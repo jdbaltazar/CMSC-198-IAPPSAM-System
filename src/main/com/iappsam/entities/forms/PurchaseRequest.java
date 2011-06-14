@@ -26,7 +26,7 @@ import com.iappsam.servlet.forms.Form;
 
 @Entity
 @Table(name = "Purchase_Request")
-public class PurchaseRequest implements Form, Validatable {
+public class PurchaseRequest implements Form {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

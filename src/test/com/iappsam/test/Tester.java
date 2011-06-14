@@ -1,4 +1,4 @@
-package com.iappsam.tests;
+package com.iappsam.test;
 
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 

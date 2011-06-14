@@ -35,7 +35,7 @@ public class ViewEmployee extends HttpServlet {
 		ArrayList<String> mobile = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 		try {
-			Employee emp = Managers.PERSON_MANAGER.getEmployee(Integer.parseInt(employeeID));
+			Employee emp = Managers.INSTANCE.getPersonManager().getEmployee(Integer.parseInt(employeeID));
 			if (emp != null) {
 				p = emp.getPerson();
 				request.setAttribute("title", p.getTitle());

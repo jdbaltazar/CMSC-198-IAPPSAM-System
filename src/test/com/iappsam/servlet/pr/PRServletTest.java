@@ -19,6 +19,7 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.util.Managers;
 
 import static org.mockito.BDDMockito.*;
 
@@ -48,6 +49,8 @@ public class PRServletTest extends ServletTestCase {
 	private ViewPRAction viewPr;
 	@Mock
 	private PRFactory factory;
+	@Mock
+	private Managers managers;
 
 	@Override
 	@Before
@@ -68,7 +71,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<PurchaseRequest> prs = new ArrayList<PurchaseRequest>();
 		given(prm.getAllPR()).willReturn(prs);
 
-		new ListPRAction(prm).process(request, response);
+		new ListPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("PRs", prs);
 		verifyForwardedTo(PRServlet.LIST_PR_JSP);
@@ -89,7 +92,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		new NewPRAction(pm, dom, im).process(request, response);
+		new NewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
@@ -116,7 +119,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pr.validate()).willReturn(true);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new AddPRAction(prm, im, dom, pm, factory).process(request, response);
+		new AddPRAction(managers, factory).process(request, response);
 
 		verify(prm).addPR(any(PurchaseRequest.class));
 		verify(response).sendRedirect(startsWith("/pr?id="));
@@ -136,7 +139,7 @@ public class PRServletTest extends ServletTestCase {
 		PurchaseRequest pr = mock(PurchaseRequest.class);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new RemoveItemFromPRAction(im, dom, pm, factory).process(request, response);
+		new RemoveItemFromPRAction(managers, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PurchaseRequest.class));
 		verify(response).sendRedirect("/pr?new=pr");
@@ -152,7 +155,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
 
-		new NewPRAction(pm, dom, im).process(request, response);
+		new NewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("offices", offices);
 		verify(request).setAttribute("employees", emps);
@@ -175,7 +178,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute(eq("form"), eq(pr));
 		verifyForwardedTo(PRServlet.VIEW_PR_JSP);
@@ -186,7 +189,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", "1");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -196,7 +199,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", ".");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -228,7 +231,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pm.getEmployee(2)).willReturn(new Employee());
 		given(im.getItem(1)).willReturn(new Item());
 
-		new AddingItemToPRAction(im, dom, pm, factory).process(request, response);
+		new AddingItemToPRAction(managers, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PurchaseRequest.class));
 		verify(response).sendRedirect("/pr/line");

@@ -51,7 +51,7 @@ public class EditItemCondition extends HttpServlet {
 		ItemCondition itemCondition = new ItemCondition();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCondition.jsp");
 		try {
-			itemCondition = Managers.ITEM_MANAGER.getItemCondition(itemConditionID);
+			itemCondition = Managers.INSTANCE.getItemManager().getItemCondition(itemConditionID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

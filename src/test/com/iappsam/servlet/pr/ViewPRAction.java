@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.entities.forms.PurchaseRequest;
 import com.iappsam.managers.PRManager;
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.Managers;
 
 public class ViewPRAction implements Action {
 
 	private PRManager prm;
 
-	public ViewPRAction(PRManager prm) {
-		this.prm = prm;
+	public ViewPRAction(Managers m) {
+		this.prm = m.getPRManager();
 	}
 
 	@Override

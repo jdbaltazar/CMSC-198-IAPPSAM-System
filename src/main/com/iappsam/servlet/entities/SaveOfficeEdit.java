@@ -50,10 +50,10 @@ public class SaveOfficeEdit extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
 		DivisionOffice office;
 		try {
-			office = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(officeID);
+			office = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
 			if (newName != null && !newName.equalsIgnoreCase("")) {
 				office.setOfficeName(newName);
-				Managers.DIVISION_OFFICE_MANAGER.updateDivisionOffice(office);
+				Managers.INSTANCE.getDivisionOfficeManager().updateDivisionOffice(office);
 				view = request.getRequestDispatcher("SearchDivisions.do");
 			}else{
 				request.setAttribute("office", office);

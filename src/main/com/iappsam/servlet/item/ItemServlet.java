@@ -28,16 +28,16 @@ public class ItemServlet extends HttpServlet {
 	private ListItemsAction listItems;
 
 	public ItemServlet() {
-		this(Managers.ITEM_MANAGER, new ItemSearcher());
+		this(Managers.INSTANCE, new ItemSearcher());
 	}
 
-	public ItemServlet(ItemManager itemManager, ItemSearcher searcher) {
+	public ItemServlet(Managers m, ItemSearcher searcher) {
 		super();
-		addItem = new AddItemAction(itemManager);
-		newItem = new NewItemAction(itemManager);
-		viewItem = new ViewItemAction(itemManager);
+		addItem = new AddItemAction(m.getItemManager());
+		newItem = new NewItemAction(m.getItemManager());
+		viewItem = new ViewItemAction(m.getItemManager());
 		searchItems = new SearchItemsAction(searcher);
-		listItems = new ListItemsAction(itemManager);
+		listItems = new ListItemsAction(m.getItemManager());
 	}
 
 	@Override

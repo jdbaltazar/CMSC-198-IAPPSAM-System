@@ -176,7 +176,7 @@ public class IIRUPForm extends HttpServlet {
 				iirupForm.setStation(station.getDivisionName());
 			ArrayList<Item> item = new ArrayList<Item>();
 			for (int i = 0; i < itemIDs.size(); i++) {
-				Item itemInstance = Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemIDs.get(i)));
+				Item itemInstance = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(itemIDs.get(i)));
 				item.add(itemInstance);
 			}
 			for (int i = 0; i < item.size(); i++) {
@@ -192,7 +192,7 @@ public class IIRUPForm extends HttpServlet {
 
 			}
 			try {
-				Managers.IIRUP_MANAGER.addIIRUP(iirupForm);
+				Managers.INSTANCE.getIIRUPManager().addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
 				request.setAttribute("iirupForm", iirupForm);

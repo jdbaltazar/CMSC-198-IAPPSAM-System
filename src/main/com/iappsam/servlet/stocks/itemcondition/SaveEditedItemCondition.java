@@ -55,10 +55,10 @@ public class SaveEditedItemCondition extends HttpServlet {
 		ItemCondition itemCondition = null;
 
 		try {
-			itemCondition = Managers.ITEM_MANAGER.getItemCondition(itemConditionID);
+			itemCondition = Managers.INSTANCE.getItemManager().getItemCondition(itemConditionID);
 			if (Verifier.validEntry(name)) {
 				itemCondition.setName(name);
-				Managers.ITEM_MANAGER.updateItemCondition(itemCondition);
+				Managers.INSTANCE.getItemManager().updateItemCondition(itemCondition);
 				save = request.getRequestDispatcher("ViewItemConditions.do");
 			} else {
 				request.setAttribute("itemCondition", itemCondition);

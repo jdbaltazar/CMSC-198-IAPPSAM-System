@@ -47,7 +47,7 @@ public class ViewSupplier extends HttpServlet {
 		String landline = null;
 		String email = null;
 		try {
-			s = Managers.SUPPLIER_MANAGER.getSupplier(supplierID);
+			s = Managers.INSTANCE.getSupplierManager().getSupplier(supplierID);
 			request.setAttribute("supplier", s);
 			contactPerson = s.getContactPerson();
 			p = contactPerson.getPerson();

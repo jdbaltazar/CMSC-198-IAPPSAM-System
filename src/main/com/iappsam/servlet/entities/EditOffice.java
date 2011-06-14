@@ -50,7 +50,7 @@ public class EditOffice extends HttpServlet {
 		int officeID = Integer.parseInt(request.getParameter("officeID"));
 		DivisionOffice office = null;
 		try {
-			office = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(officeID);
+			office = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -26,22 +26,71 @@ import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
 public class Managers {
-	public static PersonManager PERSON_MANAGER = new PersonManagerSession();
-	public static AccountManager aManager = new AccountManagerSession();
-	public static ContactManager COUNTACT_MANAGER = new ContactManagerSession();
-	public static SupplierManager SUPPLIER_MANAGER = new SupplierManagerSession();
-	public static DivisionOfficeManager DIVISION_OFFICE_MANAGER = new DivisionOfficeManagerSession();
-	public static ItemManager ITEM_MANAGER = new ItemManagerSession();
+	private final PersonManager PERSON_MANAGER = new PersonManagerSession();
+	private final AccountManager ACCOUNT_MANAGER = new AccountManagerSession();
+	private final ContactManager COUNTACT_MANAGER = new ContactManagerSession();
+	private final SupplierManager SUPPLIER_MANAGER = new SupplierManagerSession();
+	private final DivisionOfficeManager DIVISION_OFFICE_MANAGER = new DivisionOfficeManagerSession();
+	private final ItemManager ITEM_MANAGER = new ItemManagerSession();
 
 	// Forms
-	public static APPManager APP_MANAGEAR = new APPManagerSession();
-	public static PRManager PR_MANAGER = new PRManagerSession();
-	public static POManager PO_MANAGER = new POManagerSession();
-	public static RISManager RIS_MANAGER = new RISManagerSession();
-	public static IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
-	public static WMRManager WMR_MANAGER = new WMRManagerSession();
+	private final APPManager APP_MANAGEAR = new APPManagerSession();
+	private final PRManager PR_MANAGER = new PRManagerSession();
+	private final POManager PO_MANAGER = new POManagerSession();
+	private final RISManager RIS_MANAGER = new RISManagerSession();
+	private final IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
+	private final WMRManager WMR_MANAGER = new WMRManagerSession();
+
+	public static final Managers INSTANCE = new Managers();
 
 	private Managers() {
 	}
 
+	public PRManager getPRManager() {
+		return PR_MANAGER;
+	}
+
+	public PersonManager getPersonManager() {
+		return PERSON_MANAGER;
+	}
+
+	public AccountManager getAccountManager() {
+		return ACCOUNT_MANAGER;
+	}
+
+	public ContactManager getContactManager() {
+		return COUNTACT_MANAGER;
+	}
+
+	public SupplierManager getSupplierManager() {
+		return SUPPLIER_MANAGER;
+	}
+
+	public DivisionOfficeManager getDivisionOfficeManager() {
+		return DIVISION_OFFICE_MANAGER;
+	}
+
+	public ItemManager getItemManager() {
+		return ITEM_MANAGER;
+	}
+
+	public APPManager getAPPManager() {
+		return APP_MANAGEAR;
+	}
+
+	public POManager getPOManager() {
+		return PO_MANAGER;
+	}
+
+	public RISManager getRISManager() {
+		return RIS_MANAGER;
+	}
+
+	public IIRUPManager getIIRUPManager() {
+		return IIRUP_MANAGER;
+	}
+
+	public WMRManager getWMRManager() {
+		return WMR_MANAGER;
+	}
 }

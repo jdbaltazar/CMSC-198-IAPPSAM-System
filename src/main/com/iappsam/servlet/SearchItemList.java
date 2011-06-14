@@ -36,7 +36,7 @@ public class SearchItemList extends HttpServlet {
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
-				itemList = Managers.ITEM_MANAGER.getAllItems();
+				itemList = Managers.INSTANCE.getItemManager().getAllItems();
 			else
 				itemList = iSearcher.search(request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));

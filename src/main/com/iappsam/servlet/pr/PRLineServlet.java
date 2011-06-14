@@ -20,7 +20,7 @@ public class PRLineServlet extends HttpServlet {
 	private AddSelectedItemAction addSelectedItems;
 
 	public PRLineServlet() {
-		this(new PRListItemsAction(Managers.ITEM_MANAGER), new PRSearchItemAction(Searchers.ITEM_SEARCHER), new AddSelectedItemAction(Managers.ITEM_MANAGER));
+		this(new PRListItemsAction(Managers.INSTANCE.getItemManager()), new PRSearchItemAction(Searchers.ITEM_SEARCHER), new AddSelectedItemAction(Managers.INSTANCE.getItemManager()));
 	}
 
 	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddSelectedItemAction addSelectedItemAction) {

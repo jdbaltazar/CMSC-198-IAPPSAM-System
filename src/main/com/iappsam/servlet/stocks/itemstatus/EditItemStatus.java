@@ -51,7 +51,7 @@ public class EditItemStatus extends HttpServlet {
 		ItemStatus itemStatus = new ItemStatus();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemStatus.jsp");
 		try {
-			itemStatus = Managers.ITEM_MANAGER.getItemStatus(itemStatusID);
+			itemStatus = Managers.INSTANCE.getItemManager().getItemStatus(itemStatusID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

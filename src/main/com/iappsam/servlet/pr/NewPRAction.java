@@ -14,6 +14,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.Managers;
 
 public class NewPRAction implements Action {
 
@@ -21,10 +22,10 @@ public class NewPRAction implements Action {
 	private DivisionOfficeManager dom;
 	private ItemManager im;
 
-	public NewPRAction(PersonManager pm, DivisionOfficeManager dom, ItemManager im) {
-		this.dom = dom;
-		this.pm = pm;
-		this.im = im;
+	public NewPRAction(Managers m) {
+		this.dom = m.getDivisionOfficeManager();
+		this.pm = m.getPersonManager();
+		this.im = m.getItemManager();
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class ViewItemUnits extends HttpServlet {
 		List<Unit> units = new ArrayList<Unit>();
 
 		try {
-			units = Managers.ITEM_MANAGER.getAllUnits();
+			units = Managers.INSTANCE.getItemManager().getAllUnits();
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

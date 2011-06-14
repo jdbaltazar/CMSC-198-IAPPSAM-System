@@ -55,10 +55,10 @@ public class SaveEditedItemCategory extends HttpServlet {
 		ItemCategory itemCategory = null;
 
 		try {
-			itemCategory = Managers.ITEM_MANAGER.getItemCategory(itemCategoryID);
+			itemCategory = Managers.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
 			if (Verifier.validEntry(name)) {
 				itemCategory.setName(name);
-				Managers.ITEM_MANAGER.updateItemCategory(itemCategory);
+				Managers.INSTANCE.getItemManager().updateItemCategory(itemCategory);
 				save = request.getRequestDispatcher("ViewItemCategories.do");
 			} else {
 				request.setAttribute("itemCategory", itemCategory);

@@ -38,10 +38,10 @@ public class SaveEditedModeOfProc extends HttpServlet {
 		ModeOfProcurement mop = null;
 
 		try {
-			mop = Managers.PO_MANAGER.getModeOfProcurement(mopID);
+			mop = Managers.INSTANCE.getPOManager().getModeOfProcurement(mopID);
 			if (Verifier.validEntry(name)) {
 				mop.setName(name);
-				Managers.PO_MANAGER.updateModeOfProcurement(mop);
+				Managers.INSTANCE.getPOManager().updateModeOfProcurement(mop);
 				save = request.getRequestDispatcher("ViewModesOfProcurement.do");
 			} else {
 				request.setAttribute("mop", mop);
