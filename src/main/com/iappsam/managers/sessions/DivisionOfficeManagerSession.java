@@ -2,8 +2,8 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.Building;
-import com.iappsam.entities.DivisionOffice;
+import com.iappsam.Building;
+import com.iappsam.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

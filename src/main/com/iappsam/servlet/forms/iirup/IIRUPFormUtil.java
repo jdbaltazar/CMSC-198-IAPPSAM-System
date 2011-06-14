@@ -3,7 +3,7 @@ package com.iappsam.servlet.forms.iirup;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iappsam.entities.Employee;
+import com.iappsam.Employee;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 

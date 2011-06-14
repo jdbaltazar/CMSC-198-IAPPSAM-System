@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.Supplier;
+import com.iappsam.Supplier;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;

@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
@@ -27,7 +27,7 @@ public class PRManagerSessionTest {
 	private static PersonManager pm;
 	private static PRManager prm;
 	private DivisionOffice divisionOffice;
-	private PurchaseRequest pr;
+	private PR pr;
 
 	@BeforeClass
 	public static void initClass() {
@@ -50,7 +50,7 @@ public class PRManagerSessionTest {
 		pm.addEmployee(requestedBy);
 		pm.addEmployee(approvedBy);
 
-		pr = new PurchaseRequest(divisionOffice, "Purpose", requestedBy, approvedBy);
+		pr = new PR(divisionOffice, "Purpose", requestedBy, approvedBy);
 	}
 
 	@Test

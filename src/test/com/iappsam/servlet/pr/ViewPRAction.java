@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.PRManager;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.Managers;
@@ -25,7 +25,7 @@ public class ViewPRAction implements Action {
 
 		try {
 			int id = Integer.parseInt(idParam);
-			PurchaseRequest pr = prm.getPR(id);
+			PR pr = prm.getPR(id);
 			if (pr == null)
 				response.sendRedirect("/pr");
 			request.setAttribute("form", pr);

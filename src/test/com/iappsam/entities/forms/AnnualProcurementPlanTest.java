@@ -4,14 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.iappsam.forms.APP;
+
 public class AnnualProcurementPlanTest {
 
 	@Test
 	public void sameAPP() {
-		AnnualProcurementPlan plan1 = new AnnualProcurementPlan();
+		APP plan1 = new APP();
 		plan1.setAppID(1);
 
-		AnnualProcurementPlan plan2 = new AnnualProcurementPlan();
+		APP plan2 = new APP();
 		plan2.setAppID(1);
 
 		assertEquals(plan1, plan2);

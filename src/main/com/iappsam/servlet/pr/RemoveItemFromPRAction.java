@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
@@ -35,7 +35,7 @@ public class RemoveItemFromPRAction implements Action {
 			String[] indexesToRemove = request.getParameterValues("checkedItems");
 
 			if (indexesToRemove != null) {
-				PurchaseRequest pr = factory.createPR(request, im, dom, pm);
+				PR pr = factory.createPR(request, im, dom, pm);
 				request.getSession().setAttribute("form", pr);
 				for (String i : indexesToRemove)
 					pr.removeLine(Integer.parseInt(i));

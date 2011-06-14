@@ -2,20 +2,23 @@ package com.iappsam.entities;
 
 import java.util.List;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Signatory;
-import com.iappsam.entities.Unit;
-import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.IIRUP;
-import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.entities.forms.PurchaseOrder;
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.Account;
+import com.iappsam.Contact;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.ItemCategory;
+import com.iappsam.ItemCondition;
+import com.iappsam.ItemStatus;
+import com.iappsam.Person;
+import com.iappsam.Signatory;
+import com.iappsam.Supplier;
+import com.iappsam.Unit;
+import com.iappsam.forms.APP;
+import com.iappsam.forms.IIRUP;
+import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.forms.PO;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
@@ -71,8 +74,8 @@ public class EntityRemover {
 	}
 
 	public static void removePRs() throws TransactionException {
-		List<PurchaseRequest> prs = prm.getAllPR();
-		for (PurchaseRequest pr : prs)
+		List<PR> prs = prm.getAllPR();
+		for (PR pr : prs)
 			prm.removePR(pr);
 	}
 
@@ -84,8 +87,8 @@ public class EntityRemover {
 	}
 
 	public static void removePOs() throws TransactionException {
-		List<PurchaseOrder> pos = pom.getAllPO();
-		for (PurchaseOrder po : pos)
+		List<PO> pos = pom.getAllPO();
+		for (PO po : pos)
 			pom.removePurchaseOrder(po);
 	}
 
@@ -114,8 +117,8 @@ public class EntityRemover {
 	}
 
 	public static void removeAPPs() throws TransactionException {
-		List<AnnualProcurementPlan> persons = appm.getAllAPP();
-		for (AnnualProcurementPlan i : persons)
+		List<APP> persons = appm.getAllAPP();
+		for (APP i : persons)
 			appm.removeAPP(i);
 	}
 

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Supplier;
+import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 

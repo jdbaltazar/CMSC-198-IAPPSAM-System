@@ -7,6 +7,8 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.iappsam.Item;
+
 public class ItemTest {
 
 	private Item item;

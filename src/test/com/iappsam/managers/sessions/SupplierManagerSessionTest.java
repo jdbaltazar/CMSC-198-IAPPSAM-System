@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Supplier;
+import com.iappsam.Employee;
+import com.iappsam.Supplier;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

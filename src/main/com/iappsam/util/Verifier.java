@@ -2,7 +2,7 @@ package com.iappsam.util;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.iappsam.entities.Account;
+import com.iappsam.Account;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class Verifier {

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="com.iappsam.DivisionOffice"%>
 <%@page import="java.util.List"%>
 <%@page import="com.iappsam.util.Managers"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -540,7 +540,7 @@
 					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
 				<select name="division" id="division3">
 					<%
-						List<DivisionOffice> dOffice = Managers.DIVISION_OFFICE_MANAGER.getAllDivisionOffice();
+						List<DivisionOffice> dOffice = Managers.INSTANCE.getDivisionOfficeManager().getAllDivisionOffice();
 									for (int i = 0; i < dOffice.size(); i++) {
 					%>
 					<option id="<%=dOffice.get(i).getId()%>">

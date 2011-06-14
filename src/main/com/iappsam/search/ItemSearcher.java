@@ -1,6 +1,6 @@
 package com.iappsam.search;
 
-import com.iappsam.entities.Item;
+import com.iappsam.Item;
 
 public class ItemSearcher extends AbstractSearcher<Item> {
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.entities.forms.AnnualProcurementPlan;
+import com.iappsam.forms.APP;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -14,32 +14,32 @@ import com.iappsam.util.HibernateUtil;
 public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
-	public void addAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
+	public void addAPP(APP annualProcurementPlan) throws TransactionException {
 		add(annualProcurementPlan);
 	}
 
 	@Override
-	public void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException {
+	public void updateAPP(APP annualProcurementPlan) throws TransactionException {
 		update(annualProcurementPlan);
 	}
 
 	@Override
-	public AnnualProcurementPlan getAPP(int appID) throws TransactionException {
-		return (AnnualProcurementPlan) get(AnnualProcurementPlan.class, appID);
+	public APP getAPP(int appID) throws TransactionException {
+		return (APP) get(APP.class, appID);
 	}
 
 	@Override
-	public boolean containsAPP(AnnualProcurementPlan app) throws TransactionException {
+	public boolean containsAPP(APP app) throws TransactionException {
 		return getAPP(app.getId()) != null;
 	}
 
 	@Override
-	public List<AnnualProcurementPlan> getAllAPP() throws TransactionException {
+	public List<APP> getAllAPP() throws TransactionException {
 
 		Session session = HibernateUtil.startSession();
 		Transaction tx = session.beginTransaction();
 
-		List<AnnualProcurementPlan> list = session.createQuery("from AnnualProcurementPlan").list();
+		List<APP> list = session.createQuery("from AnnualProcurementPlan").list();
 
 		tx.commit();
 		session.close();
@@ -47,7 +47,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 	}
 
 	@Override
-	public void removeAPP(AnnualProcurementPlan app) throws TransactionException {
+	public void removeAPP(APP app) throws TransactionException {
 		remove(app);
 	}
 }

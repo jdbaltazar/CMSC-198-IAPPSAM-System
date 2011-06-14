@@ -10,11 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Unit;
+import com.iappsam.Item;
+import com.iappsam.ItemCategory;
+import com.iappsam.ItemCondition;
+import com.iappsam.ItemStatus;
+import com.iappsam.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;

@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Person;
+import com.iappsam.Supplier;
+
 public class EmployeeTest {
 
 	@Test

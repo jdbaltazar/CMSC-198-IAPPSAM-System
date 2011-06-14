@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.Signatory;
-import com.iappsam.entities.Supplier;
-import com.iappsam.entities.forms.ModeOfProcurement;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.Signatory;
+import com.iappsam.Supplier;
+import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;

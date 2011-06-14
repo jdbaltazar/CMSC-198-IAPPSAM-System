@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.PTRPA;
+import com.iappsam.forms.PTRPA;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PTRPAManager;
 import com.iappsam.managers.exceptions.TransactionException;

@@ -9,11 +9,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.iappsam.entities.Employee;
+import com.iappsam.Employee;
+import com.iappsam.Item;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.Disposal;
-import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.forms.Disposal;
+import com.iappsam.forms.IIRUP;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

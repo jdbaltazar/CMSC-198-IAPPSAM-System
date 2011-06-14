@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.DivisionOffice;
+import com.iappsam.DivisionOffice;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 

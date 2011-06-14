@@ -2,24 +2,24 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.AnnualProcurementPlan;
+import com.iappsam.forms.APP;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface APPManager {
 
 	// APP
 
-	void addAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
+	void addAPP(APP annualProcurementPlan) throws TransactionException;
 
 
-	void updateAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
+	void updateAPP(APP annualProcurementPlan) throws TransactionException;
 
-	AnnualProcurementPlan getAPP(int appID) throws TransactionException;
+	APP getAPP(int appID) throws TransactionException;
 
-	boolean containsAPP(AnnualProcurementPlan annualProcurementPlan) throws TransactionException;
+	boolean containsAPP(APP annualProcurementPlan) throws TransactionException;
 
-	List<AnnualProcurementPlan> getAllAPP() throws TransactionException;
+	List<APP> getAllAPP() throws TransactionException;
 
-	void removeAPP(AnnualProcurementPlan app) throws TransactionException;
+	void removeAPP(APP app) throws TransactionException;
 
 }

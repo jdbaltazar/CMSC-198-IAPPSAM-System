@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Account;
-import com.iappsam.entities.AccountType;
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
+import com.iappsam.Account;
+import com.iappsam.AccountType;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.Employee;
+import com.iappsam.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;

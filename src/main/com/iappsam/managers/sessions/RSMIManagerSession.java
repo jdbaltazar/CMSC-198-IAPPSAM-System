@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.RSMI;
+import com.iappsam.forms.RSMI;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.RSMIManager;
 import com.iappsam.managers.exceptions.TransactionException;

@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Person;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.Person;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

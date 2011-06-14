@@ -7,9 +7,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Signatory;
+import com.iappsam.Employee;
+import com.iappsam.Person;
+import com.iappsam.Signatory;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

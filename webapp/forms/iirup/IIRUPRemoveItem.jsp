@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.entities.Item"%>
+<%@page import="com.iappsam.Item"%>
 <%@page import="com.iappsam.util.Managers"%>
-<%@page import="com.iappsam.entities.ItemCategory"%>
+<%@page import="com.iappsam.ItemCategory"%>
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -245,7 +245,7 @@
 	ArrayList<String> itemID = (ArrayList<String>) session.getAttribute("itemList");
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	for (int i = 0; i < itemID.size(); i++)
-		itemList.add(Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemID.get(i))));
+		itemList.add(Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(itemID.get(i))));
 %>
 <body>
 	<div id="logoHeader" style="width: 100%">
@@ -259,12 +259,14 @@
 						<tr>
 							<td style="font-family: Lucida Grande; font-size: 20px; font-weight: bold; color: #003300">Remove Article/s</td>
 						</tr>
-					</table></td>
+					</table>
+				</td>
 				<td width="82%">&nbsp;</td>
 				<td width="4%">
 					<form id="form15" name="form15" method="post" action="IIRUPForm2.jsp">
 						<input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -290,10 +292,7 @@
 						rowOdd = !rowOdd;
 					} else
 						rowOdd = !rowOdd;%>>
-					<td width="9%" align="center"><input type="checkbox" name="include1" id="include1" value="<%=itemList.get(i).getId()%>" /> <label
-						for="include_1"
-					></label>
-					</td>
+					<td width="9%" align="center"><input type="checkbox" name="include1" id="include1" value="<%=itemList.get(i).getId()%>" /> <label for="include_1"></label></td>
 					<td width="54%"><%=itemList.get(i).getDescription()%></td>
 					<td width="37%"><%=itemList.get(i).getCategory().getName()%></td>
 				</tr>

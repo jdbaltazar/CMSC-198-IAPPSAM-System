@@ -6,11 +6,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Unit;
+import com.iappsam.Item;
+import com.iappsam.ItemCategory;
+import com.iappsam.ItemCondition;
+import com.iappsam.ItemStatus;
+import com.iappsam.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

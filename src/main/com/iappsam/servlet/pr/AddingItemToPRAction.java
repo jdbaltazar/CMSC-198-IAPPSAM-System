@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
@@ -32,7 +32,7 @@ public class AddingItemToPRAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
+			PR pr = factory.createPR(request, im, dom, pm);
 			request.getSession().setAttribute("form", pr);
 			response.sendRedirect("/pr/line");
 		} catch (TransactionException e) {

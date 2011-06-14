@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.Contact;
+import com.iappsam.Contact;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;

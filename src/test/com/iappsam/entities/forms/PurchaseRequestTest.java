@@ -7,18 +7,19 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.forms.PR;
 
 public class PurchaseRequestTest {
 
-	private PurchaseRequest pr;
+	private PR pr;
 
 	@Before
 	public void initPr() {
 		Employee emp = Employee.create("des", "name");
-		pr = new PurchaseRequest(new DivisionOffice("division", "office"), "purpose", emp, emp);
+		pr = new PR(new DivisionOffice("division", "office"), "purpose", emp, emp);
 
 	}
 

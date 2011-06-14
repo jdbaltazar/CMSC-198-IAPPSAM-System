@@ -2,8 +2,8 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.Disposal;
-import com.iappsam.entities.forms.WasteMaterialsReport;
+import com.iappsam.forms.Disposal;
+import com.iappsam.forms.WMR;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -11,28 +11,28 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class WMRManagerSession extends AbstractManager implements WMRManager {
 
 	@Override
-	public void addWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
+	public void addWMR(WMR wasteMaterialsReport) throws TransactionException {
 		add(wasteMaterialsReport);
 	}
 
 	@Override
-	public void updateWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
+	public void updateWMR(WMR wasteMaterialsReport) throws TransactionException {
 		update(wasteMaterialsReport);
 	}
 
 	@Override
-	public WasteMaterialsReport getWMR(int wasteMaterialsReportID) throws TransactionException {
-		return (WasteMaterialsReport) get(WasteMaterialsReport.class, wasteMaterialsReportID);
+	public WMR getWMR(int wasteMaterialsReportID) throws TransactionException {
+		return (WMR) get(WMR.class, wasteMaterialsReportID);
 	}
 
 	@Override
-	public boolean containsWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
+	public boolean containsWMR(WMR wasteMaterialsReport) throws TransactionException {
 		return getWMR(wasteMaterialsReport.getID()) != null;
 	}
 
 	@Override
-	public List<WasteMaterialsReport> getAllWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException {
-		return getAll(WasteMaterialsReport.class);
+	public List<WMR> getAllWMR(WMR wasteMaterialsReport) throws TransactionException {
+		return getAll(WMR.class);
 	}
 
 	@Override

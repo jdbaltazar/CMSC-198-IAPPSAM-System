@@ -2,8 +2,8 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.entities.forms.PurchaseOrder;
+import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.forms.PO;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -12,32 +12,32 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
-	public void addPO(PurchaseOrder purchaseOrder) throws TransactionException {
+	public void addPO(PO purchaseOrder) throws TransactionException {
 		add(purchaseOrder);
 	}
 
 	@Override
-	public void updatePO(PurchaseOrder purchaseOrder) throws TransactionException {
+	public void updatePO(PO purchaseOrder) throws TransactionException {
 		update(purchaseOrder);
 	}
 
 	@Override
-	public PurchaseOrder getPO(String poNumber) throws TransactionException {
-		return (PurchaseOrder) get(PurchaseOrder.class, poNumber);
+	public PO getPO(String poNumber) throws TransactionException {
+		return (PO) get(PO.class, poNumber);
 	}
 
 	@Override
-	public boolean containsPO(PurchaseOrder po) throws TransactionException {
+	public boolean containsPO(PO po) throws TransactionException {
 		return getPO(po.getPoNumber()) != null;
 	}
 
 	@Override
-	public List<PurchaseOrder> getAllPO() throws TransactionException {
-		return getAll(PurchaseOrder.class);
+	public List<PO> getAllPO() throws TransactionException {
+		return getAll(PO.class);
 	}
 
 	@Override
-	public void removePurchaseOrder(PurchaseOrder po) throws TransactionException {
+	public void removePurchaseOrder(PO po) throws TransactionException {
 		remove(po);
 	}
 

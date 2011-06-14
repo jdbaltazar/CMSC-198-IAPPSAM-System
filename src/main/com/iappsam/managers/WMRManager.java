@@ -2,23 +2,23 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.Disposal;
-import com.iappsam.entities.forms.WasteMaterialsReport;
+import com.iappsam.forms.Disposal;
+import com.iappsam.forms.WMR;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface WMRManager {
 
 	// WMR
 
-	void addWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
+	void addWMR(WMR wasteMaterialsReport) throws TransactionException;
 
-	void updateWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
+	void updateWMR(WMR wasteMaterialsReport) throws TransactionException;
 
-	WasteMaterialsReport getWMR(int wasteMaterialsReportID) throws TransactionException;
+	WMR getWMR(int wasteMaterialsReportID) throws TransactionException;
 
-	boolean containsWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
+	boolean containsWMR(WMR wasteMaterialsReport) throws TransactionException;
 
-	List<WasteMaterialsReport> getAllWMR(WasteMaterialsReport wasteMaterialsReport) throws TransactionException;
+	List<WMR> getAllWMR(WMR wasteMaterialsReport) throws TransactionException;
 
 	// Disposal
 
