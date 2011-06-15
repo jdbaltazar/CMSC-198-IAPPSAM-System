@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.forms.IIRUP;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -45,7 +45,7 @@ public class IIRUPExport extends HttpServlet {
 		int iirupID = Integer.parseInt(iirup);
 		String iirupExport = request.getParameter("exportType");
 		try {
-			IIRUP iirupForm = Managers.IIRUP_MANAGER.getIIRUP(iirupID);
+			IIRUP iirupForm = Managers.INSTANCE.getIIRUPManager().getIIRUP(iirupID);
 			if(iirupExport.equalsIgnoreCase("pdf")){
 				System.out.println("Will export to pdf");
 				//PDF Export area use{

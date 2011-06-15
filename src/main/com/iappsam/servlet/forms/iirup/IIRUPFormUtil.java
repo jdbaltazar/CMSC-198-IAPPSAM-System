@@ -3,7 +3,7 @@ package com.iappsam.servlet.forms.iirup;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iappsam.entities.Employee;
+import com.iappsam.Employee;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -12,7 +12,7 @@ public class IIRUPFormUtil {
 		List<Employee> employeeList;
 		ArrayList<String> names = new ArrayList<String>();
 		try {
-			employeeList = Managers.PERSON_MANAGER.getAllEmployee();
+			employeeList = Managers.INSTANCE.getPersonManager().getAllEmployee();
 			for (int i = 0; i < employeeList.size(); i++) {
 				if (!names.contains(employeeList.get(i).getPerson().getName()))
 					names.add(employeeList.get(i).getPerson().getName());
@@ -28,7 +28,7 @@ public class IIRUPFormUtil {
 		ArrayList<String> designations = new ArrayList<String>();
 		List<Employee> employeeWithNameList;
 		try {
-			employeeWithNameList = Managers.PERSON_MANAGER.getEmployeeByPerson(Managers.PERSON_MANAGER.getPerson(name).getId());
+			employeeWithNameList = Managers.INSTANCE.getPersonManager().getEmployeeByPerson(Managers.INSTANCE.getPersonManager().getPerson(name).getId());
 			for (int i = 0; i < employeeWithNameList.size(); i++) {
 				designations.add(name + " : " + employeeWithNameList.get(i).getDesignation());
 			}
@@ -43,7 +43,7 @@ public class IIRUPFormUtil {
 		ArrayList<String> designationName = new ArrayList<String>();
 		List<Employee> employeeList;
 		try {
-			employeeList = Managers.PERSON_MANAGER.getAllEmployee();
+			employeeList = Managers.INSTANCE.getPersonManager().getAllEmployee();
 			for (int i = 0; i < employeeList.size(); i++) {
 				designationName.add(employeeList.get(i).getPerson().getName() + ":" + employeeList.get(i).getDesignation());
 			}

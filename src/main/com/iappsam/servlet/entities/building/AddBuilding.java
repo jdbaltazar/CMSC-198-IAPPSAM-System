@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Building;
+import com.iappsam.Building;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
@@ -42,7 +42,7 @@ public class AddBuilding extends HttpServlet {
 			building.setBuildingName(name);
 			building.setBuildingAddress(address);
 			try {
-				Managers.DIVISION_OFFICE_MANAGER.addBuilding(building);
+				Managers.INSTANCE.getDivisionOfficeManager().addBuilding(building);
 				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
 			} catch (TransactionException e) {

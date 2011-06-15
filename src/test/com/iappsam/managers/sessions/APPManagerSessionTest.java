@@ -5,14 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.Person;
+import com.iappsam.Signatory;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Signatory;
-import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.AnnualProcurementPlanLine;
+import com.iappsam.forms.APP;
+import com.iappsam.forms.APPLine;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
@@ -29,7 +29,7 @@ public class APPManagerSessionTest {
 	private Employee employee;
 	private Signatory signatory;
 	private DivisionOffice office;
-	private AnnualProcurementPlan app;
+	private APP app;
 	private APPManager appManager;
 	private ItemManager im;
 
@@ -53,7 +53,7 @@ public class APPManagerSessionTest {
 		dom.addDivisionOffice(office);
 
 		appManager = new APPManagerSession();
-		app = new AnnualProcurementPlan(2011, office, signatory, signatory);
+		app = new APP(2011, office, signatory, signatory);
 		im = new ItemManagerSession();
 	}
 
@@ -66,7 +66,7 @@ public class APPManagerSessionTest {
 	}
 
 	private void assertExist() throws TransactionException {
-		AnnualProcurementPlan appFromDb = appManager.getAPP(app.getId());
+		APP appFromDb = appManager.getAPP(app.getId());
 		assertEquals(app, appFromDb);
 	}
 
@@ -75,15 +75,15 @@ public class APPManagerSessionTest {
 		Item item = Item.create("desc", "cat", "unit", "stat", "con");
 		im.addItem(item);
 
-		AnnualProcurementPlanLine line = new AnnualProcurementPlanLine(app, item, 1, 2, 3, 4);
+		APPLine line = new APPLine(app, item, 1, 2, 3, 4);
 		app.addLine(line);
 		appManager.addAPP(app);
 
 		assertAPPContains(line);
 	}
 
-	private void assertAPPContains(AnnualProcurementPlanLine line1) throws TransactionException {
-		AnnualProcurementPlan appFromDb = appManager.getAPP(app.getId());
+	private void assertAPPContains(APPLine line1) throws TransactionException {
+		APP appFromDb = appManager.getAPP(app.getId());
 		assertTrue(appFromDb.getLines().contains(line1));
 	}
 

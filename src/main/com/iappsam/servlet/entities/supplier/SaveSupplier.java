@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Supplier;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.Employee;
+import com.iappsam.Person;
+import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
@@ -81,7 +81,7 @@ public class SaveSupplier extends HttpServlet {
 				employee.setEmployeeNumber(employeeNumber);
 			Supplier supplier = new Supplier(supplierName, address, tin, employee);
 			try {
-				Managers.SUPPLIER_MANAGER.addSupplier(supplier);
+				Managers.INSTANCE.getSupplierManager().addSupplier(supplier);
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("ViewSupplier.do");
 				System.out.println("supplier was saved!!!");

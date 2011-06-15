@@ -10,15 +10,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Unit;
+import com.iappsam.Item;
+import com.iappsam.ItemCategory;
+import com.iappsam.ItemCondition;
+import com.iappsam.ItemStatus;
+import com.iappsam.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.util.Managers;
 
 import static org.mockito.BDDMockito.*;
 import static com.iappsam.servlet.item.ItemParameter.*;
@@ -29,6 +30,8 @@ public class ItemServletTest extends ServletTestCase {
 	private ItemManager itemManager;
 	@Mock
 	private ItemSearcher searcher;
+	@Mock
+	private Managers managers;
 
 	private ItemCondition con = new ItemCondition("Good Condition");
 	private Unit unit = new Unit("PCS");
@@ -42,7 +45,7 @@ public class ItemServletTest extends ServletTestCase {
 	@Override
 	@Before
 	public void init() {
-		servlet = new ItemServlet(itemManager, searcher);
+		servlet = new ItemServlet(managers, searcher);
 		item.setId(1);
 	}
 

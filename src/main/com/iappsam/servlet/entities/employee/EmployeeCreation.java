@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Person;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
@@ -106,14 +106,14 @@ public class EmployeeCreation extends HttpServlet {
 			System.out.println("Division Name:" + getDivisionNameFromString(division));
 			if (getOfficeNameFromString(division) != null)
 				System.out.println("Office Name:" + getOfficeNameFromString(division));
-			DivisionOffice dOffice = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
+			DivisionOffice dOffice = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
 		
 			System.out.println("Email"+emailad);
 			System.out.println("LandLine"+landline);
 			System.out.println("MobileNumber:"+mobileNumber);
 			
 
-			Managers.PERSON_MANAGER.addPerson(person);
+			Managers.INSTANCE.getPersonManager().addPerson(person);
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
 			
@@ -132,7 +132,7 @@ public class EmployeeCreation extends HttpServlet {
 			}
 			Employee employee = new Employee(designation, employeeNumber, person);
 			employee.setDivisionOffice(dOffice);
-			Managers.PERSON_MANAGER.addEmployee(employee);
+			Managers.INSTANCE.getPersonManager().addEmployee(employee);
 			
 			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCondition;
+import com.iappsam.ItemCondition;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -51,7 +51,7 @@ public class EditItemCondition extends HttpServlet {
 		ItemCondition itemCondition = new ItemCondition();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCondition.jsp");
 		try {
-			itemCondition = Managers.ITEM_MANAGER.getItemCondition(itemConditionID);
+			itemCondition = Managers.INSTANCE.getItemManager().getItemCondition(itemConditionID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

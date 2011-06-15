@@ -2,17 +2,17 @@ package com.iappsam.servlet.pr;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public class PRFactory {
-	public PurchaseRequest createPR(HttpServletRequest request, ItemManager im, DivisionOfficeManager dom, PersonManager pm)
+	public PR createPR(HttpServletRequest request, ItemManager im, DivisionOfficeManager dom, PersonManager pm)
 			throws TransactionException {
 
-		PurchaseRequest pr = new PurchaseRequest();
+		PR pr = new PR();
 
 		String divisionOfficeId = request.getParameter("deptAndSection");
 		if (divisionOfficeId != null)

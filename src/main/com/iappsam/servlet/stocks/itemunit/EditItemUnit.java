@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Unit;
+import com.iappsam.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -34,7 +34,7 @@ public class EditItemUnit extends HttpServlet {
 		Unit unit = new Unit();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemUnit.jsp");
 		try {
-			unit = Managers.ITEM_MANAGER.getUnit(itemUnitID);
+			unit = Managers.INSTANCE.getItemManager().getUnit(itemUnitID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

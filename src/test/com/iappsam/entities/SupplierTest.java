@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.iappsam.Employee;
+import com.iappsam.Supplier;
+
 public class SupplierTest {
 
 	@Test

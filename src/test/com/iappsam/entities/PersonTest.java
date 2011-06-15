@@ -5,6 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.Person;
+
 public class PersonTest {
 
 	private Person p;

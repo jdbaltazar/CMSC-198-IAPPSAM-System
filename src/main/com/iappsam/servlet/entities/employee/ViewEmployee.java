@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.Employee;
+import com.iappsam.Person;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -35,7 +35,7 @@ public class ViewEmployee extends HttpServlet {
 		ArrayList<String> mobile = new ArrayList<String>();
 		ArrayList<String> emailad = new ArrayList<String>();
 		try {
-			Employee emp = Managers.PERSON_MANAGER.getEmployee(Integer.parseInt(employeeID));
+			Employee emp = Managers.INSTANCE.getPersonManager().getEmployee(Integer.parseInt(employeeID));
 			if (emp != null) {
 				p = emp.getPerson();
 				request.setAttribute("title", p.getTitle());

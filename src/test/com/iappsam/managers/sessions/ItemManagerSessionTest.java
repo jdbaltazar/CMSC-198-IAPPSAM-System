@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.iappsam.Item;
+import com.iappsam.ItemCategory;
+import com.iappsam.ItemCondition;
+import com.iappsam.ItemStatus;
+import com.iappsam.Unit;
 import com.iappsam.entities.EntityRemover;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.ItemCategory;
-import com.iappsam.entities.ItemCondition;
-import com.iappsam.entities.ItemStatus;
-import com.iappsam.entities.Unit;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 

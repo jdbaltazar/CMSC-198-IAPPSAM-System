@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.forms.IIRUP;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;

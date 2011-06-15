@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
+import com.iappsam.ItemCategory;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -51,7 +51,7 @@ public class EditItemCategory extends HttpServlet {
 		ItemCategory itemCategory = new ItemCategory();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCategory.jsp");
 		try {
-			itemCategory = Managers.ITEM_MANAGER.getItemCategory(itemCategoryID);
+			itemCategory = Managers.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

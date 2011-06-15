@@ -2,7 +2,7 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -10,38 +10,38 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
-	public void addPR(PurchaseRequest pr) throws TransactionException {
+	public void addPR(PR pr) throws TransactionException {
 		if (pr.validate())
 			add(pr);
 	}
 
 	@Override
-	public void updatePR(PurchaseRequest pr) throws TransactionException {
+	public void updatePR(PR pr) throws TransactionException {
 		update(pr);
 	}
 
 	@Override
-	public PurchaseRequest getPR(int id) throws TransactionException {
-		return (PurchaseRequest) get(PurchaseRequest.class, id);
+	public PR getPR(int id) throws TransactionException {
+		return (PR) get(PR.class, id);
 	}
 
 	@Override
-	public boolean containsPR(PurchaseRequest pr) throws TransactionException {
+	public boolean containsPR(PR pr) throws TransactionException {
 		return getPR(pr.getId()) != null;
 	}
 
 	@Override
-	public List<PurchaseRequest> getAllPR() throws TransactionException {
-		return getAll(PurchaseRequest.class);
+	public List<PR> getAllPR() throws TransactionException {
+		return getAll(PR.class);
 	}
 
 	@Override
-	public void removePR(PurchaseRequest pr) throws TransactionException {
+	public void removePR(PR pr) throws TransactionException {
 		remove(pr);
 	}
 
 	@Override
-	public PurchaseRequest getPR(PurchaseRequest pr) throws TransactionException {
+	public PR getPR(PR pr) throws TransactionException {
 		return getPR(pr.getId());
 	}
 }

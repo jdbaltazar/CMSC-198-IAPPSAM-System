@@ -6,12 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.Managers;
 
 public class AddingItemToPRAction implements Action {
 
@@ -20,18 +21,18 @@ public class AddingItemToPRAction implements Action {
 	private PersonManager pm;
 	private PRFactory factory;
 
-	public AddingItemToPRAction(ItemManager im, DivisionOfficeManager dom, PersonManager pm, PRFactory factory) {
+	public AddingItemToPRAction(Managers m, PRFactory factory) {
 		super();
-		this.im = im;
-		this.dom = dom;
-		this.pm = pm;
+		this.im = m.getItemManager();
+		this.dom = m.getDivisionOfficeManager();
+		this.pm = m.getPersonManager();
 		this.factory = factory;
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
+			PR pr = factory.createPR(request, im, dom, pm);
 			request.getSession().setAttribute("form", pr);
 			response.sendRedirect("/pr/line");
 		} catch (TransactionException e) {

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.ModeOfProcurement;
+import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -33,7 +33,7 @@ public class EditModeOfProcurement extends HttpServlet {
 		ModeOfProcurement mop = new ModeOfProcurement();
 		RequestDispatcher edit = request.getRequestDispatcher("EditModeOfProc.jsp");
 		try {
-			mop = Managers.PO_MANAGER.getModeOfProcurement(mopID);
+			mop = Managers.INSTANCE.getPOManager().getModeOfProcurement(mopID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

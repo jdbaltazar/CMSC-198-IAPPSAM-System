@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.Disposal;
+import com.iappsam.forms.Disposal;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 import com.iappsam.util.Verifier;
@@ -55,10 +55,10 @@ public class SaveEditedDisposal extends HttpServlet {
 		Disposal disposal = null;
 
 		try {
-			disposal = Managers.WMR_MANAGER.getDisposal(disposalID);
+			disposal = Managers.INSTANCE.getWMRManager().getDisposal(disposalID);
 			if (Verifier.validEntry(name)) {
 				disposal.setName(name);
-				Managers.WMR_MANAGER.updateDisposal(disposal);
+				Managers.INSTANCE.getWMRManager().updateDisposal(disposal);
 				save = request.getRequestDispatcher("ViewDisposals.do");
 			} else {
 				request.setAttribute("disposal", disposal);

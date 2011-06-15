@@ -6,13 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.Managers;
 
 public class AddPRAction implements Action {
 
@@ -22,19 +23,19 @@ public class AddPRAction implements Action {
 	private PersonManager pm;
 	private PRFactory factory;
 
-	public AddPRAction(PRManager prm, ItemManager im, DivisionOfficeManager dom, PersonManager pm, PRFactory factory) {
+	public AddPRAction(Managers m, PRFactory factory) {
 		super();
-		this.prm = prm;
-		this.im = im;
-		this.dom = dom;
-		this.pm = pm;
+		this.prm = m.getPRManager();
+		this.im = m.getItemManager();
+		this.dom = m.getDivisionOfficeManager();
+		this.pm = m.getPersonManager();
 		this.factory = factory;
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			PurchaseRequest pr = factory.createPR(request, im, dom, pm);
+			PR pr = factory.createPR(request, im, dom, pm);
 			if (pr.validate()) {
 				prm.addPR(pr);
 				response.sendRedirect("/pr?id=" + pr.getId());

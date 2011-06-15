@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.entities.Contact"%>
-<%@page import="com.iappsam.entities.Employee"%>
+<%@page import="com.iappsam.Contact"%>
+<%@page import="com.iappsam.Employee"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.iappsam.entities.Person"%>
-<%@page import="com.iappsam.entities.Account"%>
-<%@page import="com.iappsam.entities.DivisionOffice"%>
+<%@page import="com.iappsam.Person"%>
+<%@page import="com.iappsam.Account"%>
+<%@page import="com.iappsam.DivisionOffice"%>
 <%@page import="java.util.List"%>
 <%@page
 	import="com.iappsam.managers.sessions.DivisionOfficeManagerSession"%>

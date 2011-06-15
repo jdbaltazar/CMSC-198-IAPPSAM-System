@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemStatus;
+import com.iappsam.ItemStatus;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 import com.iappsam.util.Verifier;
@@ -38,10 +38,10 @@ public class SaveEditedItemStatus extends HttpServlet {
 		ItemStatus itemStatus = null;
 
 		try {
-			itemStatus = Managers.ITEM_MANAGER.getItemStatus(itemStatusID);
+			itemStatus = Managers.INSTANCE.getItemManager().getItemStatus(itemStatusID);
 			if (Verifier.validEntry(name)) {
 				itemStatus.setName(name);
-				Managers.ITEM_MANAGER.updateItemStatus(itemStatus);
+				Managers.INSTANCE.getItemManager().updateItemStatus(itemStatus);
 				save = request.getRequestDispatcher("ViewItemStatuses.do");
 			} else {
 				request.setAttribute("itemStatus", itemStatus);

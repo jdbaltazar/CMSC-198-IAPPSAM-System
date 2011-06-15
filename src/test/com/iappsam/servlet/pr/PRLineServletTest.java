@@ -14,8 +14,8 @@ import org.mockito.Mock;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.Item;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
@@ -35,7 +35,7 @@ public class PRLineServletTest extends ServletTestCase {
 	@Mock
 	private AddSelectedItemAction addSelectedItemAction;
 	@Mock
-	private PurchaseRequest pr;
+	private PR pr;
 
 	@Override
 	@Before

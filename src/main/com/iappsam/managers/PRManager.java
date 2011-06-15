@@ -2,25 +2,25 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface PRManager {
 
 	// PR
 
-	void addPR(PurchaseRequest purchaseRequest) throws TransactionException;
+	void addPR(PR purchaseRequest) throws TransactionException;
 
-	void updatePR(PurchaseRequest purchaseRequest) throws TransactionException;
+	void updatePR(PR purchaseRequest) throws TransactionException;
 
-	PurchaseRequest getPR(int purchaseRequestID) throws TransactionException;
+	PR getPR(int purchaseRequestID) throws TransactionException;
 
-	boolean containsPR(PurchaseRequest purchaseRequest) throws TransactionException;
+	boolean containsPR(PR purchaseRequest) throws TransactionException;
 
-	List<PurchaseRequest> getAllPR() throws TransactionException;
+	List<PR> getAllPR() throws TransactionException;
 
-	void removePR(PurchaseRequest pr) throws TransactionException;
+	void removePR(PR pr) throws TransactionException;
 
-	PurchaseRequest getPR(PurchaseRequest pr) throws TransactionException;
+	PR getPR(PR pr) throws TransactionException;
 
 }

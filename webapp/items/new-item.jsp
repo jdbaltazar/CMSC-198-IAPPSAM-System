@@ -1,8 +1,8 @@
 <%@page import="com.iappsam.servlet.item.ItemAttribute"%>
-<%@page import="com.iappsam.entities.ItemCondition"%>
-<%@page import="com.iappsam.entities.ItemStatus"%>
-<%@page import="com.iappsam.entities.ItemCategory"%>
-<%@page import="com.iappsam.entities.Unit"%>
+<%@page import="com.iappsam.ItemCondition"%>
+<%@page import="com.iappsam.ItemStatus"%>
+<%@page import="com.iappsam.ItemCategory"%>
+<%@page import="com.iappsam.Unit"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 

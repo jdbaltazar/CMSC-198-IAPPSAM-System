@@ -9,16 +9,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.PurchaseRequest;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.util.Managers;
 
 import static org.mockito.BDDMockito.*;
 
@@ -48,6 +49,8 @@ public class PRServletTest extends ServletTestCase {
 	private ViewPRAction viewPr;
 	@Mock
 	private PRFactory factory;
+	@Mock
+	private Managers managers;
 
 	@Override
 	@Before
@@ -65,10 +68,10 @@ public class PRServletTest extends ServletTestCase {
 	@Test
 	public void processListPurchaseRequest() throws ServletException, IOException, TransactionException {
 		givenRequestDispatcher(PRServlet.LIST_PR_JSP);
-		ArrayList<PurchaseRequest> prs = new ArrayList<PurchaseRequest>();
+		ArrayList<PR> prs = new ArrayList<PR>();
 		given(prm.getAllPR()).willReturn(prs);
 
-		new ListPRAction(prm).process(request, response);
+		new ListPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("PRs", prs);
 		verifyForwardedTo(PRServlet.LIST_PR_JSP);
@@ -89,7 +92,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		new NewPRAction(pm, dom, im).process(request, response);
+		new NewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
@@ -112,13 +115,13 @@ public class PRServletTest extends ServletTestCase {
 		givenParams("quantity", new String[] { "1" });
 		givenParams("items", new String[] { "1" });
 		// given valid PR from factory
-		PurchaseRequest pr = mock(PurchaseRequest.class);
+		PR pr = mock(PR.class);
 		given(pr.validate()).willReturn(true);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new AddPRAction(prm, im, dom, pm, factory).process(request, response);
+		new AddPRAction(managers, factory).process(request, response);
 
-		verify(prm).addPR(any(PurchaseRequest.class));
+		verify(prm).addPR(any(PR.class));
 		verify(response).sendRedirect(startsWith("/pr?id="));
 	}
 
@@ -133,12 +136,12 @@ public class PRServletTest extends ServletTestCase {
 	public void processRemoveItems() throws ServletException, IOException, TransactionException {
 		givenParams("checkedItems", new String[] { "0" });
 		// given valid PR from factory
-		PurchaseRequest pr = mock(PurchaseRequest.class);
+		PR pr = mock(PR.class);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new RemoveItemFromPRAction(im, dom, pm, factory).process(request, response);
+		new RemoveItemFromPRAction(managers, factory).process(request, response);
 
-		verify(session).setAttribute(eq("form"), any(PurchaseRequest.class));
+		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr?new=pr");
 	}
 
@@ -152,7 +155,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
 
-		new NewPRAction(pm, dom, im).process(request, response);
+		new NewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute("offices", offices);
 		verify(request).setAttribute("employees", emps);
@@ -170,12 +173,12 @@ public class PRServletTest extends ServletTestCase {
 	public void processViewPR() throws TransactionException, ServletException, IOException {
 		givenParam("id", "1");
 		// given pr with id=1
-		PurchaseRequest pr = new PurchaseRequest();
+		PR pr = new PR();
 		given(prm.getPR(1)).willReturn(pr);
 
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(request).setAttribute(eq("form"), eq(pr));
 		verifyForwardedTo(PRServlet.VIEW_PR_JSP);
@@ -186,7 +189,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", "1");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -196,7 +199,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", ".");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(prm).process(request, response);
+		new ViewPRAction(managers).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -228,9 +231,9 @@ public class PRServletTest extends ServletTestCase {
 		given(pm.getEmployee(2)).willReturn(new Employee());
 		given(im.getItem(1)).willReturn(new Item());
 
-		new AddingItemToPRAction(im, dom, pm, factory).process(request, response);
+		new AddingItemToPRAction(managers, factory).process(request, response);
 
-		verify(session).setAttribute(eq("form"), any(PurchaseRequest.class));
+		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr/line");
 	}
 

@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.Disposal;
-import com.iappsam.entities.forms.IIRUP;
-import com.iappsam.entities.forms.IIRUPLine;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Item;
+import com.iappsam.forms.Disposal;
+import com.iappsam.forms.IIRUP;
+import com.iappsam.forms.IIRUPLine;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -176,7 +176,7 @@ public class IIRUPForm extends HttpServlet {
 				iirupForm.setStation(station.getDivisionName());
 			ArrayList<Item> item = new ArrayList<Item>();
 			for (int i = 0; i < itemIDs.size(); i++) {
-				Item itemInstance = Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemIDs.get(i)));
+				Item itemInstance = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(itemIDs.get(i)));
 				item.add(itemInstance);
 			}
 			for (int i = 0; i < item.size(); i++) {
@@ -192,7 +192,7 @@ public class IIRUPForm extends HttpServlet {
 
 			}
 			try {
-				Managers.IIRUP_MANAGER.addIIRUP(iirupForm);
+				Managers.INSTANCE.getIIRUPManager().addIIRUP(iirupForm);
 
 				System.out.println("successfully saved IIRUP!!");
 				request.setAttribute("iirupForm", iirupForm);

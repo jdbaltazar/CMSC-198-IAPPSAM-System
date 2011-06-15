@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.ItemCategory;
+import com.iappsam.ItemCategory;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 import com.iappsam.util.Verifier;
@@ -55,10 +55,10 @@ public class SaveEditedItemCategory extends HttpServlet {
 		ItemCategory itemCategory = null;
 
 		try {
-			itemCategory = Managers.ITEM_MANAGER.getItemCategory(itemCategoryID);
+			itemCategory = Managers.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
 			if (Verifier.validEntry(name)) {
 				itemCategory.setName(name);
-				Managers.ITEM_MANAGER.updateItemCategory(itemCategory);
+				Managers.INSTANCE.getItemManager().updateItemCategory(itemCategory);
 				save = request.getRequestDispatcher("ViewItemCategories.do");
 			} else {
 				request.setAttribute("itemCategory", itemCategory);

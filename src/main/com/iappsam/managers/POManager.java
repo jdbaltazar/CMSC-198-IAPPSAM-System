@@ -2,8 +2,8 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.entities.forms.PurchaseOrder;
+import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.forms.PO;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 
@@ -11,15 +11,15 @@ public interface POManager {
 
 	// PO
 
-	void addPO(PurchaseOrder purchaseOrder) throws TransactionException;
+	void addPO(PO purchaseOrder) throws TransactionException;
 
-	void updatePO(PurchaseOrder purchaseOrder) throws TransactionException;
+	void updatePO(PO purchaseOrder) throws TransactionException;
 
-	PurchaseOrder getPO(String poNumber) throws TransactionException;
+	PO getPO(String poNumber) throws TransactionException;
 
-	boolean containsPO(PurchaseOrder purchaseOrder) throws TransactionException;
+	boolean containsPO(PO purchaseOrder) throws TransactionException;
 
-	List<PurchaseOrder> getAllPO() throws TransactionException;
+	List<PO> getAllPO() throws TransactionException;
 
 	// ModeOfProcurement
 
@@ -35,7 +35,7 @@ public interface POManager {
 
 	List<ModeOfProcurement> getAllModeOfProcurement() throws TransactionException;
 
-	void removePurchaseOrder(PurchaseOrder po) throws TransactionException;
+	void removePurchaseOrder(PO po) throws TransactionException;
 
 	void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException;
 

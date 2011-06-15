@@ -5,7 +5,6 @@ import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.auth.WebCallbackHandler;
-import com.iappsam.entities.Account;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;

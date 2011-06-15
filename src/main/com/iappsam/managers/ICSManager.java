@@ -2,18 +2,18 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.InventoryCustodianSlip;
+import com.iappsam.forms.ICS;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface ICSManager {
 
-	void addICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
+	void addICS(ICS inventoryCustodianSlip) throws TransactionException;
 
-	void updateICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
+	void updateICS(ICS inventoryCustodianSlip) throws TransactionException;
 
-	InventoryCustodianSlip getICS(int inventoryCustodianSlipID) throws TransactionException;
+	ICS getICS(int inventoryCustodianSlipID) throws TransactionException;
 
-	boolean containsICS(InventoryCustodianSlip inventoryCustodianSlip) throws TransactionException;
+	boolean containsICS(ICS inventoryCustodianSlip) throws TransactionException;
 
-	List<InventoryCustodianSlip> getAllICS() throws TransactionException;
+	List<ICS> getAllICS() throws TransactionException;
 }

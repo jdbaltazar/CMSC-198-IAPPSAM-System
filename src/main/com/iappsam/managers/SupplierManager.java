@@ -2,7 +2,7 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.Supplier;
+import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 

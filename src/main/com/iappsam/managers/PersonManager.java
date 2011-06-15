@@ -5,9 +5,9 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Signatory;
+import com.iappsam.Employee;
+import com.iappsam.Person;
+import com.iappsam.Signatory;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 

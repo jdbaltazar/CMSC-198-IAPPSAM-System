@@ -2,19 +2,19 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.InventoryOfEquipment;
+import com.iappsam.forms.IOE;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface IEManager {
 
-	void addIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
+	void addIE(IOE inventoryOfEquipment) throws TransactionException;
 
 
-	void updateIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
+	void updateIE(IOE inventoryOfEquipment) throws TransactionException;
 
-	InventoryOfEquipment getIE(int inventoryOfEquipmentID) throws TransactionException;
+	IOE getIE(int inventoryOfEquipmentID) throws TransactionException;
 
-	boolean containsIE(InventoryOfEquipment inventoryOfEquipment) throws TransactionException;
+	boolean containsIE(IOE inventoryOfEquipment) throws TransactionException;
 
-	List<InventoryOfEquipment> getAllIE() throws TransactionException;
+	List<IOE> getAllIE() throws TransactionException;
 }

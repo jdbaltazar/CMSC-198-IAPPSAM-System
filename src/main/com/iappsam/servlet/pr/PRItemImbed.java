@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Item;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Item;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -21,17 +21,18 @@ import com.iappsam.util.Managers;
 @WebServlet("/forms/purchase_request/pr_imbed_item.do")
 public class PRItemImbed extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PRItemImbed() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PRItemImbed() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +40,8 @@ public class PRItemImbed extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +52,7 @@ public class PRItemImbed extends HttpServlet {
 			return;
 		}
 		DivisionOffice station = (DivisionOffice) request.getSession().getAttribute("station");
-		System.out.println("Station:  " + station.getDivisionName()+"/"+station.getOfficeName());
+		System.out.println("Station:  " + station.getDivisionName() + "/" + station.getOfficeName());
 		ArrayList<String> trueItemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		if (trueItemList == null || trueItemList.isEmpty()) {
 			trueItemList = new ArrayList<String>();
@@ -62,7 +64,7 @@ public class PRItemImbed extends HttpServlet {
 		ArrayList<String> dateAcquired = new ArrayList<String>();
 		try {
 			for (int i = 0; i < itemList.length; i++) {
-				Item item = Managers.ITEM_MANAGER.getItem(Integer.parseInt(itemList[i]));
+				Item item = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(itemList[i]));
 				if (trueItemList.contains(itemList[i]))
 					continue;
 
@@ -71,7 +73,7 @@ public class PRItemImbed extends HttpServlet {
 			}
 
 			for (int i = 0; i < trueItemList.size(); i++) {
-				Item item = Managers.ITEM_MANAGER.getItem(Integer.parseInt(trueItemList.get(i)));
+				Item item = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(trueItemList.get(i)));
 
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());

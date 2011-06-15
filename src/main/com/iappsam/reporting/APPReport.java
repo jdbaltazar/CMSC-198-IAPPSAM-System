@@ -16,9 +16,9 @@ import net.sf.jasperreports.engine.export.JExcelApiExporter;
 import net.sf.jasperreports.engine.export.JRXlsAbstractExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-import com.iappsam.entities.Item;
-import com.iappsam.entities.forms.AnnualProcurementPlan;
-import com.iappsam.entities.forms.AnnualProcurementPlanLine;
+import com.iappsam.Item;
+import com.iappsam.forms.APP;
+import com.iappsam.forms.APPLine;
 
 public class APPReport {
 
@@ -27,18 +27,18 @@ public class APPReport {
 
 	private Map<String, String> propertyMap;
 
-	private AnnualProcurementPlan app;
+	private APP app;
 
 	protected APPReport() {
 
 	}
 
-	public APPReport(AnnualProcurementPlan app) throws ReportException {
+	public APPReport(APP app) throws ReportException {
 		setAPP(app);
 		tryToFillReport();
 	}
 
-	private void setAPP(AnnualProcurementPlan app) {
+	private void setAPP(APP app) {
 		if (app == null)
 			throw new NullPointerException();
 		propertyMap = createPropertyMap(app);
@@ -81,7 +81,7 @@ public class APPReport {
 		exporter.exportReport();
 	}
 
-	static Map<String, String> createPropertyMap(AnnualProcurementPlan app) {
+	static Map<String, String> createPropertyMap(APP app) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("YEAR", app.getYear() + "");
 		map.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber());
@@ -93,13 +93,13 @@ public class APPReport {
 	protected List<Object[]> getListOfObject() {
 		List<Object[]> objArrays = new ArrayList<Object[]>();
 
-		AnnualProcurementPlanLine[] lines = app.getLines().toArray(new AnnualProcurementPlanLine[0]);
+		APPLine[] lines = app.getLines().toArray(new APPLine[0]);
 
 		objArrays.add(toArrayObject(lines[0]));
 		return objArrays;
 	}
 
-	protected static Object[] toArrayObject(AnnualProcurementPlanLine line) {
+	protected static Object[] toArrayObject(APPLine line) {
 		Item item = line.getItem();
 		String description = item.getDescription();
 		String stockNumber = item.getStockNumber();

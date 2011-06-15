@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.forms.IIRUP;
+import com.iappsam.forms.IIRUP;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.IIRUPSearcher;
 import com.iappsam.util.Managers;
@@ -52,7 +52,7 @@ public class SearchIIRUPForm extends HttpServlet {
 			request.setAttribute("iirupList", iirupList);
 		} else {
 			try {
-				request.setAttribute("iirupList", Managers.IIRUP_MANAGER.getAllIIRUP());
+				request.setAttribute("iirupList", Managers.INSTANCE.getIIRUPManager().getAllIIRUP());
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

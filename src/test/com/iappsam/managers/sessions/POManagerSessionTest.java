@@ -7,11 +7,11 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.iappsam.entities.DivisionOffice;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Supplier;
-import com.iappsam.entities.forms.ModeOfProcurement;
-import com.iappsam.entities.forms.PurchaseOrder;
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
+import com.iappsam.Supplier;
+import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.forms.PO;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
@@ -27,7 +27,7 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 	private Employee supplierName;
 	private Employee accountant;
 	private Employee dean;
-	private PurchaseOrder po;
+	private PO po;
 	private Employee contactPerson;
 	private PersonManager pm;
 	private SupplierManager sm;
@@ -50,7 +50,7 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		supplierName = supplier.getContactPerson();
 		accountant = Employee.create("Accountant", "Mr.", "John");
 		dean = Employee.create("Dean", "Mrs", "Dean");
-		po = new PurchaseOrder("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"),
+		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"),
 				supplierName, accountant, dean);
 		pm.addEmployee(contactPerson);
 		pm.addEmployee(accountant);

@@ -28,16 +28,11 @@ public class PRServlet extends HttpServlet {
 	private ViewPRAction viewPr;
 
 	public PRServlet() {
-		this(new ListPRAction(Managers.PR_MANAGER),
-				new AddPRAction(Managers.PR_MANAGER, Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
-				new NewPRAction(Managers.PERSON_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.ITEM_MANAGER), //
-				new AddingItemToPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
-				new RemoveItemFromPRAction(Managers.ITEM_MANAGER, Managers.DIVISION_OFFICE_MANAGER, Managers.PERSON_MANAGER, new PRFactory()),
-				new ViewPRAction(Managers.PR_MANAGER));
+		this(new ListPRAction(Managers.INSTANCE), new AddPRAction(Managers.INSTANCE, new PRFactory()), new NewPRAction(Managers.INSTANCE), //
+				new AddingItemToPRAction(Managers.INSTANCE, new PRFactory()), new RemoveItemFromPRAction(Managers.INSTANCE, new PRFactory()), new ViewPRAction(Managers.INSTANCE));
 	}
 
-	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem,
-			ViewPRAction viewPr) {
+	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem, ViewPRAction viewPr) {
 		this.list = list;
 		this.newPr = newPr;
 		this.addItem = addItem;

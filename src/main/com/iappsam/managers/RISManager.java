@@ -2,21 +2,21 @@ package com.iappsam.managers;
 
 import java.util.List;
 
-import com.iappsam.entities.forms.RequisitionAndIssueSlip;
+import com.iappsam.forms.RAIS;
 import com.iappsam.managers.exceptions.TransactionException;
 
 public interface RISManager {
 	
 	//RIS
 	
-	void addRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
+	void addRIS(RAIS requisitionAndIssueSlip) throws TransactionException;
 	
-	void updateRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
+	void updateRIS(RAIS requisitionAndIssueSlip) throws TransactionException;
 	
-	RequisitionAndIssueSlip getRIS(String requisitionAndIssueSlipID) throws TransactionException;
+	RAIS getRIS(String requisitionAndIssueSlipID) throws TransactionException;
 	
-	boolean containsRIS(RequisitionAndIssueSlip requisitionAndIssueSlip) throws TransactionException;
+	boolean containsRIS(RAIS requisitionAndIssueSlip) throws TransactionException;
 	
-	List<RequisitionAndIssueSlip>getAllRIS() throws TransactionException;
+	List<RAIS>getAllRIS() throws TransactionException;
 	
 }

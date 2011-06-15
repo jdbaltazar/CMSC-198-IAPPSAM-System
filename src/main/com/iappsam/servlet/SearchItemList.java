@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Item;
+import com.iappsam.Item;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
@@ -36,7 +36,7 @@ public class SearchItemList extends HttpServlet {
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
-				itemList = Managers.ITEM_MANAGER.getAllItems();
+				itemList = Managers.INSTANCE.getItemManager().getAllItems();
 			else
 				itemList = iSearcher.search(request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));

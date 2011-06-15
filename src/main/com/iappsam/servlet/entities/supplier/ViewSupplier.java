@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.Contact;
-import com.iappsam.entities.ContactType;
-import com.iappsam.entities.Employee;
-import com.iappsam.entities.Person;
-import com.iappsam.entities.Supplier;
+import com.iappsam.Contact;
+import com.iappsam.ContactType;
+import com.iappsam.Employee;
+import com.iappsam.Person;
+import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -47,7 +47,7 @@ public class ViewSupplier extends HttpServlet {
 		String landline = null;
 		String email = null;
 		try {
-			s = Managers.SUPPLIER_MANAGER.getSupplier(supplierID);
+			s = Managers.INSTANCE.getSupplierManager().getSupplier(supplierID);
 			request.setAttribute("supplier", s);
 			contactPerson = s.getContactPerson();
 			p = contactPerson.getPerson();

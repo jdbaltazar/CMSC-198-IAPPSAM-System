@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.entities.DivisionOffice;
+import com.iappsam.DivisionOffice;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.Managers;
 
@@ -50,7 +50,7 @@ public class AddOffice extends HttpServlet {
 		
 		DivisionOffice dOffice;
 		try {
-			dOffice = Managers.DIVISION_OFFICE_MANAGER.getDivisionOffice(dOfficeID);
+			dOffice = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(dOfficeID);
 			request.setAttribute("dOffice", dOffice);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
