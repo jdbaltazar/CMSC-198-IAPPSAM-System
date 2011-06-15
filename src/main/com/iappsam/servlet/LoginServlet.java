@@ -41,16 +41,16 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter(PASSWORD);
 
 		if (loginModule.login(request))
-			forwardToMenuFrameJsp(request, response, username);
+			forwardToMenuFrameJsp(request, response);
 		else
 			logInFail(request, response);
 	}
 
-	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException, IOException {
+	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("menu.jsp");
 		HttpSession session = request.getSession();
 
-		session.setAttribute("username", username);
+		//session.setAttribute("username", username);
 		session.setMaxInactiveInterval(30);
 
 		view.forward(request, response);

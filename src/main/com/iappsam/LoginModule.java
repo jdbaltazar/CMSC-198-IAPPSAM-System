@@ -1,6 +1,7 @@
 package com.iappsam;
 
 import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.auth.WebCallbackHandler;
@@ -11,8 +12,7 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 
 public class LoginModule {
 
-	private WebCallbackHandler webcallback;
-	private LoginContext lcontext = null;
+	private LoginContext lContext = null;
 	private AccountManager am;
 
 	public LoginModule() {
@@ -22,15 +22,29 @@ public class LoginModule {
 
 	public boolean login(HttpServletRequest request) {
 
-		String username = request.getParameter("USERNAME");
-		String password = request.getParameter("PASSWORD");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
 		try {
 			if (username.isEmpty() || password.isEmpty())
 				return false;
 			Account account = am.getAccount(username);
-			if (account != null)
-				return account.comparePassword(password);
+			if (account != null) {
+				boolean valid = account.comparePassword(password);
+				if (valid) {
+					// try {
+					// lContext = new LoginContext("WebCallbackHandler", new
+					// WebCallbackHandler(request));
+					// lContext.login();
+					// request.getSession().setAttribute("loginContext", lContext);
+					request.getSession().setAttribute("username", username);
+					return true;
+					// } catch (LoginException e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// }
+				}
+			}
 		} catch (TransactionException e) {
 			return false;
 		}
