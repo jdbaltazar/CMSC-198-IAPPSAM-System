@@ -11,13 +11,14 @@ import com.iappsam.Item;
 import com.iappsam.forms.Form;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.ApplicationContext;
 
 public class PRSearchItemAction implements Action {
 
 	private ItemSearcher searcher;
 
-	public PRSearchItemAction(ItemSearcher itemSearcher) {
-		this.searcher = itemSearcher;
+	public PRSearchItemAction(ApplicationContext appContext) {
+		this.searcher = appContext.getItemSearcher();
 	}
 
 	@Override

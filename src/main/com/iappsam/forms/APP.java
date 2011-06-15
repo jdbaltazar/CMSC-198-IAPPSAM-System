@@ -192,6 +192,7 @@ public class APP implements Form {
 		boolean validRecommendedBy = recommendedBy != null && recommendedBy.validate();
 		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
 		boolean validPreparedBy = preparedBy != null && preparedBy.validate();
+
 		return validYear && validDivisionOffice && validPreparedBy && validRecommendedBy;
 	}
 

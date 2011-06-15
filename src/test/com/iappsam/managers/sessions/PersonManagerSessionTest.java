@@ -11,7 +11,6 @@ import com.iappsam.ContactType;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
-import com.iappsam.entities.EntityRemover;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;

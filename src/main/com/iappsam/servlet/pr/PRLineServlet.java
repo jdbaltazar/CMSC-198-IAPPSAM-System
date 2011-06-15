@@ -17,13 +17,13 @@ public class PRLineServlet extends HttpServlet {
 	public static final String LIST_ITEMS = "/pr/line/add-item.jsp";
 	private PRSearchItemAction searchItem;
 	private PRListItemsAction listItems;
-	private AddSelectedItemAction addSelectedItems;
+	private AddPRLineAction addSelectedItems;
 
 	public PRLineServlet() {
-		this(new PRListItemsAction(ApplicationContext.INSTANCE.getItemManager()), new PRSearchItemAction(ApplicationContext.getItemSearcher()), new AddSelectedItemAction(ApplicationContext.INSTANCE.getItemManager()));
+		this(new PRListItemsAction(ApplicationContext.INSTANCE), new PRSearchItemAction(ApplicationContext.INSTANCE), new AddPRLineAction(ApplicationContext.INSTANCE));
 	}
 
-	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddSelectedItemAction addSelectedItemAction) {
+	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddPRLineAction addSelectedItemAction) {
 		this.listItems = listItems;
 		this.searchItem = searchItem;
 		this.addSelectedItems = addSelectedItemAction;

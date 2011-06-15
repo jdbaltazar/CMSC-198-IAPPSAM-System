@@ -21,7 +21,6 @@ import javax.persistence.Table;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
-import com.iappsam.Validatable;
 
 @Entity
 @Table(name = "Purchase_Request")

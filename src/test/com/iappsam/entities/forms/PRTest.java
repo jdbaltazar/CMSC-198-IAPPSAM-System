@@ -12,7 +12,7 @@ import com.iappsam.Employee;
 import com.iappsam.Item;
 import com.iappsam.forms.PR;
 
-public class PurchaseRequestTest {
+public class PRTest {
 
 	private PR pr;
 

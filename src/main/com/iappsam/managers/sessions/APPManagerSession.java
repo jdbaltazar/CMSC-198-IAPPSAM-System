@@ -2,14 +2,10 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.iappsam.forms.APP;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.HibernateUtil;
 
 public class APPManagerSession extends AbstractManager implements APPManager {
 

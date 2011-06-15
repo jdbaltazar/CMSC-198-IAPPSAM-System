@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.iappsam.forms.APPLine;
 
-public class AnnualProcurementPlanLineTest {
+public class APPLineTest {
 
 	@Test
 	public void sameAppLine() {
@@ -15,7 +15,7 @@ public class AnnualProcurementPlanLineTest {
 
 		APPLine line2 = new APPLine();
 		line2.setId(1);
-		
+
 		assertEquals(line, line2);
 	}
 }

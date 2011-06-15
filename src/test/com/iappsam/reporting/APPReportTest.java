@@ -17,7 +17,6 @@ import com.iappsam.ItemCategory;
 import com.iappsam.ItemCondition;
 import com.iappsam.ItemStatus;
 import com.iappsam.Person;
-import com.iappsam.Signatory;
 import com.iappsam.Unit;
 import com.iappsam.forms.APP;
 import com.iappsam.forms.APPLine;

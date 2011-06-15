@@ -7,7 +7,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.Person;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.HibernateUtil;
 

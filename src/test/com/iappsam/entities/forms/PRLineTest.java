@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.iappsam.forms.PRLine;
 
-public class PurchaseRequestLineTest {
+public class PRLineTest {
 
 	@Test
 	public void samePRLine() {

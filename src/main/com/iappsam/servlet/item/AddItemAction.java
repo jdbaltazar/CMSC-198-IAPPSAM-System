@@ -68,7 +68,7 @@ public class AddItemAction implements Action {
 			itemManager.addItem(item);
 			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			request.setAttribute("firstAttempt", "false");
 			request.setAttribute("validEntries", "false");
 			request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP).forward(request, response);

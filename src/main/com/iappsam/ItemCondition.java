@@ -83,6 +83,7 @@ public class ItemCondition implements Serializable, Validatable {
 		return name;
 	}
 
+	@Override
 	public boolean validate() {
 		return name != null && !name.equals("");
 	}

@@ -22,7 +22,6 @@ public class ViewPRAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idParam = request.getParameter("id");
-
 		try {
 			int id = Integer.parseInt(idParam);
 			PR pr = prm.getPR(id);

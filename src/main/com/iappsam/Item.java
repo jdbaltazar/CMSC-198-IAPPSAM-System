@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.apache.commons.lang.NullArgumentException;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Field;

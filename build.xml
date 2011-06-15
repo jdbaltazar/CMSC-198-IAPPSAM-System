@@ -39,8 +39,8 @@
 
 
 	<target name="clean.classes">
-		<delete dir="build/classes"/>
-		<mkdir dir="build/classes"/>
+		<delete dir="build/classes" />
+		<mkdir dir="build/classes" />
 	</target>
 
 	<target name="clean.webapps">

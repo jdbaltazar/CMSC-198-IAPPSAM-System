@@ -19,7 +19,6 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
-import com.iappsam.util.ApplicationContext;
 
 import static org.mockito.BDDMockito.*;
 
@@ -28,9 +27,9 @@ public class PRServletTest extends ServletTestCase {
 	private PRServlet servlet;
 
 	@Mock
-	private AddingItemToPRAction addItem;
+	private PRLinePageAction addItem;
 	@Mock
-	private NewPRAction newPurchase;
+	private NewPRPageAction newPurchase;
 	@Mock
 	private ListPRAction listPR;
 	@Mock
@@ -42,13 +41,13 @@ public class PRServletTest extends ServletTestCase {
 	@Mock
 	private ItemManager im;
 	@Mock
-	private RemoveItemFromPRAction removeItems;
+	private RemovePRLineAction removeItems;
 	@Mock
 	private AddPRAction addPr;
 	@Mock
 	private ViewPRAction viewPr;
 	@Mock
-	private PRFactory factory;
+	private PRParser factory;
 
 	@Override
 	@Before
@@ -76,7 +75,7 @@ public class PRServletTest extends ServletTestCase {
 
 		new ListPRAction(appContext).process(request, response);
 
-		verify(request).setAttribute("PRs", prs);
+		verify(request).setAttribute("forms", prs);
 		verifyForwardedTo(PRServlet.LIST_PR_JSP);
 	}
 
@@ -95,7 +94,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		new NewPRAction(appContext).process(request, response);
+		new NewPRPageAction(appContext).process(request, response);
 
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
@@ -120,7 +119,7 @@ public class PRServletTest extends ServletTestCase {
 		// given valid PR from factory
 		PR pr = mock(PR.class);
 		given(pr.validate()).willReturn(true);
-		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
+		given(factory.createForm(request, appContext)).willReturn(pr);
 
 		new AddPRAction(appContext, factory).process(request, response);
 
@@ -140,9 +139,9 @@ public class PRServletTest extends ServletTestCase {
 		givenParams("checkedItems", new String[] { "0" });
 		// given valid PR from factory
 		PR pr = mock(PR.class);
-		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
+		given(factory.createForm(request, appContext)).willReturn(pr);
 
-		new RemoveItemFromPRAction(appContext, factory).process(request, response);
+		new RemovePRLineAction(appContext, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr?new=pr");
@@ -158,7 +157,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
 
-		new NewPRAction(appContext).process(request, response);
+		new NewPRPageAction(appContext).process(request, response);
 
 		verify(request).setAttribute("offices", offices);
 		verify(request).setAttribute("employees", emps);
@@ -234,7 +233,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pm.getEmployee(2)).willReturn(new Employee());
 		given(im.getItem(1)).willReturn(new Item());
 
-		new AddingItemToPRAction(appContext, factory).process(request, response);
+		new PRLinePageAction(appContext, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr/line");

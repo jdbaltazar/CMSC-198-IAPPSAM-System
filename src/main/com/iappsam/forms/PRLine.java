@@ -33,8 +33,6 @@ public class PRLine {
 	@ManyToOne
 	@JoinColumn(name = "Purchase_Request_ID")
 	private PR purchaseRequest;
-	
-	
 
 	public PRLine() {
 		super();
@@ -94,8 +92,9 @@ public class PRLine {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (int) (estimatedUnitCost ^ (estimatedUnitCost >>> 32));
 		result = prime * result + ((item == null) ? 0 : item.hashCode());
-		result = prime * result + ((purchaseRequest == null) ? 0 : purchaseRequest.hashCode());
+		result = prime * result + quantity;
 		return result;
 	}
 
@@ -108,15 +107,14 @@ public class PRLine {
 		if (getClass() != obj.getClass())
 			return false;
 		PRLine other = (PRLine) obj;
+		if (estimatedUnitCost != other.estimatedUnitCost)
+			return false;
 		if (item == null) {
 			if (other.item != null)
 				return false;
 		} else if (!item.equals(other.item))
 			return false;
-		if (purchaseRequest == null) {
-			if (other.purchaseRequest != null)
-				return false;
-		} else if (!purchaseRequest.equals(other.purchaseRequest))
+		if (quantity != other.quantity)
 			return false;
 		return true;
 	}

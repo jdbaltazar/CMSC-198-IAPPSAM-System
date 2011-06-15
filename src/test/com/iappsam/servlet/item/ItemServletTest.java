@@ -29,6 +29,7 @@ public class ItemServletTest extends ServletTestCase {
 	private ItemManager itemManager;
 	@Mock
 	private ItemSearcher searcher;
+
 	private ItemCondition con = new ItemCondition("Good Condition");
 	private Unit unit = new Unit("PCS");
 	private ItemCategory cat = new ItemCategory("Others");
@@ -44,7 +45,7 @@ public class ItemServletTest extends ServletTestCase {
 		given(appContext.getItemManager()).willReturn(itemManager);
 		given(appContext.getItemSearcher()).willReturn(searcher);
 
-		servlet = new ItemServlet(appContext, searcher);
+		servlet = new ItemServlet(appContext);
 		item.setId(1);
 	}
 

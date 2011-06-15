@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.iappsam.forms.APP;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PRManager;

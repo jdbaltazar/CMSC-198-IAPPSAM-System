@@ -2,15 +2,23 @@ package com.iappsam.servlet.pr;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.form.FormParser;
+import com.iappsam.util.ApplicationContext;
 
-public class PRFactory {
-	public PR createPR(HttpServletRequest request, ItemManager im, DivisionOfficeManager dom, PersonManager pm)
-			throws TransactionException {
+public class PRParser extends FormParser {
+	
+	@Override
+	public Form createForm(HttpServletRequest request, ApplicationContext appContext) throws TransactionException {
+
+		ItemManager im = appContext.getItemManager();
+		DivisionOfficeManager dom = appContext.getDivisionOfficeManager();
+		PersonManager pm = appContext.getPersonManager();
 
 		PR pr = new PR();
 
@@ -46,7 +54,6 @@ public class PRFactory {
 					q = "0";
 				pr.addLine(Integer.parseInt(q), im.getItem(Integer.parseInt(items[i])));
 			}
-
 		return pr;
 	}
 }

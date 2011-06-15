@@ -89,8 +89,8 @@ public class PO implements Form {
 	public PO() {
 	}
 
-	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery,
-			Employee supplierName, Date supplierDate, Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
+	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery, Employee supplierName, Date supplierDate,
+			Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
 		super();
 		this.poNumber = poNumber;
 		this.supplier = supplier;
@@ -269,20 +269,17 @@ public class PO implements Form {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((accountant == null) ? 0 : accountant.hashCode());
-		result = prime * result + (int) (amount ^ (amount >>> 32));
+		result = prime * result + ((accountantDate == null) ? 0 : accountantDate.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((dateOfDelivery == null) ? 0 : dateOfDelivery.hashCode());
 		result = prime * result + ((dean == null) ? 0 : dean.hashCode());
-		result = prime * result + ((deliveryTerm == null) ? 0 : deliveryTerm.hashCode());
+		result = prime * result + ((deanDate == null) ? 0 : deanDate.hashCode());
 		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
-		result = prime * result + ((lines == null) ? 0 : lines.hashCode());
 		result = prime * result + ((modeOfProcurement == null) ? 0 : modeOfProcurement.hashCode());
-		result = prime * result + ((orNumber == null) ? 0 : orNumber.hashCode());
-		result = prime * result + ((paymentTerm == null) ? 0 : paymentTerm.hashCode());
 		result = prime * result + ((poNumber == null) ? 0 : poNumber.hashCode());
 		result = prime * result + ((supplier == null) ? 0 : supplier.hashCode());
+		result = prime * result + ((supplierDate == null) ? 0 : supplierDate.hashCode());
 		result = prime * result + ((supplierName == null) ? 0 : supplierName.hashCode());
-		result = prime * result + ((totalAmountInWords == null) ? 0 : totalAmountInWords.hashCode());
 		return result;
 	}
 
@@ -300,7 +297,10 @@ public class PO implements Form {
 				return false;
 		} else if (!accountant.equals(other.accountant))
 			return false;
-		if (amount != other.amount)
+		if (accountantDate == null) {
+			if (other.accountantDate != null)
+				return false;
+		} else if (!accountantDate.equals(other.accountantDate))
 			return false;
 		if (date == null) {
 			if (other.date != null)
@@ -317,35 +317,20 @@ public class PO implements Form {
 				return false;
 		} else if (!dean.equals(other.dean))
 			return false;
-		if (deliveryTerm == null) {
-			if (other.deliveryTerm != null)
+		if (deanDate == null) {
+			if (other.deanDate != null)
 				return false;
-		} else if (!deliveryTerm.equals(other.deliveryTerm))
+		} else if (!deanDate.equals(other.deanDate))
 			return false;
 		if (divisionOffice == null) {
 			if (other.divisionOffice != null)
 				return false;
 		} else if (!divisionOffice.equals(other.divisionOffice))
 			return false;
-		if (lines == null) {
-			if (other.lines != null)
-				return false;
-		} else if (!lines.equals(other.lines))
-			return false;
 		if (modeOfProcurement == null) {
 			if (other.modeOfProcurement != null)
 				return false;
 		} else if (!modeOfProcurement.equals(other.modeOfProcurement))
-			return false;
-		if (orNumber == null) {
-			if (other.orNumber != null)
-				return false;
-		} else if (!orNumber.equals(other.orNumber))
-			return false;
-		if (paymentTerm == null) {
-			if (other.paymentTerm != null)
-				return false;
-		} else if (!paymentTerm.equals(other.paymentTerm))
 			return false;
 		if (poNumber == null) {
 			if (other.poNumber != null)
@@ -357,15 +342,15 @@ public class PO implements Form {
 				return false;
 		} else if (!supplier.equals(other.supplier))
 			return false;
+		if (supplierDate == null) {
+			if (other.supplierDate != null)
+				return false;
+		} else if (!supplierDate.equals(other.supplierDate))
+			return false;
 		if (supplierName == null) {
 			if (other.supplierName != null)
 				return false;
 		} else if (!supplierName.equals(other.supplierName))
-			return false;
-		if (totalAmountInWords == null) {
-			if (other.totalAmountInWords != null)
-				return false;
-		} else if (!totalAmountInWords.equals(other.totalAmountInWords))
 			return false;
 		return true;
 	}
@@ -389,8 +374,8 @@ public class PO implements Form {
 		for (POLine line : lines)
 			validLines &= line.validate();
 
-		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
-				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validLines;
+		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName && validSupplierDate && validAccountant && validAccountantDate
+				&& validDean && validDeanDate && validLines;
 	}
 
 	@Override

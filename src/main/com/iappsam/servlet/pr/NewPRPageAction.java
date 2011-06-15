@@ -1,12 +1,13 @@
 package com.iappsam.servlet.pr;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.forms.PR;
+import com.iappsam.Item;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
@@ -14,33 +15,26 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public class RemoveItemFromPRAction implements Action {
+public class NewPRPageAction implements Action {
 
-	private ItemManager im;
-	private DivisionOfficeManager dom;
 	private PersonManager pm;
-	private PRFactory factory;
+	private DivisionOfficeManager dom;
+	private ItemManager im;
+	private List<Item> items;
 
-	public RemoveItemFromPRAction(ApplicationContext m, PRFactory factory) {
-		super();
-		this.im = m.getItemManager();
+	public NewPRPageAction(ApplicationContext m) {
 		this.dom = m.getDivisionOfficeManager();
 		this.pm = m.getPersonManager();
-		this.factory = factory;
+		this.im = m.getItemManager();
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String[] indexesToRemove = request.getParameterValues("checkedItems");
-
-			if (indexesToRemove != null) {
-				PR pr = factory.createPR(request, im, dom, pm);
-				request.getSession().setAttribute("form", pr);
-				for (String i : indexesToRemove)
-					pr.removeLine(Integer.parseInt(i));
-			}
-			response.sendRedirect("/pr?new=pr");
+			request.setAttribute("itemsDb", im.getAllItems());
+			request.setAttribute("employees", pm.getAllEmployee());
+			request.setAttribute("offices", dom.getAllDivisionOffice());
+			request.getRequestDispatcher(PRServlet.NEW_PR_JSP).forward(request, response);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

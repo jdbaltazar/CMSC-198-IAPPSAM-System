@@ -20,19 +20,19 @@ public class PRServlet extends HttpServlet {
 	public static final String LIST_PR_JSP = null;
 	public static final String VIEW_PR_JSP = "/pr/view-pr.jsp";
 
-	private NewPRAction newPr;
-	private AddingItemToPRAction addItem;
+	private NewPRPageAction newPr;
+	private PRLinePageAction addItem;
 	private ListPRAction list;
-	private RemoveItemFromPRAction removeItem;
+	private RemovePRLineAction removeItem;
 	private AddPRAction addPr;
 	private ViewPRAction viewPr;
 
 	public PRServlet() {
-		this(new ListPRAction(ApplicationContext.INSTANCE), new AddPRAction(ApplicationContext.INSTANCE, new PRFactory()), new NewPRAction(ApplicationContext.INSTANCE), //
-				new AddingItemToPRAction(ApplicationContext.INSTANCE, new PRFactory()), new RemoveItemFromPRAction(ApplicationContext.INSTANCE, new PRFactory()), new ViewPRAction(ApplicationContext.INSTANCE));
+		this(new ListPRAction(ApplicationContext.INSTANCE), new AddPRAction(ApplicationContext.INSTANCE, new PRParser()), new NewPRPageAction(ApplicationContext.INSTANCE), //
+				new PRLinePageAction(ApplicationContext.INSTANCE, new PRParser()), new RemovePRLineAction(ApplicationContext.INSTANCE, new PRParser()), new ViewPRAction(ApplicationContext.INSTANCE));
 	}
 
-	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem, ViewPRAction viewPr) {
+	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRPageAction newPr, PRLinePageAction addItem, RemovePRLineAction removeItem, ViewPRAction viewPr) {
 		this.list = list;
 		this.newPr = newPr;
 		this.addItem = addItem;

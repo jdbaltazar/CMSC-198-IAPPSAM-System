@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.ItemManager;
-import com.iappsam.search.ItemSearcher;
 import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/items")
@@ -28,15 +26,15 @@ public class ItemServlet extends HttpServlet {
 	private ListItemsAction listItems;
 
 	public ItemServlet() {
-		this(ApplicationContext.INSTANCE, new ItemSearcher());
+		this(ApplicationContext.INSTANCE);
 	}
 
-	public ItemServlet(ApplicationContext m, ItemSearcher searcher) {
+	public ItemServlet(ApplicationContext m) {
 		super();
 		addItem = new AddItemAction(m.getItemManager());
 		newItem = new NewItemAction(m.getItemManager());
 		viewItem = new ViewItemAction(m.getItemManager());
-		searchItems = new SearchItemsAction(searcher);
+		searchItems = new SearchItemsAction(m.getItemSearcher());
 		listItems = new ListItemsAction(m.getItemManager());
 	}
 

@@ -33,7 +33,7 @@ public class PRLineServletTest extends ServletTestCase {
 	@Mock
 	private ItemManagerSession im;
 	@Mock
-	private AddSelectedItemAction addSelectedItemAction;
+	private AddPRLineAction addSelectedItemAction;
 	@Mock
 	private PR pr;
 
@@ -41,6 +41,8 @@ public class PRLineServletTest extends ServletTestCase {
 	@Before
 	public void init() {
 		super.init();
+		given(appContext.getItemManager()).willReturn(im);
+		given(appContext.getItemSearcher()).willReturn(itemSearcher);
 		servlet = new PRLineServlet(listItems, searchItem, addSelectedItemAction);
 	}
 
@@ -60,7 +62,7 @@ public class PRLineServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
 
-		new PRListItemsAction(im).process(request, response);
+		new PRListItemsAction(appContext).process(request, response);
 
 		verify(request).setAttribute("items", all);
 		verifyForwardedTo(PRLineServlet.LIST_ITEMS);
@@ -88,7 +90,7 @@ public class PRLineServletTest extends ServletTestCase {
 		// given request dispatcher
 		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
 
-		new PRListItemsAction(im).process(request, response);
+		new PRListItemsAction(appContext).process(request, response);
 
 		ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
 		verify(request).setAttribute(eq("items"), captor.capture());
@@ -115,7 +117,7 @@ public class PRLineServletTest extends ServletTestCase {
 
 		given(session.getAttribute("form")).willReturn(pr);
 
-		new PRSearchItemAction(itemSearcher).process(request, response);
+		new PRSearchItemAction(appContext).process(request, response);
 
 		verify(request).setAttribute("items", res);
 		verifyForwardedTo(PRLineServlet.LIST_ITEMS);
@@ -145,7 +147,7 @@ public class PRLineServletTest extends ServletTestCase {
 		item2.setId(2);
 		given(im.getItem(2)).willReturn(item2);
 
-		new AddSelectedItemAction(im).process(request, response);
+		new AddPRLineAction(appContext).process(request, response);
 
 		verify(pr, atLeastOnce()).addItem(eq(item1));
 		verify(pr, atLeastOnce()).addItem(eq(item2));

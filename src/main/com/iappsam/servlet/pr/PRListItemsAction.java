@@ -15,6 +15,7 @@ import com.iappsam.forms.Form;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * @author JK
@@ -24,15 +25,19 @@ public class PRListItemsAction implements Action {
 
 	private ItemManager im;
 
-	public PRListItemsAction(ItemManager im) {
-		this.im = im;
+	public PRListItemsAction(ApplicationContext appContext) {
+		this.im = appContext.getItemManager();
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Item> items = im.getAllItems();
 			Form form = (Form) request.getSession().getAttribute("form");
+			if (form == null) {
+				response.sendRedirect("/menu");
+				return;
+			}
+			List<Item> items = im.getAllItems();
 			items.removeAll(form.getItems());
 			request.setAttribute("items", items);
 			request.getRequestDispatcher(PRLineServlet.LIST_ITEMS).forward(request, response);
