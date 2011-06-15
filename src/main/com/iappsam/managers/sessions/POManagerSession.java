@@ -2,12 +2,17 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.iappsam.forms.APP;
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.forms.PO;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.util.HibernateUtil;
 
 public class POManagerSession extends AbstractManager implements POManager {
 
@@ -33,7 +38,14 @@ public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
 	public List<PO> getAllPO() throws TransactionException {
-		return getAll(PO.class);
+		Session session = HibernateUtil.startSession();
+		Transaction tx = session.beginTransaction();
+
+		List<PO> list = session.createQuery("from PO").list();
+
+		tx.commit();
+		session.close();
+		return list;
 	}
 
 	@Override

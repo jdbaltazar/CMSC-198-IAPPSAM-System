@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.Signatory;
+import com.iappsam.forms.APP;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -70,7 +71,6 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 
 	@Override
 	public List<Person> getAllPersons() throws TransactionException {
-
 		return getAll(Person.class);
 	}
 

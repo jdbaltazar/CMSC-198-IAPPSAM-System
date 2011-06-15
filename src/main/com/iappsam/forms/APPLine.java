@@ -11,10 +11,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.iappsam.Item;
+import com.iappsam.Validatable;
 
 @Entity
 @Table(name = "APP_Line")
-public class APPLine {
+public class APPLine implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -115,7 +116,11 @@ public class APPLine {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((item == null) ? 0 : item.hashCode());
+		result = prime * result + quantityQuarter1;
+		result = prime * result + quantityQuarter2;
+		result = prime * result + quantityQuarter3;
+		result = prime * result + quantityQuarter4;
 		return result;
 	}
 
@@ -128,8 +133,30 @@ public class APPLine {
 		if (getClass() != obj.getClass())
 			return false;
 		APPLine other = (APPLine) obj;
-		if (id != other.id)
+		if (item == null) {
+			if (other.item != null)
+				return false;
+		} else if (!item.equals(other.item))
+			return false;
+		if (quantityQuarter1 != other.quantityQuarter1)
+			return false;
+		if (quantityQuarter2 != other.quantityQuarter2)
+			return false;
+		if (quantityQuarter3 != other.quantityQuarter3)
+			return false;
+		if (quantityQuarter4 != other.quantityQuarter4)
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean validate() {
+		boolean validApp = app != null;
+		boolean validItem = item != null && item.validate();
+		boolean validQ1 = quantityQuarter1 >= 0;
+		boolean validQ2 = quantityQuarter2 >= 0;
+		boolean validQ3 = quantityQuarter3 >= 0;
+		boolean validQ4 = quantityQuarter4 >= 0;
+		return validApp && validItem && validQ1 && validQ2 && validQ3 && validQ4;
 	}
 }

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Cascade;
 
 @Entity
-public class Supplier {
+public class Supplier implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -124,5 +124,13 @@ public class Supplier {
 		} else if (!supplierName.equals(other.supplierName))
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean validate() {
+		boolean validAddress = address != null && !address.isEmpty();
+		boolean validSupplierName = supplierName != null && !supplierName.isEmpty();
+		boolean validContactPerson = contactPerson != null && contactPerson.validate();
+		return validSupplierName && validAddress && validContactPerson;
 	}
 }

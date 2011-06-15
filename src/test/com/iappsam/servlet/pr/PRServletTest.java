@@ -19,7 +19,7 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 import static org.mockito.BDDMockito.*;
 
@@ -49,13 +49,16 @@ public class PRServletTest extends ServletTestCase {
 	private ViewPRAction viewPr;
 	@Mock
 	private PRFactory factory;
-	@Mock
-	private Managers managers;
 
 	@Override
 	@Before
 	public void init() {
 		super.init();
+		given(appContext.getPersonManager()).willReturn(pm);
+		given(appContext.getPRManager()).willReturn(prm);
+		given(appContext.getDivisionOfficeManager()).willReturn(dom);
+		given(appContext.getItemManager()).willReturn(im);
+
 		servlet = new PRServlet(listPR, addPr, newPurchase, addItem, removeItems, viewPr);
 	}
 
@@ -71,7 +74,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<PR> prs = new ArrayList<PR>();
 		given(prm.getAllPR()).willReturn(prs);
 
-		new ListPRAction(managers).process(request, response);
+		new ListPRAction(appContext).process(request, response);
 
 		verify(request).setAttribute("PRs", prs);
 		verifyForwardedTo(PRServlet.LIST_PR_JSP);
@@ -92,7 +95,7 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		new NewPRAction(managers).process(request, response);
+		new NewPRAction(appContext).process(request, response);
 
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
@@ -119,7 +122,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pr.validate()).willReturn(true);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new AddPRAction(managers, factory).process(request, response);
+		new AddPRAction(appContext, factory).process(request, response);
 
 		verify(prm).addPR(any(PR.class));
 		verify(response).sendRedirect(startsWith("/pr?id="));
@@ -139,7 +142,7 @@ public class PRServletTest extends ServletTestCase {
 		PR pr = mock(PR.class);
 		given(factory.createPR(request, im, dom, pm)).willReturn(pr);
 
-		new RemoveItemFromPRAction(managers, factory).process(request, response);
+		new RemoveItemFromPRAction(appContext, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr?new=pr");
@@ -155,7 +158,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
 
-		new NewPRAction(managers).process(request, response);
+		new NewPRAction(appContext).process(request, response);
 
 		verify(request).setAttribute("offices", offices);
 		verify(request).setAttribute("employees", emps);
@@ -178,7 +181,7 @@ public class PRServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(managers).process(request, response);
+		new ViewPRAction(appContext).process(request, response);
 
 		verify(request).setAttribute(eq("form"), eq(pr));
 		verifyForwardedTo(PRServlet.VIEW_PR_JSP);
@@ -189,7 +192,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", "1");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(managers).process(request, response);
+		new ViewPRAction(appContext).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -199,7 +202,7 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("id", ".");
 		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
 
-		new ViewPRAction(managers).process(request, response);
+		new ViewPRAction(appContext).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -231,7 +234,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pm.getEmployee(2)).willReturn(new Employee());
 		given(im.getItem(1)).willReturn(new Item());
 
-		new AddingItemToPRAction(managers, factory).process(request, response);
+		new AddingItemToPRAction(appContext, factory).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr/line");

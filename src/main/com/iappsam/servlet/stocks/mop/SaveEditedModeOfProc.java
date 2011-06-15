@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Verifier;
 
 @WebServlet("/stocks/stocks/SaveEditedModeOfProc.do")
@@ -38,10 +38,10 @@ public class SaveEditedModeOfProc extends HttpServlet {
 		ModeOfProcurement mop = null;
 
 		try {
-			mop = Managers.INSTANCE.getPOManager().getModeOfProcurement(mopID);
+			mop = ApplicationContext.INSTANCE.getPOManager().getModeOfProcurement(mopID);
 			if (Verifier.validEntry(name)) {
 				mop.setName(name);
-				Managers.INSTANCE.getPOManager().updateModeOfProcurement(mop);
+				ApplicationContext.INSTANCE.getPOManager().updateModeOfProcurement(mop);
 				save = request.getRequestDispatcher("ViewModesOfProcurement.do");
 			} else {
 				request.setAttribute("mop", mop);

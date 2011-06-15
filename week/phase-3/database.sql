@@ -290,9 +290,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Mode_Of_Procurement` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Mode_Of_Procurement` (
-  `Mode_Of_Procurement_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Id` INT NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(80) NOT NULL ,
-  PRIMARY KEY (`Mode_Of_Procurement_ID`) )
+  PRIMARY KEY (`Id`) )
 ENGINE = InnoDB;
 
 
@@ -314,8 +314,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `OR_Number` VARCHAR(60) NULL ,
   `Amount` DECIMAL(50,2) NULL ,
   `Supplier_Name_ID` INT NOT NULL ,
+  `Supplier_Date` DATE NOT NULL ,
   `Accountant_ID` INT NOT NULL ,
+  `Accountant_Date` DATE NOT NULL ,
   `Dean_ID` INT NOT NULL ,
+  `Dean_Date` DATE NOT NULL ,
   PRIMARY KEY (`PO_Number`) ,
   INDEX `fk_Purchase_Order_Supplier1` (`Supplier_ID` ASC) ,
   INDEX `fk_Purchase_Order_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
@@ -335,7 +338,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_Mode_Of_Procurement1`
     FOREIGN KEY (`Mode_Of_Procurement_ID` )
-    REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Mode_Of_Procurement_ID` )
+    REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_Employee1`
@@ -362,11 +365,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`PO_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PO_Line` (
+  `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
   `PO_Number` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`PO_Number`, `Item_ID`) ,
   INDEX `fk_PO_Line_Item1` (`Item_ID` ASC) ,
   INDEX `fk_PO_Line_Purchase_Order1` (`PO_Number` ASC) ,
+  PRIMARY KEY (`Id`) ,
   CONSTRAINT `fk_PO_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
@@ -761,26 +765,26 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
   `DivisionOffice_ID` INT NOT NULL ,
   `Plan_Control_Number` VARCHAR(45) NULL ,
   `Date_Scheduled` DATE NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
+  `Prepared_by` INT NOT NULL ,
+  `Recommended_by` INT NOT NULL ,
   PRIMARY KEY (`APP_ID`) ,
-  INDEX `fk_APP_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_APP_Signatory2` (`Signatory_ID1` ASC) ,
   INDEX `fk_APP_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  CONSTRAINT `fk_APP_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_APP_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_APP_Employee1` (`Prepared_by` ASC) ,
+  INDEX `fk_APP_Employee2` (`Recommended_by` ASC) ,
   CONSTRAINT `fk_APP_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_APP_Employee1`
+    FOREIGN KEY (`Prepared_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_APP_Employee2`
+    FOREIGN KEY (`Recommended_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 

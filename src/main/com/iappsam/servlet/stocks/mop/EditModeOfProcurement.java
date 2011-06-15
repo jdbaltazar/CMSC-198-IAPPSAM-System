@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/stocks/stocks/EditModeOfProcurement.do")
 public class EditModeOfProcurement extends HttpServlet {
@@ -33,7 +33,7 @@ public class EditModeOfProcurement extends HttpServlet {
 		ModeOfProcurement mop = new ModeOfProcurement();
 		RequestDispatcher edit = request.getRequestDispatcher("EditModeOfProc.jsp");
 		try {
-			mop = Managers.INSTANCE.getPOManager().getModeOfProcurement(mopID);
+			mop = ApplicationContext.INSTANCE.getPOManager().getModeOfProcurement(mopID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

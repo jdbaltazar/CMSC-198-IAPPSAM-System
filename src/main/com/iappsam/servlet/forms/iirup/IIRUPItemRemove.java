@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Item;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class IIRUPItemImber
@@ -58,7 +58,7 @@ public class IIRUPItemRemove extends HttpServlet {
 		try {
 			for (int i = 0; i < itemList.size(); i++) {
 
-				Item item = Managers.INSTANCE.getItemManager().getItem(Integer
+				Item item = ApplicationContext.INSTANCE.getItemManager().getItem(Integer
 						.parseInt(itemList.get(i)));
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());

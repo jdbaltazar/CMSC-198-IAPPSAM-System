@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class SaveDivisionEdit
@@ -50,10 +50,10 @@ public class SaveOfficeEdit extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
 		DivisionOffice office;
 		try {
-			office = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
+			office = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
 			if (newName != null && !newName.equalsIgnoreCase("")) {
 				office.setOfficeName(newName);
-				Managers.INSTANCE.getDivisionOfficeManager().updateDivisionOffice(office);
+				ApplicationContext.INSTANCE.getDivisionOfficeManager().updateDivisionOffice(office);
 				view = request.getRequestDispatcher("SearchDivisions.do");
 			}else{
 				request.setAttribute("office", office);

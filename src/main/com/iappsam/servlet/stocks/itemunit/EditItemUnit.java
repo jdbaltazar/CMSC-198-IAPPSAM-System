@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/stocks/stocks/EditItemUnit.do")
 public class EditItemUnit extends HttpServlet {
@@ -34,7 +34,7 @@ public class EditItemUnit extends HttpServlet {
 		Unit unit = new Unit();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemUnit.jsp");
 		try {
-			unit = Managers.INSTANCE.getItemManager().getUnit(itemUnitID);
+			unit = ApplicationContext.INSTANCE.getItemManager().getUnit(itemUnitID);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}

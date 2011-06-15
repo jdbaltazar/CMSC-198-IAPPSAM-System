@@ -2,10 +2,15 @@ package com.iappsam.managers.sessions;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.iappsam.forms.APP;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.util.HibernateUtil;
 
 public class PRManagerSession extends AbstractManager implements PRManager {
 
@@ -32,7 +37,14 @@ public class PRManagerSession extends AbstractManager implements PRManager {
 
 	@Override
 	public List<PR> getAllPR() throws TransactionException {
-		return getAll(PR.class);
+		Session session = HibernateUtil.startSession();
+		Transaction tx = session.beginTransaction();
+
+		List<PR> list = session.createQuery("from PR").list();
+
+		tx.commit();
+		session.close();
+		return list;
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.util.Managers"%>
+<%@page import="com.iappsam.util.ApplicationContext"%>
 <%@page import="com.iappsam.forms.Disposal"%>
 <%@page import="com.iappsam.forms.IIRUPLine"%>
 <%@page import="java.util.Set"%>
@@ -68,7 +68,7 @@
 				if (iirupID == null)
 					iirupID = (String) request.getAttribute("iirupID");
 				request.setAttribute("iirupID", iirupID);
-				iirupForm = Managers.INSTANCE.getIIRUPManager().getIIRUP(Integer.parseInt(iirupID));
+				iirupForm = ApplicationContext.INSTANCE.getIIRUPManager().getIIRUP(Integer.parseInt(iirupID));
 			}
 			Set<IIRUPLine> iirupLines = iirupForm.getLines();
 

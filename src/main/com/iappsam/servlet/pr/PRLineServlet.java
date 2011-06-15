@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/pr/line")
 public class PRLineServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class PRLineServlet extends HttpServlet {
 	private AddSelectedItemAction addSelectedItems;
 
 	public PRLineServlet() {
-		this(new PRListItemsAction(Managers.INSTANCE.getItemManager()), new PRSearchItemAction(Searchers.ITEM_SEARCHER), new AddSelectedItemAction(Managers.INSTANCE.getItemManager()));
+		this(new PRListItemsAction(ApplicationContext.INSTANCE.getItemManager()), new PRSearchItemAction(ApplicationContext.getItemSearcher()), new AddSelectedItemAction(ApplicationContext.INSTANCE.getItemManager()));
 	}
 
 	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddSelectedItemAction addSelectedItemAction) {

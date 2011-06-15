@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EditBuilding
@@ -51,7 +51,7 @@ public class EditBuilding extends HttpServlet {
 		Building building = null;
 		RequestDispatcher edit = request.getRequestDispatcher("EditBuilding.jsp");
 		try {
-			building = Managers.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
+			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

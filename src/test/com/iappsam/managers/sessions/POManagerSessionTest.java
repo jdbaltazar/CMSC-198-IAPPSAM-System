@@ -50,8 +50,8 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		supplierName = supplier.getContactPerson();
 		accountant = Employee.create("Accountant", "Mr.", "John");
 		dean = Employee.create("Dean", "Mrs", "Dean");
-		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"),
-				supplierName, accountant, dean);
+		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"), supplierName,
+				Date.valueOf("2011-01-01"), accountant, Date.valueOf("2011-01-01"), dean, Date.valueOf("2011-01-01"));
 		pm.addEmployee(contactPerson);
 		pm.addEmployee(accountant);
 		pm.addEmployee(dean);

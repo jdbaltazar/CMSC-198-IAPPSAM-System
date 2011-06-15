@@ -12,7 +12,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 public class AddingItemToPRAction implements Action {
 
@@ -21,7 +21,7 @@ public class AddingItemToPRAction implements Action {
 	private PersonManager pm;
 	private PRFactory factory;
 
-	public AddingItemToPRAction(Managers m, PRFactory factory) {
+	public AddingItemToPRAction(ApplicationContext m, PRFactory factory) {
 		super();
 		this.im = m.getItemManager();
 		this.dom = m.getDivisionOfficeManager();

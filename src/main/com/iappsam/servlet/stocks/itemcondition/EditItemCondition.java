@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCondition;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EditItemCondition
@@ -51,7 +51,7 @@ public class EditItemCondition extends HttpServlet {
 		ItemCondition itemCondition = new ItemCondition();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCondition.jsp");
 		try {
-			itemCondition = Managers.INSTANCE.getItemManager().getItemCondition(itemConditionID);
+			itemCondition = ApplicationContext.INSTANCE.getItemManager().getItemCondition(itemConditionID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

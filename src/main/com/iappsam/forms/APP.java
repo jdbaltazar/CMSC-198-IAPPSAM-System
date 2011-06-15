@@ -1,7 +1,9 @@
 package com.iappsam.forms;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,17 +19,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
 import com.iappsam.Item;
-import com.iappsam.Signatory;
 
 @Entity
 @Table(name = "APP")
-public class APP {
+public class APP implements Form {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "APP_ID")
-	private int appID;
+	private int id;
 
 	@Column(name = "Year")
 	private int year;
@@ -43,12 +45,12 @@ public class APP {
 	private DivisionOffice divisionOffice;
 
 	@ManyToOne
-	@JoinColumn(name = "Signatory_ID")
-	private Signatory preparedBy;
+	@JoinColumn(name = "Prepared_by")
+	private Employee preparedBy;
 
 	@ManyToOne
-	@JoinColumn(name = "Signatory_ID1")
-	private Signatory recommendedBy;
+	@JoinColumn(name = "Recommended_by")
+	private Employee recommendedBy;
 
 	@OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<APPLine> lines = new HashSet<APPLine>();
@@ -57,17 +59,12 @@ public class APP {
 		super();
 	}
 
-	public APP(int year, String planControlNumber, Date dateScheduled, DivisionOffice office, Signatory s, Signatory s2) {
-		this(year, office, s, s2);
-		this.planControlNumber = planControlNumber;
-		this.dateScheduled = dateScheduled;
-	}
-
-	public APP(int year, DivisionOffice office, Signatory s, Signatory s2) {
+	public APP(int year, DivisionOffice divisionOffice, Employee preparedBy, Employee recommendedBy) {
+		super();
 		this.year = year;
-		this.divisionOffice = office;
-		this.preparedBy = s;
-		this.recommendedBy = s2;
+		this.divisionOffice = divisionOffice;
+		this.preparedBy = preparedBy;
+		this.recommendedBy = recommendedBy;
 	}
 
 	public Set<APPLine> getLines() {
@@ -75,7 +72,7 @@ public class APP {
 	}
 
 	public int getId() {
-		return appID;
+		return id;
 	}
 
 	public int getYear() {
@@ -90,8 +87,8 @@ public class APP {
 		return dateScheduled;
 	}
 
-	public void setAppID(int appID) {
-		this.appID = appID;
+	public void setId(int appID) {
+		this.id = appID;
 	}
 
 	public void setYear(int year) {
@@ -119,19 +116,19 @@ public class APP {
 		this.divisionOffice = divisionOffice;
 	}
 
-	public Signatory getPreparedBy() {
+	public Employee getPreparedBy() {
 		return preparedBy;
 	}
 
-	public void setPreparedBy(Signatory preparedBy) {
+	public void setPreparedBy(Employee preparedBy) {
 		this.preparedBy = preparedBy;
 	}
 
-	public Signatory getRecommendedBy() {
+	public Employee getRecommendedBy() {
 		return recommendedBy;
 	}
 
-	public void setRecommendedBy(Signatory recommendedBy) {
+	public void setRecommendedBy(Employee recommendedBy) {
 		this.recommendedBy = recommendedBy;
 	}
 
@@ -147,7 +144,11 @@ public class APP {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + appID;
+		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
+		result = prime * result + ((lines == null) ? 0 : lines.hashCode());
+		result = prime * result + ((preparedBy == null) ? 0 : preparedBy.hashCode());
+		result = prime * result + ((recommendedBy == null) ? 0 : recommendedBy.hashCode());
+		result = prime * result + year;
 		return result;
 	}
 
@@ -160,9 +161,52 @@ public class APP {
 		if (getClass() != obj.getClass())
 			return false;
 		APP other = (APP) obj;
-		if (appID != other.appID)
+		if (divisionOffice == null) {
+			if (other.divisionOffice != null)
+				return false;
+		} else if (!divisionOffice.equals(other.divisionOffice))
+			return false;
+		if (lines == null) {
+			if (other.lines != null)
+				return false;
+		} else if (!lines.equals(other.lines))
+			return false;
+		if (preparedBy == null) {
+			if (other.preparedBy != null)
+				return false;
+		} else if (!preparedBy.equals(other.preparedBy))
+			return false;
+		if (recommendedBy == null) {
+			if (other.recommendedBy != null)
+				return false;
+		} else if (!recommendedBy.equals(other.recommendedBy))
+			return false;
+		if (year != other.year)
 			return false;
 		return true;
 	}
 
+	@Override
+	public boolean validate() {
+		boolean validYear = year != 0;
+		boolean validRecommendedBy = recommendedBy != null && recommendedBy.validate();
+		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
+		boolean validPreparedBy = preparedBy != null && preparedBy.validate();
+		return validYear && validDivisionOffice && validPreparedBy && validRecommendedBy;
+	}
+
+	@Override
+	public List<Item> getItems() {
+		List<Item> items = new ArrayList<Item>();
+
+		for (APPLine line : lines)
+			items.add(line.getItem());
+
+		return items;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		addLine(item, 0, 0, 0, 0);
+	}
 }

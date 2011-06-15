@@ -24,8 +24,9 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.RISManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
+import com.iappsam.search.ItemSearcher;
 
-public class Managers {
+public class ApplicationContext {
 	private final PersonManager PERSON_MANAGER = new PersonManagerSession();
 	private final AccountManager ACCOUNT_MANAGER = new AccountManagerSession();
 	private final ContactManager COUNTACT_MANAGER = new ContactManagerSession();
@@ -40,10 +41,11 @@ public class Managers {
 	private final RISManager RIS_MANAGER = new RISManagerSession();
 	private final IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
 	private final WMRManager WMR_MANAGER = new WMRManagerSession();
+	private final ItemSearcher ITEM_SEARCHER = new ItemSearcher();
 
-	public static final Managers INSTANCE = new Managers();
+	public static final ApplicationContext INSTANCE = new ApplicationContext();
 
-	private Managers() {
+	private ApplicationContext() {
 	}
 
 	public PRManager getPRManager() {
@@ -92,5 +94,9 @@ public class Managers {
 
 	public WMRManager getWMRManager() {
 		return WMR_MANAGER;
+	}
+
+	public ItemSearcher getItemSearcher() {
+		return ITEM_SEARCHER;
 	}
 }

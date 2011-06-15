@@ -19,7 +19,6 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
-import com.iappsam.util.Managers;
 
 import static org.mockito.BDDMockito.*;
 import static com.iappsam.servlet.item.ItemParameter.*;
@@ -30,9 +29,6 @@ public class ItemServletTest extends ServletTestCase {
 	private ItemManager itemManager;
 	@Mock
 	private ItemSearcher searcher;
-	@Mock
-	private Managers managers;
-
 	private ItemCondition con = new ItemCondition("Good Condition");
 	private Unit unit = new Unit("PCS");
 	private ItemCategory cat = new ItemCategory("Others");
@@ -45,7 +41,10 @@ public class ItemServletTest extends ServletTestCase {
 	@Override
 	@Before
 	public void init() {
-		servlet = new ItemServlet(managers, searcher);
+		given(appContext.getItemManager()).willReturn(itemManager);
+		given(appContext.getItemSearcher()).willReturn(searcher);
+
+		servlet = new ItemServlet(appContext, searcher);
 		item.setId(1);
 	}
 

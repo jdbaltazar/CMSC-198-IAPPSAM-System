@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Item;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class PRItemImbed
@@ -64,7 +64,7 @@ public class PRItemImbed extends HttpServlet {
 		ArrayList<String> dateAcquired = new ArrayList<String>();
 		try {
 			for (int i = 0; i < itemList.length; i++) {
-				Item item = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(itemList[i]));
+				Item item = ApplicationContext.INSTANCE.getItemManager().getItem(Integer.parseInt(itemList[i]));
 				if (trueItemList.contains(itemList[i]))
 					continue;
 
@@ -73,7 +73,7 @@ public class PRItemImbed extends HttpServlet {
 			}
 
 			for (int i = 0; i < trueItemList.size(); i++) {
-				Item item = Managers.INSTANCE.getItemManager().getItem(Integer.parseInt(trueItemList.get(i)));
+				Item item = ApplicationContext.INSTANCE.getItemManager().getItem(Integer.parseInt(trueItemList.get(i)));
 
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());

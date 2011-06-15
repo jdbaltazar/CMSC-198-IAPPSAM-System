@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/pr")
 public class PRServlet extends HttpServlet {
@@ -28,8 +28,8 @@ public class PRServlet extends HttpServlet {
 	private ViewPRAction viewPr;
 
 	public PRServlet() {
-		this(new ListPRAction(Managers.INSTANCE), new AddPRAction(Managers.INSTANCE, new PRFactory()), new NewPRAction(Managers.INSTANCE), //
-				new AddingItemToPRAction(Managers.INSTANCE, new PRFactory()), new RemoveItemFromPRAction(Managers.INSTANCE, new PRFactory()), new ViewPRAction(Managers.INSTANCE));
+		this(new ListPRAction(ApplicationContext.INSTANCE), new AddPRAction(ApplicationContext.INSTANCE, new PRFactory()), new NewPRAction(ApplicationContext.INSTANCE), //
+				new AddingItemToPRAction(ApplicationContext.INSTANCE, new PRFactory()), new RemoveItemFromPRAction(ApplicationContext.INSTANCE, new PRFactory()), new ViewPRAction(ApplicationContext.INSTANCE));
 	}
 
 	public PRServlet(ListPRAction list, AddPRAction addPr, NewPRAction newPr, AddingItemToPRAction addItem, RemoveItemFromPRAction removeItem, ViewPRAction viewPr) {

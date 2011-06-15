@@ -16,7 +16,7 @@ import com.iappsam.Person;
 import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class SaveSupplier
@@ -81,7 +81,7 @@ public class SaveSupplier extends HttpServlet {
 				employee.setEmployeeNumber(employeeNumber);
 			Supplier supplier = new Supplier(supplierName, address, tin, employee);
 			try {
-				Managers.INSTANCE.getSupplierManager().addSupplier(supplier);
+				ApplicationContext.INSTANCE.getSupplierManager().addSupplier(supplier);
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("ViewSupplier.do");
 				System.out.println("supplier was saved!!!");

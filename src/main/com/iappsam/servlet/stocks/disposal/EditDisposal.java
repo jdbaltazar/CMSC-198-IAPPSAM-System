@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.Disposal;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EditDisposal
@@ -51,7 +51,7 @@ public class EditDisposal extends HttpServlet {
 		Disposal disposal = new Disposal();
 		RequestDispatcher edit = request.getRequestDispatcher("EditDisposal.jsp");
 		try {
-			disposal = Managers.INSTANCE.getWMRManager().getDisposal(disposalID);
+			disposal = ApplicationContext.INSTANCE.getWMRManager().getDisposal(disposalID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.managers.PRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 public class ListPRAction implements Action {
 
 	private PRManager prm;
 
-	public ListPRAction(Managers m) {
+	public ListPRAction(ApplicationContext m) {
 		super();
 		this.prm = m.getPRManager();
 	}

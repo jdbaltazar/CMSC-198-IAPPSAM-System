@@ -2,7 +2,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.iappsam.DivisionOffice"%>
 <%@page import="java.util.List"%>
-<%@page import="com.iappsam.util.Managers"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />

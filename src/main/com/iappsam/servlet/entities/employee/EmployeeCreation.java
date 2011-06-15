@@ -16,7 +16,7 @@ import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EmployeeCreation
@@ -106,14 +106,14 @@ public class EmployeeCreation extends HttpServlet {
 			System.out.println("Division Name:" + getDivisionNameFromString(division));
 			if (getOfficeNameFromString(division) != null)
 				System.out.println("Office Name:" + getOfficeNameFromString(division));
-			DivisionOffice dOffice = Managers.INSTANCE.getDivisionOfficeManager().getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
+			DivisionOffice dOffice = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
 		
 			System.out.println("Email"+emailad);
 			System.out.println("LandLine"+landline);
 			System.out.println("MobileNumber:"+mobileNumber);
 			
 
-			Managers.INSTANCE.getPersonManager().addPerson(person);
+			ApplicationContext.INSTANCE.getPersonManager().addPerson(person);
 			if (emailad != null && !emailad.isEmpty()) {
 				c1 = new Contact(emailad, ContactType.EMAIL);
 			
@@ -132,7 +132,7 @@ public class EmployeeCreation extends HttpServlet {
 			}
 			Employee employee = new Employee(designation, employeeNumber, person);
 			employee.setDivisionOffice(dOffice);
-			Managers.INSTANCE.getPersonManager().addEmployee(employee);
+			ApplicationContext.INSTANCE.getPersonManager().addEmployee(employee);
 			
 			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
 			view.forward(request, response);

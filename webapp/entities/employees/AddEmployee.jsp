@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.util.ApplicationContext"%>
 <%@page import="com.iappsam.DivisionOffice"%>
 <%@page import="java.util.List"%>
-<%@page import="com.iappsam.util.Managers"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../../favicon.ico" />
@@ -540,7 +540,7 @@
 					style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Division/Office:</label>
 				<select name="division" id="division3">
 					<%
-						List<DivisionOffice> dOffice = Managers.INSTANCE.getDivisionOfficeManager().getAllDivisionOffice();
+						List<DivisionOffice> dOffice = ApplicationContext.INSTANCE.getDivisionOfficeManager().getAllDivisionOffice();
 									for (int i = 0; i < dOffice.size(); i++) {
 					%>
 					<option id="<%=dOffice.get(i).getId()%>">

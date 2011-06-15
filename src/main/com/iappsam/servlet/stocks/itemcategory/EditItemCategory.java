@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCategory;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EditItemCategory
@@ -51,7 +51,7 @@ public class EditItemCategory extends HttpServlet {
 		ItemCategory itemCategory = new ItemCategory();
 		RequestDispatcher edit = request.getRequestDispatcher("EditItemCategory.jsp");
 		try {
-			itemCategory = Managers.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
+			itemCategory = ApplicationContext.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Verifier;
 
 @SuppressWarnings("serial")
@@ -42,7 +42,7 @@ public class AddBuilding extends HttpServlet {
 			building.setBuildingName(name);
 			building.setBuildingAddress(address);
 			try {
-				Managers.INSTANCE.getDivisionOfficeManager().addBuilding(building);
+				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
 				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
 			} catch (TransactionException e) {

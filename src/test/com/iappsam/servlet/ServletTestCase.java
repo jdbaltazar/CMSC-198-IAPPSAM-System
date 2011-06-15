@@ -14,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.iappsam.util.ApplicationContext;
+
 @RunWith(MockitoJUnitRunner.class)
 public class ServletTestCase {
 
@@ -25,6 +27,8 @@ public class ServletTestCase {
 	protected RequestDispatcher dispatcher;
 	@Mock
 	protected HttpSession session;
+	@Mock
+	protected ApplicationContext appContext;
 
 	public ServletTestCase() {
 		super();

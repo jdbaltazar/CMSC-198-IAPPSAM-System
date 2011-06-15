@@ -13,7 +13,7 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 public class AddPRAction implements Action {
 
@@ -23,7 +23,7 @@ public class AddPRAction implements Action {
 	private PersonManager pm;
 	private PRFactory factory;
 
-	public AddPRAction(Managers m, PRFactory factory) {
+	public AddPRAction(ApplicationContext m, PRFactory factory) {
 		super();
 		this.prm = m.getPRManager();
 		this.im = m.getItemManager();

@@ -34,9 +34,8 @@ public class APPReportTest extends APPReport {
 		DivisionOffice office = new DivisionOffice("DNSM", "Office of the Division Chair");
 		Person p = new Person("Mr.", "John dela Cruz");
 		Employee e = new Employee("Mayor", p);
-		Signatory s = new Signatory("Recieved by:", e);
 
-		APP app = new APP(2011, office, s, s);
+		APP app = new APP(2011, office, e, e);
 		app.setPlanControlNumber("CTR-001-002");
 		app.setDateScheduled(Date.valueOf("2011-01-01"));
 

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.managers.ItemManager;
 import com.iappsam.search.ItemSearcher;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/items")
 public class ItemServlet extends HttpServlet {
@@ -28,10 +28,10 @@ public class ItemServlet extends HttpServlet {
 	private ListItemsAction listItems;
 
 	public ItemServlet() {
-		this(Managers.INSTANCE, new ItemSearcher());
+		this(ApplicationContext.INSTANCE, new ItemSearcher());
 	}
 
-	public ItemServlet(Managers m, ItemSearcher searcher) {
+	public ItemServlet(ApplicationContext m, ItemSearcher searcher) {
 		super();
 		addItem = new AddItemAction(m.getItemManager());
 		newItem = new NewItemAction(m.getItemManager());

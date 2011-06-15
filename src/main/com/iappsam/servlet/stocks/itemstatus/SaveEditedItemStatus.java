@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemStatus;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Verifier;
 
 @WebServlet("/stocks/stocks/SaveEditedItemStatus.do")
@@ -38,10 +38,10 @@ public class SaveEditedItemStatus extends HttpServlet {
 		ItemStatus itemStatus = null;
 
 		try {
-			itemStatus = Managers.INSTANCE.getItemManager().getItemStatus(itemStatusID);
+			itemStatus = ApplicationContext.INSTANCE.getItemManager().getItemStatus(itemStatusID);
 			if (Verifier.validEntry(name)) {
 				itemStatus.setName(name);
-				Managers.INSTANCE.getItemManager().updateItemStatus(itemStatus);
+				ApplicationContext.INSTANCE.getItemManager().updateItemStatus(itemStatus);
 				save = request.getRequestDispatcher("ViewItemStatuses.do");
 			} else {
 				request.setAttribute("itemStatus", itemStatus);

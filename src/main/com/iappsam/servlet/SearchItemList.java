@@ -15,7 +15,7 @@ import com.iappsam.Item;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.AbstractSearcher;
 import com.iappsam.search.ItemSearcher;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet(name = "Search.do", urlPatterns = { "/forms/iirup/SearchIIRUPItemList.do" })
 public class SearchItemList extends HttpServlet {
@@ -36,7 +36,7 @@ public class SearchItemList extends HttpServlet {
 
 		try {
 			if (searchItemField == null || searchItemField.isEmpty())
-				itemList = Managers.INSTANCE.getItemManager().getAllItems();
+				itemList = ApplicationContext.INSTANCE.getItemManager().getAllItems();
 			else
 				itemList = iSearcher.search(request.getParameter("searchItemField"));
 			System.out.println("" + itemList.get(0));

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Verifier;
 
 /**
@@ -54,12 +54,12 @@ public class SaveEditedBuilding extends HttpServlet {
 		String address = request.getParameter("address");
 		Building building = null;
 		try {
-			building = Managers.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
+			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
 			if (Verifier.validEntry(name)) {
 				building.setBuildingName(name);
 				building.setBuildingAddress(address);
 				try {
-					Managers.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
+					ApplicationContext.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
 					save = request.getRequestDispatcher("ViewBuildings.do");
 				} catch (TransactionException e) {
 					e.printStackTrace();

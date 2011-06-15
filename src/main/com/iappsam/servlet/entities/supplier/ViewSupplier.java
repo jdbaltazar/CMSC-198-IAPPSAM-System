@@ -16,7 +16,7 @@ import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/entities/supplier/ViewSupplier.do")
 public class ViewSupplier extends HttpServlet {
@@ -47,7 +47,7 @@ public class ViewSupplier extends HttpServlet {
 		String landline = null;
 		String email = null;
 		try {
-			s = Managers.INSTANCE.getSupplierManager().getSupplier(supplierID);
+			s = ApplicationContext.INSTANCE.getSupplierManager().getSupplier(supplierID);
 			request.setAttribute("supplier", s);
 			contactPerson = s.getContactPerson();
 			p = contactPerson.getPerson();

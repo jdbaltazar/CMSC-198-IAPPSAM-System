@@ -14,7 +14,7 @@ import com.iappsam.entities.ItemTest;
 import com.iappsam.entities.PersonTest;
 import com.iappsam.entities.SignatoryTest;
 import com.iappsam.entities.SupplierTest;
-import com.iappsam.entities.forms.AnnualProcurementPlanTest;
+import com.iappsam.entities.forms.APPTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ ItemTest.class,//
@@ -27,7 +27,7 @@ import com.iappsam.entities.forms.AnnualProcurementPlanTest;
 		PersonTest.class, //
 		SignatoryTest.class, //
 		SupplierTest.class, //
-		AnnualProcurementPlanTest.class })
+		APPTest.class })
 public class EntityTestSuite {
 
 }

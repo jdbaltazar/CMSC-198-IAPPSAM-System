@@ -33,6 +33,8 @@ public class PRLine {
 	@ManyToOne
 	@JoinColumn(name = "Purchase_Request_ID")
 	private PR purchaseRequest;
+	
+	
 
 	public PRLine() {
 		super();

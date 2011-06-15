@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.forms.IIRUP;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.IIRUPSearcher;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class SearchIIRUPForm
@@ -52,7 +52,7 @@ public class SearchIIRUPForm extends HttpServlet {
 			request.setAttribute("iirupList", iirupList);
 		} else {
 			try {
-				request.setAttribute("iirupList", Managers.INSTANCE.getIIRUPManager().getAllIIRUP());
+				request.setAttribute("iirupList", ApplicationContext.INSTANCE.getIIRUPManager().getAllIIRUP());
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

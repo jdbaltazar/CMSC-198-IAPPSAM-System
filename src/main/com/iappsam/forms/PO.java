@@ -1,21 +1,29 @@
 package com.iappsam.forms;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
+import com.iappsam.Item;
 import com.iappsam.Supplier;
 
 @Entity
 @Table(name = "Purchase_Order")
-public class PO {
+public class PO implements Form {
 
 	@Id
 	@Column(name = "PO_Number")
@@ -58,19 +66,31 @@ public class PO {
 	@JoinColumn(name = "Supplier_Name_ID")
 	private Employee supplierName;
 
+	@Column(name = "Supplier_Date")
+	private Date supplierDate;
+
 	@ManyToOne
 	@JoinColumn(name = "Accountant_ID")
 	private Employee accountant;
+
+	@Column(name = "Accountant_Date")
+	private Date accountantDate;
 
 	@ManyToOne
 	@JoinColumn(name = "Dean_ID")
 	private Employee dean;
 
+	@Column(name = "Dean_Date")
+	private Date deanDate;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "po", cascade = CascadeType.ALL)
+	private Set<POLine> lines = new HashSet<POLine>();
+
 	public PO() {
 	}
 
-	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice,
-			Date dateOfDelivery, Employee supplierName, Employee accountant, Employee dean) {
+	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery,
+			Employee supplierName, Date supplierDate, Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
 		super();
 		this.poNumber = poNumber;
 		this.supplier = supplier;
@@ -79,8 +99,11 @@ public class PO {
 		this.divisionOffice = divisionOffice;
 		this.dateOfDelivery = dateOfDelivery;
 		this.supplierName = supplierName;
+		this.supplierDate = supplierDate;
 		this.accountant = accountant;
+		this.accountantDate = accountantDate;
 		this.dean = dean;
+		this.deanDate = deanDate;
 	}
 
 	public String getPoNumber() {
@@ -171,6 +194,30 @@ public class PO {
 		this.accountant = accountant;
 	}
 
+	public Date getSupplierDate() {
+		return supplierDate;
+	}
+
+	public void setSupplierDate(Date supplierDate) {
+		this.supplierDate = supplierDate;
+	}
+
+	public Date getAccountantDate() {
+		return accountantDate;
+	}
+
+	public void setAccountantDate(Date accountantDate) {
+		this.accountantDate = accountantDate;
+	}
+
+	public Date getDeanDate() {
+		return deanDate;
+	}
+
+	public void setDeanDate(Date deanDate) {
+		this.deanDate = deanDate;
+	}
+
 	public Employee getDean() {
 		return dean;
 	}
@@ -195,11 +242,47 @@ public class PO {
 		this.amount = amount;
 	}
 
+	public void addLine(Item item) {
+		lines.add(new POLine(this, item));
+	}
+
+	public void addLine(POLine line) {
+		lines.add(line);
+	}
+
+	public void removeLine(Item item) {
+		POLine remove = null;
+
+		for (POLine line : lines)
+			if (line.getItem().equals(item))
+				remove = line;
+
+		lines.remove(remove);
+	}
+
+	public void removeLine(POLine line) {
+		lines.remove(line);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accountant == null) ? 0 : accountant.hashCode());
+		result = prime * result + (int) (amount ^ (amount >>> 32));
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((dateOfDelivery == null) ? 0 : dateOfDelivery.hashCode());
+		result = prime * result + ((dean == null) ? 0 : dean.hashCode());
+		result = prime * result + ((deliveryTerm == null) ? 0 : deliveryTerm.hashCode());
+		result = prime * result + ((divisionOffice == null) ? 0 : divisionOffice.hashCode());
+		result = prime * result + ((lines == null) ? 0 : lines.hashCode());
+		result = prime * result + ((modeOfProcurement == null) ? 0 : modeOfProcurement.hashCode());
+		result = prime * result + ((orNumber == null) ? 0 : orNumber.hashCode());
+		result = prime * result + ((paymentTerm == null) ? 0 : paymentTerm.hashCode());
 		result = prime * result + ((poNumber == null) ? 0 : poNumber.hashCode());
+		result = prime * result + ((supplier == null) ? 0 : supplier.hashCode());
+		result = prime * result + ((supplierName == null) ? 0 : supplierName.hashCode());
+		result = prime * result + ((totalAmountInWords == null) ? 0 : totalAmountInWords.hashCode());
 		return result;
 	}
 
@@ -212,11 +295,116 @@ public class PO {
 		if (getClass() != obj.getClass())
 			return false;
 		PO other = (PO) obj;
+		if (accountant == null) {
+			if (other.accountant != null)
+				return false;
+		} else if (!accountant.equals(other.accountant))
+			return false;
+		if (amount != other.amount)
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (dateOfDelivery == null) {
+			if (other.dateOfDelivery != null)
+				return false;
+		} else if (!dateOfDelivery.equals(other.dateOfDelivery))
+			return false;
+		if (dean == null) {
+			if (other.dean != null)
+				return false;
+		} else if (!dean.equals(other.dean))
+			return false;
+		if (deliveryTerm == null) {
+			if (other.deliveryTerm != null)
+				return false;
+		} else if (!deliveryTerm.equals(other.deliveryTerm))
+			return false;
+		if (divisionOffice == null) {
+			if (other.divisionOffice != null)
+				return false;
+		} else if (!divisionOffice.equals(other.divisionOffice))
+			return false;
+		if (lines == null) {
+			if (other.lines != null)
+				return false;
+		} else if (!lines.equals(other.lines))
+			return false;
+		if (modeOfProcurement == null) {
+			if (other.modeOfProcurement != null)
+				return false;
+		} else if (!modeOfProcurement.equals(other.modeOfProcurement))
+			return false;
+		if (orNumber == null) {
+			if (other.orNumber != null)
+				return false;
+		} else if (!orNumber.equals(other.orNumber))
+			return false;
+		if (paymentTerm == null) {
+			if (other.paymentTerm != null)
+				return false;
+		} else if (!paymentTerm.equals(other.paymentTerm))
+			return false;
 		if (poNumber == null) {
 			if (other.poNumber != null)
 				return false;
 		} else if (!poNumber.equals(other.poNumber))
 			return false;
+		if (supplier == null) {
+			if (other.supplier != null)
+				return false;
+		} else if (!supplier.equals(other.supplier))
+			return false;
+		if (supplierName == null) {
+			if (other.supplierName != null)
+				return false;
+		} else if (!supplierName.equals(other.supplierName))
+			return false;
+		if (totalAmountInWords == null) {
+			if (other.totalAmountInWords != null)
+				return false;
+		} else if (!totalAmountInWords.equals(other.totalAmountInWords))
+			return false;
 		return true;
+	}
+
+	@Override
+	public boolean validate() {
+		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
+		boolean validMop = modeOfProcurement != null && modeOfProcurement.validate();
+		boolean validDate = date != null;
+		boolean validPoNumber = poNumber != null && !poNumber.isEmpty();
+		boolean validSupplier = supplier != null && supplier.validate();
+		boolean validDateOfDelivery = dateOfDelivery != null;
+		boolean validSupplierName = supplierName != null && supplierName.validate();
+		boolean validSupplierDate = supplierDate != null;
+		boolean validAccountant = accountant != null && accountant.validate();
+		boolean validAccountantDate = accountantDate != null;
+		boolean validDean = dean != null && dean.validate();
+		boolean validDeanDate = deanDate != null;
+		boolean validLines = !lines.isEmpty();
+
+		for (POLine line : lines)
+			validLines &= line.validate();
+
+		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
+				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validLines;
+	}
+
+	@Override
+	public List<Item> getItems() {
+		List<Item> items = new ArrayList<Item>();
+
+		for (POLine line : lines)
+			items.add(line.getItem());
+
+		return items;
+	}
+
+	@Override
+	public void addItem(Item item) {
+		addLine(item);
 	}
 }

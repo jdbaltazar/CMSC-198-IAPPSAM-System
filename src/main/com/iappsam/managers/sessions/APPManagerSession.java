@@ -35,15 +35,7 @@ public class APPManagerSession extends AbstractManager implements APPManager {
 
 	@Override
 	public List<APP> getAllAPP() throws TransactionException {
-
-		Session session = HibernateUtil.startSession();
-		Transaction tx = session.beginTransaction();
-
-		List<APP> list = session.createQuery("from AnnualProcurementPlan").list();
-
-		tx.commit();
-		session.close();
-		return list;
+		return getAll(APP.class);
 	}
 
 	@Override

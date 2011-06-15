@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.PRManager;
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 public class ViewPRAction implements Action {
 
 	private PRManager prm;
 
-	public ViewPRAction(Managers m) {
+	public ViewPRAction(ApplicationContext m) {
 		this.prm = m.getPRManager();
 	}
 

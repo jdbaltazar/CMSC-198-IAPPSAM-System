@@ -27,7 +27,6 @@ public class APPManagerSessionTest {
 
 	private Person person;
 	private Employee employee;
-	private Signatory signatory;
 	private DivisionOffice office;
 	private APP app;
 	private APPManager appManager;
@@ -44,16 +43,13 @@ public class APPManagerSessionTest {
 		employee = new Employee("Mayor", person);
 		pm.addEmployee(employee);
 
-		signatory = new Signatory("Signatory", employee);
-		pm.addSignatory(signatory);
-
 		office = new DivisionOffice("Division", "Office");
 
 		dom = new DivisionOfficeManagerSession();
 		dom.addDivisionOffice(office);
 
 		appManager = new APPManagerSession();
-		app = new APP(2011, office, signatory, signatory);
+		app = new APP(2011, office, employee, employee);
 		im = new ItemManagerSession();
 	}
 

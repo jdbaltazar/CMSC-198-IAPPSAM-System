@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Managers;
+import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/stocks/stocks/ViewItemUnits.do")
 public class ViewItemUnits extends HttpServlet {
@@ -46,7 +46,7 @@ public class ViewItemUnits extends HttpServlet {
 		List<Unit> units = new ArrayList<Unit>();
 
 		try {
-			units = Managers.INSTANCE.getItemManager().getAllUnits();
+			units = ApplicationContext.INSTANCE.getItemManager().getAllUnits();
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
