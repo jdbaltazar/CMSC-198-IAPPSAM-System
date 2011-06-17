@@ -37,8 +37,8 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter(USERNAME);
-		String password = request.getParameter(PASSWORD);
+//		String username = request.getParameter(USERNAME);
+//		String password = request.getParameter(PASSWORD);
 
 		if (loginModule.login(request))
 			forwardToMenuFrameJsp(request, response);
