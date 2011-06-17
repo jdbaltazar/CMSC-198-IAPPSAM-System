@@ -14,7 +14,7 @@ import com.iappsam.util.ApplicationContext;
 @WebServlet("/pr/line")
 public class PRLineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String LIST_ITEMS = "/pr/line/add-item.jsp";
+	public static final String LIST_ITEMS_JSP = "/pr/line/add-item.jsp";
 	private PRSearchItemAction searchItem;
 	private PRListItemsAction listItems;
 	private AddPRLineAction addSelectedItems;

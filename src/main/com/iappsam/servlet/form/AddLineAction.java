@@ -34,12 +34,12 @@ public abstract class AddLineAction implements Action {
 				} catch (TransactionException e) {
 					e.printStackTrace();
 				}
-			response.sendRedirect(newFormPage());
+			response.sendRedirect(getNewFormLink());
 		} else
-			response.sendRedirect(addLinePage());
+			response.sendRedirect(getAddLineLink());
 	}
 
-	protected abstract String addLinePage();
+	protected abstract String getAddLineLink();
 
-	protected abstract String newFormPage();
+	protected abstract String getNewFormLink();
 }

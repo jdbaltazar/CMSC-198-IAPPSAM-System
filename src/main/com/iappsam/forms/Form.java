@@ -11,4 +11,5 @@ public interface Form extends Validatable {
 
 	public void addItem(Item item);
 
+	public void removeItem(Item item);
 }

@@ -28,12 +28,12 @@ public class AddPRAction extends AddFormAction {
 	}
 
 	@Override
-	protected String onSucess() {
+	protected String onSucessLink() {
 		return "/pr?id=" + pr.getId();
 	}
 
 	@Override
-	protected String onFailure() {
+	protected String onFailureLink() {
 		return "/pr?new=pr";
 	}
 }

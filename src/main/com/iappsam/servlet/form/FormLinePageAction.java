@@ -11,39 +11,25 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class AddFormAction implements Action {
-
-	private FormParser parser;
+public abstract class FormLinePageAction implements Action {
+	private FormParser factory;
 	private ApplicationContext appContext;
 
-	public AddFormAction(FormParser parser, ApplicationContext appContext) {
-		super();
-		this.parser = parser;
+	public FormLinePageAction(ApplicationContext appContext, FormParser factory) {
 		this.appContext = appContext;
+		this.factory = factory;
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Form form = parser.createForm(request, appContext);
-			initForm(form);
-			if (form.validate()) {
-				add();
-				response.sendRedirect(onSucessLink());
-			} else
-				response.sendRedirect(onFailureLink());
+			Form form = factory.createForm(request, appContext);
+			request.getSession().setAttribute("form", form);
+			response.sendRedirect(getFormLineLink());
 		} catch (TransactionException e) {
 			e.printStackTrace();
-			response.sendRedirect(onFailureLink());
 		}
 	}
 
-	protected abstract void initForm(Form form);
-
-	protected abstract void add() throws TransactionException;
-
-	protected abstract String onSucessLink();
-
-	protected abstract String onFailureLink();
-
+	public abstract String getFormLineLink();
 }

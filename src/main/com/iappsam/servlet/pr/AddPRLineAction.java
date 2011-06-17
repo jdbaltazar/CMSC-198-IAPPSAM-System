@@ -10,12 +10,12 @@ public class AddPRLineAction extends AddLineAction {
 	}
 
 	@Override
-	protected String addLinePage() {
+	protected String getAddLineLink() {
 		return "/pr/line";
 	}
 
 	@Override
-	protected String newFormPage() {
+	protected String getNewFormLink() {
 		return "/pr?new=pr";
 	}
 }

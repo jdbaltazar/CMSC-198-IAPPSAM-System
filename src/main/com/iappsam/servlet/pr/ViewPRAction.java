@@ -1,17 +1,12 @@
 package com.iappsam.servlet.pr;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.iappsam.forms.PR;
+import com.iappsam.forms.Form;
 import com.iappsam.managers.PRManager;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.form.ViewFormAction;
 import com.iappsam.util.ApplicationContext;
 
-public class ViewPRAction implements Action {
+public class ViewPRAction extends ViewFormAction {
 
 	private PRManager prm;
 
@@ -20,17 +15,17 @@ public class ViewPRAction implements Action {
 	}
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idParam = request.getParameter("id");
-		try {
-			int id = Integer.parseInt(idParam);
-			PR pr = prm.getPR(id);
-			if (pr == null)
-				response.sendRedirect("/pr");
-			request.setAttribute("form", pr);
-			request.getRequestDispatcher(PRServlet.VIEW_PR_JSP).forward(request, response);
-		} catch (Exception e) {
-			response.sendRedirect("/pr");
-		}
+	protected Form getForm(Object id) throws TransactionException {
+		return prm.getPR((Integer) id);
+	}
+
+	@Override
+	protected String getViewFormJsp() {
+		return PRServlet.VIEW_PR_JSP;
+	}
+
+	@Override
+	protected String getFormListLink() {
+		return "/pr";
 	}
 }

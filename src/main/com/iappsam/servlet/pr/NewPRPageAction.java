@@ -1,26 +1,19 @@
 package com.iappsam.servlet.pr;
 
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.Item;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.form.NewFormPageAction;
 import com.iappsam.util.ApplicationContext;
 
-public class NewPRPageAction implements Action {
+public class NewPRPageAction extends NewFormPageAction {
 
 	private PersonManager pm;
 	private DivisionOfficeManager dom;
 	private ItemManager im;
-	private List<Item> items;
 
 	public NewPRPageAction(ApplicationContext m) {
 		this.dom = m.getDivisionOfficeManager();
@@ -29,14 +22,14 @@ public class NewPRPageAction implements Action {
 	}
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			request.setAttribute("itemsDb", im.getAllItems());
-			request.setAttribute("employees", pm.getAllEmployee());
-			request.setAttribute("offices", dom.getAllDivisionOffice());
-			request.getRequestDispatcher(PRServlet.NEW_PR_JSP).forward(request, response);
-		} catch (TransactionException e) {
-			e.printStackTrace();
-		}
+	protected String getNewFormJsp() {
+		return PRServlet.NEW_PR_JSP;
+	}
+
+	@Override
+	protected void beforeForward(HttpServletRequest request) throws TransactionException {
+		request.setAttribute("itemsDb", im.getAllItems());
+		request.setAttribute("employees", pm.getAllEmployee());
+		request.setAttribute("offices", dom.getAllDivisionOffice());
 	}
 }

@@ -60,12 +60,12 @@ public class PRLineServletTest extends ServletTestCase {
 
 		given(session.getAttribute("form")).willReturn(pr);
 
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
+		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
 
 		new PRListItemsAction(appContext).process(request, response);
 
 		verify(request).setAttribute("items", all);
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS);
+		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class PRLineServletTest extends ServletTestCase {
 		given(pr.getItems()).willReturn(selected);
 
 		// given request dispatcher
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
+		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
 
 		new PRListItemsAction(appContext).process(request, response);
 
@@ -96,7 +96,7 @@ public class PRLineServletTest extends ServletTestCase {
 		verify(request).setAttribute(eq("items"), captor.capture());
 		assertEquals(0, captor.getValue().size());
 
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS);
+		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
 	}
 
 	@Test
@@ -113,14 +113,14 @@ public class PRLineServletTest extends ServletTestCase {
 		// given result from searching item
 		ArrayList<Item> res = new ArrayList<Item>();
 		given(itemSearcher.search("item")).willReturn(res);
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS);
+		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
 
 		given(session.getAttribute("form")).willReturn(pr);
 
 		new PRSearchItemAction(appContext).process(request, response);
 
 		verify(request).setAttribute("items", res);
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS);
+		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
 	}
 
 	@Test
