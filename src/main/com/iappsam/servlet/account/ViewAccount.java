@@ -30,7 +30,6 @@ public class ViewAccount extends HttpServlet {
 		super();
 	}
 
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager= new PersonManagerSession();
@@ -59,6 +58,7 @@ public class ViewAccount extends HttpServlet {
 			request.setAttribute("mobile", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
+			request.setAttribute("userName",userName);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +67,6 @@ public class ViewAccount extends HttpServlet {
 
 	}
 
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}

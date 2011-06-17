@@ -492,7 +492,8 @@ Information</div>
 <%
 	Account account = (Account) request.getAttribute("account");
 	Person person = (Person) request.getAttribute("person");
-	ArrayList<Employee> empList = (ArrayList<Employee>) request.getAttribute("empList");
+	ArrayList<Employee> empList = (ArrayList<Employee>) request
+			.getAttribute("empList");
 	Contact mobile = (Contact) request.getAttribute("mobile");
 	Contact landline = (Contact) request.getAttribute("landline");
 	Contact email = (Contact) request.getAttribute("email");
@@ -528,20 +529,26 @@ Information</div>
 		<div align="center"><label for="designation_1"></label> <input
 			type="text" name="designation" id="designation_1"
 			value="<%=empList.get(empList.size() - i).getDesignation()%>"
-			style="font-size: 8" disabled="disabled"/></div>
+			style="font-size: 8" disabled="disabled" /></div>
 		</td>
 		<td>
 		<div align="center"><input name="employeeNo" type="text"
 			id="employeeNo._1" size="4"
 			value="<%=empList.get(empList.size() - i).getEmployeeNumber()%>"
-			style="font-size: 8"  disabled="disabled"/></div>
+			style="font-size: 8" disabled="disabled" /></div>
 		</td>
 		<td>
 		<div align="center"><input size="20" type="text"
-			value="<%out.print(empList.get(empList.size() - i).getDivisionOffice().getDivisionName());
-				if (empList.get(empList.size() - i).getDivisionOffice().getOfficeName() != null && !empList.get(empList.size() - i).getDivisionOffice().getOfficeName().isEmpty())
-					out.print("," + empList.get(empList.size() - i).getDivisionOffice().getOfficeName());%>"
-			style="font-size: 8" disabled="disabled"/></div>
+			value="<%out.print(empList.get(empList.size() - i).getDivisionOffice()
+						.getDivisionName());
+				if (empList.get(empList.size() - i).getDivisionOffice()
+						.getOfficeName() != null
+						&& !empList.get(empList.size() - i).getDivisionOffice()
+								.getOfficeName().isEmpty())
+					out.print(","
+							+ empList.get(empList.size() - i)
+									.getDivisionOffice().getOfficeName());%>"
+			style="font-size: 8" disabled="disabled" /></div>
 		</td>
 	</tr>
 	<%
@@ -566,18 +573,24 @@ Information</div>
 <div id="apDiv13"><label for="mobileNumber3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Cellphone
 Number:</label> <input name="mobileNumber" type="text" id="mobileNumber3"
-	size="25" disabled="disabled" value="<%=mobile.getData()%>" /></div>
+	size="25" disabled="disabled"
+	value="<%if (mobile != null)
+				out.print(mobile.getData());%>" /></div>
 <p><label for="mobileNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
 <div id="apDiv14"><label for="landline3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Landline:</label>
 <input name="landline" type="text" id="landline3" size="25"
-	disabled="disabled" value="<%=landline.getData()%>" /></div>
+	disabled="disabled"
+	value="<%if (landline != null)
+				out.print(landline.getData());%>" /></div>
 <div id="apDiv15"><label for="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
-	size="25" disabled="disabled" value="<%=email.getData()%>" /></div>
+	size="25" disabled="disabled"
+	value="<%if (email != null)
+				out.print(email.getData());%>" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -596,9 +609,7 @@ E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
 <div id="apDiv19"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Account
 Type: </label> <select name="acctType" id="acctType3" disabled="disabled">
-	<option>
-	<%=account.getType().toString()%>
-	</option>
+	<option><%=account.getType().toString()%></option>
 </select></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

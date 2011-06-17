@@ -12,16 +12,18 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class RemoveFormLineAction implements Action {
+public class RemoveFormLineAction implements Action {
 
 	private FormParser factory;
 	private ApplicationContext appContext;
 	private ItemManager im;
+	private String formName;
 
-	public RemoveFormLineAction(ApplicationContext appContext, FormParser factory) {
-		this.appContext = appContext;
-		this.factory = factory;
+	public RemoveFormLineAction(FormUtility utility) {
+		this.appContext = utility.getApplicationContext();
+		this.factory = utility.getParser();
 		this.im = appContext.getItemManager();
+		this.formName = utility.getFormName();
 	}
 
 	@Override
@@ -41,6 +43,7 @@ public abstract class RemoveFormLineAction implements Action {
 		}
 	}
 
-	protected abstract String getNewFormLink();
-
+	protected String getNewFormLink() {
+		return String.format("/%s?new=%s", formName, formName);
+	}
 }

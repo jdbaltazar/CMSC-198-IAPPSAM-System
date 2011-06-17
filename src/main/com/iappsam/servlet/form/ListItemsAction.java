@@ -14,11 +14,13 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class ListItemsAction implements Action {
+public class ListItemsAction implements Action {
 	private ItemManager im;
+	private String formName;
 
-	public ListItemsAction(ApplicationContext appContext) {
+	public ListItemsAction(String formName, ApplicationContext appContext) {
 		this.im = appContext.getItemManager();
+		this.formName = formName;
 	}
 
 	@Override
@@ -38,5 +40,7 @@ public abstract class ListItemsAction implements Action {
 		}
 	}
 
-	protected abstract String getListItemJsp();
+	protected String getListItemJsp() {
+		return String.format("/%s/line/add-item.jsp", formName);
+	}
 }

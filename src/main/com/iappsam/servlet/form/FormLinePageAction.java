@@ -11,13 +11,15 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class FormLinePageAction implements Action {
+public class FormLinePageAction implements Action {
 	private FormParser factory;
 	private ApplicationContext appContext;
+	private String formName;
 
-	public FormLinePageAction(ApplicationContext appContext, FormParser factory) {
-		this.appContext = appContext;
-		this.factory = factory;
+	public FormLinePageAction(FormUtility utility) {
+		this.appContext = utility.getApplicationContext();
+		this.factory = utility.getParser();
+		this.formName = utility.getFormName();
 	}
 
 	@Override
@@ -31,5 +33,8 @@ public abstract class FormLinePageAction implements Action {
 		}
 	}
 
-	public abstract String getFormLineLink();
+	public String getFormLineLink() {
+		return String.format("/%s/line", formName);
+	}
+
 }

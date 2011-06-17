@@ -45,25 +45,47 @@ public class AccountCreation extends HttpServlet {
 	String emailad;
 	String acctType;
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
+	private void failedResponse(HttpServletRequest request,
+			HttpServletResponse response) {
 		if (name.isEmpty())
 			request.setAttribute("nameOK", "false");
-		if (designation == null)
-			request.setAttribute("designationOK", "false");
+		else
+			request.setAttribute("nameOK", "true");
 		if (username.isEmpty())
-			request.setAttribute("username", "false");
+			request.setAttribute("usernameOK", "false");
+		else
+			request.setAttribute("usernameOK", "true");
 		if (password.isEmpty() || !password.equalsIgnoreCase(reenterPassword))
 			request.setAttribute("passwordOK", "false");
+		else
+			request.setAttribute("passwordOK", "true");
+		
+		String designation1OK = null;
+		if (designation[0].isEmpty() && !employeeNo[0].isEmpty()) {
+			designation1OK = "true";
+		}
+		String designation2OK = null;
+		if (designation[1].isEmpty() && !employeeNo[1].isEmpty()) {
+			designation2OK = "true";
+		}
+		String designation3OK = null;
+		if (designation[2].isEmpty() && !employeeNo[2].isEmpty()) {
+			designation3OK = "true";
+		}
 
-		RequestDispatcher view = request.getRequestDispatcher("CreateAccount.jsp");
+		RequestDispatcher view = request
+				.getRequestDispatcher("CreateAccount.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
+		request.setAttribute("designation1OK", designation1OK);
+		request.setAttribute("designation2OK", designation2OK);
+		request.setAttribute("designation3OK", designation3OK);
 		request.setAttribute("employeeNo", employeeNo);
 		request.setAttribute("userName", username);
 		request.setAttribute("mobileNumber", mobileNumber);
@@ -84,8 +106,8 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameterValues("designation");
@@ -98,43 +120,57 @@ public class AccountCreation extends HttpServlet {
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("acctType");
-		if (!name.isEmpty() && designation != null && !username.isEmpty() && !password.isEmpty() && !reenterPassword.isEmpty() && password.equalsIgnoreCase(reenterPassword)) {
-			System.out.println("Something got passed");
+		boolean mustFail = false;
+		for (int i = 0; i < designation.length; i++) {
+			if (designation[i].isEmpty() && !employeeNo[i].isEmpty())
+				mustFail = true;
+		}
+		if (!name.isEmpty() && designation != null && !username.isEmpty()
+				&& !password.isEmpty() && !reenterPassword.isEmpty()
+				&& password.equalsIgnoreCase(reenterPassword) && !mustFail) {
 			acceptResponse(request, response);
 		} else
 			failedResponse(request, response);
 	}
 
-	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
+	private void acceptResponse(HttpServletRequest request,
+			HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person;
-		if (name != null && designation != null && username != null && password != null && reenterPassword != null && password.equalsIgnoreCase(reenterPassword)) {
-			if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty())
+		if (name != null && designation != null && username != null
+				&& password != null && reenterPassword != null
+				&& password.equalsIgnoreCase(reenterPassword)) {
+			if (title != null && !title.equalsIgnoreCase("null")
+					&& !title.isEmpty())
 				person = new Person(title, name);
 			else
 				person = new Person(name);
 
-			if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
+			if (emailad != null && !emailad.equalsIgnoreCase("null")
+					&& !emailad.isEmpty()) {
 				Contact email = new Contact(emailad, ContactType.EMAIL);
 				person.addContact(email);
 				request.setAttribute("email", email);
 			}
 
-			if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
+			if (landline != null && !landline.equalsIgnoreCase("null")
+					&& !landline.isEmpty()) {
 				Contact landline2 = new Contact(landline, ContactType.LANDLINE);
 				person.addContact(landline2);
 				request.setAttribute("landline", landline2);
 			}
 
-			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
+			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null")
+					&& !mobileNumber.isEmpty()) {
 				Contact mobile = new Contact(mobileNumber, ContactType.MOBILE);
 
 				person.addContact(mobile);
 				request.setAttribute("mobile", mobile);
 			}
 			try {
+				
 				pManager.addPerson(person);
 				request.setAttribute("person", person);
 			} catch (TransactionException e) {
@@ -143,10 +179,15 @@ public class AccountCreation extends HttpServlet {
 				failedResponse(request, response);
 			}
 			ArrayList<Employee> empList = new ArrayList<Employee>();
-			for (int i = 0; !designation[i].isEmpty() && i < designation.length; i++) {
-				Employee employee = new Employee(designation[i], employeeNo[i], person);
+			for (int i = 0; i < designation.length; i++) {
+				if (designation[i].isEmpty())
+					continue;
+				Employee employee = new Employee(designation[i], employeeNo[i],
+						person);
 				try {
-					employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
+					employee.setDivisionOffice(dManager
+							.getDivisionOffice(Integer
+									.parseInt(divisionOfficeID[i])));
 					pManager.addEmployee(employee);
 					empList.add(employee);
 				} catch (NumberFormatException e) {
@@ -168,18 +209,25 @@ public class AccountCreation extends HttpServlet {
 				account.setPassword(password);
 				account.setUsername(username);
 				account.setPerson(person);
-				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
+				if (acctType
+						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
+								.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
+				} else if (acctType
+						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
+								.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
+						.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
+						.toString())) {
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
 				request.setAttribute("account", account);
-				RequestDispatcher view = request.getRequestDispatcher("CreateAccountSuccess.jsp");
+				RequestDispatcher view = request
+						.getRequestDispatcher("CreateAccountSuccess.jsp");
 				view.forward(request, response);
 			} catch (TransactionException e) {
 				failedResponse(request, response);

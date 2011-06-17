@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 
-public abstract class NewFormPageAction implements Action {
+public class NewFormPageAction implements Action {
 
-	public NewFormPageAction() {
-		super();
+	private String formName;
+	private FormUtility utility;
+
+	public NewFormPageAction(FormUtility utility) {
+		this.formName = utility.getFormName();
+		this.utility = utility;
 	}
 
 	@Override
@@ -25,7 +29,11 @@ public abstract class NewFormPageAction implements Action {
 		}
 	}
 
-	protected abstract String getNewFormJsp();
+	protected String getNewFormJsp() {
+		return String.format("/%s/new-%s.jsp", formName, formName);
+	}
 
-	protected abstract void beforeForward(HttpServletRequest request) throws TransactionException;
+	protected void beforeForward(HttpServletRequest request) throws TransactionException {
+		utility.beforeNewForm(request);
+	}
 }

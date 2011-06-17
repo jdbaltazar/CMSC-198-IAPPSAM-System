@@ -13,12 +13,14 @@ import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class SearchItemAction implements Action {
+public class SearchItemAction implements Action {
 
 	private ItemSearcher searcher;
+	private String formName;
 
-	public SearchItemAction(ApplicationContext appContext) {
+	public SearchItemAction(String formName, ApplicationContext appContext) {
 		this.searcher = appContext.getItemSearcher();
+		this.formName = formName;
 	}
 
 	@Override
@@ -30,5 +32,7 @@ public abstract class SearchItemAction implements Action {
 		request.getRequestDispatcher(getListItemJsp()).forward(request, response);
 	}
 
-	protected abstract String getListItemJsp();
+	protected String getListItemJsp() {
+		return String.format("/%s/line/add-item.jsp", formName);
+	}
 }

@@ -20,7 +20,10 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.servlet.form.AddFormLineAction;
 import com.iappsam.servlet.form.FormLineServlet;
+import com.iappsam.servlet.form.ListItemsAction;
+import com.iappsam.servlet.form.SearchItemAction;
 
 public class PRLineServletTest extends ServletTestCase {
 
@@ -28,13 +31,13 @@ public class PRLineServletTest extends ServletTestCase {
 	@Mock
 	private ItemSearcher itemSearcher;
 	@Mock
-	private PRSearchItemAction searchItem;
+	private SearchItemAction searchItem;
 	@Mock
-	private PRListItemsAction listItems;
+	private ListItemsAction listItems;
 	@Mock
 	private ItemManagerSession im;
 	@Mock
-	private AddPRLineAction addSelectedItemAction;
+	private AddFormLineAction addSelectedItemAction;
 	@Mock
 	private PR pr;
 
@@ -63,7 +66,7 @@ public class PRLineServletTest extends ServletTestCase {
 
 		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
 
-		new PRListItemsAction(appContext).process(request, response);
+		new ListItemsAction("pr", appContext).process(request, response);
 
 		verify(request).setAttribute("items", all);
 		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
@@ -91,7 +94,7 @@ public class PRLineServletTest extends ServletTestCase {
 		// given request dispatcher
 		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
 
-		new PRListItemsAction(appContext).process(request, response);
+		new ListItemsAction("pr", appContext).process(request, response);
 
 		ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
 		verify(request).setAttribute(eq("items"), captor.capture());
@@ -118,7 +121,7 @@ public class PRLineServletTest extends ServletTestCase {
 
 		given(session.getAttribute("form")).willReturn(pr);
 
-		new PRSearchItemAction(appContext).process(request, response);
+		new SearchItemAction("pr", appContext).process(request, response);
 
 		verify(request).setAttribute("items", res);
 		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
@@ -148,7 +151,7 @@ public class PRLineServletTest extends ServletTestCase {
 		item2.setId(2);
 		given(im.getItem(2)).willReturn(item2);
 
-		new AddPRLineAction(appContext).process(request, response);
+		new AddFormLineAction("pr", appContext).process(request, response);
 
 		verify(pr, atLeastOnce()).addItem(eq(item1));
 		verify(pr, atLeastOnce()).addItem(eq(item2));

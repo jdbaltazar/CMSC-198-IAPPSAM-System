@@ -2,8 +2,11 @@ package com.iappsam.servlet.pr;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
+
+import net.sf.jasperreports.components.barbecue.BarcodeProviders.NW7Provider;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +15,7 @@ import org.mockito.Mock;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
+import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
@@ -19,7 +23,14 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.servlet.form.AddFormAction;
+import com.iappsam.servlet.form.FormLinePageAction;
 import com.iappsam.servlet.form.FormServlet;
+import com.iappsam.servlet.form.FormUtility;
+import com.iappsam.servlet.form.ListFormAction;
+import com.iappsam.servlet.form.NewFormPageAction;
+import com.iappsam.servlet.form.RemoveFormLineAction;
+import com.iappsam.servlet.form.ViewFormAction;
 
 import static org.mockito.BDDMockito.*;
 
@@ -27,12 +38,6 @@ public class PRServletTest extends ServletTestCase {
 
 	private FormServlet servlet;
 
-	@Mock
-	private PRLinePageAction addItem;
-	@Mock
-	private NewPRPageAction newPurchase;
-	@Mock
-	private ListPRAction listPR;
 	@Mock
 	private PersonManager pm;
 	@Mock
@@ -42,24 +47,35 @@ public class PRServletTest extends ServletTestCase {
 	@Mock
 	private ItemManager im;
 	@Mock
-	private RemovePRLineAction removeItems;
+	private FormUtility utility;
 	@Mock
-	private AddPRAction addPr;
+	private PRParser parser;
 	@Mock
-	private ViewPRAction viewPr;
+	private FormLinePageAction addItem;
 	@Mock
-	private PRParser factory;
+	private NewFormPageAction newPurchase;
+	@Mock
+	private ListFormAction listPR;
+	@Mock
+	private RemoveFormLineAction removeItems;
+	@Mock
+	private AddFormAction addPr;
+	@Mock
+	private ViewFormAction viewPr;
 
 	@Override
 	@Before
 	public void init() {
 		super.init();
+
+		given(utility.getApplicationContext()).willReturn(appContext);
+		given(utility.getParser()).willReturn(parser);
 		given(appContext.getPersonManager()).willReturn(pm);
 		given(appContext.getPRManager()).willReturn(prm);
 		given(appContext.getDivisionOfficeManager()).willReturn(dom);
 		given(appContext.getItemManager()).willReturn(im);
 
-		servlet = new PRServlet(listPR, addPr, newPurchase, addItem, removeItems, viewPr);
+		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr);
 	}
 
 	@Test
@@ -70,14 +86,12 @@ public class PRServletTest extends ServletTestCase {
 
 	@Test
 	public void processListPurchaseRequest() throws ServletException, IOException, TransactionException {
-		givenRequestDispatcher(PRServlet.LIST_PR_JSP);
-		ArrayList<PR> prs = new ArrayList<PR>();
-		given(prm.getAllPR()).willReturn(prs);
+		givenRequestDispatcher("/pr/list-pr.jsp");
 
-		new ListPRAction(appContext).process(request, response);
+		new ListFormAction(utility).process(request, response);
 
-		verify(request).setAttribute("forms", prs);
-		verifyForwardedTo(PRServlet.LIST_PR_JSP);
+		verify(request).setAttribute("forms", any(List.class));
+		verifyForwardedTo("/pr/list-pr.jsp");
 	}
 
 	@Test
@@ -89,17 +103,17 @@ public class PRServletTest extends ServletTestCase {
 
 	@Test
 	public void processNewPurchaseRequest() throws ServletException, IOException, TransactionException {
-		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
+		givenRequestDispatcher("/pr/new-pr.jsp");
 		ArrayList<Employee> emps = new ArrayList<Employee>();
 		given(pm.getAllEmployee()).willReturn(emps);
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		new NewPRPageAction(appContext).process(request, response);
+		new NewFormPageAction(utility).process(request, response);
 
 		verify(request).setAttribute("employees", emps);
 		verify(request).setAttribute("offices", offices);
-		verifyForwardedTo(PRServlet.NEW_PR_JSP);
+		verifyForwardedTo("/pr/new-pr.jsp");
 	}
 
 	@Test
@@ -120,9 +134,9 @@ public class PRServletTest extends ServletTestCase {
 		// given valid PR from factory
 		PR pr = mock(PR.class);
 		given(pr.validate()).willReturn(true);
-		given(factory.createForm(request, appContext)).willReturn(pr);
+		given(parser.createForm(request, appContext)).willReturn(pr);
 
-		new AddPRAction(appContext, factory).process(request, response);
+		new AddFormAction(utility).process(request, response);
 
 		verify(prm).addPR(any(PR.class));
 		verify(response).sendRedirect(startsWith("/pr?id="));
@@ -140,9 +154,9 @@ public class PRServletTest extends ServletTestCase {
 		givenParams("checkedItems", new String[] { "0" });
 		// given valid PR from factory
 		PR pr = mock(PR.class);
-		given(factory.createForm(request, appContext)).willReturn(pr);
+		given(parser.createForm(request, appContext)).willReturn(pr);
 
-		new RemovePRLineAction(appContext, factory).process(request, response);
+		new RemoveFormLineAction(utility).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr?new=pr");
@@ -156,13 +170,13 @@ public class PRServletTest extends ServletTestCase {
 		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 		given(dom.getAllDivisionOffice()).willReturn(offices);
 
-		givenRequestDispatcher(PRServlet.NEW_PR_JSP);
+		givenRequestDispatcher("/pr/new-pr.jsp");
 
-		new NewPRPageAction(appContext).process(request, response);
+		new NewFormPageAction(utility).process(request, response);
 
 		verify(request).setAttribute("offices", offices);
 		verify(request).setAttribute("employees", emps);
-		verifyForwardedTo(PRServlet.NEW_PR_JSP);
+		verifyForwardedTo("/pr/new-pr.jsp");
 	}
 
 	@Test
@@ -179,20 +193,20 @@ public class PRServletTest extends ServletTestCase {
 		PR pr = new PR();
 		given(prm.getPR(1)).willReturn(pr);
 
-		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+		givenRequestDispatcher("/pr/view-pr.jsp");
 
-		new ViewPRAction(appContext).process(request, response);
+		new ViewFormAction(utility).process(request, response);
 
 		verify(request).setAttribute(eq("form"), eq(pr));
-		verifyForwardedTo(PRServlet.VIEW_PR_JSP);
+		verifyForwardedTo("/pr/view-pr.jsp");
 	}
 
 	@Test
 	public void shouldRedirectToPRListWhenPRDoesNotExist() throws ServletException, IOException {
 		givenParam("id", "1");
-		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+		givenRequestDispatcher("/pr/view-pr.jsp");
 
-		new ViewPRAction(appContext).process(request, response);
+		new ViewFormAction(utility).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -200,9 +214,9 @@ public class PRServletTest extends ServletTestCase {
 	@Test
 	public void shouldRedirectToPRListWhenIDParamNotInteger() throws ServletException, IOException {
 		givenParam("id", ".");
-		givenRequestDispatcher(PRServlet.VIEW_PR_JSP);
+		givenRequestDispatcher("/pr/view-pr.jsp");
 
-		new ViewPRAction(appContext).process(request, response);
+		new ViewFormAction(utility).process(request, response);
 
 		verify(response).sendRedirect(eq("/pr"));
 	}
@@ -234,7 +248,7 @@ public class PRServletTest extends ServletTestCase {
 		given(pm.getEmployee(2)).willReturn(new Employee());
 		given(im.getItem(1)).willReturn(new Item());
 
-		new PRLinePageAction(appContext, factory).process(request, response);
+		new FormLinePageAction(utility).process(request, response);
 
 		verify(session).setAttribute(eq("form"), any(PR.class));
 		verify(response).sendRedirect("/pr/line");

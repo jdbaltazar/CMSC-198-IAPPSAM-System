@@ -10,10 +10,15 @@ import com.iappsam.forms.Form;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 
-public abstract class ViewFormAction implements Action {
+public class ViewFormAction implements Action {
 
-	public ViewFormAction() {
+	private String formName;
+	private FormUtility utility;
+
+	public ViewFormAction(FormUtility utility) {
 		super();
+		this.formName = utility.getFormName();
+		this.utility = utility;
 	}
 
 	@Override
@@ -21,7 +26,7 @@ public abstract class ViewFormAction implements Action {
 		String idParam = request.getParameter("id");
 		try {
 			int id = Integer.parseInt(idParam);
-			Form form = getForm(id);
+			Form form = utility.getForm(id);
 			if (form == null) {
 				response.sendRedirect(getFormListLink());
 				return;
@@ -34,10 +39,11 @@ public abstract class ViewFormAction implements Action {
 		}
 	}
 
-	protected abstract Form getForm(Object id) throws TransactionException;
+	protected String getViewFormJsp() {
+		return String.format("/%s/view-%s.jsp", formName, formName);
+	}
 
-	protected abstract String getViewFormJsp();
-
-	protected abstract String getFormListLink();
-
+	protected String getFormListLink() {
+		return "/" + formName;
+	}
 }

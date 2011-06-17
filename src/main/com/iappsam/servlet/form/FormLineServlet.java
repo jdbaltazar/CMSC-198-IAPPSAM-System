@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.item.Action;
-import com.iappsam.servlet.pr.AddPRLineAction;
-import com.iappsam.servlet.pr.PRListItemsAction;
-import com.iappsam.servlet.pr.PRSearchItemAction;
 
 public abstract class FormLineServlet extends HttpServlet {
 
@@ -18,7 +15,7 @@ public abstract class FormLineServlet extends HttpServlet {
 	private ListItemsAction listItems;
 	private AddFormLineAction addSelectedItems;
 
-	public FormLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddPRLineAction addSelectedItemAction) {
+	public FormLineServlet(ListItemsAction listItems, SearchItemAction searchItem, AddFormLineAction addSelectedItemAction) {
 		this.listItems = listItems;
 		this.searchItem = searchItem;
 		this.addSelectedItems = addSelectedItemAction;

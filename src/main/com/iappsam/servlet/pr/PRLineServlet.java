@@ -2,7 +2,10 @@ package com.iappsam.servlet.pr;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.iappsam.servlet.form.AddFormLineAction;
 import com.iappsam.servlet.form.FormLineServlet;
+import com.iappsam.servlet.form.ListItemsAction;
+import com.iappsam.servlet.form.SearchItemAction;
 import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/pr/line")
@@ -11,12 +14,12 @@ public class PRLineServlet extends FormLineServlet {
 	public static final String LIST_ITEMS_JSP = "/pr/line/add-item.jsp";
 
 	public PRLineServlet() {
-		this(new PRListItemsAction(ApplicationContext.INSTANCE), //
-				new PRSearchItemAction(ApplicationContext.INSTANCE), //
-				new AddPRLineAction(ApplicationContext.INSTANCE));
+		this(new ListItemsAction("pr", ApplicationContext.INSTANCE), //
+				new SearchItemAction("pr", ApplicationContext.INSTANCE), //
+				new AddFormLineAction("pr", ApplicationContext.INSTANCE));
 	}
 
-	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddPRLineAction addSelectedItemAction) {
+	public PRLineServlet(ListItemsAction listItems, SearchItemAction searchItem, AddFormLineAction addSelectedItemAction) {
 		super(listItems, searchItem, addSelectedItemAction);
 	}
 }

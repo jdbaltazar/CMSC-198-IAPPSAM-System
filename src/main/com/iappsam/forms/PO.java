@@ -26,6 +26,9 @@ import com.iappsam.Supplier;
 public class PO implements Form {
 
 	@Id
+	@Column
+	private int id;
+
 	@Column(name = "PO_Number")
 	private String poNumber;
 
@@ -402,5 +405,10 @@ public class PO implements Form {
 				remove = line;
 
 		lines.remove(remove);
+	}
+
+	@Override
+	public int getId() {
+		return id;
 	}
 }

@@ -11,24 +11,27 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class AddFormAction implements Action {
+public class AddFormAction implements Action {
 
 	private FormParser parser;
 	private ApplicationContext appContext;
+	private String formName;
+	private Form form;
+	private FormUtility utility;
 
-	public AddFormAction(FormParser parser, ApplicationContext appContext) {
-		super();
-		this.parser = parser;
-		this.appContext = appContext;
+	public AddFormAction(FormUtility utility) {
+		this.utility = utility;
+		this.formName = utility.getFormName();
+		this.parser = utility.getParser();
+		this.appContext = utility.getApplicationContext();
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Form form = parser.createForm(request, appContext);
-			initForm(form);
+			form = parser.createForm(request, appContext);
 			if (form.validate()) {
-				add();
+				utility.add(form);
 				response.sendRedirect(onSucessLink());
 			} else
 				response.sendRedirect(onFailureLink());
@@ -38,12 +41,11 @@ public abstract class AddFormAction implements Action {
 		}
 	}
 
-	protected abstract void initForm(Form form);
+	private String onSucessLink() {
+		return String.format("/%s?id=%d", formName, form.getId());
+	}
 
-	protected abstract void add() throws TransactionException;
-
-	protected abstract String onSucessLink();
-
-	protected abstract String onFailureLink();
-
+	private String onFailureLink() {
+		return String.format("/%s?new=%s", formName, formName);
+	}
 }

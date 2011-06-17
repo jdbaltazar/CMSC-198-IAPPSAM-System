@@ -31,17 +31,17 @@ public class LoginModule {
 			if (account != null) {
 				boolean valid = account.comparePassword(password);
 				if (valid) {
-					try {
-						lContext = new LoginContext("WebCallbackHandler", new WebCallbackHandler(request));
-						lContext.login();
+//					try {
+//						lContext = new LoginContext("WebCallbackHandler", new WebCallbackHandler(request));
+//						lContext.login();
 //						request.getSession().setAttribute("loginContext", lContext);
 //						request.getSession().setAttribute("username", username);
-						request.getSession().setAttribute("subject", lContext.getSubject());
+//						request.getSession().setAttribute("subject", lContext.getSubject());
 						return true;
-					} catch (LoginException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					} catch (LoginException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 				}
 			}
 		} catch (TransactionException e) {

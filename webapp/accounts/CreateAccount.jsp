@@ -491,13 +491,29 @@ Information</div>
 <form id="form1" name="form1" method="post" action="CreateAccount.do">
 <p><label for="title"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
-<input name="title" type="text" id="title" size="20" /></p>
+<input name="title" type="text" id="title" size="20"
+	<%String title = (String) request.getAttribute("title");
+			if (title != null && !title.isEmpty())
+				out.print("value=" + '"' + title + '"');%> /></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div id="apDiv8"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Name:</label>
-<input name="name" type="text" id="name" size="40" /></div>
+<input name="name" type="text" id="name" size="40"
+	<%String nameOK = (String) request.getAttribute("nameOK");
+			String name = (String) request.getAttribute("name");
+			if (nameOK != null && !nameOK.isEmpty()
+					&& !nameOK.equalsIgnoreCase("false")) {
+				out.print("value=" + '"' + name + '"');
+			}%> />
+<%
+	if (nameOK != null && !nameOK.isEmpty()
+			&& nameOK.equalsIgnoreCase("false")) {
+		out.print("*Invalid Input");
+	}
+%>
+</div>
 <p><label for="employeeNumber2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold"><br />
 </label></p>
@@ -512,11 +528,25 @@ Information</div>
 	<tr>
 		<td>
 		<div align="center"><label for="designation_1"></label> <input
-			type="text" name="designation" id="designation_1" /></div>
+			type="text" name="designation" id="designation_1"
+			<%String[] designation = (String[]) request
+					.getAttribute("designation");
+			String[] employeeNo = (String[]) request.getAttribute("employeeNo");
+			String designation1OK = (String) request
+					.getAttribute("designation1OK");
+			if (designation != null && !designation[0].isEmpty()) {
+				out.print("value=" + '"' + designation[0] + '"');
+			} else if (designation1OK != null)
+				out.print("value=" + '"' + "*Required" + '"');%> />
+
+		</div>
 		</td>
 		<td>
 		<div align="center"><input name="employeeNo" type="text"
-			id="employeeNo._1" size="4" /></div>
+			id="employeeNo._1" size="4"
+			<%if (employeeNo != null && employeeNo[0] != null
+					&& !employeeNo[0].isEmpty())
+				out.print("value=" + '"' + employeeNo[0] + '"');%> /></div>
 		</td>
 		<td>
 		<div align="center"><select name="divisionOfficeDropdown"
@@ -528,7 +558,8 @@ Information</div>
 			<option value="<%=dList.get(i).getId()%>">
 			<%
 				if (dList.get(i).getOfficeName() != null)
-						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+						out.print(dList.get(i).getDivisionName() + ","
+								+ dList.get(i).getOfficeName());
 					else
 						out.print(dList.get(i).getDivisionName());
 			%>
@@ -542,11 +573,21 @@ Information</div>
 	<tr>
 		<td>
 		<div align="center"><label for="designation_1"></label> <input
-			type="text" name="designation" id="designation_1" /></div>
+			type="text" name="designation" id="designation_1"
+			<%String designation2OK = (String) request
+					.getAttribute("designation2OK");
+			if (designation != null && designation.length > 1
+					&& !designation[1].isEmpty()) {
+				out.print("value=" + '"' + designation[1] + '"');
+			} else if (designation2OK != null)
+				out.print("value=" + '"' + "*Required" + '"');%> /></div>
 		</td>
 		<td>
 		<div align="center"><input name="employeeNo" type="text"
-			id="employeeNo._1" size="4" /></div>
+			id="employeeNo._1" size="4"
+			<%if (employeeNo != null && employeeNo[1] != null
+					&& !employeeNo[1].isEmpty())
+				out.print("value=" + '"' + employeeNo[1] + '"');%> /></div>
 		</td>
 		<td>
 		<div align="center"><select name="divisionOfficeDropdown"
@@ -558,7 +599,8 @@ Information</div>
 			<option value="<%=dList.get(i).getId()%>">
 			<%
 				if (dList.get(i).getOfficeName() != null)
-						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+						out.print(dList.get(i).getDivisionName() + ","
+								+ dList.get(i).getOfficeName());
 					else
 						out.print(dList.get(i).getDivisionName());
 			%>
@@ -572,11 +614,21 @@ Information</div>
 	<tr>
 		<td>
 		<div align="center"><label for="designation_1"></label> <input
-			type="text" name="designation" id="designation_1" /></div>
+			type="text" name="designation" id="designation_1"
+			<%String designation3OK = (String) request
+					.getAttribute("designation3OK");
+			if (designation != null && designation.length > 2
+					&& !designation[2].isEmpty()) {
+				out.print("value=" + '"' + designation[2] + '"');
+			} else if (designation3OK != null)
+				out.print("value=" + '"' + "*Required" + '"');%> /></div>
 		</td>
 		<td>
 		<div align="center"><input name="employeeNo" type="text"
-			id="employeeNo._1" size="4" /></div>
+			id="employeeNo._1" size="4" <%%>
+			<%if (employeeNo != null && employeeNo[2] != null
+					&& !employeeNo[2].isEmpty())
+				out.print("value=" + '"' + employeeNo[2] + '"');%> /></div>
 		</td>
 		<td>
 		<div align="center"><select name="divisionOfficeDropdown"
@@ -588,7 +640,8 @@ Information</div>
 			<option value="<%=dList.get(i).getId()%>">
 			<%
 				if (dList.get(i).getOfficeName() != null)
-						out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+						out.print(dList.get(i).getDivisionName() + ","
+								+ dList.get(i).getOfficeName());
 					else
 						out.print(dList.get(i).getDivisionName());
 			%>
@@ -648,12 +701,14 @@ E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Username:</label>
 <input name="username" type="text" id="userName3" size="35"
 	<%String usernameOk = (String) request.getAttribute("usernameOK");
-			String username = (String) request.getAttribute("username");
-			if (usernameOk != null && !usernameOk.isEmpty() && !usernameOk.equalsIgnoreCase("false")) {
+			String username = (String) request.getAttribute("userName");
+			if (usernameOk != null && !usernameOk.isEmpty()
+					&& !usernameOk.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + username + '"');
 			}%> />
 <%
-	if (usernameOk != null && !usernameOk.isEmpty() && usernameOk.equalsIgnoreCase("false")) {
+	if (usernameOk != null && !usernameOk.isEmpty()
+			&& usernameOk.equalsIgnoreCase("false")) {
 		out.print("*Invalid Input");
 	}
 %>
@@ -665,7 +720,8 @@ E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
 <input name="password" type="password" id="password3" size="30"
 	<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 <%
-	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+	if (passwordOk != null && !passwordOk.isEmpty()
+			&& passwordOk.equalsIgnoreCase("false")) {
 		out.print("*Invalid Input");
 	}
 %>
@@ -675,7 +731,8 @@ E-mail Address:</label> <input name="emailad" type="text" id="emailad3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">*Re-enter
 Password:</label> <input name="reenterPassword" type="password"
 	id="reenterPassword3" size="30" /> <%
- 	if (passwordOk != null && !passwordOk.isEmpty()&& passwordOk.equalsIgnoreCase("false")) {
+ 	if (passwordOk != null && !passwordOk.isEmpty()
+ 			&& passwordOk.equalsIgnoreCase("false")) {
  		out.print("*Invalid Input");
  	}
  %>

@@ -39,7 +39,7 @@ public class ServletTestCase {
 	}
 
 	protected void verifyForwardedTo(String jsp) throws ServletException, IOException {
-		verify(request).getRequestDispatcher(jsp);
+		verify(request).getRequestDispatcher(eq(jsp));
 		verify(dispatcher).forward(request, response);
 	}
 

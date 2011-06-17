@@ -9,20 +9,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.item.Action;
 
-public abstract class FormServlet extends HttpServlet {
+public class FormServlet extends HttpServlet {
 
 	private NewFormPageAction newPr;
-	private FormLinePageAction addItem;
+	private FormLinePageAction linePage;
 	private ListFormAction list;
 	private RemoveFormLineAction removeItem;
 	private AddFormAction addPr;
 	private ViewFormAction viewPr;
 
-	public FormServlet(ListFormAction list, AddFormAction addPr, NewFormPageAction newPr, FormLinePageAction addItem, RemoveFormLineAction removeItem,
-			ViewFormAction viewPr) {
-		this.list = list;
+	public FormServlet(FormUtility utility) {
+		this.list = new ListFormAction(utility);
+		this.newPr = new NewFormPageAction(utility);
+		this.linePage = new FormLinePageAction(utility);
+		this.removeItem = new RemoveFormLineAction(utility);
+		this.addPr = new AddFormAction(utility);
+		this.viewPr = new ViewFormAction(utility);
+	}
+
+	public FormServlet(NewFormPageAction newPr, FormLinePageAction linePage, ListFormAction list, RemoveFormLineAction removeItem,
+			AddFormAction addPr, ViewFormAction viewPr) {
+		super();
 		this.newPr = newPr;
-		this.addItem = addItem;
+		this.linePage = linePage;
+		this.list = list;
 		this.removeItem = removeItem;
 		this.addPr = addPr;
 		this.viewPr = viewPr;
@@ -48,7 +58,7 @@ public abstract class FormServlet extends HttpServlet {
 		if (newParam != null)
 			return newPr;
 		else if (addItemParam != null)
-			return addItem;
+			return linePage;
 		else if (removeItemParam != null)
 			return removeItem;
 		else if (savePrParam != null)

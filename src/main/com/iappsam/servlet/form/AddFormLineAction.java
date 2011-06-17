@@ -13,12 +13,14 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class AddFormLineAction implements Action {
+public class AddFormLineAction implements Action {
 
 	private ItemManager im;
+	private String formName;
 
-	public AddFormLineAction(ApplicationContext appContext) {
+	public AddFormLineAction(String formName, ApplicationContext appContext) {
 		im = appContext.getItemManager();
+		this.formName = formName;
 	}
 
 	@Override
@@ -39,7 +41,11 @@ public abstract class AddFormLineAction implements Action {
 			response.sendRedirect(getAddLineLink());
 	}
 
-	protected abstract String getAddLineLink();
+	protected String getAddLineLink() {
+		return String.format("/%s/line", formName);
+	}
 
-	protected abstract String getNewFormLink();
+	protected String getNewFormLink() {
+		return String.format("/%s?new=%s", formName, formName);
+	}
 }

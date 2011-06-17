@@ -493,7 +493,7 @@
 		</td>
 		<td width="77%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="post" action="ViewAccounts.do">
+		<form id="form15" name="form15" method="get" action="../ViewAccounts.do">
 		<input name="backBtn" type="submit" class="button" id="backBtn"
 			value="Back" /></form>
 		</td>
@@ -519,11 +519,15 @@ Information</div>
 <div id="apDiv23">
 <%
 	Account account = (Account) request.getAttribute("account");
-	List<Employee> empList = (List<Employee>) request.getAttribute("empList");
+	List<Employee> empList = (List<Employee>) request
+			.getAttribute("empList");
 
-	ArrayList<Contact> mobile = (ArrayList<Contact>) request.getAttribute("mobile");
-	ArrayList<Contact> landline = (ArrayList<Contact>) request.getAttribute("landline");
-	ArrayList<Contact> email = (ArrayList<Contact>) request.getAttribute("emailad");
+	ArrayList<Contact> mobile = (ArrayList<Contact>) request
+			.getAttribute("mobile");
+	ArrayList<Contact> landline = (ArrayList<Contact>) request
+			.getAttribute("landline");
+	ArrayList<Contact> email = (ArrayList<Contact>) request
+			.getAttribute("emailad");
 %>
 <form id="form2" name="form2" method="post" action="view_work_info.jsp">
 <input name="personID" type="hidden"
@@ -547,7 +551,8 @@ Personal Information</div>
 <div id="apDiv20"><label for="title2"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Title:</label>
 <input name="title" type="text" disabled="disabled" id="title2"
-	size="20" value="<%=account.getPerson().getTitle()%>" /></div>
+	size="20" <%if (account.getPerson().getTitle() != null) {%>
+	value="<%=account.getPerson().getTitle()%>" <%}%> /></div>
 <p>&nbsp;</p>
 <div id="apDiv19"><label for="name"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Name:</label>
@@ -602,10 +607,8 @@ Number:</label> <select name="cellNumbers" id="cellNumbers">
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<div id="apDiv21"><input type="submit" name="updateBtn"
-	id="updateBtn" value="Update"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
-</div>
+
+
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -614,8 +617,15 @@ Number:</label> <select name="cellNumbers" id="cellNumbers">
 </form>
 <div id="apDiv10"><label for="acctType3"
 	style="font-family: Lucida Grande; font-size: 16px; font-weight: bold">Account
-Type: </label> <input type="text" maxlength="20" size="20"
-	value="<%=account.getType().toString()%>" /></div>
+Type: </label> <input type="text" maxlength="25" size="25"
+	value="<%=account.getType().toString()%>" disabled="disabled" /></div>
+<form action="update_account.do" method="get">
+<div id="apDiv21"><input type="hidden" name="userName"
+	id="userName" value="<%=account.getUsername()%>" /><input
+	type="submit" name="updateBtn" id="updateBtn" value="Update"
+	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;" />
+</div>
+</form>
 </div>
 </body>
 </html>
