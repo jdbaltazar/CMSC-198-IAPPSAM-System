@@ -31,18 +31,21 @@ public class AddItemUnit extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
 
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
-		String unitInput = request.getParameter("unitField");
+		String unitInput = request.getParameter("itemUnit");
 
 		if (Verifier.validEntry(unitInput)) {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);
 				add = request.getRequestDispatcher("ViewItemUnits.do");
+				System.out.println("add item unit successful!");
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}

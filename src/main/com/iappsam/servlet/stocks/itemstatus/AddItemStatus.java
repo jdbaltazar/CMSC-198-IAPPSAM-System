@@ -36,7 +36,7 @@ public class AddItemStatus extends HttpServlet {
 		ItemStatus status = new ItemStatus();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemStatus.jsp");
-		String statusInput = request.getParameter("statusField");
+		String statusInput = request.getParameter("itemStatus");
 
 		if (Verifier.validEntry(statusInput)) {
 			status.setName(statusInput);

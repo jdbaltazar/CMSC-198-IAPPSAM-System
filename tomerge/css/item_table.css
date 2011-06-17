@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+
+#items_table{
+	width:100%;
+	top:50%;
+	left:0px;
+	position:absolute;
+	/*border:none;*/
+	margin:0 auto;
+}
+
+.tableheaders_forms{
+	background-color:#5E2605;
+	color:white;
+	font-family:Lucida Grande;
+	font-size:14px;
+	text-align:center;
+}
+
+
+.add_button{
+	width:50%;
+}
+
+.other_fields_label{
+	text-align:right;
+	background-color:#5E2605;
+	color:white;
+	font-family:Lucida Grande;
+	font-size:14px;
+	width:50%;
+}
+
+.right_side_table{
+	background-color:#EEE0E5;
+}
+
+.tablerow_1{
+	background-color:#EEE0E5;
+}
+
+.fields{
+	width:20%;
+}
