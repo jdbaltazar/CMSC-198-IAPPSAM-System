@@ -20,10 +20,11 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.servlet.form.FormLineServlet;
 
 public class PRLineServletTest extends ServletTestCase {
 
-	private PRLineServlet servlet;
+	private FormLineServlet servlet;
 	@Mock
 	private ItemSearcher itemSearcher;
 	@Mock

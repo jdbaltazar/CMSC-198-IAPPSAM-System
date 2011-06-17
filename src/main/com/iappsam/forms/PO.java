@@ -89,8 +89,8 @@ public class PO implements Form {
 	public PO() {
 	}
 
-	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery, Employee supplierName, Date supplierDate,
-			Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
+	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery,
+			Employee supplierName, Date supplierDate, Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
 		super();
 		this.poNumber = poNumber;
 		this.supplier = supplier;
@@ -374,8 +374,8 @@ public class PO implements Form {
 		for (POLine line : lines)
 			validLines &= line.validate();
 
-		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName && validSupplierDate && validAccountant && validAccountantDate
-				&& validDean && validDeanDate && validLines;
+		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
+				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validLines;
 	}
 
 	@Override
@@ -391,5 +391,16 @@ public class PO implements Form {
 	@Override
 	public void addItem(Item item) {
 		addLine(item);
+	}
+
+	@Override
+	public void removeItem(Item item) {
+		POLine remove = null;
+
+		for (POLine line : lines)
+			if (line.getItem().equals(item))
+				remove = line;
+
+		lines.remove(remove);
 	}
 }

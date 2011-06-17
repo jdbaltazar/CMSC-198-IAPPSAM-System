@@ -22,12 +22,15 @@ public abstract class ViewFormAction implements Action {
 		try {
 			int id = Integer.parseInt(idParam);
 			Form form = getForm(id);
-			if (form == null)
+			if (form == null) {
 				response.sendRedirect(getFormListLink());
+				return;
+			}
 			request.setAttribute("form", form);
 			request.getRequestDispatcher(getViewFormJsp()).forward(request, response);
 		} catch (Exception e) {
 			response.sendRedirect(getFormListLink());
+			return;
 		}
 	}
 

@@ -129,7 +129,7 @@ No.:</label> <input name="alobsNumber" type="text" id="alobsNumber" size="15"
 		</c:choose>
 	</c:forEach>
 </select></div>
-<input type="submit" name="savePr" value="Save Purchase Request" /></form>
+<input type="submit" name="saveForm" value="Save Purchase Request" /></form>
 <jsp:include page="../copyright.jsp" />
 </body>
 </html>

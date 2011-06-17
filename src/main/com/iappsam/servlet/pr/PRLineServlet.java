@@ -1,49 +1,22 @@
 package com.iappsam.servlet.pr;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.form.FormLineServlet;
 import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/pr/line")
-public class PRLineServlet extends HttpServlet {
+public class PRLineServlet extends FormLineServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String LIST_ITEMS_JSP = "/pr/line/add-item.jsp";
-	private PRSearchItemAction searchItem;
-	private PRListItemsAction listItems;
-	private AddPRLineAction addSelectedItems;
 
 	public PRLineServlet() {
-		this(new PRListItemsAction(ApplicationContext.INSTANCE), new PRSearchItemAction(ApplicationContext.INSTANCE), new AddPRLineAction(ApplicationContext.INSTANCE));
+		this(new PRListItemsAction(ApplicationContext.INSTANCE), //
+				new PRSearchItemAction(ApplicationContext.INSTANCE), //
+				new AddPRLineAction(ApplicationContext.INSTANCE));
 	}
 
 	public PRLineServlet(PRListItemsAction listItems, PRSearchItemAction searchItem, AddPRLineAction addSelectedItemAction) {
-		this.listItems = listItems;
-		this.searchItem = searchItem;
-		this.addSelectedItems = addSelectedItemAction;
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		parseAction(req).process(req, resp);
-	}
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		parseAction(req).process(req, resp);
-	}
-
-	private Action parseAction(HttpServletRequest req) {
-		if (req.getParameter("q") != null)
-			return searchItem;
-		else if (req.getParameter("add") != null && req.getParameter("add").equals("items"))
-			return addSelectedItems;
-		return listItems;
+		super(listItems, searchItem, addSelectedItemAction);
 	}
 }

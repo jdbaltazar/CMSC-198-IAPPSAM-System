@@ -30,7 +30,7 @@ public abstract class RemoveFormLineAction implements Action {
 			String[] indexesToRemove = request.getParameterValues("checkedItems");
 
 			if (indexesToRemove != null) {
-				Form form = (Form) factory.createForm(request, appContext);
+				Form form = factory.createForm(request, appContext);
 				request.getSession().setAttribute("form", form);
 				for (String i : indexesToRemove)
 					form.removeItem(im.getItem(Integer.parseInt(i)));

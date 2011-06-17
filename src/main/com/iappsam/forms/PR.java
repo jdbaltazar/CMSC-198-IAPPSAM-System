@@ -325,4 +325,15 @@ public class PR implements Form {
 
 		return validDivisionOffice && validLines && validPurpose && validRequestedBy && validApprovedBy;
 	}
+
+	@Override
+	public void removeItem(Item item) {
+		PRLine remove = null;
+
+		for (PRLine line : lines)
+			if (line.getItem().equals(item))
+				remove = line;
+
+		lines.remove(remove);
+	}
 }

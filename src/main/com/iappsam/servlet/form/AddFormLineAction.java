@@ -13,11 +13,11 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
 import com.iappsam.util.ApplicationContext;
 
-public abstract class AddLineAction implements Action {
+public abstract class AddFormLineAction implements Action {
 
 	private ItemManager im;
 
-	public AddLineAction(ApplicationContext appContext) {
+	public AddFormLineAction(ApplicationContext appContext) {
 		im = appContext.getItemManager();
 	}
 

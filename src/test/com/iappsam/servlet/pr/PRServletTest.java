@@ -19,12 +19,13 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
+import com.iappsam.servlet.form.FormServlet;
 
 import static org.mockito.BDDMockito.*;
 
 public class PRServletTest extends ServletTestCase {
 
-	private PRServlet servlet;
+	private FormServlet servlet;
 
 	@Mock
 	private PRLinePageAction addItem;
@@ -103,7 +104,7 @@ public class PRServletTest extends ServletTestCase {
 
 	@Test
 	public void addPurchaseRequest() throws ServletException, IOException {
-		givenParam("savePr", "");
+		givenParam("saveForm", "");
 		servlet.doPost(request, response);
 		verify(addPr).process(request, response);
 	}

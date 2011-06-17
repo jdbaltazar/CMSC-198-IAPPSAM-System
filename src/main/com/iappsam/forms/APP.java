@@ -210,4 +210,15 @@ public class APP implements Form {
 	public void addItem(Item item) {
 		addLine(item, 0, 0, 0, 0);
 	}
+
+	@Override
+	public void removeItem(Item item) {
+		APPLine remove = null;
+
+		for (APPLine line : lines)
+			if (line.getItem().equals(item))
+				remove = line;
+
+		lines.remove(remove);
+	}
 }

@@ -1,9 +1,9 @@
 package com.iappsam.servlet.pr;
 
-import com.iappsam.servlet.form.AddLineAction;
+import com.iappsam.servlet.form.AddFormLineAction;
 import com.iappsam.util.ApplicationContext;
 
-public class AddPRLineAction extends AddLineAction {
+public class AddPRLineAction extends AddFormLineAction {
 
 	public AddPRLineAction(ApplicationContext appContext) {
 		super(appContext);
