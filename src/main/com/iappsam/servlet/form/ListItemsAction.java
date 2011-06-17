@@ -12,15 +12,14 @@ import com.iappsam.forms.Form;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.item.Action;
-import com.iappsam.util.ApplicationContext;
 
 public class ListItemsAction implements Action {
 	private ItemManager im;
 	private String formName;
 
-	public ListItemsAction(String formName, ApplicationContext appContext) {
-		this.im = appContext.getItemManager();
-		this.formName = formName;
+	public ListItemsAction(FormUtility utility) {
+		this.im = utility.getApplicationContext().getItemManager();
+		this.formName = utility.getFormName();
 	}
 
 	@Override

@@ -22,10 +22,14 @@ import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
 import com.iappsam.servlet.form.AddFormLineAction;
 import com.iappsam.servlet.form.FormLineServlet;
+import com.iappsam.servlet.form.FormParser;
+import com.iappsam.servlet.form.FormUtility;
 import com.iappsam.servlet.form.ListItemsAction;
 import com.iappsam.servlet.form.SearchItemAction;
 
 public class PRLineServletTest extends ServletTestCase {
+
+	private static final String ADD_ITEM_JSP = "/pr/line/add-item.jsp";
 
 	private FormLineServlet servlet;
 	@Mock
@@ -41,13 +45,19 @@ public class PRLineServletTest extends ServletTestCase {
 	@Mock
 	private PR pr;
 
+	private FormUtility utility;
+
+	@Mock
+	private FormParser parser;
+
 	@Override
 	@Before
 	public void init() {
 		super.init();
+		utility = new PRUtility("pr", appContext, parser);
 		given(appContext.getItemManager()).willReturn(im);
 		given(appContext.getItemSearcher()).willReturn(itemSearcher);
-		servlet = new PRLineServlet(listItems, searchItem, addSelectedItemAction);
+		servlet = new FormLineServlet(searchItem, listItems, addSelectedItemAction);
 	}
 
 	@Test
@@ -64,12 +74,12 @@ public class PRLineServletTest extends ServletTestCase {
 
 		given(session.getAttribute("form")).willReturn(pr);
 
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
+		givenRequestDispatcher(ADD_ITEM_JSP);
 
-		new ListItemsAction("pr", appContext).process(request, response);
+		new ListItemsAction(utility).process(request, response);
 
 		verify(request).setAttribute("items", all);
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
+		verifyForwardedTo(ADD_ITEM_JSP);
 	}
 
 	@Test
@@ -92,15 +102,15 @@ public class PRLineServletTest extends ServletTestCase {
 		given(pr.getItems()).willReturn(selected);
 
 		// given request dispatcher
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
+		givenRequestDispatcher(ADD_ITEM_JSP);
 
-		new ListItemsAction("pr", appContext).process(request, response);
+		new ListItemsAction(utility).process(request, response);
 
 		ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
 		verify(request).setAttribute(eq("items"), captor.capture());
 		assertEquals(0, captor.getValue().size());
 
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
+		verifyForwardedTo(ADD_ITEM_JSP);
 	}
 
 	@Test
@@ -117,14 +127,14 @@ public class PRLineServletTest extends ServletTestCase {
 		// given result from searching item
 		ArrayList<Item> res = new ArrayList<Item>();
 		given(itemSearcher.search("item")).willReturn(res);
-		givenRequestDispatcher(PRLineServlet.LIST_ITEMS_JSP);
+		givenRequestDispatcher(ADD_ITEM_JSP);
 
 		given(session.getAttribute("form")).willReturn(pr);
 
-		new SearchItemAction("pr", appContext).process(request, response);
+		new SearchItemAction(utility).process(request, response);
 
 		verify(request).setAttribute("items", res);
-		verifyForwardedTo(PRLineServlet.LIST_ITEMS_JSP);
+		verifyForwardedTo(ADD_ITEM_JSP);
 	}
 
 	@Test
@@ -151,7 +161,7 @@ public class PRLineServletTest extends ServletTestCase {
 		item2.setId(2);
 		given(im.getItem(2)).willReturn(item2);
 
-		new AddFormLineAction("pr", appContext).process(request, response);
+		new AddFormLineAction(utility).process(request, response);
 
 		verify(pr, atLeastOnce()).addItem(eq(item1));
 		verify(pr, atLeastOnce()).addItem(eq(item2));

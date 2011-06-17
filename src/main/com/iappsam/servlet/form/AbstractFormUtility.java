@@ -1,18 +1,23 @@
-package com.iappsam.servlet.pr;
+package com.iappsam.servlet.form;
 
-import com.iappsam.servlet.form.FormParser;
-import com.iappsam.servlet.form.FormUtility;
 import com.iappsam.util.ApplicationContext;
 
 public abstract class AbstractFormUtility implements FormUtility {
 
 	protected ApplicationContext appContext;
 	protected FormParser parser;
+	private String formName;
 
-	public AbstractFormUtility(ApplicationContext appContext, FormParser parser) {
+	public AbstractFormUtility(String name, ApplicationContext appContext, FormParser parser) {
 		super();
+		this.formName = name;
 		this.appContext = appContext;
 		this.parser = parser;
+	}
+
+	@Override
+	public String getFormName() {
+		return formName;
 	}
 
 	@Override
@@ -24,5 +29,4 @@ public abstract class AbstractFormUtility implements FormUtility {
 	public ApplicationContext getApplicationContext() {
 		return appContext;
 	}
-
 }

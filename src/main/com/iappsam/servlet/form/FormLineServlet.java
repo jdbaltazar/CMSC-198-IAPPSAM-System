@@ -8,17 +8,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.pr.PRUtility;
 
-public abstract class FormLineServlet extends HttpServlet {
+public class FormLineServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 934187072429086806L;
+	
 	private SearchItemAction searchItem;
 	private ListItemsAction listItems;
-	private AddFormLineAction addSelectedItems;
+	private AddFormLineAction addFormLine;
 
-	public FormLineServlet(ListItemsAction listItems, SearchItemAction searchItem, AddFormLineAction addSelectedItemAction) {
-		this.listItems = listItems;
+	public FormLineServlet(FormUtility utility) {
+		this.listItems = new ListItemsAction(utility);
+		this.searchItem = new SearchItemAction(utility);
+		this.addFormLine = new AddFormLineAction(utility);
+	}
+
+	public FormLineServlet(SearchItemAction searchItem, ListItemsAction listItems, AddFormLineAction addFormLine) {
+		super();
 		this.searchItem = searchItem;
-		this.addSelectedItems = addSelectedItemAction;
+		this.listItems = listItems;
+		this.addFormLine = addFormLine;
 	}
 
 	@Override
@@ -35,7 +45,7 @@ public abstract class FormLineServlet extends HttpServlet {
 		if (req.getParameter("q") != null)
 			return searchItem;
 		else if (req.getParameter("add") != null && req.getParameter("add").equals("items"))
-			return addSelectedItems;
+			return addFormLine;
 		return listItems;
 	}
 

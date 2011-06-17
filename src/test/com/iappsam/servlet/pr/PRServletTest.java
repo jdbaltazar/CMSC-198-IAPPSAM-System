@@ -73,7 +73,7 @@ public class PRServletTest extends ServletTestCase {
 		given(appContext.getDivisionOfficeManager()).willReturn(dom);
 		given(appContext.getItemManager()).willReturn(im);
 
-		utility = new PRUtility(appContext, parser);
+		utility = new PRUtility("pr", appContext, parser);
 		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr);
 	}
 

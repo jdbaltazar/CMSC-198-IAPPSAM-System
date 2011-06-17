@@ -2,20 +2,25 @@ package com.iappsam.entities.forms;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import com.iappsam.DivisionOffice;
+import com.iappsam.Employee;
 import com.iappsam.forms.APP;
 
 public class APPTest {
 
+	private APP app;
+
+	@Before
+	public void initApp() {
+		app = new APP(2010, new DivisionOffice("division", "office"), Employee.create("des", "name"), Employee.create("des", "name"));
+	}
+
 	@Test
-	public void sameAPP() {
-		APP plan1 = new APP();
-		plan1.setId(1);
-
-		APP plan2 = new APP();
-		plan2.setId(1);
-
-		assertEquals(plan1, plan2);
+	public void shouldBeInvalidDateZero() {
+		app.setYear(0);
+		assertFalse(app.validate());
 	}
 }
