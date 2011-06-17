@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-import net.sf.jasperreports.components.barbecue.BarcodeProviders.NW7Provider;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -46,10 +44,7 @@ public class PRServletTest extends ServletTestCase {
 	private DivisionOfficeManager dom;
 	@Mock
 	private ItemManager im;
-	@Mock
-	private FormUtility utility;
-	@Mock
-	private PRParser parser;
+
 	@Mock
 	private FormLinePageAction addItem;
 	@Mock
@@ -63,18 +58,22 @@ public class PRServletTest extends ServletTestCase {
 	@Mock
 	private ViewFormAction viewPr;
 
+	private FormUtility utility;
+
+	@Mock
+	private PRParser parser;
+
 	@Override
 	@Before
 	public void init() {
 		super.init();
 
-		given(utility.getApplicationContext()).willReturn(appContext);
-		given(utility.getParser()).willReturn(parser);
 		given(appContext.getPersonManager()).willReturn(pm);
 		given(appContext.getPRManager()).willReturn(prm);
 		given(appContext.getDivisionOfficeManager()).willReturn(dom);
 		given(appContext.getItemManager()).willReturn(im);
 
+		utility = new PRUtility(appContext, parser);
 		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr);
 	}
 
@@ -90,7 +89,7 @@ public class PRServletTest extends ServletTestCase {
 
 		new ListFormAction(utility).process(request, response);
 
-		verify(request).setAttribute("forms", any(List.class));
+		verify(request).setAttribute(eq("forms"), any(List.class));
 		verifyForwardedTo("/pr/list-pr.jsp");
 	}
 
@@ -131,8 +130,9 @@ public class PRServletTest extends ServletTestCase {
 		givenParam("approvedby", "2");
 		givenParams("quantity", new String[] { "1" });
 		givenParams("items", new String[] { "1" });
-		// given valid PR from factory
-		PR pr = mock(PR.class);
+
+		// given valid PR from PRParser
+		Form pr = mock(PR.class);
 		given(pr.validate()).willReturn(true);
 		given(parser.createForm(request, appContext)).willReturn(pr);
 

@@ -12,7 +12,7 @@ import com.iappsam.servlet.form.FormParser;
 import com.iappsam.util.ApplicationContext;
 
 public class PRParser extends FormParser {
-	
+
 	@Override
 	public Form createForm(HttpServletRequest request, ApplicationContext appContext) throws TransactionException {
 

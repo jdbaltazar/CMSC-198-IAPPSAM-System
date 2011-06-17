@@ -13,23 +13,21 @@ public class ListFormAction implements Action {
 
 	private String formName;
 	private FormUtility utility;
+	private String listFormJsp;
 
 	public ListFormAction(FormUtility utility) {
 		this.formName = utility.getFormName();
 		this.utility = utility;
+		listFormJsp = String.format("/%s/%s", formName, "list-pr.jsp");
 	}
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setAttribute("forms", utility.getAllForms());
-			request.getRequestDispatcher(getListFormJsp()).forward(request, response);
+			request.getRequestDispatcher(listFormJsp).forward(request, response);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-	}
-
-	protected String getListFormJsp() {
-		return String.format("/%s/%s", formName, "list-pr.jsp");
 	}
 }

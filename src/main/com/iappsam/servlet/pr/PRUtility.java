@@ -12,32 +12,25 @@ import com.iappsam.managers.PRManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.form.FormParser;
-import com.iappsam.servlet.form.FormUtility;
 import com.iappsam.util.ApplicationContext;
 
-public class PRUtility implements FormUtility {
+public class PRUtility extends AbstractFormUtility {
 
 	private ItemManager im;
 	private PersonManager pm;
 	private DivisionOfficeManager dom;
-	private ApplicationContext appContext;
 	private PRManager prm;
 
 	public PRUtility() {
-		this(ApplicationContext.INSTANCE);
+		this(ApplicationContext.INSTANCE, new PRParser());
 	}
 
-	public PRUtility(ApplicationContext appContext) {
-		this.appContext = appContext;
+	public PRUtility(ApplicationContext appContext, FormParser parser) {
+		super(appContext, parser);
 		im = appContext.getItemManager();
 		pm = appContext.getPersonManager();
 		dom = appContext.getDivisionOfficeManager();
 		prm = appContext.getPRManager();
-	}
-
-	@Override
-	public FormParser getParser() {
-		return new PRParser();
 	}
 
 	@Override
@@ -50,11 +43,6 @@ public class PRUtility implements FormUtility {
 		request.setAttribute("itemsDb", im.getAllItems());
 		request.setAttribute("employees", pm.getAllEmployee());
 		request.setAttribute("offices", dom.getAllDivisionOffice());
-	}
-
-	@Override
-	public ApplicationContext getApplicationContext() {
-		return appContext;
 	}
 
 	@Override
