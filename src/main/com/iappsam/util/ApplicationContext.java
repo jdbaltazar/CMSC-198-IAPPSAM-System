@@ -32,7 +32,7 @@ public class ApplicationContext {
 	private final ContactManager COUNTACT_MANAGER = new ContactManagerSession();
 	private final SupplierManager SUPPLIER_MANAGER = new SupplierManagerSession();
 	private final DivisionOfficeManager DIVISION_OFFICE_MANAGER = new DivisionOfficeManagerSession();
-	private final ItemManager ITEM_MANAGER = new ItemManagerSession();
+	private ItemManager ITEM_MANAGER = new ItemManagerSession();
 
 	// Forms
 	private final APPManager APP_MANAGEAR = new APPManagerSession();
@@ -41,7 +41,7 @@ public class ApplicationContext {
 	private final RISManager RIS_MANAGER = new RISManagerSession();
 	private final IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
 	private final WMRManager WMR_MANAGER = new WMRManagerSession();
-	private final ItemSearcher ITEM_SEARCHER = new ItemSearcher();
+	private ItemSearcher ITEM_SEARCHER;
 
 	public static final ApplicationContext INSTANCE = new ApplicationContext();
 
@@ -97,6 +97,9 @@ public class ApplicationContext {
 	}
 
 	public ItemSearcher getItemSearcher() {
+		if (ITEM_SEARCHER == null)
+			ITEM_SEARCHER = new ItemSearcher();
+
 		return ITEM_SEARCHER;
 	}
 }

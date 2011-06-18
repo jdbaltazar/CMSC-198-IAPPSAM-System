@@ -1,7 +1,7 @@
 package com.iappsam.forms;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -220,5 +220,19 @@ public class APP implements Form {
 				remove = line;
 
 		lines.remove(remove);
+	}
+
+	public void setYear(String year) {
+		try {
+			setYear(Integer.parseInt(year));
+		} catch (Exception e) {
+		}
+	}
+
+	public void setDateScheduled(String parameter) {
+		try {
+			setDateScheduled(Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
 	}
 }

@@ -14,6 +14,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.iappsam.managers.APPManager;
+import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.POManager;
+import com.iappsam.managers.PRManager;
+import com.iappsam.managers.PersonManager;
 import com.iappsam.util.ApplicationContext;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,6 +35,18 @@ public class ServletTestCase {
 	protected HttpSession session;
 	@Mock
 	protected ApplicationContext appContext;
+	@Mock
+	protected PersonManager pm;
+	@Mock
+	protected PRManager prm;
+	@Mock
+	protected DivisionOfficeManager dom;
+	@Mock
+	protected ItemManager im;
+	@Mock
+	protected APPManager appm;
+	@Mock
+	protected POManager pom;
 
 	public ServletTestCase() {
 		super();
@@ -36,6 +54,12 @@ public class ServletTestCase {
 
 	public void init() {
 		given(request.getSession()).willReturn(session);
+		given(appContext.getItemManager()).willReturn(im);
+		given(appContext.getPRManager()).willReturn(prm);
+		given(appContext.getDivisionOfficeManager()).willReturn(dom);
+		given(appContext.getPersonManager()).willReturn(pm);
+		given(appContext.getAPPManager()).willReturn(appm);
+		given(appContext.getPOManager()).willReturn(pom);
 	}
 
 	protected void verifyForwardedTo(String jsp) throws ServletException, IOException {

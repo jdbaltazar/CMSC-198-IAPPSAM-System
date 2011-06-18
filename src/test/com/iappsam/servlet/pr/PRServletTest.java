@@ -37,15 +37,6 @@ public class PRServletTest extends ServletTestCase {
 	private FormServlet servlet;
 
 	@Mock
-	private PersonManager pm;
-	@Mock
-	private PRManager prm;
-	@Mock
-	private DivisionOfficeManager dom;
-	@Mock
-	private ItemManager im;
-
-	@Mock
 	private FormLinePageAction addItem;
 	@Mock
 	private NewFormPageAction newPurchase;
@@ -67,11 +58,6 @@ public class PRServletTest extends ServletTestCase {
 	@Before
 	public void init() {
 		super.init();
-
-		given(appContext.getPersonManager()).willReturn(pm);
-		given(appContext.getPRManager()).willReturn(prm);
-		given(appContext.getDivisionOfficeManager()).willReturn(dom);
-		given(appContext.getItemManager()).willReturn(im);
 
 		utility = new PRUtility("pr", appContext, parser);
 		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr);
