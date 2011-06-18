@@ -161,6 +161,13 @@ public class PO implements Form {
 		this.dateOfDelivery = dateOfDelivery;
 	}
 
+	public void setDateOfDelivery(String parameter) {
+		try {
+			setDateOfDelivery(Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
+	}
+
 	public void setPaymentTerm(String paymentTerm) {
 		this.paymentTerm = paymentTerm;
 	}
@@ -213,12 +220,26 @@ public class PO implements Form {
 		this.accountantDate = accountantDate;
 	}
 
+	public void setAccountantDate(String parameter) {
+		try {
+			setAccountantDate(Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
+	}
+
 	public Date getDeanDate() {
 		return deanDate;
 	}
 
 	public void setDeanDate(Date deanDate) {
 		this.deanDate = deanDate;
+	}
+
+	public void setDeanDate(String parameter) {
+		try {
+			setDeanDate(Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
 	}
 
 	public Employee getDean() {
@@ -411,4 +432,5 @@ public class PO implements Form {
 	public int getId() {
 		return id;
 	}
+
 }

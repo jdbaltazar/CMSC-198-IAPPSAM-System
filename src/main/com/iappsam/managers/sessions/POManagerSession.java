@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.iappsam.forms.Form;
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.forms.PO;
 import com.iappsam.managers.AbstractManager;
@@ -26,13 +27,13 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public PO getPO(String poNumber) throws TransactionException {
-		return (PO) get(PO.class, poNumber);
+	public Form getPO(int id) throws TransactionException {
+		return (PO) get(PO.class, id);
 	}
 
 	@Override
 	public boolean containsPO(PO po) throws TransactionException {
-		return getPO(po.getPoNumber()) != null;
+		return getPO(po.getId()) != null;
 	}
 
 	@Override
@@ -95,4 +96,5 @@ public class POManagerSession extends AbstractManager implements POManager {
 	public void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
 		remove(mop);
 	}
+
 }
