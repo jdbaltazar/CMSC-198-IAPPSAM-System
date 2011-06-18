@@ -3,14 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Item Condition</title>
-<link href="../css/header.css" rel="stylesheet" type="text/css" />
-<link href="../css/form.css" rel="stylesheet" type="text/css" />
+<link href="../../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../../css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
-<div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
-<div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
+<div id="headerBkgrnd"><img src="../../images/headerbar.png" width="100%" height="129" /></div>
+<div id="logo"><img src="../../images/headerlogo.png" width="124" height="128" /></div>
+<div id="headerName"><img src="../../images/headertext.png" width="452" height="44" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -23,7 +23,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Item Condition List</a> &gt; <em><strong>Add Item Condition</strong></em></td>
+    <td id="navigation"><a href="../../menu" target="_top" class="links">Main Menu</a> &gt; <a href="StockProperties.jsp" target="_top" class="links">Stock Properties</a> &gt; <a href="ViewItemConditions.do" target="_top" class="links">Item Condition List</a> &gt; <em><strong>Add Item Condition</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>

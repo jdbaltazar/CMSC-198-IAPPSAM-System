@@ -2,14 +2,13 @@
 /* CSS Document */
 
 #items_table{
-	width:100%;
-	top:50%;
+	margin-left:6px;
+	width:99%;
+	top:42%;
 	left:0px;
-	position:absolute;
+	position:fixed;
 	/*border:none;*/
-	margin:0 auto;
 }
-
 .tableheaders_forms{
 	background-color:#5E2605;
 	color:white;

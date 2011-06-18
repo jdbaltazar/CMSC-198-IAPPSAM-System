@@ -22,7 +22,7 @@
 		<div align="center">Stocks</div>
 	</div>
 
-	<a href="/items">
+	<a href="items">
 		<div id="items" class="button">Items</div> </a>
 
 	<div id="entities">Settings</div>

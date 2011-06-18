@@ -46,7 +46,8 @@ public class WMRManagerSession extends AbstractManager implements WMRManager {
 
 	@Override
 	public void addDisposal(String name) throws TransactionException {
-		addDisposal(new Disposal(name));
+		if (getDisposal(name) == null)
+			addDisposal(new Disposal(name));
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class SaveEditedItemUnit extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemUnit.do");
 		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));
-		String name = request.getParameter("unitField");
+		String name = request.getParameter("itemUnit");
 
 		Unit unit = null;
 		try {
