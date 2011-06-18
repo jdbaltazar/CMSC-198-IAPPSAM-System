@@ -18,9 +18,9 @@ public class AddFormLineAction implements Action {
 	private ItemManager im;
 	private String formName;
 
-	public AddFormLineAction(String formName, ApplicationContext appContext) {
-		im = appContext.getItemManager();
-		this.formName = formName;
+	public AddFormLineAction(FormUtility utility) {
+		im = utility.getApplicationContext().getItemManager();
+		this.formName = utility.getFormName();
 	}
 
 	@Override

@@ -57,14 +57,15 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 
-/**
- * Startup Hibernate and provide access to the singleton SessionFactory
- */
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
 
 	static {
+		init();
+	}
+
+	public static void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");

@@ -18,9 +18,9 @@ public class SearchItemAction implements Action {
 	private ItemSearcher searcher;
 	private String formName;
 
-	public SearchItemAction(String formName, ApplicationContext appContext) {
-		this.searcher = appContext.getItemSearcher();
-		this.formName = formName;
+	public SearchItemAction(FormUtility utility) {
+		this.searcher = utility.getApplicationContext().getItemSearcher();
+		this.formName = utility.getFormName();
 	}
 
 	@Override
