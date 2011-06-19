@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,8 @@ public class ViewSuppliersAction implements Action {
 		List<Supplier>suppliers = new ArrayList<Supplier>();
 		suppliers = sManager.getAllSuppliers();
 		request.setAttribute("suppliers", suppliers);
+		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.SEARCH_SUPPLIERS);
+		view.forward(request, response);
 	}
 
 }

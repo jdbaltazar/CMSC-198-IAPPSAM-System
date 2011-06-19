@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="shortcut icon" href="../../favicon.ico" />
+<link rel="shortcut icon" href="favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM :: Search Suppliers</title>
 <style type="text/css">
@@ -190,7 +190,7 @@
 <body>
 
 <%
-	List<Supplier> suppliers = (List<Supplier>) request.getAttribute("suppliers");
+	List<Supplier> suppliers = (List<Supplier>)request.getAttribute("suppliers");
 %>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333"
@@ -201,7 +201,7 @@
 </table>
 </div>
 <div id="logoHeader" style="width: 100%"><img name=""
-	src="../../images/header2.png" width="100%" height="115" alt="" /></div>
+	src="images/header2.png" width="100%" height="115" alt="" /></div>
 <div id="pageLabel" style="width: 100%;">
 <table width="100%" border="0">
 	<tr>
@@ -216,14 +216,14 @@
 		<td width="87%">&nbsp;</td>
 		<td width="4%">
 		<form id="form15" name="form15" method="post"
-			action="../../menu"><input name="backBtn"
+			action="menu"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></form>
 		</td>
 	</tr>
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../../logout"><input
+<form id="form2" name="form2" method="post" action="logout"><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>
