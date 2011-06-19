@@ -67,6 +67,6 @@ public abstract class AbstractReport {
 
 	protected abstract String[] getColumnTitles();
 
-	protected abstract void createPropertyMap();
+	protected abstract void initPropertyMap();
 
 }

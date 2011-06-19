@@ -20,18 +20,16 @@ public class APPReport extends AbstractReport {
 		if (app == null)
 			throw new NullPointerException();
 		this.app = app;
-		createPropertyMap();
+		initPropertyMap();
 	}
 
 	@Override
 	protected List<Object[]> getRows() {
 		List<Object[]> objArrays = new ArrayList<Object[]>();
-
-		APPLine[] lines = app.getLines().toArray(new APPLine[0]);
-
-		for (APPLine line : lines)
+		
+		for (APPLine line : app.getLines())
 			objArrays.add(toArrayObject(line));
-
+		
 		return objArrays;
 	}
 
@@ -42,7 +40,7 @@ public class APPReport extends AbstractReport {
 	}
 
 	@Override
-	protected void createPropertyMap() {
+	protected void initPropertyMap() {
 		propertyMap.put("YEAR", app.getYear() + "");
 		propertyMap.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber());
 		propertyMap.put("DATE_SCHEDULED", app.getDateScheduled() + "");
