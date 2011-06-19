@@ -92,7 +92,7 @@
 		</form>
 	</div>
 	<div id="apDiv5">
-		<form id="form15" name="form15" method="post" action="entities/building/SearchAllBuildings.do">
+		<form id="form15" name="form15" method="post" action="entities/building/ViewBuildings.do">
 			<input name="buildingBtn" type="submit" class="button2" id="buildingBtn" value="Building" />
 		</form>
 	</div>

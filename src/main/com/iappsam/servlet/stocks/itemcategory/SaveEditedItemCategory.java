@@ -50,7 +50,7 @@ public class SaveEditedItemCategory extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemCategory.do");
 		int itemCategoryID = Integer.parseInt(request.getParameter("itemCategoryID"));
-		String name = request.getParameter("categoryField");
+		String name = request.getParameter("itemCategory");
 
 		ItemCategory itemCategory = null;
 
