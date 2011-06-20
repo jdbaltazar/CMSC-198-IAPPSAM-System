@@ -38,17 +38,6 @@
                 Password:</td>
               <td><br />                <input type="password" name="password" id="password" /></td>
               </tr>
-              
-              <%
-						String passwordIsOK = null;
-						if (request.getAttribute("passwordIsOK") == null)
-							passwordIsOK = (String) request.getAttribute("passwordIsOK");
-
-						if (passwordIsOK != null && passwordIsOK.equalsIgnoreCase("false")) {
-							out.print("*Invalid Username and/or Password");
-						}
-					%>
-              
             <tr>
               <td colspan="2" align="center"><br />
                 <input name="enterBtn" type="submit" class="button" id="enterBtn" value="Enter" />

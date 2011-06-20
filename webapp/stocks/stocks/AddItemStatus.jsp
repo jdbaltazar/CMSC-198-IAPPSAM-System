@@ -23,7 +23,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Item Status List</a> &gt; <em><strong>Add Item Status</strong></em></td>
+    <td id="navigation"><a href="../../menu" target="_top" class="links">Main Menu</a> &gt;<a href="StockProperties.jsp" target="_top" class="links">Stock Properties</a> &gt; <a href="ViewItemStatuses.do" target="_top" class="links">Item Status List</a> &gt; <em><strong>Add Item Status</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>

@@ -28,13 +28,16 @@
     <td>&nbsp;</td>
   </tr>
 </table>
-<form name="PRForm" method="post" action="">
+
   <div id="items_table">
     
     <table width="100%" border="0" cellspacing="0">
       <tr>
-        <td><table width="100%" border="1" cellspacing="0" class="tableheaders_forms">
+        <td colspan="2"><table width="100%" border="1" cellspacing="0" class="tableheaders_forms">
           <tr>
+            <td width="2%"><form id="form1" name="form1" method="post" action="">
+              <input type="checkbox" name="selectAllItems" id="selectAllItems" />
+            </form></td>
             <td width="8%">Stock No.</td>
             <td width="9%">Unit</td>
             <td width="55%">Description</td>
@@ -45,8 +48,12 @@
         </table></td>
       </tr>
       <tr>
-        <td><table width="100%" border="0" cellspacing="0">
+        <td colspan="2"><table width="100%" border="0" cellspacing="0">
           <tr class="tablerow_1">
+            <td width="2%" align="center"><form id="form3" name="form3" method="post" action="">
+              <input type="checkbox" name="selectItem" id="selectItem" />
+              <label for="selectItem"></label>
+            </form></td>
             <td width="8%">&nbsp;</td>
             <td width="9%">&nbsp;</td>
             <td width="55%">&nbsp;</td>
@@ -55,6 +62,9 @@
             <td width="10%">&nbsp;</td>
             </tr>
           <tr>
+            <td width="2%" align="center"><form id="form4" name="form4" method="post" action="">
+              <input type="checkbox" name="selectItem2" id="selectItem2" />
+            </form></td>
             <td width="8%">&nbsp;</td>
             <td width="9%">&nbsp;</td>
             <td width="55%">&nbsp;</td>
@@ -65,15 +75,17 @@
         </table></td>
       </tr>
       <tr>
-        <td align="center" class="same_width"><form id="formAddItem" name="formAddItem" method="post" action="">
-          <br />
-          <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="Add Item &gt;&gt;" />
-          <br />
-          <br />
+        <td width="50%" align="right" class="same_width"><br />
+          <form id="form5" name="form5" method="post" action="">
+            <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="Add Item&gt;&gt;" />
+          </form>
+        <br /></td>
+        <td align="left" class="same_width"><form id="form6" name="form6" method="post" action="">
+          <input name="removeSelectedItems" type="submit" class="button" id="removeSelectedItems" value="Remove Item" />
         </form></td>
       </tr>
       <tr>
-        <td><table width="25%" border="0" align="center" cellspacing="0">
+        <td colspan="2"><table width="25%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Department/Section:</td>
             <td class="right_side_table"><select name="department/section" class="menulist" id="department/section">
@@ -116,16 +128,16 @@
         </table></td>
       </tr>
       <tr>
-        <td align="center"><br />
+        <td colspan="2" align="center"><br />
         <input name="submitBtn" type="submit" class="button" value="SUBMIT Form" /></td>
       </tr>
       <tr>
-        <td>&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
       </tr>
     </table>
     
   </div>
-</form>
+
 
 <!--<div id="footer"></div>-->
 </body>
