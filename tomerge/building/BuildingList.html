@@ -1,3 +1,5 @@
+<%@page import="com.iappsam.Building"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,7 +9,9 @@
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
 </head>
-
+<%
+	List<Building> buildings = (List<Building>) request.getAttribute("buildings");
+%>
 <body>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
@@ -34,18 +38,32 @@
       <td width="9%" class="tableheaders_forms">Action</td>
       <td width="91%" class="tableheaders_forms">Building Name</td>
     </tr>
+    
+    <%
+		int i=0;
+		for(Building b: buildings){
+	%>
     <tr>
       <td align="center" class="tablerow_1"><form id="form1" name="form1" method="post" action="">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
       </form></td>
-      <td class="tablerow_1">&nbsp;</td>
+      <td align="center" 
+      
+      <%
+      if (i % 2 == 0)
+				out.print("class=\"tablerow_1\"");
+	%>
+      
+      
+      
+      ><%=b.getBuildingName()%></td>
     </tr>
-    <tr>
-      <td><form id="form3" name="form3" method="post" action="">
-        <input name="editBtn2" type="submit" class="button2" id="editBtn2" value="Edit&gt;&gt;" />
-      </form></td>
-      <td>&nbsp;</td>
-    </tr>
+
+    <%
+    	i++;
+    	}
+    %>
+    
   </table>
 </div>
 <!--<div id="footer"></div>-->
