@@ -31,9 +31,9 @@ public class BackupDatabase extends HttpServlet {
 		try {
 
 			stream = response.getOutputStream();
-			File file = new File(bdTool.initBackUp().getAbsolutePath()+".sql");
-			String fileName= "IAPPSAMS_DB_Backup_"+(getCurrentDate())+".sql";
-			
+			File file = new File(bdTool.initBackUp().getAbsolutePath() + ".sql");
+			String fileName = "IAPPSAMS_DB_Backup_" + (getCurrentDate()) + ".sql";
+
 			// set response headers
 			response.setContentType("text/plain");
 			response.addHeader("Content-Disposition", "attachment; filename=" + fileName);
@@ -58,7 +58,7 @@ public class BackupDatabase extends HttpServlet {
 				buf.close();
 		}
 	}
-	
+
 	private static String getCurrentDate() {
 		String DATE_FORMAT_NOW = "[HH'h'-mm'm'-ss's']_MM-dd-yyyy";
 		Calendar cal = Calendar.getInstance();

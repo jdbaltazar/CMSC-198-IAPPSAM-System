@@ -1,5 +1,6 @@
 package com.iappsam.servlet.po;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
 import com.iappsam.util.ApplicationContext;
 
@@ -51,5 +53,10 @@ public class POUtility extends AbstractFormUtility {
 	@Override
 	public Form getForm(int id) throws TransactionException {
 		return pom.getPO(id);
+	}
+
+	@Override
+	public File getPdf(Form form) throws ReportException {
+		return null;
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pr" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.4641000000000124"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="177"/>
 	<property name="ireport.y" value="0"/>
 	<style name="style1" fill="Solid">
 		<box>
@@ -19,13 +19,14 @@
 	<parameter name="REQUESTED_BY_NAME" class="java.lang.String"/>
 	<parameter name="REQUESTED_BY_DESIGNATION" class="java.lang.String"/>
 	<parameter name="PURPOSE" class="java.lang.String"/>
+	<parameter name="DIVISION" class="java.lang.String"/>
 	<parameter name="DEPARTMENT" class="java.lang.String"/>
 	<parameter name="SECTION" class="java.lang.String"/>
 	<field name="Quantity" class="java.lang.String"/>
 	<field name="Unit" class="java.lang.String"/>
 	<field name="Item Description" class="java.lang.String"/>
 	<field name="Stock No." class="java.lang.String"/>
-	<field name="Estimated Unit Cost " class="java.lang.String"/>
+	<field name="Estimated Unit Cost" class="java.lang.String"/>
 	<field name="Estimated Cost" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -252,7 +253,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Unit Cost }]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Unit Cost}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="style1" x="465" y="0" width="75" height="16"/>

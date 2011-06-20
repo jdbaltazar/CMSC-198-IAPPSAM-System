@@ -99,19 +99,21 @@
   </div>
   <div id="LineAction" class="Form"></div>
   <div id="PageFooter" class="Form">
-    <label for="purpose"
+    
+    	<label for="purpose"
 	class="labels">Purpose:</label>
-    <textarea name="purpose" id="purpose" disabled="disabled">${form.purpose}</textarea>
-    <br />
-    <label for="requestedBy" class="labels">Requested by:</label>
-    <select name="requestedBy" id="requestedBy" disabled="disabled">
-      <option selected="selected" value="${form.requestedBy.id}">${form.requestedBy.person.name}</option>
-    </select>
-    <label for="approvedby" class="labels">Approved by:</label>
-    <select	name="approvedby" id="approvedby" disabled="disabled">
-      <option selected="selected" value="${form.approvedBy.id}">${form.approvedBy.person.name}</option>
-    </select>
-  </div>
+    	<textarea name="purpose" id="purpose" disabled="disabled">${form.purpose}</textarea>
+    	<br />
+    	<label for="requestedBy" class="labels">Requested by:</label>
+    	<select name="requestedBy" id="requestedBy" disabled="disabled">
+    		<option selected="selected" value="${form.requestedBy.id}">${form.requestedBy.person.name}</option>
+   		</select>
+    	<label for="approvedby" class="labels">Approved by:</label>
+    	<select	name="approvedby" id="approvedby" disabled="disabled">
+    		<option selected="selected" value="${form.approvedBy.id}">${form.approvedBy.person.name}</option>
+   		</select>
+   	<br/>
+	<a href="/pr?export=pdf">Export to PDF </a></div>
 </form>
 <jsp:include page="../copyright.jsp" />
 </body>
