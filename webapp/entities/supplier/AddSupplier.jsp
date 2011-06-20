@@ -500,6 +500,7 @@ font-weight:bold;
     <td width="84%">&nbsp;</td>
     <td width="4%"><form id="form15" name="form15" method="post" action="SearchSuppliers.do">
       <input name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+      <input type="hidden" name="supplierAction" value="view" />
     </form></td>
   </tr>
 </table>
@@ -609,6 +610,7 @@ font-weight:bold;
     <div id="apDiv20">
       <input type="submit" name="addBtn" id="addBtn" value="Add" style="background-color:#7B1113;color:white;font-family:Lucida Grande;font-size:20px;"/>
     </div>
+    <input type="hidden" name="supplierAction" value="add" />
     <p>&nbsp;</p>
     <p><br />
     </p>

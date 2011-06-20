@@ -87,8 +87,9 @@
 
 	<div id="stocks">Forms</div>
 	<div id="supplierDiv">
-		<form id="form11" name="form11" method="get" action="supplier">
+		<form id="form11" name="form11" method="post" action="supplier">
 			<input name="supplierBtn" type="submit" class="button2" id="supplierBtn" value="Supplier" />
+			<input type="hidden" name="supplier-action" value="view-suppliers" />
 		</form>
 	</div>
 	<div id="apDiv5">

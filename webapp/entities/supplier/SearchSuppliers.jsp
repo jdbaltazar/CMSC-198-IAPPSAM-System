@@ -237,9 +237,11 @@
 </table>
 </div>
 <div id="apDiv1">
-<form id="form1" name="form1" method="post" action="AddSupplier.jsp"><input
+<form id="form1" name="form1" method="post" action="supplier"><input
 	name="addNewBtn" type="submit" class="maroon" id="addNewBtn"
-	value="Add New &gt;&gt;" /></form>
+	value="Add New &gt;&gt;" />
+	<input type="hidden" name="supplier-action" value="new-supplier" />
+	</form>
 </div>
 <div id="resultTable" style="width: 100%">
 <table width="100%" frame="box" cellspacing="0">
