@@ -124,4 +124,8 @@ public class PRLine {
 		boolean validPr = purchaseRequest != null;
 		return validItem && validPr;
 	}
+
+	public float getCost() {
+		return quantity * item.getPrice();
+	}
 }

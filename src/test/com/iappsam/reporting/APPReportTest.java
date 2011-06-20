@@ -13,66 +13,34 @@ import org.junit.Test;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
-import com.iappsam.ItemCategory;
-import com.iappsam.ItemCondition;
-import com.iappsam.ItemStatus;
-import com.iappsam.Person;
-import com.iappsam.Unit;
 import com.iappsam.forms.APP;
 import com.iappsam.forms.APPLine;
 
-public class APPReportTest extends APPReport {
+public class APPReportTest {
 
-	private APPReport report;
+	private AbstractReport report;
 	private APPLine line;
 	private Object[] lineObjs;
 	private List<Object[]> objArrays;
+	private APP app;
 
 	@Before
-	public void iniAPP() throws ReportException {
-		DivisionOffice office = new DivisionOffice("DNSM", "Office of the Division Chair");
-		Person p = new Person("Mr.", "John dela Cruz");
-		Employee e = new Employee("Mayor", p);
-
-		APP app = new APP(2011, office, e, e);
-		app.setPlanControlNumber("CTR-001-002");
-		app.setDateScheduled(Date.valueOf("2011-01-01"));
-
-		addLines(app);
-
-		report = new APPReport(app);
-
-		lineObjs = new Object[] { "ST-01-213", "Description", "unit", "10", "2.0", "1", "2.0", "2", "4.0", "3", "6.0", "4", "8.0", "20.0" };
-		objArrays = new ArrayList<Object[]>();
-		objArrays.add(lineObjs);
-	}
-
-	private void addLines(APP app) {
-		ItemCategory cat = new ItemCategory("Category");
-		Unit unit = new Unit("unit");
-		ItemStatus status = new ItemStatus("Single");
-		ItemCondition cond = new ItemCondition("Working");
-		Item item = new Item("Description", cat, unit, status, cond);
-		item.setPrice(2);
-		item.setStockNumber("ST-01-213");
-
-		line = new APPLine(app, item, 1, 2, 3, 4);
-		app.addLine(line);
-		// app.addLine(new Item("Bond Paper Long", cat, unit, status, cond), 5, 7,
-		// 10, 4);
+	public void initAPP() throws ReportException {
+		createReport();
+		createObjectArrays();
 	}
 
 	@Test
 	public void getListOfArrayObject() {
-		List<Object[]> actualObjArrays = report.getListOfObject();
+		List<Object[]> actualObjArrays = report.getRows();
 		assertEquals(1, actualObjArrays.size());
 		assertArrayEquals(objArrays.get(0), actualObjArrays.get(0));
 	}
 
 	@Test
 	public void toArrayObject() {
-		Object[] obj2 = APPReport.toArrayObject(line);
-		assertArrayEquals(lineObjs, obj2);
+		Object[] objs = APPReport.toArrayObject(line);
+		assertArrayEquals(lineObjs, objs);
 	}
 
 	@Test
@@ -87,4 +55,37 @@ public class APPReportTest extends APPReport {
 		assertTrue(xls.exists());
 	}
 
+	private void createObjectArrays() {
+		lineObjs = new Object[] { "ST-01-213", "Description", "unit", "10", "2.0", "1", "2.0", "2", "4.0", "3", "6.0", "4", "8.0", "20.0" };
+		objArrays = new ArrayList<Object[]>();
+		objArrays.add(lineObjs);
+	}
+
+	private void createReport() throws ReportException {
+
+		DivisionOffice office = new DivisionOffice("DNSM", "Office of the Division Chair");
+		Employee e = Employee.create("Mayor", "John");
+
+		app = new APP(2011, office, e, e);
+		app.setPlanControlNumber("CTR-001-002");
+		app.setDateScheduled(Date.valueOf("2011-01-01"));
+
+		addAPPLine();
+
+		report = new APPReport(app);
+
+		line = getFirstLine();
+	}
+
+	private APPLine getFirstLine() {
+		return (APPLine) app.getLines().toArray()[0];
+	}
+
+	private void addAPPLine() {
+		Item item = Item.create("Description", "Category", "unit", "Single", "Working");
+		item.setPrice(2);
+		item.setStockNumber("ST-01-213");
+
+		app.addLine(item, 1, 2, 3, 4);
+	}
 }
