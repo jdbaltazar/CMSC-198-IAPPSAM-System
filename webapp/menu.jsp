@@ -61,7 +61,7 @@
 		</form>
 	</div>
 	<div id="FormDiv">
-		Purchase Request <a href="/pr?new=pr">Add</a>
+		<a href="/pr">Purchase Request</a> <a href="/pr?new=pr">Add</a>
 	</div>
 	<div id="apDiv3">
 <form id="form10" name="form10" method="post" action="stocks/stocks/StockProperties.jsp">
