@@ -35,7 +35,7 @@
   <form id="form1" name="form1" method="post" action="SaveOffice.do">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
-        <td class="header_rows"><div class="header_1"><em>New</em></div></td>
+        <td class="header_rows"><div class="header_1"><em><%=dOffice.getDivisionName()%></em></div></td>
       </tr>
       <tr>
         <td><table width="100%" cellspacing="0" frame="box" id="table">
