@@ -3,13 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Add Office</title>
+<title>IAPPSAM::Add Division</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-	DivisionOffice dOffice=(DivisionOffice)request.getAttribute("dOffice");
+
+<%
+	DivisionOffice dOffice = (DivisionOffice)request.getAttribute("dOffice");
 %>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
@@ -26,32 +28,31 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Division List</a> &gt; <em><strong>Add Office</strong></em></td>
+    <td id="navigation"><a href="../../menu" target="_top" class="links">Main Menu</a> &gt; <a href="SearchDivisions.do?dOfficeID=<%=""+dOffice.getId()%>" target="_top" class="links">Division List</a> &gt; <a href="ViewDivisionAndOffices.do?" target="_top" class="links">View Division</a> &gt; <em><strong>Edit Division</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="form_table">
-  <form id="form1" name="form1" method="post" action="SaveOffice.do">
+  <form id="form1" name="form1" method="post" action="SaveDivisionEdit.do">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
-        <td class="header_rows"><div class="header_1"><em>New</em></div></td>
+        <td class="header_rows"><div class="header_1"><em>Edit</em></div></td>
       </tr>
       <tr>
         <td><table width="100%" cellspacing="0" frame="box" id="table">
           <tr>
             <td class="align_right"><br />
-              Office Name:<br />
+              Division Name:<br />
               <br /></td>
-            <td><br />              <input type="text" name="officeName" id="officeName" />
-                         <input type="hidden"
-				name="dOfficeID" value=<%="" + dOffice.getId()%>></input>
+            <td><br />              <input type="text" name="divisionName" id="divisionName" value="<%=dOffice.getDivisionName()%>" />
               <br />
               <br /></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
-            
+            <td><input name="saveBtn" type="submit" class="button" id="saveBtn" value="SAVE" />
+            	<input
+			type="hidden" name="dOfficeID" value=<%=""+dOffice.getId()%> />
               <br />
               <br /></td>
           </tr>
@@ -66,4 +67,3 @@
 <!--<div id="footer"></div>-->
 </body>
 </html>
-

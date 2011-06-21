@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.iappsam.DivisionOffice"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +11,11 @@
 </head>
 
 <body>
+
+<%
+	DivisionOffice dOffice = (DivisionOffice) request.getAttribute("dOffice");
+	List<DivisionOffice> offices = (List<DivisionOffice>)request.getAttribute("offices");
+%>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
 <div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
@@ -35,9 +42,10 @@
       <td width="15%">Action</td>
     </tr>
     <tr class="tablerow_1">
-      <td>&nbsp;</td>
-      <td><form id="form4" name="form4" method="post" action="">
+      <td><%=dOffice.getDivisionName()%></td>
+      <td><form id="form4" name="form4" method="post" action="EditDivision.do">
         <input name="editDivisionBtn" type="submit" class="button2" id="editDivisionBtn" value="Edit&gt;&gt;" />
+      	<input type="hidden" name="dOfficeID" value=<%="" + dOffice.getId()%> />
       </form></td>
     </tr>
     <tr>
@@ -60,22 +68,31 @@
           <td width="85%">Office/s</td>
           <td width="15%">Action</td>
         </tr>
-        <tr class="tablerow_1">
-          <td>&nbsp;</td>
+        
+        <%
+		int i = 0;
+		for (DivisionOffice office : offices) {
+	%>
+        
+        <tr 
+        <% if(i%2==0)%>
+        class="tablerow_1"
+        >
+          <td><%=office.getOfficeName()%></td>
           <td><form id="form3" name="form3" method="post" action="">
             <input name="editOfficeBtn" type="submit" class="button2" id="editOfficeBtn" value="Edit&gt;&gt;" />
+            <input type="hidden"
+				name="officeID" value=<%="" + office.getId()%> /> 
+				<input
+				type="hidden" name="dOfficeID" value=<%="" + dOffice.getId()%> />
           </form></td>
         </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+     <%
+     i++;
+     }
+     %>
+     
+     
   </table>
 </div>
 <!--<div id="footer"></div>-->
