@@ -10,7 +10,7 @@ div#form_table {
   height:inherit; /* see above */
   border:none;
 	position:absolute;
-	top:54%; /* 100% - 60% = 40% / 2 = 20% */
+	top:50%; /* 100% - 60% = 40% / 2 = 20% */
 	left:34%;  /* same as above */
 /*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
@@ -32,6 +32,13 @@ div#menu_2 {
 	font-size:12px; 
 	font-weight:bold;
 	width:45%;
+}
+
+.align_center{
+	text-align:center;
+	font-family:Lucida Grande; 
+	font-size:12px; 
+	font-weight:bold;
 }
 
 #align_left{
@@ -214,4 +221,49 @@ div#menu_1_forms{
   border-right: 1px solid #7B1113;
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
+}
+
+.bkgrnd_white{
+	background-color:white;
+}
+
+.linkBtn{
+	text-decoration:none;
+	width:100%;
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:white;
+	color:#7B1113;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.linkBtn:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+
+.txtfield_no_borders{
+	width:100%;
+	text-align:center;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+
+.no_border{
+	width:35;
+	text-align:center;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
 }

@@ -28,55 +28,58 @@
     <td>&nbsp;</td>
   </tr>
 </table>
-<form name="appForm" method="post" action="">
+<form name="APPForm" method="post" action="">
   <div id="items_table">
     
     <table width="100%" border="0" cellspacing="0">
       <tr>
-        <td><table width="100%" border="1" cellspacing="0" class="tableheaders_forms">
-          <tr>
-            <td width="7%" rowspan="2">Stock No.</td>
-            <td width="20%" rowspan="2">ARTICLES and SPECIFICATIONS</td>
-            <td width="7%" rowspan="2">Unit</td>
-            <td width="6%" rowspan="2">Qty</td>
-            <td width="8%" rowspan="2">Price</td>
-            <td width="12%" colspan="2">1st</td>
-            <td width="12%" colspan="2">2nd</td>
-            <td width="12%" colspan="2">3rd</td>
-            <td width="12%" colspan="2">4th</td>
+        <td colspan="2"><table width="100%" border="0" cellspacing="0">
+          <tr class="tableheaders_forms">
+            <td rowspan="2"><form id="form1" name="form1" method="post" action="">
+              <input type="checkbox" name="selectAll" id="selectAll" />
+              <label for="selectAll"></label>
+              </form></td>
+            <td rowspan="2">Stock No.</td>
+            <td rowspan="2">ARTICLES &amp; SPECIFICATIONS</td>
+            <td rowspan="2">Unit</td>
+            <td rowspan="2">Qty</td>
+            <td rowspan="2">Price</td>
+            <td colspan="2">1st</td>
+            <td colspan="2">2nd</td>
+            <td colspan="2">3rd</td>
+            <td colspan="2">4th</td>
             <td rowspan="2">Amount</td>
             </tr>
-          <tr>
-            <td width="5%">Qty.</td>
-            <td width="5%">Amount</td>
-            <td width="5%">Qty.</td>
-            <td width="5%">Amount</td>
-            <td width="5%">Qty.</td>
-            <td width="5%">Amount</td>
-            <td width="5%">Qty. </td>
-            <td width="5%">Amount</td>
+          <tr class="tableheaders_forms">
+            <td>Qty.</td>
+            <td>Amount</td>
+            <td>Qty.</td>
+            <td>Amount</td>
+            <td>Qty.</td>
+            <td>Amount</td>
+            <td>Qty.</td>
+            <td>Amount</td>
             </tr>
-        </table></td>
-      </tr>
-      <tr>
-        <td><table width="100%" border="0" cellspacing="0">
           <tr class="tablerow_1">
-            <td width="7%">&nbsp;</td>
-            <td width="19%">&nbsp;</td>
-            <td width="7%">&nbsp;</td>
-            <td width="5%">&nbsp;</td>
-            <td width="8%" >&nbsp;</td>
-            <td width="5%">&nbsp;</td>
-            <td width="8%">&nbsp;</td>
-            <td width="4%">&nbsp;</td>
-            <td width="8%">&nbsp;</td>
-            <td width="4%">&nbsp;</td>
-            <td width="8%">&nbsp;</td>
-            <td width="5%">&nbsp;</td>
-            <td width="7%">&nbsp;</td>
-            <td width="5%">&nbsp;</td>
+            <td align="center"><form id="form3" name="form3" method="post" action="">
+              <input type="checkbox" name="selectThis" id="selectThis" />
+              </form></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td>&nbsp;</td>
             </tr>
           <tr>
+            <td align="center"><form id="form4" name="form4" method="post" action="">
+              <input type="checkbox" name="selctThis" id="selctThis" />
+              </form></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -84,26 +87,25 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
             <td>&nbsp;</td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td align="center" class="same_width"><form id="formAddItem" name="formAddItem" method="post" action="">
-          <br />
-          <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="Add Item &gt;&gt;" />
-          <br />
-          <br />
+        <td width="50%" align="right" class="same_width"><br />
+          <form id="form5" name="form5" method="post" action="">
+            <input name="addItem" type="submit" class="button" id="addItem" value="Add Item" />
+          </form>
+        <br /></td>
+        <td class="same_width"><form id="form6" name="form6" method="post" action="">
+          <input name="removeItem" type="submit" class="button" id="removeItem" value="Remove Item" />
         </form></td>
       </tr>
       <tr>
-        <td><table width="27%" border="0" align="center" cellspacing="0">
+        <td colspan="2"><table width="27%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Year:</td>
             <td class="right_side_table"><input type="text" name="year" id="year" /></td>
@@ -115,7 +117,7 @@
           <tr>
             <td class="other_fields_label">Division/Office:</td>
             <td class="right_side_table"><select name="division/office" class="menulist" id="division/office">
-            </select></td>
+              </select></td>
             </tr>
           <tr>
             <td class="other_fields_label">Date Scheduled:</td>
@@ -124,26 +126,27 @@
           <tr>
             <td class="other_fields_label">Prepared by:</td>
             <td class="right_side_table"><select name="preparedBy" class="menulist" id="preparedBy">
-            </select></td>
+              </select></td>
             </tr>
           <tr>
             <td class="other_fields_label">Recommended by:</td>
             <td class="right_side_table"><select name="recommendedBy" class="menulist" id="recommendedBy">
-            </select></td>
+              </select></td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td align="center"><br />
+        <td colspan="2" align="center"><br />
         <input name="submitBtn" type="submit" class="button" value="SUBMIT Form" /></td>
       </tr>
       <tr>
-        <td>&nbsp;</td>
+        <td colspan="2">&nbsp;</td>
       </tr>
     </table>
     
     </div>
 </form>
+
 
 
 <!--<div id="footer"></div>-->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Building List</title>
+<title>IAPPSAM::Employee List</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
@@ -24,26 +24,41 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>Building List </strong></em>&gt; <a href="#" target="_self" class="links">Add Building</a></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>Employee List </strong></em>&gt; <a href="#" target="_self" class="links">Add Employee</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="items_table">
   <table width="100%" border="0" cellspacing="0">
     <tr>
-      <td width="9%" class="tableheaders_forms">Action</td>
-      <td width="91%" class="tableheaders_forms">Building Name</td>
+      <td colspan="3" align="center"><form id="form4" name="form4" method="post" action="">
+        <label for="searchField"><span class="align_right">Search</span>:</label>
+        <input type="text" name="searchField" id="searchField" />
+        <input name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
+      </form></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="7%" class="tableheaders_forms">Action</td>
+      <td width="45%" class="tableheaders_forms">Employee Name</td>
+      <td width="48%" class="tableheaders_forms">Designation</td>
     </tr>
     <tr>
       <td align="center" class="tablerow_1"><form id="form1" name="form1" method="post" action="">
-        <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
+        <input name="editBtn" type="submit" class="button2" id="editBtn" value="View&gt;&gt;" />
       </form></td>
+      <td class="tablerow_1">&nbsp;</td>
       <td class="tablerow_1">&nbsp;</td>
     </tr>
     <tr>
       <td><form id="form3" name="form3" method="post" action="">
-        <input name="editBtn2" type="submit" class="button2" id="editBtn2" value="Edit&gt;&gt;" />
+        <input name="viewBtn" type="submit" class="button2" id="viewBtn" value="View&gt;&gt;" />
       </form></td>
+      <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
   </table>

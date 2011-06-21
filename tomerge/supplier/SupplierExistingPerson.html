@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Add Building</title>
+<title>IAPPSAM::Add Supplier to Existing Person</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 </head>
@@ -17,40 +17,44 @@
 <p>&nbsp;</p>
 <table width="100%" border="0" cellspacing="0">
   <tr>
-    <td width="32%">&nbsp;</td>
-    <td width="68%"><form id="form2" name="form2" method="post" action="">
+    <td width="46%">&nbsp;</td>
+    <td width="54%"><form id="form2" name="form2" method="post" action="">
       <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Building List</a> &gt; <em><strong>Add Building</strong></em></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Supplier List</a> &gt;<em><strong>Add Supplier to Existing Contact Person</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="form_table">
-  <form id="buildingForm" name="buildingForm" method="post" action="">
+  <form id="form1" name="form1" method="post" action="">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
-        <td class="header_rows"><div class="header_1">Building Information</div></td>
+        <td class="header_rows"><div class="header_1">Supplier Information</div></td>
       </tr>
       <tr>
-        <td><table width="100%" border="0" cellspacing="0" id="table">
+        <td><table width="100%" border="0" cellspacing="9">
           <tr>
-            <td class="align_right"><br />
-              *Building Name:</td>
-            <td><br />              <input type="text" name="buildingName" id="buildingName" /></td>
+            <td class="align_right">*Contact Person:</td>
+            <td><select name="employeeName" class="menulist" id="employeeName">
+            </select></td>
           </tr>
           <tr>
-            <td class="align_right"><br />
-              Address:<br />
-              <br /></td>
-            <td><input type="text" name="address" id="address" /></td>
+            <td class="align_right">*Supplier:</td>
+            <td><input type="text" name="username" id="username" /></td>
+          </tr>
+          <tr>
+            <td class="align_right">*Supplier Address:</td>
+            <td><input type="password" name="password" id="password" /></td>
+          </tr>
+          <tr>
+            <td class="align_right">TIN:</td>
+            <td><input type="password" name="reenterPassword" id="reenterPassword" /></td>
           </tr>
           <tr>
             <td class="align_right">&nbsp;</td>
-            <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
-              <br />
-<br /></td>
+            <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" /></td>
           </tr>
         </table></td>
       </tr>

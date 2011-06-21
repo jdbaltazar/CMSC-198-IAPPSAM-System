@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Add Employee</title>
+<title>IAPPSAM::Create Account</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 </head>
@@ -23,13 +23,20 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Employee List</a> &gt; <em><strong>Add Employee</strong></em><strong></strong></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Account List</a> &gt; <em><strong>Create Account</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="form_table">
   <form id="form1" name="form1" method="post" action="">
     <table width="100%" frame="box" cellspacing="0" id="table">
+    <tr>
+     <td align="right" class="bkgrnd_white"><a href="#" target="_self" class="linkBtn">Create Account For Existing Employee>></a></td>
+     </tr>
+       <tr>
+    <tr>
+     <td class="bkgrnd_white">&nbsp;</td>
+     </tr>
       <tr>
         <td class="header_rows"><div class="header_1">Personal Information</div></td>
       </tr>
@@ -99,15 +106,38 @@
             <td class="align_right">E-mail Address:</td>
             <td><input type="text" name="e-mail_ad" id="e-mail_ad" /></td>
           </tr>
-          <tr>
-            <td class="align_right">&nbsp;</td>
-            <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
-              <br /></td>
-          </tr>
         </table></td>
       </tr>
       <tr>
-      	<td class="table_footer"></td>
+      	<td class="header_rows"><div class="header_1">Account Information</div></td>
+       </tr>
+       <tr>
+         <td><table width="100%" border="0" cellspacing="9">
+           <tr>
+             <td class="align_right">*Username:</td>
+             <td><input type="text" name="username" id="username" /></td>
+           </tr>
+           <tr>
+             <td class="align_right">*Password:</td>
+             <td><input type="password" name="password" id="password" /></td>
+           </tr>
+           <tr>
+             <td class="align_right">*Re-enter Password:</td>
+             <td><input type="password" name="reenterPassword" id="reenterPassword" /></td>
+           </tr>
+           <tr>
+             <td class="align_right">*Account Type:</td>
+             <td><select name="accountType" class="menulist" id="accountType">
+             </select></td>
+           </tr>
+           <tr>
+             <td class="align_right">&nbsp;</td>
+             <td><input name="createBtn" type="submit" class="button" id="createBtn" value="CREATE" /></td>
+           </tr>
+         </table></td>
+       </tr>
+       <tr>
+         <td class="table_footer"></td>
        </tr>
     </table>
   </form>

@@ -1,6 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.Unit"%>
-<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,9 +9,6 @@
 </head>
 
 <body>
-<%
-	List<Unit> itemUnits = (List<Unit>) request.getAttribute("itemUnits");
-%>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
 <div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
@@ -39,35 +34,18 @@
       <td width="9%" class="tableheaders_forms">Action</td>
       <td width="91%" class="tableheaders_forms">Item Unit</td>
     </tr>
-    
-    <%
-		int i = 0;
-		for (Unit u : itemUnits) {
-	%>
-    
     <tr>
-      <td align="center" 
-      
-      <%if(i%2==0)
-      out.println("class=\"tablerow_1\"");
-      %>
-      ><form id="form1" name="form1" method="post" action="EditItemUnit.do">
+      <td align="center" class="tablerow_1"><form id="form1" name="form1" method="post" action="">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
-      	<input type="hidden" name="itemUnitID" value=<%="" + u.getId()%> />
       </form></td>
-      <td 
-      
-      <%if(i%2==0)
-      out.println("class=\"tablerow_1\"");
-      %>
-      ><%=u.getName()%></td>
+      <td class="tablerow_1">&nbsp;</td>
     </tr>
-    
-    <%
-    	i++;
-    	}
-    %>
-
+    <tr>
+      <td><form id="form3" name="form3" method="post" action="">
+        <input name="editBtn2" type="submit" class="button2" id="editBtn2" value="Edit&gt;&gt;" />
+      </form></td>
+      <td>&nbsp;</td>
+    </tr>
   </table>
 </div>
 <!--<div id="footer"></div>-->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Building List</title>
+<title>IAPPSAM::APP List</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
@@ -24,27 +24,42 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>Building List </strong></em>&gt; <a href="#" target="_self" class="links">Add Building</a></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>APP List </strong></em>&gt; <a href="#" target="_self" class="links">Fillup APP Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="items_table">
   <table width="100%" border="0" cellspacing="0">
     <tr>
-      <td width="9%" class="tableheaders_forms">Action</td>
-      <td width="91%" class="tableheaders_forms">Building Name</td>
+      <td colspan="4" align="center"><form id="form1" name="form1" method="post" action="">
+        <label for="searchField" class="align_right">Search:</label>
+        <input type="text" name="searchField" id="searchField" />
+        <input name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
+      </form></td>
     </tr>
     <tr>
-      <td align="center" class="tablerow_1"><form id="form1" name="form1" method="post" action="">
-        <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
-      </form></td>
-      <td class="tablerow_1">&nbsp;</td>
-    </tr>
-    <tr>
-      <td><form id="form3" name="form3" method="post" action="">
-        <input name="editBtn2" type="submit" class="button2" id="editBtn2" value="Edit&gt;&gt;" />
-      </form></td>
       <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="6%" class="tableheaders_forms">Year</td>
+      <td width="21%" class="tableheaders_forms">Date Scheduled</td>
+      <td width="35%" class="tableheaders_forms">Division/Office</td>
+      <td width="38%" class="tableheaders_forms">Prepared by</td>
+    </tr>
+	<tr>
+	  <td align="center" class="tablerow_1">&nbsp;</td>
+	  <td align="center" class="tablerow_1">&nbsp;</td>
+	  <td align="center" class="tablerow_1">&nbsp;</td>
+      <td align="center" class="tablerow_1">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
     </tr>
   </table>
 </div>

@@ -405,8 +405,7 @@
 		<form id="form1" name="form1" method="post" action="EditDivision.do"><input
 			name="editBtn" type="submit" class="viewbutton" id="editBtn"
 			value="Edit &gt;&gt;" /><input type="hidden" name="dOfficeID"
-			value=<%="" + dOffice.getId()%> />
-			</form>
+			value=<%="" + dOffice.getId()%> /></form>
 
 		<%
 			System.out.println("id: " + dOffice.getId());
@@ -438,10 +437,8 @@
 			<form id="form3" name="form3" method="post" action="EditOffice.do"><input
 				name="editOfficeBtn" type="submit" class="viewbutton"
 				id="editOfficeBtn" value="Edit &gt;&gt;" /> <input type="hidden"
-				name="officeID" value=<%="" + office.getId()%> />
-				<input type="hidden"
-				name="dOfficeID" value=<%="" + dOffice.getId()%> />
-		</form>
+				name="officeID" value=<%="" + office.getId()%> /> <input
+				type="hidden" name="dOfficeID" value=<%="" + dOffice.getId()%> /></form>
 			</td>
 		</tr>
 

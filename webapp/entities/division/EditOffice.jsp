@@ -418,6 +418,8 @@
 		<form id="form15" name="form15" method="post"
 			action="ViewDivisionAndOffices.do"><input name="backBtn"
 			type="submit" class="button" id="backBtn" value="Back" /></input>
+			<input name="dOfficeID"
+			type="hidden" value="<%=office.getId()%>" />
 			</form>
 		</td>
 	</tr>

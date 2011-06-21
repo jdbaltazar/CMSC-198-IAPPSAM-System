@@ -63,11 +63,14 @@ public class SaveDivisionEdit extends HttpServlet {
 				dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
 				if (dOffice != null && newName != null) {
 					if (!newName.equalsIgnoreCase("")) {
+
 						List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
 						for (DivisionOffice d : dOffices) {
-							if (d.getDivisionName().equalsIgnoreCase(dOffice.getDivisionName()))
+							if (d.getDivisionName().equalsIgnoreCase(dOffice.getDivisionName())) {
 								d.setDivisionName(newName);
-							doManager.updateDivisionOffice(dOffice);
+								doManager.updateDivisionOffice(d);
+								System.out.println("...updated!");
+							}
 						}
 						dOffice.setDivisionName(newName);
 						doManager.updateDivisionOffice(dOffice);
@@ -75,6 +78,7 @@ public class SaveDivisionEdit extends HttpServlet {
 						view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
 					}
 				}
+				request.setAttribute("dOffice", dOffice);
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

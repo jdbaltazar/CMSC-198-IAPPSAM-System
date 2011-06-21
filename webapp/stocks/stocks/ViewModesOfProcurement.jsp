@@ -12,7 +12,7 @@
 
 <body>
 <%
-	List<ModeOfProcurement> modes = (List<ModeOfProcurement>) request.getAttribute("modes");
+	List<ModeOfProcurement> modes = (List<ModeOfProcurement>)request.getAttribute("modes");
 %>
 <div id="headerBkgrnd"><img src="../../images/headerbar.png"
 	width="100%" height="129" /></div>
