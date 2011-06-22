@@ -50,9 +50,8 @@
       <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
     </form></td>
   </tr>
- 
   <tr>
-    <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/pr" target="_top" class="links">PR List</a> &gt; <em><strong>View Purchase Request</strong></em><strong></strong></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">PR List</a> &gt; <em><strong>Fillup Purchase Request</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
@@ -61,8 +60,8 @@
     
     <table width="100%" border="0" cellspacing="0">
       <tr>
-        <td colspan="2"><table width="100%" border="0" cellspacing="0">
-          <tr class="tableheaders_forms">
+        <td colspan="2"><table width="100%" border="0" cellspacing="0" class="tableheaders_forms">
+          <tr>
             <td><input type="checkbox" name="selectAllItems" id="selectAllItems" /></td>
             <td>Quantity</td>
             <td>Unit of Issue</td>
@@ -73,7 +72,7 @@
           </tr>
           
           <c:forEach var="line" items="${form.lines}" varStatus="loop">
-        <tr class="tablerow_1"> 
+        <tr> 
           <!-- class="tablerow_1" -->
           
           <td width="5%"><input name="quantity" type="text"
@@ -135,7 +134,7 @@
           <tr>
             <td class="other_fields_label">ALOBS No.:</td>
             <td class="right_side_table">
-                <input name="alobsNumber" type="text" id="alobsNumber"
+                <input name="alobsNumber" type="text" id="alobsNumber" size="15"
 	maxlength="15" value="${form.alobsNumber}"  disabled="disabled"/></td>
             </tr>
           <tr>
@@ -147,7 +146,7 @@
             
             <tr>
             	<td class="other_fields_label">Purpose:</td>
-            	<td class="right_side_table"><input name="purpose" id="purpose" disabled="disabled" value="${form.purpose}"/></td>
+            	<td class="right_side_table"><input name="purpose" id="purpose" disabled="disabled"/>${form.purpose}</td>
       </tr>
       
           <tr>
