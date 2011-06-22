@@ -33,7 +33,7 @@ public class SaveEditedItemStatus extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemStatus.do");
 		int itemStatusID = Integer.parseInt(request.getParameter("itemStatusID"));
-		String name = request.getParameter("statusField");
+		String name = request.getParameter("itemStatus");
 
 		ItemStatus itemStatus = null;
 

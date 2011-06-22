@@ -38,6 +38,7 @@ public class ViewDivisionAndOffices extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -58,7 +59,7 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		if(divisionID==null)
 			divisionID = (String)request.getAttribute("dOfficeID");
 		DivisionOffice dOffice = null;
-		ArrayList<DivisionOffice> offices = new ArrayList<DivisionOffice>();
+		List<DivisionOffice> offices = new ArrayList<DivisionOffice>();
 
 		RequestDispatcher view = null;
 
@@ -74,14 +75,7 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		if (dOffice != null) {
 			List<DivisionOffice> dOffices = new ArrayList<DivisionOffice>();
 			try {
-				dOffices = doManager.getAllDivisionOffice();
-				for (DivisionOffice d : dOffices) {
-					if (d.getDivisionName().equalsIgnoreCase(dOffice.getDivisionName())) {
-						if (d.getOfficeName() != null) {
-							offices.add(d);
-						}
-					}
-				}
+				offices = doManager.getOfficesUnderDivision(dOffice.getDivisionName());
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

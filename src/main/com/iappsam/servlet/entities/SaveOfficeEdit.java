@@ -1,6 +1,8 @@
 package com.iappsam.servlet.entities;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.util.ApplicationContext;
 
 /**
@@ -49,20 +53,27 @@ public class SaveOfficeEdit extends HttpServlet {
 
 		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
 		DivisionOffice office;
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+
 		try {
-			office = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
+			office = doManager.getDivisionOffice(officeID);
 			if (newName != null && !newName.equalsIgnoreCase("")) {
 				office.setOfficeName(newName);
-				ApplicationContext.INSTANCE.getDivisionOfficeManager().updateDivisionOffice(office);
-				view = request.getRequestDispatcher("SearchDivisions.do");
-			}else{
+				doManager.updateDivisionOffice(office);
+				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
+				DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
+				request.setAttribute("offices", offices);
+				request.setAttribute("dOfficeID", ""+dOffice.getId());
+				view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
+			} else {
 				request.setAttribute("office", office);
 			}
+
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		view.forward(request, response);
 	}
 

@@ -23,7 +23,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">View Employees</a> &gt; <em><strong>Add Employee</strong></em><strong></strong></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">Employee List</a> &gt; <em><strong>Add Employee</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
@@ -36,15 +36,12 @@
       <tr>
         <td><table width="100%" cellspacing="9" frame="box" class="no_border_table">
           <tr>
-            <td class="align_right" id="align_right"><br />
-              Title:</td>
-            <td><br />              <input type="text" name="title" id="title" /></td>
+            <td class="align_right" id="align_right">Title:</td>
+            <td><input type="text" name="title" id="title" /></td>
           </tr>
           <tr>
-            <td class="align_right" id="align_right">*Name:<br />
-              <br /></td>
+            <td class="align_right" id="align_right">*Name:<br /></td>
             <td><input type="text" name="name" id="name" />
-              <br />
               <br /></td>
           </tr>
         </table></td>
@@ -53,23 +50,35 @@
         <td><div class="header_1">Work Information</div></td>
       </tr>
       <tr>
-        <td><table width="100%" cellspacing="9" frame="box" class="no_border_table">
-          <tr>
-            <td class="align_right"><br />
-              *Designation:</td>
-            <td><br />              <input type="text" name="designation" id="designation" /></td>
+        <td><table width="100%" border="0" cellspacing="5">
+          <tr align="center" class="align_center">
+            <td width="40%">*Designation</td>
+            <td width="25%">Employee No.</td>
+            <td width="35%">*Division/Office</td>
           </tr>
           <tr>
-            <td class="align_right">Employee Number:</td>
-            <td><input type="text" name="employeeNumber" id="employeeNumber" /></td>
+            <td align="center"><input type="text" name="designation" id="designation" /></td>
+            <td align="center"><input name="employeeNo" type="text" id="employeeNo" size="15" /></td>
+            <td align="center"><select name="divisionOffice" class="menulist" id="divisionOffice">
+            </select></td>
           </tr>
           <tr>
-            <td class="align_right">Division/Office:<br />
-              <br /></td>
-            <td><select name="division/office" class="menulist" id="division/office">
-            </select>
-              <br />
-              <br /></td>
+            <td align="center"><input type="text" name="designation2" id="designation2" /></td>
+            <td align="center"><input name="empNo" type="text" id="empNo" size="15" /></td>
+            <td align="center"><select name="divisionOffice2" class="menulist" id="divisionOffice2">
+            </select></td>
+          </tr>
+          <tr>
+            <td align="center"><input type="text" name="designation3" id="designation3" /></td>
+            <td align="center"><input name="empNo2" type="text" id="empNo2" size="15" /></td>
+            <td align="center"><select name="divisionOffice3" class="menulist" id="divisionOffice3">
+            </select></td>
+          </tr>
+          <tr>
+            <td align="center"><input type="text" name="deignation" id="deignation" /></td>
+            <td align="center"><input name="empNo3" type="text" id="empNo3" size="15" /></td>
+            <td align="center"><select name="divisionOffice4" class="menulist" id="divisionOffice4">
+            </select></td>
           </tr>
         </table></td>
       </tr>
@@ -79,9 +88,8 @@
       <tr>
         <td><table width="100%" cellspacing="9" frame="box" class="no_border_table">
           <tr>
-            <td class="align_right"><br />
-              Cellphone Number:</td>
-            <td><br />              <input type="text" name="cellphoneNumber" id="cellphoneNumber" /></td>
+            <td class="align_right">Cellphone Number:</td>
+            <td><input type="text" name="cellphoneNumber" id="cellphoneNumber" /></td>
           </tr>
           <tr>
             <td class="align_right">Landline:</td>
@@ -93,8 +101,7 @@
           </tr>
           <tr>
             <td class="align_right">&nbsp;</td>
-            <td><br />
-              <input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
+            <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
               <br /></td>
           </tr>
         </table></td>

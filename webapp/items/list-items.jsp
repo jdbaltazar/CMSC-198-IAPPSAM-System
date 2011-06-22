@@ -25,7 +25,7 @@
 <jsp:include page="/navigation.jsp" />
 
 <!-- Breadcrumbs -->
-<div class="Breadcrumbs"> <a href="/menu">Menu</a> > <a href="/items">Items</a> </div>
+<div class="Breadcrumbs"> <a href="../../menu">Menu</a> > <a href="/items">Items</a> </div>
 <div id="search">
 	<form id="form1" name="form1" method="get" action="/items">
 		<label for="searchItemField" class="labels">Search:</label>

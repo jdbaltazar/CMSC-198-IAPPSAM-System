@@ -1,5 +1,6 @@
 package com.iappsam.managers.sessions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.Building;
@@ -71,6 +72,21 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	}
 
 	@Override
+	public List<DivisionOffice> getOfficesUnderDivision(String divisionName) throws TransactionException {
+		// TODO Auto-generated method stub
+
+		List<DivisionOffice> offices = new ArrayList<DivisionOffice>();
+		List<DivisionOffice> dOffices = getAllDivisionOffice();
+
+		for (DivisionOffice dOffice : dOffices) {
+			if (dOffice.getDivisionName().equalsIgnoreCase(divisionName) && dOffice.getOfficeName() != null) {
+				offices.add(dOffice);
+			}
+		}
+		return offices;
+	}
+
+	@Override
 	public void addBuilding(Building building) throws TransactionException, DuplicateEntryException {
 		if (getBuilding(building.getBuildingName(), building.getBuildingAddress()) == null)
 			add(building);
@@ -129,4 +145,5 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	public DivisionOffice getDivisionOffice(DivisionOffice divisionOffice) throws TransactionException {
 		return getDivisionOffice(divisionOffice.getId());
 	}
+
 }
