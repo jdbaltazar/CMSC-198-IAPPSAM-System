@@ -1,5 +1,6 @@
 package com.iappsam.servlet.app;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,5 +49,10 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 	@Override
 	public Form getForm(int id) throws TransactionException {
 		return appm.getAPP(id);
+	}
+
+	@Override
+	public File getPdf(Form form) {
+		return null;
 	}
 }

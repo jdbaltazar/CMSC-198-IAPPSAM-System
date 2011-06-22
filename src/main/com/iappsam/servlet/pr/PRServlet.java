@@ -2,7 +2,6 @@ package com.iappsam.servlet.pr;
 
 import javax.servlet.annotation.WebServlet;
 
-import com.iappsam.servlet.form.FormLineServlet;
 import com.iappsam.servlet.form.FormServlet;
 
 @WebServlet("/pr")
