@@ -12,6 +12,7 @@ public class APPReport extends AbstractReport {
 	private APP app;
 
 	public APPReport(APP app) throws ReportException {
+		super("app");
 		setAPP(app);
 		fillReport();
 	}
@@ -26,10 +27,10 @@ public class APPReport extends AbstractReport {
 	@Override
 	protected List<Object[]> getRows() {
 		List<Object[]> objArrays = new ArrayList<Object[]>();
-		
+
 		for (APPLine line : app.getLines())
 			objArrays.add(toArrayObject(line));
-		
+
 		return objArrays;
 	}
 

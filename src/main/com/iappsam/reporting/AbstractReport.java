@@ -18,14 +18,16 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public abstract class AbstractReport {
 
 	protected Map<String, String> propertyMap = new HashMap<String, String>();
+	private String fileName;
 
-	public AbstractReport() {
+	public AbstractReport(String fileName) {
 		super();
+		this.fileName = fileName;
 	}
 
 	protected void fillReport() throws ReportException {
 		try {
-			JasperFillManager.fillReportToFile("jasper/app.jasper", propertyMap, getListOfArrayDataSource());
+			JasperFillManager.fillReportToFile("jasper/" + fileName + ".jasper", propertyMap, getListOfArrayDataSource());
 		} catch (JRException e) {
 			throw new ReportException(e.getMessage());
 		}
@@ -37,8 +39,8 @@ public abstract class AbstractReport {
 
 	public File toPDF() throws ReportException {
 		try {
-			JasperExportManager.exportReportToPdfFile("jasper/app.jrprint");
-			return new File("jasper/app.pdf");
+			JasperExportManager.exportReportToPdfFile("jasper/" + fileName + ".jrprint");
+			return new File("jasper/" + fileName + ".pdf");
 		} catch (JRException e) {
 			throw new ReportException(e.getMessage());
 		}
@@ -46,8 +48,8 @@ public abstract class AbstractReport {
 
 	public File toXLS() throws ReportException {
 		try {
-			exportReportToXls("jasper/app.jrprint");
-			return new File("jasper/app.xls");
+			exportReportToXls("jasper/" + fileName + ".jrprint");
+			return new File("jasper/" + fileName + ".xls");
 		} catch (JRException e) {
 			throw new ReportException(e.getMessage());
 		}

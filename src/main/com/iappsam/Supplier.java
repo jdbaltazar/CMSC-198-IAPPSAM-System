@@ -128,9 +128,22 @@ public class Supplier implements Validatable {
 
 	@Override
 	public boolean validate() {
-		boolean validAddress = address != null && !address.isEmpty();
-		boolean validSupplierName = supplierName != null && !supplierName.isEmpty();
-		boolean validContactPerson = contactPerson != null && contactPerson.validate();
-		return validSupplierName && validAddress && validContactPerson;
+		if(supplierName==null)
+			return false;
+		if(supplierName.equalsIgnoreCase(""))
+			return false;
+		if(address==null)
+			return false;
+		if(address.equalsIgnoreCase(""))
+			return false;
+		if(contactPerson.getPerson().getName()==null)
+			return false;
+		if(contactPerson.getPerson().getName().equalsIgnoreCase(""))
+			return false;
+		if(contactPerson.getDesignation()==null)
+			return false;
+		if(contactPerson.getDesignation().equalsIgnoreCase(""))
+			return false;
+		return true;
 	}
 }

@@ -22,6 +22,7 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
 import com.iappsam.servlet.form.AddFormAction;
+import com.iappsam.servlet.form.ExportPdfAction;
 import com.iappsam.servlet.form.FormLinePageAction;
 import com.iappsam.servlet.form.FormServlet;
 import com.iappsam.servlet.form.FormUtility;
@@ -48,6 +49,8 @@ public class PRServletTest extends ServletTestCase {
 	private AddFormAction addPr;
 	@Mock
 	private ViewFormAction viewPr;
+	@Mock
+	private ExportPdfAction exportPdf;
 
 	private FormUtility utility;
 
@@ -60,7 +63,7 @@ public class PRServletTest extends ServletTestCase {
 		super.init();
 
 		utility = new PRUtility("pr", appContext, parser);
-		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr);
+		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr, exportPdf);
 	}
 
 	@Test

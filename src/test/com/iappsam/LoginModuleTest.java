@@ -8,8 +8,8 @@ public class LoginModuleTest {
 
 	@Test
 	public void login() {
-		// LoginModule module = new LoginModule();
-		// assertTrue(module.login("admin", "admin"));
+//		LoginModule module = new LoginModule();
+//		assertTrue(module.login("admin", "admin"));
 
 		fail();
 	}
