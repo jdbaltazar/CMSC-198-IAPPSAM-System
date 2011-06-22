@@ -215,3 +215,22 @@ div#menu_1_forms{
   border-top: 1px solid #7B1113;
   border-bottom: 1px solid #7B1113;
 }
+
+.smallbutton{
+	font-size:11px;
+	font-family:Lucida Grande;
+	background-color:#7B1113;
+	color:white;
+	border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.smallbutton:hover{
+	font-weight:bold;
+	border-left: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}

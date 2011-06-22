@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,6 +7,8 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet"
+	type="text/css" />
 <script src="../jquery/jquery-1.5.1.min.js"></script>
 <script src="../jquery/ui/jquery.ui.core.js"></script>
 <script src="../jquery/ui/jquery.ui.datepicker.js"></script>
@@ -64,9 +67,8 @@
 <table width="100%" border="0" cellspacing="0">
 	<tr>
 		<td colspan="2">
-		<table width="100%" border="0" cellspacing="0"
-			class="tableheaders_forms">
-			<tr>
+		<table width="100%" border="0" cellspacing="0">
+			<tr class="tableheaders_forms">
 				<td><input type="checkbox" name="selectAllItems"
 					id="selectAllItems" /></td>
 				<td>Quantity</td>
@@ -159,6 +161,10 @@
 				<td class="right_side_table"><input name="alobsDate"
 					type="text" id="alobsDate" value="${form.alobsDate}" /></td>
 			</tr>
+            <tr>
+            	<td class="other_fields_label">Purpose:</td>
+            	<td class="right_side_table"><input name="purpose" id="purpose" />${form.purpose}</td>
+            </tr>
 			<tr>
 				<td class="other_fields_label">Requested by:</td>
 				<td class="right_side_table"><select name="requestedBy"

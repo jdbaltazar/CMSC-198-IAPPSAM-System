@@ -49,10 +49,11 @@
         </tr>
       </table></td>
     </tr>
-    
     <tr>
       <td colspan="2"><table width="100%" border="0" cellspacing="6">
-        
+        <tr>
+          <td><input name="addSelectedItems" type="submit" class="smallbutton" id="addSelectedItems" value="Add Selected Items&gt;&gt;" /></td>
+        </tr>
       </table></td>
       <td>&nbsp;</td>
     </tr>
@@ -64,21 +65,17 @@
     
     
 	<form name="AddSelectedItem" action="/pr/line" method="post" >
-	
 		<input type="hidden" name="add" value="items"/>	
     <c:forEach var="item" items="${items}">
-				<tr class="tablerow_1">
+				<tr>
 					<td width="9%" align="center"><input type="checkbox" name="itemIds" id="items" value="${item.id}" /></td>
 					<td width="54%">${item.description}</td>
 					<td width="37%">${item.category}</td>
 				</tr>
-				</c:forEach>
-		<tr>
-          <td><input name="add" type="submit" class="smallbutton" id="addAllBtn" value="Add Selected Items&gt;&gt;" /></td>
-        </tr>				
-	</form>
+					<input name="add" type="submit" class="smallbutton" id="addAllBtn" value="Add Selected Items&gt;&gt;" />
+		</form>
 	
-	
+	</c:forEach>
   </table>
 </div>
 <!--<div id="footer"></div>-->
