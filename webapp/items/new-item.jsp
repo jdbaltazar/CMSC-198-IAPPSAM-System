@@ -11,10 +11,12 @@
 <head>
 <link rel="shortcut icon" href="/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM :: Add Item</title>
+<title>IAPPSAM::Add Item</title>
 <link href="../items/items.css" rel="stylesheet" type="text/css" />
 <link href="../items/add-item.css" rel="stylesheet" type="text/css" />
 <link href="../style.css" rel="stylesheet" type="text/css" />
+<link href="../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../css/form.css" rel="stylesheet" type="text/css" />
 <%
 	List<Unit> units = new ArrayList<Unit>();
 	List<ItemCategory> categories = new ArrayList<ItemCategory>();
@@ -26,51 +28,72 @@
 	statuses = (List<ItemStatus>) request.getAttribute(ItemAttribute.STATUSES);
 	conditions = (List<ItemCondition>) request.getAttribute(ItemAttribute.CONDITIONS);
 %>
-
 </head>
 
 <body>
-
-<jsp:include page="../logo.jsp" />
-<jsp:include page="../navigation.jsp" />
-
-<!-- Breadcrumbs -->
-<div class="Breadcrumbs"><a href="/menu">Menu</a> > <a
-	href="/items">Items</a> > <a href="/items?new=item">New Item</a></div>
-
-<div id="headerdiv"
-	style="font-family: Lucida Grande; color: white; font-size: 16px; font-weight: bold">
-<span class="headerLabel">Item Information</span></div>
-<div id="background" style="background-color: #EEE0E5">
-<form action="/items" method="post" name="form">
-
+<div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
+<div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
+<div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
 <p>&nbsp;</p>
-<p><label for="itemDescription3" class="texts">*Description:</label>
-<textarea name="itemDescription" cols="30" id="itemDescription3"></textarea>
-</p>
-<p><label for="itemUnit2" class="texts">*Unit:</label> <select
-	name="itemUnit" id="itemUnit2">
-	<%
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="100%" border="0" cellspacing="0">
+  <tr>
+    <td width="32%">&nbsp;</td>
+    <td width="68%"><form id="form2" name="form2" method="post" action="">
+      <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
+    </form></td>
+  </tr>
+  <tr>
+    <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/items" target="_top" class="links">Items List</a> &gt; <em><strong>Add Item</strong></em><strong></strong></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="form_table">
+	<form action="/items" method="post"  name="form">
+  <table width="100%" frame="box" cellspacing="0" id="table">
+    <tr>
+      <td class="header_rows"><div class="header_1">Item Information</div></td>
+    </tr>
+    <tr>
+      <td><table width="100%" cellspacing="9" frame="box" class="no_border_table" id="table">
+        <tr>
+          <td class="align_right"><br />
+            *Description:</td>
+          <td><br />            <input type="text" name="itemDescription" id="itemDescription3" /></td>
+        </tr>
+        <tr>
+          <td class="align_right">*Unit:</td>
+          <td><select name="itemUnit" class="menulist" id="itemUnit2">
+          <%
 		for (Unit s : units) {
 	%>
 	<option><%=s%></option>
 	<%
 		}
 	%>
-</select></p>
-<p><label for="itemCategory2" class="texts">*Category:</label> <select
-	name="itemCategory" id="itemCategory2">
-	<%
+          </select></td>
+        </tr>
+        <tr>
+          <td class="align_right">*Item Category:</td>
+          <td><select name="itemCategory" class="menulist" id="itemCategory2">
+          <%
 		for (ItemCategory s : categories) {
 	%>
 	<option><%=s%></option>
 	<%
 		}
 	%>
-</select></p>
-<p><label for="itemPrice2" class="texts">Price:</label> <input
-	name="itemPrice" type="text" id="itemPrice2" size="10" /></p>
-<p><label for="month2" class="texts">Date Acquired:</label> <select
+          </select></td>
+        </tr>
+        <tr>
+          <td class="align_right">Price:</td>
+          <td><input type="text" name="itemPrice" id="itemPrice2" /></td>
+        </tr>
+        <tr>
+          <td class="align_right">Date Acquired:</td>
+          <td><select
 	name="month" id="month2">
 	<option value="01">Jan</option>
 	<option value="02">Feb</option>
@@ -133,44 +156,59 @@
 	<option>2013</option>
 	<option>2015</option>
 	<option>2016</option>
-</select></p>
-<p><label for="stockNumber3" class="texts">Stock Number:</label> <input
-	name="stockNumber" type="text" id="stockNumber3" size="20" /></p>
-<p><label for="inventoryItemNum3" class="texts">Inv. Item
-Number:</label> <input type="text" name="inventoryItemNum"
-	id="inventoryItemNum3" /></p>
-<p><label for="itemPropertyNumber3" class="texts">Property
-Number:</label> <input type="text" name="itemPropertyNumber"
-	id="itemPropertyNumber3" /></p>
-<p><label for="itemStatus3" class="texts">*Item Status:</label> <select
-	name="itemStatus" id="itemStatus3">
-	<%
+</select></td>
+        </tr>
+        <tr>
+          <td class="align_right">Stock Number:</td>
+          <td><input type="text" name="stockNumber" id="stockNumber3" /></td>
+        </tr>
+        <tr>
+          <td class="align_right">Inventory Item Number:</td>
+          <td><input type="text" name="inventoryItemNum" id="inventoryItemNum3" /></td>
+        </tr>
+        <tr>
+          <td class="align_right">Property Number:</td>
+          <td><input type="text" name="itemPropertyNumber" id="itemPropertyNumber3" /></td>
+        </tr>
+        <tr>
+          <td class="align_right">*Item Status:</td>
+          <td><select name="itemStatus" class="menulist" id="itemStatus3">
+          <%
 		for (ItemStatus s : statuses) {
 	%>
 	<option><%=s%></option>
 	<%
 		}
 	%>
-</select></p>
-<p><label for="itemCondition3" class="texts">*Item
-Condition:</label> <select name="itemCondition" id="itemCondition3">
-	<%
+          </select></td>
+        </tr>
+        <tr>
+          <td class="align_right">*Item Condition:</td>
+          <td><select name="itemCondition" class="menulist" id="itemCondition3">
+          <%
 		for (ItemCondition s : conditions) {
 	%>
 	<option><%=s%></option>
 	<%
 		}
 	%>
-</select></p>
-<p><input type="submit" name="addItemBtn " id="addItemBtn"
-	style="background-color: #7B1113; color: white; font-family: Lucida Grande; font-size: 20px;"
-	value="Add" /></p>
-<p><em><strong>Please check your input.</strong> </em></p>
-<p><em>*required fields</em></p>
-</form>
+          </select></td>
+        </tr>
+        <tr>
+          <td class="align_right">&nbsp;</td>
+          <td><br />
+            <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="ADD" />
+            <br /></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td class="table_footer"></td>
+    </tr>
+  </table>
+  </form>
 </div>
 
-<jsp:include page="../copyright.jsp" />
+<!--<div id="footer"></div>-->
 </body>
 </html>
-

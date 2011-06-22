@@ -25,7 +25,7 @@
 </script>
 </head>
 
-<body">
+<body>
 <jsp:include page="/logo.jsp" />
 <jsp:include page="/navigation.jsp" />
 
@@ -34,7 +34,37 @@
 	href="/items">Items</a> > <a href="/items?id=${item.id}">View Item</a>
 </div>
 
-<div id="tableheader">Item Information</div>
+<div id="tableheader_2">Item Information</div>
+
+
+<!--<div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
+<div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
+<div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="100%" border="0" cellspacing="0">
+  <tr>
+    <td width="32%">&nbsp;</td>
+    <td width="68%"><form id="form2" name="form2" method="post" action="">
+      <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
+    </form></td>
+  </tr>
+  <tr>
+    <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/items" target="_top" class="links">Items List</a> &gt; <em><strong>Add Item</strong></em><strong></strong></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div id="form_table">
+	<form action="/items" method="post"  name="form">
+  <table width="100%" frame="box" cellspacing="0" id="table">
+    <tr>
+      <td class="header_rows"><div class="header_1">Item Information</div></td>
+    </tr>
+    <tr>
+-->    
+
 
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="">
