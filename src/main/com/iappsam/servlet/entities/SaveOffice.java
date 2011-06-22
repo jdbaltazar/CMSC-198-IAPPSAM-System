@@ -1,6 +1,7 @@
 package com.iappsam.servlet.entities;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,42 +47,39 @@ public class SaveOffice extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("....inside saveoffice.java");
-
-		RequestDispatcher view = request.getRequestDispatcher("AddOffice.jsp");
-
-		// String divisionName = (String)request.getParameter("divisionName");
-
-		//
-		// System.out.println("divisionname: "+divisionName);
-		// System.out.println("officename: "+officeName);
 
 		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
 		String officeName = request.getParameter("officeName");
 
-		if (officeName != null) {
-			if (!officeName.equalsIgnoreCase("")) {
+		RequestDispatcher view = request.getRequestDispatcher("AddOffice.jsp");
+		DivisionOffice office, newOffice;
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+		try {
+			office = doManager.getDivisionOffice(dOfficeID);
+			DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
 
-				DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-				DivisionOffice dOffice;
-				try {
-					dOffice = doManager.getDivisionOffice(dOfficeID);
-					DivisionOffice office = new DivisionOffice(dOffice.getDivisionName(), officeName);
-					doManager.addDivisionOffice(office);
-					request.setAttribute("dOfficeID", "" + dOffice.getId());
-					view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
-				} catch (TransactionException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (DuplicateEntryException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			if (officeName != null && !officeName.equalsIgnoreCase("")) {
+				newOffice = new DivisionOffice(office.getDivisionName(), officeName);
+				doManager.addDivisionOffice(newOffice);
+				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
+
+				request.setAttribute("offices", offices);
+				request.setAttribute("dOfficeID", "" + dOffice.getId());
+				view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
+			} else {
+				request.setAttribute("dOffice", dOffice);
 			}
+
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DuplicateEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		System.out.println("end of saving office");
 		view.forward(request, response);
+
 	}
 
 }
