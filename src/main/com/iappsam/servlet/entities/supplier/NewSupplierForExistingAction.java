@@ -1,39 +1,37 @@
 package com.iappsam.servlet.entities.supplier;
 
 import java.io.IOException;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.Contact;
-import com.iappsam.ContactType;
 import com.iappsam.Employee;
-import com.iappsam.Person;
 import com.iappsam.Supplier;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.util.ApplicationContext;
 
-public class ViewSupplierAction implements Action {
+public class NewSupplierForExistingAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		// TODO Auto-generated method stub
-
-		String sID = request.getParameter("supplierID");
-		int supplierId = Integer.parseInt(sID);
+		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER_FOR_EXISTING);
+		List<Employee> employees = new ArrayList<Employee>();
 
 		SupplierManager sManager = new SupplierManagerSession();
-		Supplier supplier = sManager.getSupplier(supplierId);
 
-		request.setAttribute("supplier", supplier);
+		List<Supplier> suppliers = sManager.getAllSuppliers();
+		for (Supplier s : suppliers) {
+			if (!employees.contains(s.getContactPerson()))
+				employees.add(s.getContactPerson());
+		}
 
-		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.VIEW_SUPPLIER);
+		request.setAttribute("employees", employees);
 		view.forward(request, response);
 	}
-
+	
 }

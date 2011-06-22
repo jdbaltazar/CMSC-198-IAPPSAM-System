@@ -66,9 +66,11 @@
     <tr>
       <td width="54%"><form id="form5" name="form5" method="post" action="supplier">
         <input name="supplierBtn" type="submit" class="menubtn" id="supplierBtn" value="Supplier" />
+        <input type="hidden" name="supplier-action" value="view-suppliers"/>
       </form></td>
       <td width="18%"><form id="form6" name="form6" method="post" action="supplier">
         <input name="addSupplierBtn" type="submit" class="button2" id="addSupplierBtn" value="Add&gt;&gt;" />
+      	<input type="hidden" name="supplier-action" value="new-supplier"/>
       </form></td>
     </tr>
     <tr>
@@ -79,7 +81,7 @@
       <td><form id="form8" name="form8" method="post" action="entities/building/ViewBuildings.do">
         <input name="buildingBtn" type="submit" class="menubtn" id="buildingBtn" value="Building" />
       </form></td>
-      <td><form id="form9" name="form9" method="post" action="AddBuilding.do" >
+      <td><form id="form9" name="form9" method="post" action="entities/building/AddBuilding.do" >
         <input name="addBuildingBtn" type="submit" class="button2" id="addBuildingBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>
@@ -87,7 +89,7 @@
       <td><form id="form24" name="form24" method="post" action="entities/division/SearchDivisions.do">
         <input name="divisionOfficeBtn" type="submit" class="menubtn" id="divisionOfficeBtn" value="Division/Office" />
       </form></td>
-      <td><form id="form25" name="form25" method="post" action="AddDivision.jsp">
+      <td><form id="form25" name="form25" method="post" action="entities/division/AddDivision.jsp">
         <input name="addDivisionBtn" type="submit" class="button2" id="addDivisionBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>
@@ -95,7 +97,7 @@
       <td><form id="form26" name="form26" method="post" action="entities/employees/SearchEmployee.do">
         <input name="employeeBtn" type="submit" class="menubtn" id="employeeBtn" value="Employee" />
       </form></td>
-      <td><form id="form27" name="form27" method="post" action="AddEmployee.jsp">
+      <td><form id="form27" name="form27" method="post" action="entities/employees/AddEmployee.jsp">
         <input name="addEmployeeBtn" type="submit" class="button2" id="addEmployeeBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>

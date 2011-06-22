@@ -1,240 +1,269 @@
 @charset "utf-8";
-
 /* CSS Document */
+
 div#form_table {
-	/* let's say you want to center this <div id="centerme">Something</div>
+  /* let's say you want to center this <div id="centerme">Something</div>
 	   and make it 60% wide but centered on the screen.*/
-	/* background-color:#FFFFCC;*/
-	margin: 0 auto;
-	width: 35%; /* 60% - 4% = 56% */
-	height: inherit; /* see above */
-	border: none;
-	position: absolute;
-	top: 50%; /* 100% - 60% = 40% / 2 = 20% */
-	left: 34%; /* same as above */
-	/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
+ /* background-color:#FFFFCC;*/
+  margin:0 auto;
+  width:35%; /* 60% - 4% = 56% */
+  height:inherit; /* see above */
+  border:none;
+	position:absolute;
+	top:50%; /* 100% - 60% = 40% / 2 = 20% */
+	left:34%;  /* same as above */
+/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
 
 div#menu_2 {
-	margin: 0 auto;
-	width: 25%;
-	height: inherit;
-	border: none;
-	position: absolute;
-	top: 54%;
-	left: 38%;
-	/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
+  margin:0 auto;
+  width:25%;
+  height:inherit;
+  border:none;
+	position:absolute;
+	top:54%;
+	left:38%;
+/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
 
-.align_right {
-	text-align: right;
-	font-family: Lucida Grande;
-	font-size: 12px;
-	font-weight: bold;
-	width: 45%;
+.align_right{
+	text-align:right;
+	font-family:Lucida Grande; 
+	font-size:12px; 
+	font-weight:bold;
+	width:45%;
 }
 
-.align_center {
-	text-align: center;
-	font-family: Lucida Grande;
-	font-size: 12px;
-	font-weight: bold;
+.align_center{
+	text-align:center;
+	font-family:Lucida Grande; 
+	font-size:12px; 
+	font-weight:bold;
 }
 
-#align_left {
-	text-align: left;
+#align_left{
+	text-align:left;
 }
 
-#table {
-	background-color: #EEE0E5;
-	border: none;
+#table{
+	background-color:#EEE0E5;
+	border:none;
 }
 
-#tableheader {
-	height: 4%;
-	width: 35%;
-	left: 34%;
-	top: 50.5%;
-	position: absolute;
-	margin: 0 auto;
-	background-color: #7B1113;
+#tableheader{
+	height:4%;
+	width:35%;
+	left:34%;
+	top:50.5%;
+	position:absolute;
+	margin:0 auto;
+	
+	background-color:#7B1113;
 }
 
-#tableheadername {
-	height: 4%;
-	width: 35%;
-	left: 35%;
-	top: 50.8%;
-	position: absolute;
-	margin: 0 auto;
-	font-family: Lucida Grande;
-	color: white;
-	font-size: 14px;
-	font-weight: bold;
+#tableheadername{
+	height:4%;
+	width:35%;
+	left:35%;
+	top:50.8%;
+	position:absolute;
+	margin:0 auto;
+	font-family:Lucida Grande;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
 }
-
-.button {
-	font-size: 14px;
-	font-family: Lucida Grande;
-	background-color: #7B1113;
-	color: white;
+.button{
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:#7B1113;
+	color:white;
 	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 
-.button:hover {
-	font-weight: bold;
+.button:hover{
+	font-weight:bold;
 	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
 }
 
-#requiredLabel {
-	font-family: Lucida Grande;
-	font-size: 11px;
-	color: red;
-	font-style: italic;
+#requiredLabel{
+	font-family:Lucida Grande;
+	font-size:11px;
+	color:red;
+	font-style:italic;
 }
 
-.table_footer {
-	border: none;
-	height: 6px;
-	margin: 0 auto;
-	background-color: #7B1113;
+.table_footer{
+	border:none;
+	height:6px;
+	margin:0 auto;
+	background-color:#7B1113;
 }
 
-.menulist {
-	width: 120px;
+.menulist{
+	width:120px;
 }
 
-.header_1 {
-	font-family: Lucida Grande;
-	color: white;
-	font-size: 14px;
-	font-weight: bold;
-	background-color: #7B1113;
-	margin-left: 10px;
-	border: none;
+.header_1{
+	font-family:Lucida Grande;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+	background-color:#7B1113;
+	
+	margin-left:10px;
+	border:none;
 }
 
-.header_rows {
-	background-color: #7B1113;
+.header_rows{
+	background-color:#7B1113;
 }
 
-.no_border_table {
-	border: none;
+.no_border_table{
+	border:none;
 }
 
-.header_2 {
-	font-family: Lucida Grande;
-	color: white;
-	font-size: 12px;
-	font-weight: bold;
-	background-color: #7B1113;
-	margin-left: 10px;
-	border: none;
+.header_2{
+	font-family:Lucida Grande;
+	color:white;
+	font-size:12px;
+	font-weight:bold;
+	background-color:#7B1113;
+	
+	margin-left:10px;
+	border:none;
 }
 
-.menubtn {
-	height: 20px;
-	width: 100%;
-	font-size: 14px;
-	font-family: Lucida Grande;
-	background-color: #EEE0E5;
-	color: #030;
+.menubtn{
+	height:20px;
+	width:100%;
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:#EEE0E5;
+	color:#030;
 	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 
-.menubtn:hover {
-	font-weight: bold;
-	color: #060;
+.menubtn:hover{
+	font-weight:bold;
+	color:#060;
 	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
 }
 
-.main_menu_header {
-	width: 10%;
-	text-align: center;
-	background-color: #7B1113;
-	font-family: Lucida Grande;
-	color: white;
-	font-size: 16px;
-	font-weight: bold;
+.main_menu_header{
+	width:10%;
+	text-align:center;
+	background-color:#7B1113; 
+	font-family:Lucida Grande; 
+	color:white; 
+	font-size:16px;
+	 font-weight:bold;
 }
 
-.labels {
-	background-color: #CCC;
-	font-family: Lucida Grande;
-	font-size: 14px;
-	text-align: center;
+.labels{
+	 background-color:#CCC;
+	 font-family:Lucida Grande; 
+	 font-size:14px;
+	 text-align:center;
 }
 
 div#menu_1 {
-	margin: 0 auto;
-	width: 28%;
-	height: inherit;
-	border: none;
+  margin:0 auto;
+  width:28%;
+  height:inherit;
+  border:none;
+	position:absolute;
+	top:48%;
+
+	left:20%;
+}
+
+div#menu_1_forms{
+	margin:0 auto;
+	width:28%;
+	height:inherit;
+	border:none;
 	position: absolute;
-	top: 48%;
-	left: 20%;
+	top:48%;
+	
+	left:57%;
 }
 
-div#menu_1_forms {
-	margin: 0 auto;
-	width: 28%;
-	height: inherit;
-	border: none;
-	position: absolute;
-	top: 48%;
-	left: 57%;
-}
-
-.button2 {
-	width: 100%;
-	font-size: 10px;
-	font-family: Lucida Grande;
-	background-color: white;
-	color: #7B1113;
+.button2{
+	width:100%;
+	font-size:10px;
+	font-family:Lucida Grande;
+	background-color:white;
+	color:#7B1113;
 	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 
-.button2:hover {
-	font-weight: bold;
-	color: #060;
-	/*	background:#EEE0E5;;*/
+.button2:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
 }
 
-.smallbutton {
-	font-size: 11px;
-	font-family: Lucida Grande;
-	background-color: #7B1113;
-	color: white;
+.bkgrnd_white{
+	background-color:white;
+}
+
+.linkBtn{
+	text-decoration:none;
+	width:100%;
+	font-size:14px;
+	font-family:Lucida Grande;
+	background-color:white;
+	color:#7B1113;
 	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
 
-.smallbutton:hover {
-	font-weight: bold;
+.linkBtn:hover{
+	font-weight:bold;
+	color:#060;
+/*	background:#EEE0E5;;*/
 	border-left: 1px solid #7B1113;
-	border-right: 1px solid #7B1113;
-	border-top: 1px solid #7B1113;
-	border-bottom: 1px solid #7B1113;
+  border-right: 1px solid #7B1113;
+  border-top: 1px solid #7B1113;
+  border-bottom: 1px solid #7B1113;
+}
+
+.txtfield_no_borders{
+	width:100%;
+	text-align:center;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
+}
+
+.no_border{
+	width:35;
+	text-align:center;
+	border-bottom:none;
+	border-left:none;
+	border-right:none;
+	border-top:none;
 }
