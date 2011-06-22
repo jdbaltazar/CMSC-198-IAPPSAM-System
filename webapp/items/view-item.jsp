@@ -25,7 +25,7 @@
 </script>
 </head>
 
-<body">
+<body>
 <jsp:include page="/logo.jsp" />
 <jsp:include page="/navigation.jsp" />
 
