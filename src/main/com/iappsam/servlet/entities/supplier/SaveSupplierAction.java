@@ -67,7 +67,6 @@ public class SaveSupplierAction implements Action {
 		}else{
 			System.out.println("supplier is not valid!!");
 			request.setAttribute("supplier", supplier);
-			view = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER);
 		}
 
 		view.forward(request, response);

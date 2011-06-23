@@ -14,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
+@Indexed
 @Entity
 public class Person implements Validatable {
 
@@ -22,9 +26,11 @@ public class Person implements Validatable {
 	@Column(name = "Person_ID")
 	private int id;
 
+	@Field(name = "title")
 	@Column(name = "Title")
 	private String title;
 
+	@Field(name = "name")
 	@Column(name = "Name")
 	private String name;
 
