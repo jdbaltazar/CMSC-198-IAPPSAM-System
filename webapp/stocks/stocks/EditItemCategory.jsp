@@ -43,7 +43,7 @@
             <td class="align_right"><br />
               Item Category:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemCategory" id="itemCategory" value = "<%=itemCategory.getName()%>"/>
+            <td><br />              <input name="itemCategory" type="text" class="required" id="itemCategory" value = "<%=itemCategory.getName()%>" maxlength="200"/>
               <br />
               <br /></td>
           </tr>

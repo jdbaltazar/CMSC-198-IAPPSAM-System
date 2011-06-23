@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Item Condition:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemCondition" id="itemCondition" />
+            <td><br />              <input name="itemCondition" type="text" class="required" id="itemCondition" />
               <br />
               <br /></td>
           </tr>

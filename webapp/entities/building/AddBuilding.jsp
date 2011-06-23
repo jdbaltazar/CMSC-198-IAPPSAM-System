@@ -39,13 +39,13 @@
           <tr>
             <td class="align_right"><br />
               *Building Name:</td>
-            <td><br />              <input type="text" name="name" id="buildingName" /></td>
+            <td><br />              <input name="name" type="text" class="required" id="buildingName" maxlength="80" /></td>
           </tr>
           <tr>
             <td class="align_right"><br />
               Address:<br />
               <br /></td>
-            <td><input type="text" name="address" id="address" /></td>
+            <td><input name="address" type="text" id="address" maxlength="200" /></td>
           </tr>
           <tr>
             <td class="align_right">&nbsp;</td>

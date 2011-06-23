@@ -59,8 +59,8 @@
 				<br />
 				</td>
 				<td><br />
-				<input type="text" name="newName" id="newName"
-					value="<%=dOffice.getDivisionName()%>" /> <br />
+				<input name="newName" type="text" class="required" id="newName"
+					value="<%=dOffice.getDivisionName()%>" maxlength="80" /> <br />
 				<br />
 				</td>
 			</tr>

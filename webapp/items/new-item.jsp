@@ -72,11 +72,11 @@
         <tr>
           <td class="align_right"><br />
             *Description:</td>
-          <td><br />            <input type="text" name="description" id="itemDescription3" /></td>
+          <td><br />            <input name="description" type="text" class="required" id="itemDescription3" maxlength="500" /></td>
         </tr>
         <tr>
           <td class="align_right">*Unit:</td>
-          <td><select name="unit" class="menulist" id="itemUnit2">
+          <td><select name="unit" class="required_menulist" id="itemUnit2">
           <%
 		for (Unit s : units) {
 	%>
@@ -88,7 +88,7 @@
         </tr>
         <tr>
           <td class="align_right">*Item Category:</td>
-          <td><select name="itemCategory" class="menulist" id="itemCategory2">
+          <td><select name="itemCategory" class="required_menulist" id="itemCategory2">
           <%
 		for (ItemCategory s : categories) {
 	%>
@@ -100,7 +100,7 @@
         </tr>
         <tr>
           <td class="align_right">Price:</td>
-          <td><input type="text" name="itemPrice" id="itemPrice2" /></td>
+          <td><input name="itemPrice" type="text" id="itemPrice2" maxlength="50" /></td>
         </tr>
         <tr>
           <td class="align_right">Date Acquired:</td>
@@ -174,19 +174,19 @@
         </tr>
         <tr>
           <td class="align_right">Stock Number:</td>
-          <td><input type="text" name="stockNumber" id="stockNumber3" /></td>
+          <td><input name="stockNumber" type="text" id="stockNumber3" maxlength="45" /></td>
         </tr>
         <tr>
           <td class="align_right">Inventory Item Number:</td>
-          <td><input type="text" name="inventoryItemNum" id="inventoryItemNum3" /></td>
+          <td><input name="inventoryItemNum" type="text" id="inventoryItemNum3" maxlength="60" /></td>
         </tr>
         <tr>
           <td class="align_right">Property Number:</td>
-          <td><input type="text" name="itemPropertyNumber" id="itemPropertyNumber3" /></td>
+          <td><input name="itemPropertyNumber" type="text" id="itemPropertyNumber3" maxlength="45" /></td>
         </tr>
         <tr>
           <td class="align_right">*Item Status:</td>
-          <td><select name="itemStatus" class="menulist" id="itemStatus3">
+          <td><select name="itemStatus" class="required_menulist" id="itemStatus3">
           <%
 		for (ItemStatus s : statuses) {
 	%>
@@ -198,7 +198,7 @@
         </tr>
         <tr>
           <td class="align_right">*Item Condition:</td>
-          <td><select name="itemCondition" class="menulist" id="itemCondition3">
+          <td><select name="itemCondition" class="required_menulist" id="itemCondition3">
           <%
 		for (ItemCondition s : conditions) {
 	%>

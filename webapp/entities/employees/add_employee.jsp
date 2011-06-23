@@ -55,7 +55,7 @@
 				<td class="align_right" id="align_right"><br />
 				Title:</td>
 				<td><br />
-				<input type="text" name="title" id="title"
+				<input name="title" type="text" id="title" maxlength="10"
 					<%String title = (String) request.getAttribute("title");
 			if (title != null && !title.isEmpty())
 				out.print("value=" + '"' + title + '"');%> /></td>
@@ -64,7 +64,7 @@
 				<td class="align_right" id="align_right">*Name:<br />
 				<br />
 				</td>
-				<td><input type="text" name="name" id="name"
+				<td><input name="name" type="text" class="required" id="name" maxlength="80"
 					<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
 			if (nameOK != null && !nameOK.isEmpty()
@@ -100,7 +100,7 @@
 				<td class="align_right"><br />
 				*Designation:</td>
 				<td><br />
-				<input type="text" name="designation" id="designation"
+				<input name="designation" type="text" class="required" id="designation" maxlength="45"
 					<%String designation = (String) request.getAttribute("designation");
 			String employeeNo = (String) request.getAttribute("employeeNo");
 			String designation1OK = (String) request
@@ -112,8 +112,8 @@
 			</tr>
 			<tr>
 				<td class="align_right">Employee Number:</td>
-				<td><input type="text" name="employeeNumber"
-					id="employeeNumber"
+				<td><input name="employeeNumber" type="text"
+					id="employeeNumber" maxlength="45"
 					<%if (employeeNo != null && employeeNo != null
 					&& !employeeNo.isEmpty())
 				out.print("value=" + '"' + employeeNo + '"');%> /></td>
@@ -122,7 +122,7 @@
 				<td class="align_right">Division/Office:<br />
 				<br />
 				</td>
-				<td><select name="division/office" class="menulist"
+				<td><select name="division/office" class="required_menulist"
 					id="division/office">
 					<%
 						for (int i = 0; i < dList.size(); i++) {
@@ -159,7 +159,7 @@
 				<td class="align_right"><br />
 				Cellphone Number:</td>
 				<td><br />
-				<input type="text" name="cellphoneNumber" id="cellphoneNumber"
+				<input name="cellphoneNumber" type="text" id="cellphoneNumber" maxlength="45"
 					<%String mobileNumber = (String) request.getAttribute("mobileNumber");
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				out.print("value=" + '"' + mobileNumber + '"');
@@ -167,7 +167,7 @@
 			</tr>
 			<tr>
 				<td class="align_right">Landline:</td>
-				<td><input type="text" name="landline" id="landline"
+				<td><input name="landline" type="text" id="landline" maxlength="45"
 					<%String landline = (String) request.getAttribute("landline");
 			if (landline != null && !landline.isEmpty()) {
 				out.print("value=" + '"' + landline + '"');
@@ -175,7 +175,7 @@
 			</tr>
 			<tr>
 				<td class="align_right">E-mail Address:</td>
-				<td><input type="text" name="e-mail_ad" id="e-mail_ad"
+				<td><input name="e-mail_ad" type="text" id="e-mail_ad" maxlength="45"
 					<%String emailad = (String) request.getAttribute("emailad");
 			if (emailad != null && !emailad.isEmpty()) {
 				out.print("value=" + '"' + emailad + '"');

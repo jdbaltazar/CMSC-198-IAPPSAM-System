@@ -40,7 +40,8 @@
 }
 
 .logout:hover{
-	font-weight:bold;
+	color:#7B1113;
+	background-color:#dbb4c2;
 	border-left: 1px solid #7B1113;
   border-right: 1px solid #7B1113;
   border-top: 1px solid #7B1113;

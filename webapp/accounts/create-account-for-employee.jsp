@@ -66,7 +66,7 @@
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
 				<td class="align_right">*Employee Name:</td>
-				<td><select name="personID" class="menulist" id="personID">
+				<td><select name="personID" class="required_menulist" id="personID">
 					<%
 						int i = 0;
 						for (Person p : persons) {
@@ -80,24 +80,24 @@
 						i++;
 						}
 					%>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Username:</td>
-				<td><input type="text" name="username" id="username" /></td>
+				<td><input name="username" type="text" class="required" id="username" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Password:</td>
-				<td><input type="password" name="password" id="password" /></td>
+				<td><input name="password" type="password" class="required" id="password" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Re-enter Password:</td>
-				<td><input type="password" name="reenterPassword"
-					id="reenterPassword" /></td>
+				<td><input name="reenterPassword" type="password" class="required"
+					id="reenterPassword" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Account Type:</td>
-				<td><select name="accountType" class="menulist"
+				<td><select name="accountType" class="required_menulist"
 					id="accountType">
 					<%
 						for (int j = 0; j < accountTypes.length; j++) {
@@ -110,7 +110,7 @@
 					%>
 
 
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>

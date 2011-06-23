@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Item Category:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemCategory" id="itemCategory" />
+            <td><br />              <input name="itemCategory" type="text" class="required" id="itemCategory" />
               <br />
               <br /></td>
           </tr>

@@ -59,8 +59,8 @@
 				<br />
 				</td>
 				<td><br />
-				<input type="text" name="newName" id="newName"
-					value="<%=office.getOfficeName()%>" /> <input type="hidden"
+				<input name="newName" type="text" class="required" id="newName"
+					value="<%=office.getOfficeName()%>" maxlength="80" /> <input type="hidden"
 					name="officeID" value=<%="" + office.getId()%>></input> <br />
 				<br />
 				</td>
