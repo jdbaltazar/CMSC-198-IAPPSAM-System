@@ -46,11 +46,11 @@ public class PRReport extends AbstractReport {
 	@Override
 	protected void initPropertyMap() {
 		propertyMap.put("PR_NUMBER", form.getPrNumber());
-		propertyMap.put("PR_DATE", form.getPrDate() + "");
+		propertyMap.put("PR_DATE", form.getPrDate() == null ? "" : form.getPrDate() + "");
 		propertyMap.put("SAI_NUMBER", form.getSaiNumber());
-		propertyMap.put("SAI_DATE", form.getSaiDate() + "");
+		propertyMap.put("SAI_DATE", form.getSaiDate() == null ? "" : form.getSaiDate() + "");
 		propertyMap.put("ALOBS_NUMBER", form.getAlobsNumber());
-		propertyMap.put("ALOBS_DATE", form.getAlobsDate() + "");
+		propertyMap.put("ALOBS_DATE", form.getAlobsDate() == null ? "" : form.getAlobsDate() + "");
 		propertyMap.put("APPROVED_BY_NAME", form.getApprovedBy().getPerson().getName());
 		propertyMap.put("APPROVED_BY_DESIGNATION", form.getApprovedBy().getDesignation());
 		propertyMap.put("REQUESTED_BY_NAME", form.getRequestedBy().getPerson().getName());
