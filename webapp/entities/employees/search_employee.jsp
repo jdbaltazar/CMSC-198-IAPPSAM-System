@@ -101,10 +101,11 @@
 		else
 			out.print("class=\"tablerow_2\"");
 					String s = "";
-					if(employeeList.get(i).getDivisionOffice().getOfficeName()!=null)
+					if(employeeList.get(i).getDivisionOffice()!=null&&employeeList.get(i).getDivisionOffice().getOfficeName()!=null)
 						s= "/"+employeeList.get(i).getDivisionOffice().getOfficeName();
 					%>
-		><%=employeeList.get(i).getDivisionOffice().getDivisionName()+s %></td>
+		><%if(employeeList.get(i).getDivisionOffice()!=null)
+			out.print(employeeList.get(i).getDivisionOffice().getDivisionName()+s); %></td>
 	</tr>
 	<%
 		}

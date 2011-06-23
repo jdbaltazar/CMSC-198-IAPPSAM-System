@@ -9,10 +9,8 @@ public class WebCallbackHandler implements CallbackHandler {
 	private String password;
 
 	public WebCallbackHandler(ServletRequest request) {
-
 		username = request.getParameter("username");
 		password = request.getParameter("password");
-
 	}
 
 	@Override
