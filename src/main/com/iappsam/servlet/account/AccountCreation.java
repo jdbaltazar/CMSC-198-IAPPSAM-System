@@ -64,7 +64,7 @@ public class AccountCreation extends HttpServlet {
 			request.setAttribute("passwordOK", "false");
 		else
 			request.setAttribute("passwordOK", "true");
-		
+
 		String designation1OK = null;
 		if (designation[0].isEmpty() && !employeeNo[0].isEmpty()) {
 			designation1OK = "true";
@@ -79,7 +79,7 @@ public class AccountCreation extends HttpServlet {
 		}
 
 		RequestDispatcher view = request
-				.getRequestDispatcher("CreateAccount.jsp");
+				.getRequestDispatcher("create_account.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -119,7 +119,7 @@ public class AccountCreation extends HttpServlet {
 		username = request.getParameter("username");
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
-		acctType = request.getParameter("acctType");
+		acctType = request.getParameter("accountType");
 		boolean mustFail = false;
 		for (int i = 0; i < designation.length; i++) {
 			if (designation[i].isEmpty() && !employeeNo[i].isEmpty())
@@ -152,14 +152,12 @@ public class AccountCreation extends HttpServlet {
 					&& !emailad.isEmpty()) {
 				Contact email = new Contact(emailad, ContactType.EMAIL);
 				person.addContact(email);
-				request.setAttribute("email", email);
 			}
 
 			if (landline != null && !landline.equalsIgnoreCase("null")
 					&& !landline.isEmpty()) {
 				Contact landline2 = new Contact(landline, ContactType.LANDLINE);
 				person.addContact(landline2);
-				request.setAttribute("landline", landline2);
 			}
 
 			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null")
@@ -167,10 +165,9 @@ public class AccountCreation extends HttpServlet {
 				Contact mobile = new Contact(mobileNumber, ContactType.MOBILE);
 
 				person.addContact(mobile);
-				request.setAttribute("mobile", mobile);
 			}
 			try {
-				
+
 				pManager.addPerson(person);
 				request.setAttribute("person", person);
 			} catch (TransactionException e) {
@@ -225,9 +222,9 @@ public class AccountCreation extends HttpServlet {
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
-				request.setAttribute("account", account);
+				request.setAttribute("userName", username);
 				RequestDispatcher view = request
-						.getRequestDispatcher("CreateAccountSuccess.jsp");
+						.getRequestDispatcher("view_account.jsp");
 				view.forward(request, response);
 			} catch (TransactionException e) {
 				failedResponse(request, response);

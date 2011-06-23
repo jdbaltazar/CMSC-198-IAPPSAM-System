@@ -14,34 +14,35 @@ import com.iappsam.ContactType;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class EmployeeCreation
  */
-@WebServlet("/entities/employees/CreateEmployee.do")
+@WebServlet("/entities/employees/AddEmployee.do")
 public class EmployeeCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String title;
 	private String name;
 	private String designation;
 	private String employeeNumber;
-	private String division;
-	private String office;
+	private String divisionOfficeID;
 	private String mobileNumber;
 	private String landline;
 	private String emailad;
-	private String designationID;
-	private DivisionOffice dOffice;
+	private DivisionOffice division;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -50,16 +51,16 @@ public class EmployeeCreation extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameter("designation");
 		employeeNumber = request.getParameter("employeeNumber");
-		division = request.getParameter("division");
-		office = request.getParameter("office");
-		mobileNumber = request.getParameter("mobileNumber");
+		divisionOfficeID = request.getParameter("division/office");
+		mobileNumber = request.getParameter("cellphoneNumber");
 		landline = request.getParameter("landline");
-		emailad = request.getParameter("emailad");
+		emailad = request.getParameter("e-mail_ad");
 
 		if (name.isEmpty() || designation.isEmpty()) {
 			addFail(request, response);
@@ -67,34 +68,9 @@ public class EmployeeCreation extends HttpServlet {
 			addSuccess(request, response);
 	}
 
-	private String getDivisionNameFromString(String input) {
-		String output = new String();
-		for (int i = 0; input != null && i < input.length(); i++) {
-			if (input.charAt(i) == ',')
-				output = input.substring(0, i - 1);
-		}
-		return output;
-	}
-
-	private String getOfficeNameFromString(String input) {
-		String output = new String();
-		for (int i = 0; input != null && i < input.length(); i++) {
-			if (input.charAt(i) == ',')
-				output = input.substring(i + 2);
-		}
-		return output;
-	}
-
-	private void addSuccess(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("title", title);
-		request.setAttribute("name", name);
-		request.setAttribute("designation", designation);
-		request.setAttribute("employeeNumber", employeeNumber);
-		request.setAttribute("mobileNumber", mobileNumber);
-		request.setAttribute("landline", landline);
-		request.setAttribute("emailad", emailad);
-		request.setAttribute("division", division);
-
+	private void addSuccess(HttpServletRequest request,
+			HttpServletResponse response) {
+		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person = new Person(title, name);
 
 		Contact c1;
@@ -102,39 +78,50 @@ public class EmployeeCreation extends HttpServlet {
 		Contact c3;
 
 		try {
+			System.out.println("Email" + emailad);
+			System.out.println("LandLine" + landline);
+			System.out.println("MobileNumber:" + mobileNumber);
 
-			System.out.println("Division Name:" + getDivisionNameFromString(division));
-			if (getOfficeNameFromString(division) != null)
-				System.out.println("Office Name:" + getOfficeNameFromString(division));
-			DivisionOffice dOffice = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(getDivisionNameFromString(division), getOfficeNameFromString(division));
-		
-			System.out.println("Email"+emailad);
-			System.out.println("LandLine"+landline);
-			System.out.println("MobileNumber:"+mobileNumber);
 			
 
+			if (emailad != null && !emailad.equalsIgnoreCase("null")
+					&& !emailad.isEmpty()) {
+				Contact email = new Contact(emailad, ContactType.EMAIL);
+				person.addContact(email);
+				request.setAttribute("emailad", email);
+			}
+
+			if (landline != null && !landline.equalsIgnoreCase("null")
+					&& !landline.isEmpty()) {
+				Contact landline2 = new Contact(landline, ContactType.LANDLINE);
+				person.addContact(landline2);
+				request.setAttribute("landline", landline2);
+			}
+
+			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null")
+					&& !mobileNumber.isEmpty()) {
+				Contact mobile = new Contact(mobileNumber, ContactType.MOBILE);
+
+				person.addContact(mobile);
+				request.setAttribute("mobile", mobile);
+			}
 			ApplicationContext.INSTANCE.getPersonManager().addPerson(person);
-			if (emailad != null && !emailad.isEmpty()) {
-				c1 = new Contact(emailad, ContactType.EMAIL);
-			
-				person.addContact(c1);
-				
-			}
-			if (landline != null && !landline.isEmpty()) {
-				c2 = new Contact(landline, ContactType.LANDLINE);
-			
-				person.addContact(c2);
-			}
-			if (mobileNumber != null && !mobileNumber.isEmpty()) {
-				c3 = new Contact(mobileNumber, ContactType.MOBILE);
-			
-				person.addContact(c3);
-			}
-			Employee employee = new Employee(designation, employeeNumber, person);
-			employee.setDivisionOffice(dOffice);
-			ApplicationContext.INSTANCE.getPersonManager().addEmployee(employee);
-			
-			RequestDispatcher view = request.getRequestDispatcher("EmployeeFinalize.jsp");
+			Employee employee = new Employee(designation, employeeNumber,
+					person);
+			employee.setDivisionOffice(dManager.getDivisionOffice(Integer
+					.parseInt(divisionOfficeID)));
+
+			request.setAttribute("title", title);
+			request.setAttribute("name", name);
+			request.setAttribute("designation", designation);
+			request.setAttribute("employeeNumber", employeeNumber);
+			request.setAttribute("division", dManager.getDivisionOffice(Integer
+					.parseInt(divisionOfficeID)));
+			ApplicationContext.INSTANCE.getPersonManager()
+					.addEmployee(employee);
+			request.setAttribute("employeeID", "" + employee.getId());
+			RequestDispatcher view = request
+					.getRequestDispatcher("view_employee.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e1) {
 			// TODO Auto-generated catch block
@@ -152,7 +139,8 @@ public class EmployeeCreation extends HttpServlet {
 
 	}
 
-	private void addFail(HttpServletRequest request, HttpServletResponse response) {
+	private void addFail(HttpServletRequest request,
+			HttpServletResponse response) {
 		try {
 			request.setAttribute("title", title);
 			request.setAttribute("name", name);
@@ -162,7 +150,8 @@ public class EmployeeCreation extends HttpServlet {
 			request.setAttribute("mobileNumber", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
-			RequestDispatcher view = request.getRequestDispatcher("AddEmployee.jsp");
+			RequestDispatcher view = request
+					.getRequestDispatcher("add_employee.jsp");
 			view.forward(request, response);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

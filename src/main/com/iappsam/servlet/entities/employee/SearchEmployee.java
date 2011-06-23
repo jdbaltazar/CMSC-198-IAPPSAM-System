@@ -19,7 +19,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class EmployeeCreation
  */
-@WebServlet("/entities/employees/SearchEmployee.do")
+@WebServlet("/entities/employees/search_employee.do")
 public class SearchEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +31,7 @@ public class SearchEmployee extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -85,7 +86,7 @@ public class SearchEmployee extends HttpServlet {
 		}
 
 		RequestDispatcher view = request
-				.getRequestDispatcher("SearchEmployee.jsp");
+				.getRequestDispatcher("search_employee.jsp");
 		view.forward(request, response);
 
 	}

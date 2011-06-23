@@ -30,21 +30,21 @@ public class ViewAccount extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
-		PersonManager pManager= new PersonManagerSession();
-		String userName =  request.getParameter("userName");
-
+		PersonManager pManager = new PersonManagerSession();
+		String userName = request.getParameter("userName");
 
 		ArrayList<Contact> mobileNumber = new ArrayList<Contact>();
 		ArrayList<Contact> landline = new ArrayList<Contact>();
 		ArrayList<Contact> emailad = new ArrayList<Contact>();
 
-
 		try {
 			Account account = aManager.getAccount(userName);
 			Set<Contact> contacts = account.getPerson().getContacts();
-			List<Employee> empList = pManager.getEmployeeByPerson(account.getPerson().getId());
+			List<Employee> empList = pManager.getEmployeeByPerson(account
+					.getPerson().getId());
 
 			for (Contact contact : contacts)
 				if (contact.getType() == ContactType.MOBILE)
@@ -52,22 +52,24 @@ public class ViewAccount extends HttpServlet {
 				else if (contact.getType() == ContactType.LANDLINE)
 					landline.add(contact);
 				else if (contact.getType() == ContactType.EMAIL)
-					landline.add(contact);
+					emailad.add(contact);
 			request.setAttribute("account", account);
-			request.setAttribute("empList",empList);
+			request.setAttribute("empList", empList);
 			request.setAttribute("mobile", mobileNumber);
 			request.setAttribute("landline", landline);
 			request.setAttribute("emailad", emailad);
-			request.setAttribute("userName",userName);
+			request.setAttribute("userName", userName);
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher view = request.getRequestDispatcher("../viewing/ViewAccount.jsp");
+		RequestDispatcher view = request
+				.getRequestDispatcher("../viewing/ViewAccount.jsp");
 		view.forward(request, response);
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

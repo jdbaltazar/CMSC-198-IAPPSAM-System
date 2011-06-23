@@ -94,10 +94,10 @@
       </form></td>
     </tr>
     <tr>
-      <td><form id="form26" name="form26" method="post" action="entities/employees/SearchEmployee.do">
+      <td><form id="form26" name="form26" method="post" action="entities/employees/search_employee.do">
         <input name="employeeBtn" type="submit" class="menubtn" id="employeeBtn" value="Employee" />
       </form></td>
-      <td><form id="form27" name="form27" method="post" action="entities/employees/AddEmployee.jsp">
+      <td><form id="form27" name="form27" method="post" action="entities/employees/add_employee.jsp">
         <input name="addEmployeeBtn" type="submit" class="button2" id="addEmployeeBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>
