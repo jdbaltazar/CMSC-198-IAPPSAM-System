@@ -93,7 +93,6 @@ public class DivisionOffice implements Validatable {
 	@Override
 	public boolean validate() {
 		boolean validDivisionName = divisionName != null && !divisionName.equals("");
-		boolean validOfficeName = officeName != null && !officeName.equals("");
-		return validDivisionName && validOfficeName;
+		return validDivisionName;
 	}
 }
