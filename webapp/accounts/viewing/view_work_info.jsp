@@ -52,7 +52,8 @@
 	String personID = request.getParameter("personID");
 	PersonManager pManager = new PersonManagerSession();
 
-	List<Employee> empList = pManager.getEmployeeByPerson(Integer.parseInt(personID));
+	List<Employee> empList = pManager.getEmployeeByPerson(Integer
+			.parseInt(personID));
 
 	System.out.println(personID);
 	if (empList == null) {
@@ -73,10 +74,10 @@
 		</td>
 		<td width="79%">&nbsp;</td>
 		<td width="4%">
-		<form id="form15" name="form15" method="get"
-			action="ViewAccount.do"><input name="backBtn" type="submit"
-			class="button" id="backBtn" value="Back" /> <input name="userName"
-			type="hidden" value="<%=request.getParameter("username")%>"></input></form>
+		<form id="form15" name="form15" method="get" action="ViewAccount.do"><input
+			name="backBtn" type="submit" class="button" id="backBtn" value="Back" />
+		<input name="userName" type="hidden"
+			value="<%=request.getParameter("username")%>"></input></form>
 		</td>
 	</tr>
 </table>
@@ -107,7 +108,10 @@
 		<div align="center">
 		<%
 			if (empList.get(i).getDivisionOffice().getOfficeName() != null)
-					out.print(empList.get(i).getDivisionOffice().getOfficeName());
+					out.print(empList.get(i).getDivisionOffice()
+							.getOfficeName());
+				else
+					out.print("&nbsp;");
 		%>
 		</div>
 		</td>
@@ -117,7 +121,10 @@
 		<blockquote>
 		<blockquote><input name="employee" type="hidden"
 			value="<%=empList.get(i).getId()%>" /> <input name="button"
-			type="submit" class="button" id="button" value="Edit" /></blockquote>
+			type="submit" class="button" id="button" value="Edit" /> <input
+			name="personID" type="hidden" value="<%=personID%>" /> <input
+			name="username" type="hidden"
+			value="<%=request.getParameter("username")%>" /></blockquote>
 		</blockquote>
 		</div>
 		</form>
@@ -129,7 +136,10 @@
 </table>
 <form id="form2" name="form2" method="post" action="">
 <p align="center"><input name="button2" type="submit" class="button"
-	id="button2" value="Add New Work Information" /></p>
+	id="button2" value="Add New Work Information" /> <input
+	name="personID" value="<%=personID%>" type="hidden" /> <input
+	name="username" type="hidden"
+	value="<%=request.getParameter("username")%>" /></p>
 </form>
 </div>
 </body>

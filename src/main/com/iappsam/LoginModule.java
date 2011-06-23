@@ -35,7 +35,7 @@ public class LoginModule {
 //						lContext = new LoginContext("WebCallbackHandler", new WebCallbackHandler(request));
 //						lContext.login();
 //						request.getSession().setAttribute("loginContext", lContext);
-//						request.getSession().setAttribute("username", username);
+					request.getSession().setAttribute("username", username);
 //						request.getSession().setAttribute("subject", lContext.getSubject());
 						return true;
 //					} catch (LoginException e) {
