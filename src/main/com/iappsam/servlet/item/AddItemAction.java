@@ -1,5 +1,10 @@
 package com.iappsam.servlet.item;
 
+import static com.iappsam.servlet.item.ItemAttribute.CATEGORIES;
+import static com.iappsam.servlet.item.ItemAttribute.CONDITIONS;
+import static com.iappsam.servlet.item.ItemAttribute.STATUSES;
+import static com.iappsam.servlet.item.ItemAttribute.UNITS;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Item;
 import com.iappsam.managers.ItemManager;
+import com.iappsam.managers.exceptions.TransactionException;
 
 public class AddItemAction implements Action {
 
@@ -54,7 +60,15 @@ public class AddItemAction implements Action {
 			itemManager.addItem(item);
 			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
-			request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP).forward(request, response);
+			try {
+				request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());
+				request.setAttribute(UNITS, itemManager.getAllUnits());
+				request.setAttribute(STATUSES, itemManager.getAllItemStatus());
+				request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
+				request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP).forward(request, response);
+			} catch (TransactionException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }

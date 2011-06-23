@@ -12,9 +12,6 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Item</title>
-<link href="../items/items.css" rel="stylesheet" type="text/css" />
-<link href="../items/add-item.css" rel="stylesheet" type="text/css" />
-<link href="../style.css" rel="stylesheet" type="text/css" />
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
@@ -75,11 +72,11 @@
         <tr>
           <td class="align_right"><br />
             *Description:</td>
-          <td><br />            <input type="text" name="itemDescription" id="itemDescription3" /></td>
+          <td><br />            <input type="text" name="description" id="itemDescription3" /></td>
         </tr>
         <tr>
           <td class="align_right">*Unit:</td>
-          <td><select name="itemUnit" class="menulist" id="itemUnit2">
+          <td><select name="unit" class="menulist" id="itemUnit2">
           <%
 		for (Unit s : units) {
 	%>
@@ -108,9 +105,9 @@
         <tr>
           <td class="align_right">Date Acquired:</td>
           <td>
- <!--         <input name="dateAcquired"
-					type="text" id="dateAcquired" /> -->
-          <select
+          <input name="date"
+					type="text" id="dateAcquired" />
+ <!--          <select
 	name="month" id="month2">
 	<option value="01">Jan</option>
 	<option value="02">Feb</option>
@@ -173,7 +170,7 @@
 	<option>2013</option>
 	<option>2015</option>
 	<option>2016</option>
-</select></td>
+</select>--></td>
         </tr>
         <tr>
           <td class="align_right">Stock Number:</td>

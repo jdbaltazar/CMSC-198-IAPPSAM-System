@@ -2,10 +2,10 @@
 .TableFooter {
 	font-family: Verdana, Geneva, sans-serif;
 	color: #333333;
+	margin-bottom: 10px;
 	font-size: 9px;
 	width: 100%;
 	border-color: #333333;
-	margin-top: 10px;
 }
 </style>
 <div id="footer">

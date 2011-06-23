@@ -44,10 +44,10 @@
 <div id="items_table">
   <table width="100%" border="0" cellspacing="0">
     <tr>
-      <td colspan="5" align="center"><form id="form4" name="form4" method="get" action="/items">
+      <td colspan="5" align="center"><form id="form4" name="form4" method="post" action="">
         <label for="searchField" class="align_right">Search:</label>
-        <input type="text" name="q" id="searchField" />
-        <input name="search" type="submit" class="button" id="goBtn" value="GO" />
+        <input type="text" name="searchField" id="searchField" />
+        <input name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
       </form></td>
     </tr>
     <tr>
@@ -64,25 +64,20 @@
       <td width="15%" class="tableheaders_forms">Item Category</td>
       <td width="15%" class="tableheaders_forms">Item Status</td>
     </tr>
-    </table>
-							
-	<c:forEach var="item" items="${items}" varStatus="loop"> 
-		<a href="/items?id=${item.id}">
+    
+	<c:forEach var="item" items="${items}" varStatus="loop"> <a href="/items?id=${item.id}">
 		<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
-			<table width="100%" style="table-layout:fixed">
-				<tr class="tablerow_1">
-					<td width="50%">${item.description}</td>
-					<td width="10%">${item.unit}</td>
-					<td width="10%">${item.price}</td>
-					<td width="15%">${item.condition}</td>
-					<td width="15%">${item.status}</td>
-			</tr>
-			</table>
-         </div>
-		</a>
-	 </c:forEach>
-
-  </div>
+				<tr class="tablerow_2">
+					<td>${item.description}</td>
+					<td>${item.unit}</td>
+					<td>${item.price}</td>
+					<td>${item.condition}</td>
+					<td>${item.description}</td>
+				</tr>
+		</div>
+	</a> </c:forEach>
+  </table>
+</div>
 <!--<div id="footer"></div>-->
 </body>
 </html>

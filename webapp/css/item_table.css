@@ -39,16 +39,20 @@
 
 .tablerow_1{
 	text-align:center;
+	color:black;
 	background-color:#EEE0E5;
 	font-family:Lucida Grande;
 	font-size:12px;
+	text-decoration:none;
 }
 
 .tablerow_2{
+	color:black;
 	text-align:center;
 	background-color:white;
 	font-family:Lucida Grande;
 	font-size:12px;
+	text-decoration:none;
 }
 
 .fields{

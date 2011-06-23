@@ -292,3 +292,7 @@ div#menu_1_forms{
 	font-family:Lucida Grande;
 	font-size:12px;
 }
+
+.no_text_decoration{
+	text-decoration:none;
+}

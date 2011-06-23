@@ -272,7 +272,10 @@ public class Item implements Serializable, Validatable {
 	}
 
 	public void setDateAcquired(String string) {
-		dateAcquired = java.sql.Date.valueOf(string);
+		try {
+			dateAcquired = java.sql.Date.valueOf(string);
+		} catch (Exception e) {
+		}
 	}
 
 	public void setDateAcquired(String year, String month, String day) {
@@ -291,7 +294,7 @@ public class Item implements Serializable, Validatable {
 	public void setPrice(String string) {
 		try {
 			price = Float.parseFloat(string);
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 		}
 	}
 
