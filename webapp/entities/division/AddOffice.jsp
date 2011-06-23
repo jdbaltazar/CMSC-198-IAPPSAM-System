@@ -43,7 +43,7 @@
             <td class="align_right"><br />
               Office Name:<br />
               <br /></td>
-            <td><br />              <input type="text" name="officeName" id="officeName" />
+            <td><br />              <input name="officeName" type="text" class="required" id="officeName" maxlength="80" />
  <input type="hidden"
 				name="dOfficeID" value=<%="" + dOffice.getId()%>></input>
               <br />

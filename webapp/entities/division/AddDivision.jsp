@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Division Name:<br />
               <br /></td>
-            <td><br />              <input type="text" name="divisionName" id="divisionName" />
+            <td><br />              <input name="divisionName" type="text" class="required" id="divisionName" maxlength="80" />
               <br />
               <br /></td>
           </tr>

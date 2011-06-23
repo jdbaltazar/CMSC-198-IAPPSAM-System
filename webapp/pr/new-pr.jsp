@@ -84,8 +84,8 @@
 						id="items" value="${line.item.id}" /> <input type="hidden"
 						name="items" value="${line.item.id}" /></td>
 					<td width="5%"><input name="quantity" type="text"
-						class="center_text_field" id="Quantity" size="2"
-						value="${line.quantity}" /></td>
+						class="required" id="Quantity"
+						value="${line.quantity}" size="2" maxlength="11" /></td>
 					<td width="9%">${line.item.unit}</td>
 					<td width="42%">${line.item.description}</td>
 					<td width="22%">${line.item.stockNumber}</td>
@@ -113,7 +113,7 @@
 			<tr>
 				<td class="other_fields_label">Department/Section:</td>
 				<td class="right_side_table"><select name="deptAndSection"
-					id="deptAndSection" class="menulist">
+					id="deptAndSection" class="required_menulist">
 					<c:forEach var="office" items="${offices}">
 						<c:choose>
 							<c:when test="${office.id eq form.divisionOffice.id}">
@@ -126,12 +126,12 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="other_fields_label">PR No.:</td>
 				<td class="right_side_table"><input type="text" name="prNumber"
-					id="PrNumber" maxlength="15" value="${form.prNumber}" /></td>
+					id="PrNumber" maxlength="45" value="${form.prNumber}" /></td>
 			</tr>
 			<tr>
 				<td class="other_fields_label">Date:</td>
@@ -142,7 +142,7 @@
 
 				<td class="other_fields_label">SAI No.:</td>
 				<td class="right_side_table"><input name="saiNumber"
-					type="text" id="saiNumber" maxlength="15" value="${form.saiNumber}" /></td>
+					type="text" id="saiNumber" maxlength="45" value="${form.saiNumber}" /></td>
 			</tr>
 			<tr>
 				<td class="other_fields_label">Date:</td>
@@ -153,7 +153,7 @@
 
 				<td class="other_fields_label">ALOBS No.:</td>
 				<td class="right_side_table"><input name="alobsNumber"
-					type="text" id="alobsNumber" maxlength="15"
+					type="text" id="alobsNumber" maxlength="45"
 					value="${form.alobsNumber}" /></td>
 			</tr>
 			<tr>
@@ -163,12 +163,12 @@
 			</tr>
             <tr>
             	<td class="other_fields_label">Purpose:</td>
-            	<td class="right_side_table"><input name="purpose" id="purpose" value="${form.purpose}"/></td>
+            	<td class="right_side_table"><input name="purpose" class="required" id="purpose" value="${form.purpose}" maxlength="200"/></td>
             </tr>
 			<tr>
 				<td class="other_fields_label">Requested by:</td>
 				<td class="right_side_table"><select name="requestedBy"
-					id="requestedBy" class="menulist">
+					id="requestedBy" class="required_menulist">
 					<c:forEach var="employee" items="${employees}">
 						<c:choose>
 							<c:when test="${employee.id eq form.requestedBy.id}">
@@ -179,12 +179,12 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="other_fields_label">Approved by:</td>
 				<td class="right_side_table"><select name="approvedby"
-					id="approvedby" class="menulist">
+					id="approvedby" class="required_menulist">
 					<c:forEach var="employee" items="${employees}">
 						<c:choose>
 							<c:when test="${employee.id eq form.approvedBy.id}">
@@ -195,7 +195,7 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-				</select></td>
+			  </select></td>
 			</tr>
 		</table>
 		</td>

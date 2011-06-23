@@ -144,7 +144,7 @@
 		<td colspan="2" align="center">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="2">&nbsp;</td>
+		<td colspan="2" align="center"><input name="export" type="submit" class="button" id="export" value="EXPORT" /></td>
 	</tr>
 </table>
 </div>

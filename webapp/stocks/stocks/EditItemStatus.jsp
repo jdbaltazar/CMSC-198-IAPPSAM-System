@@ -43,7 +43,7 @@
             <td class="align_right"><br />
               Item Status:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemStatus" id="itemStatus"value="<%=itemStatus.getName()%>" />
+            <td><br />              <input name="itemStatus" type="text" class="required" id="itemStatus"value="<%=itemStatus.getName()%>" maxlength="50" />
             <input type="hidden"
 	name="itemStatusID" value=<%="" + itemStatus.getId()%> />
               <br />

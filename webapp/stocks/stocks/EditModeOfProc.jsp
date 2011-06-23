@@ -44,7 +44,7 @@
             <td class="align_right"><br />
               Mode of Procurement:<br />
               <br /></td>
-            <td><br />              <input type="text" name="modeOfProcurementField" id="modeOfProcurement" value="<%=mop.getName()%>"/>
+            <td><br />              <input name="modeOfProcurementField" type="text" class="required" id="modeOfProcurement" value="<%=mop.getName()%>" maxlength="80"/>
               <br />
               <br /></td>
           </tr>
