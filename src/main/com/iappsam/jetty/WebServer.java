@@ -106,7 +106,7 @@ public class WebServer {
 		addServlet(new EditItemUnit(), "/stocks/stocks/EditItemUnit.do");
 		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
-		addServlet(new EmployeeCreation(), "/entities/employees/CreateEmployee.do");
+		addServlet(new EmployeeCreation(), "/entities/employees/AddEmployee.do");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new APPServlet(), "/app");
@@ -128,7 +128,7 @@ public class WebServer {
 		addServlet(new SaveOffice(), "/entities/division/SaveOffice.do");
 		addServlet(new SaveOfficeEdit(), "/entities/division/SaveOfficeEdit.do");
 		addServlet(new SearchDivisions(), "/entities/division/SearchDivisions.do");
-		addServlet(new SearchEmployee(), "/entities/employees/SearchEmployee.do");
+		addServlet(new SearchEmployee(), "/entities/employees/search_employee.do");
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new SupplierServlet(), "/supplier");

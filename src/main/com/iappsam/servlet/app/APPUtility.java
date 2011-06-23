@@ -11,6 +11,7 @@ import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
 import com.iappsam.servlet.form.FormParser;
 import com.iappsam.servlet.form.FormUtility;
@@ -53,6 +54,11 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 
 	@Override
 	public File getPdf(Form form) {
-		return null;
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public File getXls(Form form) throws ReportException {
+		throw new UnsupportedOperationException();
 	}
 }

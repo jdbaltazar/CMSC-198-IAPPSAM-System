@@ -28,4 +28,5 @@ public interface FormUtility {
 
 	File getPdf(Form form) throws ReportException;
 
+	File getXls(Form form) throws ReportException;
 }
