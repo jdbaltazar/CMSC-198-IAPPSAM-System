@@ -57,7 +57,7 @@
 				<br />
 				</td>
 				<td><br />
-				<input type="text" name="itemUnit" id="unitField" value = "<%=itemUnit.getName()%>"/> <br />
+				<input name="itemUnit" type="text" class="required" id="unitField" value = "<%=itemUnit.getName()%>" maxlength="20"/> <br />
 				<br />
 				</td>
 			</tr>

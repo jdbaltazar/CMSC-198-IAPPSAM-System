@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Disposal:<br />
               <br /></td>
-            <td><br />              <input type="text" name="disposalField" id="disposal" />
+            <td><br />              <input name="disposalField" type="text" class="required" id="disposal" />
               <br />
               <br /></td>
           </tr>

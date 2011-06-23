@@ -58,7 +58,7 @@
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
 				<td class="align_right">*Contact Person:</td>
-				<td><select name="employeeID" class="menulist" id="employeeID">
+				<td><select name="employeeID" class="required_menulist" id="employeeID">
 					<%
 						for (Employee e : employees) {
 					%>
@@ -75,25 +75,25 @@
 					<%
 						}
 					%>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Supplier Name:</td>
-				<td><input type="text" name="supplierName" id="supplierName"
-					<%if (supplier.getSupplierName() != null) {%>
-					value="<%=supplier.getSupplierName()%>" <%}%> /></td>
+				<td><input name="supplierName" type="text" class="required" id="supplierName"
+					value="<%=supplier.getSupplierName()%>" maxlength="80"
+					<%if (supplier.getSupplierName() != null) {%> <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Supplier Address:</td>
-				<td><input name="address" id="address"
-					<%if (supplier.getAddress() != null) {%>
-					value="<%=supplier.getAddress()%>" <%}%> /></td>
+				<td><input name="address" class="required" id="address"
+					value="<%=supplier.getAddress()%>" maxlength="100"
+					<%if (supplier.getAddress() != null) {%> <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>
 				<td><input name="tin" id="tin"
-					<%if (supplier.getTin() != null) {%>
-					value="<%=supplier.getTin()%>" <%}%> /></td>
+					value="<%=supplier.getTin()%>" maxlength="45"
+					<%if (supplier.getTin() != null) {%> <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>

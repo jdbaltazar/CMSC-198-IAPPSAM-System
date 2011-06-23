@@ -43,7 +43,7 @@
             <td class="align_right"><br />
               Item Condition:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemCondition" id="itemCondition" value="<%=itemCondition.getName()%>"/>
+            <td><br />              <input name="itemCondition" type="text" class="required" id="itemCondition" value="<%=itemCondition.getName()%>" maxlength="45"/>
               <br />
               <br /></td>
           </tr>

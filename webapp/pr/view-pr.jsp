@@ -54,7 +54,8 @@
 			<td width="68%">
 				<form id="form2" name="form2" method="post" action="">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
-				</form></td>
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/pr" target="_top" class="links">PR List</a> &gt; <em><strong>View Purchase Request</strong> </em><strong></strong>
@@ -62,8 +63,9 @@
 			<td>&nbsp;</td>
 		</tr>
 	</table>
-	<div id="export">Export to
-<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
+	<div id="export">
+		Export to <a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a>
+	</div>
 	<div id="items_table">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
@@ -88,7 +90,8 @@
 								<td>&nbsp;</td>
 							</tr>
 						</c:forEach>
-					</table></td>
+					</table>
+				</td>
 			</tr>
 			<tr>
 				<td width="50%" align="right" class="same_width">&nbsp;</td>
@@ -137,7 +140,8 @@
 							<td class="other_fields_label">Prepared by:</td>
 							<td class="right_side_table">${form.approvedBy.person.name}</td>
 						</tr>
-					</table></td>
+					</table>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"></td>

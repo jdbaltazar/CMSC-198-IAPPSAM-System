@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Item Unit:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemUnit" id="itemUnit" />
+            <td><br />              <input name="itemUnit" type="text" class="required" id="itemUnit" maxlength="20" />
               <br />
               <br /></td>
           </tr>

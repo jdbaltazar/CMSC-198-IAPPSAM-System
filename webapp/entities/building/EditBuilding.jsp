@@ -56,16 +56,16 @@
 				<td class="align_right"><br />
 				*Building Name:</td>
 				<td><br />
-				<input type="text" name="name" id="buildingName"
-					value="<%=building.getBuildingName()%>" /></td>
+				<input name="name" type="text" class="required" id="buildingName"
+					value="<%=building.getBuildingName()%>" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right"><br />
 				Address:<br />
 				<br />
 				</td>
-				<td><input type="text" name="address" id="address"
-					value="<%=building.getBuildingAddress()%>" /></td>
+				<td><input name="address" type="text" id="address"
+					value="<%=building.getBuildingAddress()%>" maxlength="200" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>

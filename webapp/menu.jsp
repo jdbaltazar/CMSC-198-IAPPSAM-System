@@ -23,7 +23,7 @@
 	<tr>
 		<td width="32%">&nbsp;</td>
 		<td width="68%">
-		<form id="form2" name="form2" method="post" action=""><input
+		<form id="form2" name="form2" method="post" action="logout"><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>
@@ -39,11 +39,14 @@
 		<td colspan="3" class="main_menu_header">Stocks</td>
 	</tr>
 	<tr>
-		<td colspan="3">
-		<form id="form1" name="form1" method="get" action="items"><input
-			name="item" type="submit" class="menubtn" id="item" value="Item" />
-		</form>
-		</td>
+		<td colspan="2">
+		
+		  <form id="form1" name="form1" method="post" action="items">
+		    <input name="itemBtn" type="submit" class="menubtn" id="itemBtn" value="Item" />
+        </form></td>
+		<td><form id="form28" name="form28" method="post" action="">
+		  <input name="addItemBtn" type="submit" class="button2" id="addItemBtn" value="Add&gt;&gt;" />
+	    </form></td>
 	</tr>
 	<tr>
 		<td colspan="3">

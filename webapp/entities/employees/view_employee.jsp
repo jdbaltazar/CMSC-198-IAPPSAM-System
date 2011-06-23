@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.DivisionOffice"%>
+<%@page
+	import="com.iappsam.managers.sessions.DivisionOfficeManagerSession"%>
+<%@page import="com.iappsam.managers.DivisionOfficeManager"%>
 <%@page import="com.iappsam.ContactType"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.iappsam.Contact"%>
@@ -52,10 +56,15 @@
 	if (employeeID == null)
 		employeeID = (String) request.getAttribute("employeeID");
 	PersonManager pManager = new PersonManagerSession();
-	Employee employee = pManager.getEmployee(Integer.parseInt(employeeID));
+	Employee employee = pManager.getEmployee(Integer
+			.parseInt(employeeID));
 	Person person = employee.getPerson();
+	List<Employee> empList = pManager.getEmployeeByPerson(employee
+			.getPerson().getId());
+	String string = "";
 %>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="update_employee.do">
+<input type="hidden" name="personID" value="<%=person.getId()%>"></input>
 <table width="100%" frame="box" cellspacing="0" id="table">
 	<tr>
 		<td class="header_rows">
@@ -69,14 +78,14 @@
 			<tr>
 				<td class="align_right" id="align_right">Title:</td>
 				<td><input type="text" name="title" id="title"
-					disabled="disabled" <%if (person.getTitle() != null) {%>
-					value="<%=person.getTitle()%>" <%}%> /></td>
+					<%if (person.getTitle() != null) {%> value="<%=person.getTitle()%>"
+					<%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right" id="align_right">*Name:<br />
 				</td>
 				<td><input type="text" name="name" id="name"
-					value="<%=person.getName()%>" disabled="disabled" /> <br />
+					value="<%=person.getName()%>" /> <br />
 				</td>
 			</tr>
 		</table>
@@ -95,23 +104,47 @@
 				<td width="25%">Employee No.</td>
 				<td width="35%">*Division/Office</td>
 			</tr>
-
+			<%
+				for (int a = 0; a < empList.size(); a++) {
+			%>
 			<tr>
-				<td align="center"><input type="text" name="deignation"
-					id="deignation" disabled="disabled"
-					value="<%=employee.getDesignation().toString()%>" /></td>
+				<td align="center"><input type="text" name="designation"
+					id="designation" value="<%=employee.getDesignation().toString()%>" /></td>
 				<td align="center"><input name="empNo3" type="text" id="empNo3"
-					size="15" disabled="disabled"
-					<%if (employee.getEmployeeNumber() != null) {%>
+					size="15" <%if (employee.getEmployeeNumber() != null) {%>
 					value="<%=employee.getEmployeeNumber()%>" <%}%> /></td>
-				<td align="center"><input name="divisionOffice4"
-					class="menulist" id="divisionOffice4" disabled="disabled"
-					<%String s = "";
-			if (employee.getDivisionOffice().getOfficeName() != null)
-				s = "/"+employee.getDivisionOffice().getOfficeName();%>
-					value="<%=""+employee.getDivisionOffice().getDivisionName()+s%>"> </input></td>
-			</tr>
+				<td align="center"><select name="divisionOffice"
+					class="menulist" id="divisionOffice">
+					<%
+						DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
+							List<DivisionOffice> dList = dManager.getAllDivisionOffice();
+							for (int i = 0; i < dList.size(); i++) {
+					%>
 
+					<option
+						<%if (employee.getDivisionOffice() != null
+							&& dList.get(i).getId() == employee
+									.getDivisionOffice().getId()) {%>
+						selected="selected"
+						<%}
+					if (employee.getDivisionOffice() != null
+							&& employee.getDivisionOffice().getOfficeName() != null)
+						string = "/"
+								+ employee.getDivisionOffice().getOfficeName();%>
+						value="<%=dList.get(i).getId()%>"><%=dList.get(i).getDivisionName()%></option>
+					<%
+						}
+					%>
+					<%
+						if (employee.getDivisionOffice() != null)
+								out.print(employee.getDivisionOffice().getDivisionName()
+										+ string);
+					%>
+				</select></td>
+			</tr>
+			<%
+				}
+			%>
 		</table>
 		</td>
 	</tr>
@@ -122,7 +155,8 @@
 	</tr>
 	<tr>
 		<%
-			Contact[] contacts = new Contact[employee.getPerson().getContacts().size()];
+			Contact[] contacts = new Contact[employee.getPerson().getContacts()
+					.size()];
 			employee.getPerson().getContacts().toArray(contacts);
 			ArrayList<Contact> mobile = new ArrayList<Contact>();
 			ArrayList<Contact> landline = new ArrayList<Contact>();
@@ -149,20 +183,14 @@
 				<td>
 				<%
 					if (!mobile.isEmpty()) {
-				%><select name="cellphoneNumber" id="cellphoneNumber">
-					<%
 						for (int i = 0; i < mobile.size(); i++) {
-					%>
-					<option><%=mobile.get(i).getData()%></option>
-					<%
-						}
-					%>
-				</select> <%
+				%> <input type="text" name="cellphoneNumber" id="cellphoneNumber"
+					value=" <%=mobile.get(i).getData()%>"></input> <%
+ 	}
  	} else {
- %> <input name="dummy" disabled="disabled" size="15" maxlength="15" />
-				<%
-					}
-				%>
+ %> <input name="dummy" size="20" maxlength="20" /> <%
+ 	}
+ %>
 				</td>
 			</tr>
 			<tr>
@@ -170,20 +198,17 @@
 				<td>
 				<%
 					if (!landline.isEmpty()) {
-				%><select name="landline" id="landline">
-					<%
+
 						for (int i = 0; i < landline.size(); i++) {
-					%>
-					<option><%=landline.get(i).getData()%></option>
-					<%
-						}
-					%>
-				</select> <%
- 	} else {
- %> <input name="dummy" disabled="disabled" size="15" maxlength="15" />
+				%> <input type="text" name="landline" id="landline"
+					value="<%=landline.get(i).getData()%>" size="20" maxlength="20"></input>
 				<%
 					}
-				%>
+
+					} else {
+				%> <input name="dummy" size="20" maxlength="20" /> <%
+ 	}
+ %>
 				</td>
 			</tr>
 			<tr>
@@ -191,20 +216,17 @@
 				<td>
 				<%
 					if (!email.isEmpty()) {
-				%><select name="e-mail_ad" id="e-mail_ad">
-					<%
+
 						for (int i = 0; i < email.size(); i++) {
-					%>
-					<option><%=email.get(i).getData()%></option>
-					<%
-						}
-					%>
-				</select> <%
- 	} else {
- %> <input name="dummy" disabled="disabled" size="15" maxlength="15" />
+				%> <input name="e-mail_ad" id="e-mail_ad"
+					value="<%=email.get(i).getData()%>" size="20" maxlength="20"></input>
 				<%
 					}
-				%>
+
+					} else {
+				%> <input name="dummy" size="20" maxlength="20" /> <%
+ 	}
+ %>
 				</td>
 			</tr>
 			<tr>

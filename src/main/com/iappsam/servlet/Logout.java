@@ -33,9 +33,7 @@ public class Logout extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		System.out.println("inside the LOGOUT post!!!!!!!!!!!!!");
-
+		
 		HttpSession session = request.getSession();
 
 		Enumeration<String> attributes = session.getAttributeNames();

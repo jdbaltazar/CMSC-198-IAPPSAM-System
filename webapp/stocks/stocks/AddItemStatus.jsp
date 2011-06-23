@@ -39,7 +39,7 @@
             <td class="align_right"><br />
               Item Status:<br />
               <br /></td>
-            <td><br />              <input type="text" name="itemStatus" id="itemStatus" />
+            <td><br />              <input name="itemStatus" type="text" class="required" id="itemStatus" maxlength="50" />
               <br />
               <br /></td>
           </tr>

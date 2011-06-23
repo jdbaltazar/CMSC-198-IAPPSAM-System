@@ -59,10 +59,10 @@
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="5%" class="tableheaders_forms">Action</td>
-		<td width="20%" class="tableheaders_forms">Account Type</td>
-		<td width="20%" class="tableheaders_forms">Username</td>
-		<td width="55%" class="tableheaders_forms">Name</td>
+		<td width="10%" class="tableheaders_forms">Action</td>
+		<td width="25%" class="tableheaders_forms">Account Type</td>
+		<td width="30%" class="tableheaders_forms">Username</td>
+		<td width="35%" class="tableheaders_forms">Name</td>
 
 	</tr>
 	<%
@@ -80,7 +80,7 @@
 		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
 			class="tablerow_2" <%}%>><%=a.getType().toString()%></td>
 		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
-			class="tablerow_2" <%}%>><%=a.getPerson().getName() %>
+			class="tablerow_2" <%}%>><%=a.getUsername() %>
 		</td>
 		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
 			class="tablerow_2" <%}%>><%=a.getPerson().getName() %></td>
