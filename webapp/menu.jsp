@@ -149,7 +149,7 @@
 	<tr>
 		<td colspan="3">
 		<form id="form10" name="form10" method="post"
-			action="accounts/ViewAccounts.do"><input name="createNew"
+			action="accounts/create_account.jsp"><input name="createNew"
 			type="submit" class="menubtn" id="createNew" value="Create New" /></form>
 		</td>
 	</tr>

@@ -76,9 +76,8 @@ if(userName==null)
 <table width="100%" frame="box" cellspacing="0" id="table">
 	<tr>
 		<td align="right" class="bkgrnd_white"><a href="#" target="_self"
-			class="linkBtn">Create Account For Existing Employee>></a></td>
+			class="linkBtn">Create Account For Existing Employee</a></td>
 	</tr>
-	<tr>
 		<tr>
 			<td class="bkgrnd_white">&nbsp;</td>
 		</tr>

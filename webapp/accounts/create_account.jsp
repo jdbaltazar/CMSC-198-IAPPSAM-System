@@ -34,8 +34,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="#" target="_top" class="links">Main
-		Menu</a> &gt; <a href="#" target="_top" class="links">Account List</a>
+		<td id="navigation"><a href="../menu" target="_top" class="links">Main
+		Menu</a> &gt; <a href="accounts/ViewAccounts.do" target="_top" class="links">Account List</a>
 		&gt; <em><strong>Create Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
 	</tr>
@@ -43,10 +43,13 @@
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="CreateAccount.do">
 <table width="100%" frame="box" cellspacing="0" id="table">
+
+
 	<tr>
-		<td align="right" class="bkgrnd_white"><a href="#" target="_self"
+		<td align="right" class="bkgrnd_white"><a href="create-account-for-employee.do" target="_self"
 			class="linkBtn">Create Account For Existing Employee>></a></td>
 	</tr>
+	 
 	<tr>
 		<tr>
 			<td class="bkgrnd_white">&nbsp;</td>
@@ -78,11 +81,13 @@
 					<td><input type="text" name="name" id="name"
 						<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
-			if (nameOK != null && !nameOK.isEmpty() && !nameOK.equalsIgnoreCase("false")) {
+			if (nameOK != null && !nameOK.isEmpty()
+					&& !nameOK.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + name + '"');
 			}%> />
 					<%
-						if (nameOK != null && !nameOK.isEmpty() && nameOK.equalsIgnoreCase("false")) {
+						if (nameOK != null && !nameOK.isEmpty()
+								&& nameOK.equalsIgnoreCase("false")) {
 							out.print("*");
 						}
 					%> <br />
@@ -108,9 +113,11 @@
 					<td>
 					<div align="center"><label for="designation_1"></label> <input
 						type="text" name="designation" id="designation_1"
-						<%String[] designation = (String[]) request.getAttribute("designation");
+						<%String[] designation = (String[]) request
+					.getAttribute("designation");
 			String[] employeeNo = (String[]) request.getAttribute("employeeNo");
-			String designation1OK = (String) request.getAttribute("designation1OK");
+			String designation1OK = (String) request
+					.getAttribute("designation1OK");
 			if (designation != null && !designation[0].isEmpty()) {
 				out.print("value=" + '"' + designation[0] + '"');
 			} else if (designation1OK != null)
@@ -121,7 +128,8 @@
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
 						id="employeeNo._1" size="4"
-						<%if (employeeNo != null && employeeNo[0] != null && !employeeNo[0].isEmpty())
+						<%if (employeeNo != null && employeeNo[0] != null
+					&& !employeeNo[0].isEmpty())
 				out.print("value=" + '"' + employeeNo[0] + '"');%> /></div>
 					</td>
 					<td>
@@ -134,7 +142,8 @@
 						<option value="<%=dList.get(i).getId()%>">
 						<%
 							if (dList.get(i).getOfficeName() != null)
-									out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+									out.print(dList.get(i).getDivisionName() + ","
+											+ dList.get(i).getOfficeName());
 								else
 									out.print(dList.get(i).getDivisionName());
 						%>
@@ -149,8 +158,10 @@
 					<td>
 					<div align="center"><label for="designation_1"></label> <input
 						type="text" name="designation" id="designation_1"
-						<%String designation2OK = (String) request.getAttribute("designation2OK");
-			if (designation != null && designation.length > 1 && !designation[1].isEmpty()) {
+						<%String designation2OK = (String) request
+					.getAttribute("designation2OK");
+			if (designation != null && designation.length > 1
+					&& !designation[1].isEmpty()) {
 				out.print("value=" + '"' + designation[1] + '"');
 			} else if (designation2OK != null)
 				out.print("value=" + '"' + "*" + '"');%> /></div>
@@ -158,7 +169,8 @@
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
 						id="employeeNo._1" size="4"
-						<%if (employeeNo != null && employeeNo[1] != null && !employeeNo[1].isEmpty())
+						<%if (employeeNo != null && employeeNo[1] != null
+					&& !employeeNo[1].isEmpty())
 				out.print("value=" + '"' + employeeNo[1] + '"');%> /></div>
 					</td>
 					<td>
@@ -171,7 +183,8 @@
 						<option value="<%=dList.get(i).getId()%>">
 						<%
 							if (dList.get(i).getOfficeName() != null)
-									out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+									out.print(dList.get(i).getDivisionName() + ","
+											+ dList.get(i).getOfficeName());
 								else
 									out.print(dList.get(i).getDivisionName());
 						%>
@@ -186,8 +199,10 @@
 					<td>
 					<div align="center"><label for="designation_1"></label> <input
 						type="text" name="designation" id="designation_1"
-						<%String designation3OK = (String) request.getAttribute("designation3OK");
-			if (designation != null && designation.length > 2 && !designation[2].isEmpty()) {
+						<%String designation3OK = (String) request
+					.getAttribute("designation3OK");
+			if (designation != null && designation.length > 2
+					&& !designation[2].isEmpty()) {
 				out.print("value=" + '"' + designation[2] + '"');
 			} else if (designation3OK != null)
 				out.print("value=" + '"' + "*" + '"');%> /></div>
@@ -195,7 +210,8 @@
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
 						id="employeeNo._1" size="4" <%%>
-						<%if (employeeNo != null && employeeNo[2] != null && !employeeNo[2].isEmpty())
+						<%if (employeeNo != null && employeeNo[2] != null
+					&& !employeeNo[2].isEmpty())
 				out.print("value=" + '"' + employeeNo[2] + '"');%> /></div>
 					</td>
 					<td>
@@ -208,7 +224,8 @@
 						<option value="<%=dList.get(i).getId()%>">
 						<%
 							if (dList.get(i).getOfficeName() != null)
-									out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+									out.print(dList.get(i).getDivisionName() + ","
+											+ dList.get(i).getOfficeName());
 								else
 									out.print(dList.get(i).getDivisionName());
 						%>
@@ -272,11 +289,13 @@
 					<td><input type="text" name="username" id="username"
 						<%String usernameOk = (String) request.getAttribute("usernameOK");
 			String username = (String) request.getAttribute("userName");
-			if (usernameOk != null && !usernameOk.isEmpty() && !usernameOk.equalsIgnoreCase("false")) {
+			if (usernameOk != null && !usernameOk.isEmpty()
+					&& !usernameOk.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + username + '"');
 			}%> />
 					<%
-						if (usernameOk != null && !usernameOk.isEmpty() && usernameOk.equalsIgnoreCase("false")) {
+						if (usernameOk != null && !usernameOk.isEmpty()
+								&& usernameOk.equalsIgnoreCase("false")) {
 							out.print("*");
 						}
 					%>
@@ -287,7 +306,8 @@
 					<td><input type="password" name="password" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
-						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+						if (passwordOk != null && !passwordOk.isEmpty()
+								&& passwordOk.equalsIgnoreCase("false")) {
 							out.print("*");
 						}
 					%>
@@ -297,7 +317,8 @@
 					<td class="align_right">*Re-enter Password:</td>
 					<td><input type="password" name="reenterPassword"
 						id="reenterPassword" /> <%
- 	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+ 	if (passwordOk != null && !passwordOk.isEmpty()
+ 			&& passwordOk.equalsIgnoreCase("false")) {
  		out.print("*");
  	}
  %>
@@ -310,9 +331,7 @@
 						<%
 							for (int i = 0; i < accountTypes.length; i++) {
 						%>
-						<option
-							<%if (accountTypes[i] == AccountType.SPSO_PERSONNEL)
-					out.print("selected");%>><%=accountTypes[i].toString()%></option>
+						<option><%=accountTypes[i].toString()%></option>
 						<%
 							}
 						%>
