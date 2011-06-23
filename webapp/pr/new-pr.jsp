@@ -84,12 +84,12 @@
 						id="items" value="${line.item.id}" /> <input type="hidden"
 						name="items" value="${line.item.id}" /></td>
 					<td width="5%"><input name="quantity" type="text"
-						class="textfields_1" id="Quantity" size="4"
+						class="center_text_field" id="Quantity" size="2"
 						value="${line.quantity}" /></td>
 					<td width="9%">${line.item.unit}</td>
 					<td width="42%">${line.item.description}</td>
 					<td width="22%">${line.item.stockNumber}</td>
-					<td width="18%"></td>
+					<td width="18%">&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 			</c:forEach>
@@ -163,7 +163,7 @@
 			</tr>
             <tr>
             	<td class="other_fields_label">Purpose:</td>
-            	<td class="right_side_table"><input name="purpose" id="purpose" />${form.purpose}</td>
+            	<td class="right_side_table"><input name="purpose" id="purpose" value="${form.purpose}"/></td>
             </tr>
 			<tr>
 				<td class="other_fields_label">Requested by:</td>

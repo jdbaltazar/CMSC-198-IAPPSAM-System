@@ -30,8 +30,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="/menu">Main
-		Menu</a> &gt;<em><strong>PR List </strong></em>&gt; <a href="/pr?new=pr">Fillup PR Form</a></td>
+		<td id="navigation"><a href="/menu" class="links">Main
+		Menu</a> &gt;<em><strong>PR List </strong></em>&gt; <a href="/pr?new=pr" class="links">Fillup PR Form</a></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>

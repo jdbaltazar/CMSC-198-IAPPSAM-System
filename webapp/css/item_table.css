@@ -33,10 +33,22 @@
 
 .right_side_table{
 	background-color:#EEE0E5;
+	font-family:Lucida Grande;
+	font-size:12px;
 }
 
 .tablerow_1{
+	text-align:center;
 	background-color:#EEE0E5;
+	font-family:Lucida Grande;
+	font-size:12px;
+}
+
+.tablerow_2{
+	text-align:center;
+	background-color:white;
+	font-family:Lucida Grande;
+	font-size:12px;
 }
 
 .fields{
