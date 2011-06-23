@@ -17,6 +17,20 @@
 <link href="../style.css" rel="stylesheet" type="text/css" />
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
+<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
+<script src="../jquery/jquery-1.5.1.min.js"></script>
+<script src="../jquery/ui/jquery.ui.core.js"></script>
+<script src="../jquery/ui/jquery.ui.datepicker.js"></script>
+<script src="../jquery/ui/jquery.ui.widget.js"></script>
+<script>
+	$(function() {
+		$("#dateAcquired").datepicker({
+			dateFormat : "yy-mm-dd",
+			numberOfMonths : 1,
+			showButtonPanel : true
+		});
+	});
+</script>
 <%
 	List<Unit> units = new ArrayList<Unit>();
 	List<ItemCategory> categories = new ArrayList<ItemCategory>();
@@ -93,7 +107,10 @@
         </tr>
         <tr>
           <td class="align_right">Date Acquired:</td>
-          <td><select
+          <td>
+ <!--         <input name="dateAcquired"
+					type="text" id="dateAcquired" /> -->
+          <select
 	name="month" id="month2">
 	<option value="01">Jan</option>
 	<option value="02">Feb</option>
