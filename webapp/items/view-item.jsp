@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="com.iappsam.Item"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href=".favicon.ico" />
@@ -63,11 +64,12 @@
       <td class="header_rows"><div class="header_1">Item Information</div></td>
     </tr>
     <tr>
--->    
+-->
 
 
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action=""><input
+	type="hidden" name="id" value="${item.id}" />
 <table width="100%" cellspacing="7" id="table">
 	<tr>
 		<td class="align_right">Description:</td>
@@ -78,12 +80,22 @@
 		<td class="align_right">Unit:</td>
 		<td><select name="unit" class="required" id="unit">
 			<option selected="selected">${item.unit}</option>
+			<c:forEach var="unit" items="${units}">
+				<c:if test="${unit ne item.unit}">
+					<option>${unit}</option>
+				</c:if>
+			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
 		<td class="align_right">Item Category:</td>
 		<td><select name="itemCategory" class="required" id="category">
 			<option selected="selected">${item.category}</option>
+			<c:forEach var="category" items="${categories}">
+				<c:if test="${category ne item.category}">
+					<option>${category}</option>
+				</c:if>
+			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
@@ -115,12 +127,22 @@
 		<td class="align_right">Item Status:</td>
 		<td><select name="itemStatus" class="required" id="itemStatus">
 			<option selected="selected">${item.status}</option>
+			<c:forEach var="status" items="${statuses}">
+				<c:if test="${status ne item.status}">
+					<option>${status}</option>
+				</c:if>
+			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
 		<td class="align_right">Item Condition:</td>
 		<td><select name="itemCondition" class="required" id="condition">
 			<option selected="selected">${item.condition}</option>
+			<c:forEach var="condition" items="${conditions}">
+				<c:if test="${condition ne item.condition}">
+					<option>${condition}</option>
+				</c:if>
+			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
