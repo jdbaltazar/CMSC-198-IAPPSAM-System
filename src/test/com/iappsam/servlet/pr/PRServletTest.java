@@ -23,6 +23,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.ServletTestCase;
 import com.iappsam.servlet.form.AddFormAction;
 import com.iappsam.servlet.form.ExportPdfAction;
+import com.iappsam.servlet.form.ExportXlsAction;
 import com.iappsam.servlet.form.FormLinePageAction;
 import com.iappsam.servlet.form.FormServlet;
 import com.iappsam.servlet.form.FormUtility;
@@ -51,6 +52,8 @@ public class PRServletTest extends ServletTestCase {
 	private ViewFormAction viewPr;
 	@Mock
 	private ExportPdfAction exportPdf;
+	@Mock
+	private ExportXlsAction exportXls;
 
 	private FormUtility utility;
 
@@ -61,9 +64,8 @@ public class PRServletTest extends ServletTestCase {
 	@Before
 	public void init() {
 		super.init();
-
 		utility = new PRUtility("pr", appContext, parser);
-		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr, exportPdf);
+		servlet = new FormServlet(newPurchase, addItem, listPR, removeItems, addPr, viewPr, exportPdf, exportXls);
 	}
 
 	@Test
@@ -243,4 +245,8 @@ public class PRServletTest extends ServletTestCase {
 		verify(response).sendRedirect("/pr/line");
 	}
 
+	@Test
+	public void exportToPdf() {
+
+	}
 }

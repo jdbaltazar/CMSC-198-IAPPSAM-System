@@ -20,6 +20,7 @@ public class FormServlet extends HttpServlet {
 	private AddFormAction addPr;
 	private ViewFormAction viewPr;
 	private ExportPdfAction exportPdf;
+	private ExportXlsAction exportXls;
 
 	public FormServlet(FormUtility utility) {
 		this.list = new ListFormAction(utility);
@@ -29,9 +30,11 @@ public class FormServlet extends HttpServlet {
 		this.addPr = new AddFormAction(utility);
 		this.viewPr = new ViewFormAction(utility);
 		this.exportPdf = new ExportPdfAction(utility);
+		this.exportXls = new ExportXlsAction(utility);
 	}
 
-	public FormServlet(NewFormPageAction newPr, FormLinePageAction linePage, ListFormAction list, RemoveFormLineAction removeItem, AddFormAction addPr, ViewFormAction viewPr, ExportPdfAction exportPdf) {
+	public FormServlet(NewFormPageAction newPr, FormLinePageAction linePage, ListFormAction list, RemoveFormLineAction removeItem, AddFormAction addPr, ViewFormAction viewPr,
+			ExportPdfAction exportPdf, ExportXlsAction exportXls) {
 		super();
 		this.newPr = newPr;
 		this.linePage = linePage;
@@ -40,6 +43,7 @@ public class FormServlet extends HttpServlet {
 		this.addPr = addPr;
 		this.viewPr = viewPr;
 		this.exportPdf = exportPdf;
+		this.exportXls = exportXls;
 	}
 
 	@Override
@@ -73,6 +77,8 @@ public class FormServlet extends HttpServlet {
 			return viewPr;
 		else if (exportParam != null && exportParam.equals("pdf"))
 			return exportPdf;
+		else if (exportParam != null && exportParam.equals("xls"))
+			return exportXls;
 
 		return list;
 	}

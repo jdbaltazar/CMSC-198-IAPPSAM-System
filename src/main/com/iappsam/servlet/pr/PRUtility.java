@@ -63,4 +63,9 @@ public class PRUtility extends AbstractFormUtility {
 	public File getPdf(Form form) throws ReportException {
 		return new PRReport((PR) form).toPDF();
 	}
+
+	@Override
+	public File getXls(Form form) throws ReportException {
+		return new PRReport((PR) form).toXLS();
+	}
 }

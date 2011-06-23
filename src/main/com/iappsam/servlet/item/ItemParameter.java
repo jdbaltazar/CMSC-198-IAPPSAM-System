@@ -10,9 +10,9 @@ public interface ItemParameter {
 //	public static final String MONTH = "month";
 //	public static final String DAY = "day";
 	public static final String PRICE = "itemPrice";
-	public static final String UNIT = "itemUnit";
+	public static final String UNIT = "unit";
 	public static final String STOCK_NUMBER = "stockNumber";
-	public static final String DESCRIPTION = "itemDescription";
+	public static final String DESCRIPTION = "description";
 	public static final String ITEM_ID = "id";
 	public static final String QUERY = "q";
 	public static final String NEW_ITEM = "new";

@@ -137,9 +137,6 @@ public class ItemServletTest extends ServletTestCase {
 		given(request.getParameter(DESCRIPTION)).willReturn("des");
 		given(request.getParameter(STOCK_NUMBER)).willReturn("10");
 		given(request.getParameter(PRICE)).willReturn("des");
-		/*given(request.getParameter(YEAR)).willReturn("2011");
-		given(request.getParameter(MONTH)).willReturn("01");
-		given(request.getParameter(DAY)).willReturn("01");*/
 		given(request.getParameter(INVENTORY_ITEM_NUM)).willReturn("inv");
 		given(request.getParameter(PROPERTY_NUM)).willReturn("proper");
 		given(request.getParameter(UNIT)).willReturn(unit.getName());
