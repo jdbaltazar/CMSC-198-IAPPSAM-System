@@ -63,6 +63,14 @@ public class SupplierServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if (action.equalsIgnoreCase(SEARCH_SUPPLIERS)) {
+			Action searchSuppliersAction = new SearchSuppliersAction();
+			try {
+				searchSuppliersAction.process(request, response);
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (action.equalsIgnoreCase(NEW_SUPPLIER_ACTION)) {
 			Action newSupplierAction = new NewSupplierAction();
 			try {
@@ -104,6 +112,8 @@ public class SupplierServlet extends HttpServlet {
 
 		if (action.equalsIgnoreCase(VIEW_SUPPLIERS_ACTION))
 			return new ViewSuppliersAction();
+		if (action.equalsIgnoreCase(SEARCH_SUPPLIERS_ACTION))
+			return new SearchSuppliersAction();
 		if (action.equalsIgnoreCase(VIEW_SUPPLIER_ACTION))
 			return new ViewSupplierAction();
 		if (action.equalsIgnoreCase(NEW_SUPPLIER_ACTION))
