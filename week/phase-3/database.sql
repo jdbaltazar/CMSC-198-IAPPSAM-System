@@ -1177,6 +1177,18 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Signatory` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`IappsamConfig`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`IappsamConfig` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IappsamConfig` (
+  `ID` INT NOT NULL ,
+  `Configured` TINYINT(1)  NOT NULL DEFAULT False ,
+  PRIMARY KEY (`ID`) )
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
