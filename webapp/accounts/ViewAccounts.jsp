@@ -38,16 +38,16 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="" target="_top" class="links">Main
-		Menu</a> &gt;<em><strong>Account List </strong></em>&gt; <a href="#"
-			target="_self" class="links">View Account</a></td>
+		<td id="navigation"><a href="../menu" target="_top" class="links">Main
+		Menu</a> &gt;<em><strong>Account List </strong></em>&gt; <a href="create_account.jsp"
+			target="_self" class="links">Create Account</a></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
 <div id="items_table">
 <table width="100%" border="0" cellspacing="0">
 	<tr>
-		<td colspan="3" align="center">
+		<td colspan="4" align="center">
 		<form id="form4" name="form4" method="post" action=""><label
 			for="searchField"><span class="align_right">Search</span>:</label> <input
 			type="text" name="searchField" id="searchField" /> <input
@@ -60,24 +60,27 @@
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="7%" class="tableheaders_forms">Action</td>
-		<td width="39%" class="tableheaders_forms">Account Type</td>
-		<td width="54%" class="tableheaders_forms">Name</td>
+		<td width="5%" class="tableheaders_forms">Action</td>
+		<td width="20%" class="tableheaders_forms">Account Type</td>
+		<td width="20%" class="tableheaders_forms">Name</td>
+		<td width="55%" class="tableheaders_forms">Division/Office/Designation</td>
+		
 	</tr>
 	<%
 		boolean isODD = true;
 		for (int i = 0; i < accounts.size(); i++) {
 	%>
 	<tr>
-		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>>
+		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>
+		<%if (!isODD) {%> class="tablerow_2" <%}%>>
 		<form id="form1" name="form1" method="post"
 			action="view_account.jsp"><input name="editBtn"
 			type="submit" class="button2" id="editBtn" value="View&gt;&gt;" /> <input
 			type="hidden" name="username"
-			value="<%=accounts.get(i).getUsername()%>" /></form>
+			value="<%=accounts.get(i).getPerson().getName()%>" /></form>
 		</td>
-		<td <%if (isODD) {%> class="tablerow_1" <%}%>><%=accounts.get(i).getType().toString()%></td>
-		<td <%if (isODD) {%> class="tablerow_1" <%}%>>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%><%if (!isODD) {%> class="tablerow_2" <%}%>><%=accounts.get(i).getType().toString()%></td>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%><%if (!isODD) {%> class="tablerow_2" <%}%>>
 		<%
 			if (accounts.get(i).getPerson().getTitle() != null)
 					out.print(accounts.get(i).getPerson().getTitle().toString()
@@ -86,6 +89,8 @@
 				out.print(accounts.get(i).getPerson().getName());
 		%>
 		</td>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%><%if (!isODD) {%> class="tablerow_2" <%}%>>for designation/division/office here</td>
+		
 	</tr>
 	<%
 		isODD = !isODD;
