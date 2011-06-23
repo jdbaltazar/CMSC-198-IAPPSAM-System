@@ -26,6 +26,11 @@ public class ViewItemAction implements Action {
 		try {
 			int itemID = Integer.parseInt(request.getParameter(ITEM_ID));
 			Item item = itemManager.getItem(itemID);
+			request.setAttribute("categories", itemManager.getAllItemCategory());
+			request.setAttribute("conditions", itemManager.getAllItemCondition());
+			request.setAttribute("units", itemManager.getAllUnits());
+			request.setAttribute("statuses", itemManager.getAllItemStatus());
+
 			request.setAttribute(ItemAttribute.ITEM, item);
 			request.getRequestDispatcher(ItemServlet.VIEW_ITEM_JSP).forward(request, response);
 		} catch (TransactionException e1) {

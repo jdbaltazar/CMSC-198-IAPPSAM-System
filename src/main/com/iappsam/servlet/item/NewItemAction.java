@@ -27,12 +27,10 @@ public class NewItemAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.setAttribute(DONE, false);
 			request.setAttribute(UNITS, itemManager.getAllUnits());
 			request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());
 			request.setAttribute(STATUSES, itemManager.getAllItemStatus());
 			request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
-			request.setAttribute(VALID_INPUT_FOR_ITEM, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
