@@ -13,8 +13,8 @@
 <body>
 
 <%
-	Supplier supplier = (Supplier)request.getAttribute("supplier");
-	if(supplier==null)
+	Supplier supplier = (Supplier) request.getAttribute("supplier");
+	if (supplier == null)
 		supplier = new Supplier();
 	List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 %>
@@ -46,7 +46,7 @@
 	</tr>
 </table>
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="supplier">
 <table width="100%" border="0" cellspacing="0" id="table">
 	<tr>
 		<td class="header_rows">
@@ -58,49 +58,48 @@
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
 				<td class="align_right">*Contact Person:</td>
-				<td><select name="employeeName" class="menulist"
-					id="employeeName">
+				<td><select name="employeeID" class="menulist" id="employeeID">
 					<%
 						for (Employee e : employees) {
 					%>
-					<option><%= e.getPerson().getName()+": "+e.getDesignation()%></option>
+					<option value="<%="" + e.getId()%>"
+					
+					<%
+					if(supplier.getContactPerson()!=null){
+						if(supplier.getContactPerson().getId()==e.getId())
+							out.print("selected");
+					}
+					%>
+					
+					><%=e.getPerson().getName() + ": " + e.getDesignation()%></option>
 					<%
 						}
 					%>
 				</select></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier:</td>
-				<td><input type="text" name="username" id="username" 
-				<%
-				if(supplier.getSupplierName()!=null){%>
-					value="<%=supplier.getSupplierName() %>"
-				<%}%>
-				/></td>
+				<td class="align_right">*Supplier Name:</td>
+				<td><input type="text" name="supplierName" id="supplierName"
+					<%if (supplier.getSupplierName() != null) {%>
+					value="<%=supplier.getSupplierName()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Supplier Address:</td>
-				<td><input name="address" id="address" 
-				<%
-				if(supplier.getAddress()!=null){%>
-					value="<%=supplier.getAddress() %>"
-				<%}%>
-				/></td>
+				<td><input name="address" id="address"
+					<%if (supplier.getAddress() != null) {%>
+					value="<%=supplier.getAddress()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>
-				<td><input name="tin"
-					id="tin" 
-					<%
-				if(supplier.getTin()!=null){%>
-					value="<%=supplier.getTin() %>"
-				<%}%>
-					/></td>
+				<td><input name="tin" id="tin"
+					<%if (supplier.getTin() != null) {%>
+					value="<%=supplier.getTin()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>
 				<td><input name="addBtn" type="submit" class="button"
-					id="addBtn" value="ADD" /></td>
+					id="addBtn" value="ADD" /> <input name="supplier-action"
+					type="hidden" value="save-supplier-for-cp" /></td>
 			</tr>
 		</table>
 		</td>

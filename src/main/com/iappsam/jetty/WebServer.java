@@ -8,9 +8,30 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 import com.iappsam.servlet.LoginServlet;
 import com.iappsam.servlet.Menu;
+import com.iappsam.servlet.account.AccountCreation;
+import com.iappsam.servlet.account.AccountUpdate;
+import com.iappsam.servlet.account.AccountsView;
+import com.iappsam.servlet.database.BackupDatabase;
+import com.iappsam.servlet.entities.AddDivisionOffice;
+import com.iappsam.servlet.entities.AddOffice;
+import com.iappsam.servlet.entities.AddPurchaseRequest;
+import com.iappsam.servlet.entities.DivisionCreation;
+import com.iappsam.servlet.entities.EditDivision;
+import com.iappsam.servlet.entities.building.AddBuilding;
+import com.iappsam.servlet.entities.building.EditBuilding;
+import com.iappsam.servlet.entities.division.DivisionServlet;
 import com.iappsam.servlet.item.ItemServlet;
 import com.iappsam.servlet.pr.PRLineServlet;
 import com.iappsam.servlet.pr.PRServlet;
+import com.iappsam.servlet.stocks.disposal.AddDisposal;
+import com.iappsam.servlet.stocks.disposal.EditDisposal;
+import com.iappsam.servlet.stocks.itemcategory.AddItemCategory;
+import com.iappsam.servlet.stocks.itemcategory.EditItemCategory;
+import com.iappsam.servlet.stocks.itemcondition.AddItemCondition;
+import com.iappsam.servlet.stocks.itemcondition.EditItemCondition;
+import com.iappsam.servlet.stocks.itemstatus.AddItemStatus;
+import com.iappsam.servlet.stocks.itemunit.AddItemUnit;
+import com.iappsam.servlet.stocks.mop.AddModeOfProcurement;
 
 public class WebServer {
 
@@ -28,6 +49,27 @@ public class WebServer {
 		addServlet(new PRServlet(), "/pr");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new Menu(), "/menu");
+		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
+		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
+		addServlet(new AccountUpdate(), "/AccountUpdate");
+		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
+		addServlet(new AddDisposal(), "/stocks/stocks/AddDisposal.do");
+		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");
+		addServlet(new AddItemCategory(), "/stocks/stocks/AddItemCategory.do");
+		addServlet(new AddItemCondition(), "/stocks/stocks/AddItemCondition.do");
+		addServlet(new AddItemStatus(), "/stocks/stocks/AddItemStatus.do");
+		addServlet(new AddItemUnit(), "/stocks/stocks/AddItemUnit.do");
+		addServlet(new AddModeOfProcurement(), "/stocks/stocks/AddModeOfProc.do");
+		addServlet(new AddOffice(), "/entities/division/AddOffice.do");
+		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
+		addServlet(new BackupDatabase(), "/database/backup.sql");
+		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
+		addServlet(new DivisionServlet(), "/division");
+		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
+		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
+		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
+		addServlet(new EditItemCategory(), "/stocks/stocks/EditItemCategory.do");
+		addServlet(new EditItemCondition(), "/stocks/stocks/EditItemCondition.do");
 
 		server.setHandler(context);
 

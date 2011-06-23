@@ -25,6 +25,8 @@ public class ViewSupplierAction implements Action {
 		// TODO Auto-generated method stub
 
 		String sID = request.getParameter("supplierID");
+		if(sID==null)
+			sID = (String)request.getAttribute("supplierID");
 		int supplierId = Integer.parseInt(sID);
 
 		SupplierManager sManager = new SupplierManagerSession();

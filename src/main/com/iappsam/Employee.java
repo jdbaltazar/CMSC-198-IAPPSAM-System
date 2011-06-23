@@ -16,8 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
 @Entity
+@Indexed
 public class Employee implements Validatable {
 
 	@Id
@@ -31,6 +34,7 @@ public class Employee implements Validatable {
 	@Column(name = "Employee_Number")
 	private String employeeNumber;
 
+	@IndexedEmbedded
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Person_ID")

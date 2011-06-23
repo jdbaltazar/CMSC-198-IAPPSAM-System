@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Person` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Person` (
   `Person_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Title` VARCHAR(10) NULL ,
+  `Title` VARCHAR(20) NULL ,
   `Name` VARCHAR(80) NOT NULL ,
   PRIMARY KEY (`Person_ID`) ,
   UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) )
@@ -302,7 +302,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Purchase_Order` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
-  `Supplier_ID` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Supplier_ID` INT NOT NULL ,
   `PO_Number` VARCHAR(45) NOT NULL ,
   `Date` DATE NOT NULL ,
   `Mode_Of_Procurement_ID` INT NOT NULL ,
@@ -319,7 +320,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `Accountant_Date` DATE NOT NULL ,
   `Dean_ID` INT NOT NULL ,
   `Dean_Date` DATE NOT NULL ,
-  PRIMARY KEY (`PO_Number`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Purchase_Order_Supplier1` (`Supplier_ID` ASC) ,
   INDEX `fk_Purchase_Order_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_Purchase_Order_Mode_Of_Procurement1` (`Mode_Of_Procurement_ID` ASC) ,
@@ -367,18 +368,18 @@ DROP TABLE IF EXISTS `IAPPSAM`.`PO_Line` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PO_Line` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
-  `PO_Number` VARCHAR(45) NOT NULL ,
+  `PO_Id` INT NOT NULL ,
   INDEX `fk_PO_Line_Item1` (`Item_ID` ASC) ,
-  INDEX `fk_PO_Line_Purchase_Order1` (`PO_Number` ASC) ,
   PRIMARY KEY (`Id`) ,
+  INDEX `fk_PO_Line_Purchase_Order1` (`PO_Id` ASC) ,
   CONSTRAINT `fk_PO_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_PO_Line_Purchase_Order1`
-    FOREIGN KEY (`PO_Number` )
-    REFERENCES `IAPPSAM`.`Purchase_Order` (`PO_Number` )
+    FOREIGN KEY (`PO_Id` )
+    REFERENCES `IAPPSAM`.`Purchase_Order` (`id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -1173,6 +1174,18 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Signatory` (
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IAPPSAM`.`IappsamConfig`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `IAPPSAM`.`IappsamConfig` ;
+
+CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IappsamConfig` (
+  `ID` INT NOT NULL ,
+  `Configured` TINYINT(1)  NOT NULL DEFAULT False ,
+  PRIMARY KEY (`ID`) )
 ENGINE = InnoDB;
 
 

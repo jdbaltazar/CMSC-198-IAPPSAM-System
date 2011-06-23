@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Change Supplier Contact Person</title>
+<title>IAPPSAM::Change Supplier  Person</title>
 <link href="css/header.css" rel="stylesheet" type="text/css" />
 <link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
@@ -13,8 +13,8 @@
 <body>
 
 <%
-	Supplier supplier = (Supplier)request.getAttribute("supplier");
-	if(supplier==null)
+	Supplier supplier = (Supplier) request.getAttribute("supplier");
+	if (supplier == null)
 		supplier = new Supplier();
 	List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 %>
@@ -40,14 +40,15 @@
 	<tr>
 		<td id="navigation"><a href="menu" target="_top" class="links">Main
 		Menu</a> &gt; <a href="supplier?supplier-action=view-suppliers"
-			target="_top" class="links">Supplier List</a> &gt;
-			<a href="supplier?supplier-action=view-supplier&supplierID=<%=supplier.getId() %>"
-			target="_top" class="links">View Supplier</a> &gt;<em><strong>Change Contact Person</strong></em></td>
+			target="_top" class="links">Supplier List</a> &gt; <a
+			href="supplier?supplier-action=view-supplier&supplierID=<%=supplier.getId()%>"
+			target="_top" class="links">View Supplier</a> &gt;<em><strong>Change
+		Contact Person</strong></em></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="supplier">
 <table width="100%" border="0" cellspacing="0" id="table">
 	<tr>
 		<td class="header_rows">
@@ -59,49 +60,52 @@
 		<table width="100%" cellspacing="9" border="0">
 			<tr>
 				<td class="align_right">*Contact Person:</td>
-				<td><select name="employeeName" class="menulist"
-					id="employeeName">
+				<td><select name="employeeID" class="menulist"
+					id="employeeID">
 					<%
 						for (Employee e : employees) {
 					%>
-					<option><%= e.getPerson().getName()+": "+e.getDesignation()%></option>
+					<option value="<%="" + e.getId()%>"
+					
+					<%
+					if(supplier.getContactPerson()!=null){
+						if(supplier.getContactPerson().getId()==e.getId())
+							out.print("selected");
+					}
+					%>
+					
+					><%=e.getPerson().getName() + ": " + e.getDesignation()%></option>
 					<%
 						}
 					%>
 				</select></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier:</td>
-				<td><input type="text" name="username" id="username" 
-				<%
-				if(supplier.getSupplierName()!=null){%>
-					value="<%=supplier.getSupplierName() %>"
-				<%}%>
-				/></td>
+				<td class="align_right">*Supplier Name:</td>
+				<td><input type="text" name="supplierName" id="supplierName"
+					<%if (supplier.getSupplierName() != null) {%>
+					value="<%=supplier.getSupplierName()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Supplier Address:</td>
-				<td><input name="address" id="address" 
-				<%
-				if(supplier.getAddress()!=null){%>
-					value="<%=supplier.getAddress() %>"
-				<%}%>
-				/></td>
+				<td><input name="address" id="address"
+					<%if (supplier.getAddress() != null) {%>
+					value="<%=supplier.getAddress()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>
-				<td><input name="tin"
-					id="tin" 
-					<%
-				if(supplier.getTin()!=null){%>
-					value="<%=supplier.getTin() %>"
-				<%}%>
-					/></td>
+				<td><input name="tin" id="tin"
+					<%if (supplier.getTin() != null) {%>
+					value="<%=supplier.getTin()%>" <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>
-				<td><input name="saveBtn" type="submit" class="button"
-					id="saveBtn" value="SAVE" /></td>
+				<td><input name="updateBtn" type="submit" class="button"
+					id="updateBtn" value="UPDATE" /> <input name="supplier-action"
+					type="hidden" value="save-changed-supplier-cp" />
+					<input name="supplierID"
+					type="hidden" value="<%=supplier.getId() %>" />
+					</td>
 			</tr>
 		</table>
 		</td>

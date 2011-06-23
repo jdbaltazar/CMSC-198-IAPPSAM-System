@@ -14,6 +14,7 @@ import com.iappsam.ContactType;
 import com.iappsam.DivisionOffice;
 import com.iappsam.DivisionOfficeContact;
 import com.iappsam.Employee;
+import com.iappsam.IappsamConfig;
 import com.iappsam.Item;
 import com.iappsam.ItemCategory;
 import com.iappsam.ItemCondition;
@@ -86,6 +87,7 @@ public class HibernateUtil {
 
 			// entities
 			conf.setProperties(p);
+			conf.addAnnotatedClass(IappsamConfig.class);
 			conf.addAnnotatedClass(Account.class);
 			conf.addAnnotatedClass(Building.class);
 			conf.addAnnotatedClass(Contact.class);
@@ -134,7 +136,13 @@ public class HibernateUtil {
 
 			sessionFactory = conf.buildSessionFactory();
 
-			addDefaulEntities();
+			IappsamConfig config = getIappsamConfig();
+			if (config != null) {
+				if (!config.isConfigured())
+					addDefaulEntities();
+			} else
+				addDefaulEntities();
+
 			return true;
 		} catch (Throwable ex) {
 			ex.printStackTrace();
@@ -144,6 +152,7 @@ public class HibernateUtil {
 	}
 
 	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
+		addIappsamConfig(new IappsamConfig(1, true));
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();
@@ -202,6 +211,32 @@ public class HibernateUtil {
 		if (isConnected()) {
 			sessionFactory.close();
 			sessionFactory = null;
+		}
+	}
+
+	public static IappsamConfig getIappsamConfig() {
+		try {
+			Session session = HibernateUtil.startSession();
+			Transaction tx = session.beginTransaction();
+			IappsamConfig config = (IappsamConfig) session.get(IappsamConfig.class, 1);
+			tx.commit();
+			session.close();
+			return config;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public static void addIappsamConfig(IappsamConfig config) {
+		try {
+			Session session = HibernateUtil.startSession();
+			Transaction tx = session.beginTransaction();
+			session.saveOrUpdate(config);
+			tx.commit();
+			session.close();
+		} catch (HibernateException e) {
+			e.printStackTrace();
 		}
 	}
 }

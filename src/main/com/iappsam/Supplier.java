@@ -10,7 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 
+@Indexed
 @Entity
 public class Supplier implements Validatable {
 
@@ -19,15 +23,18 @@ public class Supplier implements Validatable {
 	@Column(name = "Supplier_ID")
 	private int id;
 
+	@Field(name = "name")
 	@Column(name = "Name")
 	private String supplierName;
 
+	@Field(name = "address")
 	@Column(name = "Address")
 	private String address;
 
 	@Column(name = "TIN")
 	private String tin;
 
+	@IndexedEmbedded
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH })
 	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "Contact_Person_ID")
@@ -128,21 +135,21 @@ public class Supplier implements Validatable {
 
 	@Override
 	public boolean validate() {
-		if(supplierName==null)
+		if (supplierName == null)
 			return false;
-		if(supplierName.equalsIgnoreCase(""))
+		if (supplierName.equalsIgnoreCase(""))
 			return false;
-		if(address==null)
+		if (address == null)
 			return false;
-		if(address.equalsIgnoreCase(""))
+		if (address.equalsIgnoreCase(""))
 			return false;
-		if(contactPerson.getPerson().getName()==null)
+		if (contactPerson.getPerson().getName() == null)
 			return false;
-		if(contactPerson.getPerson().getName().equalsIgnoreCase(""))
+		if (contactPerson.getPerson().getName().equalsIgnoreCase(""))
 			return false;
-		if(contactPerson.getDesignation()==null)
+		if (contactPerson.getDesignation() == null)
 			return false;
-		if(contactPerson.getDesignation().equalsIgnoreCase(""))
+		if (contactPerson.getDesignation().equalsIgnoreCase(""))
 			return false;
 		return true;
 	}
