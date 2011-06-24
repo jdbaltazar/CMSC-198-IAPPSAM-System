@@ -47,9 +47,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="#" target="_top" class="links">Main
-		Menu</a> &gt; <a href="#" target="_top" class="links">Account List</a>
-		&gt;<em><strong>Account for Existing Employee</strong></em></td>
+		<td id="navigation"><a href="../menu" target="_top" class="links">Main
+		Menu</a> &gt; <a href="ViewAccounts.do" target="_top" class="links">Account
+		List</a> &gt;<em><strong>Account for Existing Employee</strong></em></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
@@ -66,7 +66,7 @@
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
 				<td class="align_right">*Employee Name:</td>
-				<td><select name="personID" class="required_menulist" id="personID">
+				<td><select name="personID" class="menulist" id="personID">
 					<%
 						int i = 0;
 						for (Person p : persons) {
@@ -80,37 +80,57 @@
 						i++;
 						}
 					%>
-			  </select></td>
+				</select></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Username:</td>
-				<td><input name="username" type="text" class="required" id="username" maxlength="80" /></td>
+				<td><input type="text" name="username" id="username"
+					<%String username2 = (String) request.getAttribute("username");
+			String usernameOK = (String) request.getAttribute("userNameOK");
+			if (username2 != null && !username2.isEmpty()) {%>
+					value="<%=username2%>" /> <%
+ 	} else if (usernameOK!=null&&usernameOK.equalsIgnoreCase("false")) {
+ 		out.print("/>*");
+ 	}
+ %>
+				</td>
 			</tr>
 			<tr>
-				<td class="align_right">*Password:</td>
-				<td><input name="password" type="password" class="required" id="password" maxlength="80" /></td>
+				<td class="align_right"
+					<%String passwordOK = (String) request.getAttribute("passwordOK");
+			if (passwordOK!=null&&passwordOK.equalsIgnoreCase("false")) {%>
+					<%}%>>*Password:</td>
+				<td><input type="password" name="password" id="password" /></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Re-enter Password:</td>
-				<td><input name="reenterPassword" type="password" class="required"
-					id="reenterPassword" maxlength="80" /></td>
+				<td class="align_right"
+					<%if (passwordOK!=null&&passwordOK.equalsIgnoreCase("false")) {%> <%}%>>*Re-enter
+				Password:</td>
+				<td><input type="password" name="reenterPassword"
+					id="reenterPassword" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Account Type:</td>
-				<td><select name="accountType" class="required_menulist"
+				<td><select name="accountType" class="menulist"
 					id="accountType">
 					<%
 						for (int j = 0; j < accountTypes.length; j++) {
 					%>
-					<option <%if (accountTypes[j].toString().equals(accountType)) {%>
-						selected="selected" <%}%>><%=accountTypes[j].toString()%></option>
+					<option
+						<%if (accountType != null) {
+					if (accountTypes[j].toString().equals(accountType)) {%>
+						selected="selected"
+						<%}
+				} else {
+					if (accountTypes[j].equals(accountTypes[j].SPSO_PERSONNEL)) {%>
+						selected="selected" <%}
+				}%>><%=accountTypes[j].toString()%></option>
 					<%
-						
 						}
 					%>
 
 
-			  </select></td>
+				</select></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>

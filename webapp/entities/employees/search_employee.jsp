@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.Person"%>
 <%@page import="com.iappsam.Employee"%>
 <%@page import="java.util.List"%>
 <%@page import="com.iappsam.managers.sessions.PersonManagerSession"%>
@@ -63,49 +64,56 @@
 	</tr>
 	<%
 		PersonManager pManager = new PersonManagerSession();
-		List<Employee> employeeList = pManager.getAllEmployee();
-		int j = pManager.getAllEmployee().size();
+		List<Person> personList = pManager.getAllPersons();
+		int j = pManager.getAllPersons().size();
 		for (int i = 0; i < j; i++) {
+			List<Employee> employeeList = pManager.getEmployeeByPerson(personList.get(i).getId());
+			if(employeeList.size()<1)
+				continue;
 	%>
 	<tr>
 		<td
 			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");
-			else
+				else
 					out.print("class=\"tablerow_2\"");%>>
 		<form id="employeeAction" name="employeeAction" method="get"
 			action="view_employee.jsp"><input type="hidden"
-			name="employeeID" value="<%=employeeList.get(i).getId()%>"></input> <input
+			name="employeeID"
+			value="<%=employeeList.get(employeeList.size()-1).getId()%>"></input> <input
 			name="editBtn" type="submit" class="button2" id="editBtn"
 			value="View&gt;&gt;" /></form>
 		</td>
 		<td
 			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");
-					else
+				else
 					out.print("class=\"tablerow_2\"");%>>
 		<%
-			if (employeeList.get(i).getPerson().getTitle() != null)
-					out.print(employeeList.get(i).getPerson().getTitle() + " ");
-				out.print(employeeList.get(i).getPerson().getName());
+			if (employeeList.get(employeeList.size() - 1).getPerson().getTitle() != null)
+					out.print(employeeList.get(employeeList.size() - 1).getPerson().getTitle() + " ");
+				out.print(employeeList.get(employeeList.size() - 1).getPerson().getName());
 		%>
 		</td>
 		<td
 			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");
-					else
-					out.print("class=\"tablerow_2\"");%>><%=employeeList.get(i).getDesignation()%></td>
+				else
+					out.print("class=\"tablerow_2\"");%>><%=employeeList.get(employeeList.size() - 1).getDesignation()%></td>
 		<td
-		<%if (i % 2 == 0)
+			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");
-		else
-			out.print("class=\"tablerow_2\"");
-					String s = "";
-					if(employeeList.get(i).getDivisionOffice()!=null&&employeeList.get(i).getDivisionOffice().getOfficeName()!=null)
-						s= "/"+employeeList.get(i).getDivisionOffice().getOfficeName();
-					%>
-		><%if(employeeList.get(i).getDivisionOffice()!=null)
-			out.print(employeeList.get(i).getDivisionOffice().getDivisionName()+s); %></td>
+				else
+					out.print("class=\"tablerow_2\"");
+				String s = "";
+				if (employeeList.get(employeeList.size() - 1).getDivisionOffice() != null
+						&& employeeList.get(employeeList.size() - 1).getDivisionOffice().getOfficeName() != null)
+					s = "/" + employeeList.get(employeeList.size() - 1).getDivisionOffice().getOfficeName();%>>
+		<%
+			if (employeeList.get(employeeList.size() - 1).getDivisionOffice() != null)
+					out.print(employeeList.get(employeeList.size() - 1).getDivisionOffice().getDivisionName() + s);
+		%>
+		</td>
 	</tr>
 	<%
 		}

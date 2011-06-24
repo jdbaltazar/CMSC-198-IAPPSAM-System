@@ -37,13 +37,11 @@ public class EmployeeCreation extends HttpServlet {
 	private String landline;
 	private String emailad;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-	private void failedResponse(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
 		if (name.isEmpty())
 			request.setAttribute("nameOK", "false");
 		else
@@ -62,8 +60,7 @@ public class EmployeeCreation extends HttpServlet {
 			designation3OK = "true";
 		}
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("add_employee.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("add_employee.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -89,8 +86,7 @@ public class EmployeeCreation extends HttpServlet {
 	 *      response)
 	 */
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameterValues("designation");
@@ -99,38 +95,47 @@ public class EmployeeCreation extends HttpServlet {
 		mobileNumber = request.getParameter("cellphoneNumber");
 		landline = request.getParameter("landline");
 		emailad = request.getParameter("e-mail_ad");
-		if (!name.isEmpty() && designation != null) {
+
+		boolean isFail = false;
+
+		for (int i = 0; i < 3; i++) {
+			if (designation[i] == null && employeeNo[i] != null) {
+				System.out.println("Designation + " + i + " + " + designation[i]);
+				System.out.println("EmployeeNo + " + i + " + " + employeeNo[i]);
+
+				isFail = true;
+			}
+		}
+		if (!name.isEmpty() && designation != null && !isFail) {
+			System.out.println("Designation Lenght:" + designation.length);
 			acceptResponse(request, response);
-		} else
+		} else {
 			failedResponse(request, response);
+			isFail = false;
+		}
 	}
 
-	private void acceptResponse(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person;
 		if (name != null && designation != null) {
-			if (title != null && !title.equalsIgnoreCase("null")
-					&& !title.isEmpty())
+			if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty())
 				person = new Person(title, name);
 			else
 				person = new Person(name);
 
-			if (emailad != null && !emailad.equalsIgnoreCase("null")
-					&& !emailad.isEmpty()) {
+			if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
 				Contact email = new Contact(emailad, ContactType.EMAIL);
 				person.addContact(email);
 			}
 
-			if (landline != null && !landline.equalsIgnoreCase("null")
-					&& !landline.isEmpty()) {
+			if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
 				Contact landline2 = new Contact(landline, ContactType.LANDLINE);
 				person.addContact(landline2);
 			}
 
-			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null")
-					&& !mobileNumber.isEmpty()) {
+			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
 				Contact mobile = new Contact(mobileNumber, ContactType.MOBILE);
 
 				person.addContact(mobile);
@@ -148,12 +153,9 @@ public class EmployeeCreation extends HttpServlet {
 			for (int i = 0; i < designation.length; i++) {
 				if (designation[i].isEmpty())
 					continue;
-				Employee employee = new Employee(designation[i], employeeNo[i],
-						person);
+				Employee employee = new Employee(designation[i], employeeNo[i], person);
 				try {
-					employee.setDivisionOffice(dManager
-							.getDivisionOffice(Integer
-									.parseInt(divisionOfficeID[i])));
+					employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
 					pManager.addEmployee(employee);
 					empList.add(employee);
 				} catch (NumberFormatException e) {
@@ -172,8 +174,7 @@ public class EmployeeCreation extends HttpServlet {
 			request.setAttribute("employeeID", "" + empList.get(0).getId());
 			try {
 
-				RequestDispatcher view = request
-						.getRequestDispatcher("view_employee.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("search_employee.do");
 				view.forward(request, response);
 			} catch (ServletException e) {
 				failedResponse(request, response);

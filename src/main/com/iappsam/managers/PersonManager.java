@@ -37,6 +37,8 @@ public interface PersonManager extends Manager {
 
 	void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException;
 
+	void updateEmployee(Employee employee) throws TransactionException;
+	
 	Employee getEmployee(int employeeID) throws TransactionException;
 
 	Employee getEmployee(String name, String designation) throws TransactionException;

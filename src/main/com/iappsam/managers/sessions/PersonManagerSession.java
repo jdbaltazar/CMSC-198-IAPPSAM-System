@@ -172,4 +172,9 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 		}
 	}
 
+	@Override
+	public void updateEmployee(Employee employee) throws TransactionException {
+		update(employee);
+	}
+
 }
