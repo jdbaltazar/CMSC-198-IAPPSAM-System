@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -98,7 +100,7 @@
       <tr>
         <td width="50%" align="right" class="same_width">
           <br />
-          <input name="addItems" type="submit" class="button" id="addItem" value="Add Item" />
+          <input name="addItems" type="submit" class="button" id="addItem" value="Add Item&gt;&gt;" />
           <br />
           <br />
         </td>
@@ -144,6 +146,9 @@
 							<c:when test="${modeOfProcurement.id eq form.mops.id}">
 								<option value="${modeOfProcurement.id}" selected="selected">${modeOfProcurement.name}</option>
 							</c:when>
+							<c:otherwise>
+								<option value="${modeOfProcurement.id}">${modeOfProcurement.name}</option>
+							</c:otherwise>
 						</c:choose>
 					</c:forEach>
               </select></td>
@@ -151,7 +156,23 @@
             
           <tr>
             <td class="other_fields_label">Delivery Place:</td>
-            <td class="right_side_table"><input type="text" name="deliveryPlace" id="deliveryPlace" /></td>
+            <td class="right_side_table">
+            <select name="deliveryPlace" class="menulist" id="deliveryPlace">
+            
+            <c:forEach var="divisionOffice" items="${divisionoffices}">
+						<c:choose>
+							<c:when test="${divisionOffice.id eq form.divisionOffice.id}">
+								<option value="${divisionOffice.id}" selected="selected">${divisionOffice.divisionName},
+								${divisionOffice.officeName}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${divisionOffice.id}">${divisionOffice.divisionName},
+								${divisionOffice.officeName}</option>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+              </select>
+              </td>
             </tr>
           <tr>
             <td class="other_fields_label">Delivery Date:</td>

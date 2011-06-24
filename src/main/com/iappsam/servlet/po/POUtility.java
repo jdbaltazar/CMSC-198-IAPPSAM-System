@@ -35,7 +35,7 @@ public class POUtility extends AbstractFormUtility {
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
 		req.setAttribute("suppliers", sm.getAllSuppliers());
 		req.setAttribute("mops", pom.getAllModeOfProcurement());
-		req.setAttribute("divisionoffices", dom.getAllBuildings());
+		req.setAttribute("divisionoffices", dom.getAllDivisionOffice());
 		req.setAttribute("employees", pm.getAllEmployee());
 	}
 
