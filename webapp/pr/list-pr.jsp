@@ -7,6 +7,19 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function emphasize(div) {
+		div.style.backgroundColor = "#dbb4c2";
+	}
+	function deEmphasize(div) {
+		div.style.backgroundColor = "#FFFFFF";
+	}
+	function deEmphasizeEven(div) {
+		div.style.backgroundColor = "#EEE0E5";
+	}
+</script>
+
 </head>
 
 <body>
@@ -30,8 +43,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="/menu" class="links">Main
-		Menu</a> &gt;<em><strong>PR List </strong></em>&gt; <a href="/pr?new=pr" class="links">Fillup PR Form</a></td>
+		<td id="navigation"><a href="/menu" class="links">Main Menu</a>
+		&gt;<em><strong>PR List </strong></em>&gt; <a href="/pr?new=pr"
+			class="links">Fillup PR Form</a></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
@@ -55,16 +69,22 @@
 		<td width="47%" class="tableheaders_forms">Requested by</td>
 		<td width="39%" class="tableheaders_forms">Prepared by</td>
 	</tr>
-	<c:forEach var="form" items="${forms}">
-		<a href="/pr?id=${form.id}">
-		<tr>
-			<td align="center" class="tablerow_1">${form.prNumber}</td>
-			<td align="center" class="tablerow_1">${form.requestedBy.person.name}</td>
-			<td align="center" class="tablerow_1">${form.approvedBy.person.name}</td>
-		</tr>
-		</a>
-	</c:forEach>
 </table>
+
+<c:forEach var="form" items="${forms}">
+	<a href="/pr?id=${form.id}">
+	<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
+	<table width="100%" style="table-layout: fixed">
+		<tr class="tablerow_1">
+			<td width="14%">${form.prNumber}</td>
+			<td width="47%">${form.requestedBy.person.name}</td>
+			<td width="39%">${form.approvedBy.person.name}</td>
+		</tr>
+	</table>
+	</div>
+	</a>
+</c:forEach> 
+
 </div>
 <!--<div id="footer"></div>-->
 </body>

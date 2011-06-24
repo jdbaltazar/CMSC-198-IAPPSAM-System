@@ -25,7 +25,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>List Items </strong></em></td>
+    <td id="navigation"><a href="../menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>List Items </strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>

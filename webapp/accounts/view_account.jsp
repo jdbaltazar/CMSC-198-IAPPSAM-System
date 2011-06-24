@@ -65,8 +65,8 @@ if(userName==null)
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="#" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.jsp" target="_top" class="links">Account List</a>
+		<td id="navigation"><a href="../menu" target="_top" class="links">Main
+		Menu</a> &gt; <a href="ViewAccounts.do" target="_top" class="links">Account List</a>
 		&gt; <em><strong>View Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
 	</tr>
@@ -74,10 +74,6 @@ if(userName==null)
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="">
 <table width="100%" frame="box" cellspacing="0" id="table">
-	<tr>
-		<td align="right" class="bkgrnd_white"><a href="#" target="_self"
-			class="linkBtn">Create Account For Existing Employee</a></td>
-	</tr>
 		<tr>
 			<td class="bkgrnd_white">&nbsp;</td>
 		</tr>

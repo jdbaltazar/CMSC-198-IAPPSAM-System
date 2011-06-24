@@ -74,7 +74,10 @@
 		int i = 0;
 		for (Supplier s : suppliers) {
 	%>
-	<tr>
+	<tr <%if (i % 2 == 0)
+					out.print("class=\"tablerow_1\"");
+			else
+				out.print("class=\"tablerow_2\"");%>>
 		<td align="center"
 			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");%>>
@@ -84,15 +87,9 @@
 			value="view-supplier" /> <input type="hidden" name="supplierID"
 			value="<%=s.getId()%>" /></form>
 		</td>
-		<td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getSupplierName()%></td>
-		<td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getAddress()%></td>
-		<td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getContactPerson().getPerson().getName()%></td>
+		<td align="center"><%=s.getSupplierName()%></td>
+		<td align="center"><%=s.getAddress()%></td>
+		<td align="center"><%=s.getContactPerson().getPerson().getName()%></td>
 	</tr>
 	<%
 		i++;

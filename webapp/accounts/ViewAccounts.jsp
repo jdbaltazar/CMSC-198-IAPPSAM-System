@@ -57,33 +57,33 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
+        <td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="10%" class="tableheaders_forms">Action</td>
+		<td width="7%" class="tableheaders_forms">Action</td>
 		<td width="25%" class="tableheaders_forms">Account Type</td>
-		<td width="30%" class="tableheaders_forms">Username</td>
-		<td width="35%" class="tableheaders_forms">Name</td>
+		<td width="31%" class="tableheaders_forms">Username</td>
+		<td width="37%" class="tableheaders_forms">Name</td>
 
 	</tr>
 	<%
 		boolean isODD = true;
 		for (Account a : accounts) {
 	%>
-	<tr>
-		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>
-			<%if (!isODD) {%> class="tablerow_2" <%}%>>
+	<tr
+	<%if (isODD) {%> class="tablerow_1" <%}%>
+			<%if (!isODD) {%> class="tablerow_2" <%}%>
+	>
+	 
+		<td>
 		<form id="form1" name="form1" method="post" action="view_account.jsp"><input
 			name="editBtn" type="submit" class="button2" id="editBtn"
 			value="View&gt;&gt;" /> <input type="hidden" name="username"
 			value="<%=a.getUsername()%>" /></form>
 		</td>
-		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
-			class="tablerow_2" <%}%>><%=a.getType().toString()%></td>
-		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
-			class="tablerow_2" <%}%>><%=a.getUsername() %>
-		</td>
-		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
-			class="tablerow_2" <%}%>><%=a.getPerson().getName() %></td>
+		<td><%=a.getType().toString()%></td>
+		<td><%=a.getUsername() %></td>
+		<td><%=a.getPerson().getName() %></td>
 
 	</tr>
 	<%

@@ -24,7 +24,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 /**
  * Servlet implementation class AccountCreationForExistingEmployee
  */
-@WebServlet("/accounts/create-account-for-employee.do")
+@WebServlet("/accounts/create-employee-account.do")
 public class AccountCreationForExistingEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

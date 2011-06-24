@@ -77,23 +77,30 @@
 					%>
 			  </select></td>
 			</tr>
+			
+			<%
+			String sName="", sAddress="", sTin="";
+			if(supplier.getSupplierName()!=null)
+				sName = supplier.getSupplierName();
+			if(supplier.getAddress()!=null)
+				sAddress = supplier.getAddress();
+			if(supplier.getTin()!=null)
+				sTin = supplier.getTin();
+			%>
 			<tr>
 				<td class="align_right">*Supplier Name:</td>
 				<td><input name="supplierName" type="text" class="required" id="supplierName"
-					value="<%=supplier.getSupplierName()%>" maxlength="80"
-					<%if (supplier.getSupplierName() != null) {%> <%}%> /></td>
+					value="<%=sName%>" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">*Supplier Address:</td>
 				<td><input name="address" class="required" id="address"
-					value="<%=supplier.getAddress()%>" maxlength="100"
-					<%if (supplier.getAddress() != null) {%> <%}%> /></td>
+					value="<%=sAddress%>" maxlength="100" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>
 				<td><input name="tin" id="tin"
-					value="<%=supplier.getTin()%>" maxlength="45"
-					<%if (supplier.getTin() != null) {%> <%}%> /></td>
+					value="<%=sTin%>" maxlength="45" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>
