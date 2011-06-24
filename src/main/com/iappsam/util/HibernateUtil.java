@@ -43,7 +43,7 @@ import com.iappsam.forms.PR;
 import com.iappsam.forms.PRLine;
 import com.iappsam.forms.PTRPA;
 import com.iappsam.forms.PTRPALine;
-import com.iappsam.forms.RAIS;
+import com.iappsam.forms.RIS;
 import com.iappsam.forms.RAISLine;
 import com.iappsam.forms.RSMI;
 import com.iappsam.forms.RSMILine;
@@ -135,7 +135,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(PR.class);
 			conf.addAnnotatedClass(PRLine.class);
 			conf.addAnnotatedClass(RecapitulationLine.class);
-			conf.addAnnotatedClass(RAIS.class);
+			conf.addAnnotatedClass(RIS.class);
 			conf.addAnnotatedClass(RAISLine.class);
 			conf.addAnnotatedClass(RSMI.class);
 			conf.addAnnotatedClass(RSMILine.class);

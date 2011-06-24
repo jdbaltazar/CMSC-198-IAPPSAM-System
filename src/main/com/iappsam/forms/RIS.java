@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Requisition_And_Issue_Slip")
-public class RAIS {
+public class RIS {
 
 	@Column(name = "DivisionOffice_ID")
 	private int divisionOfficeID;
@@ -45,12 +45,12 @@ public class RAIS {
 	@Column(name = "Signatory_ID3")
 	private int signatoryID3;
 
-	public RAIS() {
+	public RIS() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public RAIS(int divisionOfficeID, String rcCode, String risNumber, Date risDate, String saiNumber, Date saiDate, String purpose, int signatoryID, int signatoryID1, int signatoryID2, int signatoryID3) {
+	public RIS(int divisionOfficeID, String rcCode, String risNumber, Date risDate, String saiNumber, Date saiDate, String purpose, int signatoryID, int signatoryID1, int signatoryID2, int signatoryID3) {
 		super();
 		this.divisionOfficeID = divisionOfficeID;
 		this.rcCode = rcCode;
@@ -65,7 +65,7 @@ public class RAIS {
 		this.signatoryID3 = signatoryID3;
 	}
 
-	public RAIS(int divisionOfficeID, String risNumber, Date risDate, String purpose, int signatoryID, int signatoryID1, int signatoryID2, int signatoryID3) {
+	public RIS(int divisionOfficeID, String risNumber, Date risDate, String purpose, int signatoryID, int signatoryID1, int signatoryID2, int signatoryID3) {
 		super();
 		this.divisionOfficeID = divisionOfficeID;
 		this.risNumber = risNumber;

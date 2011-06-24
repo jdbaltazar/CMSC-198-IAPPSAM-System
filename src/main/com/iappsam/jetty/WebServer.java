@@ -40,7 +40,6 @@ import com.iappsam.servlet.entities.division.DivisionServlet;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
 import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
-import com.iappsam.servlet.entities.employee.ViewEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
 import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
 import com.iappsam.servlet.item.ItemServlet;
@@ -141,7 +140,6 @@ public class WebServer {
 		addServlet(new ViewBuildings(), "/entities/building/ViewBuildings.do");
 		addServlet(new ViewDisposals(), "/stocks/stocks/ViewDisposals.do");
 		addServlet(new ViewDivisionAndOffices(), "/entities/division/ViewDivisionAndOffices.do");
-		addServlet(new ViewEmployee(), "/entities/employees/ViewEmployee.do");
 		addServlet(new ViewItemCategories(), "/stocks/stocks/ViewItemCategories.do");
 		addServlet(new ViewItemConditions(), "/stocks/stocks/ViewItemConditions.do");
 		addServlet(new ViewItemStatuses(), "/stocks/stocks/ViewItemStatuses.do");
