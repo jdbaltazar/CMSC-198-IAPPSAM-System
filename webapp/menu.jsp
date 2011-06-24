@@ -150,13 +150,13 @@
 		<td colspan="3" class="main_menu_header">Accounts</td>
 	</tr>
 	<tr>
-		<td colspan="3"><form id="form10" name="form10" method="post" action="">
+		<td colspan="3"><form id="form10" name="form10" method="post" action="accounts/create_account.jsp">
 		  <input name="createAcctBtn" type="submit" class="menubtn" id="createAcctBtn" value="Create New" />
 		</form>
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="2">`
 		<form id="form11" name="form11" method="get"
 			action="accounts/ViewAccounts.do"><input name="viewAccts"
 			type="submit" class="menubtn" id="viewAccts" value="View Accounts" />
