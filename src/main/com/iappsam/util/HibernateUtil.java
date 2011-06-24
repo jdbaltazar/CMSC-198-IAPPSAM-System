@@ -70,6 +70,14 @@ public class HibernateUtil {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
+
+//		try {
+//			addDefaulEntities();
+//		} catch (TransactionException e) {
+//			e.printStackTrace();
+//		} catch (DuplicateEntryException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -135,13 +143,6 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(WMRLine.class);
 
 			sessionFactory = conf.buildSessionFactory();
-
-			IappsamConfig config = getIappsamConfig();
-			if (config != null) {
-				if (!config.isConfigured())
-					addDefaulEntities();
-			} else
-				addDefaulEntities();
 
 			return true;
 		} catch (Throwable ex) {
