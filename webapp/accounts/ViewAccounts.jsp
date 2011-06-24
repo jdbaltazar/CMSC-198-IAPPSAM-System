@@ -30,7 +30,7 @@
 	<tr>
 		<td width="32%">&nbsp;</td>
 		<td width="68%">
-		<form id="form2" name="form2" method="post" action="../logout"><input
+		<form id="form2" name="form2" method="post" action=""><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>
@@ -57,33 +57,33 @@
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
 		<td>&nbsp;</td>
-        <td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="7%" class="tableheaders_forms">Action</td>
-		<td width="25%" class="tableheaders_forms">Account Type</td>
-		<td width="31%" class="tableheaders_forms">Username</td>
-		<td width="37%" class="tableheaders_forms">Name</td>
+		<td width="5%" class="tableheaders_forms">Action</td>
+		<td width="20%" class="tableheaders_forms">Account Type</td>
+		<td width="20%" class="tableheaders_forms">Username</td>
+		<td width="55%" class="tableheaders_forms">Name</td>
 
 	</tr>
 	<%
 		boolean isODD = true;
 		for (Account a : accounts) {
 	%>
-	<tr
-	<%if (isODD) {%> class="tablerow_1" <%}%>
-			<%if (!isODD) {%> class="tablerow_2" <%}%>
-	>
-	 
-		<td>
-		<form id="form1" name="form1" method="post" action="view_account.jsp"><input
+	<tr>
+		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>
+			<%if (!isODD) {%> class="tablerow_2" <%}%>>
+		<form id="form1" name="form1" method="post" action="update_account.jsp"><input
 			name="editBtn" type="submit" class="button2" id="editBtn"
 			value="View&gt;&gt;" /> <input type="hidden" name="username"
 			value="<%=a.getUsername()%>" /></form>
 		</td>
-		<td><%=a.getType().toString()%></td>
-		<td><%=a.getUsername() %></td>
-		<td><%=a.getPerson().getName() %></td>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
+			class="tablerow_2" <%}%>><%=a.getType().toString()%></td>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
+			class="tablerow_2" <%}%>><%=a.getUsername() %>
+		</td>
+		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
+			class="tablerow_2" <%}%>><%=a.getPerson().getName() %></td>
 
 	</tr>
 	<%

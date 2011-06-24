@@ -56,15 +56,14 @@
 	if (employeeID == null)
 		employeeID = (String) request.getAttribute("employeeID");
 	PersonManager pManager = new PersonManagerSession();
-	Employee employee = pManager.getEmployee(Integer
-			.parseInt(employeeID));
+	Employee employee = pManager.getEmployee(Integer.parseInt(employeeID));
 	Person person = employee.getPerson();
-	List<Employee> empList = pManager.getEmployeeByPerson(employee
-			.getPerson().getId());
+	List<Employee> empList = pManager.getEmployeeByPerson(employee.getPerson().getId());
 	String string = "";
 %>
 <form id="form1" name="form1" method="post" action="update_employee.do">
 <input type="hidden" name="personID" value="<%=person.getId()%>"></input>
+<input type="hidden" name="employeeID" value="<%=employeeID%>"></input>
 <table width="100%" frame="box" cellspacing="0" id="table">
 	<tr>
 		<td class="header_rows">
@@ -78,7 +77,10 @@
 			<tr>
 				<td class="align_right" id="align_right">Title:</td>
 				<td><input type="text" name="title" id="title"
-					<%if (person.getTitle() != null) {%> value="<%=person.getTitle()%>"
+				<%String title= (String)request.getAttribute("title");
+					if(title!=null){%>
+					value="<%=title %>"
+					<%}else if (person.getTitle() != null) {%> value="<%=person.getTitle()%>"
 					<%}%> /></td>
 			</tr>
 			<tr>
@@ -106,6 +108,7 @@
 			</tr>
 			<%
 				for (int a = 0; a < empList.size(); a++) {
+					employee=empList.get(a);
 			%>
 			<tr>
 				<td align="center"><input type="text" name="designation"
@@ -118,27 +121,22 @@
 					<%
 						DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 							List<DivisionOffice> dList = dManager.getAllDivisionOffice();
-							for (int i = 0; i < dList.size(); i++) {
+						for (int i = 0; i < dList.size(); i++) {
 					%>
-
-					<option
-						<%if (employee.getDivisionOffice() != null
-							&& dList.get(i).getId() == employee
-									.getDivisionOffice().getId()) {%>
-						selected="selected"
-						<%}
-					if (employee.getDivisionOffice() != null
-							&& employee.getDivisionOffice().getOfficeName() != null)
-						string = "/"
-								+ employee.getDivisionOffice().getOfficeName();%>
-						value="<%=dList.get(i).getId()%>"><%=dList.get(i).getDivisionName()%></option>
+					<option value="<%=dList.get(i).getId()%>" 
+					<%if(employee.getDivisionOffice()!=null&&dList.get(i).getId()==employee.getDivisionOffice().getId()){ %>
+					selected="selected"
+					<%} %>>
+					<%
+						if (dList.get(i).getOfficeName() != null)
+								out.print(dList.get(i).getDivisionName() + "/"
+										+ dList.get(i).getOfficeName());
+							else
+								out.print(dList.get(i).getDivisionName());
+					%>
+					</option>
 					<%
 						}
-					%>
-					<%
-						if (employee.getDivisionOffice() != null)
-								out.print(employee.getDivisionOffice().getDivisionName()
-										+ string);
 					%>
 				</select></td>
 			</tr>
@@ -155,8 +153,7 @@
 	</tr>
 	<tr>
 		<%
-			Contact[] contacts = new Contact[employee.getPerson().getContacts()
-					.size()];
+			Contact[] contacts = new Contact[employee.getPerson().getContacts().size()];
 			employee.getPerson().getContacts().toArray(contacts);
 			ArrayList<Contact> mobile = new ArrayList<Contact>();
 			ArrayList<Contact> landline = new ArrayList<Contact>();
@@ -188,7 +185,7 @@
 					value=" <%=mobile.get(i).getData()%>"></input> <%
  	}
  	} else {
- %> <input name="dummy" size="20" maxlength="20" /> <%
+ %> <input name="cellphoneNumber" size="20" maxlength="20" /> <%
  	}
  %>
 				</td>
@@ -206,7 +203,7 @@
 					}
 
 					} else {
-				%> <input name="dummy" size="20" maxlength="20" /> <%
+				%> <input name="landline" size="20" maxlength="20" /> <%
  	}
  %>
 				</td>
@@ -224,7 +221,7 @@
 					}
 
 					} else {
-				%> <input name="dummy" size="20" maxlength="20" /> <%
+				%> <input name="e-mail_ad" size="20" maxlength="20" /> <%
  	}
  %>
 				</td>

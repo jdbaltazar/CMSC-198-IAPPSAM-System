@@ -501,7 +501,7 @@
 </table>
 </div>
 <div id="logoutiv" style="width: 90%">
-<form id="form2" name="form2" method="post" action="../../logout"><input
+<form id="form2" name="form2" method="post" action=""><input
 	name="logout" type="submit" class="maroon" id="logout" value="Logout" />
 </form>
 </div>

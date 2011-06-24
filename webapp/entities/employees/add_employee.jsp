@@ -9,16 +9,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Employee</title>
-<link href="../css/header.css" rel="stylesheet" type="text/css" />
-<link href="../css/form.css" rel="stylesheet" type="text/css" />
+<link href="../../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../../css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<div id="headerBkgrnd"><img src="../images/headerbar.png"
+<div id="headerBkgrnd"><img src="../../images/headerbar.png"
 	width="100%" height="129" /></div>
-<div id="logo"><img src="../images/headerlogo.png" width="124"
+<div id="logo"><img src="../../images/headerlogo.png" width="124"
 	height="128" /></div>
-<div id="headerName"><img src="../images/headertext.png"
+<div id="headerName"><img src="../../images/headertext.png"
 	width="452" height="44" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -34,8 +34,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td id="navigation"><a href="#" target="_top" class="links">Main
-		Menu</a> &gt; <a href="#" target="_top" class="links">Employee List</a>
+		<td id="navigation"><a href="../../menu.jsp" target="_top" class="links">Main
+		Menu</a> &gt; <a href="search_employee.do" target="_top" class="links">Employee List</a>
 		&gt; <em><strong>Add Employee</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
 	</tr>
@@ -131,7 +131,7 @@
 					<option value="<%=dList.get(i).getId()%>">
 					<%
 						if (dList.get(i).getOfficeName() != null)
-								out.print(dList.get(i).getDivisionName() + ","
+								out.print(dList.get(i).getDivisionName() + "/"
 										+ dList.get(i).getOfficeName());
 							else
 								out.print(dList.get(i).getDivisionName());

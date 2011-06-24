@@ -40,14 +40,13 @@ public class EmployeUpdate extends HttpServlet {
 	private String landline;
 	private String emailad;
 	private String personID;
+	private String employeeID;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-	private void failedResponse(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
 		if (name.isEmpty())
 			request.setAttribute("nameOK", "false");
 		else
@@ -58,18 +57,15 @@ public class EmployeUpdate extends HttpServlet {
 			designation1OK = "true";
 		}
 		String designation2OK = null;
-		if (designation.length > 1 && designation[1].isEmpty()
-				&& !employeeNo[1].isEmpty()) {
+		if (designation.length > 1 && designation[1].isEmpty() && !employeeNo[1].isEmpty()) {
 			designation2OK = "true";
 		}
 		String designation3OK = null;
-		if (designation.length > 2 && designation[2].isEmpty()
-				&& !employeeNo[2].isEmpty()) {
+		if (designation.length > 2 && designation[2].isEmpty() && !employeeNo[2].isEmpty()) {
 			designation3OK = "true";
 		}
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("view_employee.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("view_employee.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -80,12 +76,13 @@ public class EmployeUpdate extends HttpServlet {
 		request.setAttribute("mobileNumber", mobileNumber);
 		request.setAttribute("landline", landline);
 		request.setAttribute("emailad", emailad);
+		request.setAttribute("employeeID", employeeID);
 		try {
 			view.forward(request, response);
 		} catch (ServletException e) {
-			e.printStackTrace();
+			failedResponse(request, response);
 		} catch (IOException e) {
-			e.printStackTrace();
+			failedResponse(request, response);
 		}
 
 	}
@@ -95,8 +92,7 @@ public class EmployeUpdate extends HttpServlet {
 	 *      response)
 	 */
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		title = request.getParameter("title");
 		name = request.getParameter("name");
 		designation = request.getParameterValues("designation");
@@ -105,6 +101,7 @@ public class EmployeUpdate extends HttpServlet {
 		mobileNumber = request.getParameter("cellphoneNumber");
 		landline = request.getParameter("landline");
 		emailad = request.getParameter("e-mail_ad");
+		employeeID = request.getParameter("employeeID");
 		personID = request.getParameter("personID");
 
 		if (!name.isEmpty() && designation != null) {
@@ -113,8 +110,7 @@ public class EmployeUpdate extends HttpServlet {
 			failedResponse(request, response);
 	}
 
-	private void acceptResponse(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person;
@@ -141,60 +137,66 @@ public class EmployeUpdate extends HttpServlet {
 							landlineList.add(contacts[i]);
 					}
 				}
-				if (title != null && !title.equalsIgnoreCase("null")
-						&& !title.isEmpty()) {
+				if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty()) {
 					person.setName(name);
 					person.setTitle(title);
 				} else {
 					person.setName(name);
 				}
+				if (emailad != null && emailList.isEmpty() && !emailad.isEmpty()) {
+					Contact email = new Contact();
+					email.setData(emailad);
+					email.setType(ContactType.EMAIL);
+					person.addContact(email);
+				}
 				for (int i = 0; i < emailList.size(); i++)
-					if (emailad != null && !emailad.equalsIgnoreCase("null")
-							&& !emailad.isEmpty()) {
+					if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
 						Contact email = new Contact();
 						if (i < emailList.size()) {
 							email = emailList.get(i);
 							email.setData(emailad);
 							cManager.addContact(email);
-						} else {
-							email.setData(emailad);
-							person.addContact(email);
 						}
 
 					}
+				if (landline != null && landlineList.isEmpty() && !landline.isEmpty()) {
+
+					Contact landline2 = new Contact();
+					landline2.setData(landline);
+					landline2.setType(ContactType.LANDLINE);
+					person.addContact(landline2);
+				}
 				for (int i = 0; i < landlineList.size(); i++)
-					if (landline != null && !landline.equalsIgnoreCase("null")
-							&& !landline.isEmpty()) {
+					if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
 						Contact landline2 = new Contact();
 
-						if (i < emailList.size()) {
+						if (i < landlineList.size()) {
 							landline2 = landlineList.get(i);
 							landline2.setData(landline);
+							landline2.setType(landlineList.get(i).getType());
+							landline2.setId(landlineList.get(i).getContactID());
 							cManager.updateContact(landline2);
-						} else {
-							landline2.setData(landline);
-							person.addContact(landline2);
 						}
 					}
+				if (mobileNumber != null && mobileList.isEmpty() && !mobileNumber.isEmpty()) {
+					Contact mobile = new Contact();
+					mobile.setData(mobileNumber);
+					mobile.setType(ContactType.MOBILE);
+					person.addContact(mobile);
+				}
 				for (int i = 0; i < mobileList.size(); i++)
-					if (mobileNumber != null
-							&& !mobileNumber.equalsIgnoreCase("null")
-							&& !mobileNumber.isEmpty()) {
+					if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
 						Contact mobile = new Contact();
 						if (i < mobileList.size()) {
 							mobile = mobileList.get(i);
 							mobile.setData(mobileNumber);
+							mobile.setType(mobileList.get(i).getType());
+							mobile.setId(mobileList.get(i).getContactID());
 							cManager.updateContact(mobile);
-						}
-
-						else {
-							mobile.setData(mobileNumber);
-							person.addContact(mobile);
 						}
 					}
 
-				List<Employee> empList = pManager.getEmployeeByPerson(person
-						.getId());
+				List<Employee> empList = pManager.getEmployeeByPerson(person.getId());
 				System.out.println("EmployeeList Number:" + empList.size());
 				for (int i = 0; i < designation.length; i++) {
 					if (designation[i].isEmpty())
@@ -205,38 +207,33 @@ public class EmployeUpdate extends HttpServlet {
 					employee = empList.get(i);
 					employee.setDesignation(designation[i]);
 					employee.setEmployeeNumber(employeeNo[i]);
-					employee.setPerson(person);
 					try {
-						employee.setDivisionOffice(dManager
-								.getDivisionOffice(Integer
-										.parseInt(divisionOfficeID[i])));
+						employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
+						pManager.updateEmployee(employee);
 						empList.add(employee);
 					} catch (NumberFormatException e) {
 						failedResponse(request, response);
 					} catch (Exception e) {
-						e.printStackTrace();
 						failedResponse(request, response);
 					}
 					try {
 						pManager.updatePerson(person);
 					} catch (DuplicateEntryException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						failedResponse(request, response);
 					}
 				}
 				request.setAttribute("employeeID", empList.get(0).getId());
 			}
 
-			RequestDispatcher view = request
-					.getRequestDispatcher("search_employee.do");
+			RequestDispatcher view = request.getRequestDispatcher("search_employee.do");
 			view.forward(request, response);
 		} catch (ServletException e) {
 			failedResponse(request, response);
 		} catch (IOException e) {
 			failedResponse(request, response);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			failedResponse(request, response);
 		}
 	}
 }
