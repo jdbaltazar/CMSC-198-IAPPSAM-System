@@ -28,7 +28,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
  * Servlet implementation class C
  */
 @WebServlet("/entities/employees/update_employee.do")
-public class EmployeUpdate extends HttpServlet {
+public class EmployeeUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private String title;

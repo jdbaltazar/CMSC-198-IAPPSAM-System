@@ -28,8 +28,7 @@ public class SearchEmployee extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
@@ -39,8 +38,7 @@ public class SearchEmployee extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String query = (String) request.getAttribute("searchEmployeeField");
 		PersonManager pManager = new PersonManagerSession();
 		ArrayList<String> employeeID = new ArrayList<String>();
@@ -50,8 +48,8 @@ public class SearchEmployee extends HttpServlet {
 		if (query == null || query.isEmpty()) {
 			try {
 				List<Employee> empList = pManager.getAllEmployee();
-				System.out.println("size of empls:"+empList.size());
-				
+				System.out.println("size of empls:" + empList.size());
+
 				for (int i = 0; i < empList.size(); i++) {
 					employeeID.add("" + empList.get(i).getId());
 					System.out.println(empList.get(i).getId());
@@ -85,8 +83,7 @@ public class SearchEmployee extends HttpServlet {
 			}
 		}
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("search_employee.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("search_employee.jsp");
 		view.forward(request, response);
 
 	}

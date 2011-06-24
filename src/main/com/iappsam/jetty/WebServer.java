@@ -37,8 +37,8 @@ import com.iappsam.servlet.entities.building.EditBuilding;
 import com.iappsam.servlet.entities.building.SaveEditedBuilding;
 import com.iappsam.servlet.entities.building.ViewBuildings;
 import com.iappsam.servlet.entities.division.DivisionServlet;
-import com.iappsam.servlet.entities.employee.EmployeUpdate;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
+import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.employee.ViewEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
@@ -100,7 +100,7 @@ public class WebServer {
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
-		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
+		addServlet(new EditBuilding(), "/entities/bu`ilding/EditBuilding.do");
 		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
 		addServlet(new EditItemCategory(), "/stocks/stocks/EditItemCategory.do");
@@ -110,7 +110,7 @@ public class WebServer {
 		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
 		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
-		addServlet(new EmployeUpdate(), "/entities/employees/update_employee.do");
+		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new APPServlet(), "/app");

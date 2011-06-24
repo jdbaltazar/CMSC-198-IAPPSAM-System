@@ -61,6 +61,8 @@
 		<td>&nbsp;</td>
 	</tr>
 </table>
+<div id="export">Export to
+<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
 <!--<form name="PRForm" method="post" action="">-->
 <div id="items_table">
 <table width="100%" border="0" cellspacing="0">

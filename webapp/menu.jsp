@@ -128,8 +128,8 @@
 	</tr>
 	<tr>
 		<td>
-		<form id="form26" name="form26" method="post"
-			action="entities/employees/search_employee.do"><input
+		<form id="form26" name="form26" method="get"
+			action="/entities/employees/search_employee.do"><input
 			name="employeeBtn" type="submit" class="menubtn" id="employeeBtn"
 			value="Employee" /></form>
 		</td>
