@@ -11,26 +11,32 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.form.FormParser;
 import com.iappsam.util.ApplicationContext;
 
-public class APPParser extends FormParser {
+public class AppParser extends FormParser {
 
 	@Override
 	public Form createForm(HttpServletRequest req, ApplicationContext appContext) throws TransactionException {
 
 		ItemManager im = appContext.getItemManager();
 		DivisionOfficeManager dom = appContext.getDivisionOfficeManager();
-		int officeId = Integer.parseInt(req.getParameter("division-office"));
-
 		PersonManager pm = appContext.getPersonManager();
-		int recId = Integer.parseInt(req.getParameter("recommended-by"));
-		int prepId = Integer.parseInt(req.getParameter("prepared-by"));
+
+		String doParam = req.getParameter("division-office");
+		String recomParam = req.getParameter("recommended-by");
+		String prepParam = req.getParameter("prepared-by");
 
 		APP app = new APP();
 		app.setYear(req.getParameter("year"));
 		app.setPlanControlNumber(req.getParameter("plan-control-number"));
 		app.setDateScheduled(req.getParameter("date"));
-		app.setDivisionOffice(dom.getDivisionOffice(officeId));
-		app.setRecommendedBy(pm.getEmployee(recId));
-		app.setPreparedBy(pm.getEmployee(prepId));
+
+		if (doParam != null)
+			app.setDivisionOffice(dom.getDivisionOffice(Integer.parseInt(doParam)));
+
+		if (recomParam != null)
+			app.setRecommendedBy(pm.getEmployee(Integer.parseInt(recomParam)));
+
+		if (prepParam != null)
+			app.setPreparedBy(pm.getEmployee(Integer.parseInt(prepParam)));
 
 		String[] itemsParam = req.getParameterValues("items");
 		String[] q1Param = req.getParameterValues("q1");

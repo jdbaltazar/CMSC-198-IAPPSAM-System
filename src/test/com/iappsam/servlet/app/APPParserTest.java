@@ -48,7 +48,7 @@ public class APPParserTest extends ServletTestCase {
 		Employee recommendedBy = Employee.create("dess", "maria");
 		given(pm.getEmployee(2)).willReturn(recommendedBy);
 
-		APP f = (APP) new APPParser().createForm(request, appContext);
+		APP f = (APP) new AppParser().createForm(request, appContext);
 
 		assertEquals(2010, f.getYear());
 		assertEquals(doff, f.getDivisionOffice());
