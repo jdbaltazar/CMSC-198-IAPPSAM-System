@@ -24,11 +24,11 @@ public class POParser extends FormParser {
 		ItemManager im = appContext.getItemManager();
 
 		String supplierParam = req.getParameter("supplier");
-		int mopId = Integer.parseInt(req.getParameter("mop"));
-		int doId = Integer.parseInt(req.getParameter("dom"));
-		long amount = Long.parseLong(req.getParameter("amount"));
-		int accountantId = Integer.parseInt(req.getParameter("accountant"));
-		int deanId = Integer.parseInt(req.getParameter("dean"));
+		String mopParam = req.getParameter("mop");
+		String domParam = req.getParameter("dom");
+		String amountParam = req.getParameter("amount");
+		String accountantParam = req.getParameter("accountant");
+		String deanParam = req.getParameter("dean");
 
 		PO po = new PO();
 		po.setPoNumber(req.getParameter("po-number"));
@@ -36,17 +36,28 @@ public class POParser extends FormParser {
 		if (supplierParam != null)
 			po.setSupplier(sm.getSupplier(Integer.parseInt(supplierParam)));
 
-		po.setModeOfProcurement(pom.getModeOfProcurement(mopId));
-		po.setDivisionOffice(dom.getDivisionOffice(doId));
+		if (mopParam != null)
+			po.setModeOfProcurement(pom.getModeOfProcurement(Integer.parseInt(mopParam)));
+
+		if (domParam != null)
+			po.setDivisionOffice(dom.getDivisionOffice(Integer.parseInt(domParam)));
+
 		po.setDateOfDelivery(req.getParameter("date-of-delivery"));
 		po.setPaymentTerm(req.getParameter("payment-term"));
 		po.setDeliveryTerm(req.getParameter("delivery-term"));
 		po.setTotalAmountInWords(req.getParameter("total-amount-in-words"));
 		po.setOrNumber(req.getParameter("or-number"));
-		po.setAmount(amount);
-		po.setAccountant(pm.getEmployee(accountantId));
+
+		if (amountParam != null)
+			po.setAmount(Long.parseLong(amountParam));
+
+		if (accountantParam != null)
+			po.setAccountant(pm.getEmployee(Integer.parseInt(accountantParam)));
+
 		po.setAccountantDate(req.getParameter("accountant-date"));
-		po.setDean(pm.getEmployee(deanId));
+
+		if (deanParam != null)
+			po.setDean(pm.getEmployee(Integer.parseInt(deanParam)));
 		po.setDeanDate(req.getParameter("dean-date"));
 
 		String[] items = req.getParameterValues("items");
