@@ -11,6 +11,7 @@ import com.iappsam.servlet.Logout;
 import com.iappsam.servlet.Menu;
 import com.iappsam.servlet.SearchItemList;
 import com.iappsam.servlet.account.AccountCreation;
+import com.iappsam.servlet.account.AccountCreationForExistingEmployee;
 import com.iappsam.servlet.account.AccountUpdate;
 import com.iappsam.servlet.account.AccountsView;
 import com.iappsam.servlet.account.UpdateAccount;
@@ -36,6 +37,7 @@ import com.iappsam.servlet.entities.building.EditBuilding;
 import com.iappsam.servlet.entities.building.SaveEditedBuilding;
 import com.iappsam.servlet.entities.building.ViewBuildings;
 import com.iappsam.servlet.entities.division.DivisionServlet;
+import com.iappsam.servlet.entities.employee.EmployeUpdate;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.employee.ViewEmployee;
@@ -82,8 +84,9 @@ public class WebServer {
 		context.setParentLoaderPriority(true);
 
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
+		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
-		addServlet(new AccountUpdate(), "/AccountUpdate");
+		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
 		addServlet(new AddDisposal(), "/stocks/stocks/AddDisposal.do");
 		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");
@@ -106,7 +109,8 @@ public class WebServer {
 		addServlet(new EditItemUnit(), "/stocks/stocks/EditItemUnit.do");
 		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
-		addServlet(new EmployeeCreation(), "/entities/employees/AddEmployee.do");
+		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
+		addServlet(new EmployeUpdate(), "/entities/employees/update_employee.do");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new APPServlet(), "/app");
@@ -132,7 +136,7 @@ public class WebServer {
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new SupplierServlet(), "/supplier");
-		addServlet(new UpdateAccount(), "/accounts/viewing/update_account.do");
+		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
 		addServlet(new ViewBuildings(), "/entities/building/ViewBuildings.do");
 		addServlet(new ViewDisposals(), "/stocks/stocks/ViewDisposals.do");

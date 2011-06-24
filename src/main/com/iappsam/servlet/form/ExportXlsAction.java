@@ -14,21 +14,21 @@ import com.iappsam.forms.Form;
 import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.item.Action;
 
-public class ExportPdfAction implements Action {
+public class ExportXlsAction implements Action {
 
 	private FormUtility utility;
 
-	public ExportPdfAction(FormUtility utility) {
+	public ExportXlsAction(FormUtility utility) {
 		this.utility = utility;
 	}
 
 	@Override
 	public void process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
-			File pdf = utility.getPdf((Form) req.getSession().getAttribute("form"));
+			File pdf = utility.getXls((Form) req.getSession().getAttribute("form"));
 
 			ServletOutputStream stream = res.getOutputStream();
-			res.setContentType("application/pdf");
+			res.setContentType("application/vnd.ms-excel");
 			res.setContentLength((int) pdf.length());
 
 			FileInputStream input = new FileInputStream(pdf);

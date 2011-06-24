@@ -21,16 +21,16 @@ public class Cleaner {
 		}
 	}
 
-	public static void removeAttribute(HttpServletRequest request, String attrib) {
-
-		@SuppressWarnings("rawtypes")
-		Enumeration attributeNames = request.getSession().getAttributeNames();
-		while (attributeNames.hasMoreElements()) {
-			String sAttribute = attributeNames.nextElement().toString();
-			if (sAttribute.equalsIgnoreCase(attrib)) {
-				request.getSession().removeAttribute(attrib);
-			}
-		}
-	}
+//	public static void removeAttribute(HttpServletRequest request, String attrib) {
+//
+//		@SuppressWarnings("rawtypes")
+//		Enumeration attributeNames = request.getSession().getAttributeNames();
+//		while (attributeNames.hasMoreElements()) {
+//			String sAttribute = attributeNames.nextElement().toString();
+//			if (sAttribute.equalsIgnoreCase(attrib)) {
+//				request.getSession().removeAttribute(attrib);
+//			}
+//		}
+//	}
 
 }

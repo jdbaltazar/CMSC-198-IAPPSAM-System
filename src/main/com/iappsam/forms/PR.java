@@ -18,10 +18,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
 
+@Indexed
 @Entity
 @Table(name = "Purchase_Request")
 public class PR implements Form {
@@ -31,6 +36,7 @@ public class PR implements Form {
 	@Column(name = "Purchase_Request_ID")
 	private int id;
 
+	@Field(name = "prNumber")
 	@Column(name = "PR_Number")
 	private String prNumber;
 
@@ -56,10 +62,12 @@ public class PR implements Form {
 	@JoinColumn(name = "DivisionOffice_ID")
 	private DivisionOffice divisionOffice;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Requested_by")
 	private Employee requestedBy;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinColumn(name = "Approved_by")
 	private Employee approvedBy;

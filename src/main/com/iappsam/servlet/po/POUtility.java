@@ -57,6 +57,11 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		return null;
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public File getXls(Form form) throws ReportException {
+		throw new UnsupportedOperationException();
 	}
 }

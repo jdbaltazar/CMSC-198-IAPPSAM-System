@@ -31,7 +31,7 @@ public class ViewFormAction implements Action {
 				response.sendRedirect(getFormListLink());
 				return;
 			}
-			request.setAttribute("form", form);
+			request.getSession().setAttribute("form", form);
 			request.getRequestDispatcher(getViewFormJsp()).forward(request, response);
 		} catch (Exception e) {
 			response.sendRedirect(getFormListLink());
