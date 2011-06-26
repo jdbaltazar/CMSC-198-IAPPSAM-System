@@ -24,7 +24,8 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 	private APPManager appm;
 
 	public APPUtility() {
-		super("app", ApplicationContext.INSTANCE, new APPParser());
+//		super("app", ApplicationContext.INSTANCE, new AppParser());
+		super("app", ApplicationContext.INSTANCE, null);
 		dom = appContext.getDivisionOfficeManager();
 		pm = appContext.getPersonManager();
 		appm = appContext.getAPPManager();
