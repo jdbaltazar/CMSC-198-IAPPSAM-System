@@ -1,5 +1,9 @@
 package com.iappsam.jetty;
 
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
 import javax.servlet.Servlet;
 
 import org.eclipse.jetty.server.Server;
@@ -11,6 +15,7 @@ import com.iappsam.servlet.Logout;
 import com.iappsam.servlet.Menu;
 import com.iappsam.servlet.SearchItemList;
 import com.iappsam.servlet.account.AccountCreation;
+import com.iappsam.servlet.account.AccountCreationForExistingEmployee;
 import com.iappsam.servlet.account.AccountUpdate;
 import com.iappsam.servlet.account.AccountsView;
 import com.iappsam.servlet.account.UpdateAccount;
@@ -37,9 +42,10 @@ import com.iappsam.servlet.entities.building.SaveEditedBuilding;
 import com.iappsam.servlet.entities.building.ViewBuildings;
 import com.iappsam.servlet.entities.division.DivisionServlet;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
+import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
-import com.iappsam.servlet.entities.employee.ViewEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
+import com.iappsam.servlet.filter.SecurityFilter;
 import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
 import com.iappsam.servlet.item.ItemServlet;
 import com.iappsam.servlet.po.POServlet;
@@ -82,8 +88,9 @@ public class WebServer {
 		context.setParentLoaderPriority(true);
 
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
+		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
-		addServlet(new AccountUpdate(), "/AccountUpdate");
+		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
 		addServlet(new AddDisposal(), "/stocks/stocks/AddDisposal.do");
 		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");
@@ -97,7 +104,7 @@ public class WebServer {
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
-		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
+		addServlet(new EditBuilding(), "/entities/bu`ilding/EditBuilding.do");
 		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
 		addServlet(new EditItemCategory(), "/stocks/stocks/EditItemCategory.do");
@@ -106,7 +113,8 @@ public class WebServer {
 		addServlet(new EditItemUnit(), "/stocks/stocks/EditItemUnit.do");
 		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
-		addServlet(new EmployeeCreation(), "/entities/employees/AddEmployee.do");
+		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
+		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new APPServlet(), "/app");
@@ -132,18 +140,19 @@ public class WebServer {
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new SupplierServlet(), "/supplier");
-		addServlet(new UpdateAccount(), "/accounts/viewing/update_account.do");
+		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
 		addServlet(new ViewBuildings(), "/entities/building/ViewBuildings.do");
 		addServlet(new ViewDisposals(), "/stocks/stocks/ViewDisposals.do");
 		addServlet(new ViewDivisionAndOffices(), "/entities/division/ViewDivisionAndOffices.do");
-		addServlet(new ViewEmployee(), "/entities/employees/ViewEmployee.do");
 		addServlet(new ViewItemCategories(), "/stocks/stocks/ViewItemCategories.do");
 		addServlet(new ViewItemConditions(), "/stocks/stocks/ViewItemConditions.do");
 		addServlet(new ViewItemStatuses(), "/stocks/stocks/ViewItemStatuses.do");
 		addServlet(new ViewItemUnits(), "/stocks/stocks/ViewItemUnits.do");
 		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
+
+		addFilter(new SecurityFilter(), "/*");
 
 		server.setHandler(context);
 		server.start();
@@ -152,5 +161,10 @@ public class WebServer {
 
 	private static void addServlet(Servlet servlet, String path) {
 		context.addServlet(new ServletHolder(servlet), path);
+	}
+
+	private static void addFilter(Filter filter, String path) {
+		EnumSet<DispatcherType> dispatches = null;
+		context.addFilter(SecurityFilter.class, path, dispatches);
 	}
 }

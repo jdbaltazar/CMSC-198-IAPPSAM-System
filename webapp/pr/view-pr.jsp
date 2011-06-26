@@ -35,38 +35,39 @@
 </head>
 
 <body>
-	<div id="headerBkgrnd">
-		<img src="../images/headerbar.png" width="100%" height="129" />
-	</div>
-	<div id="logo">
-		<img src="../images/headerlogo.png" width="124" height="128" />
-	</div>
-	<div id="headerName">
-		<img src="../images/headertext.png" width="452" height="44" />
-	</div>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<table width="100%" border="0" cellspacing="0">
-		<tr>
-			<td width="32%">&nbsp;</td>
-			<td width="68%">
-				<form id="form2" name="form2" method="post" action="">
-					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
-				</form>
-			</td>
-		</tr>
-		<tr>
-			<td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/pr" target="_top" class="links">PR List</a> &gt; <em><strong>View Purchase Request</strong> </em><strong></strong>
-			</td>
-			<td>&nbsp;</td>
-		</tr>
-	</table>
-	<div id="export">
-		Export to <a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a>
-	</div>
-	<div id="items_table">
+<div id="headerBkgrnd"><img src="../images/headerbar.png"
+	width="100%" height="129" /></div>
+<div id="logo"><img src="../images/headerlogo.png" width="124"
+	height="128" /></div>
+<div id="headerName"><img src="../images/headertext.png"
+	width="452" height="44" /></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="100%" border="0" cellspacing="0">
+	<tr>
+		<td width="32%">&nbsp;</td>
+		<td width="68%">
+		<form id="form2" name="form2" method="post" action="../logout"><input
+			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
+			value="Logout" /></form>
+		</td>
+	</tr>
+	<tr>
+		<td id="navigation"><a href="/menu" target="_top" class="links">Main
+		Menu</a> &gt; <a href="/pr" target="_top" class="links">PR List</a> &gt; <em><strong>View
+		Purchase Request</strong> </em><strong></strong></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<div id="export">Export to
+<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
+<!--<form name="PRForm" method="post" action="">-->
+<div id="items_table">
+<table width="100%" border="0" cellspacing="0">
+	<tr>
+		<td colspan="2">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
 				<td colspan="2">

@@ -58,7 +58,8 @@ public class AddItemAction implements Action {
 				throw new RuntimeException();
 
 			itemManager.addItem(item);
-			response.sendRedirect("/items?id=" + item.getId());
+//			response.sendRedirect("/items?id=" + item.getId());
+			response.sendRedirect("/items");
 		} catch (Exception e) {
 			try {
 				request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());

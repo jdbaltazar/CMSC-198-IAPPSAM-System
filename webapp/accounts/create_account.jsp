@@ -333,7 +333,14 @@
 						<%
 							for (int i = 0; i < accountTypes.length; i++) {
 						%>
-						<option><%=accountTypes[i].toString()%></option>
+						<option
+						
+						<%
+						if(accountTypes[i].equals(AccountType.SPSO_PERSONNEL))
+							out.print("selected");
+						%>
+						
+						><%=accountTypes[i].toString()%></option>
 						<%
 							}
 						%>

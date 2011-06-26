@@ -12,13 +12,13 @@ public class Cleaner {
 
 		@SuppressWarnings("rawtypes")
 		Enumeration attributeNames = request.getSession().getAttributeNames();
-		while (attributeNames.hasMoreElements()) {
-			String sAttribute = attributeNames.nextElement().toString();
-			if (!sAttribute.equalsIgnoreCase("username")) {
-				if (!sAttribute.equalsIgnoreCase("loginContext"))
-					request.getSession().removeAttribute(sAttribute);
-			}
-		}
+//		while (attributeNames.hasMoreElements()) {
+//			String sAttribute = attributeNames.nextElement().toString();
+//			if (!sAttribute.equalsIgnoreCase("username")) {
+//				if (!sAttribute.equalsIgnoreCase("loginContext"))
+//					request.getSession().removeAttribute(sAttribute);
+//			}
+//		}
 	}
 
 //	public static void removeAttribute(HttpServletRequest request, String attrib) {

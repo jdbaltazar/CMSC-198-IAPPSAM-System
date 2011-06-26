@@ -41,10 +41,10 @@
 	<tr>
 		<td colspan="2">
 		
-		  <form id="form1" name="form1" method="get" action="items">
+		  <form id="form1" name="form1" method="post" action="items">
 		    <input name="itemBtn" type="submit" class="menubtn" id="itemBtn" value="Item" />
         </form></td>
-		<td><form id="form28" name="form28" method="post" action="items">
+		<td><form id="form28" name="form28" method="post" action="">
 		  <input name="addItemBtn" type="submit" class="button2" id="addItemBtn" value="Add&gt;&gt;" />
 	    </form></td>
 	</tr>
@@ -128,8 +128,8 @@
 	</tr>
 	<tr>
 		<td>
-		<form id="form26" name="form26" method="get"
-			action="/entities/employees/search_employee.do"><input
+		<form id="form26" name="form26" method="post"
+			action="entities/employees/search_employee.do"><input
 			name="employeeBtn" type="submit" class="menubtn" id="employeeBtn"
 			value="Employee" /></form>
 		</td>
@@ -150,22 +150,19 @@
 		<td colspan="3" class="main_menu_header">Accounts</td>
 	</tr>
 	<tr>
-		<td colspan="3"><form id="form10" name="form10" method="post" action="accounts/create_account.jsp">
-		  <input name="createAcctBtn" type="submit" class="menubtn" id="createAcctBtn" value="Create New" />
-		</form>
+		<td colspan="3">
+		<form id="form10" name="form10" method="post"
+			action="accounts/create_account.jsp"><input name="createNew"
+			type="submit" class="menubtn" id="createNew" value="Create New" /></form>
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="3">
 		<form id="form11" name="form11" method="get"
 			action="accounts/ViewAccounts.do"><input name="viewAccts"
 			type="submit" class="menubtn" id="viewAccts" value="View Accounts" />
 		</form>
 		</td>
-        
-        <td><form id="form29" name="form29" method="post" action="">
-		  <input name="myAcct" type="submit" class="button2" id="myAcct" value="My Account" />
-	    </form></td>
 	</tr>
 	<tr>
 		<td colspan="3">&nbsp;</td>
@@ -231,7 +228,7 @@
 			value="Purchase Order" /></form>
 		</td>
 		<td align="center">
-		<form id="form19" name="form19" method="post" action="/po?new=po"><input
+		<form id="form19" name="form19" method="post" action=""><input
 			name="addPo" type="submit" class="button2" id="addPo"
 			value="Add&gt;&gt;" /></form>
 		</td>
