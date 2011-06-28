@@ -36,7 +36,11 @@ public class AddBuilding extends HttpServlet {
 		RequestDispatcher add = request.getRequestDispatcher("AddBuilding.jsp");
 		Building building = new Building();
 		String name = request.getParameter("name");
+		if(name!=null)
+			name = name.trim();
 		String address = request.getParameter("address");
+		if(address!=null)
+			address = address.trim();
 
 		if (Verifier.validEntry(name)) {
 			building.setBuildingName(name);

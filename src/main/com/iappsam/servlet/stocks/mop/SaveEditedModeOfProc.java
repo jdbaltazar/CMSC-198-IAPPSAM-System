@@ -33,7 +33,7 @@ public class SaveEditedModeOfProc extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditModeOfProcurement.do");
 		int mopID = Integer.parseInt(request.getParameter("mopID"));
-		String name = request.getParameter("modeOfProcurementField");
+		String name = request.getParameter("modeOfProcurementField").trim();
 
 		ModeOfProcurement mop = null;
 

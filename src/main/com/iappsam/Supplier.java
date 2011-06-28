@@ -14,6 +14,8 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
 
+import com.iappsam.util.Verifier;
+
 @Indexed
 @Entity
 public class Supplier implements Validatable {
@@ -135,21 +137,11 @@ public class Supplier implements Validatable {
 
 	@Override
 	public boolean validate() {
-		if (supplierName == null)
+		if (!Verifier.validEntry(supplierName))
 			return false;
-		if (supplierName.equalsIgnoreCase(""))
+		if (!Verifier.validEntry(address))
 			return false;
-		if (address == null)
-			return false;
-		if (address.equalsIgnoreCase(""))
-			return false;
-		if (contactPerson.getPerson().getName() == null)
-			return false;
-		if (contactPerson.getPerson().getName().equalsIgnoreCase(""))
-			return false;
-		if (contactPerson.getDesignation() == null)
-			return false;
-		if (contactPerson.getDesignation().equalsIgnoreCase(""))
+		if (!contactPerson.validate())
 			return false;
 		return true;
 	}

@@ -40,7 +40,7 @@ public class AddModeOfProcurement extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddModeOfProc.jsp");
 
-		String modeofP = request.getParameter("modeOfProcurementField");
+		String modeofP = request.getParameter("modeOfProcurementField").trim();
 
 		if (Verifier.validEntry(modeofP)) {
 			modeofProc.setName(modeofP);

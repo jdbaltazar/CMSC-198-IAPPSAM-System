@@ -29,17 +29,17 @@ public class SaveEditedSupplierAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 
 		String supplierID = request.getParameter("supplierID");
-		String supplierName = request.getParameter("supplierName");
-		String address = request.getParameter("supplierAddress");
-		String tin = request.getParameter("tin");
+		String supplierName = request.getParameter("supplierName").trim();
+		String address = request.getParameter("supplierAddress").trim();
+		String tin = request.getParameter("tin").trim();
 
-		String title = request.getParameter("title");
-		String name = request.getParameter("name");
-		String designation = request.getParameter("designation");
-		String employeeNumber = request.getParameter("employeeNumber");
-		String mobileNumber = request.getParameter("mobileNumber");
-		String landline = request.getParameter("landline");
-		String emailad = request.getParameter("emailad");
+		String title = request.getParameter("title").trim();
+		String name = request.getParameter("name").trim();
+		String designation = request.getParameter("designation").trim();
+		String employeeNumber = request.getParameter("employeeNumber").trim();
+		String mobileNumber = request.getParameter("mobileNumber").trim();
+		String landline = request.getParameter("landline").trim();
+		String emailad = request.getParameter("emailad").trim();
 
 		SupplierManager sManager = new SupplierManagerSession();
 		ContactManager cManager = new ContactManagerSession();
@@ -52,8 +52,7 @@ public class SaveEditedSupplierAction implements Action {
 		System.out.println("title: " + title);
 		Person person = pManager.getPerson(supplier.getContactPerson().getPerson().getId());
 		person.setTitle(title);
-		if (Verifier.validEntry(name))
-			person.setName(name);
+		person.setName(name);
 
 		Set<Contact> contacts = person.getContacts();
 
@@ -65,7 +64,7 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && mobileNumber != null)
+		if (!found && Verifier.validEntry(mobileNumber))
 			person.addContact(new Contact(mobileNumber, ContactType.MOBILE));
 
 		found = false;
@@ -76,7 +75,7 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && landline != null)
+		if (!found && Verifier.validEntry(landline))
 			person.addContact(new Contact(landline, ContactType.LANDLINE));
 
 		found = false;
@@ -87,32 +86,28 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && landline != null)
+		if (!found && Verifier.validEntry(emailad))
 			person.addContact(new Contact(emailad, ContactType.EMAIL));
 
 		try {
-			pManager.updatePerson(person);
+			if (person.validate())
+				pManager.updatePerson(person);
 		} catch (DuplicateEntryException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
 		Employee employee = pManager.getEmployee(supplier.getContactPerson().getId());
-		if (Verifier.validEntry(designation))
-			employee.setDesignation(designation);
+		employee.setDesignation(designation);
 		employee.setPerson(person);
-		if (employeeNumber != null)
-			employee.setEmployeeNumber(employeeNumber);
+		employee.setEmployeeNumber(employeeNumber);
 
-		if (Verifier.validEntry(supplierName))
-			supplier.setSupplierName(supplierName);
-		if (Verifier.validEntry(address))
-			supplier.setAddress(address);
+		supplier.setSupplierName(supplierName);
+		supplier.setAddress(address);
 		supplier.setTin(tin);
 		supplier.setContactPerson(employee);
 
-		if (supplier.validate() && Verifier.validEntry(name) && (Verifier.validEntry(designation)) && Verifier.validEntry(supplierName)
-				&& Verifier.validEntry(address)) {
+		if (supplier.validate()) {
 			try {
 				sManager.updateSupplier(supplier);
 				update = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
@@ -123,6 +118,17 @@ public class SaveEditedSupplierAction implements Action {
 			}
 		} else {
 			System.out.println("edited supplier is not valid!!");
+			System.out.println("person name: \'" + supplier.getContactPerson().getPerson().getName() + "\'");
+
+			Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
+			if (!Verifier.validEntry(supplier.getSupplierName()))
+				supplier.setSupplierName(original.getSupplierName());
+			if (!Verifier.validEntry(supplier.getAddress()))
+				supplier.setAddress(original.getAddress());
+			if (!Verifier.validEntry(supplier.getContactPerson().getPerson().getName()))
+				supplier.getContactPerson().getPerson().setName(original.getContactPerson().getPerson().getName());
+			if (!Verifier.validEntry(supplier.getContactPerson().getDesignation()))
+				supplier.getContactPerson().setDesignation(original.getContactPerson().getDesignation());
 			request.setAttribute("supplier", supplier);
 		}
 

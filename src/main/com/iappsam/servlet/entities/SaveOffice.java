@@ -49,7 +49,7 @@ public class SaveOffice extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
-		String officeName = request.getParameter("officeName");
+		String officeName = request.getParameter("officeName").trim();
 
 		RequestDispatcher view = request.getRequestDispatcher("AddOffice.jsp");
 		DivisionOffice office, newOffice;

@@ -50,7 +50,7 @@ public class SaveEditedDisposal extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditDisposal.do");
 		int disposalID = Integer.parseInt(request.getParameter("disposalID"));
-		String name = request.getParameter("disposalField");
+		String name = request.getParameter("disposalField").trim();
 
 		Disposal disposal = null;
 

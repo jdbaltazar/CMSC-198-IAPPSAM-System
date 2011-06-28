@@ -85,6 +85,6 @@ public class ItemCategory implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		return name != null && !name.equals("");
+		return name != null && !name.trim().equals("");
 	}
 }

@@ -10,7 +10,7 @@ public class Verifier {
 	public static boolean validEntry(String value) {
 		if (value == null)
 			return false;
-		if (value.equalsIgnoreCase(""))
+		if (value.trim().equalsIgnoreCase(""))
 			return false;
 		return true;
 	}
