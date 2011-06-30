@@ -128,7 +128,7 @@ public class Person implements Validatable {
 
 	@Override
 	public boolean validate() {
-		return name != null && !name.trim().equals("");
+		return name != null && !name.equals("");
 	}
 
 	public void setPerson(Person person) {
