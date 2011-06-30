@@ -44,13 +44,13 @@ public class Person implements Validatable {
 
 	public Person(String title, String name) {
 		super();
-		this.title = title;
-		this.name = name;
+		setTitle(title);
+		setName(name);
 	}
 
 	public Person(String name) {
 		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public int getId() {
@@ -70,11 +70,11 @@ public class Person implements Validatable {
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		this.title = title.trim();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	@Override
