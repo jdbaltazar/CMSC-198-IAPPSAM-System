@@ -10,7 +10,7 @@ public class Verifier {
 	public static boolean validEntry(String value) {
 		if (value == null)
 			return false;
-		if (value.equalsIgnoreCase(""))
+		if (value.trim().equalsIgnoreCase(""))
 			return false;
 		return true;
 	}
@@ -22,23 +22,23 @@ public class Verifier {
 			return false;
 		if (username.equalsIgnoreCase(""))
 			return false;
-		if (!Verifier.valid(username))
-			return false;
+//		if (!Verifier.valid(username))
+//			return false;
 		return true;
 	}
 
-	public static boolean valid(String username) {
-		Account acc = null;
-		try {
-			acc = ApplicationContext.INSTANCE.getAccountManager().getAccount(username);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (acc != null)
-			return true;
-		return false;
-
-	}
+//	public static boolean valid(String username) {
+//		Account acc = null;
+//		try {
+//			acc = ApplicationContext.INSTANCE.getAccountManager().getAccount(username);
+//		} catch (TransactionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		if (acc != null)
+//			return true;
+//		return false;
+//
+//	}
 
 }

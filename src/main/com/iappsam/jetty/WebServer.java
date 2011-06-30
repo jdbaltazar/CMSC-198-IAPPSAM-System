@@ -1,5 +1,9 @@
 package com.iappsam.jetty;
 
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
 import javax.servlet.Servlet;
 
 import org.eclipse.jetty.server.Server;
@@ -41,6 +45,7 @@ import com.iappsam.servlet.entities.employee.EmployeeCreation;
 import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
+import com.iappsam.servlet.filter.SecurityFilter;
 import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
 import com.iappsam.servlet.item.ItemServlet;
 import com.iappsam.servlet.po.POServlet;
@@ -99,7 +104,7 @@ public class WebServer {
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
-		addServlet(new EditBuilding(), "/entities/bu`ilding/EditBuilding.do");
+		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
 		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
 		addServlet(new EditItemCategory(), "/stocks/stocks/EditItemCategory.do");
@@ -147,6 +152,8 @@ public class WebServer {
 		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
+		addFilter(new SecurityFilter(), "/*");
+
 		server.setHandler(context);
 		server.start();
 		server.join();
@@ -154,5 +161,10 @@ public class WebServer {
 
 	private static void addServlet(Servlet servlet, String path) {
 		context.addServlet(new ServletHolder(servlet), path);
+	}
+
+	private static void addFilter(Filter filter, String path) {
+		EnumSet<DispatcherType> dispatches = null;
+		context.addFilter(SecurityFilter.class, path, dispatches);
 	}
 }

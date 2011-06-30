@@ -243,8 +243,8 @@
 							class="menubtn" id="purchaseOrder" value="Purchase Order" />
 					</form></td>
 				<td align="center">
-					<form id="form19" name="form19" method="post" action="">
-						<input disabled="disabled" name="addPo" type="submit"
+					<form id="form19" name="form19" method="post" action="/po?new=po">
+						<input name="addPo" type="submit"
 							class="button2" id="addPo" value="Add&gt;&gt;" />
 					</form></td>
 			</tr>

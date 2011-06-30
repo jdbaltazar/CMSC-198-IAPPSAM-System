@@ -37,8 +37,7 @@ public class AddItemCondition extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCondition.jsp");
 
-		String conditionInput = request.getParameter("itemCondition");
-
+		String conditionInput = request.getParameter("itemCondition").trim();
 		if (Verifier.validEntry(conditionInput)) {
 			condition.setName(conditionInput);
 			try {

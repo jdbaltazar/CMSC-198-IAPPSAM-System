@@ -50,6 +50,8 @@
       
       <%if(i%2==0)
       out.println("class=\"tablerow_1\"");
+      else
+      	out.println("class=\"tablerow_2\"");
       %>
       ><form id="form1" name="form1" method="post" action="EditItemUnit.do">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />

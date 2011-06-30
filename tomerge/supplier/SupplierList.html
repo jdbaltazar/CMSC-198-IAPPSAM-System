@@ -9,9 +9,6 @@
 </head>
 
 <body>
-<%
-	List<Supplier> suppliers = (List<Supplier>) request.getAttribute("suppliers");
-%>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
 <div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
@@ -53,32 +50,16 @@
       <td width="20%" class="tableheaders_forms">Contact Person</td>
     </tr>
     
-    <%
-		int i = 0;
-		for (Supplier s : suppliers) {
-	%>
     <tr>
-      <td align="center" <%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><form id="form1" name="form1" method="post" action="">
+      <td align="center" ><form id="form1" name="form1" method="post" action="">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="View&gt;&gt;" />
         <input type="hidden" name="supplier-action" value="view-supplier" /> 
 			<input type="hidden" name="supplierID" value="<%=s.getId()%>" />
       </form></td>
-      <td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getSupplierName()%></td>
-      <td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getSupplierName()%></td>
-      <td align="center"
-			<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>><%=s.getSupplierName()%></td>
+      <td align="center" ></td>
+      <td align="center" ></td>
+      <td align="center"></td>
     </tr>
-<%
-		i++;
-		}
-	%>
-
   </table>
 </div>
 <!--<div id="footer"></div>-->

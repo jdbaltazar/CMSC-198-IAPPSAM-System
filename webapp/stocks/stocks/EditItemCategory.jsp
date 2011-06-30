@@ -32,7 +32,7 @@
   </tr>
 </table>
 <div id="form_table">
-  <form id="form1" name="form1" method="post" action="AddItemCategory.do">
+  <form id="form1" name="form1" method="post" action="SaveEditedItemCategory.do">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
         <td class="header_rows"><div class="header_1"><em>Edit</em></div></td>

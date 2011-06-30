@@ -24,6 +24,7 @@ public class POParser extends FormParser {
 		ItemManager im = appContext.getItemManager();
 
 		String supplierParam = req.getParameter("supplier");
+		String supplierNameParam = req.getParameter("supplier-name");
 		String mopParam = req.getParameter("mop");
 		String domParam = req.getParameter("dom");
 		String amountParam = req.getParameter("amount");
@@ -36,6 +37,9 @@ public class POParser extends FormParser {
 		if (supplierParam != null)
 			po.setSupplier(sm.getSupplier(Integer.parseInt(supplierParam)));
 
+		if (supplierNameParam != null)
+			po.setSupplierName(pm.getEmployee(Integer.parseInt(supplierNameParam)));
+		
 		if (mopParam != null)
 			po.setModeOfProcurement(pom.getModeOfProcurement(Integer.parseInt(mopParam)));
 

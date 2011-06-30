@@ -38,22 +38,24 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String username = request.getParameter(USERNAME);
-//		String password = request.getParameter(PASSWORD);
 
+		String username = request.getParameter(USERNAME);
+		
 		if (loginModule.login(request))
-			forwardToMenuFrameJsp(request, response);
+			forwardToMenuFrameJsp(request, response, username);
 		else
 			logInFail(request, response);
 	}
 
-	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException, IOException {
+		
 		RequestDispatcher view = request.getRequestDispatcher("menu.jsp");
 		HttpSession session = request.getSession();
 
-		//session.setAttribute("username", username);
-		session.setMaxInactiveInterval(30);
+		session.setAttribute("username", username);
+		session.setMaxInactiveInterval(60*30);
 
+		System.out.println("user: " + (String)session.getAttribute("username"));
 		view.forward(request, response);
 	}
 

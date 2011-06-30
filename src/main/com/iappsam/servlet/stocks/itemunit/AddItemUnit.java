@@ -38,8 +38,7 @@ public class AddItemUnit extends HttpServlet {
 		Unit unit = new Unit();
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
-		String unitInput = request.getParameter("itemUnit");
-
+		String unitInput = request.getParameter("itemUnit").trim();
 		if (Verifier.validEntry(unitInput)) {
 			unit.setName(unitInput);
 			try {

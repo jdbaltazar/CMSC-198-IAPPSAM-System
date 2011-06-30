@@ -26,7 +26,6 @@
   </tr>
   <tr>
     <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>List Items </strong></em></td>
-
     <td>&nbsp;</td>
   </tr>
 </table>
@@ -64,7 +63,7 @@
     </tr>
     
     
-	<form name="AddSelectedItem" action="/pr/line" method="post" >
+	<form name="AddSelectedItem" action="/po/line" method="post" >
 	
 		<input type="hidden" name="add" value="items"/>	
     <c:forEach var="item" items="${items}">

@@ -57,6 +57,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
+import com.iappsam.servlet.filter.SecurityFilter;
 
 public class HibernateUtil {
 
@@ -141,6 +142,9 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(RSMILine.class);
 			conf.addAnnotatedClass(WMR.class);
 			conf.addAnnotatedClass(WMRLine.class);
+			
+			//filter
+			conf.addAnnotatedClass(SecurityFilter.class);
 
 			sessionFactory = conf.buildSessionFactory();
 
