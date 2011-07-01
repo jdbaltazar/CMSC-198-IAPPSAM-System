@@ -50,7 +50,7 @@ public class SaveEditedItemCondition extends HttpServlet {
 
 		RequestDispatcher save = request.getRequestDispatcher("EditItemCondition.do");
 		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
-		String name = request.getParameter("itemCondition");
+		String name = request.getParameter("itemCondition").trim();
 
 		ItemCondition itemCondition = null;
 

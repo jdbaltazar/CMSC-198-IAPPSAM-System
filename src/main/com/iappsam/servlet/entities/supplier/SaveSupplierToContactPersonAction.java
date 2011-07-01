@@ -17,23 +17,25 @@ import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
+import com.iappsam.util.Verifier;
 
 public class SaveSupplierToContactPersonAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 
-		String supplierName = request.getParameter("supplierName");
-		String address = request.getParameter("address");
-		String tin = request.getParameter("tin");
+		String supplierName = request.getParameter("supplierName").trim();
+		String address = request.getParameter("address").trim();
+		String tin = request.getParameter("tin").trim();
 		String employeeID = request.getParameter("employeeID");
+		
 		PersonManager pManager = new PersonManagerSession();
 		Employee employee = pManager.getEmployee(Integer.parseInt(employeeID));
 		RequestDispatcher save = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER_FOR_EXISTING);
 		SupplierManager sManager = new SupplierManagerSession();
 		Supplier supplier = new Supplier(supplierName, address, employee);
-		supplier.setTin(tin);
-
+		if (Verifier.validEntry(tin))
+			supplier.setTin(tin);
 		if (supplier.validate()) {
 			try {
 				sManager.addSupplier(supplier);

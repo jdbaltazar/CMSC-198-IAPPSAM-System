@@ -41,7 +41,7 @@ public class AddDisposal extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddDisposal.jsp");
 
-		String disposalInput = request.getParameter("disposalField");
+		String disposalInput = request.getParameter("disposalField").trim();
 
 		if (Verifier.validEntry(disposalInput)) {
 			disposal.setName(disposalInput);

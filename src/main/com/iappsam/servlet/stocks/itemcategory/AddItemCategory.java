@@ -37,7 +37,7 @@ public class AddItemCategory extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCategory.jsp");
 
-		String categoryInput = request.getParameter("itemCategory");
+		String categoryInput = request.getParameter("itemCategory").trim();
 		if (Verifier.validEntry(categoryInput)) {
 			category.setName(categoryInput);
 			try {

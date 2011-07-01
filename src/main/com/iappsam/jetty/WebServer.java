@@ -104,7 +104,7 @@ public class WebServer {
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
-		addServlet(new EditBuilding(), "/entities/bu`ilding/EditBuilding.do");
+		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
 		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
 		addServlet(new EditItemCategory(), "/stocks/stocks/EditItemCategory.do");

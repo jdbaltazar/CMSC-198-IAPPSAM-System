@@ -52,7 +52,7 @@ public class SaveDivisionEdit extends HttpServlet {
 
 		String dOfficeID = request.getParameter("dOfficeID");
 		System.out.println("dOfficeID: " + dOfficeID);
-		String newName = request.getParameter("newName");
+		String newName = request.getParameter("newName").trim();
 		System.out.println("new name: " + newName);
 
 		if (dOfficeID != null) {

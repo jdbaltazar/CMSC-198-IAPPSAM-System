@@ -25,9 +25,9 @@ public class SaveEditedSupplierForExistingAction implements Action {
 		// TODO Auto-generated method stub
 
 		String supplierID = request.getParameter("supplierID");
-		String supplierName = request.getParameter("supplierName");
-		String address = request.getParameter("address");
-		String tin = request.getParameter("tin");
+		String supplierName = request.getParameter("supplierName").trim();
+		String address = request.getParameter("address").trim();
+		String tin = request.getParameter("tin").trim();
 		String employeeID = request.getParameter("employeeID");
 
 		PersonManager pManager = new PersonManagerSession();
@@ -37,25 +37,31 @@ public class SaveEditedSupplierForExistingAction implements Action {
 
 		Supplier supplier = sManager.getSupplier(Integer.parseInt(supplierID));
 		supplier.setContactPerson(employee);
-		if (Verifier.validEntry(supplierName))
-			supplier.setSupplierName(supplierName);
-		if (Verifier.validEntry(address))
-			supplier.setSupplierName(address);
+		supplier.setSupplierName(supplierName);
+		supplier.setSupplierName(address);
 		supplier.setTin(tin);
 
-		if (supplier.validate() && Verifier.validEntry(supplierName) && Verifier.validEntry(address)) {
-			System.out.println("supplier name: "+supplierName);
-			System.out.println("supplier address: "+address);
-			System.out.println("supplier name b4 save: "+supplier.getSupplierName());
-			System.out.println("supplier address b4 save: "+supplier.getAddress());
+		if (supplier.validate()) {
+			System.out.println("supplier name: " + supplierName);
+			System.out.println("supplier address: " + address);
+			System.out.println("supplier name b4 save: " + supplier.getSupplierName());
+			System.out.println("supplier address b4 save: " + supplier.getAddress());
 			supplier.setSupplierName(supplierName);
 			supplier.setAddress(address);
 			sManager.updateSupplier(supplier);
-			
+
 			save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 			System.out.println("edited was saveD!!!!!!!!!");
 		} else {
 			System.out.println("was not saveD!!!!!!!!!");
+			
+
+			Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
+			if (!Verifier.validEntry(supplier.getSupplierName()))
+				supplier.setSupplierName(original.getSupplierName());
+			if (!Verifier.validEntry(supplier.getAddress()))
+				supplier.setAddress(original.getAddress());
+			
 			request.setAttribute("supplier", supplier);
 			List<Employee> employees = new ArrayList<Employee>();
 			List<Supplier> suppliers = sManager.getAllSuppliers();

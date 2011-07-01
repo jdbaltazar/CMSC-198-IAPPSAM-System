@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.iappsam.Validatable;
+
 @Entity
-public class Disposal {
+public class Disposal implements Validatable{
 
 	public static final String DESTROYED = "DESTROYED";
 	public static final String SOLD_AT_PRIVATE_SALE = "SOLD_AT_PRIVATE_SALE";
@@ -67,5 +69,10 @@ public class Disposal {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	
+	@Override
+	public boolean validate() {
+		return name != null && !name.trim().equals("");
 	}
 }

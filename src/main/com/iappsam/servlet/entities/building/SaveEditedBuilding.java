@@ -51,7 +51,11 @@ public class SaveEditedBuilding extends HttpServlet {
 		RequestDispatcher save = request.getRequestDispatcher("EditBuilding.do");
 		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
 		String name = request.getParameter("name");
-		String address = request.getParameter("address");
+		if(name!=null)
+			name = name.trim(); 
+		String address = request.getParameter("address").trim();
+		if(address!=null)
+			address = address.trim();
 		Building building = null;
 		try {
 			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);

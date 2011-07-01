@@ -38,4 +38,16 @@ public class PersonTest {
 		p2.addContact(new Contact("data2", ContactType.EMAIL));
 		assertFalse(p.equals(p2));
 	}
+
+	@Test
+	public void nameTrimmed() {
+		p.setName(" name ");
+		assertEquals("name", p.getName());
+	}
+
+	@Test
+	public void titleTrimmed() {
+		p.setTitle(" title ");
+		assertEquals("title", p.getTitle());
+	}
 }
