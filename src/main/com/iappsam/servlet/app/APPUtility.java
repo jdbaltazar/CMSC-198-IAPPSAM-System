@@ -13,7 +13,6 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
-import com.iappsam.servlet.form.FormParser;
 import com.iappsam.servlet.form.FormUtility;
 import com.iappsam.util.ApplicationContext;
 
@@ -24,8 +23,7 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 	private APPManager appm;
 
 	public APPUtility() {
-//		super("app", ApplicationContext.INSTANCE, new AppParser());
-		super("app", ApplicationContext.INSTANCE, null);
+		super("app", ApplicationContext.INSTANCE, new AppParser());
 		dom = appContext.getDivisionOfficeManager();
 		pm = appContext.getPersonManager();
 		appm = appContext.getAPPManager();

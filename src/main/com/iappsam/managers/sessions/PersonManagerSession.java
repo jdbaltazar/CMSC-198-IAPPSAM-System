@@ -87,6 +87,19 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
+	public Employee getEmployee(String id) throws TransactionException {
+		if (id != null)
+			try {
+				return getEmployee(Integer.parseInt(id));
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				return null;
+			}
+		else
+			return null;
+	}
+
+	@Override
 	public List<Employee> getEmployeeByPerson(int personID) throws TransactionException {
 		List<Employee> employees = getAllEmployee();
 		List<Employee> results = new ArrayList<Employee>();

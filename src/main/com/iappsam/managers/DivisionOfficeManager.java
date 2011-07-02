@@ -26,7 +26,7 @@ public interface DivisionOfficeManager {
 	boolean containsDivisionOffice(String name) throws TransactionException;
 
 	List<DivisionOffice> getAllDivisionOffice() throws TransactionException;
-	
+
 	List<DivisionOffice> getOfficesUnderDivision(String divisionName) throws TransactionException;
 
 	// Building
@@ -36,7 +36,7 @@ public interface DivisionOfficeManager {
 	void updateBuilding(Building building) throws TransactionException;
 
 	Building getBuilding(int buildingId) throws TransactionException;
-	
+
 	Building getBuilding(String buildingName, String buildingAddress) throws TransactionException;
 
 	void removeBuilding(Building building) throws TransactionException;
@@ -48,5 +48,7 @@ public interface DivisionOfficeManager {
 	List<Building> getAllBuildings() throws TransactionException;
 
 	DivisionOffice getDivisionOffice(DivisionOffice divisionOffice) throws TransactionException;
+
+	DivisionOffice getDivisionOffice(String doId) throws TransactionException;
 
 }

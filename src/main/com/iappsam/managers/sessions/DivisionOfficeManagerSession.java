@@ -146,4 +146,17 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		return getDivisionOffice(divisionOffice.getId());
 	}
 
+	@Override
+	public DivisionOffice getDivisionOffice(String doId) throws TransactionException {
+		if (doId != null) {
+			int id;
+			try {
+				id = Integer.parseInt(doId);
+			} catch (NumberFormatException e) {
+				return null;
+			}
+			return getDivisionOffice(id);
+		} else
+			return null;
+	}
 }
