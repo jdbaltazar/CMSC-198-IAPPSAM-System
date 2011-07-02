@@ -89,13 +89,13 @@
 					</form></td>
 			</tr>
 			<tr>
-				<td width="54%">
+				<td width="52%">
 					<form id="form5" name="form5" method="post" action="supplier">
 						<input name="supplierBtn" type="submit" class="menubtn"
 							id="supplierBtn" value="Supplier" /> <input type="hidden"
 							name="supplier-action" value="view-suppliers" />
 					</form></td>
-				<td width="18%">
+				<td width="20%">
 					<form id="form6" name="form6" method="post" action="supplier">
 						<input name="addSupplierBtn" type="submit" class="button2"
 							id="addSupplierBtn" value="Add&gt;&gt;" /> <input type="hidden"
@@ -165,17 +165,14 @@
 					</form></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<form id="form11" name="form11" method="get"
-						action="accounts/ViewAccounts.do">
-						<input name="viewAccts" type="submit" class="menubtn"
-							id="viewAccts" value="View Accounts" />
-					</form></td>
+				<td colspan="2"><form id="form11" name="form11" method="post" action="">
+				  <input name="viewAcctsBtn" type="submit" class="menubtn" id="viewAcctsBtn" value="View Accounts" />
+				  </form>
+				  </td>
 
 				<td><form id="form29" name="form29" method="post" action="">
-						<input name="myAcct" type="submit" class="button2" id="myAcct"
-							value="My Account" disabled="disabled" />
-					</form>
+				  <input name="myAcctBtn" type="submit" class="button2" id="myAcctBtn" value="My Account" />
+				  </form>
 				</td>
 			</tr>
 			<tr>

@@ -26,6 +26,16 @@ div#menu_2 {
 /*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
 
+div#menu_others {
+  margin:0 auto;
+  width:28%;
+  height:inherit;
+  border:none;
+	position:absolute;
+	top:54%;
+	left:36%;
+}
+
 .align_right{
 	text-align:right;
 	font-family:Lucida Grande; 
