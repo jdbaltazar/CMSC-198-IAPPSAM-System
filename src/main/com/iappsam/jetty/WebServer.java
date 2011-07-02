@@ -101,6 +101,8 @@ public class WebServer {
 		addServlet(new AddModeOfProcurement(), "/stocks/stocks/AddModeOfProc.do");
 		addServlet(new AddOffice(), "/entities/division/AddOffice.do");
 		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
+		addServlet(new APPLineServlet(), "/app/line");
+		addServlet(new APPServlet(), "/app");
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
@@ -115,15 +117,13 @@ public class WebServer {
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
 		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
 		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
-		addServlet(new APPLineServlet(), "/app/line");
-		addServlet(new PRLineServlet(), "/pr/line");
-		addServlet(new APPServlet(), "/app");
-		addServlet(new POServlet(), "/po");
-		addServlet(new PRServlet(), "/pr");
 		addServlet(new ItemServlet(), "/items");
 		addServlet(new LoginServlet(), "/login");
 		addServlet(new Logout(), "/logout");
 		addServlet(new Menu(), "/menu");
+		addServlet(new PRLineServlet(), "/pr/line");
+		addServlet(new POServlet(), "/po");
+		addServlet(new PRServlet(), "/pr");
 		addServlet(new SaveDivision(), "/entities/division/SaveDivision.do");
 		addServlet(new SaveDivisionEdit(), "/entities/division/SaveDivisionEdit.do");
 		addServlet(new SaveEditedBuilding(), "/entities/building/SaveEditedBuilding.do");
