@@ -65,12 +65,20 @@
       <td width="15%" class="tableheaders_forms">Item Status</td>
     </tr>
     </table>
-							
+				
+	<%int i=0; %>						
 	<c:forEach var="item" items="${items}" varStatus="loop"> 
 		<a href="/items?id=${item.id}">
 		<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
-			<table width="100%" style="table-layout:fixed">
-				<tr class="tablerow_1">
+			<table width="100%" cellspacing="1"
+      >
+      
+				<tr  <%if(i%2==0)
+      	out.println("class=\"tablerow_1\"");
+      	else
+      		out.println("class=\"tablerow_2\"");
+      %>
+     >
 					<td width="50%">${item.description}</td>
 					<td width="10%">${item.unit}</td>
 					<td width="10%">${item.price}</td>
@@ -78,8 +86,9 @@
 					<td width="15%">${item.status}</td>
 			</tr>
 			</table>
-         </div>
+      </div>   
 		</a>
+		<%i++; %>
 	 </c:forEach>
 
   </div>

@@ -70,12 +70,17 @@
 		<td width="39%" class="tableheaders_forms">Prepared by</td>
 	</tr>
 </table>
-
+<%int i=0; %>
 <c:forEach var="form" items="${forms}">
 	<a href="/pr?id=${form.id}">
 	<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
-	<table width="100%" style="table-layout: fixed">
-		<tr class="tablerow_1">
+	<table width="100%" cellspacing="1" style="table-layout: fixed">
+		<tr <%if(i%2==0)
+      	out.println("class=\"tablerow_1\"");
+      	else
+      		out.println("class=\"tablerow_2\"");
+      %>
+      >
 			<td width="14%">${form.prNumber}</td>
 			<td width="47%">${form.requestedBy.person.name}</td>
 			<td width="39%">${form.approvedBy.person.name}</td>
@@ -83,6 +88,7 @@
 	</table>
 	</div>
 	</a>
+	<%i++; %>
 </c:forEach> 
 
 </div>
