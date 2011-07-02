@@ -10,5 +10,4 @@ public class RISServlet extends FormServlet {
 	public RISServlet() {
 		super(new RISUtility());
 	}
-
 }

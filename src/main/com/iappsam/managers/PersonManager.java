@@ -72,4 +72,6 @@ public interface PersonManager extends Manager {
 
 	Employee getEmployee(Employee em) throws TransactionException;
 
+	Employee getEmployee(String id) throws TransactionException;
+
 }

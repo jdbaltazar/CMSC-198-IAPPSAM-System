@@ -103,6 +103,18 @@ public class APP implements Form {
 		addLine(new APPLine(this, item, quantityQ1, quantityQ2, quantityQ3, quantityQ4));
 	}
 
+	public void addLine(Item item, String q1, String q2, String q3, String q4) {
+		try {
+			int quantity1 = Integer.parseInt(q1);
+			int quantity2 = Integer.parseInt(q2);
+			int quantity3 = Integer.parseInt(q3);
+			int quantity4 = Integer.parseInt(q4);
+
+			addLine(item, quantity1, quantity2, quantity3, quantity4);
+		} catch (NumberFormatException e) {
+		}
+	}
+
 	public void removeLine(APPLine line) {
 		line.setApp(null);
 		lines.remove(line);
@@ -224,7 +236,8 @@ public class APP implements Form {
 
 	public void setYear(String year) {
 		try {
-			setYear(Integer.parseInt(year));
+			if (year != null)
+				setYear(Integer.parseInt(year));
 		} catch (Exception e) {
 		}
 	}
@@ -235,4 +248,5 @@ public class APP implements Form {
 		} catch (Exception e) {
 		}
 	}
+
 }

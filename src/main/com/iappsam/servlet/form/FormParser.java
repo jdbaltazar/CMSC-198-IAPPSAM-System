@@ -7,5 +7,5 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
 
 public abstract class FormParser {
-	public abstract Form createForm(HttpServletRequest request, ApplicationContext appContext) throws TransactionException;
+	public abstract Form createForm(HttpServletRequest req, ApplicationContext appContext) throws TransactionException;
 }
