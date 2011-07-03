@@ -51,15 +51,20 @@
       <td align="center" 
       <%if(i%2==0){
       	out.println("class=\"tablerow_1\"");
-      }%>    
+      }
+        else
+      		out.println("class=\"tablerow_2\"");
+      	%>    
       ><form id="form1" name="form1" method="post" action="ViewDivisionAndOffices.do">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="View&gt;&gt;" />
       	<input type="hidden" name="dOfficeID" value=<%=""+d.getId()%> />
       </form></td>
       <td align="center"
-      <%if(i%2==0){
+      <%if(i%2==0)
       	out.println("class=\"tablerow_1\"");
-      }%>
+      	else
+      		out.println("class=\"tablerow_2\"");
+      %>
       ><%=d.getDivisionName()%></td>
     </tr>
      <%
