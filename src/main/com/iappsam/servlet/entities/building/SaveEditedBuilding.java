@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveEditedBuilding
@@ -59,7 +59,7 @@ public class SaveEditedBuilding extends HttpServlet {
 		Building building = null;
 		try {
 			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
-			if (Verifier.validEntry(name)) {
+			if (Validator.validField(name)) {
 				building.setBuildingName(name);
 				building.setBuildingAddress(address);
 				try {

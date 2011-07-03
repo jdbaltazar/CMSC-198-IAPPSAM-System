@@ -13,7 +13,7 @@ import com.iappsam.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddItemUnit.do")
 public class AddItemUnit extends HttpServlet {
@@ -39,7 +39,7 @@ public class AddItemUnit extends HttpServlet {
 
 		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
 		String unitInput = request.getParameter("itemUnit").trim();
-		if (Verifier.validEntry(unitInput)) {
+		if (Validator.validField(unitInput)) {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);

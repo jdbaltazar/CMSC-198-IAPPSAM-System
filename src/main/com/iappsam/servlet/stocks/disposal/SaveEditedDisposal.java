@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.forms.Disposal;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveEditedDisposal
@@ -56,7 +56,7 @@ public class SaveEditedDisposal extends HttpServlet {
 
 		try {
 			disposal = ApplicationContext.INSTANCE.getWMRManager().getDisposal(disposalID);
-			if (Verifier.validEntry(name)) {
+			if (Validator.validField(name)) {
 				disposal.setName(name);
 				ApplicationContext.INSTANCE.getWMRManager().updateDisposal(disposal);
 				save = request.getRequestDispatcher("ViewDisposals.do");

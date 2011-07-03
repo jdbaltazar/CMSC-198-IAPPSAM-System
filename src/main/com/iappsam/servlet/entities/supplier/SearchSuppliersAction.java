@@ -14,7 +14,7 @@ import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.search.SupplierSearcher;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class SearchSuppliersAction implements Action {
 
@@ -29,7 +29,7 @@ public class SearchSuppliersAction implements Action {
 		List<Supplier> suppliers = new ArrayList<Supplier>();
 		String searchField = request.getParameter("searchField");
 		SupplierSearcher searcher = new SupplierSearcher();
-		if (Verifier.validEntry(searchField))
+		if (Validator.validField(searchField))
 			suppliers = searcher.search(searchField);
 		else
 			suppliers = sManager.getAllSuppliers();
@@ -38,7 +38,7 @@ public class SearchSuppliersAction implements Action {
 		System.out.println("results: "+suppliers.size());
 
 		request.setAttribute("suppliers", suppliers);
-		if (Verifier.validEntry(searchField))
+		if (Validator.validField(searchField))
 			request.setAttribute("searchField", searchField);
 		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.SEARCH_SUPPLIERS);
 		view.forward(request, response);

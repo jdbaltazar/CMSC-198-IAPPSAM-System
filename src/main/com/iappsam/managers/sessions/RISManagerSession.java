@@ -21,7 +21,7 @@ public class RISManagerSession extends AbstractManager implements RISManager {
 
 	@Override
 	public RIS getRIS(String requisitionAndIssueSlipID) throws TransactionException {
-		return (RIS) get(RIS.class, requisitionAndIssueSlipID);
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -34,4 +34,8 @@ public class RISManagerSession extends AbstractManager implements RISManager {
 		return getAll(RIS.class);
 	}
 
+	@Override
+	public RIS getRIS(int id) throws TransactionException {
+		return (RIS) get(RIS.class, id);
+	}
 }

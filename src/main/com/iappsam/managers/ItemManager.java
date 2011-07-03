@@ -112,4 +112,6 @@ public interface ItemManager extends Manager {
 
 	Item getItem(Item item) throws TransactionException;
 
+	Item getItem(String id) throws TransactionException;
+
 }

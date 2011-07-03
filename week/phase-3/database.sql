@@ -885,46 +885,51 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` (
-  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+  `DivisionOffice_ID` INT NOT NULL ,
   `RC_Code` VARCHAR(80) NULL ,
   `RIS_Number` VARCHAR(45) NOT NULL ,
   `RIS_Date` DATE NOT NULL ,
   `SAI_Number` VARCHAR(80) NULL ,
   `SAI_Date` DATE NULL ,
   `Purpose` VARCHAR(200) NOT NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  `Signatory_ID1` INT NOT NULL ,
-  `Signatory_ID2` INT NOT NULL ,
-  `Signatory_ID3` INT NOT NULL ,
-  PRIMARY KEY (`RIS_Number`) ,
+  `Requested_by` INT NOT NULL ,
+  `Requested_by_Date` DATE NOT NULL ,
+  `Approved_by` INT NOT NULL ,
+  `Approved_by_Date` DATE NOT NULL ,
+  `Issued_by` INT NOT NULL ,
+  `Issued_by_Date` DATE NOT NULL ,
+  `Received_by` INT NOT NULL ,
+  `Received_by_Date` DATE NOT NULL ,
+  PRIMARY KEY (`Id`) ,
   INDEX `fk_Requisition_And_Issue_Slip_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
-  INDEX `fk_Requisition_And_Issue_Slip_Signatory1` (`Signatory_ID` ASC) ,
-  INDEX `fk_Requisition_And_Issue_Slip_Signatory2` (`Signatory_ID1` ASC) ,
-  INDEX `fk_Requisition_And_Issue_Slip_Signatory3` (`Signatory_ID2` ASC) ,
-  INDEX `fk_Requisition_And_Issue_Slip_Signatory4` (`Signatory_ID3` ASC) ,
+  INDEX `fk_Requisition_And_Issue_Slip_Employee1` (`Requested_by` ASC) ,
+  INDEX `fk_Requisition_And_Issue_Slip_Employee2` (`Approved_by` ASC) ,
+  INDEX `fk_Requisition_And_Issue_Slip_Employee3` (`Issued_by` ASC) ,
+  INDEX `fk_Requisition_And_Issue_Slip_Employee4` (`Received_by` ASC) ,
   CONSTRAINT `fk_Requisition_And_Issue_Slip_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Requisition_And_Issue_Slip_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Requisition_And_Issue_Slip_Employee1`
+    FOREIGN KEY (`Requested_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Requisition_And_Issue_Slip_Signatory2`
-    FOREIGN KEY (`Signatory_ID1` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Requisition_And_Issue_Slip_Employee2`
+    FOREIGN KEY (`Approved_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Requisition_And_Issue_Slip_Signatory3`
-    FOREIGN KEY (`Signatory_ID2` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Requisition_And_Issue_Slip_Employee3`
+    FOREIGN KEY (`Issued_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
-  CONSTRAINT `fk_Requisition_And_Issue_Slip_Signatory4`
-    FOREIGN KEY (`Signatory_ID3` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
+  CONSTRAINT `fk_Requisition_And_Issue_Slip_Employee4`
+    FOREIGN KEY (`Received_by` )
+    REFERENCES `IAPPSAM`.`Employee` (`Employee_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -936,22 +941,23 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`RIS_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`RIS_Line` (
+  `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
+  `RIS_ID` INT NOT NULL ,
   `Quantity_Requested` INT NOT NULL ,
   `Quantity_Issued` INT NOT NULL ,
   `Remarks` VARCHAR(200) NULL ,
-  `RIS_Number` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`RIS_Number`, `Item_ID`) ,
   INDEX `fk_RIS_Line_Item1` (`Item_ID` ASC) ,
-  INDEX `fk_RIS_Line_Requisition_And_Issue_Slip1` (`RIS_Number` ASC) ,
+  INDEX `fk_RIS_Line_Requisition_And_Issue_Slip1` (`RIS_ID` ASC) ,
+  PRIMARY KEY (`Id`) ,
   CONSTRAINT `fk_RIS_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_RIS_Line_Requisition_And_Issue_Slip1`
-    FOREIGN KEY (`RIS_Number` )
-    REFERENCES `IAPPSAM`.`Requisition_And_Issue_Slip` (`RIS_Number` )
+    FOREIGN KEY (`RIS_ID` )
+    REFERENCES `IAPPSAM`.`Requisition_And_Issue_Slip` (`Id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -1174,18 +1180,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Signatory` (
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`IappsamConfig`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`IappsamConfig` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IappsamConfig` (
-  `ID` INT NOT NULL ,
-  `Configured` TINYINT(1)  NOT NULL DEFAULT False ,
-  PRIMARY KEY (`ID`) )
 ENGINE = InnoDB;
 
 

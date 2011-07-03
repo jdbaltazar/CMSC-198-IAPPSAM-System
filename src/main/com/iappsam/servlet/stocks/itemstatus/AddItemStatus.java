@@ -13,7 +13,7 @@ import com.iappsam.ItemStatus;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddItemStatus.do")
 public class AddItemStatus extends HttpServlet {
@@ -38,7 +38,7 @@ public class AddItemStatus extends HttpServlet {
 		RequestDispatcher add = request.getRequestDispatcher("AddItemStatus.jsp");
 		String statusInput = request.getParameter("itemStatus").trim();
 
-		if (Verifier.validEntry(statusInput)) {
+		if (Validator.validField(statusInput)) {
 			status.setName(statusInput);
 			try {
 				itemManager.addItemStatus(status);

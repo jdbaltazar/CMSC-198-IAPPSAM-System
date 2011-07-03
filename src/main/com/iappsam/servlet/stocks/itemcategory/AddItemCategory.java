@@ -13,7 +13,7 @@ import com.iappsam.ItemCategory;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddItemCategory.do")
 public class AddItemCategory extends HttpServlet {
@@ -38,7 +38,7 @@ public class AddItemCategory extends HttpServlet {
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCategory.jsp");
 
 		String categoryInput = request.getParameter("itemCategory").trim();
-		if (Verifier.validEntry(categoryInput)) {
+		if (Validator.validField(categoryInput)) {
 			category.setName(categoryInput);
 			try {
 				itemManager.addItemCategory(category);

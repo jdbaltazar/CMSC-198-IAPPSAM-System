@@ -14,7 +14,7 @@ import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveDivisionOffice
@@ -51,7 +51,7 @@ public class SaveDivision extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("AddDivision.jsp");
 		String divisionName = request.getParameter("divisionName").trim();
 
-		if (Verifier.validEntry(divisionName)) {
+		if (Validator.validField(divisionName)) {
 			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 			DivisionOffice dOffice = new DivisionOffice(divisionName, null);
 			try {
