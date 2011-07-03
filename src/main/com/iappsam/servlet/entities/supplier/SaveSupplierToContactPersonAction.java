@@ -17,7 +17,7 @@ import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class SaveSupplierToContactPersonAction implements Action {
 
@@ -34,7 +34,7 @@ public class SaveSupplierToContactPersonAction implements Action {
 		RequestDispatcher save = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER_FOR_EXISTING);
 		SupplierManager sManager = new SupplierManagerSession();
 		Supplier supplier = new Supplier(supplierName, address, employee);
-		if (Verifier.validEntry(tin))
+		if (Validator.validField(tin))
 			supplier.setTin(tin);
 		if (supplier.validate()) {
 			try {

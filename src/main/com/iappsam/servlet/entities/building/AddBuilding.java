@@ -13,7 +13,7 @@ import com.iappsam.Building;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @SuppressWarnings("serial")
 @WebServlet("/entities/building/AddBuilding.do")
@@ -42,7 +42,7 @@ public class AddBuilding extends HttpServlet {
 		if(address!=null)
 			address = address.trim();
 
-		if (Verifier.validEntry(name)) {
+		if (Validator.validField(name)) {
 			building.setBuildingName(name);
 			building.setBuildingAddress(address);
 			try {

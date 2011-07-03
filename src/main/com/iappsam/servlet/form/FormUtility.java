@@ -16,7 +16,7 @@ public interface FormUtility {
 
 	String getFormName();
 
-	void beforeNewForm(HttpServletRequest request) throws TransactionException;
+	void beforeNewForm(HttpServletRequest req) throws TransactionException;
 
 	ApplicationContext getApplicationContext();
 

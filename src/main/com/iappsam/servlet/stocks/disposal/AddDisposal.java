@@ -13,7 +13,7 @@ import com.iappsam.forms.Disposal;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.WMRManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddDisposal.do")
 public class AddDisposal extends HttpServlet {
@@ -43,7 +43,7 @@ public class AddDisposal extends HttpServlet {
 
 		String disposalInput = request.getParameter("disposalField").trim();
 
-		if (Verifier.validEntry(disposalInput)) {
+		if (Validator.validField(disposalInput)) {
 			disposal.setName(disposalInput);
 
 			try {

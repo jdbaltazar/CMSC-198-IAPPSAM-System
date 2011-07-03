@@ -13,7 +13,7 @@ import com.iappsam.ItemCondition;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddItemCondition.do")
 public class AddItemCondition extends HttpServlet {
@@ -38,7 +38,7 @@ public class AddItemCondition extends HttpServlet {
 		RequestDispatcher add = request.getRequestDispatcher("AddItemCondition.jsp");
 
 		String conditionInput = request.getParameter("itemCondition").trim();
-		if (Verifier.validEntry(conditionInput)) {
+		if (Validator.validField(conditionInput)) {
 			condition.setName(conditionInput);
 			try {
 				itemManager.addItemCondition(condition);
