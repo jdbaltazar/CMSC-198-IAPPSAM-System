@@ -72,13 +72,13 @@ public class HibernateUtil {
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
 
-//		try { 
-//			addDefaulEntities();
-//		} catch (TransactionException e) {
-//			e.printStackTrace();
-//		} catch (DuplicateEntryException e) {
-//			e.printStackTrace();
-//		}
+		// try {
+		// addDefaulEntities();
+		// } catch (TransactionException e) {
+		// e.printStackTrace();
+		// } catch (DuplicateEntryException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -142,8 +142,8 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(RSMILine.class);
 			conf.addAnnotatedClass(WMR.class);
 			conf.addAnnotatedClass(WMRLine.class);
-			
-			//filter
+
+			// filter
 			conf.addAnnotatedClass(SecurityFilter.class);
 
 			sessionFactory = conf.buildSessionFactory();
@@ -157,7 +157,7 @@ public class HibernateUtil {
 	}
 
 	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
-		addIappsamConfig(new IappsamConfig(1, true));
+		// addIappsamConfig(new IappsamConfig(1, true));
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();
