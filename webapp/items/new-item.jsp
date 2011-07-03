@@ -174,7 +174,7 @@
         </tr>
         <tr>
           <td class="align_right">Stock Number:</td>
-          <td><input name="stockNumber" type="text" id="stockNumber3" maxlength="45" /></td>
+          <td><input name="stockNumber" type="text" id="stockNumber" maxlength="45" /></td>
         </tr>
         <tr>
           <td class="align_right">Inventory Item Number:</td>
@@ -182,7 +182,7 @@
         </tr>
         <tr>
           <td class="align_right">Property Number:</td>
-          <td><input name="itemPropertyNumber" type="text" id="itemPropertyNumber3" maxlength="45" /></td>
+          <td><input name="propertyNumber" type="text" id="propertyNumber" maxlength="45" /></td>
         </tr>
         <tr>
           <td class="align_right">*Item Status:</td>
