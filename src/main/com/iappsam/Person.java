@@ -70,7 +70,8 @@ public class Person implements Validatable {
 	}
 
 	public void setTitle(String title) {
-		this.title = title.trim();
+		if (title != null)
+			this.title = title.trim();
 	}
 
 	public void setName(String name) {

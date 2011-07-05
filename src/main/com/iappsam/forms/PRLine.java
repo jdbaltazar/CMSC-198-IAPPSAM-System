@@ -10,10 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.iappsam.Item;
+import com.iappsam.Validatable;
 
 @Entity
 @Table(name = "PR_Line")
-public class PRLine {
+public class PRLine implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -119,7 +120,7 @@ public class PRLine {
 		return true;
 	}
 
-	public boolean isValid() {
+	public boolean validate() {
 		boolean validItem = item != null && item.validate();
 		boolean validPr = purchaseRequest != null;
 		return validItem && validPr;

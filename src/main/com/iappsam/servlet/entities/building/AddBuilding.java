@@ -43,20 +43,17 @@ public class AddBuilding extends HttpServlet {
 			address = address.trim();
 
 		if (Validator.validField(name)) {
-			building.setBuildingName(name);
-			building.setBuildingAddress(address);
+			building.setName(name);
+			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
 				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (DuplicateEntryException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 
 		add.forward(request, response);

@@ -51,17 +51,17 @@ public class SaveEditedBuilding extends HttpServlet {
 		RequestDispatcher save = request.getRequestDispatcher("EditBuilding.do");
 		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
 		String name = request.getParameter("name");
-		if(name!=null)
-			name = name.trim(); 
+		if (name != null)
+			name = name.trim();
 		String address = request.getParameter("address").trim();
-		if(address!=null)
+		if (address != null)
 			address = address.trim();
 		Building building = null;
 		try {
 			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
 			if (Validator.validField(name)) {
-				building.setBuildingName(name);
-				building.setBuildingAddress(address);
+				building.setName(name);
+				building.setAddress(address);
 				try {
 					ApplicationContext.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
 					save = request.getRequestDispatcher("ViewBuildings.do");

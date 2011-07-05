@@ -93,10 +93,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Building` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Building` (
-  `Building_ID` INT NOT NULL AUTO_INCREMENT ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(80) NOT NULL ,
   `Address` VARCHAR(200) NULL ,
-  PRIMARY KEY (`Building_ID`) )
+  PRIMARY KEY (`ID`) )
 ENGINE = InnoDB;
 
 
@@ -826,10 +826,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`Inventory_Of_Equipment` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
-  `Inventory_Of_Equipment_ID` INT NOT NULL AUTO_INCREMENT ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
   `Building_ID` INT NOT NULL ,
-  PRIMARY KEY (`Inventory_Of_Equipment_ID`) ,
+  PRIMARY KEY (`ID`) ,
   INDEX `fk_Inventory_Of_Equipment_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_Inventory_Of_Equipment_Building1` (`Building_ID` ASC) ,
   CONSTRAINT `fk_Inventory_Of_Equipment_DivisionOffice1`
@@ -839,7 +839,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Inventory_Of_Equipment_Building1`
     FOREIGN KEY (`Building_ID` )
-    REFERENCES `IAPPSAM`.`Building` (`Building_ID` )
+    REFERENCES `IAPPSAM`.`Building` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -851,19 +851,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`IE_Line` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Line` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
-  `Quantity` INT NOT NULL ,
+  `IE_ID` INT NOT NULL ,
   `Employee_ID` INT NOT NULL ,
+  `Quantity` INT NOT NULL ,
   `How_Acquired` VARCHAR(100) NOT NULL ,
   `Remarks` VARCHAR(100) NULL ,
-  `Inventory_Of_Equipment_ID` INT NOT NULL ,
-  PRIMARY KEY (`Inventory_Of_Equipment_ID`, `Item_ID`) ,
-  INDEX `fk_IE_Line_Inventory_Of_Equipment1` (`Inventory_Of_Equipment_ID` ASC) ,
+  INDEX `fk_IE_Line_Inventory_Of_Equipment1` (`IE_ID` ASC) ,
   INDEX `fk_IE_Line_Employee1` (`Employee_ID` ASC) ,
   INDEX `fk_IE_Line_Item1` (`Item_ID` ASC) ,
+  PRIMARY KEY (`ID`) ,
   CONSTRAINT `fk_IE_Line_Inventory_Of_Equipment1`
-    FOREIGN KEY (`Inventory_Of_Equipment_ID` )
-    REFERENCES `IAPPSAM`.`Inventory_Of_Equipment` (`Inventory_Of_Equipment_ID` )
+    FOREIGN KEY (`IE_ID` )
+    REFERENCES `IAPPSAM`.`Inventory_Of_Equipment` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_IE_Line_Employee1`
@@ -1154,30 +1155,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee_DivisionOffice` (
   CONSTRAINT `fk_Employee_DivisionOffice_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
     REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `IAPPSAM`.`IE_Signatory`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`IE_Signatory` ;
-
-CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Signatory` (
-  `Inventory_Of_Equipment_ID` INT NOT NULL ,
-  `Signatory_ID` INT NOT NULL ,
-  PRIMARY KEY (`Inventory_Of_Equipment_ID`, `Signatory_ID`) ,
-  INDEX `fk_IE_Signatory_Inventory_Of_Equipment1` (`Inventory_Of_Equipment_ID` ASC) ,
-  INDEX `fk_IE_Signatory_Signatory1` (`Signatory_ID` ASC) ,
-  CONSTRAINT `fk_IE_Signatory_Inventory_Of_Equipment1`
-    FOREIGN KEY (`Inventory_Of_Equipment_ID` )
-    REFERENCES `IAPPSAM`.`Inventory_Of_Equipment` (`Inventory_Of_Equipment_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_IE_Signatory_Signatory1`
-    FOREIGN KEY (`Signatory_ID` )
-    REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
