@@ -27,6 +27,7 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.util.EntryFormatter;
 
 /**
  * Servlet implementation class UpdateAccount
@@ -52,7 +53,8 @@ public class UpdateAccount extends HttpServlet {
 	private String emailad;
 	private AccountManager aManager = new AccountManagerSession();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("userName");
 		System.out.println(username);
 		try {
@@ -61,7 +63,8 @@ public class UpdateAccount extends HttpServlet {
 			request.setAttribute("account", account);
 
 			request.setAttribute("starting", "true");
-			RequestDispatcher view = request.getRequestDispatcher("update_account.jsp");
+			RequestDispatcher view = request
+					.getRequestDispatcher("update_account.jsp");
 			request.setAttribute("isFinished", "Heyo");
 			view.forward(request, response);
 		} catch (TransactionException e) {
@@ -71,7 +74,8 @@ public class UpdateAccount extends HttpServlet {
 
 	}
 
-	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
+	private void failedResponse(HttpServletRequest request,
+			HttpServletResponse response) {
 		if (name.isEmpty())
 			request.setAttribute("nameOK", "false");
 		else
@@ -81,7 +85,8 @@ public class UpdateAccount extends HttpServlet {
 		else
 			request.setAttribute("passwordOK", "true");
 
-		RequestDispatcher view = request.getRequestDispatcher("update_account.jsp");
+		RequestDispatcher view = request
+				.getRequestDispatcher("update_account.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		try {
@@ -98,25 +103,39 @@ public class UpdateAccount extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	private EntryFormatter entryFormatter = new EntryFormatter();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		title = request.getParameter("title");
-		name = request.getParameter("name");
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
+		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
 		oldPassword = request.getParameter("password");
 		password = request.getParameter("newPassword");
 		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		userName = request.getParameter("username");
-		mobileNumber = request.getParameter("cellphoneNumber");
-		landline = request.getParameter("landline");
-		emailad = request.getParameter("e-mail_ad");
+		mobileNumber = entryFormatter.spaceTrimmer(request
+				.getParameter("cellphoneNumber"));
+		landline = entryFormatter
+				.spaceTrimmer(request.getParameter("landline"));
+		emailad = entryFormatter
+				.spaceTrimmer(request.getParameter("e-mail_ad"));
 		designation = request.getParameterValues("designation");
 		employeeNo = request.getParameterValues("empNo3");
 		divisionOfficeID = request.getParameterValues("divisionOffice");
 
+		for (int i = 0; i < designation.length; i++) {
+			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
+			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
+		}
 		try {
-			if (!name.isEmpty() && !userName.isEmpty() && !password.isEmpty() && !reenterPassword.isEmpty()
-					&& password.equalsIgnoreCase(reenterPassword) && aManager.getAccount(userName).comparePassword(oldPassword)) {
+			if (!name.isEmpty()
+					&& !userName.isEmpty()
+					&& !password.isEmpty()
+					&& !reenterPassword.isEmpty()
+					&& password.equalsIgnoreCase(reenterPassword)
+					&& aManager.getAccount(userName).comparePassword(
+							oldPassword) && entryFormatter.check(name)) {
 				acceptResponse(request, response);
 			} else {
 
@@ -127,24 +146,33 @@ public class UpdateAccount extends HttpServlet {
 		}
 	}
 
-	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
+	private void acceptResponse(HttpServletRequest request,
+			HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		Person person;
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		ContactManager cManager = new ContactManagerSession();
-		if (name != null && userName != null && password != null && reenterPassword != null && password.equalsIgnoreCase(reenterPassword)) {
+		if (name != null && userName != null && password != null
+				&& reenterPassword != null
+				&& password.equalsIgnoreCase(reenterPassword)) {
 			try {
 
 				Account account = aManager.getAccount(userName);
 				account.setPassword(password);
-				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
+				if (acctType
+						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
+								.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
+				} else if (acctType
+						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
+								.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
+						.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
+						.toString())) {
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.updateAccount(account);
@@ -168,19 +196,22 @@ public class UpdateAccount extends HttpServlet {
 							landlineList.add(contacts[i]);
 					}
 				}
-				if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty()) {
+				if (title != null && !title.equalsIgnoreCase("null")
+						&& !title.isEmpty()) {
 					person.setTitle(title);
 					person.setName(name);
 				} else
 					person.setName(name);
-				if (emailad != null && emailList.isEmpty() && !emailad.isEmpty()) {
+				if (emailad != null && emailList.isEmpty()
+						&& !emailad.isEmpty()) {
 					Contact email = new Contact();
 					email.setData(emailad);
 					email.setType(ContactType.EMAIL);
 					person.addContact(email);
 				}
 				for (int i = 0; i < emailList.size(); i++)
-					if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
+					if (emailad != null && !emailad.equalsIgnoreCase("null")
+							&& !emailad.isEmpty()) {
 						Contact email = new Contact();
 						if (i < emailList.size()) {
 							email = emailList.get(i);
@@ -189,7 +220,8 @@ public class UpdateAccount extends HttpServlet {
 						}
 
 					}
-				if (landline != null && landlineList.isEmpty() && !landline.isEmpty()) {
+				if (landline != null && landlineList.isEmpty()
+						&& !landline.isEmpty()) {
 
 					Contact landline2 = new Contact();
 					landline2.setData(landline);
@@ -197,7 +229,8 @@ public class UpdateAccount extends HttpServlet {
 					person.addContact(landline2);
 				}
 				for (int i = 0; i < landlineList.size(); i++)
-					if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
+					if (landline != null && !landline.equalsIgnoreCase("null")
+							&& !landline.isEmpty()) {
 						Contact landline2 = new Contact();
 
 						if (i < landlineList.size()) {
@@ -208,14 +241,17 @@ public class UpdateAccount extends HttpServlet {
 							cManager.updateContact(landline2);
 						}
 					}
-				if (mobileNumber != null && mobileList.isEmpty() && !mobileNumber.isEmpty()) {
+				if (mobileNumber != null && mobileList.isEmpty()
+						&& !mobileNumber.isEmpty()) {
 					Contact mobile = new Contact();
 					mobile.setData(mobileNumber);
 					mobile.setType(ContactType.MOBILE);
 					person.addContact(mobile);
 				}
 				for (int i = 0; i < mobileList.size(); i++)
-					if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
+					if (mobileNumber != null
+							&& !mobileNumber.equalsIgnoreCase("null")
+							&& !mobileNumber.isEmpty()) {
 						Contact mobile = new Contact();
 						if (i < mobileList.size()) {
 							mobile = mobileList.get(i);
@@ -226,7 +262,8 @@ public class UpdateAccount extends HttpServlet {
 						}
 					}
 
-				List<Employee> empList = pManager.getEmployeeByPerson(person.getId());
+				List<Employee> empList = pManager.getEmployeeByPerson(person
+						.getId());
 				System.out.println("EmployeeList Number:" + empList.size());
 				for (int i = 0; i < designation.length; i++) {
 					if (designation[i].isEmpty())
@@ -238,7 +275,9 @@ public class UpdateAccount extends HttpServlet {
 					employee.setDesignation(designation[i]);
 					employee.setEmployeeNumber(employeeNo[i]);
 					try {
-						employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
+						employee.setDivisionOffice(dManager
+								.getDivisionOffice(Integer
+										.parseInt(divisionOfficeID[i])));
 						pManager.updateEmployee(employee);
 						empList.add(employee);
 					} catch (NumberFormatException e) {
@@ -261,7 +300,8 @@ public class UpdateAccount extends HttpServlet {
 			}
 			try {
 
-				RequestDispatcher view = request.getRequestDispatcher("ViewAccounts.do");
+				RequestDispatcher view = request
+						.getRequestDispatcher("ViewAccounts.do");
 				view.forward(request, response);
 			} catch (ServletException e) {
 				failedResponse(request, response);

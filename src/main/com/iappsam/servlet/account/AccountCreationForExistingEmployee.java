@@ -20,6 +20,7 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.util.EntryFormatter;
 
 /**
  * Servlet implementation class AccountCreationForExistingEmployee
@@ -40,6 +41,7 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	private EntryFormatter entryFormatter = new EntryFormatter();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
@@ -85,10 +87,10 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 		String password = request.getParameter("password");
 		String reenterPassword = request.getParameter("reenterPassword");
 		String acctType = request.getParameter("accountType");
-		String userName = request.getParameter("username");
+		String userName = entryFormatter.spaceTrimmer(request.getParameter("username"));
 		PersonManager pManager = new PersonManagerSession();
 		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null && reenterPassword != null
-				&& password.equals(reenterPassword))
+				&& password.equals(reenterPassword)&&entryFormatter.check(userName))
 			try {
 				Person p = pManager.getPerson(Integer.parseInt(personID));
 				Account account = new Account();
@@ -145,8 +147,8 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 			System.out.println("AvailablePersons" + availablePersons.size());
 			request.setAttribute("persons", availablePersons);
 			request.setAttribute("personSelect", personID);
-			request.setAttribute("username", userName);
-			if(userName!=null&&userName.isEmpty()){
+			request.setAttribute("username", entryFormatter.spaceTrimmer(userName));
+			if(userName!=null&&!userName.isEmpty()){
 				request.setAttribute("userNameOK", "true");
 			}
 			else
