@@ -156,7 +156,7 @@ public class WebServer {
 		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
-		addFilter(new SecurityFilter(), "/*");
+		//addFilter(new SecurityFilter(), "/*");
 
 		server.setHandler(context);
 		server.start();

@@ -49,7 +49,7 @@
 							value="Item" />
 					</form>
 				</td>
-				<td><form id="form28" name="form28" method="post"
+				<td width="21%"><form id="form28" name="form28" method="post"
 						action="items">
 						<input name="addItemBtn" type="submit" class="button2"
 							id="addItemBtn" value="Add&gt;&gt;" />
@@ -75,19 +75,15 @@
 			</tr>
 			
 			<tr>
-				<td rowspan="4" class="labels">Records</td>
-				<td>
-					<form id="form8" name="form8" method="post"
-						action="entities/building/ViewBuildings.do">
-						<input name="buildingBtn" type="submit" class="menubtn"
-							id="buildingBtn" value="Building" />
-					</form></td>
-				<td>
-					<form id="form9" name="form9" method="post"
-						action="entities/building/AddBuilding.do">
-						<input name="addBuildingBtn" type="submit" class="button2"
-							id="addBuildingBtn" value="Add&gt;&gt;" />
-					</form></td>
+				<td width="26%" rowspan="4" class="labels">Records</td>
+				<td width="53%"><form id="form4" name="form4" method="post" action="">
+				  <input name="buildingBtn" type="submit" class="menubtn" id="buildingBtn" value="Building" />
+				  </form>
+				  </td>
+				<td><form id="form7" name="form7" method="post" action="">
+				  <input name="addBuilding" type="submit" class="button2" id="addBuilding" value="Add&gt;&gt;" />
+				  </form>
+					</td>
 			</tr>
             <tr>
 				<td>
