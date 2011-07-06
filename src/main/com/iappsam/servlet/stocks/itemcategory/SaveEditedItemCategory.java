@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.ItemCategory;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveEditedItemCategory
@@ -56,7 +56,7 @@ public class SaveEditedItemCategory extends HttpServlet {
 
 		try {
 			itemCategory = ApplicationContext.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
-			if (Verifier.validEntry(name)) {
+			if (Validator.validField(name)) {
 				itemCategory.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCategory(itemCategory);
 				save = request.getRequestDispatcher("ViewItemCategories.do");

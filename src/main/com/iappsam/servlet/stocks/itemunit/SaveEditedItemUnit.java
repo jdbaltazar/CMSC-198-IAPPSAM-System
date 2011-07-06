@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveEditedItemUnit
@@ -56,7 +56,7 @@ public class SaveEditedItemUnit extends HttpServlet {
 		try {
 			unit = ApplicationContext.INSTANCE.getItemManager().getUnit(itemUnitID);
 			
-			if (Verifier.validEntry(name)) {
+			if (Validator.validField(name)) {
 				unit.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateUnit(unit);
 				save = request.getRequestDispatcher("ViewItemUnits.do");

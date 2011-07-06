@@ -35,6 +35,17 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	}
 
 	@Override
+	public Item getItem(String id) throws TransactionException {
+		if (id != null)
+			try {
+				return getItem(Integer.parseInt(id));
+			} catch (NumberFormatException e) {
+				return null;
+			}
+		return null;
+	}
+
+	@Override
 	public Item getItemByDescription(String description) throws TransactionException {
 		List<Item> items = getAllItems();
 		for (Item i : items) {
@@ -303,4 +314,5 @@ public class ItemManagerSession extends AbstractManager implements ItemManager {
 	public Item getItem(Item item) throws TransactionException {
 		return getItemByDescription(item.getDescription());
 	}
+
 }

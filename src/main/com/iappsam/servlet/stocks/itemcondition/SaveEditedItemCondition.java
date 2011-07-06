@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.ItemCondition;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 /**
  * Servlet implementation class SaveEditedItemCondition
@@ -56,7 +56,7 @@ public class SaveEditedItemCondition extends HttpServlet {
 
 		try {
 			itemCondition = ApplicationContext.INSTANCE.getItemManager().getItemCondition(itemConditionID);
-			if (Verifier.validEntry(name)) {
+			if (Validator.validField(name)) {
 				itemCondition.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCondition(itemCondition);
 				save = request.getRequestDispatcher("ViewItemConditions.do");

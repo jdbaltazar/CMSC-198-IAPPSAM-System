@@ -16,7 +16,7 @@ import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class SaveSupplierAction implements Action {
 
@@ -39,21 +39,21 @@ public class SaveSupplierAction implements Action {
 		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER);
 
 		Person person = new Person();
-		if (Verifier.validEntry(name))
+		if (Validator.validField(name))
 			person.setName(name);
-		if (Verifier.validEntry(title))
+		if (Validator.validField(title))
 			person.setName(title);
-		if (Verifier.validEntry(mobileNumber))
+		if (Validator.validField(mobileNumber))
 			person.addContact(new Contact(mobileNumber, ContactType.MOBILE));
-		if (Verifier.validEntry(landline))
+		if (Validator.validField(landline))
 			person.addContact(new Contact(landline, ContactType.LANDLINE));
-		if (Verifier.validEntry(emailad))
+		if (Validator.validField(emailad))
 			person.addContact(new Contact(emailad, ContactType.EMAIL));
 		Employee employee = new Employee();
 		employee.setPerson(person);
-		if (Verifier.validEntry(designation))
+		if (Validator.validField(designation))
 			employee.setDesignation(designation);
-		if (Verifier.validEntry(employeeNumber))
+		if (Validator.validField(employeeNumber))
 			employee.setEmployeeNumber(employeeNumber);
 		Supplier supplier = new Supplier(supplierName, address, tin, employee);
 

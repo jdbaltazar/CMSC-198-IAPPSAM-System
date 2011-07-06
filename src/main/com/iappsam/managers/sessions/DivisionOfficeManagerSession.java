@@ -88,7 +88,7 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public void addBuilding(Building building) throws TransactionException, DuplicateEntryException {
-		if (getBuilding(building.getBuildingName(), building.getBuildingAddress()) == null)
+		if (getBuilding(building.getName(), building.getAddress()) == null)
 			add(building);
 	}
 
@@ -106,11 +106,11 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 	public Building getBuilding(String buildingName, String buildingAddress) throws TransactionException {
 		List<Building> buildings = getAllBuildings();
 		for (Building b : buildings) {
-			if (b.getBuildingName().equalsIgnoreCase(buildingName))
-				if (b.getBuildingAddress() != null && b.getBuildingAddress().equalsIgnoreCase(buildingAddress)) {
+			if (b.getName().equalsIgnoreCase(buildingName))
+				if (b.getAddress() != null && b.getAddress().equalsIgnoreCase(buildingAddress)) {
 					return b;
 				}
-			if (b.getBuildingAddress() == null && buildingAddress == null)
+			if (b.getAddress() == null && buildingAddress == null)
 				return b;
 		}
 		return null;
@@ -123,14 +123,14 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 
 	@Override
 	public boolean containsBuilding(Building building) throws TransactionException {
-		return getBuilding(building.getID()) != null;
+		return getBuilding(building.getId()) != null;
 	}
 
 	@Override
 	public boolean containsBuilding(String name) throws TransactionException {
 		List<Building> buildings = getAllBuildings();
 		for (Building building : buildings) {
-			if (building.getBuildingName().equalsIgnoreCase(name))
+			if (building.getName().equalsIgnoreCase(name))
 				return true;
 		}
 		return false;

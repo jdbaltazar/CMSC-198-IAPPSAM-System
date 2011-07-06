@@ -16,7 +16,7 @@ import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class SaveEditedSupplierForExistingAction implements Action {
 
@@ -57,9 +57,9 @@ public class SaveEditedSupplierForExistingAction implements Action {
 			
 
 			Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
-			if (!Verifier.validEntry(supplier.getSupplierName()))
+			if (!Validator.validField(supplier.getSupplierName()))
 				supplier.setSupplierName(original.getSupplierName());
-			if (!Verifier.validEntry(supplier.getAddress()))
+			if (!Validator.validField(supplier.getAddress()))
 				supplier.setAddress(original.getAddress());
 			
 			request.setAttribute("supplier", supplier);

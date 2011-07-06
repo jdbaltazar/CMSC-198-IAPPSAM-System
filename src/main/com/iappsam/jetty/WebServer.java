@@ -51,6 +51,8 @@ import com.iappsam.servlet.item.ItemServlet;
 import com.iappsam.servlet.po.POServlet;
 import com.iappsam.servlet.pr.PRLineServlet;
 import com.iappsam.servlet.pr.PRServlet;
+import com.iappsam.servlet.ris.RISLineServlet;
+import com.iappsam.servlet.ris.RISServlet;
 import com.iappsam.servlet.stocks.disposal.AddDisposal;
 import com.iappsam.servlet.stocks.disposal.EditDisposal;
 import com.iappsam.servlet.stocks.disposal.SaveEditedDisposal;
@@ -124,6 +126,8 @@ public class WebServer {
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new POServlet(), "/po");
 		addServlet(new PRServlet(), "/pr");
+		addServlet(new RISServlet(), "/ris");
+		addServlet(new RISLineServlet(), "/ris/line");
 		addServlet(new SaveDivision(), "/entities/division/SaveDivision.do");
 		addServlet(new SaveDivisionEdit(), "/entities/division/SaveDivisionEdit.do");
 		addServlet(new SaveEditedBuilding(), "/entities/building/SaveEditedBuilding.do");
@@ -152,7 +156,7 @@ public class WebServer {
 		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
-		addFilter(new SecurityFilter(), "/*");
+		//addFilter(new SecurityFilter(), "/*");
 
 		server.setHandler(context);
 		server.start();

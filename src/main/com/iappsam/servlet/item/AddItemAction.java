@@ -30,7 +30,7 @@ public class AddItemAction implements Action {
 
 		String idParam = request.getParameter("id");
 		String description = request.getParameter("description");
-		String stockNumber = request.getParameter("stockNum");
+		String stockNumber = request.getParameter("stockNumber");
 		String unit = request.getParameter("unit");
 		String price = request.getParameter("price");
 		String date = request.getParameter("date");

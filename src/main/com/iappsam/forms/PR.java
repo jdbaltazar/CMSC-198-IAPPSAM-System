@@ -329,7 +329,7 @@ public class PR implements Form {
 		boolean validLines = !lines.isEmpty();
 
 		for (PRLine line : lines)
-			validLines &= line.isValid();
+			validLines &= line.validate();
 
 		return validDivisionOffice && validLines && validPurpose && validRequestedBy && validApprovedBy;
 	}

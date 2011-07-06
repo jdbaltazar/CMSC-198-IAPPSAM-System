@@ -21,7 +21,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class SaveEditedSupplierAction implements Action {
 
@@ -64,7 +64,7 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && Verifier.validEntry(mobileNumber))
+		if (!found && Validator.validField(mobileNumber))
 			person.addContact(new Contact(mobileNumber, ContactType.MOBILE));
 
 		found = false;
@@ -75,7 +75,7 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && Verifier.validEntry(landline))
+		if (!found && Validator.validField(landline))
 			person.addContact(new Contact(landline, ContactType.LANDLINE));
 
 		found = false;
@@ -86,7 +86,7 @@ public class SaveEditedSupplierAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		if (!found && Verifier.validEntry(emailad))
+		if (!found && Validator.validField(emailad))
 			person.addContact(new Contact(emailad, ContactType.EMAIL));
 
 		try {
@@ -121,13 +121,13 @@ public class SaveEditedSupplierAction implements Action {
 			System.out.println("person name: \'" + supplier.getContactPerson().getPerson().getName() + "\'");
 
 			Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
-			if (!Verifier.validEntry(supplier.getSupplierName()))
+			if (!Validator.validField(supplier.getSupplierName()))
 				supplier.setSupplierName(original.getSupplierName());
-			if (!Verifier.validEntry(supplier.getAddress()))
+			if (!Validator.validField(supplier.getAddress()))
 				supplier.setAddress(original.getAddress());
-			if (!Verifier.validEntry(supplier.getContactPerson().getPerson().getName()))
+			if (!Validator.validField(supplier.getContactPerson().getPerson().getName()))
 				supplier.getContactPerson().getPerson().setName(original.getContactPerson().getPerson().getName());
-			if (!Verifier.validEntry(supplier.getContactPerson().getDesignation()))
+			if (!Validator.validField(supplier.getContactPerson().getDesignation()))
 				supplier.getContactPerson().setDesignation(original.getContactPerson().getDesignation());
 			request.setAttribute("supplier", supplier);
 		}

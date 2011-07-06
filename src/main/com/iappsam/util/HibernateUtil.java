@@ -32,8 +32,8 @@ import com.iappsam.forms.ICS;
 import com.iappsam.forms.ICSLine;
 import com.iappsam.forms.IIRUP;
 import com.iappsam.forms.IIRUPLine;
-import com.iappsam.forms.IOE;
-import com.iappsam.forms.IOELine;
+import com.iappsam.forms.IE;
+import com.iappsam.forms.IELine;
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.forms.PAR;
 import com.iappsam.forms.PARLine;
@@ -44,7 +44,7 @@ import com.iappsam.forms.PRLine;
 import com.iappsam.forms.PTRPA;
 import com.iappsam.forms.PTRPALine;
 import com.iappsam.forms.RIS;
-import com.iappsam.forms.RAISLine;
+import com.iappsam.forms.RISLine;
 import com.iappsam.forms.RSMI;
 import com.iappsam.forms.RSMILine;
 import com.iappsam.forms.RecapitulationLine;
@@ -72,13 +72,13 @@ public class HibernateUtil {
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
 
-//		try {
-//			addDefaulEntities();
-//		} catch (TransactionException e) {
-//			e.printStackTrace();
-//		} catch (DuplicateEntryException e) {
-//			e.printStackTrace();
-//		}
+		// try {
+		// addDefaulEntities();
+		// } catch (TransactionException e) {
+		// e.printStackTrace();
+		// } catch (DuplicateEntryException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -86,7 +86,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "true");
+			p.setProperty("hibernate.show_sql", "false");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -124,8 +124,8 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(IIRUPLine.class);
 			conf.addAnnotatedClass(ICS.class);
 			conf.addAnnotatedClass(ICSLine.class);
-			conf.addAnnotatedClass(IOE.class);
-			conf.addAnnotatedClass(IOELine.class);
+			conf.addAnnotatedClass(IE.class);
+			conf.addAnnotatedClass(IELine.class);
 			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PAR.class);
 			conf.addAnnotatedClass(PARLine.class);
@@ -137,13 +137,13 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(PRLine.class);
 			conf.addAnnotatedClass(RecapitulationLine.class);
 			conf.addAnnotatedClass(RIS.class);
-			conf.addAnnotatedClass(RAISLine.class);
+			conf.addAnnotatedClass(RISLine.class);
 			conf.addAnnotatedClass(RSMI.class);
 			conf.addAnnotatedClass(RSMILine.class);
 			conf.addAnnotatedClass(WMR.class);
 			conf.addAnnotatedClass(WMRLine.class);
-			
-			//filter
+
+			// filter
 			conf.addAnnotatedClass(SecurityFilter.class);
 
 			sessionFactory = conf.buildSessionFactory();
@@ -157,7 +157,7 @@ public class HibernateUtil {
 	}
 
 	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
-		addIappsamConfig(new IappsamConfig(1, true));
+		// addIappsamConfig(new IappsamConfig(1, true));
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();

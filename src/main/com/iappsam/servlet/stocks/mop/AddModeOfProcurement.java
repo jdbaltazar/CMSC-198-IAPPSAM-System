@@ -14,7 +14,7 @@ import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.POManagerSession;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @WebServlet("/stocks/stocks/AddModeOfProc.do")
 public class AddModeOfProcurement extends HttpServlet {
@@ -42,7 +42,7 @@ public class AddModeOfProcurement extends HttpServlet {
 
 		String modeofP = request.getParameter("modeOfProcurementField").trim();
 
-		if (Verifier.validEntry(modeofP)) {
+		if (Validator.validField(modeofP)) {
 			modeofProc.setName(modeofP);
 
 			try {

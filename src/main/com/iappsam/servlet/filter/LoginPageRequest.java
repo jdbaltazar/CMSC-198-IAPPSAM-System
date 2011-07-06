@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.LoginModule;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 public class LoginPageRequest implements Request {
 

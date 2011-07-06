@@ -48,18 +48,18 @@ public class AccountCreation extends HttpServlet {
 
 	private EntryFormatter entryFormatter = new EntryFormatter();
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-	private void failedResponse(HttpServletRequest request,
-			HttpServletResponse response) {
-		if (name.isEmpty())
+	private EntryFormatter entry = new EntryFormatter();
+
+	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
+		if (name.isEmpty() || entry.check(name))
 			request.setAttribute("nameOK", "false");
 		else
 			request.setAttribute("nameOK", "true");
-		if (username.isEmpty())
+		if (username.isEmpty() || entry.check(username))
 			request.setAttribute("usernameOK", "false");
 		else
 			request.setAttribute("usernameOK", "true");
@@ -81,8 +81,7 @@ public class AccountCreation extends HttpServlet {
 			designation3OK = "true";
 		}
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("create_account.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("create_account.jsp");
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -109,13 +108,16 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
+
 		designation = request.getParameterValues("designation");
 		employeeNo = request.getParameterValues("employeeNo");
 		divisionOfficeID = request.getParameterValues("divisionOfficeDropdown");
+
 		mobileNumber = entryFormatter.spaceTrimmer(request
 				.getParameter("cellphoneNumber"));
 		landline = entryFormatter
@@ -128,14 +130,17 @@ public class AccountCreation extends HttpServlet {
 		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		boolean mustFail = false;
+
 		for (int i = 0; i < designation.length; i++) {
 			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
 		for (int i = 0; i < designation.length; i++) {
-			if (designation[i].isEmpty() && !employeeNo[i].isEmpty())
+			if (designation[i].isEmpty() && !employeeNo[i].isEmpty()
+					&& (entry.check(entry.spaceTrimmer(designation[i])) || entry.check(entry.spaceTrimmer(employeeNo[i]))))
 				mustFail = true;
 		}
+
 		if (!name.isEmpty() && designation != null && !username.isEmpty()
 				&& !password.isEmpty() && !reenterPassword.isEmpty()
 				&& password.equalsIgnoreCase(reenterPassword) && !mustFail
@@ -145,36 +150,30 @@ public class AccountCreation extends HttpServlet {
 			failedResponse(request, response);
 	}
 
-	private void acceptResponse(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person;
-		if (name != null && designation != null && username != null
-				&& password != null && reenterPassword != null
+		if (name != null && designation != null && username != null && password != null && reenterPassword != null
 				&& password.equalsIgnoreCase(reenterPassword)) {
-			if (title != null && !title.equalsIgnoreCase("null")
-					&& !title.isEmpty())
+			if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty())
 				person = new Person(title, name);
 			else
 				person = new Person(name);
 
-			if (emailad != null && !emailad.equalsIgnoreCase("null")
-					&& !emailad.isEmpty()) {
-				Contact email = new Contact(emailad, ContactType.EMAIL);
+			if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
+				Contact email = new Contact(entry.spaceTrimmer(emailad), ContactType.EMAIL);
 				person.addContact(email);
 			}
 
-			if (landline != null && !landline.equalsIgnoreCase("null")
-					&& !landline.isEmpty()) {
-				Contact landline2 = new Contact(landline, ContactType.LANDLINE);
+			if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
+				Contact landline2 = new Contact(entry.spaceTrimmer(landline), ContactType.LANDLINE);
 				person.addContact(landline2);
 			}
 
-			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null")
-					&& !mobileNumber.isEmpty()) {
-				Contact mobile = new Contact(mobileNumber, ContactType.MOBILE);
+			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
+				Contact mobile = new Contact(entry.spaceTrimmer(mobileNumber), ContactType.MOBILE);
 
 				person.addContact(mobile);
 			}
@@ -191,12 +190,9 @@ public class AccountCreation extends HttpServlet {
 			for (int i = 0; i < designation.length; i++) {
 				if (designation[i].isEmpty())
 					continue;
-				Employee employee = new Employee(designation[i], employeeNo[i],
-						person);
+				Employee employee = new Employee(entry.spaceTrimmer(designation[i]), entry.spaceTrimmer(employeeNo[i]), person);
 				try {
-					employee.setDivisionOffice(dManager
-							.getDivisionOffice(Integer
-									.parseInt(divisionOfficeID[i])));
+					employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
 					pManager.addEmployee(employee);
 					empList.add(employee);
 				} catch (NumberFormatException e) {
@@ -218,23 +214,18 @@ public class AccountCreation extends HttpServlet {
 				account.setPassword(password);
 				account.setUsername(username);
 				account.setPerson(person);
-				if (acctType
-						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
-								.toString())) {
+				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType
-						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
-								.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
-						.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
-						.toString())) {
+				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
 				request.setAttribute("userName", username);
+
 				RequestDispatcher view = request
 						.getRequestDispatcher("ViewAccounts.do");
 				view.forward(request, response);

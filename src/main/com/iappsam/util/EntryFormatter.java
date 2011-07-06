@@ -1,6 +1,7 @@
 package com.iappsam.util;
 
 
+
 import java.util.ArrayList;
 
 public class EntryFormatter {

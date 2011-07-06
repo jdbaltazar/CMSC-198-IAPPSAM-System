@@ -13,7 +13,7 @@ import com.iappsam.Building;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.ApplicationContext;
-import com.iappsam.util.Verifier;
+import com.iappsam.util.Validator;
 
 @SuppressWarnings("serial")
 @WebServlet("/entities/building/AddBuilding.do")
@@ -42,21 +42,18 @@ public class AddBuilding extends HttpServlet {
 		if(address!=null)
 			address = address.trim();
 
-		if (Verifier.validEntry(name)) {
-			building.setBuildingName(name);
-			building.setBuildingAddress(address);
+		if (Validator.validField(name)) {
+			building.setName(name);
+			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
 				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (DuplicateEntryException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 
 		add.forward(request, response);
