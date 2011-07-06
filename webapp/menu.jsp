@@ -58,55 +58,24 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<form id="form3" name="form3" method="post" action="">
+					<form id="form3" name="form3" method="post" action="stocks/stocks/StockProperties.jsp">
 						<input name="appBtn" type="submit" class="menubtn" id="appBtn"
-							value="Annual Procurement Plan" />
-					</form></td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<form id="form4" name="form4" method="post" action="">
-						<input name="inventory" type="submit" class="menubtn"
-							id="inventory" value="Inventory" />
-					</form></td>
+							value="Stock Properties" />
+			  </form></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
 			</tr>
+			
 			<tr>
 				<td colspan="3">&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="3" class="main_menu_header">Settings</td>
 			</tr>
+			
 			<tr>
-				<td width="28%" rowspan="2" class="labels">Stocks</td>
-				<td colspan="2">
-					<form id="form7" name="form7" method="post"
-						action="stocks/stocks/StockProperties.jsp">
-						<input name="stockProperties" type="submit" class="menubtn"
-							id="stockProperties" value="Stock Properties" />
-					</form></td>
-			</tr>
-			<tr>
-				<td width="52%">
-					<form id="form5" name="form5" method="post" action="supplier">
-						<input name="supplierBtn" type="submit" class="menubtn"
-							id="supplierBtn" value="Supplier" /> <input type="hidden"
-							name="supplier-action" value="view-suppliers" />
-					</form></td>
-				<td width="20%">
-					<form id="form6" name="form6" method="post" action="supplier">
-						<input name="addSupplierBtn" type="submit" class="button2"
-							id="addSupplierBtn" value="Add&gt;&gt;" /> <input type="hidden"
-							name="supplier-action" value="new-supplier" />
-					</form></td>
-			</tr>
-			<tr>
-				<td colspan="3" height="2"></td>
-			</tr>
-			<tr>
-				<td rowspan="3" class="labels">Records</td>
+				<td rowspan="4" class="labels">Records</td>
 				<td>
 					<form id="form8" name="form8" method="post"
 						action="entities/building/ViewBuildings.do">
@@ -118,6 +87,20 @@
 						action="entities/building/AddBuilding.do">
 						<input name="addBuildingBtn" type="submit" class="button2"
 							id="addBuildingBtn" value="Add&gt;&gt;" />
+					</form></td>
+			</tr>
+            <tr>
+				<td>
+					<form id="form5" name="form5" method="post" action="supplier">
+						<input name="supplierBtn" type="submit" class="menubtn"
+							id="supplierBtn" value="Supplier" /> <input type="hidden"
+							name="supplier-action" value="view-suppliers" />
+					</form></td>
+				<td>
+					<form id="form6" name="form6" method="post" action="supplier">
+						<input name="addSupplierBtn" type="submit" class="button2"
+							id="addSupplierBtn" value="Add&gt;&gt;" /> <input type="hidden"
+							name="supplier-action" value="new-supplier" />
 					</form></td>
 			</tr>
 			<tr>
