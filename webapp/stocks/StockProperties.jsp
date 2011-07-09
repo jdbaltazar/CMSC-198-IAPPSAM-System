@@ -33,11 +33,13 @@
       <td colspan="2" class="header_rows"><div class="header_2">Item Properties</div></td>
     </tr>
     <tr>
-      <td width="78%"><form id="form1" name="form1" method="post" action="ViewItemUnits.do">
+      <td width="78%"><form id="form1" name="form1" method="get" action="stocks">
         <input name="itemUnit" type="submit" class="menubtn" id="itemUnit" value="Item Unit" />
+        <input type="hidden" name="stock-properties-action" value="view-item-units" />
       </form></td>
-      <td width="22%"><form id="form3" name="form3" method="post" action="AddItemUnit.jsp">
+      <td width="22%"><form id="form3" name="form3" method="get" action="stocks">
         <input name="addItemUnitBtn" type="submit" class="button2" id="addItemUnitBtn" value="Add&gt;&gt;" />
+        <input type="hidden" name="stock-properties-action" value="add-item-unit" />
       </form></td>
     </tr>
     <tr>

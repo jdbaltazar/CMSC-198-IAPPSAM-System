@@ -58,7 +58,7 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<form id="form3" name="form3" method="get" action="stocks">
+					<form id="form3" name="form3" method="post" action="stocks">
 						<input name="stocksBtn" type="submit" class="menubtn" id="stocksBtn"
 							value="Stock Properties" />
 							<input type="hidden"

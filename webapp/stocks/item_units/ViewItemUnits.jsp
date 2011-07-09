@@ -29,7 +29,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="../../menu" target="_top" class="links">Main Menu</a> &gt;<a href="StockProperties.jsp" target="_top" class="links">Stock Properties</a> &gt;<em><strong>Item Unit List </strong></em>&gt; <a href="AddItemUnit.jsp" target="_self" class="links">Add Item Unit</a></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<a href="stocks?stock-properties-action=view-stock-properties" target="_top" class="links">Stock Properties</a> &gt;<em><strong>Item Unit List </strong></em>&gt; <a href="stocks?stock-properties-action=add-item-unit" target="_self" class="links">Add Item Unit</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>
@@ -53,9 +53,10 @@
       else
       	out.println("class=\"tablerow_2\"");
       %>
-      ><form id="form1" name="form1" method="post" action="EditItemUnit.do">
+      ><form id="form1" name="form1" method="post" action="stocks">
         <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
       	<input type="hidden" name="itemUnitID" value=<%="" + u.getId()%> />
+      		<input type="hidden" name="stock-properties-action" value="edit-item-unit" />
       </form></td>
       <td 
       align="center"

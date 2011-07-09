@@ -1,11 +1,9 @@
-package com.iappsam.servlet.stocks.itemunit;
+package com.iappsam.servlet.entities;
 
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,42 +11,31 @@ import com.iappsam.Unit;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.Validator;
 
-@WebServlet("/stocks/stocks/AddItemUnit.do")
-public class AddItemUnit extends HttpServlet {
-
-	private static final long serialVersionUID = 2810822469770975662L;
-
-	public AddItemUnit() {
-		super();
-	}
+public class SaveItemUnitAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		ItemManager itemManager = new ItemManagerSession();
 		Unit unit = new Unit();
 
-		RequestDispatcher add = request.getRequestDispatcher("AddItemUnit.jsp");
+		RequestDispatcher add = request.getRequestDispatcher(StockPropertiesServlet.ADD_ITEM_UNIT);
 		String unitInput = request.getParameter("itemUnit").trim();
 		if (Validator.validField(unitInput)) {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);
-				add = request.getRequestDispatcher("ViewItemUnits.do");
+				ViewItemUnitsAction vUnits = new ViewItemUnitsAction();
 				System.out.println("add item unit successful!");
+				vUnits.process(request, response);
+				return;
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}
 		}
 		add.forward(request, response);
 	}
+
 }
