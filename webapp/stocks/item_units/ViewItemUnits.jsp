@@ -11,68 +11,81 @@
 </head>
 
 <body>
-<%
-	List<Unit> itemUnits = (List<Unit>) request.getAttribute("itemUnits");
-%>
-<div id="headerBkgrnd"><img src="../../images/headerbar.png" width="100%" height="129" /></div>
-<div id="logo"><img src="../../images/headerlogo.png" width="124" height="128" /></div>
-<div id="headerName"><img src="../../images/headertext.png" width="452" height="44" /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="100%" border="0" cellspacing="0">
-  <tr>
-    <td width="32%">&nbsp;</td>
-    <td width="68%"><form id="form2" name="form2" method="post" action="../../logout">
-      <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
-    </form></td>
-  </tr>
-  <tr>
-    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<a href="stocks?stock-properties-action=view-stock-properties" target="_top" class="links">Stock Properties</a> &gt;<em><strong>Item Unit List </strong></em>&gt; <a href="stocks?stock-properties-action=add-item-unit" target="_self" class="links">Add Item Unit</a></td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-<div id="items_table">
-  <table width="100%" border="0" cellspacing="0">
-    <tr>
-      <td width="9%" class="tableheaders_forms">Action</td>
-      <td width="91%" class="tableheaders_forms">Item Unit</td>
-    </tr>
-    
-    <%
-		int i = 0;
-		for (Unit u : itemUnits) {
+	<%
+		List<Unit> itemUnits = (List<Unit>) request.getAttribute("itemUnits");
 	%>
-    
-    <tr>
-      <td align="center" 
-      
-      <%if(i%2==0)
-      out.println("class=\"tablerow_1\"");
-      else
-      	out.println("class=\"tablerow_2\"");
-      %>
-      ><form id="form1" name="form1" method="post" action="stocks">
-        <input name="editBtn" type="submit" class="button2" id="editBtn" value="Edit&gt;&gt;" />
-      	<input type="hidden" name="itemUnitID" value=<%="" + u.getId()%> />
-      		<input type="hidden" name="stock-properties-action" value="edit-item-unit" />
-      </form></td>
-      <td 
-      align="center"
-      <%if(i%2==0)
-      out.println("class=\"tablerow_1\"");
-      %>
-      ><%=u.getName()%></td>
-    </tr>
-    
-    <%
-    	i++;
-    	}
-    %>
+	<div id="headerBkgrnd">
+		<img src="../../images/headerbar.png" width="100%" height="129" />
+	</div>
+	<div id="logo">
+		<img src="../../images/headerlogo.png" width="124" height="128" />
+	</div>
+	<div id="headerName">
+		<img src="../../images/headertext.png" width="452" height="44" />
+	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<table width="100%" border="0" cellspacing="0">
+		<tr>
+			<td width="32%">&nbsp;</td>
+			<td width="68%"><form id="form2" name="form2" method="post"
+					action="../../logout">
+					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
+						value="Logout" />
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td id="navigation"><a href="../menu" target="_top" class="links">Main
+					Menu</a> &gt;<a
+				href="../stocks?stock-properties-action=view-stock-properties"
+				target="_top" class="links">Stock Properties</a> &gt;<em><strong>Item
+						Unit List </strong>
+			</em>&gt; <a href="../stocks/item-unit?item-unit-action=add-item-unit"
+				target="_self" class="links">Add Item Unit</a>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<div id="items_table">
+		<table width="100%" border="0" cellspacing="0">
+			<tr>
+				<td width="9%" class="tableheaders_forms">Action</td>
+				<td width="91%" class="tableheaders_forms">Item Unit</td>
+			</tr>
 
-  </table>
-</div>
-<!--<div id="footer"></div>-->
+			<%
+				int i = 0;
+				for (Unit u : itemUnits) {
+			%>
+
+			<tr>
+				<td align="center"
+					<%if (i % 2 == 0)
+					out.println("class=\"tablerow_1\"");
+				else
+					out.println("class=\"tablerow_2\"");%>><form
+						id="form1" name="form1" method="post" action="../stocks/item-unit">
+						<input name="editBtn" type="submit" class="button2" id="editBtn"
+							value="Edit&gt;&gt;" /> <input type="hidden" name="itemUnitID"
+							value=<%="" + u.getId()%> /> <input type="hidden"
+							name="item-unit-action" value="edit-item-unit" />
+					</form>
+				</td>
+				<td align="center"
+					<%if (i % 2 == 0)
+					out.println("class=\"tablerow_1\"");%>><%=u.getName()%></td>
+			</tr>
+
+			<%
+				i++;
+				}
+			%>
+
+		</table>
+	</div>
+	<!--<div id="footer"></div>-->
 </body>
 </html>

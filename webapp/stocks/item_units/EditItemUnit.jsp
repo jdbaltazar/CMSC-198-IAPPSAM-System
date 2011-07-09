@@ -36,11 +36,11 @@
 				</form></td>
 		</tr>
 		<tr>
-			<td id="navigation"><a href="menu" target="_top" class="links">Main
+			<td id="navigation"><a href="../menu" target="_top" class="links">Main
 					Menu</a> &gt; <a
-				href="stocks?stock-properties-action=view-stock-properties"
+				href="../stocks?stock-properties-action=view-stock-properties"
 				target="_top" class="links">Stock Properties</a> &gt; <a
-				href="stocks?stock-properties-action=view-item-units" target="_top"
+				href="../stocks/item-unit?item-unit-action=view-item-units" target="_top"
 				class="links">Item Unit List</a> &gt; <em><strong>Edit
 						Item Unit</strong>
 			</em>
@@ -49,7 +49,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" method="post" action="stocks">
+		<form id="form1" name="form1" method="post" action="../stocks/item-unit">
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
 					<td class="header_rows"><em>Edit</em>
@@ -71,7 +71,7 @@
 									<input type="hidden"
 									name="itemUnitID" value=<%="" + itemUnit.getId()%> /> 
 									<input
-									name="stock-properties-action" type="hidden"
+									name="item-unit-action" type="hidden"
 									value="save-edited-item-unit" /> <br /> <br /></td>
 							</tr>
 						</table></td>

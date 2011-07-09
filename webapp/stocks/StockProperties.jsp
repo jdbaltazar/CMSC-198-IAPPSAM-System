@@ -23,7 +23,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="../../menu" target="_top" class="links" >Main Menu</a> &gt;<em><strong>Stock Properties</strong></em></td>
+    <td id="navigation"><a href="menu" target="_top" class="links" >Main Menu</a> &gt;<em><strong>Stock Properties</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>
@@ -33,13 +33,13 @@
       <td colspan="2" class="header_rows"><div class="header_2">Item Properties</div></td>
     </tr>
     <tr>
-      <td width="78%"><form id="form1" name="form1" method="get" action="stocks">
+      <td width="78%"><form id="form1" name="form1" method="get" action="stocks/item-unit">
         <input name="itemUnit" type="submit" class="menubtn" id="itemUnit" value="Item Unit" />
-        <input type="hidden" name="stock-properties-action" value="view-item-units" />
+        <input type="hidden" name="item-unit-action" value="view-item-units" />
       </form></td>
-      <td width="22%"><form id="form3" name="form3" method="get" action="stocks">
+      <td width="22%"><form id="form3" name="form3" method="get" action="stocks/item-unit">
         <input name="addItemUnitBtn" type="submit" class="button2" id="addItemUnitBtn" value="Add&gt;&gt;" />
-        <input type="hidden" name="stock-properties-action" value="add-item-unit" />
+        <input type="hidden" name="item-unit-action" value="add-item-unit" />
       </form></td>
     </tr>
     <tr>

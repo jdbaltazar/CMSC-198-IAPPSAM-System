@@ -32,11 +32,11 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="navigation"><a href="menu" target="_top" class="links">Main
+			<td id="navigation"><a href="../menu" target="_top" class="links">Main
 					Menu</a> &gt; <a
-				href="stocks?stock-properties-action=view-stock-properties"
+				href="../stocks?stock-properties-action=view-stock-properties"
 				target="_top" class="links">Stock Properties</a> &gt; <a
-				href="stocks?stock-properties-action=view-item-units" target="_top"
+				href="../stocks/item-unit?item-unit-action=view-item-units" target="_top"
 				class="links">Item Unit List</a> &gt; <em><strong>Add
 						Item Unit</strong>
 			</em>
@@ -45,7 +45,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" method="post" action="stocks">
+		<form id="form1" name="form1" method="post" action="../stocks/item-unit">
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
 					<td class="header_rows"><div class="header_1">
@@ -66,7 +66,7 @@
 								<td>&nbsp;</td>
 								<td><input name="addBtn" type="submit" class="button"
 									id="addBtn" value="ADD" /> <input
-									name="stock-properties-action" type="hidden" value="save-item-unit" /> <br />
+									name="item-unit-action" type="hidden" value="save-item-unit" /> <br />
 									<br />
 								</td>
 							</tr>
