@@ -1,7 +1,6 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.division;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,18 +14,19 @@ import com.iappsam.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.util.ApplicationContext;
 
 /**
- * Servlet implementation class UpdateDivisionOffice
+ * Servlet implementation class SaveDivisionEdit
  */
-@WebServlet("/entities/division/ViewDivisionAndOffices.do")
-public class ViewDivisionAndOffices extends HttpServlet {
+@WebServlet("/entities/division/SaveOfficeEdit.do")
+public class SaveOfficeEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewDivisionAndOffices() {
+	public SaveOfficeEdit() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,7 +38,6 @@ public class ViewDivisionAndOffices extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
 	}
 
 	/**
@@ -46,48 +45,36 @@ public class ViewDivisionAndOffices extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	@SuppressWarnings({ "unused", "unused" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("start of viewing---------------------->");
+		int officeID = Integer.parseInt(request.getParameter("officeID"));
+		String newName = request.getParameter("newName").trim();
 
+		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
+		DivisionOffice office;
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 
-		String divisionID = request.getParameter("dOfficeID");
-		
-		if(divisionID==null)
-			divisionID = (String)request.getAttribute("dOfficeID");
-		DivisionOffice dOffice = null;
-		List<DivisionOffice> offices = new ArrayList<DivisionOffice>();
-
-		RequestDispatcher view = null;
-
 		try {
+			office = doManager.getDivisionOffice(officeID);
+			if (newName != null && !newName.equalsIgnoreCase("")) {
+				office.setOfficeName(newName);
+				doManager.updateDivisionOffice(office);
+				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
+				DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
+				request.setAttribute("offices", offices);
+				request.setAttribute("dOfficeID", ""+dOffice.getId());
+				view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
+			} else {
+				request.setAttribute("office", office);
+			}
 
-			dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionID));
-			System.out.println("division found: " + dOffice.getDivisionName());
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		if (dOffice != null) {
-			List<DivisionOffice> dOffices = new ArrayList<DivisionOffice>();
-			try {
-				offices = doManager.getOfficesUnderDivision(dOffice.getDivisionName());
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		System.out.println("end of viewing---------------------->");
-
-		request.setAttribute("dOffice", dOffice);
-		request.setAttribute("offices", offices);
-
-		view = request.getRequestDispatcher("ViewDivisionAndOffices.jsp");
 		view.forward(request, response);
 	}
+
 }

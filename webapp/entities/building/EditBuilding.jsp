@@ -57,7 +57,7 @@
 				*Building Name:</td>
 				<td><br />
 				<input name="name" type="text" class="required" id="buildingName"
-					value="<%=building.getBuildingName()%>" maxlength="80" /></td>
+					value="<%=building.getName()%>" maxlength="80" /></td>
 			</tr>
 			<tr>
 				<td class="align_right"><br />
@@ -65,13 +65,13 @@
 				<br />
 				</td>
 				<td><input name="address" type="text" id="address"
-					value="<%=building.getBuildingAddress()%>" maxlength="200" /></td>
+					value="<%=building.getAddress()%>" maxlength="200" /></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>
 				<td><input name="saveBtn" type="submit" class="button"
 					id="saveBtn" value="SAVE" /> 
-					<input type="hidden" name="buildingID" value="<%=building.getID()%>"></input>
+					<input type="hidden" name="buildingID" value="<%=building.getId()%>"></input>
 					<br />
 				<br />
 				</td>

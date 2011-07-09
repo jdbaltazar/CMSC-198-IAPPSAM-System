@@ -32,7 +32,7 @@
 				</form></td>
 		</tr>
 		<tr>
-			<td class="welcomeNote">Welcome, ${username}!</td>
+			<td class="welcomeNote">Welcome, ${account.username}!</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
@@ -58,9 +58,11 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<form id="form3" name="form3" method="post" action="stocks/stocks/StockProperties.jsp">
-						<input name="appBtn" type="submit" class="menubtn" id="appBtn"
+					<form id="form3" name="form3" method="get" action="stocks">
+						<input name="stocksBtn" type="submit" class="menubtn" id="stocksBtn"
 							value="Stock Properties" />
+							<input type="hidden"
+							name="stock-properties-action" value="view-stock-properties" />
 			  </form></td>
 			</tr>
 			<tr>
@@ -76,11 +78,11 @@
 			
 			<tr>
 				<td width="26%" rowspan="4" class="labels">Records</td>
-				<td width="53%"><form id="form4" name="form4" method="post" action="">
+				<td width="53%"><form id="form4" name="form4" method="post" action="entities/building/ViewBuildings.do">
 				  <input name="buildingBtn" type="submit" class="menubtn" id="buildingBtn" value="Building" />
 				  </form>
 				  </td>
-				<td><form id="form7" name="form7" method="post" action="">
+				<td><form id="form7" name="form7" method="post" action="entities/building/AddBuilding.do">
 				  <input name="addBuilding" type="submit" class="button2" id="addBuilding" value="Add&gt;&gt;" />
 				  </form>
 					</td>

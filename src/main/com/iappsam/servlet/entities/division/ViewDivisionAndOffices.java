@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.division;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
 /**
- * Servlet implementation class SearchDivisionOffice
+ * Servlet implementation class UpdateDivisionOffice
  */
-@WebServlet("/entities/division/SearchDivisions.do")
-public class SearchDivisions extends HttpServlet {
+@WebServlet("/entities/division/ViewDivisionAndOffices.do")
+public class ViewDivisionAndOffices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SearchDivisions() {
+	public ViewDivisionAndOffices() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,6 +37,7 @@ public class SearchDivisions extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -45,34 +46,48 @@ public class SearchDivisions extends HttpServlet {
 	 *      response)
 	 */
 	@Override
+	@SuppressWarnings({ "unused", "unused" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
+		System.out.println("start of viewing---------------------->");
+
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
-		String query = request.getParameter("searchField");
+
+		String divisionID = request.getParameter("dOfficeID");
+		
+		if(divisionID==null)
+			divisionID = (String)request.getAttribute("dOfficeID");
+		DivisionOffice dOffice = null;
+		List<DivisionOffice> offices = new ArrayList<DivisionOffice>();
+
+		RequestDispatcher view = null;
 
 		try {
-			if (query != null && !query.isEmpty()) {
-				
-			} else {
-				dos = doManager.getAllDivisionOffice();
 
-				for (DivisionOffice d : dos) {
-					if (d.getOfficeName() == null)
-						result.add(d);
-				}
-			}
+			dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionID));
+			System.out.println("division found: " + dOffice.getDivisionName());
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		request.setAttribute("divOffices", result);
+		if (dOffice != null) {
+			List<DivisionOffice> dOffices = new ArrayList<DivisionOffice>();
+			try {
+				offices = doManager.getOfficesUnderDivision(dOffice.getDivisionName());
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
-		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
+		System.out.println("end of viewing---------------------->");
+
+		request.setAttribute("dOffice", dOffice);
+		request.setAttribute("offices", offices);
+
+		view = request.getRequestDispatcher("ViewDivisionAndOffices.jsp");
 		view.forward(request, response);
 	}
-
 }

@@ -59,14 +59,14 @@
 		<form id="form1" name="form1" method="post" action="EditBuilding.do">
 		<input name="editBtn" type="submit" class="button2" id="editBtn"
 			value="Edit&gt;&gt;" /> <input name="buildingID" type="hidden"
-			value="<%=b.getID()%>" /></form>
+			value="<%=b.getId()%>" /></form>
 		</td>
 		<td align="center"
 			<%if (i % 2 == 0)
 					out.print("class=\"tablerow_1\"");
 			  	else
       		out.println("class=\"tablerow_2\"");%>
-			><%=b.getBuildingName()%></td>
+			><%=b.getName()%></td>
 	</tr>
 
 	<%

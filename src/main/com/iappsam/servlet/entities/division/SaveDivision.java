@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.division;
 
 import java.io.IOException;
 

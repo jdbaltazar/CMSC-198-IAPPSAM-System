@@ -1,4 +1,4 @@
-package com.iappsam.servlet.entities.division;
+package com.iappsam.servlet.entities;
 
 import java.io.IOException;
 
@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 
-public class NewDivisionAction implements Action {
+public class ViewStockPropertiesAction implements Action{
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		RequestDispatcher newDivision = request.getRequestDispatcher(DivisionServlet.ADD_DIVISION);
-		newDivision.forward(request, response);
+		RequestDispatcher view = request.getRequestDispatcher(StockPropertiesServlet.STOCK_PROPERTIES);
+		view.forward(request, response);
 	}
 
 }

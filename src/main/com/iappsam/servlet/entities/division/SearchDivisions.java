@@ -1,6 +1,8 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.division;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.ApplicationContext;
+import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
 /**
- * Servlet implementation class EditOffice
+ * Servlet implementation class SearchDivisionOffice
  */
-@WebServlet("/entities/division/EditOffice.do")
-public class EditOffice extends HttpServlet {
+@WebServlet("/entities/division/SearchDivisions.do")
+public class SearchDivisions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditOffice() {
+	public SearchDivisions() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,7 +37,7 @@ public class EditOffice extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -45,21 +48,31 @@ public class EditOffice extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println(".....inside editoffice.java");
+		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
+		String query = request.getParameter("searchField");
 
-		int officeID = Integer.parseInt(request.getParameter("officeID"));
-		DivisionOffice office = null;
 		try {
-			office = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(officeID);
+			if (query != null && !query.isEmpty()) {
+				
+			} else {
+				dos = doManager.getAllDivisionOffice();
+
+				for (DivisionOffice d : dos) {
+					if (d.getOfficeName() == null)
+						result.add(d);
+				}
+			}
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("office", office);
-		RequestDispatcher view = request.getRequestDispatcher("EditOffice.jsp");
 
-		System.out.println("........outside editoffice.java");
+		request.setAttribute("divOffices", result);
+
+		RequestDispatcher view = request.getRequestDispatcher("SearchDivisions.jsp");
 		view.forward(request, response);
-
 	}
+
 }

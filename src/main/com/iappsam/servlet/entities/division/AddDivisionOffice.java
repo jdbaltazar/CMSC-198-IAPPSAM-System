@@ -1,6 +1,8 @@
-package com.iappsam.servlet.entities;
+package com.iappsam.servlet.entities.division;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +17,16 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 
 /**
- * Servlet implementation class EditDivision
+ * Servlet implementation class AddDivisionOffice
  */
-@WebServlet("/entities/division/EditDivision.do")
-public class EditDivision extends HttpServlet {
+@WebServlet("/divisions/AddDivisionOffice.do")
+public class AddDivisionOffice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditDivision() {
+    public AddDivisionOffice() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,33 +45,22 @@ public class EditDivision extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		
-		System.out.println("inside editdivision....................");
-		
-		String dOfficeID = request.getParameter("dOfficeID");
-		System.out.println("id: "+dOfficeID);
-		
-		
-		DivisionOffice dOffice = null;
+		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		
 		try {
-			dOffice = doManager.getDivisionOffice(Integer.parseInt(dOfficeID));
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			dos = doManager.getAllDivisionOffice();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if(dOffice!=null){
-			request.setAttribute("dOffice", dOffice);
-		}
+		request.setAttribute("divOffices", dos);
 		
-		RequestDispatcher view = request.getRequestDispatcher("EditDivision.jsp");		
+		RequestDispatcher view = request.getRequestDispatcher("../entities/division/AddDivisionOffice.jsp");
 		view.forward(request, response);
-		
 	}
 
 }

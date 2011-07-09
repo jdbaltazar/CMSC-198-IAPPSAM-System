@@ -20,8 +20,8 @@ public class Menu extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String username = (String) request.getAttribute("username");
-		request.setAttribute("username", username);
+//		String username = (String) request.getAttribute("username");
+//		request.setAttribute("username", username);
 		request.getRequestDispatcher("menu.jsp").forward(request, response);
 	}
 }
