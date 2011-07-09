@@ -68,6 +68,7 @@ import com.iappsam.servlet.stocks.itemcondition.SaveEditedItemCondition;
 import com.iappsam.servlet.stocks.itemcondition.ViewItemConditions;
 import com.iappsam.servlet.stocks.itemstatus.AddItemStatus;
 import com.iappsam.servlet.stocks.itemstatus.EditItemStatus;
+import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
 import com.iappsam.servlet.stocks.itemstatus.SaveEditedItemStatus;
 import com.iappsam.servlet.stocks.itemstatus.ViewItemStatuses;
 import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
@@ -140,6 +141,7 @@ public class WebServer {
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new StockPropertiesServlet(), "/stocks");
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
+		addServlet(new ItemStatusServlet(), "/stocks/item-stat");
 		addServlet(new SupplierServlet(), "/supplier");
 		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");

@@ -43,11 +43,13 @@
       </form></td>
     </tr>
     <tr>
-      <td><form id="form4" name="form4" method="post" action="ViewItemStatuses.do">
+      <td><form id="form4" name="form4" method="post" action="stocks/item-stat">
         <input name="itemStatus" type="submit" class="menubtn" id="itemStatus" value="Item Status" />
+        <input type="hidden" name="item-stat-action" value="view-item-stats" />
       </form></td>
-      <td><form id="form5" name="form5" method="post" action="AddItemStatus.jsp">
+      <td><form id="form5" name="form5" method="post" action="stocks/item-stat">
         <input name="addItemStatus" type="submit" class="button2" id="addItemStatus" value="Add&gt;&gt;" />
+        <input type="hidden" name="item-stat-action" value="add-item-stat" />
       </form></td>
     </tr>
     <tr>

@@ -14,7 +14,7 @@ import com.iappsam.servlet.Action;
 /**
  * Servlet implementation class SupplierServlet
  */
-@WebServlet("/item-unit")
+@WebServlet("/stocks/item-unit")
 public class ItemUnitServlet extends HttpServlet {
 
 	/**
