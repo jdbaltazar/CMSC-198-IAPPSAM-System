@@ -60,6 +60,7 @@ import com.iappsam.servlet.stocks.disposal.SaveEditedDisposal;
 import com.iappsam.servlet.stocks.disposal.ViewDisposals;
 import com.iappsam.servlet.stocks.itemcategory.AddItemCategory;
 import com.iappsam.servlet.stocks.itemcategory.EditItemCategory;
+import com.iappsam.servlet.stocks.itemcategory.ItemCategoryServlet;
 import com.iappsam.servlet.stocks.itemcategory.SaveEditedItemCategory;
 import com.iappsam.servlet.stocks.itemcategory.ViewItemCategories;
 import com.iappsam.servlet.stocks.itemcondition.AddItemCondition;
@@ -140,8 +141,9 @@ public class WebServer {
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new StockPropertiesServlet(), "/stocks");
-		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
+		addServlet(new ItemCategoryServlet(), "/stocks/item-cat");
 		addServlet(new ItemStatusServlet(), "/stocks/item-stat");
+		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
 		addServlet(new SupplierServlet(), "/supplier");
 		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");

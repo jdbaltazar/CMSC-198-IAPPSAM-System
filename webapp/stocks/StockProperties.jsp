@@ -53,11 +53,13 @@
       </form></td>
     </tr>
     <tr>
-      <td><form id="form6" name="form6" method="post" action="ViewItemCategories.do">
+      <td><form id="form6" name="form6" method="post" action="stocks/item-cat">
         <input name="itemCategory" type="submit" class="menubtn" id="itemCategory" value="Item Category" />
+        <input type="hidden" name="item-cat-action" value="view-item-cats" />
       </form></td>
-      <td><form id="form7" name="form7" method="post" action="AddItemCategory.jsp">
+      <td><form id="form7" name="form7" method="post" action="stocks/item-cat">
         <input name="addCategoryBtn" type="submit" class="button2" id="addCategoryBtn" value="Add&gt;&gt;" />
+        <input type="hidden" name="item-cat-action" value="add-item-cat" />
       </form></td>
     </tr>
     <tr>

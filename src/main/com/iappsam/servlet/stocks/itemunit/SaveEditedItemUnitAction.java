@@ -20,7 +20,7 @@ public class SaveEditedItemUnitAction implements Action{
 
 		System.out.println("....inside saveediteditemunit.java");
 
-		EditItemUnitAction action = new EditItemUnitAction();
+		Action action = new EditItemUnitAction();
 		
 		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));
 		String name = request.getParameter("itemUnit").trim();

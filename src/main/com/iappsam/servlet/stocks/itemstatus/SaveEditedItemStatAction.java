@@ -21,7 +21,7 @@ public class SaveEditedItemStatAction implements Action {
 
 		// RequestDispatcher save =
 		// request.getRequestDispatcher("EditItemStatus.do");
-		Action action = new SaveEditedItemStatAction();
+		Action action = new EditItemStatAction();
 
 		int itemStatusID = Integer.parseInt(request.getParameter("itemStatusID"));
 		String name = request.getParameter("itemStatus").trim();

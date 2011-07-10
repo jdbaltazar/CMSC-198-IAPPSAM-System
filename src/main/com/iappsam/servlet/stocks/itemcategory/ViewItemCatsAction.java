@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,28 +13,14 @@ import com.iappsam.ItemCategory;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.servlet.Action;
 
-@WebServlet("/stocks/stocks/ViewItemCategories.do")
-public class ViewItemCategories extends HttpServlet{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7700104491260715251L;
-
-	public ViewItemCategories(){
-		super();
-	}
+public class ViewItemCatsAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewItemCategories.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(ItemCategoryServlet.VIEW_ITEM_CATS);
 		
 		List<ItemCategory> categories = new ArrayList<ItemCategory>();
 		
@@ -50,4 +34,5 @@ public class ViewItemCategories extends HttpServlet{
 		request.setAttribute("categories", categories);
 		view.forward(request, response);
 	}
+
 }
