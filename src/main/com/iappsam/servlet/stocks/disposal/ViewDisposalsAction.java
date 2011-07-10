@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,28 +13,14 @@ import com.iappsam.forms.Disposal;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.WMRManagerSession;
+import com.iappsam.servlet.Action;
 
-@WebServlet("/stocks/stocks/ViewDisposals.do")
-public class ViewDisposals extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7700104491260715251L;
-
-	public ViewDisposals() {
-		super();
-	}
+public class ViewDisposalsAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		WMRManager wmrManager = new WMRManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewDisposals.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(DisposalServlet.VIEW_DISPOSALS);
 
 		List<Disposal> disposals = new ArrayList<Disposal>();
 
@@ -50,4 +34,5 @@ public class ViewDisposals extends HttpServlet {
 		request.setAttribute("disposals", disposals);
 		view.forward(request, response);
 	}
+
 }

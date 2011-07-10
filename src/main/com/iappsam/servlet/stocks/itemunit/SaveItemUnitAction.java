@@ -28,7 +28,7 @@ public class SaveItemUnitAction implements Action {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);
-				ViewItemUnitsAction vUnits = new ViewItemUnitsAction();
+				Action vUnits = new ViewItemUnitsAction();
 				System.out.println("add item unit successful!");
 				vUnits.process(request, response);
 				return;

@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,53 +11,32 @@ import com.iappsam.forms.Disposal;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.WMRManagerSession;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.Validator;
 
-@WebServlet("/stocks/stocks/AddDisposal.do")
-public class AddDisposal extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public AddDisposal() {
-		super();
-	}
+public class SaveDisposalAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println(".........inside adddisposal.java");
 		WMRManager wmrManager = new WMRManagerSession();
 		Disposal disposal = new Disposal();
 
-		RequestDispatcher add = request.getRequestDispatcher("AddDisposal.jsp");
-
+		RequestDispatcher add = request.getRequestDispatcher(DisposalServlet.ADD_DISPOSAL);
 		String disposalInput = request.getParameter("disposalField").trim();
-
 		if (Validator.validField(disposalInput)) {
 			disposal.setName(disposalInput);
-
 			try {
 				wmrManager.addDisposal(disposal);
-				add = request.getRequestDispatcher("ViewDisposals.do");
 				System.out.println("disposal was saved!!");
+				Action vAction = new ViewDisposalsAction();
+				vAction.process(request, response);
+				return;
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
-		else {
-			add = request.getRequestDispatcher("AddDisposal.jsp");
-		}
 		add.forward(request, response);
-
 	}
+
 }

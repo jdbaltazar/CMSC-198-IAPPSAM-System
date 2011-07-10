@@ -84,11 +84,13 @@
       <td colspan="2" class="header_rows"><div class="header_2">Others</div></td>
     </tr>
     <tr>
-      <td><form id="form10" name="form10" method="post" action="ViewDisposals.do">
+      <td><form id="form10" name="form10" method="post" action="stocks/disposal">
         <input name="disposal" type="submit" class="menubtn" id="disposal" value="Disposal" />
+        <input type="hidden" name="disposal-action" value="view-disposals" />
       </form></td>
-      <td><form id="form11" name="form11" method="post" action="AddDisposal.jsp">
+      <td><form id="form11" name="form11" method="post" action="stocks/disposal">
         <input name="addDisposal" type="submit" class="button2" id="addDisposal" value="Add&gt;&gt;" />
+        <input type="hidden" name="disposal-action" value="add-disposal" />
       </form></td>
     </tr>
     <tr>

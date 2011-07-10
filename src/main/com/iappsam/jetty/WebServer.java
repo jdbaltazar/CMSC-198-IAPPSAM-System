@@ -54,10 +54,7 @@ import com.iappsam.servlet.pr.PRLineServlet;
 import com.iappsam.servlet.pr.PRServlet;
 import com.iappsam.servlet.ris.RISLineServlet;
 import com.iappsam.servlet.ris.RISServlet;
-import com.iappsam.servlet.stocks.disposal.AddDisposal;
-import com.iappsam.servlet.stocks.disposal.EditDisposal;
-import com.iappsam.servlet.stocks.disposal.SaveEditedDisposal;
-import com.iappsam.servlet.stocks.disposal.ViewDisposals;
+import com.iappsam.servlet.stocks.disposal.DisposalServlet;
 import com.iappsam.servlet.stocks.itemcategory.ItemCategoryServlet;
 import com.iappsam.servlet.stocks.itemcondition.ItemConditionServlet;
 import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
@@ -83,7 +80,6 @@ public class WebServer {
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
 		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
-		addServlet(new AddDisposal(), "/stocks/stocks/AddDisposal.do");
 		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");
 		addServlet(new AddModeOfProcurement(), "/stocks/stocks/AddModeOfProc.do");
 		addServlet(new AddOffice(), "/entities/division/AddOffice.do");
@@ -94,7 +90,6 @@ public class WebServer {
 		addServlet(new DivisionCreation(), "/entities/division/divisionCreate.do");
 		addServlet(new DivisionServlet(), "/division");
 		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
-		addServlet(new EditDisposal(), "/stocks/stocks/EditDisposal.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
 		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
@@ -112,7 +107,6 @@ public class WebServer {
 		addServlet(new SaveDivision(), "/entities/division/SaveDivision.do");
 		addServlet(new SaveDivisionEdit(), "/entities/division/SaveDivisionEdit.do");
 		addServlet(new SaveEditedBuilding(), "/entities/building/SaveEditedBuilding.do");
-		addServlet(new SaveEditedDisposal(), "/stocks/stocks/SaveEditedDisposal.do");
 		addServlet(new SaveEditedModeOfProc(), "/stocks/stocks/SaveEditedModeOfProc.do");
 		addServlet(new SaveOffice(), "/entities/division/SaveOffice.do");
 		addServlet(new SaveOfficeEdit(), "/entities/division/SaveOfficeEdit.do");
@@ -121,6 +115,7 @@ public class WebServer {
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new StockPropertiesServlet(), "/stocks");
+		addServlet(new DisposalServlet(), "/stocks/disposal");
 		addServlet(new ItemCategoryServlet(), "/stocks/item-cat");
 		addServlet(new ItemConditionServlet(), "/stocks/item-cond");
 		addServlet(new ItemStatusServlet(), "/stocks/item-stat");
@@ -129,7 +124,6 @@ public class WebServer {
 		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
 		addServlet(new ViewBuildings(), "/entities/building/ViewBuildings.do");
-		addServlet(new ViewDisposals(), "/stocks/stocks/ViewDisposals.do");
 		addServlet(new ViewDivisionAndOffices(), "/entities/division/ViewDivisionAndOffices.do");
 		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
