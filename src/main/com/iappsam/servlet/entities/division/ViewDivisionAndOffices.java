@@ -73,7 +73,6 @@ public class ViewDivisionAndOffices extends HttpServlet {
 		}
 
 		if (dOffice != null) {
-			List<DivisionOffice> dOffices = new ArrayList<DivisionOffice>();
 			try {
 				offices = doManager.getOfficesUnderDivision(dOffice.getDivisionName());
 			} catch (TransactionException e) {

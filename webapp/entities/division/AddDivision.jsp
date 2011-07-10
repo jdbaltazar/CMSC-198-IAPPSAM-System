@@ -23,12 +23,12 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="../../menu" target="_top" class="links">Main Menu</a> &gt; <a href="SearchDivisions.do" target="_top" class="links">Division List</a> &gt; <em><strong>Add Division</strong></em></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt; <a href="division-office?division-office-action=view-divisions" target="_top" class="links">Division List</a> &gt; <em><strong>Add Division</strong></em></td>
     <td>&nbsp;</td>
   </tr>
 </table>
 <div id="form_table">
-  <form id="form1" name="form1" method="post" action="SaveDivision.do">
+  <form id="form1" name="form1" method="post" action="division-office">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
         <td class="header_rows"><div class="header_1"><em>New</em></div></td>
@@ -46,6 +46,7 @@
           <tr>
             <td>&nbsp;</td>
             <td><input name="addBtn" type="submit" class="button" id="addBtn" value="ADD" />
+            <input name="division-office-action" type="hidden" value="save-division" />
               <br />
               <br /></td>
           </tr>

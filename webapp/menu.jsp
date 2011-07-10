@@ -109,16 +109,19 @@
 			<tr>
 				<td>
 					<form id="form24" name="form24" method="post"
-						action="entities/division/SearchDivisions.do">
+						action="division-office">
 						<input name="divisionOfficeBtn" type="submit" class="menubtn"
 							id="divisionOfficeBtn" value="Division/Office" />
-					</form>
-				</td>
+							<input type="hidden"
+							name="division-office-action" value="view-divisions" />
+					</form></td>
 				<td>
 					<form id="form25" name="form25" method="post"
-						action="entities/division/AddDivision.jsp">
+						action="division-office">
 						<input name="addDivisionBtn" type="submit" class="button2"
 							id="addDivisionBtn" value="Add&gt;&gt;" />
+							<input type="hidden"
+							name="division-office-action" value="add-division" />
 					</form>
 				</td>
 			</tr>
