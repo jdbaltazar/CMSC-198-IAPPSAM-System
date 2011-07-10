@@ -46,6 +46,8 @@ public class AccountCreation extends HttpServlet {
 	String emailad;
 	String acctType;
 
+	private EntryFormatter entryFormatter = new EntryFormatter();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
@@ -106,31 +108,43 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		title = request.getParameter("title");
-		name = request.getParameter("name");
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
+		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
+
 		designation = request.getParameterValues("designation");
 		employeeNo = request.getParameterValues("employeeNo");
 		divisionOfficeID = request.getParameterValues("divisionOfficeDropdown");
-		mobileNumber = request.getParameter("cellphoneNumber");
-		landline = request.getParameter("landline");
-		emailad = request.getParameter("e-mail_ad");
-		username = request.getParameter("username");
+
+		mobileNumber = entryFormatter.spaceTrimmer(request
+				.getParameter("cellphoneNumber"));
+		landline = entryFormatter
+				.spaceTrimmer(request.getParameter("landline"));
+		emailad = entryFormatter
+				.spaceTrimmer(request.getParameter("e-mail_ad"));
+		username = entryFormatter
+				.spaceTrimmer(request.getParameter("username"));
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		boolean mustFail = false;
-		name = entry.spaceTrimmer(name);
-		username = entry.spaceTrimmer(username);
-		System.out.println("username:"+username);
-		System.out.println("name:"+name);
+
+		for (int i = 0; i < designation.length; i++) {
+			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
+			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
+		}
 		for (int i = 0; i < designation.length; i++) {
 			if (designation[i].isEmpty() && !employeeNo[i].isEmpty()
 					&& (entry.check(entry.spaceTrimmer(designation[i])) || entry.check(entry.spaceTrimmer(employeeNo[i]))))
 				mustFail = true;
 		}
-		if (!name.isEmpty() && designation != null && !username.isEmpty() && !password.isEmpty() && !reenterPassword.isEmpty()
-				&& password.equalsIgnoreCase(reenterPassword) && !mustFail && entry.check(name) && entry.check(username)) {
+
+		if (!name.isEmpty() && designation != null && !username.isEmpty()
+				&& !password.isEmpty() && !reenterPassword.isEmpty()
+				&& password.equalsIgnoreCase(reenterPassword) && !mustFail
+				&& entryFormatter.check(name) && entryFormatter.check(username)) {
 			acceptResponse(request, response);
 		} else
 			failedResponse(request, response);
@@ -211,7 +225,9 @@ public class AccountCreation extends HttpServlet {
 				}
 				aManager.addAccount(account);
 				request.setAttribute("userName", username);
-				RequestDispatcher view = request.getRequestDispatcher("view_account.jsp");
+
+				RequestDispatcher view = request
+						.getRequestDispatcher("ViewAccounts.do");
 				view.forward(request, response);
 			} catch (TransactionException e) {
 				failedResponse(request, response);
