@@ -11,8 +11,8 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import com.iappsam.servlet.LoginServlet;
-import com.iappsam.servlet.Logout;
-import com.iappsam.servlet.Menu;
+import com.iappsam.servlet.LogoutServlet;
+import com.iappsam.servlet.MenuServlet;
 import com.iappsam.servlet.SearchItemList;
 import com.iappsam.servlet.account.AccountCreation;
 import com.iappsam.servlet.account.AccountCreationForExistingEmployee;
@@ -72,8 +72,8 @@ public class WebServer {
 		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
 		addServlet(new ItemServlet(), "/items");
 		addServlet(new LoginServlet(), "/login");
-		addServlet(new Logout(), "/logout");
-		addServlet(new Menu(), "/menu");
+		addServlet(new LogoutServlet(), "/logout");
+		addServlet(new MenuServlet(), "/menu");
 		addServlet(new PRLineServlet(), "/pr/line");
 		addServlet(new POServlet(), "/po");
 		addServlet(new PRServlet(), "/pr");
