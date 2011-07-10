@@ -44,8 +44,6 @@ public class AddDivisionOffice extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		
 		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
@@ -53,7 +51,6 @@ public class AddDivisionOffice extends HttpServlet {
 		try {
 			dos = doManager.getAllDivisionOffice();
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

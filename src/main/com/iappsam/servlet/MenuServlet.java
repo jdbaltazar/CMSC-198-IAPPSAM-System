@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.util.Cleaner;
 
 @WebServlet("/menu")
-public class Menu extends HttpServlet {
+public class MenuServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8715294359026881395L;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
