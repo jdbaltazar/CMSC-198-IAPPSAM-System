@@ -73,7 +73,9 @@
 				</td>
 				<td align="center"
 					<%if (i % 2 == 0)
-					out.println("class=\"tablerow_1\"");%>><%=mode.getName()%></td>
+					out.println("class=\"tablerow_1\"");
+					else
+					out.println("class=\"tablerow_2\"");%>><%=mode.getName()%></td>
 			</tr>
 
 			<%

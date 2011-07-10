@@ -74,7 +74,9 @@
 					</form></td>
 				<td align="center"
 					<%if (i % 2 == 0)
-					out.println("class=\"tablerow_1\"");%>><%=itemStatus.getName()%></td>
+					out.println("class=\"tablerow_1\"");
+					else
+					out.println("class=\"tablerow_2\"");%>><%=itemStatus.getName()%></td>
 			</tr>
 
 			<%
