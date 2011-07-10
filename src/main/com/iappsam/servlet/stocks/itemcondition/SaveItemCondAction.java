@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,40 +11,32 @@ import com.iappsam.ItemCondition;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.servlet.Action;
+import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Validator;
 
-@WebServlet("/stocks/stocks/AddItemCondition.do")
-public class AddItemCondition extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
-
-	public AddItemCondition() {
-		super();
-	}
+public class SaveItemCondAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCondition condition = new ItemCondition();
 
-		RequestDispatcher add = request.getRequestDispatcher("AddItemCondition.jsp");
+		RequestDispatcher add = request.getRequestDispatcher(ItemConditionServlet.ADD_ITEM_COND);
 
 		String conditionInput = request.getParameter("itemCondition").trim();
 		if (Validator.validField(conditionInput)) {
 			condition.setName(conditionInput);
 			try {
 				itemManager.addItemCondition(condition);
-				add = request.getRequestDispatcher("ViewItemConditions.do");
+				Action vAction = new ViewItemCondsAction();
+				vAction.process(request, response);
+				return;
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}
 		}
 		add.forward(request, response);
 	}
+
 }

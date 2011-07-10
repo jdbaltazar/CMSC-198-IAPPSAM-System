@@ -26,13 +26,13 @@ public class SaveEditedItemUnitAction implements Action{
 		String name = request.getParameter("itemUnit").trim();
 
 		Unit unit = null;
+		
 		try {
 			unit = ApplicationContext.INSTANCE.getItemManager().getUnit(itemUnitID);
-			
 			if (Validator.validField(name)) {
 				unit.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateUnit(unit);
-				ViewItemUnitsAction vAction = new ViewItemUnitsAction();
+				Action vAction = new ViewItemUnitsAction();
 				vAction.process(request, response);
 				return;
 			}

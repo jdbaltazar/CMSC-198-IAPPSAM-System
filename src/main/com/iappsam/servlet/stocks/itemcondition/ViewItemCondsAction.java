@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,29 +13,14 @@ import com.iappsam.ItemCondition;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
+import com.iappsam.servlet.Action;
 
-@WebServlet("/stocks/stocks/ViewItemConditions.do")
-public class ViewItemConditions extends HttpServlet{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7700104491260715251L;
-
-	public ViewItemConditions(){
-		super();
-	}
+public class ViewItemCondsAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		ItemManager itemManager = new ItemManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher("ViewItemConditions.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(ItemConditionServlet.VIEW_ITEM_CONDS);
 		
 		List<ItemCondition> itemConditions = new ArrayList<ItemCondition>();
 		
@@ -52,4 +35,5 @@ public class ViewItemConditions extends HttpServlet{
 		
 		view.forward(request, response);
 	}
+
 }

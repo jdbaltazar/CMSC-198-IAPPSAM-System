@@ -43,7 +43,7 @@ public class SaveEditedItemCatAction implements Action {
 			request.setAttribute("itemCategory", itemCategory);
 		}
 
-		request.setAttribute("itemCategoryID", itemCategoryID);
+		request.setAttribute("itemCategoryID", ""+itemCategoryID);
 		action.process(request, response);
 	}
 

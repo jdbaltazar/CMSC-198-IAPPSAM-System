@@ -63,11 +63,13 @@
       </form></td>
     </tr>
     <tr>
-      <td><form id="form8" name="form8" method="post" action="ViewItemConditions.do">
+      <td><form id="form8" name="form8" method="post" action="stocks/item-cond">
         <input name="itemCondition" type="submit" class="menubtn" id="itemCondition" value="Item Condition" />
+        <input type="hidden" name="item-cond-action" value="view-item-conds" />
       </form></td>
-      <td><form id="form9" name="form9" method="post" action="AddItemCondition.jsp">
+      <td><form id="form9" name="form9" method="post" action="stocks/item-cond">
         <input name="addCondition" type="submit" class="button2" id="addCondition" value="Add&gt;&gt;" />
+        <input type="hidden" name="item-cond-action" value="add-item-cond" />
       </form></td>
     </tr>
     <tr>
