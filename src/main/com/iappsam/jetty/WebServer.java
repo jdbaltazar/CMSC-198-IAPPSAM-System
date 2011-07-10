@@ -26,6 +26,7 @@ import com.iappsam.servlet.app.APPServlet;
 import com.iappsam.servlet.database.BackupDatabase;
 import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.servlet.entities.building.AddBuilding;
+import com.iappsam.servlet.entities.building.BuildingServlet;
 import com.iappsam.servlet.entities.building.EditBuilding;
 import com.iappsam.servlet.entities.building.SaveEditedBuilding;
 import com.iappsam.servlet.entities.building.ViewBuildings;
@@ -75,6 +76,7 @@ public class WebServer {
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
 		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
+		addServlet(new BuildingServlet(), "/building");
 		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
 		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");

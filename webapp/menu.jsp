@@ -29,7 +29,8 @@
 				<form id="form2" name="form2" method="post" action="logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form></td>
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td class="welcomeNote">Welcome, ${account.username}!</td>
@@ -47,59 +48,63 @@
 					<form id="form1" name="form1" method="get" action="items">
 						<input name="itemBtn" type="submit" class="menubtn" id="itemBtn"
 							value="Item" />
-					</form>
-				</td>
+					</form></td>
 				<td width="21%"><form id="form28" name="form28" method="post"
 						action="items">
 						<input name="addItemBtn" type="submit" class="button2"
 							id="addItemBtn" value="Add&gt;&gt;" />
-					</form>
-				</td>
+					</form></td>
 			</tr>
 			<tr>
 				<td colspan="3">
 					<form id="form3" name="form3" method="post" action="stocks">
-						<input name="stocksBtn" type="submit" class="menubtn" id="stocksBtn"
-							value="Stock Properties" />
-							<input type="hidden"
+						<input name="stocksBtn" type="submit" class="menubtn"
+							id="stocksBtn" value="Stock Properties" /> <input type="hidden"
 							name="stock-properties-action" value="view-stock-properties" />
-			  </form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
 			</tr>
-			
+
 			<tr>
 				<td colspan="3">&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="3" class="main_menu_header">Settings</td>
 			</tr>
-			
+
 			<tr>
 				<td width="26%" rowspan="4" class="labels">Records</td>
-				<td width="53%"><form id="form4" name="form4" method="post" action="entities/building/ViewBuildings.do">
-				  <input name="buildingBtn" type="submit" class="menubtn" id="buildingBtn" value="Building" />
-				  </form>
-				  </td>
-				<td><form id="form7" name="form7" method="post" action="entities/building/AddBuilding.do">
-				  <input name="addBuilding" type="submit" class="button2" id="addBuilding" value="Add&gt;&gt;" />
-				  </form>
-					</td>
+				<td width="53%"><form id="form4" name="form4" method="post"
+						action="building">
+						<input name="buildingBtn" type="submit" class="menubtn"
+							id="buildingBtn" value="Building" /> <input
+							name="building-action" type="hidden" value="view-buildings" />
+					</form></td>
+				<td><form id="form7" name="form7" method="post"
+						action="building">
+						<input name="addBuilding" type="submit" class="button2"
+							id="addBuilding" value="Add&gt;&gt;" /> <input
+							name="building-action" type="hidden" value="add-building" />
+					</form></td>
 			</tr>
-            <tr>
+			<tr>
 				<td>
 					<form id="form5" name="form5" method="post" action="supplier">
 						<input name="supplierBtn" type="submit" class="menubtn"
 							id="supplierBtn" value="Supplier" /> <input type="hidden"
 							name="supplier-action" value="view-suppliers" />
-					</form></td>
+					</form>
+				</td>
 				<td>
 					<form id="form6" name="form6" method="post" action="supplier">
 						<input name="addSupplierBtn" type="submit" class="button2"
 							id="addSupplierBtn" value="Add&gt;&gt;" /> <input type="hidden"
 							name="supplier-action" value="new-supplier" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
@@ -107,13 +112,15 @@
 						action="entities/division/SearchDivisions.do">
 						<input name="divisionOfficeBtn" type="submit" class="menubtn"
 							id="divisionOfficeBtn" value="Division/Office" />
-					</form></td>
+					</form>
+				</td>
 				<td>
 					<form id="form25" name="form25" method="post"
 						action="entities/division/AddDivision.jsp">
 						<input name="addDivisionBtn" type="submit" class="button2"
 							id="addDivisionBtn" value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
@@ -121,13 +128,15 @@
 						action="/entities/employees/search_employee.do">
 						<input name="employeeBtn" type="submit" class="menubtn"
 							id="employeeBtn" value="Employee" />
-					</form></td>
+					</form>
+				</td>
 				<td>
 					<form id="form27" name="form27" method="post"
 						action="entities/employees/add_employee.jsp">
 						<input name="addEmployeeBtn" type="submit" class="button2"
 							id="addEmployeeBtn" value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -143,18 +152,20 @@
 						action="accounts/create_account.jsp">
 						<input name="createAcctBtn" type="submit" class="menubtn"
 							id="createAcctBtn" value="Create New" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><form id="form11" name="form11" method="post" action="">
-				  <input name="viewAcctsBtn" type="submit" class="menubtn" id="viewAcctsBtn" value="View Accounts" />
-				  </form>
-				  </td>
+				<td colspan="2"><form id="form11" name="form11" method="post"
+						action="">
+						<input name="viewAcctsBtn" type="submit" class="menubtn"
+							id="viewAcctsBtn" value="View Accounts" />
+					</form></td>
 
 				<td><form id="form29" name="form29" method="post" action="">
-				  <input name="myAcctBtn" type="submit" class="button2" id="myAcctBtn" value="My Account" />
-				  </form>
-				</td>
+						<input name="myAcctBtn" type="submit" class="button2"
+							id="myAcctBtn" value="My Account" />
+					</form></td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -170,7 +181,8 @@
 					<form id="form12" name="form12" method="post" action="">
 						<input name="viewSysLog" type="submit" class="menubtn"
 							id="viewSysLog" value="View System Log" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
@@ -178,7 +190,8 @@
 						action="database/backup.sql">
 						<input name="backup" type="submit" class="menubtn" id="backup"
 							value="Backup" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="3">&nbsp;</td>
@@ -195,60 +208,70 @@
 					<form id="form14" name="form14" method="post" action="">
 						<input disabled="disabled" name="appBtn2" type="submit"
 							class="menubtn" id="appBtn2" value="Annual Procurement Plan" />
-					</form></td>
+					</form>
+				</td>
 				<td width="18%">
 					<form id="form15" name="form15" method="post" action="">
 						<input disabled="disabled" name="addAppBtn" type="submit"
 							class="button2" id="addAppBtn" value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
 					<form id="form16" name="form16" method="post" action="/pr">
 						<input name="prBtn" type="submit" class="menubtn" id="prBtn"
 							value="Purchase Request" />
-					</form></td>
+					</form>
+				</td>
 				<td align="center">
 					<form id="form17" name="form17" method="post" action="/pr?new=pr">
 						<input name="addPr" type="submit" class="button2" id="addPr"
 							value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
 					<form id="form18" name="form18" method="post" action="">
 						<input disabled="disabled" name="purchaseOrder" type="submit"
 							class="menubtn" id="purchaseOrder" value="Purchase Order" />
-					</form></td>
+					</form>
+				</td>
 				<td align="center">
 					<form id="form19" name="form19" method="post" action="/po?new=po">
-						<input name="addPo" type="submit"
-							class="button2" id="addPo" value="Add&gt;&gt;" />
-					</form></td>
+						<input name="addPo" type="submit" class="button2" id="addPo"
+							value="Add&gt;&gt;" />
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
 					<form id="form20" name="form20" method="post" action="">
 						<input disabled="disabled" name="risBtn" type="submit"
 							class="menubtn" id="risBtn" value="Requisition &amp; Issue Slip" />
-					</form></td>
+					</form>
+				</td>
 				<td align="center">
 					<form id="form21" name="form21" method="post" action="">
 						<input disabled="disabled" name="addBtn" type="submit"
 							class="button2" id="addBtn" value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>
 					<form id="form22" name="form22" method="post" action="">
 						<input disabled="disabled" name="ieBtn" type="submit"
 							class="menubtn" id="ieBtn" value="Inventory of Equipment" />
-					</form></td>
+					</form>
+				</td>
 				<td align="center">
 					<form id="form23" name="form23" method="post" action="">
 						<input disabled="disabled" name="addIE" type="submit"
 							class="button2" id="addIE" value="Add&gt;&gt;" />
-					</form></td>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>

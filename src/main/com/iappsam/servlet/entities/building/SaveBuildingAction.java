@@ -4,42 +4,29 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Validator;
 
-@SuppressWarnings("serial")
-@WebServlet("/entities/building/AddBuilding.do")
-public class AddBuilding extends HttpServlet {
-
-	public AddBuilding() {
-		super();
-	}
+public class SaveBuildingAction implements Action {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		System.out.println("...inside addbuilding");
 
-		RequestDispatcher add = request.getRequestDispatcher("AddBuilding.jsp");
+		RequestDispatcher add = request.getRequestDispatcher(BuildingServlet.ADD_BUILDING);
 		Building building = new Building();
 		String name = request.getParameter("name");
-		if(name!=null)
+		if (name != null)
 			name = name.trim();
 		String address = request.getParameter("address");
-		if(address!=null)
+		if (address != null)
 			address = address.trim();
 
 		if (Validator.validField(name)) {
@@ -47,8 +34,10 @@ public class AddBuilding extends HttpServlet {
 			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
-				add = request.getRequestDispatcher("ViewBuildings.do");
 				System.out.println("building was saved!!");
+				Action vAction = new ViewBuildingsAction();
+				vAction.process(request, response);
+				return;
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			} catch (DuplicateEntryException e) {

@@ -4,51 +4,23 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Validator;
 
-/**
- * Servlet implementation class SaveEditedBuilding
- */
-@WebServlet("/entities/building/SaveEditedBuilding.do")
-public class SaveEditedBuilding extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class SaveEditedBuildingAction implements Action {
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public SaveEditedBuilding() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		System.out.println("....inside save editedbuilding.java");
 
-		RequestDispatcher save = request.getRequestDispatcher("EditBuilding.do");
+		Action action = new EditBuildingAction();
+
 		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
 		String name = request.getParameter("name");
 		if (name != null)
@@ -64,21 +36,22 @@ public class SaveEditedBuilding extends HttpServlet {
 				building.setAddress(address);
 				try {
 					ApplicationContext.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
-					save = request.getRequestDispatcher("ViewBuildings.do");
+					Action vAction = new ViewBuildingsAction();
+					vAction.process(request, response);
+					return;
 				} catch (TransactionException e) {
 					e.printStackTrace();
+					
 				}
-			} else {
-				request.setAttribute("building", building);
 			}
-
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			request.setAttribute("building", building);
 		}
 
-		save.forward(request, response);
+		request.setAttribute("building", building);
+		action.process(request, response);
 	}
 
 }

@@ -10,82 +10,81 @@
 </head>
 
 <body>
-<%
-	Building building = (Building) request.getAttribute("building");
-%>
-<div id="headerBkgrnd"><img src="../../images/headerbar.png"
-	width="100%" height="129" /></div>
-<div id="logo"><img src="../../images/headerlogo.png" width="124"
-	height="128" /></div>
-<div id="headerName"><img src="../../images/headertext.png"
-	width="452" height="44" /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="100%" border="0" cellspacing="0">
-	<tr>
-		<td width="32%">&nbsp;</td>
-		<td width="68%">
-		<form id="form2" name="form2" method="post" action="../../logout">
-		<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
-			value="Logout" /></form>
-		</td>
-	</tr>
-	<tr>
-		<td id="navigation"><a href="../../menu" target="_top"
-			class="links">Main Menu</a> &gt; <a href="ViewBuildings.do"
-			target="_top" class="links">Building List</a> &gt; <em><strong>Edit
-		Building</strong></em></td>
-		<td>&nbsp;</td>
-	</tr>
-</table>
-<div id="form_table">
-<form id="buildingForm" name="buildingForm" method="post"
-	action="SaveEditedBuilding.do">
-<table width="100%" border="0" cellspacing="0" id="table">
-	<tr>
-		<td class="header_rows">
-		<div class="header_1">Building Information</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<table width="100%" border="0" cellspacing="0" id="table">
-			<tr>
-				<td class="align_right"><br />
-				*Building Name:</td>
-				<td><br />
-				<input name="name" type="text" class="required" id="buildingName"
-					value="<%=building.getName()%>" maxlength="80" /></td>
-			</tr>
-			<tr>
-				<td class="align_right"><br />
-				Address:<br />
-				<br />
-				</td>
-				<td><input name="address" type="text" id="address"
-					value="<%=building.getAddress()%>" maxlength="200" /></td>
-			</tr>
-			<tr>
-				<td class="align_right">&nbsp;</td>
-				<td><input name="saveBtn" type="submit" class="button"
-					id="saveBtn" value="SAVE" /> 
-					<input type="hidden" name="buildingID" value="<%=building.getId()%>"></input>
-					<br />
-				<br />
-				</td>
-			</tr>
-		</table>
-		</td>
-	</tr>
-	<tr>
-		<td class="table_footer"></td>
-	</tr>
-	
-</table>
-</form>
-</div>
-<!--<div id="footer"></div>-->
+	<%
+		Building building = (Building) request.getAttribute("building");
+	%>
+	<div id="headerBkgrnd">
+		<img src="../../images/headerbar.png" width="100%" height="129" />
+	</div>
+	<div id="logo">
+		<img src="../../images/headerlogo.png" width="124" height="128" />
+	</div>
+	<div id="headerName">
+		<img src="../../images/headertext.png" width="452" height="44" />
+	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<table width="100%" border="0" cellspacing="0">
+		<tr>
+			<td width="32%">&nbsp;</td>
+			<td width="68%">
+				<form id="form2" name="form2" method="post" action="../../logout">
+					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
+						value="Logout" />
+				</form></td>
+		</tr>
+		<tr>
+			<td id="navigation"><a href="menu" target="_top" class="links">Main
+					Menu</a> &gt; <a href="building?building-action=view-buildings"
+				target="_top" class="links">Building List</a> &gt; <em><strong>Edit
+						Building</strong> </em>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<div id="form_table">
+		<form id="buildingForm" name="buildingForm" method="post"
+			action="building">
+			<table width="100%" border="0" cellspacing="0" id="table">
+				<tr>
+					<td class="header_rows">
+						<div class="header_1">Building Information</div></td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" border="0" cellspacing="0" id="table">
+							<tr>
+								<td class="align_right"><br /> *Building Name:</td>
+								<td><br /> <input name="name" type="text" class="required"
+									id="buildingName" value="<%=building.getName()%>"
+									maxlength="80" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right"><br /> Address:<br /> <br /></td>
+								<td><input name="address" type="text" id="address"
+									value="<%=building.getAddress()%>" maxlength="200" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">&nbsp;</td>
+								<td><input name="saveBtn" type="submit" class="button"
+									id="saveBtn" value="SAVE" /> <input type="hidden"
+									name="buildingID" value="<%=building.getId()%>"></input> <input
+									name="building-action" type="hidden"
+									value="save-edited-building" /> <br /> <br /></td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td class="table_footer"></td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+	<!--<div id="footer"></div>-->
 </body>
 </html>
