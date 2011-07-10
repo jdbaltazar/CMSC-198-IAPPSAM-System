@@ -59,10 +59,7 @@ import com.iappsam.servlet.stocks.itemcategory.ItemCategoryServlet;
 import com.iappsam.servlet.stocks.itemcondition.ItemConditionServlet;
 import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
 import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
-import com.iappsam.servlet.stocks.mop.AddModeOfProcurement;
-import com.iappsam.servlet.stocks.mop.EditModeOfProcurement;
-import com.iappsam.servlet.stocks.mop.SaveEditedModeOfProc;
-import com.iappsam.servlet.stocks.mop.ViewModesOfProcurement;
+import com.iappsam.servlet.stocks.mop.ModeOfProcServlet;
 
 public class WebServer {
 
@@ -81,7 +78,6 @@ public class WebServer {
 		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddBuilding(), "/entities/building/AddBuilding.do");
 		addServlet(new AddDivisionOffice(), "/divisions/AddDivisionOffice.do");
-		addServlet(new AddModeOfProcurement(), "/stocks/stocks/AddModeOfProc.do");
 		addServlet(new AddOffice(), "/entities/division/AddOffice.do");
 		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
 		addServlet(new APPLineServlet(), "/app/line");
@@ -91,7 +87,6 @@ public class WebServer {
 		addServlet(new DivisionServlet(), "/division");
 		addServlet(new EditBuilding(), "/entities/building/EditBuilding.do");
 		addServlet(new EditDivision(), "/entities/division/EditDivision.do");
-		addServlet(new EditModeOfProcurement(), "/stocks/stocks/EditModeOfProcurement.do");
 		addServlet(new EditOffice(), "/entities/division/EditOffice.do");
 		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
 		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
@@ -107,7 +102,6 @@ public class WebServer {
 		addServlet(new SaveDivision(), "/entities/division/SaveDivision.do");
 		addServlet(new SaveDivisionEdit(), "/entities/division/SaveDivisionEdit.do");
 		addServlet(new SaveEditedBuilding(), "/entities/building/SaveEditedBuilding.do");
-		addServlet(new SaveEditedModeOfProc(), "/stocks/stocks/SaveEditedModeOfProc.do");
 		addServlet(new SaveOffice(), "/entities/division/SaveOffice.do");
 		addServlet(new SaveOfficeEdit(), "/entities/division/SaveOfficeEdit.do");
 		addServlet(new SearchDivisions(), "/entities/division/SearchDivisions.do");
@@ -120,12 +114,12 @@ public class WebServer {
 		addServlet(new ItemConditionServlet(), "/stocks/item-cond");
 		addServlet(new ItemStatusServlet(), "/stocks/item-stat");
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
+		addServlet(new ModeOfProcServlet(), "/stocks/mode");
 		addServlet(new SupplierServlet(), "/supplier");
 		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
 		addServlet(new ViewBuildings(), "/entities/building/ViewBuildings.do");
 		addServlet(new ViewDivisionAndOffices(), "/entities/division/ViewDivisionAndOffices.do");
-		addServlet(new ViewModesOfProcurement(), "/stocks/stocks/ViewModesOfProcurement.do");
 		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
 		addFilter(new SecurityFilter(), "/*");
