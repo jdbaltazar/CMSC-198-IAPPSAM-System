@@ -50,6 +50,7 @@
 				<td width="9%" class="tableheaders_forms">Action</td>
 				<td width="91%" class="tableheaders_forms">Building Name</td>
 			</tr>
+
 			<%
 				int i = 0;
 				for (Building b : buildings) {
@@ -78,7 +79,6 @@
 				i++;
 				}
 			%>
-
 		</table>
 	</div>
 	<!--<div id="footer"></div>-->
