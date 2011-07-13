@@ -24,6 +24,7 @@ public class ItemServlet extends HttpServlet {
 	private ViewItemAction viewItem;
 	private SearchItemsAction searchItems;
 	private ListItemsAction listItems;
+	private UpdateItemAction updateItem;
 
 	public ItemServlet() {
 		this(ApplicationContext.INSTANCE);
@@ -34,13 +35,14 @@ public class ItemServlet extends HttpServlet {
 		addItem = new AddItemAction(m.getItemManager());
 		newItem = new NewItemAction(m.getItemManager());
 		viewItem = new ViewItemAction(m.getItemManager());
-		searchItems = new SearchItemsAction(m.getItemSearcher());
 		listItems = new ListItemsAction(m.getItemManager());
+		updateItem = new UpdateItemAction(m.getItemManager());
+		searchItems = new SearchItemsAction(m.getItemSearcher());
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		addItem.process(request, response);
+		parseAction(request).process(request, response);
 	}
 
 	@Override
@@ -51,14 +53,20 @@ public class ItemServlet extends HttpServlet {
 	private Action parseAction(HttpServletRequest request) {
 
 		String newParam = request.getParameter(ItemParameter.NEW_ITEM);
-		String id = request.getParameter(ItemParameter.ITEM_ID);
+		String id = request.getParameter("id");
 		String q = request.getParameter(ItemParameter.QUERY);
+		String add = request.getParameter("add");
+		String update = request.getParameter("update");
 
-		if (newParam != null && newParam.equals("item")) {
+		if (newParam != null && newParam.equals("item"))
 			return newItem;
-		} else if (id != null) {
+		else if (add != null && add.equals("item"))
+			return addItem;
+		else if (update != null && update.equals("item"))
+			return updateItem;
+		else if (id != null)
 			return viewItem;
-		} else if (q != null)
+		else if (q != null)
 			return searchItems;
 
 		return listItems;
