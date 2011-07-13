@@ -69,10 +69,7 @@
     </tr>
     <tr>
       <td width="79%"><form id="form7" name="form7" method="post" action="">
-        <input name="viewAccts" type="submit" class="menubtn" id="viewAccts" value="View Accounts" />
-      </form></td>
-      <td width="21%"><form id="form8" name="form8" method="post" action="">
-        <input name="myAcct" type="submit" class="button2" id="myAcct" value="My Account" />
+        <input name="viewAcct" type="submit" class="menubtn" id="viewAcct" value="My Account" />
       </form></td>
     </tr>
   </table>

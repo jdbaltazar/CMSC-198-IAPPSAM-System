@@ -68,7 +68,7 @@ public class ItemServlet extends HttpServlet {
 			return viewItem;
 		else if (q != null)
 			return searchItems;
-
 		return listItems;
 	}
+	
 }

@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.Account;
 
 /**
  * Servlet Filter implementation class SecurityFilter
@@ -45,19 +45,22 @@ public class SecurityFilter implements Filter {
 
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpResp = (HttpServletResponse) response;
-		String username = "", link = "";
+		Account account = null;
+		String link = "";
 		if (request instanceof HttpServletRequest) {
-			username = (String) httpReq.getSession().getAttribute("username");
+			
+			account = (Account) httpReq.getSession().getAttribute("account");
+			//username = (String) httpReq.getSession().getAttribute("username");
 			link = httpReq.getRequestURI();
-			System.out.println("username: " + username);
-			System.out.println("link: " + link);
+			//System.out.println("username: " + account.getUsername());
+			//System.out.println("link: " + link);
 
 			if (link.startsWith("/images") || link.startsWith("/css")) {
 				chain.doFilter(request, response);
 				return;
 			}
 
-			if (username == null || username.equalsIgnoreCase("null")) {
+			if (account == null) {
 				if (link.equalsIgnoreCase(HOME1) || link.equalsIgnoreCase(HOME2) || link.equalsIgnoreCase(HOME3)) {
 					chain.doFilter(request, response);
 					return;

@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
 	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException, IOException {
 		
-		RequestDispatcher view = request.getRequestDispatcher("menu.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("menu");
 		HttpSession session = request.getSession();
 
 		session.setAttribute("username", username);

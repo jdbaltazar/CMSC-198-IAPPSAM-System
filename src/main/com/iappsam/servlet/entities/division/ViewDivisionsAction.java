@@ -13,29 +13,33 @@ import com.iappsam.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.servlet.Action;
 
 public class ViewDivisionsAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		// TODO Auto-generated method stub
 
 		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher(DivisionServlet.VIEW_DIVISIONS);
+		List<DivisionOffice> result = new ArrayList<DivisionOffice>();
 
 		try {
-			List<DivisionOffice> temp = doManager.getAllDivisionOffice();
-			for (DivisionOffice d : temp) {
+			dos = doManager.getAllDivisionOffice();
+
+			for (DivisionOffice d : dos) {
 				if (d.getOfficeName() == null)
-					dos.add(d);
+					result.add(d);
 			}
+
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		request.setAttribute("divOffices", dos);
+		request.setAttribute("divOffices", result);
+
+		RequestDispatcher view = request.getRequestDispatcher(DivisionOfficeServlet.VIEW_DIVISIONS);
 		view.forward(request, response);
 	}
 

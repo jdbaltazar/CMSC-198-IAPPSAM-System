@@ -25,6 +25,7 @@ public class SearchItemsAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Item> items = searcher.search(request.getParameter(ItemParameter.QUERY));
 		request.setAttribute(ITEMS, items);
+		request.setAttribute("query", request.getParameter(ItemParameter.QUERY));
 		request.getRequestDispatcher(ItemServlet.LIST_ITEMS_JSP).forward(request, response);
 	}
 }

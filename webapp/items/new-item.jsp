@@ -100,7 +100,7 @@
         </tr>
         <tr>
           <td class="align_right">Price:</td>
-          <td><input name="itemPrice" type="text" id="itemPrice2" maxlength="50" /></td>
+          <td><input name="price" type="text" id="price" maxlength="50" /></td>
         </tr>
         <tr>
           <td class="align_right">Date Acquired:</td>
