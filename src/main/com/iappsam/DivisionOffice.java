@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
+@Indexed
 @Entity
 public class DivisionOffice implements Validatable {
 
@@ -14,9 +18,11 @@ public class DivisionOffice implements Validatable {
 	@Column(name = "DivisionOffice_ID")
 	private int id;
 
+	@Field(name = "division")
 	@Column(name = "Division")
 	private String divisionName;
 
+	@Field(name = "office")
 	@Column(name = "Office")
 	private String officeName;
 

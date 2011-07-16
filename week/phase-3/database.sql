@@ -584,23 +584,16 @@ DROP TABLE IF EXISTS `IAPPSAM`.`Waste_Materials_Report` ;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Waste_Materials_Report` (
   `Waste_Materials_Report_ID` INT NOT NULL AUTO_INCREMENT ,
   `Place_Of_Storage` VARCHAR(80) NULL ,
-  `DivisionOffice_ID` INT NOT NULL ,
   `Date` DATE NOT NULL ,
   `Signatory_ID` INT NOT NULL ,
   `Signatory_ID1` INT NOT NULL ,
   `Signatory_ID2` INT NOT NULL ,
   `Signatory_ID3` INT NOT NULL ,
   PRIMARY KEY (`Waste_Materials_Report_ID`) ,
-  INDEX `fk_Waste_Materials_Report_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_Waste_Materials_Report_Signatory1` (`Signatory_ID` ASC) ,
   INDEX `fk_Waste_Materials_Report_Signatory2` (`Signatory_ID1` ASC) ,
   INDEX `fk_Waste_Materials_Report_Signatory3` (`Signatory_ID2` ASC) ,
   INDEX `fk_Waste_Materials_Report_Signatory4` (`Signatory_ID3` ASC) ,
-  CONSTRAINT `fk_Waste_Materials_Report_DivisionOffice1`
-    FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
   CONSTRAINT `fk_Waste_Materials_Report_Signatory1`
     FOREIGN KEY (`Signatory_ID` )
     REFERENCES `IAPPSAM`.`Signatory` (`Signatory_ID` )

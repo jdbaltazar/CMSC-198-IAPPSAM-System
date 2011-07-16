@@ -59,19 +59,20 @@ import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.WMRManagerSession;
 import com.iappsam.servlet.filter.SecurityFilter;
 
+
 public class HibernateUtil {
-
+	
 	private static SessionFactory sessionFactory;
-
+	
 	static {
 		init();
 	}
-
+	
 	public static void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
-
+		
 //		try {
 //			addDefaulEntities();
 //		} catch (TransactionException e) {
@@ -80,10 +81,11 @@ public class HibernateUtil {
 //			e.printStackTrace();
 //		}
 	}
-
+	
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
 		try {
 			Properties p = new Properties();
+			//p.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
 			p.setProperty("hibernate.show_sql", "false");
@@ -91,9 +93,9 @@ public class HibernateUtil {
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
 			p.setProperty("hibernate.search.default.directory_provider", "filesystem");
-
+			
 			Configuration conf = new Configuration();
-
+			
 			// entities
 			conf.setProperties(p);
 			conf.addAnnotatedClass(IappsamConfig.class);
@@ -115,7 +117,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(Supplier.class);
 			conf.addAnnotatedClass(SupplierContact.class);
 			conf.addAnnotatedClass(Unit.class);
-
+			
 			// //form entities
 			conf.addAnnotatedClass(APP.class);
 			conf.addAnnotatedClass(APPLine.class);
@@ -142,12 +144,12 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(RSMILine.class);
 			conf.addAnnotatedClass(WMR.class);
 			conf.addAnnotatedClass(WMRLine.class);
-
+			
 			// filter
 			conf.addAnnotatedClass(SecurityFilter.class);
-
+			
 			sessionFactory = conf.buildSessionFactory();
-
+			
 			return true;
 		} catch (Throwable ex) {
 			ex.printStackTrace();
@@ -155,14 +157,14 @@ public class HibernateUtil {
 			return false;
 		}
 	}
-
+	
 	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
 		// addIappsamConfig(new IappsamConfig(1, true));
 		addAdminAccount();
 		addDisposals();
 		addItemDependencies();
 	}
-
+	
 	public static void addItemDependencies() throws TransactionException, DuplicateEntryException {
 		ItemManager im = new ItemManagerSession();
 		im.addUnit("PCS");
@@ -178,7 +180,7 @@ public class HibernateUtil {
 		im.addItemCategory("Office Forms (for Purchasing)");
 		im.addItemCategory("Others");
 	}
-
+	
 	public static void addDisposals() throws TransactionException {
 		WMRManager wmrm = new WMRManagerSession();
 		wmrm.addDisposal("Destroyed");
@@ -186,39 +188,39 @@ public class HibernateUtil {
 		wmrm.addDisposal("Sold at public auction");
 		wmrm.addDisposal("Transferred Without Cost");
 	}
-
+	
 	public static void addAdminAccount() throws TransactionException {
 		AccountManagerSession am = new AccountManagerSession();
 		am.addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
-
+	
 	public static Session startSession() throws HibernateException {
 		return sessionFactory.openSession();
 	}
-
+	
 	public static void endSession() {
 		sessionFactory.close();
 	}
-
+	
 	public static boolean isConnected() {
 		return sessionFactory != null;
 	}
-
+	
 	public static boolean evaluate(String username, String password) {
 		if (!isConnected())
 			return tryToBuildSessionFactory(username, password);
 		else
 			return false;
 	}
-
+	
 	public static void close() {
-
+		
 		if (isConnected()) {
 			sessionFactory.close();
 			sessionFactory = null;
 		}
 	}
-
+	
 	public static IappsamConfig getIappsamConfig() {
 		try {
 			Session session = HibernateUtil.startSession();
@@ -232,7 +234,7 @@ public class HibernateUtil {
 			return null;
 		}
 	}
-
+	
 	public static void addIappsamConfig(IappsamConfig config) {
 		try {
 			Session session = HibernateUtil.startSession();

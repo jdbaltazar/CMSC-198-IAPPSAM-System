@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
 
@@ -28,6 +29,7 @@ public class Employee implements Validatable {
 	@Column(name = "Employee_ID")
 	private int id;
 
+	@Field(name="designation")
 	@Column(name = "Designation")
 	private String designation;
 

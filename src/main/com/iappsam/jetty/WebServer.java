@@ -28,6 +28,7 @@ import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.servlet.entities.building.BuildingServlet;
 import com.iappsam.servlet.entities.division.DivisionOfficeServlet;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
+import com.iappsam.servlet.entities.employee.EmployeeServlet;
 import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
@@ -63,6 +64,7 @@ public class WebServer {
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
 		addServlet(new BuildingServlet(), "/building");
 		addServlet(new DivisionOfficeServlet(), "/division-office");
+		addServlet(new EmployeeServlet(), "/employee");
 		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
 		addServlet(new APPLineServlet(), "/app/line");

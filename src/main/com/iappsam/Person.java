@@ -38,6 +38,9 @@ public class Person implements Validatable {
 	@JoinTable(name = "Person_Contact", joinColumns = @JoinColumn(name = "Person_ID"), inverseJoinColumns = @JoinColumn(name = "Contact_ID"))
 	private Set<Contact> contacts = new HashSet<Contact>();
 
+	@OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Employee> employments = new HashSet<Employee>();
+
 	public Person() {
 		super();
 	}
@@ -137,5 +140,14 @@ public class Person implements Validatable {
 		title = person.title;
 		name = person.name;
 		contacts = person.contacts;
+	}
+
+	public Set<Employee> getEmployments() {
+		return employments;
+	}
+
+	public void addEmployment(Employee employment) {
+		employment.setPerson(this);
+		employments.add(employment);
 	}
 }

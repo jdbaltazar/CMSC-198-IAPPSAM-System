@@ -111,33 +111,32 @@
 					<form id="form24" name="form24" method="post"
 						action="division-office">
 						<input name="divisionOfficeBtn" type="submit" class="menubtn"
-							id="divisionOfficeBtn" value="Division/Office" />
-							<input type="hidden"
-							name="division-office-action" value="view-divisions" />
+							id="divisionOfficeBtn" value="Division/Office" /> <input
+							type="hidden" name="division-office-action"
+							value="view-divisions" />
 					</form></td>
 				<td>
 					<form id="form25" name="form25" method="post"
 						action="division-office">
 						<input name="addDivisionBtn" type="submit" class="button2"
-							id="addDivisionBtn" value="Add&gt;&gt;" />
-							<input type="hidden"
+							id="addDivisionBtn" value="Add&gt;&gt;" /> <input type="hidden"
 							name="division-office-action" value="add-division" />
 					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<form id="form26" name="form26" method="get"
-						action="/entities/employees/search_employee.do">
+					<form id="form26" name="form26" method="post" action="/employee">
 						<input name="employeeBtn" type="submit" class="menubtn"
-							id="employeeBtn" value="Employee" />
+							id="employeeBtn" value="Employee" /> <input type="hidden"
+							name="employee-action" value="search-employees" />
 					</form>
 				</td>
 				<td>
-					<form id="form27" name="form27" method="post"
-						action="entities/employees/add_employee.jsp">
+					<form id="form27" name="form27" method="post" action="/employee">
 						<input name="addEmployeeBtn" type="submit" class="button2"
-							id="addEmployeeBtn" value="Add&gt;&gt;" />
+							id="addEmployeeBtn" value="Add&gt;&gt;" /> <input type="hidden"
+							name="employee-action" value="add-employee" />
 					</form>
 				</td>
 			</tr>
