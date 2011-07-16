@@ -1,17 +1,33 @@
 package com.iappsam.test;
 
+import com.iappsam.Account;
+import com.iappsam.AccountType;
+import com.iappsam.Person;
+import com.iappsam.managers.AccountManager;
+import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
+import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.managers.sessions.AccountManagerSession;
+import com.iappsam.managers.sessions.PersonManagerSession;
 
 public class Tester {
 
-	public static void main(String[] args) throws DuplicateEntryException {
+	public static void main(String[] args) throws DuplicateEntryException, TransactionException {
+
+		PersonManager pManager = new PersonManagerSession();
+		AccountManager accManager = new AccountManagerSession();
+
+		Person p = new Person("abc");
+		pManager.addPerson(p);
+		accManager.addAccount(new Account("abc", "abc", AccountType.NON_SPSO_PERSONNEL_EMPLOYEE, p));
+
 		// try {
 		//
-		// PersonManager pManager = new PersonManagerSession();
+		// PersonManager pManager = new PersonManagerSession();R
 		// AccountManager aManager = new AccountManagerSession();
 		// ContactManager cManager = new ContactManagerSession();
 		// SupplierManager sManager = new SupplierManagerSession();
-//		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+		// DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		// ItemManager iManager = new ItemManagerSession();
 		//
 		// // Forms
@@ -436,39 +452,39 @@ public class Tester {
 		// Date date = Date.valueOf("2011-05-26");
 		// System.out.println("date: "+date.toString());
 		/*------Signatory-----------*/
-//		Person p1=new Person("manong", "fishball");
-//		Person p2=new Person("Miss","Fishball");
-//		Person p3=new Person("Mr.","Kikiam");
-//		Person p4 = new Person("Mr.","Kitty");
-//		try {
-//
-//			ContactManager cManager = new ContactManagerSession();
-//			Contact c = new Contact("343434", ContactType.MOBILE);
-//			cManager.addContact(c);
-//			Person p1 = new Person("xxxxxxxxxxxxxxxxxxx");
-//			PersonManager pManager = new PersonManagerSession();
-//			pManager.addPerson(p1);
-//			cManager.addContactToPerson(c.getContactID(), p1.getId());
-//			
-//			
-//			List<Contact>cons = cManager.getAllContactsByPerson(p1.getId());
-//			for(Contact c2: cons){
-//				System.out.println(c2.getData());
-//			}
-//		try{	
-//		
-//		PersonManager pManager = new PersonManagerSession();
-//		
-////		List<Person>persons = pManager.getAllPersons();
-////		System.out.println("size: "+persons.size());
-//		
-//		System.out.println("size of employees: "+pManager.getAllEmployee().size());
-//		
-//			
-//		} catch (TransactionException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// Person p1=new Person("manong", "fishball");
+		// Person p2=new Person("Miss","Fishball");
+		// Person p3=new Person("Mr.","Kikiam");
+		// Person p4 = new Person("Mr.","Kitty");
+		// try {
+		//
+		// ContactManager cManager = new ContactManagerSession();
+		// Contact c = new Contact("343434", ContactType.MOBILE);
+		// cManager.addContact(c);
+		// Person p1 = new Person("xxxxxxxxxxxxxxxxxxx");
+		// PersonManager pManager = new PersonManagerSession();
+		// pManager.addPerson(p1);
+		// cManager.addContactToPerson(c.getContactID(), p1.getId());
+		//
+		//
+		// List<Contact>cons = cManager.getAllContactsByPerson(p1.getId());
+		// for(Contact c2: cons){
+		// System.out.println(c2.getData());
+		// }
+		// try{
+		//
+		// PersonManager pManager = new PersonManagerSession();
+		//
+		// // List<Person>persons = pManager.getAllPersons();
+		// // System.out.println("size: "+persons.size());
+		//
+		// System.out.println("size of employees: "+pManager.getAllEmployee().size());
+		//
+		//
+		// } catch (TransactionException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 		//
 		// BackupDatabaseTool bdTool = new BackupDatabaseTool();
 		// String fileName = bdTool.getFileName();

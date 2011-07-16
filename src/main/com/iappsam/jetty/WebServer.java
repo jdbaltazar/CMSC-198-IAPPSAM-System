@@ -62,10 +62,14 @@ public class WebServer {
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
 		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
+		addServlet(new UpdateAccount(), "/accounts/update_account.do");
+		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
+		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
+		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
+
 		addServlet(new BuildingServlet(), "/building");
 		addServlet(new DivisionOfficeServlet(), "/division-office");
 		addServlet(new EmployeeServlet(), "/employee");
-		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
 		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new APPServlet(), "/app");
@@ -92,9 +96,6 @@ public class WebServer {
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
 		addServlet(new ModeOfProcServlet(), "/stocks/mode");
 		addServlet(new SupplierServlet(), "/supplier");
-		addServlet(new UpdateAccount(), "/accounts/update_account.do");
-		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
-		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
 		addFilter(new SecurityFilter(), "/*");
 
