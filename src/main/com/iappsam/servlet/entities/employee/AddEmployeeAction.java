@@ -20,7 +20,7 @@ public class AddEmployeeAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		List<DivisionOffice> dos = doManager.getAllDivisionOffice();
-		request.setAttribute("divisionOffices", dos);
+		request.setAttribute("divOffices", dos);
 		RequestDispatcher add = request.getRequestDispatcher(EmployeeServlet.ADD_EMPLOYEE);
 		add.forward(request, response);
 	}

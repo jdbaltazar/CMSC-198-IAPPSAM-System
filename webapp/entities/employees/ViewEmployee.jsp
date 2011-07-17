@@ -137,7 +137,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice1" id="divisionOffice1">
+										<select name="divisionOffice1" class="required_menulist" id="divisionOffice1">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -193,7 +193,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice2" id="divisionOffice2">
+										<select name="divisionOffice2" class="required_menulist" id="divisionOffice2">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -249,7 +249,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice3" id="divisionOffice3">
+										<select name="divisionOffice3" class="required_menulist" id="divisionOffice3">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -276,27 +276,46 @@
 
 
 							<tr>
+
+
+								<%
+									String designation4 = "";
+									String employeeNo4 = "";
+									int dOfficeID4 = 0;
+									if (employments[3] != null) {
+										designation4 = employments[3].getDesignation();
+										if (employments[3].getEmployeeNumber() != null)
+											employeeNo4 = employments[3].getEmployeeNumber();
+										if (employments[3].getDivisionOffice() != null)
+											dOfficeID4 = employments[3].getDivisionOffice().getId();
+									}
+								%>
 								<td>
 									<div align="center">
 										<label for="designation4"></label> <input type="text"
-											name="designation4" id="designation4" />
+											name="designation4" id="designation4"
+											value="<%=designation4%>" />
 
 									</div>
 								</td>
 								<td>
 									<div align="center">
 										<input name="employeeNo4" type="text" id="employeeNo4"
-											size="4" />
+											size="4" value="<%=employeeNo4%>" />
 									</div>
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice4" id="divisionOffice4">
+										<select name="divisionOffice4" class="required_menulist" id="divisionOffice4">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
 											%>
-											<option value="<%="" + d.getId()%>">
+											<option value="<%="" + d.getId()%>"
+												<%if (dOfficeID4 != 0 && dOfficeID4 == d.getId()) {
+					out.print("selected=\"selected\"");
+
+				}%>>
 												<%
 													if (d.getOfficeName() != null)
 															out.print(d.getDivisionName() + ": " + d.getOfficeName());
@@ -314,27 +333,45 @@
 
 
 							<tr>
+
+								<%
+									String designation5 = "";
+									String employeeNo5 = "";
+									int dOfficeID5 = 0;
+									if (employments[4] != null) {
+										designation5 = employments[4].getDesignation();
+										if (employments[4].getEmployeeNumber() != null)
+											employeeNo5 = employments[4].getEmployeeNumber();
+										if (employments[4].getDivisionOffice() != null)
+											dOfficeID5 = employments[4].getDivisionOffice().getId();
+									}
+								%>
 								<td>
 									<div align="center">
 										<label for="designation5"></label> <input type="text"
-											name="designation5" id="designation5" />
+											name="designation5" id="designation5"
+											value="<%=designation5%>" />
 
 									</div>
 								</td>
 								<td>
 									<div align="center">
 										<input name="employeeNo5" type="text" id="employeeNo5"
-											size="4" />
+											size="4" value="<%=employeeNo5%>" />
 									</div>
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice5" id="divisionOffice5">
+										<select name="divisionOffice5" class="required_menulist" id="divisionOffice5">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
 											%>
-											<option value="<%="" + d.getId()%>">
+											<option value="<%="" + d.getId()%>"
+												<%if (dOfficeID5 != 0 && dOfficeID5 == d.getId()) {
+					out.print("selected=\"selected\"");
+
+				}%>>
 												<%
 													if (d.getOfficeName() != null)
 															out.print(d.getDivisionName() + ": " + d.getOfficeName());
@@ -382,8 +419,11 @@
 							<tr>
 								<td class="align_right">&nbsp;</td>
 								<td><input name="saveBtn" type="submit" class="button"
-									id="saveBtn" value="SAVE" /> <input type="hidden"
-									name="employee-action" value="save-employee" /> <br />
+									id="saveBtn" value="SAVE" /> 
+									<input type="hidden"
+									name="personID" value="<%=""+person.getId() %>" />
+									<input type="hidden"
+									name="employee-action" value="save-edited-employee" /> <br />
 								</td>
 							</tr>
 						</table>

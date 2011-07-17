@@ -31,8 +31,15 @@ public class SearchEmployeesAction implements Action {
 				List<Person> all = pManager.getAllPersons();
 				List<Person> persons = new ArrayList<Person>();
 				for (Person p : all) {
-					if (p.getEmployments().size() > 0)
-						persons.add(p);
+					if (p.getEmployments().size() > 0) {
+						boolean upEmployee = true;
+						for (Employee e : p.getEmployments()) {
+							if (e.getDivisionOffice() == null)
+								upEmployee = false;
+						}
+						if (upEmployee)
+							persons.add(p);
+					}
 				}
 				request.setAttribute("persons", persons);
 				System.out.println("size of persons: " + persons.size());
@@ -41,18 +48,31 @@ public class SearchEmployeesAction implements Action {
 			}
 		}
 
-		// This is Where the search method ought to be
+		// the search method
 		else {
 			EmployeeSearcher searcher = new EmployeeSearcher();
 			List<Employee> employees = searcher.search(query);
+			List<Person> dummy = new ArrayList<Person>();
 			List<Person> persons = new ArrayList<Person>();
 			for (Employee e : employees) {
-				if (!persons.contains(e.getPerson())) {
-					persons.add(e.getPerson());
+				if (!dummy.contains(e.getPerson())) {
+					dummy.add(e.getPerson());
 				}
 			}
 
-			request.setAttribute("persons", persons);
+			for (Person p : dummy) {
+				if (p.getEmployments().size() > 0) {
+					boolean upEmployee = true;
+					for (Employee e : p.getEmployments()) {
+						if (e.getDivisionOffice() == null)
+							upEmployee = false;
+					}
+					if (upEmployee)
+						persons.add(p);
+				}
+			}
+			
+			request.setAttribute("persons", dummy);
 			request.setAttribute("query", query);
 		}
 

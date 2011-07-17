@@ -1,16 +1,16 @@
 package com.iappsam.servlet.entities.employee;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Contact;
 import com.iappsam.ContactType;
+import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.managers.ContactManager;
@@ -22,211 +22,259 @@ import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.Action;
-import com.iappsam.util.EntryFormatter;
+import com.iappsam.util.Validator;
+import com.iappsam.util.Verifier;
 
 public class SaveEditedEmployeeAction implements Action {
 
+	private String personID;
 	private String title;
 	private String name;
-	private String[] designation;
-	private String[] employeeNo;
-	private String[] divisionOfficeID;
-	private String mobileNumber;
+	private String[] designation = new String[5];
+	private String[] employeeNo = new String[5];
+	private String[] divisionOfficeID = new String[5];
+	private String mobile;
 	private String landline;
-	private String emailad;
-	private String personID;
-	private String employeeID;
-	private EntryFormatter entryFormatter = new EntryFormatter();
+	private String email;
+	private boolean validName = false;
+	private boolean validAllEmployees = true;
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
-		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
-		designation = request.getParameterValues("designation");
-		employeeNo = request.getParameterValues("empNo3");
-		divisionOfficeID = request.getParameterValues("divisionOffice");
-		mobileNumber = entryFormatter.spaceTrimmer(request.getParameter("cellphoneNumber"));
-		landline = entryFormatter.spaceTrimmer(request.getParameter("landline"));
-		emailad = entryFormatter.spaceTrimmer(request.getParameter("e-mail_ad"));
-		employeeID = request.getParameter("employeeID");
-		personID = request.getParameter("personID");
 
-		for (int i = 0; i < designation.length; i++) {
-			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
-			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
-		}
-		if (!name.isEmpty() && designation != null && entryFormatter.check(name)) {
-			acceptResponse(request, response);
-		} else
-			failedResponse(request, response);
-	}
-
-	private void acceptResponse(HttpServletRequest request, HttpServletResponse response) {
 		PersonManager pManager = new PersonManagerSession();
-		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
-		Person person;
 		ContactManager cManager = new ContactManagerSession();
-		try {
-			if (name != null && designation != null) {
-				person = pManager.getPerson(Integer.parseInt(personID));
 
-				Contact[] contacts = new Contact[person.getContacts().size()];
-				person.getContacts().toArray(contacts);
-				ArrayList<Contact> mobileList = new ArrayList<Contact>();
-				ArrayList<Contact> landlineList = new ArrayList<Contact>();
-				ArrayList<Contact> emailList = new ArrayList<Contact>();
-				if (contacts != null) {
+		personID = request.getParameter("personID");
+		title = request.getParameter("title");
+		name = request.getParameter("name");
+		for (int i = 1; i <= 5; i++) {
+			designation[i - 1] = request.getParameter("designation" + i);
+			employeeNo[i - 1] = request.getParameter("employeeNo" + i);
+			divisionOfficeID[i - 1] = request.getParameter("divisionOffice" + i);
+		}
 
-					for (int i = 0; i < contacts.length; i++) {
-						if (contacts[i].getType().equals(ContactType.EMAIL))
-							emailList.add(contacts[i]);
+		mobile = request.getParameter("mobileNumber");
+		landline = request.getParameter("landline");
+		email = request.getParameter("email_ad");
 
-						if (contacts[i].getType().equals(ContactType.MOBILE))
-							mobileList.add(contacts[i]);
+		System.out.println("----------------------->email: "+email);
+		
+		Person person = pManager.getPerson(Integer.parseInt(personID));
 
-						if (contacts[i].getType().equals(ContactType.LANDLINE))
-							landlineList.add(contacts[i]);
+		if (Validator.validField(title)) {
+			title = title.trim();
+			person.setTitle(title);
+		} else {
+			person.setTitle(title);
+		}
+		if (Validator.validField(name)) {
+			name = name.trim();
+			person.setName(name);
+		}
+
+		Set<Contact> contacts = person.getContacts();
+
+		boolean found = false;
+		for (Contact c : contacts) {
+			if (c.getType().equals(ContactType.MOBILE)) {
+				found = true;
+				c.setData(mobile);
+				cManager.updateContact(c);
+			}
+		}
+
+		if (!found && Validator.validField(mobile))
+			person.addContact(new Contact(mobile, ContactType.MOBILE));
+
+		found = false;
+		for (Contact c : contacts) {
+			if (c.getType().equals(ContactType.LANDLINE)) {
+				found = true;
+				c.setData(landline);
+				cManager.updateContact(c);
+			}
+		}
+		if (!found && Validator.validField(landline))
+			person.addContact(new Contact(landline, ContactType.LANDLINE));
+
+		found = false;
+		for (Contact c : contacts) {
+			if (c.getType().equals(ContactType.EMAIL)) {
+				found = true;
+				c.setData(email);
+				cManager.updateContact(c);
+			}
+		}
+		
+		if (!found && Validator.validField(email))
+			person.addContact(new Contact(email, ContactType.EMAIL));
+
+		// employments go here
+
+		// validAllEmployees = checkAndFormatEmployments(designation, employeeNo,
+		// divisionOfficeID);
+		//
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+
+		// for (int i = 0; i < 5; i++) {
+		// if (Verifier.validEntry(designation[i])) {
+		// Employee e = new Employee();
+		// e.setDesignation(designation[i].trim());
+		//
+		// if (Verifier.validEntry(employeeNo[i])) {
+		// e.setEmployeeNumber(employeeNo[i].trim());
+		// }
+		//
+		// e.setDivisionOffice(doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
+		// person.addEmployment(e);
+		// }
+		// }
+
+		// if valid all, save then view all employees
+		// else, return page and show the inputs except for the wrong ones
+
+		System.out.println("title: " + person.getTitle());
+		System.out.println("name: " + person.getName());
+		System.out.println("---contacts start here-----");
+		for (Contact c : person.getContacts()) {
+			System.out.println(c.getType().toString() + ": " + c.getData());
+		}
+		System.out.println("---employments start here-----");
+		// for (Employee e : person.getEmployments()) {
+		// System.out.println(e.getDesignation() + ": " + e.getEmployeeNumber() +
+		// ": "
+		// + (e.getDivisionOffice() == null ? "" :
+		// e.getDivisionOffice().getDivisionName()));
+		// }
+
+		if (validName&&validAllEmployees && person.validate()) {
+
+			try {
+
+				updatePerson(person, request, response);
+				System.out.println("employee was saved!!!!!!!");
+				return;
+
+			} catch (Exception e) {
+				Action action = new AddEmployeeAction();
+				Employee[] employments = new Employee[5];
+				for (int i = 0; i < 5; i++) {
+					employments[i] = new Employee("", "", person);
+					if (Validator.validField(designation[i])) {
+						employments[i].setDesignation(designation[i].trim());
 					}
-				}
-				if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty()) {
-					person.setName(name);
-					person.setTitle(title);
-				} else {
-					person.setName(name);
-				}
-				if (emailad != null && emailList.isEmpty() && !emailad.isEmpty()) {
-					Contact email = new Contact();
-					email.setData(emailad);
-					email.setType(ContactType.EMAIL);
-					person.addContact(email);
-				}
-				for (int i = 0; i < emailList.size(); i++)
-					if (emailad != null && !emailad.equalsIgnoreCase("null") && !emailad.isEmpty()) {
-						Contact email = new Contact();
-						if (i < emailList.size()) {
-							email = emailList.get(i);
-							email.setData(emailad);
-							cManager.addContact(email);
+					if (Validator.validField(employeeNo[i]))
+						employments[i].setEmployeeNumber(employeeNo[i].trim());
+					if (divisionOfficeID[i] != null) {
+						DivisionOffice d = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+						if (d != null) {
+							employments[i].setDivisionOffice(d);
 						}
-
-					}
-				if (landline != null && landlineList.isEmpty() && !landline.isEmpty()) {
-
-					Contact landline2 = new Contact();
-					landline2.setData(landline);
-					landline2.setType(ContactType.LANDLINE);
-					person.addContact(landline2);
-				}
-				for (int i = 0; i < landlineList.size(); i++)
-					if (landline != null && !landline.equalsIgnoreCase("null") && !landline.isEmpty()) {
-						Contact landline2 = new Contact();
-
-						if (i < landlineList.size()) {
-							landline2 = landlineList.get(i);
-							landline2.setData(landline);
-							landline2.setType(landlineList.get(i).getType());
-							landline2.setId(landlineList.get(i).getContactID());
-							cManager.updateContact(landline2);
-						}
-					}
-				if (mobileNumber != null && mobileList.isEmpty() && !mobileNumber.isEmpty()) {
-					Contact mobile = new Contact();
-					mobile.setData(mobileNumber);
-					mobile.setType(ContactType.MOBILE);
-					person.addContact(mobile);
-				}
-				for (int i = 0; i < mobileList.size(); i++)
-					if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
-						Contact mobile = new Contact();
-						if (i < mobileList.size()) {
-							mobile = mobileList.get(i);
-							mobile.setData(mobileNumber);
-							mobile.setType(mobileList.get(i).getType());
-							mobile.setId(mobileList.get(i).getContactID());
-							cManager.updateContact(mobile);
-						}
-					}
-
-				List<Employee> empList = pManager.getEmployeeByPerson(person.getId());
-				System.out.println("EmployeeList Number:" + empList.size());
-				for (int i = 0; i < designation.length; i++) {
-					if (designation[i].isEmpty())
-						continue;
-					Employee employee = new Employee();
-					if (i < empList.size())
-						employee = empList.get(i);
-					employee = empList.get(i);
-					employee.setDesignation(designation[i]);
-					employee.setEmployeeNumber(employeeNo[i]);
-					try {
-						employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
-						pManager.updateEmployee(employee);
-						empList.add(employee);
-					} catch (NumberFormatException e) {
-						failedResponse(request, response);
-					} catch (Exception e) {
-						failedResponse(request, response);
-					}
-					try {
-						pManager.updatePerson(person);
-					} catch (DuplicateEntryException e) {
-						// TODO Auto-generated catch block
-						failedResponse(request, response);
 					}
 				}
-				request.setAttribute("employeeID", empList.get(0).getId());
+
+				List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
+
+				request.setAttribute("person", person);
+				request.setAttribute("employments", employments);
+				request.setAttribute("divOffices", dOffices);
+				request.setAttribute("mobile", mobile);
+				request.setAttribute("landline", landline);
+				request.setAttribute("email", email);
+
+				action.process(request, response);
+				return;
+			}
+		} else {
+			// send the person (incomplete data)
+			Action action = new AddEmployeeAction();
+			Employee[] employments = new Employee[5];
+			for (int i = 0; i < 5; i++) {
+				employments[i] = new Employee("", "", person);
+				if (Validator.validField(designation[i]))
+					employments[i].setDesignation(designation[i].trim());
+				if (Validator.validField(employeeNo[i]))
+					employments[i].setEmployeeNumber(employeeNo[i].trim());
+				if (divisionOfficeID[i] != null) {
+					DivisionOffice d = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+					if (d != null) {
+						employments[i].setDivisionOffice(d);
+					}
+				}
 			}
 
-			RequestDispatcher view = request.getRequestDispatcher("search_employee.do");
-			view.forward(request, response);
-		} catch (ServletException e) {
-			failedResponse(request, response);
-		} catch (IOException e) {
-			failedResponse(request, response);
-		} catch (TransactionException e) {
-			failedResponse(request, response);
+			List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
+
+			request.setAttribute("person", person);
+			request.setAttribute("employments", employments);
+			request.setAttribute("divOffices", dOffices);
+			request.setAttribute("mobile", mobile);
+			request.setAttribute("landline", landline);
+			request.setAttribute("email", email);
+
+			action.process(request, response);
+			return;
 		}
+
 	}
 
-	private void failedResponse(HttpServletRequest request, HttpServletResponse response) {
-		if (name.isEmpty() || entryFormatter.check(name))
-			request.setAttribute("nameOK", "false");
-		else
-			request.setAttribute("nameOK", "true");
+	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,
+			IOException, DuplicateEntryException {
+		PersonManager pManager = new PersonManagerSession();
+		pManager.updatePerson(person);
+		Action viewAction = new SearchEmployeesAction();
+		viewAction.process(request, response);
+		return;
+	}
 
-		String designation1OK = null;
-		if (designation[0].isEmpty() && !employeeNo[0].isEmpty()) {
-			designation1OK = "true";
-		}
-		String designation2OK = null;
-		if (designation.length > 1 && designation[1].isEmpty() && !employeeNo[1].isEmpty()) {
-			designation2OK = "true";
-		}
-		String designation3OK = null;
-		if (designation.length > 2 && designation[2].isEmpty() && !employeeNo[2].isEmpty()) {
-			designation3OK = "true";
+	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID) throws NumberFormatException,
+			TransactionException {
+
+		boolean designationsNonempty = false, divisionOfficeNonempty = false, matched = true;
+		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+
+		for (int i = 0; i < 5; i++) {
+
+			// if designation is empty
+			if (Verifier.validEntry(designation[i])) {
+				designation[i] = designation[i].trim();
+				designationsNonempty = true;
+
+				// if designation is set but division is not
+				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) == null) {
+					matched = false;
+				}
+			}
+
+			// if divisionoffice is empty
+			if (divisionOfficeID[i] != null) {
+				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) != null) {
+					divisionOfficeNonempty = true;
+
+					// if divisionoffice is set but designation is not
+					if (!Verifier.validEntry(designation[i])) {
+						matched = false;
+					}
+				}
+			}
+
+			// if employeenumber is set but designation or divisionoffice is not
+			if (Verifier.validEntry(employeeNo[i])) {
+				employeeNo[i] = employeeNo[i].trim();
+				if (!Verifier.validEntry(designation[i])) {
+					matched = false;
+				}
+				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) == null) {
+					matched = false;
+				}
+			}
+
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher(EmployeeServlet.VIEW_EMPLOYEE);
-		request.setAttribute("title", title);
-		request.setAttribute("name", name);
-		request.setAttribute("designation", designation);
-		request.setAttribute("designation1OK", designation1OK);
-		request.setAttribute("designation2OK", designation2OK);
-		request.setAttribute("designation3OK", designation3OK);
-		request.setAttribute("employeeNo", employeeNo);
-		request.setAttribute("mobileNumber", mobileNumber);
-		request.setAttribute("landline", landline);
-		request.setAttribute("emailad", emailad);
-		request.setAttribute("employeeID", employeeID);
-		try {
-			view.forward(request, response);
-		} catch (ServletException e) {
-			failedResponse(request, response);
-		} catch (IOException e) {
-			failedResponse(request, response);
-		}
-
+		if (designationsNonempty && divisionOfficeNonempty && matched)
+			return true;
+		return false;
 	}
 
 }
