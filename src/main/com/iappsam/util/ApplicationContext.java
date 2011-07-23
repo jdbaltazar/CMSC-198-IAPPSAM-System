@@ -4,6 +4,7 @@ import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.IEManager;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
@@ -16,6 +17,7 @@ import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.managers.sessions.IEManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
@@ -41,6 +43,7 @@ public class ApplicationContext {
 	private final RISManager RIS_MANAGER = new RISManagerSession();
 	private final IIRUPManager IIRUP_MANAGER = new IIRUPManagerSession();
 	private final WMRManager WMR_MANAGER = new WMRManagerSession();
+	private final IEManager IE_MANAGER = new IEManagerSession();
 	private ItemSearcher ITEM_SEARCHER;
 
 	public static final ApplicationContext INSTANCE = new ApplicationContext();
@@ -94,6 +97,10 @@ public class ApplicationContext {
 
 	public WMRManager getWMRManager() {
 		return WMR_MANAGER;
+	}
+	
+	public IEManager getIEManager() {
+		return IE_MANAGER;
 	}
 
 	public ItemSearcher getItemSearcher() {

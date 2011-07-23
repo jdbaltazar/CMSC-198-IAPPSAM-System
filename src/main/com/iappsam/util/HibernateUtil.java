@@ -85,10 +85,9 @@ public class HibernateUtil {
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
 		try {
 			Properties p = new Properties();
-			//p.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "false");
+			p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");

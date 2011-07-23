@@ -12,7 +12,7 @@ public interface IEManager {
 
 	void updateIE(IE inventoryOfEquipment) throws TransactionException;
 
-	IE getIE(int inventoryOfEquipmentID) throws TransactionException;
+	IE getIE(int id) throws TransactionException;
 
 	boolean containsIE(IE inventoryOfEquipment) throws TransactionException;
 

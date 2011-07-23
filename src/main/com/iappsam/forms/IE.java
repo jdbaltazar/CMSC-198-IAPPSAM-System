@@ -75,8 +75,8 @@ public class IE implements Form {
 		this.building = building;
 	}
 
-	public void addLine(Item item, int quantity, Employee employee, String howAcquired) {
-		lines.add(new IELine(this, item, quantity, employee, howAcquired));
+	public void addLine(Item item, String quantity, Employee employee, String howAcquired, String remarks) {
+		lines.add(new IELine(this, item, quantity, employee, howAcquired, remarks));
 	}
 
 	@Override
@@ -140,7 +140,7 @@ public class IE implements Form {
 
 	@Override
 	public void addItem(Item item) {
-		addLine(item, 0, null, null);
+		addLine(item, null, null, null, null);
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class DivisionOffice implements Validatable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "DivisionOffice_ID")
+	@Column(name = "ID")
 	private int id;
 
 	@Field(name = "division")
