@@ -80,10 +80,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
-  `DivisionOffice_ID` INT NOT NULL AUTO_INCREMENT ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `Division` VARCHAR(80) NOT NULL ,
   `Office` VARCHAR(80) NULL ,
-  PRIMARY KEY (`DivisionOffice_ID`) )
+  PRIMARY KEY (`ID`) )
 ENGINE = InnoDB;
 
 
@@ -143,7 +143,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Request` (
   INDEX `fk_Purchase_Request_Employee2` (`Approved_by` ASC) ,
   CONSTRAINT `fk_Purchase_Request_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Request_Employee1`
@@ -334,7 +334,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Purchase_Order_Mode_Of_Procurement1`
@@ -523,12 +523,12 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PTRPA` (
   INDEX `fk_PTRPA_Signatory3` (`Signatory_ID2` ASC) ,
   CONSTRAINT `fk_PTRPA_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_PTRPA_DivisionOffice2`
     FOREIGN KEY (`DivisionOffice_ID1` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_PTRPA_Signatory1`
@@ -754,20 +754,20 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `IAPPSAM`.`APP` ;
 
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
-  `APP_ID` INT NOT NULL AUTO_INCREMENT ,
+  `ID` INT NOT NULL AUTO_INCREMENT ,
   `Year` INT NOT NULL ,
   `DivisionOffice_ID` INT NOT NULL ,
   `Plan_Control_Number` VARCHAR(45) NULL ,
   `Date_Scheduled` DATE NULL ,
   `Prepared_by` INT NOT NULL ,
   `Recommended_by` INT NOT NULL ,
-  PRIMARY KEY (`APP_ID`) ,
+  PRIMARY KEY (`ID`) ,
   INDEX `fk_APP_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_APP_Employee1` (`Prepared_by` ASC) ,
   INDEX `fk_APP_Employee2` (`Recommended_by` ASC) ,
   CONSTRAINT `fk_APP_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `fk_APP_Employee1`
@@ -807,7 +807,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_APP_Line_APP1`
     FOREIGN KEY (`APP_ID` )
-    REFERENCES `IAPPSAM`.`APP` (`APP_ID` )
+    REFERENCES `IAPPSAM`.`APP` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -827,7 +827,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
   INDEX `fk_Inventory_Of_Equipment_Building1` (`Building_ID` ASC) ,
   CONSTRAINT `fk_Inventory_Of_Equipment_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Inventory_Of_Equipment_Building1`
@@ -903,7 +903,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` (
   INDEX `fk_Requisition_And_Issue_Slip_Employee4` (`Received_by` ASC) ,
   CONSTRAINT `fk_Requisition_And_Issue_Slip_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Requisition_And_Issue_Slip_Employee1`
@@ -1094,7 +1094,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice_Contact` (
   INDEX `fk_DivisionOfficeContact_Contact1` (`Contact_ID` ASC) ,
   CONSTRAINT `fk_DivisionOfficeContact_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_DivisionOfficeContact_Contact1`
@@ -1147,7 +1147,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee_DivisionOffice` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Employee_DivisionOffice_DivisionOffice1`
     FOREIGN KEY (`DivisionOffice_ID` )
-    REFERENCES `IAPPSAM`.`DivisionOffice` (`DivisionOffice_ID` )
+    REFERENCES `IAPPSAM`.`DivisionOffice` (`ID` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
