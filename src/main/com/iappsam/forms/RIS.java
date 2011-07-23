@@ -32,7 +32,7 @@ public class RIS implements Form {
 	private String risNumber;
 
 	@ManyToOne
-	@JoinColumn(name = "Division_Office_ID")
+	@JoinColumn(name = "DivisionOffice_ID")
 	private DivisionOffice divisionOffice;
 
 	@Column(name = "RC_Code")

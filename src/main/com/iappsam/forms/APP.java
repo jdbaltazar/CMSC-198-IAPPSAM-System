@@ -28,7 +28,7 @@ public class APP implements Form {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "APP_ID")
+	@Column(name = "ID")
 	private int id;
 
 	@Column(name = "Year")
