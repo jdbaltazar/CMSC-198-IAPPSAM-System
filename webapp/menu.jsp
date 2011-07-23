@@ -159,7 +159,7 @@
 			</tr>
 			<tr>
 				<td colspan="2"><form id="form11" name="form11" method="post"
-						action="">
+						action="accounts/ViewAccounts.do">
 						<input name="viewAcctsBtn" type="submit" class="menubtn"
 							id="viewAcctsBtn" value="View Accounts" />
 					</form></td>

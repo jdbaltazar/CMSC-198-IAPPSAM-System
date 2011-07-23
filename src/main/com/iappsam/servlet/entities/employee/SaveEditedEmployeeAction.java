@@ -58,8 +58,8 @@ public class SaveEditedEmployeeAction implements Action {
 		landline = request.getParameter("landline");
 		email = request.getParameter("email_ad");
 
-		System.out.println("----------------------->email: "+email);
-		
+		System.out.println("----------------------->email: " + email);
+
 		Person person = pManager.getPerson(Integer.parseInt(personID));
 
 		if (Validator.validField(title)) {
@@ -106,30 +106,35 @@ public class SaveEditedEmployeeAction implements Action {
 				cManager.updateContact(c);
 			}
 		}
-		
+
 		if (!found && Validator.validField(email))
 			person.addContact(new Contact(email, ContactType.EMAIL));
 
-		// employments go here
-
-		// validAllEmployees = checkAndFormatEmployments(designation, employeeNo,
-		// divisionOfficeID);
+		// // employments go here
 		//
+		validAllEmployees = checkAndFormatEmployments(designation, employeeNo, divisionOfficeID);
+
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 
-		// for (int i = 0; i < 5; i++) {
-		// if (Verifier.validEntry(designation[i])) {
-		// Employee e = new Employee();
-		// e.setDesignation(designation[i].trim());
-		//
-		// if (Verifier.validEntry(employeeNo[i])) {
-		// e.setEmployeeNumber(employeeNo[i].trim());
-		// }
-		//
-		// e.setDivisionOffice(doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
-		// person.addEmployment(e);
-		// }
-		// }
+		// get the size of save employments
+		// if the same as old, update all
+		// else, update all and add new
+
+		if (validAllEmployees) {
+			for (int i = 0; i < 5; i++) {
+				if (Verifier.validEntry(designation[i])) {
+					Employee e = new Employee();
+					e.setDesignation(designation[i].trim());
+
+					if (Verifier.validEntry(employeeNo[i])) {
+						e.setEmployeeNumber(employeeNo[i].trim());
+					}
+
+					e.setDivisionOffice(doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
+					person.addEmployment(e);
+				}
+			}
+		}
 
 		// if valid all, save then view all employees
 		// else, return page and show the inputs except for the wrong ones
@@ -148,7 +153,7 @@ public class SaveEditedEmployeeAction implements Action {
 		// e.getDivisionOffice().getDivisionName()));
 		// }
 
-		if (validName&&validAllEmployees && person.validate()) {
+		if (validName && validAllEmployees && person.validate()) {
 
 			try {
 
@@ -157,63 +162,15 @@ public class SaveEditedEmployeeAction implements Action {
 				return;
 
 			} catch (Exception e) {
-				Action action = new AddEmployeeAction();
-				Employee[] employments = new Employee[5];
-				for (int i = 0; i < 5; i++) {
-					employments[i] = new Employee("", "", person);
-					if (Validator.validField(designation[i])) {
-						employments[i].setDesignation(designation[i].trim());
-					}
-					if (Validator.validField(employeeNo[i]))
-						employments[i].setEmployeeNumber(employeeNo[i].trim());
-					if (divisionOfficeID[i] != null) {
-						DivisionOffice d = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
-						if (d != null) {
-							employments[i].setDivisionOffice(d);
-						}
-					}
-				}
-
-				List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
-
-				request.setAttribute("person", person);
-				request.setAttribute("employments", employments);
-				request.setAttribute("divOffices", dOffices);
-				request.setAttribute("mobile", mobile);
-				request.setAttribute("landline", landline);
-				request.setAttribute("email", email);
-
-				action.process(request, response);
+				Action vAction = new ViewEmployeeAction();
+				request.setAttribute("personID", personID);
+				vAction.process(request, response);
 				return;
 			}
 		} else {
-			// send the person (incomplete data)
-			Action action = new AddEmployeeAction();
-			Employee[] employments = new Employee[5];
-			for (int i = 0; i < 5; i++) {
-				employments[i] = new Employee("", "", person);
-				if (Validator.validField(designation[i]))
-					employments[i].setDesignation(designation[i].trim());
-				if (Validator.validField(employeeNo[i]))
-					employments[i].setEmployeeNumber(employeeNo[i].trim());
-				if (divisionOfficeID[i] != null) {
-					DivisionOffice d = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
-					if (d != null) {
-						employments[i].setDivisionOffice(d);
-					}
-				}
-			}
-
-			List<DivisionOffice> dOffices = doManager.getAllDivisionOffice();
-
-			request.setAttribute("person", person);
-			request.setAttribute("employments", employments);
-			request.setAttribute("divOffices", dOffices);
-			request.setAttribute("mobile", mobile);
-			request.setAttribute("landline", landline);
-			request.setAttribute("email", email);
-
-			action.process(request, response);
+			Action vAction = new ViewEmployeeAction();
+			request.setAttribute("personID", personID);
+			vAction.process(request, response);
 			return;
 		}
 

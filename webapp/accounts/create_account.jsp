@@ -354,9 +354,6 @@
 			</table>
 			</td>
 		</tr>
-		<tr>
-			<td class="table_footer"></td>
-		</tr>
 </table>
 
 </form>
