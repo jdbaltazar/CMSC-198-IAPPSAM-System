@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewModesAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ModeOfProcServlet.VIEW_MODES);
 		
@@ -27,7 +27,6 @@ public class ViewModesAction implements Action {
 		try {
 			modes = poManager.getAllModeOfProcurement();
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -35,5 +34,4 @@ public class ViewModesAction implements Action {
 		
 		view.forward(request, response);
 	}
-
 }

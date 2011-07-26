@@ -14,6 +14,7 @@ import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.search.SupplierSearcher;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.Validator;
 
 public class SearchSuppliersAction implements Action {
@@ -23,7 +24,7 @@ public class SearchSuppliersAction implements Action {
 	// include searcher here
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("aaaaaaaaaaaaaaaaaa");
 		List<Supplier> suppliers = new ArrayList<Supplier>();
@@ -32,7 +33,11 @@ public class SearchSuppliersAction implements Action {
 		if (Validator.validField(searchField))
 			suppliers = searcher.search(searchField);
 		else
-			suppliers = sManager.getAllSuppliers();
+			try {
+				suppliers = sManager.getAllSuppliers();
+			} catch (TransactionException e) {
+				e.printStackTrace();
+			}
 		
 		System.out.println("search: "+searchField);
 		System.out.println("results: "+suppliers.size());

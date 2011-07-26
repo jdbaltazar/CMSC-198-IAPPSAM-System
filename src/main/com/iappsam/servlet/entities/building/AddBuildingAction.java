@@ -13,7 +13,7 @@ import com.iappsam.servlet.Action;
 public class AddBuildingAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(BuildingServlet.ADD_BUILDING);
 		add.forward(request, response);
 	}

@@ -17,7 +17,7 @@ import com.iappsam.util.Validator;
 public class SaveDisposalAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		WMRManager wmrManager = new WMRManagerSession();
 		Disposal disposal = new Disposal();

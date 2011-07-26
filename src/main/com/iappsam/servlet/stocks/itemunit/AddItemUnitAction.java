@@ -11,12 +11,11 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.servlet.entities.StockPropertiesServlet;
 
-public class AddItemUnitAction implements Action{
+public class AddItemUnitAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(ItemUnitServlet.ADD_ITEM_UNIT);
 		add.forward(request, response);
 	}
-
 }

@@ -18,7 +18,7 @@ import com.iappsam.util.Validator;
 public class AddItemStatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(ItemStatusServlet.ADD_ITEM_STAT);
 		add.forward(request, response);
 	}

@@ -16,7 +16,7 @@ import com.iappsam.util.Validator;
 public class SaveEditedItemCatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("inside saveediteditemcategory.java");
 
 		//RequestDispatcher save = request.getRequestDispatcher("EditItemCategory.do");

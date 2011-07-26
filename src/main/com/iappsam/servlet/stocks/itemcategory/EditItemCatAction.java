@@ -15,8 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditItemCatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println("........inside edititemcategory.java");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int itemCategoryID = Integer.parseInt(request.getParameter("itemCategoryID"));
 		ItemCategory itemCategory = new ItemCategory();
@@ -24,7 +23,6 @@ public class EditItemCatAction implements Action {
 		try {
 			itemCategory = ApplicationContext.INSTANCE.getItemManager().getItemCategory(itemCategoryID);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

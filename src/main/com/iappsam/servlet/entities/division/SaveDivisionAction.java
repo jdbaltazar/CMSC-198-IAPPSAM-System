@@ -18,7 +18,7 @@ import com.iappsam.util.Validator;
 public class SaveDivisionAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		RequestDispatcher view = request.getRequestDispatcher(DivisionOfficeServlet.ADD_DIVISION);
 		String divisionName = request.getParameter("divisionName").trim();

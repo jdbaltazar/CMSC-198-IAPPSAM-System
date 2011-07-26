@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
 
-/**
- * Servlet implementation class SupplierServlet
- */
 @WebServlet("/supplier")
 public class SupplierServlet extends HttpServlet {
 
@@ -42,13 +40,8 @@ public class SupplierServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
-		try {
-			if (action != null)
-				action.process(request, response);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (action != null)
+			action.process(request, response);
 	}
 
 	@Override
@@ -57,52 +50,22 @@ public class SupplierServlet extends HttpServlet {
 
 		if (action.equalsIgnoreCase(VIEW_SUPPLIERS_ACTION)) {
 			Action viewAction = new ViewSuppliersAction();
-			try {
-				viewAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			viewAction.process(request, response);
 		} else if (action.equalsIgnoreCase(SEARCH_SUPPLIERS)) {
 			Action searchSuppliersAction = new SearchSuppliersAction();
-			try {
-				searchSuppliersAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			searchSuppliersAction.process(request, response);
 		} else if (action.equalsIgnoreCase(NEW_SUPPLIER_ACTION)) {
 			Action newSupplierAction = new NewSupplierAction();
-			try {
-				newSupplierAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			newSupplierAction.process(request, response);
 		} else if (action.equalsIgnoreCase(NEW_SUPPLIER_FOR_EXISTING_ACTION)) {
 			Action newSupplierForExistingAction = new NewSupplierForExistingAction();
-			try {
-				newSupplierForExistingAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			newSupplierForExistingAction.process(request, response);
 		} else if (action.equalsIgnoreCase(VIEW_SUPPLIER_ACTION)) {
 			Action viewSupplierAction = new ViewSupplierAction();
-			try {
-				viewSupplierAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			viewSupplierAction.process(request, response);
 		} else if (action.equalsIgnoreCase(CHANGE_SUPPLIER_CONTACT_PERSON_ACTION)) {
 			Action changeSupplierCPAction = new ChangeSupplierContactPersonAction();
-			try {
-				changeSupplierCPAction.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			changeSupplierCPAction.process(request, response);
 		}
 	}
 

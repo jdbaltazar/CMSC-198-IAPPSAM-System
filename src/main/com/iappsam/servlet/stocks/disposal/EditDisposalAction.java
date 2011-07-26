@@ -15,8 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditDisposalAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println("...inside editdisposal.java");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int disposalID = Integer.parseInt(request.getParameter("disposalID"));
 		Disposal disposal = new Disposal();
@@ -24,7 +23,6 @@ public class EditDisposalAction implements Action {
 		try {
 			disposal = ApplicationContext.INSTANCE.getWMRManager().getDisposal(disposalID);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

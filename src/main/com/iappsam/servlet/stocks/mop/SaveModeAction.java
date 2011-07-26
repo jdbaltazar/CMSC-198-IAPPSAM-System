@@ -18,7 +18,7 @@ import com.iappsam.util.Validator;
 public class SaveModeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		ModeOfProcurement modeofProc = new ModeOfProcurement();
 
@@ -29,15 +29,12 @@ public class SaveModeAction implements Action {
 			modeofProc.setName(modeofP);
 			try {
 				poManager.addModeOfProcurement(modeofProc);
-				System.out.println("mode was saved!!!!!!!!!!!!");
 				Action vAction = new ViewModesAction();
 				vAction.process(request, response);
 				return;
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (DuplicateEntryException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -15,8 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditModeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println(".........inside editmop.java");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mopID = Integer.parseInt(request.getParameter("mopID"));
 		ModeOfProcurement mop = new ModeOfProcurement();
 		RequestDispatcher edit = request.getRequestDispatcher(ModeOfProcServlet.EDIT_MODE);

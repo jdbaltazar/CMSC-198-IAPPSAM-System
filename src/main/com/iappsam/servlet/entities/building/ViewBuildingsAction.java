@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewBuildingsAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(BuildingServlet.VIEW_BUILDINGS);
 
@@ -31,7 +31,5 @@ public class ViewBuildingsAction implements Action {
 		}
 		request.setAttribute("buildings", buildings);
 		view.forward(request, response);
-
 	}
-
 }

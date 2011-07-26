@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.servlet.Action;
 
 public class AddEmployeeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		List<DivisionOffice> dos = doManager.getAllDivisionOffice();
-		request.setAttribute("divOffices", dos);
-		RequestDispatcher add = request.getRequestDispatcher(EmployeeServlet.ADD_EMPLOYEE);
-		add.forward(request, response);
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+			List<DivisionOffice> dos = doManager.getAllDivisionOffice();
+			request.setAttribute("divOffices", dos);
+			RequestDispatcher add = request.getRequestDispatcher(EmployeeServlet.ADD_EMPLOYEE);
+			add.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
 }

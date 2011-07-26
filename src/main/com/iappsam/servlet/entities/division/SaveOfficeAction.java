@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class SaveOfficeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
 		String officeName = request.getParameter("officeName").trim();
 

@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Supplier;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 
-public class NewSupplierAction implements Action{
+public class NewSupplierAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.ADD_SUPPLIER);
 		view.forward(request, response);
 	}

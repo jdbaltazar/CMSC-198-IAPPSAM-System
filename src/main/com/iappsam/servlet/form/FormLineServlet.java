@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 import com.iappsam.servlet.pr.PRUtility;
 
 public class FormLineServlet extends HttpServlet {

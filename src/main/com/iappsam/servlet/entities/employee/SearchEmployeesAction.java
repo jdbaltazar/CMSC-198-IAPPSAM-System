@@ -20,7 +20,7 @@ import com.iappsam.servlet.Action;
 public class SearchEmployeesAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String query = request.getParameter("searchField");
 

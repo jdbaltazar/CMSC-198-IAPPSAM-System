@@ -17,7 +17,7 @@ import com.iappsam.servlet.Action;
 public class SaveEditedOfficeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int officeID = Integer.parseInt(request.getParameter("officeID"));
 		String newName = request.getParameter("newName").trim();
 
@@ -33,7 +33,7 @@ public class SaveEditedOfficeAction implements Action {
 				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
 				DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
 				request.setAttribute("offices", offices);
-				request.setAttribute("dOfficeID", ""+dOffice.getId());
+				request.setAttribute("dOfficeID", "" + dOffice.getId());
 				Action vAction = new ViewOfficesAction();
 				vAction.process(request, response);
 				return;
@@ -42,7 +42,6 @@ public class SaveEditedOfficeAction implements Action {
 			}
 
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

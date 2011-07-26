@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.Form;
 import com.iappsam.reporting.ReportException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 
 public class ExportPdfAction implements Action {
 

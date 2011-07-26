@@ -17,7 +17,7 @@ import com.iappsam.util.Validator;
 public class SaveItemStatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemStatus status = new ItemStatus();
 

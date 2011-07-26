@@ -2,7 +2,6 @@ package com.iappsam.servlet.stocks.mop;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +15,8 @@ import com.iappsam.util.Validator;
 public class SaveEditedModeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("inside saveeditedmop.java");
 
 		Action action = new EditModeAction();
 
@@ -43,7 +41,5 @@ public class SaveEditedModeAction implements Action {
 
 		request.setAttribute("mopID", "" + mopID);
 		action.process(request, response);
-	
 	}
-
 }

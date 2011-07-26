@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 
 public class ListFormAction implements Action {
 

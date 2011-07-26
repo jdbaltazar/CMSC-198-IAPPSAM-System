@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewItemStatsAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ItemStatusServlet.VIEW_ITEM_STATS);
 		
@@ -27,7 +27,6 @@ public class ViewItemStatsAction implements Action {
 		try {
 			statuses = itemManager.getAllItemStatus();
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -35,5 +34,4 @@ public class ViewItemStatsAction implements Action {
 		
 		view.forward(request, response);
 	}
-
 }
