@@ -1,6 +1,7 @@
 package com.iappsam.servlet.entities.employee;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -35,7 +36,6 @@ public class SaveEditedEmployeeAction implements Action {
 	private String mobile;
 	private String landline;
 	private String email;
-	private boolean validName = false;
 	private boolean validAllEmployees = true;
 
 	@Override
@@ -43,7 +43,7 @@ public class SaveEditedEmployeeAction implements Action {
 
 		// get the size of save employments
 		// if the same as old, update all
-		// else, update all and add new
+		// else update all and add new
 
 		// if valid all, save then view all employees
 		// else, return page and show the inputs except for the wrong ones
@@ -51,18 +51,20 @@ public class SaveEditedEmployeeAction implements Action {
 		try {
 			PersonManager pManager = new PersonManagerSession();
 			ContactManager cManager = new ContactManagerSession();
+			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
 			personID = request.getParameter("personID");
 			title = request.getParameter("title");
 			name = request.getParameter("name");
 			for (int i = 1; i <= 5; i++) {
-				designation[i - 1] = request.getParameter("designation" + i);
-				employeeNo[i - 1] = request.getParameter("employeeNo" + i);
+				designation[i - 1] = request.getParameter("designation" + i).trim();
+				employeeNo[i - 1] = request.getParameter("employeeNo" + i).trim();
 				divisionOfficeID[i - 1] = request.getParameter("divisionOffice" + i);
 			}
 			mobile = request.getParameter("mobileNumber");
 			landline = request.getParameter("landline");
 			email = request.getParameter("email_ad");
-			System.out.println("----------------------->email: " + email);
+
+			
 			Person person = pManager.getPerson(Integer.parseInt(personID));
 			if (Validator.validField(title)) {
 				title = title.trim();
@@ -105,40 +107,59 @@ public class SaveEditedEmployeeAction implements Action {
 			}
 			if (!found && Validator.validField(email))
 				person.addContact(new Contact(email, ContactType.EMAIL));
-			// // employments go here
-			//
+			
 			validAllEmployees = checkAndFormatEmployments(designation, employeeNo, divisionOfficeID);
-			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-			if (validAllEmployees) {
-				for (int i = 0; i < 5; i++) {
-					if (Validator.validField(designation[i])) {
-						Employee e = new Employee();
-						e.setDesignation(designation[i].trim());
-
-						if (Validator.validField(employeeNo[i])) {
-							e.setEmployeeNumber(employeeNo[i].trim());
+			int validFields = countValidFields(designation, employeeNo,divisionOfficeID);
+			List<Employee>employees = pManager.getEmployeeByPerson(person.getId());
+			
+			if(validAllEmployees){
+				
+				//get previous employees
+				//check if the >= in size
+				//if ==, update all
+				//if >, add new employees
+				
+				
+				if(validFields>=employees.size()){
+					for(int i=0; i<validFields; i++){
+						if(!Validator.validField(designation[i])||!Validator.validField(divisionOfficeID[i])){
+							validAllEmployees = false;
 						}
-
-						e.setDivisionOffice(doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
-						person.addEmployment(e);
+					}
+				}else{
+					validAllEmployees = false;
+				}
+			}
+			
+			if(validAllEmployees){
+				Set<Employee>emps = person.getEmployments();
+				for(int i=0; i<validFields; i++){
+					if(i<employees.size()){
+						//update old employee
+						Employee e = getEmployeeOfPerson(emps, employees.get(i).getId());
+						if(e!=null){
+							e.setDesignation(designation[i]);
+							DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+							e.setDivisionOffice(dOffice);
+							if(Validator.validField(employeeNo[i])){
+								e.setEmployeeNumber(employeeNo[i]);
+							}
+						}
+					}else{
+						//add new employee
+						Employee e1 = new Employee();
+						e1.setDesignation(designation[i]);
+						DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+						e1.setDivisionOffice(dOffice);
+						if(Validator.validField(employeeNo[i])){
+							e1.setEmployeeNumber(employeeNo[i]);
+						}
+						person.addEmployment(e1);
 					}
 				}
 			}
-			System.out.println("title: " + person.getTitle());
-			System.out.println("name: " + person.getName());
-			System.out.println("---contacts start here-----");
-			for (Contact c : person.getContacts()) {
-				System.out.println(c.getType().toString() + ": " + c.getData());
-			}
-			System.out.println("---employments start here-----");
-			// for (Employee e : person.getEmployments()) {
-			// System.out.println(e.getDesignation() + ": " + e.getEmployeeNumber()
-			// +
-			// ": "
-			// + (e.getDivisionOffice() == null ? "" :
-			// e.getDivisionOffice().getDivisionName()));
-			// }
-			if (validName && validAllEmployees && person.validate()) {
+			
+			if (validAllEmployees && person.validate()) {
 
 				try {
 
@@ -163,7 +184,21 @@ public class SaveEditedEmployeeAction implements Action {
 		}
 	}
 
-	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException, IOException, DuplicateEntryException {
+	private int countValidFields(String[] designation, String[] employeeNo, String[] divisionOfficeID) {
+		// TODO Auto-generated method stub
+		int count =0;
+		int SIZE = 5;
+		for(int i=0; i<SIZE; i++){
+			if(Validator.validField(designation[i])&&Validator.validField(divisionOfficeID[i])){
+				count++;
+			}
+		}
+		
+		return count;
+	}
+
+	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,
+			IOException, DuplicateEntryException {
 		PersonManager pManager = new PersonManagerSession();
 		pManager.updatePerson(person);
 		Action viewAction = new SearchEmployeesAction();
@@ -171,52 +206,44 @@ public class SaveEditedEmployeeAction implements Action {
 		return;
 	}
 
-	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID) throws NumberFormatException, TransactionException {
+	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID)
+			throws NumberFormatException, TransactionException {
 
-		boolean designationsNonempty = false, divisionOfficeNonempty = false, matched = true;
-		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+		// format all inputs
 
-		for (int i = 0; i < 5; i++) {
-
-			// if designation is empty
-			if (Validator.validField(designation[i])) {
-				designation[i] = designation[i].trim();
-				designationsNonempty = true;
-
-				// if designation is set but division is not
-				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) == null) {
-					matched = false;
+		int SIZE = 5;
+		boolean valid = true;
+		
+		for(int i=0; i<SIZE; i++){
+			if(Validator.validField(designation[i])&&!Validator.validField(divisionOfficeID[i])){
+				valid = false;
+			}else if(!Validator.validField(designation[i])&&Validator.validField(divisionOfficeID[i])){
+				valid = false;
+			}else if(Validator.validField(employeeNo[i])&&!Validator.validField(designation[i])&&!Validator.validField(divisionOfficeID[i])){
+				valid = false;
+			}
+		}
+		
+		if(valid){
+			for(int i=0; i<SIZE; i++){
+				designation[i]=designation[i].trim();
+				if(Validator.validField(employeeNo[i])){
+					employeeNo[i] = employeeNo[i].trim();
 				}
 			}
-
-			// if divisionoffice is empty
-			if (divisionOfficeID[i] != null) {
-				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) != null) {
-					divisionOfficeNonempty = true;
-
-					// if divisionoffice is set but designation is not
-					if (!Validator.validField(designation[i])) {
-						matched = false;
-					}
-				}
-			}
-
-			// if employeenumber is set but designation or divisionoffice is not
-			if (Validator.validField(employeeNo[i])) {
-				employeeNo[i] = employeeNo[i].trim();
-				if (!Validator.validField(designation[i])) {
-					matched = false;
-				}
-				if (doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])) == null) {
-					matched = false;
-				}
-			}
-
+			
 		}
 
-		if (designationsNonempty && divisionOfficeNonempty && matched)
-			return true;
-		return false;
+		return valid;
 	}
 
+	private Employee getEmployeeOfPerson(Set<Employee>emps,int employeeID){
+		Employee ret = null;
+		for(Employee e: emps){
+			if(e.getId()==employeeID){
+				ret = e;
+			}
+		}
+		return ret;
+	}
 }

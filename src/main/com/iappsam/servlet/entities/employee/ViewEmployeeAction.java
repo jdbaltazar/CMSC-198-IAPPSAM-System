@@ -46,7 +46,7 @@ public class ViewEmployeeAction implements Action {
 				i++;
 			}
 			i = 0;
-			for (Employee e : person.getEmployments()) {
+			for (Employee e : pManager.getEmployeeByPerson(person.getId())) {
 				employments[i] = e;
 				i++;
 			}

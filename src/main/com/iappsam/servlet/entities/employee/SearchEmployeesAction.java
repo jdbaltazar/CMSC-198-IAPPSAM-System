@@ -33,7 +33,9 @@ public class SearchEmployeesAction implements Action {
 				for (Person p : all) {
 					if (p.getEmployments().size() > 0) {
 						boolean upEmployee = true;
-						for (Employee e : p.getEmployments()) {
+						List<Employee> emps = new ArrayList<Employee>();
+						emps = pManager.getEmployeeByPerson(p.getId());
+						for (Employee e : emps) {
 							if (e.getDivisionOffice() == null)
 								upEmployee = false;
 						}
@@ -63,7 +65,14 @@ public class SearchEmployeesAction implements Action {
 			for (Person p : dummy) {
 				if (p.getEmployments().size() > 0) {
 					boolean upEmployee = true;
-					for (Employee e : p.getEmployments()) {
+					List<Employee> emps = new ArrayList<Employee>();
+					try {
+						emps = pManager.getEmployeeByPerson(p.getId());
+					} catch (TransactionException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					for (Employee e : emps) {
 						if (e.getDivisionOffice() == null)
 							upEmployee = false;
 					}
@@ -71,7 +80,7 @@ public class SearchEmployeesAction implements Action {
 						persons.add(p);
 				}
 			}
-			
+
 			request.setAttribute("persons", dummy);
 			request.setAttribute("query", query);
 		}
