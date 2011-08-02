@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -30,6 +31,7 @@ public class SaveEditedModeAction implements Action {
 			if (Validator.validField(name)) {
 				mop.setName(name);
 				ApplicationContext.INSTANCE.getPOManager().updateModeOfProcurement(mop);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Mode \""+name+"\" was updated");
 				Action vAction = new ViewModesAction();
 				vAction.process(request, response);
 				return;

@@ -150,7 +150,7 @@
 			<td colspan="3" class="main_menu_header">Database</td>
 		</tr>
 		<tr>
-			<td colspan="3"><form id="form12" name="form12" method="post" action="">
+			<td colspan="3"><form id="form12" name="form12" method="post" action="system-logs">
 					<input name="viewSysLog" type="submit" class="menubtn"
 							id="viewSysLog" value="View System Log" />
 				</form></td>

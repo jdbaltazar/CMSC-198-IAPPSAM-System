@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCondition;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -29,6 +30,7 @@ public class SaveItemCondAction implements Action {
 			condition.setName(conditionInput);
 			try {
 				itemManager.addItemCondition(condition);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Condition \""+conditionInput+"\" was added");
 				Action vAction = new ViewItemCondsAction();
 				vAction.process(request, response);
 				return;

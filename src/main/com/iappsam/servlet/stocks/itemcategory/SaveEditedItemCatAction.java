@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCategory;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -32,6 +33,7 @@ public class SaveEditedItemCatAction implements Action {
 			if (Validator.validField(name)) {
 				itemCategory.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCategory(itemCategory);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Category \""+name+"\" was updated");
 				Action vAction = new ViewItemCatsAction();
 				vAction.process(request, response);
 				return;

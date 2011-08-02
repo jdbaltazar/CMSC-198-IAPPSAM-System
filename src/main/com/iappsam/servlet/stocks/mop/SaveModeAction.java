@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.ModeOfProcurement;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -29,6 +30,7 @@ public class SaveModeAction implements Action {
 			modeofProc.setName(modeofP);
 			try {
 				poManager.addModeOfProcurement(modeofProc);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Mode \""+modeofP+"\" was added");
 				Action vAction = new ViewModesAction();
 				vAction.process(request, response);
 				return;

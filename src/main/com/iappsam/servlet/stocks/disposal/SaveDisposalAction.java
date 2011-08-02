@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.Disposal;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.WMRManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.WMRManagerSession;
@@ -28,7 +29,7 @@ public class SaveDisposalAction implements Action {
 			disposal.setName(disposalInput);
 			try {
 				wmrManager.addDisposal(disposal);
-				System.out.println("disposal was saved!!");
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Disposal \""+disposalInput+"\" was added");
 				Action vAction = new ViewDisposalsAction();
 				vAction.process(request, response);
 				return;

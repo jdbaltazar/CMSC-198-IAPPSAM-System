@@ -27,10 +27,7 @@ import com.iappsam.servlet.database.BackupDatabase;
 import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.servlet.entities.building.BuildingServlet;
 import com.iappsam.servlet.entities.division.DivisionOfficeServlet;
-import com.iappsam.servlet.entities.employee.EmployeeCreation;
 import com.iappsam.servlet.entities.employee.EmployeeServlet;
-import com.iappsam.servlet.entities.employee.EmployeeUpdate;
-import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
 import com.iappsam.servlet.filter.SecurityFilter;
 import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
@@ -48,6 +45,7 @@ import com.iappsam.servlet.stocks.itemcondition.ItemConditionServlet;
 import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
 import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
 import com.iappsam.servlet.stocks.mop.ModeOfProcServlet;
+import com.iappsam.servlet.systemlog.ViewSystemLogs;
 
 public class WebServer {
 
@@ -74,8 +72,6 @@ public class WebServer {
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new APPServlet(), "/app");
 		addServlet(new BackupDatabase(), "/database/backup.sql");
-		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
-		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
 		addServlet(new IEServlet(), "/ie");
 		addServlet(new IELineServlet(), "/ie/line");
 		addServlet(new ItemServlet(), "/items");
@@ -87,7 +83,6 @@ public class WebServer {
 		addServlet(new PRServlet(), "/pr");
 		addServlet(new RISServlet(), "/ris");
 		addServlet(new RISLineServlet(), "/ris/line");
-		addServlet(new SearchEmployee(), "/entities/employees/search_employee.do");
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
 		addServlet(new StockPropertiesServlet(), "/stocks");
@@ -98,6 +93,7 @@ public class WebServer {
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
 		addServlet(new ModeOfProcServlet(), "/stocks/mode");
 		addServlet(new SupplierServlet(), "/supplier");
+		addServlet(new ViewSystemLogs(), "/system-logs");
 
 		addFilter(new SecurityFilter(), "/*");
 

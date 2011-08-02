@@ -19,6 +19,7 @@ import com.iappsam.Item;
 import com.iappsam.ItemCategory;
 import com.iappsam.ItemCondition;
 import com.iappsam.ItemStatus;
+import com.iappsam.Log;
 import com.iappsam.Person;
 import com.iappsam.PersonContact;
 import com.iappsam.Signatory;
@@ -72,7 +73,7 @@ public class HibernateUtil {
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
 
-//		addDefaulEntities();
+		addDefaulEntities();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -120,6 +121,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(ICSLine.class);
 			conf.addAnnotatedClass(IE.class);
 			conf.addAnnotatedClass(IELine.class);
+			conf.addAnnotatedClass(Log.class);
 			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PAR.class);
 			conf.addAnnotatedClass(PARLine.class);
