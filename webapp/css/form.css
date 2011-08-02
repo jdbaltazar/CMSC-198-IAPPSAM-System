@@ -36,6 +36,56 @@ div#menu_others {
 	left:36%;
 }
 
+div#menu_1_forms{
+	margin:0 auto;
+	height:inherit;
+	border:none;
+	position: absolute;
+	top:55%;
+	left:31%;
+	width: 38%;
+}
+
+div#menu_stocks{
+	margin:0 auto;
+	height:inherit;
+	border: none;
+	position:absolute;
+	top:69%;
+	width:25%;
+	left:3%;
+}
+	
+div#menu_account{
+	margin:0 auto;
+	height:inherit;
+	border: none;
+	position:absolute;
+	top:69%;
+	width:25%;
+	left:72%;
+}
+
+div#menu_database{
+	margin:0 auto;
+	height:inherit;
+	border: none;
+	position:absolute;
+	top:40%;
+	width:25%;
+	left:37%;
+}
+
+div#menu_settings{
+	margin:0 auto;
+	height:inherit;
+	border: none;
+	position:absolute;
+	top:95%;
+	width:25%;
+	left:37%;
+}
+
 .align_right{
 	text-align:right;
 	font-family:Lucida Grande; 
@@ -191,25 +241,13 @@ color:#7B1113;
 }
 
 div#menu_1 {
-  margin:0 auto;
-  width:28%;
-  height:inherit;
-  border:none;
-	position:absolute;
-	top:48%;
-
-	left:20%;
-}
-
-div#menu_1_forms{
 	margin:0 auto;
 	width:28%;
-	height:inherit;
+	height:2.219in;
 	border:none;
-	position: absolute;
-	top:48%;
-	
-	left:57%;
+	position:absolute;
+	top:437px;
+	left:33px;
 }
 
 .button2{
