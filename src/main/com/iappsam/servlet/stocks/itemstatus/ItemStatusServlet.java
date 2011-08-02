@@ -11,24 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
-/**
- * Servlet implementation class SupplierServlet
- */
 @WebServlet("/stocks/item-status")
 public class ItemStatusServlet extends HttpServlet {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 8743386494034832467L;
-	
+
 	public static final String VIEW_ITEM_STATS = "/stocks/item_stats/ViewItemStatuses.jsp";
 	public static final String ADD_ITEM_STAT = "/stocks/item_stats/AddItemStatus.jsp";
 	public static final String EDIT_ITEM_STAT = "/stocks/item_stats/EditItemStatus.jsp";
-	
-	
+
 	public static final String ITEM_STAT_ACTION = "item-stat-action";
-	
+
 	public static final String VIEW_ITEM_STATS_ACTION = "view-item-stats";
 	public static final String ADD_ITEM_STAT_ACTION = "add-item-stat";
 	public static final String EDIT_ITEM_STAT_ACTION = "edit-item-stat";
@@ -43,13 +36,8 @@ public class ItemStatusServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
-		try {
-			if (action != null)
-				action.process(request, response);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (action != null)
+			action.process(request, response);
 	}
 
 	@Override
@@ -57,21 +45,14 @@ public class ItemStatusServlet extends HttpServlet {
 
 		Action action = parseAction(request);
 
-		if (action != null) {
-			try {
-				action.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+		if (action != null)
+			action.process(request, response);
 	}
 
 	private Action parseAction(HttpServletRequest request) {
 
 		String action = (String) request.getParameter(ITEM_STAT_ACTION);
-		
+
 		if (action.equalsIgnoreCase(VIEW_ITEM_STATS_ACTION))
 			return new ViewItemStatsAction();
 		if (action.equalsIgnoreCase(ADD_ITEM_STAT_ACTION))
@@ -82,7 +63,7 @@ public class ItemStatusServlet extends HttpServlet {
 			return new SaveItemStatAction();
 		if (action.equalsIgnoreCase(SAVE_EDITED_ITEM_STAT_ACTION))
 			return new SaveEditedItemStatAction();
-		
+
 		return null;
 
 	}

@@ -14,7 +14,7 @@ import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
 public class AddItemCondAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(ItemConditionServlet.ADD_ITEM_COND);
 		add.forward(request, response);
 	}

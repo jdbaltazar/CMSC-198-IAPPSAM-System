@@ -14,7 +14,7 @@ import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
 public class AddItemCatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(ItemCategoryServlet.ADD_ITEM_CAT);
 		add.forward(request, response);
 	}

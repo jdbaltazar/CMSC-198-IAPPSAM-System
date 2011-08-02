@@ -51,13 +51,21 @@ public class IELine implements Serializable, Validatable {
 		super();
 	}
 
-	public IELine(IE ie, Item item, int quantity, Employee employee, String howAcquired) {
+	public IELine(IE ie, Item item, String quantity, Employee employee, String howAcquired, String remarks) {
 		super();
 		this.item = item;
 		this.ie = ie;
-		this.quantity = quantity;
+		setQuantity(quantity);
 		this.employee = employee;
 		this.howAcquired = howAcquired;
+		this.remarks = remarks;
+	}
+
+	private void setQuantity(String quantity2) {
+		try {
+			setQuantity(Integer.parseInt(quantity2));
+		} catch (Exception e) {
+		}
 	}
 
 	public int getId() {

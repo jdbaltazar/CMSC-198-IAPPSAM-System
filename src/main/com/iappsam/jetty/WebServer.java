@@ -28,14 +28,16 @@ import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.servlet.entities.building.BuildingServlet;
 import com.iappsam.servlet.entities.division.DivisionOfficeServlet;
 import com.iappsam.servlet.entities.employee.EmployeeCreation;
+import com.iappsam.servlet.entities.employee.EmployeeServlet;
 import com.iappsam.servlet.entities.employee.EmployeeUpdate;
 import com.iappsam.servlet.entities.employee.SearchEmployee;
 import com.iappsam.servlet.entities.supplier.SupplierServlet;
 import com.iappsam.servlet.filter.SecurityFilter;
 import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
+import com.iappsam.servlet.ie.IELineServlet;
+import com.iappsam.servlet.ie.IEServlet;
 import com.iappsam.servlet.item.ItemServlet;
 import com.iappsam.servlet.po.POServlet;
-import com.iappsam.servlet.pr.AddPurchaseRequest;
 import com.iappsam.servlet.pr.PRLineServlet;
 import com.iappsam.servlet.pr.PRServlet;
 import com.iappsam.servlet.ris.RISLineServlet;
@@ -61,15 +63,21 @@ public class WebServer {
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
 		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
+		addServlet(new UpdateAccount(), "/accounts/update_account.do");
+		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
+		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
+		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
+
 		addServlet(new BuildingServlet(), "/building");
 		addServlet(new DivisionOfficeServlet(), "/division-office");
-		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
-		addServlet(new AddPurchaseRequest(), "/stocks/AddPurchaseRequest.do");
+		addServlet(new EmployeeServlet(), "/employee");
 		addServlet(new APPLineServlet(), "/app/line");
 		addServlet(new APPServlet(), "/app");
 		addServlet(new BackupDatabase(), "/database/backup.sql");
 		addServlet(new EmployeeCreation(), "/entities/employees/add_employee.do");
 		addServlet(new EmployeeUpdate(), "/entities/employees/update_employee.do");
+		addServlet(new IEServlet(), "/ie");
+		addServlet(new IELineServlet(), "/ie/line");
 		addServlet(new ItemServlet(), "/items");
 		addServlet(new LoginServlet(), "/login");
 		addServlet(new LogoutServlet(), "/logout");
@@ -90,9 +98,6 @@ public class WebServer {
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
 		addServlet(new ModeOfProcServlet(), "/stocks/mode");
 		addServlet(new SupplierServlet(), "/supplier");
-		addServlet(new UpdateAccount(), "/accounts/update_account.do");
-		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
-		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
 
 		addFilter(new SecurityFilter(), "/*");
 

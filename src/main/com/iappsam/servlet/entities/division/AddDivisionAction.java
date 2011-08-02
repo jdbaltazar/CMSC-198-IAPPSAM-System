@@ -13,7 +13,7 @@ import com.iappsam.servlet.Action;
 public class AddDivisionAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(DivisionOfficeServlet.ADD_DIVISION);
 		add.forward(request, response);
 	}

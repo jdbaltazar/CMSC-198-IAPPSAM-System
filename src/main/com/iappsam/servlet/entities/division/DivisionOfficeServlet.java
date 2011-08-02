@@ -7,23 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.stocks.itemunit.AddItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.EditItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.SaveEditedItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.SaveItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.ViewItemUnitsAction;
 
-/**
- * Servlet implementation class DivisionOfficeServlet
- */
 @WebServlet("/division-office")
 public class DivisionOfficeServlet extends HttpServlet {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2690075409427256729L;
 
 	public static final String ADD_DIVISION = "/entities/division/AddDivision.jsp";
@@ -54,55 +41,41 @@ public class DivisionOfficeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
-		try {
-			if (action != null)
-				action.process(request, response);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (action != null)
+			action.process(request, response);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		Action action = parseAction(request);
 
-		if (action != null) {
-			try {
-				action.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+		if (action != null)
+			action.process(request, response);
 	}
 
 	private Action parseAction(HttpServletRequest request) {
 
 		String action = (String) request.getParameter(DIVISION_OFFICE_ACTION);
-		
-		
+
 		if (action.equalsIgnoreCase(VIEW_DIVISIONS_ACTION))
 			return new ViewDivisionsAction();
-		if(action.equalsIgnoreCase(VIEW_OFFICES_ACTION))
+		if (action.equalsIgnoreCase(VIEW_OFFICES_ACTION))
 			return new ViewOfficesAction();
-		if(action.equalsIgnoreCase(ADD_DIVISION_ACTION))
+		if (action.equalsIgnoreCase(ADD_DIVISION_ACTION))
 			return new AddDivisionAction();
-		if(action.equalsIgnoreCase(ADD_OFFICE_ACTION))
+		if (action.equalsIgnoreCase(ADD_OFFICE_ACTION))
 			return new AddOfficeAction();
-		if(action.equalsIgnoreCase(EDIT_DIVISION_ACTION))
+		if (action.equalsIgnoreCase(EDIT_DIVISION_ACTION))
 			return new EditDivisionAction();
-		if(action.equalsIgnoreCase(EDIT_OFFICE_ACTION))
+		if (action.equalsIgnoreCase(EDIT_OFFICE_ACTION))
 			return new EditOfficeAction();
-		if(action.equalsIgnoreCase(SAVE_DIVISION_ACTION))
+		if (action.equalsIgnoreCase(SAVE_DIVISION_ACTION))
 			return new SaveDivisionAction();
-		if(action.equalsIgnoreCase(SAVE_OFFICE_ACTION))
+		if (action.equalsIgnoreCase(SAVE_OFFICE_ACTION))
 			return new SaveOfficeAction();
-		if(action.equalsIgnoreCase(SAVE_EDITED_DIVISION_ACTION))
+		if (action.equalsIgnoreCase(SAVE_EDITED_DIVISION_ACTION))
 			return new SaveEditedDivisionAction();
-		if(action.equalsIgnoreCase(SAVE_EDITED_OFFICE_ACTION))
+		if (action.equalsIgnoreCase(SAVE_EDITED_OFFICE_ACTION))
 			return new SaveEditedOfficeAction();
 
 		return null;

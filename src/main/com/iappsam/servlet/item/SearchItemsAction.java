@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Item;
 import com.iappsam.search.ItemSearcher;
+import com.iappsam.servlet.Action;
 
 public class SearchItemsAction implements Action {
 

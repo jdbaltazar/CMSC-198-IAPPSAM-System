@@ -20,6 +20,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.ServletTestCase;
 
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 import static com.iappsam.servlet.item.ItemParameter.*;
 
@@ -113,10 +114,27 @@ public class ItemServletTest extends ServletTestCase {
 	@Test
 	public void itemWasNotAdded() throws ServletException, IOException {
 		givenRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
+		given(request.getParameter("add")).willReturn("item");
 
 		servlet.doPost(request, response);
 
 		verifyForwardedTo(ItemServlet.NEW_ITEM_JSP);
+	}
+
+	@Test
+	public void itemUpdatedUnsucessfully() throws ServletException, IOException {
+
+		givenRequestDispatcher(ItemServlet.VIEW_ITEM_JSP);
+		given(request.getParameter("update")).willReturn("item");
+
+		servlet.doPost(request, response);
+
+		verifyForwardedTo(ItemServlet.VIEW_ITEM_JSP);
+	}
+
+	@Test
+	public void itemUpdatedSucessfully() {
+		fail();
 	}
 
 	private void givenRequestToViewItem() {
@@ -144,5 +162,6 @@ public class ItemServletTest extends ServletTestCase {
 		given(request.getParameter(CATEGORY)).willReturn(cat.getName());
 		given(request.getParameter(STATUS)).willReturn(stat.getName());
 		given(request.getParameter(ITEM_ID)).willReturn(item.getId() + "");
+		given(request.getParameter("add")).willReturn("item");
 	}
 }

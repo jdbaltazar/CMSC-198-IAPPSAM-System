@@ -15,10 +15,8 @@ import com.iappsam.util.ApplicationContext;
 public class EditItemCondAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-	// TODO Auto-generated method stub
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			System.out.println("inside edititemcondition.java");
 
 			int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
 			ItemCondition itemCondition = new ItemCondition();
@@ -26,7 +24,6 @@ public class EditItemCondAction implements Action {
 			try {
 				itemCondition = ApplicationContext.INSTANCE.getItemManager().getItemCondition(itemConditionID);
 			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

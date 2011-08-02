@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Item;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 
 public class ListItemsAction implements Action {
 

@@ -47,29 +47,16 @@ public class DisposalServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
-		try {
-			if (action != null)
-				action.process(request, response);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (action != null)
+			action.process(request, response);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		Action action = parseAction(request);
 
-		if (action != null) {
-			try {
-				action.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+		if (action != null)
+			action.process(request, response);
 	}
 
 	private Action parseAction(HttpServletRequest request) {

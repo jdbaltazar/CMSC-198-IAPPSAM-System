@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewDisposalsAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WMRManager wmrManager = new WMRManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(DisposalServlet.VIEW_DISPOSALS);
 
@@ -27,7 +27,6 @@ public class ViewDisposalsAction implements Action {
 		try {
 			disposals = wmrManager.getAllDisposal();
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

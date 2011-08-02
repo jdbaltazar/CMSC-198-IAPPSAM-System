@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewDivisionsAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();

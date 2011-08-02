@@ -19,16 +19,15 @@ import com.iappsam.util.ApplicationContext;
 public class AddOfficeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		int dOfficeID = Integer.parseInt(request.getParameter("dOfficeID"));
-		
+
 		DivisionOffice dOffice;
 		try {
 			dOffice = ApplicationContext.INSTANCE.getDivisionOfficeManager().getDivisionOffice(dOfficeID);
 			request.setAttribute("dOffice", dOffice);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -10,5 +10,5 @@ import com.iappsam.managers.exceptions.TransactionException;
 
 public interface Action {
 
-	void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException;
+	void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

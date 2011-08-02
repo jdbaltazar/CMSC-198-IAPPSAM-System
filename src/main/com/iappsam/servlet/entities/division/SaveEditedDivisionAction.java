@@ -17,7 +17,7 @@ import com.iappsam.servlet.Action;
 public class SaveEditedDivisionAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher view = request.getRequestDispatcher(DivisionOfficeServlet.EDIT_DIVISION);
 
@@ -38,7 +38,6 @@ public class SaveEditedDivisionAction implements Action {
 							if (d.getDivisionName().equalsIgnoreCase(dOffice.getDivisionName())) {
 								d.setDivisionName(newName);
 								doManager.updateDivisionOffice(d);
-								System.out.println("...updated!");
 							}
 						}
 						dOffice.setDivisionName(newName);

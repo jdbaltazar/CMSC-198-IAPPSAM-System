@@ -15,7 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditOfficeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int officeID = Integer.parseInt(request.getParameter("officeID"));
 		DivisionOffice office = null;

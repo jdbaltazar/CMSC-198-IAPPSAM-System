@@ -15,8 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditItemStatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println(".........inside edititemstatus.java");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int itemStatusID = Integer.parseInt(request.getParameter("itemStatusID"));
 		ItemStatus itemStatus = new ItemStatus();
@@ -24,12 +23,10 @@ public class EditItemStatAction implements Action {
 		try {
 			itemStatus = ApplicationContext.INSTANCE.getItemManager().getItemStatus(itemStatusID);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		request.setAttribute("itemStatus", itemStatus);
 		edit.forward(request, response);
 	}
-
 }

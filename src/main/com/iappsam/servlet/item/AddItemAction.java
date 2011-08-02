@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Item;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.servlet.Action;
 
 public class AddItemAction implements Action {
 
@@ -58,8 +59,7 @@ public class AddItemAction implements Action {
 				throw new RuntimeException();
 
 			itemManager.addItem(item);
-//			response.sendRedirect("/items?id=" + item.getId());
-			response.sendRedirect("/items");
+			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
 			try {
 				request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());

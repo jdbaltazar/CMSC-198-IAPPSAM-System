@@ -15,9 +15,7 @@ import com.iappsam.util.ApplicationContext;
 public class EditBuildingAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-
-		System.out.println("....inside editbuilding.java");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int buildingID = Integer.parseInt(request.getParameter("buildingID"));
 		Building building = null;
@@ -25,7 +23,6 @@ public class EditBuildingAction implements Action {
 		try {
 			building = ApplicationContext.INSTANCE.getDivisionOfficeManager().getBuilding(buildingID);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -72,13 +72,7 @@ public class HibernateUtil {
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
 
-//		try {
-//			addDefaulEntities();
-//		} catch (TransactionException e) {
-//			e.printStackTrace();
-//		} catch (DuplicateEntryException e) {
-//			e.printStackTrace();
-//		}
+//		addDefaulEntities();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -86,7 +80,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "false");
+			p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -156,11 +150,14 @@ public class HibernateUtil {
 		}
 	}
 
-	private static void addDefaulEntities() throws TransactionException, DuplicateEntryException {
-		// addIappsamConfig(new IappsamConfig(1, true));
-		addAdminAccount();
-		addDisposals();
-		addItemDependencies();
+	private static void addDefaulEntities() {
+		try {
+			addAdminAccount();
+			addDisposals();
+			addItemDependencies();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void addItemDependencies() throws TransactionException, DuplicateEntryException {

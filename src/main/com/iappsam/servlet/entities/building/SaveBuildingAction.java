@@ -17,8 +17,7 @@ import com.iappsam.util.Validator;
 public class SaveBuildingAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println("...inside addbuilding");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		RequestDispatcher add = request.getRequestDispatcher(BuildingServlet.ADD_BUILDING);
 		Building building = new Building();
@@ -34,7 +33,6 @@ public class SaveBuildingAction implements Action {
 			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
-				System.out.println("building was saved!!");
 				Action vAction = new ViewBuildingsAction();
 				vAction.process(request, response);
 				return;

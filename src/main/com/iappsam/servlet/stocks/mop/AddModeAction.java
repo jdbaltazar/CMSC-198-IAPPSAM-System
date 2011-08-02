@@ -13,9 +13,8 @@ import com.iappsam.servlet.Action;
 public class AddModeAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher add = request.getRequestDispatcher(ModeOfProcServlet.ADD_MODE);
 		add.forward(request, response);
 	}
-
 }

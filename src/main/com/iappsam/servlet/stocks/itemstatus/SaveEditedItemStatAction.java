@@ -16,11 +16,8 @@ import com.iappsam.util.Validator;
 public class SaveEditedItemStatAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
-		System.out.println(".......inside saveediteditemstatus");
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// RequestDispatcher save =
-		// request.getRequestDispatcher("EditItemStatus.do");
 		Action action = new EditItemStatAction();
 
 		int itemStatusID = Integer.parseInt(request.getParameter("itemStatusID"));

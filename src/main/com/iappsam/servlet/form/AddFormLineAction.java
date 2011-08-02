@@ -10,7 +10,7 @@ import com.iappsam.Item;
 import com.iappsam.forms.Form;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
 
 public class AddFormLineAction implements Action {

@@ -79,6 +79,8 @@ public class SecurityFilter implements Filter {
 					return;
 				}
 			} else {
+				
+				
 				if (link.equalsIgnoreCase(HOME1) || link.equalsIgnoreCase(HOME2) || link.equalsIgnoreCase(HOME3)) {
 					httpReq.getSession().setAttribute("from", httpReq.getRequestURI());
 					httpResp.sendRedirect("/menu");

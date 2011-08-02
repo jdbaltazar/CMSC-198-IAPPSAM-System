@@ -18,7 +18,7 @@ import com.iappsam.util.ApplicationContext;
 public class ViewItemUnitsAction implements Action{
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher(ItemUnitServlet.VIEW_ITEM_UNITS);
 
 		List<Unit> units = new ArrayList<Unit>();

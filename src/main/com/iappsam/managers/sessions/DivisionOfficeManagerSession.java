@@ -159,4 +159,18 @@ public class DivisionOfficeManagerSession extends AbstractManager implements Div
 		} else
 			return null;
 	}
+
+	@Override
+	public Building getBuilding(String buildingId) throws TransactionException {
+		if (buildingId != null) {
+			int id;
+			try {
+				id = Integer.parseInt(buildingId);
+			} catch (Exception e) {
+				return null;
+			}
+			return getBuilding(id);
+		}
+		return null;
+	}
 }

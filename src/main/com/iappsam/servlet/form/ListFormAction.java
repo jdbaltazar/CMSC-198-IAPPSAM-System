@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 
 public class ListFormAction implements Action {
 
@@ -18,7 +18,7 @@ public class ListFormAction implements Action {
 	public ListFormAction(FormUtility utility) {
 		this.formName = utility.getFormName();
 		this.utility = utility;
-		listFormJsp = String.format("/%s/%s", formName, "list-pr.jsp");
+		listFormJsp = String.format("/%s/list-%s.jsp", formName, formName);
 	}
 
 	@Override

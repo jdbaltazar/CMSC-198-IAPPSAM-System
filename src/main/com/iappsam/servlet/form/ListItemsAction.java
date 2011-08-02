@@ -11,7 +11,7 @@ import com.iappsam.Item;
 import com.iappsam.forms.Form;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
 
 public class ListItemsAction implements Action {
 	private ItemManager im;

@@ -18,7 +18,7 @@ import com.iappsam.servlet.Action;
 public class ViewItemCondsAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ItemConditionServlet.VIEW_ITEM_CONDS);
 		

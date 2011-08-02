@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.servlet.item.Action;
+import com.iappsam.servlet.Action;
+
 
 public class FormServlet extends HttpServlet {
 

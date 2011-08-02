@@ -16,12 +16,13 @@ import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.SupplierManagerSession;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.Validator;
 
 public class SaveSupplierAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String supplierName = request.getParameter("supplierName").trim();
 		String address = request.getParameter("supplierAddress").trim();

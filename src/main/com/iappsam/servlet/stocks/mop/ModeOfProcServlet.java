@@ -8,36 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
-
-/**
- * Servlet implementation class SupplierServlet
- */
 @WebServlet("/stocks/mode")
 public class ModeOfProcServlet extends HttpServlet {
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8768727199610885812L;
-	
-	
+
 	public static final String VIEW_MODES = "/stocks/modes/ViewModesOfProc.jsp";
 	public static final String ADD_MODE = "/stocks/modes/AddModeOfProc.jsp";
 	public static final String EDIT_MODE = "/stocks/modes/EditModeOfProc.jsp";
-	
-	
+
 	public static final String MODE_ACTION = "mode-action";
-	
+
 	public static final String VIEW_MODES_ACTION = "view-modes";
 	public static final String ADD_MODE_ACTION = "add-mode";
 	public static final String EDIT_MODE_ACTION = "edit-mode";
 	public static final String SAVE_MODE_ACTION = "save-mode";
 	public static final String SAVE_EDITED_MODE_ACTION = "save-edited-mode";
-
 
 	public ModeOfProcServlet() {
 		super();
@@ -47,13 +35,8 @@ public class ModeOfProcServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
-		try {
-			if (action != null)
-				action.process(request, response);
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if (action != null)
+			action.process(request, response);
 	}
 
 	@Override
@@ -61,21 +44,14 @@ public class ModeOfProcServlet extends HttpServlet {
 
 		Action action = parseAction(request);
 
-		if (action != null) {
-			try {
-				action.process(request, response);
-			} catch (TransactionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
+		if (action != null)
+			action.process(request, response);
 	}
 
 	private Action parseAction(HttpServletRequest request) {
 
 		String action = (String) request.getParameter(MODE_ACTION);
-		
+
 		if (action.equalsIgnoreCase(VIEW_MODES_ACTION))
 			return new ViewModesAction();
 		if (action.equalsIgnoreCase(ADD_MODE_ACTION))
@@ -86,7 +62,7 @@ public class ModeOfProcServlet extends HttpServlet {
 			return new SaveModeAction();
 		if (action.equalsIgnoreCase(SAVE_EDITED_MODE_ACTION))
 			return new SaveEditedModeAction();
-		
+
 		return null;
 
 	}

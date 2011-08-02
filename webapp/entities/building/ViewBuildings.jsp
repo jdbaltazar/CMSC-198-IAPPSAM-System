@@ -79,7 +79,6 @@
 				i++;
 				}
 			%>
-
 		</table>
 	</div>
 	<!--<div id="footer"></div>-->

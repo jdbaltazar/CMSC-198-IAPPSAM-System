@@ -16,7 +16,7 @@ import com.iappsam.util.Validator;
 public class SaveEditedItemCondAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("inside saveediteditemcondition.java");
 

@@ -18,7 +18,7 @@ import com.iappsam.util.Validator;
 public class SaveItemCondAction implements Action {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		ItemCondition condition = new ItemCondition();
 
