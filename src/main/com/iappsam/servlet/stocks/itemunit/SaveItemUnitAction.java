@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Unit;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -27,8 +28,8 @@ public class SaveItemUnitAction implements Action {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Unit \""+unitInput+"\" was added");
 				Action vUnits = new ViewItemUnitsAction();
-				System.out.println("add item unit successful!");
 				vUnits.process(request, response);
 				return;
 			} catch (TransactionException e) {

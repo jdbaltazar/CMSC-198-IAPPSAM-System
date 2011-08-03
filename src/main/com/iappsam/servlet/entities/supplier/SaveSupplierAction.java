@@ -12,6 +12,7 @@ import com.iappsam.ContactType;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.Supplier;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -61,6 +62,7 @@ public class SaveSupplierAction implements Action {
 		if (supplier.validate()) {
 			try {
 				sManager.addSupplier(supplier);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was added");
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				System.out.println("supplier was saved!!!");

@@ -105,6 +105,7 @@ public class ItemServletTest extends ServletTestCase {
 		givenRequestToFillupForm();
 		givenItemManager();
 
+		
 		servlet.doPost(request, response);
 
 		verify(itemManager).addItem(any(Item.class));

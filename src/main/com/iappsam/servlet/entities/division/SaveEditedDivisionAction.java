@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
@@ -42,6 +43,7 @@ public class SaveEditedDivisionAction implements Action {
 						}
 						dOffice.setDivisionName(newName);
 						doManager.updateDivisionOffice(dOffice);
+						Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Division \""+newName+"\" was updated");
 						Action vAction = new ViewOfficesAction();
 						vAction.process(request, response);
 						return;

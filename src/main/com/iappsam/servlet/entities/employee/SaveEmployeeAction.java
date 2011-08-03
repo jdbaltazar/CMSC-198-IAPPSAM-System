@@ -12,6 +12,7 @@ import com.iappsam.ContactType;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -103,6 +104,7 @@ public class SaveEmployeeAction implements Action {
 				try {
 
 					savePerson(person, request, response);
+					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Employee \""+name+"\" was added");
 					System.out.println("employee was saved!!!!!!!");
 					return;
 

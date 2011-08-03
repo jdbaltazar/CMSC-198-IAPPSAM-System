@@ -7,11 +7,13 @@ import static com.iappsam.servlet.item.ItemAttribute.UNITS;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Item;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
@@ -59,6 +61,7 @@ public class AddItemAction implements Action {
 				throw new RuntimeException();
 
 			itemManager.addItem(item);
+//			Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item \"" + description + "\" was added");
 			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
 			try {
@@ -66,7 +69,8 @@ public class AddItemAction implements Action {
 				request.setAttribute(UNITS, itemManager.getAllUnits());
 				request.setAttribute(STATUSES, itemManager.getAllItemStatus());
 				request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
-				request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP).forward(request, response);
+				RequestDispatcher dispatcher = request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
+				dispatcher.forward(request, response);
 			} catch (TransactionException e1) {
 				e1.printStackTrace();
 			}

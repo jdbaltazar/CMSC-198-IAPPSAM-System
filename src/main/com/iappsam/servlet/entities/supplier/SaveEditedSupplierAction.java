@@ -13,6 +13,7 @@ import com.iappsam.ContactType;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.Supplier;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
@@ -100,6 +101,7 @@ public class SaveEditedSupplierAction implements Action {
 			if (supplier.validate()) {
 				try {
 					sManager.updateSupplier(supplier);
+					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was updated");
 					update = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 					System.out.println("edited supplier was saved!!!");
 				} catch (TransactionException e) {

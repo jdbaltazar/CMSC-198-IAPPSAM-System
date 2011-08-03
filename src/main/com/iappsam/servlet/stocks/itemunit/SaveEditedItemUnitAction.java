@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Unit;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -31,6 +32,7 @@ public class SaveEditedItemUnitAction implements Action {
 			if (Validator.validField(name)) {
 				unit.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateUnit(unit);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Unit \""+name+"\" was updated");
 				Action vAction = new ViewItemUnitsAction();
 				vAction.process(request, response);
 				return;

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -34,6 +35,7 @@ public class SaveEditedBuildingAction implements Action {
 				building.setAddress(address);
 				try {
 					ApplicationContext.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
+					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Building \""+name+"\" was updated");
 					Action vAction = new ViewBuildingsAction();
 					vAction.process(request, response);
 					return;

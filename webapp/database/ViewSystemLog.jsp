@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.iappsam.Log"%>
+<%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="shortcut icon" href="../favicon.ico" />
@@ -224,6 +226,11 @@
 </head>
 
 <body>
+
+<%
+
+	List<Log>logs = (List<Log>)request.getAttribute("logs");
+%>
 <div id="footer">
 <table width="100%" frame="above" bordercolor="#333333" style="font-family:Verdana, Geneva, sans-serif; color:#333333; font-size:9px">
  <tr>
@@ -252,7 +259,7 @@
 <p>&nbsp;</p>
 <div id="apDiv9"></div>
 <div id="logoutiv" style="width:90%">
-  <form id="form2" name="form2" method="post" action="">
+  <form id="form2" name="form2" method="post" action="logout">
     <input name="logout" type="submit" class="maroon" id="logout" value="Logout" />
   </form>
 </div>
@@ -266,10 +273,26 @@
   </table>
 </div>
 <div id="apDiv13">
-  <table width="100%" frame="box" cellspacing="0" class="tablerow_1">
-    <tr>
-      <td width="26%">&nbsp;</td>
-      <td width="74%">&nbsp;</td>
+  <table width="100%" frame="box" cellspacing="0" >
+    
+    <%
+    int i=0;
+    for(Log l: logs){
+   	%>
+   	<tr <%
+   	if(i%2==0)
+   		out.println("class=\"tablerow_1\"");
+   	%> align="center"> 
+   	
+   	<td width="26%"><%=l.getDate().toString() %></td>
+      <td width="74%"><%=l.getDescription() %></td>
+   	 <% 
+   	 i++;
+    }
+    %>
+    
+    
+      
     </tr>
   </table>
 </div>

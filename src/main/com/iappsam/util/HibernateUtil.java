@@ -19,6 +19,7 @@ import com.iappsam.Item;
 import com.iappsam.ItemCategory;
 import com.iappsam.ItemCondition;
 import com.iappsam.ItemStatus;
+import com.iappsam.Log;
 import com.iappsam.Person;
 import com.iappsam.PersonContact;
 import com.iappsam.Signatory;
@@ -80,7 +81,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			p.setProperty("hibernate.show_sql", "true");
+			//p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -120,6 +121,7 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(ICSLine.class);
 			conf.addAnnotatedClass(IE.class);
 			conf.addAnnotatedClass(IELine.class);
+			conf.addAnnotatedClass(Log.class);
 			conf.addAnnotatedClass(ModeOfProcurement.class);
 			conf.addAnnotatedClass(PAR.class);
 			conf.addAnnotatedClass(PARLine.class);

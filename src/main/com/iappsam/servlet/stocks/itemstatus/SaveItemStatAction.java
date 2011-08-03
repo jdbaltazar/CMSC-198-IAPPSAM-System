@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemStatus;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -28,6 +29,7 @@ public class SaveItemStatAction implements Action {
 			status.setName(statusInput);
 			try {
 				itemManager.addItemStatus(status);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Status \""+statusInput+"\" was added");
 				Action viewAction = new ViewItemStatsAction();
 				viewAction.process(request, response);
 				return;

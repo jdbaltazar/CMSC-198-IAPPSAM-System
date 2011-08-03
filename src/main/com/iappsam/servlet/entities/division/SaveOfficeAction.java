@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -32,6 +33,7 @@ public class SaveOfficeAction implements Action {
 			if (officeName != null && !officeName.equalsIgnoreCase("")) {
 				newOffice = new DivisionOffice(office.getDivisionName(), officeName);
 				doManager.addDivisionOffice(newOffice);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Office \""+officeName+"\" was added");
 				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
 
 				request.setAttribute("offices", offices);

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCondition;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -31,6 +32,7 @@ public class SaveEditedItemCondAction implements Action {
 			if (Validator.validField(name)) {
 				itemCondition.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCondition(itemCondition);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Condition \""+name+"\" was updated");
 				Action vAction = new ViewItemCondsAction();
 				vAction.process(request, response);
 				return;

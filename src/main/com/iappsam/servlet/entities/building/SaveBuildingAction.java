@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Building;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
@@ -33,6 +34,7 @@ public class SaveBuildingAction implements Action {
 			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Building \""+name+"\" was added");
 				Action vAction = new ViewBuildingsAction();
 				vAction.process(request, response);
 				return;

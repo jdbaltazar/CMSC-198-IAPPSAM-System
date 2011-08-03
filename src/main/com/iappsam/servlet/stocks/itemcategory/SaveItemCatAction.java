@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.ItemCategory;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
@@ -28,8 +29,7 @@ public class SaveItemCatAction implements Action {
 			category.setName(categoryInput);
 			try {
 				itemManager.addItemCategory(category);
-				add = request.getRequestDispatcher("ViewItemCategories.do");
-				System.out.println("item category was saved!!!");
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Category \""+categoryInput+"\" was added");
 				Action viewAction = new ViewItemCatsAction();
 				viewAction.process(request, response);
 				return;

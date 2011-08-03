@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.Disposal;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -29,6 +30,7 @@ public class SaveEditedDisposalAction implements Action {
 			if (Validator.validField(name)) {
 				disposal.setName(name);
 				ApplicationContext.INSTANCE.getWMRManager().updateDisposal(disposal);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Disposal \""+name+"\" was updated");
 				Action vAction = new ViewDisposalsAction();
 				vAction.process(request, response);
 				return;
