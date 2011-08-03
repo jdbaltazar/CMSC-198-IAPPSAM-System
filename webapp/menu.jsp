@@ -112,11 +112,11 @@
     </tr>
     <tr>
       <td colspan="2"><form id="form14" name="form14" method="post" action="">
-        <input disabled="disabled" name="appBtn2" type="submit"
+        <input name="appBtn2" type="submit"
 							class="menubtn" id="appBtn2" value="Annual Procurement Plan" />
       </form></td>
       <td width="18%"><form id="form15" name="form15" method="post" action="">
-        <input disabled="disabled" name="addAppBtn" type="submit"
+        <input name="addAppBtn" type="submit"
 							class="button2" id="addAppBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>
@@ -132,7 +132,7 @@
     </tr>
     <tr>
       <td colspan="2"><form id="form18" name="form18" method="post" action="">
-        <input disabled="disabled" name="purchaseOrder" type="submit"
+        <input name="purchaseOrder" type="submit"
 							class="menubtn" id="purchaseOrder" value="Purchase Order" />
       </form></td>
       <td><form id="form19" name="form19" method="post" action="/po?new=po">
@@ -142,21 +142,21 @@
     </tr>
     <tr>
       <td colspan="2"><form id="form20" name="form20" method="post" action="">
-        <input disabled="disabled" name="risBtn" type="submit"
+        <input name="risBtn" type="submit"
 							class="menubtn" id="risBtn" value="Requisition &amp; Issue Slip" />
       </form></td>
       <td><form id="form21" name="form21" method="post" action="">
-        <input disabled="disabled" name="addBtn" type="submit"
+        <input name="addBtn" type="submit"
 							class="button2" id="addBtn" value="Add&gt;&gt;" />
       </form></td>
     </tr>
     <tr>
       <td colspan="2"><form id="form22" name="form22" method="post" action="">
-        <input disabled="disabled" name="ieBtn" type="submit"
+        <input name="ieBtn" type="submit"
 							class="menubtn" id="ieBtn" value="Inventory of Equipment" />
       </form></td>
       <td><form id="form23" name="form23" method="post" action="">
-        <input disabled="disabled" name="addIE" type="submit"
+        <input name="addIE" type="submit"
 							class="button2" id="addIE" value="Add&gt;&gt;" />
       </form></td>
     </tr>
