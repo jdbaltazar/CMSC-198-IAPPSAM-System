@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
@@ -30,6 +31,7 @@ public class SaveEditedOfficeAction implements Action {
 			if (newName != null && !newName.equalsIgnoreCase("")) {
 				office.setOfficeName(newName);
 				doManager.updateDivisionOffice(office);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Office \""+newName+"\" was updated");
 				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
 				DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
 				request.setAttribute("offices", offices);

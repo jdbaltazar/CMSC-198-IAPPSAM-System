@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Employee;
 import com.iappsam.Supplier;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -47,7 +48,7 @@ public class SaveEditedSupplierForExistingAction implements Action {
 				supplier.setSupplierName(supplierName);
 				supplier.setAddress(address);
 				sManager.updateSupplier(supplier);
-
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was updated");
 				save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				System.out.println("edited was saveD!!!!!!!!!");
 			} else {

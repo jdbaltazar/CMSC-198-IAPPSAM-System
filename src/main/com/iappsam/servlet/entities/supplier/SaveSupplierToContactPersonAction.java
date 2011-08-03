@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Employee;
 import com.iappsam.Supplier;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
@@ -40,6 +41,7 @@ public class SaveSupplierToContactPersonAction implements Action {
 			if (supplier.validate()) {
 				try {
 					sManager.addSupplier(supplier);
+					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was added");
 					save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				} catch (DuplicateEntryException e) {
 					// TODO Auto-generated catch block

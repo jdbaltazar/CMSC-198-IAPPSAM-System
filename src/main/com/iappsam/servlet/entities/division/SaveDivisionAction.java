@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.DivisionOffice;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -28,6 +29,7 @@ public class SaveDivisionAction implements Action {
 			DivisionOffice dOffice = new DivisionOffice(divisionName, null);
 			try {
 				doManager.addDivisionOffice(dOffice);
+				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Division \""+divisionName+"\" was added");
 				Action vAction = new ViewDivisionsAction();
 				vAction.process(request, response);
 				return;
