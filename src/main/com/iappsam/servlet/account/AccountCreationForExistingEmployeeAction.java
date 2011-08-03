@@ -22,25 +22,13 @@ import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.util.EntryFormatter;
 
-/**
- * Servlet implementation class AccountCreationForExistingEmployee
- */
-@WebServlet("/accounts/create-account-for-employee.do")
-public class AccountCreationForExistingEmployee extends HttpServlet {
+public class AccountCreationForExistingEmployeeAction{
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AccountCreationForExistingEmployee() {
+	public AccountCreationForExistingEmployeeAction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	private EntryFormatter entryFormatter = new EntryFormatter();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -77,11 +65,6 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
 		view.forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String personID = request.getParameter("personID");
 		String password = request.getParameter("password");

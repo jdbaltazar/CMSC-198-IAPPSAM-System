@@ -15,7 +15,6 @@ import com.iappsam.servlet.LogoutServlet;
 import com.iappsam.servlet.MenuServlet;
 import com.iappsam.servlet.SearchItemList;
 import com.iappsam.servlet.account.AccountCreation;
-import com.iappsam.servlet.account.AccountCreationForExistingEmployee;
 import com.iappsam.servlet.account.AccountUpdate;
 import com.iappsam.servlet.account.AccountsView;
 import com.iappsam.servlet.account.UpdateAccount;
@@ -59,7 +58,7 @@ public class WebServer {
 		context.setParentLoaderPriority(true);
 
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
-		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
+		//addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
 		addServlet(new UpdateAccount(), "/accounts/update_account.do");
 		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
