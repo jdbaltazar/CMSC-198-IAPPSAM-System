@@ -11,7 +11,7 @@
 <body>
 <div id="headerBkgrnd"> <img src="images/headerbar.png" width="100%" height="129" /> </div>
 <div id="logo"> <img src="images/headerlogo.png" width="124" height="128" /> </div>
-<div id="headerName"> <img src="images/headertext.png" width="452" height="44" /> </div>
+<div id="headerName"> <img src="images/headertext.png" 	width="452" height="44" /> </div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -172,9 +172,9 @@
     <tr>
       <td width="26%" rowspan="4" class="labels">Records</td>
       <td width="56%"><form id="form4" name="form4" method="post"
-						action="building">
+						action="/building">
         <input
-							name="building-action2" type="hidden" value="view-buildings" />
+							name="building-action" type="hidden" value="view-buildings" />
         <input name="buildingBtn" type="submit" class="menubtn"
 							id="buildingBtn" value="Building" />
       </form></td>
@@ -189,7 +189,7 @@
     <tr>
       <td><form id="form5" name="form5" method="post" action="supplier">
         <input type="hidden"
-							name="supplier-action2" value="view-suppliers" />
+							name="supplier-action" value="view-suppliers" />
         <input name="supplierBtn" type="submit" class="menubtn"
 							id="supplierBtn" value="Supplier" />
       </form></td>
@@ -204,7 +204,7 @@
       <td><form id="form24" name="form24" method="post"
 						action="division-office">
         <input type="hidden"
-							name="division-office-action2" value="view-divisions" />
+							name="division-office-action" value="view-divisions" />
         <input name="divisionOfficeBtn" type="submit" class="menubtn"
 							id="divisionOfficeBtn" value="Division/Office" />
       </form></td>
@@ -218,14 +218,18 @@
     </tr>
     <tr>
       <td><form id="form26" name="form26" method="get"
-						action="/entities/employees/search_employee.do">
+						action="employee" >
         <input name="employeeBtn" type="submit" class="menubtn"
 							id="employeeBtn" value="Employee" />
+							 <input type="hidden"
+							name="employee-action" value="search-employees" />
       </form></td>
       <td><form id="form27" name="form27" method="post"
-						action="entities/employees/add_employee.jsp">
+						action="employee">
         <input name="addEmployeeBtn" type="submit" class="button2"
 							id="addEmployeeBtn" value="Add&gt;&gt;" />
+							<input type="hidden"
+							name="employee-action" value="add-employee" />
       </form></td>
     </tr>
     <tr>

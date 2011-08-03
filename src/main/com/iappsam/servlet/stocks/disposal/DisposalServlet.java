@@ -8,13 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.stocks.itemunit.AddItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.EditItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.SaveEditedItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.SaveItemUnitAction;
-import com.iappsam.servlet.stocks.itemunit.ViewItemUnitsAction;
 
 /**
  * Servlet implementation class SupplierServlet
@@ -61,7 +55,7 @@ public class DisposalServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(DISPOSAL_ACTION);
+		String action = request.getParameter(DISPOSAL_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_DISPOSALS_ACTION))
 			return new ViewDisposalsAction();

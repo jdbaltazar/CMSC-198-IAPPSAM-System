@@ -120,6 +120,7 @@ public class PRLine implements Validatable {
 		return true;
 	}
 
+	@Override
 	public boolean validate() {
 		boolean validItem = item != null && item.validate();
 		boolean validPr = purchaseRequest != null;

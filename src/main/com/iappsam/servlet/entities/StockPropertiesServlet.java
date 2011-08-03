@@ -42,7 +42,7 @@ public class StockPropertiesServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(STOCK_PROPERTIES_ACTION);
+		String action = request.getParameter(STOCK_PROPERTIES_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_STOCK_PROPERTIES_ACTION))
 			return new ViewStockPropertiesAction();

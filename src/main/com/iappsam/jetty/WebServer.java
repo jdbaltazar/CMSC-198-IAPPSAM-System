@@ -55,9 +55,8 @@ public class WebServer {
 		Server server = new Server(80);
 
 		context = new WebAppContext();
-		context.setResourceBase("webapp");
-		context.setParentLoaderPriority(true);
-
+		context.setWar("webapp");
+		
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
 		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");

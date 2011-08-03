@@ -14,7 +14,6 @@ import com.iappsam.Supplier;
 import com.iappsam.logging.Logger;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.servlet.Action;

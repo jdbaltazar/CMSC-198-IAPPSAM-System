@@ -14,7 +14,8 @@
 <title>IAPPSAM::Add Item</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
-<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
+<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet"
+	type="text/css" />
 <script src="../jquery/jquery-1.5.1.min.js"></script>
 <script src="../jquery/ui/jquery.ui.core.js"></script>
 <script src="../jquery/ui/jquery.ui.datepicker.js"></script>
@@ -42,125 +43,159 @@
 </head>
 
 <body>
-<div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
-<div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
-<div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="100%" border="0" cellspacing="0">
-  <tr>
-    <td width="32%">&nbsp;</td>
-    <td width="68%"><form id="form2" name="form2" method="post" action="logout">
-      <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
-    </form></td>
-  </tr>
-  <tr>
-    <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt; <a href="/items" target="_top" class="links">Items List</a> &gt; <em><strong>Add Item</strong></em><strong></strong></td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-<div id="form_table">
-	<form action="/items" method="post"  name="form">
-  <table width="100%" frame="box" cellspacing="0" id="table">
-    <tr>
-      <td class="header_rows"><div class="header_1">Item Information</div></td>
-    </tr>
-    <tr>
-      <td><table width="100%" cellspacing="9" frame="box" class="no_border_table" id="table">
-        <tr>
-          <td class="align_right"><br />
-            *Description:</td>
-          <td><br />            <input name="description" type="text" class="required" id="itemDescription3" maxlength="500" /></td>
-        </tr>
-        <tr>
-          <td class="align_right">*Unit:</td>
-          <td><select name="unit" class="required_menulist" id="itemUnit2">
-          <%
-		for (Unit s : units) {
-	%>
-	<option><%=s%></option>
-	<%
-		}
-	%>
-          </select></td>
-        </tr>
-        <tr>
-          <td class="align_right">*Item Category:</td>
-          <td><select name="itemCategory" class="required_menulist" id="itemCategory2">
-          <%
-		for (ItemCategory s : categories) {
-	%>
-	<option><%=s%></option>
-	<%
-		}
-	%>
-          </select></td>
-        </tr>
-        <tr>
-          <td class="align_right">Price:</td>
-          <td><input name="price" type="text" id="price" maxlength="50" /></td>
-        </tr>
-        <tr>
-          <td class="align_right">Date Acquired:</td>
-          <td>
-          <input name="date"
-					type="text" id="dateAcquired" />
-		</td>
-        </tr>
-        <tr>
-          <td class="align_right">Stock Number:</td>
-          <td><input name="stockNumber" type="text" id="stockNumber" maxlength="45" /></td>
-        </tr>
-        <tr>
-          <td class="align_right">Inventory Item Number:</td>
-          <td><input name="inventoryItemNum" type="text" id="inventoryItemNum3" maxlength="60" /></td>
-        </tr>
-        <tr>
-          <td class="align_right">Property Number:</td>
-          <td><input name="propertyNumber" type="text" id="propertyNumber" maxlength="45" /></td>
-        </tr>
-        <tr>
-          <td class="align_right">*Item Status:</td>
-          <td><select name="itemStatus" class="required_menulist" id="itemStatus3">
-          <%
-		for (ItemStatus s : statuses) {
-	%>
-	<option><%=s%></option>
-	<%
-		}
-	%>
-          </select></td>
-        </tr>
-        <tr>
-          <td class="align_right">*Item Condition:</td>
-          <td><select name="itemCondition" class="required_menulist" id="itemCondition3">
-          <%
-		for (ItemCondition s : conditions) {
-	%>
-	<option><%=s%></option>
-	<%
-		}
-	%>
-          </select></td>
-        </tr>
-        <tr>
-          <td class="align_right">&nbsp;</td>
-          <td><br />
-            <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="ADD" />
-            <br /></td>
-        </tr>
-      </table></td>
-    </tr>
-    <tr>
-      <td class="table_footer"></td>
-    </tr>
+	<div id="headerBkgrnd">
+		<img src="../images/headerbar.png" width="100%" height="129" />
+	</div>
+	<div id="logo">
+		<img src="../images/headerlogo.png" width="124" height="128" />
+	</div>
+	<div id="headerName">
+		<img src="../images/headertext.png" width="452" height="44" />
+	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<table width="100%" border="0" cellspacing="0">
+		<tr>
+			<td width="32%">&nbsp;</td>
+			<td width="68%"><form id="form2" name="form2" method="post"
+					action="logout">
+					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
+						value="Logout" />
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td id="navigation"><a href="/menu" target="_top" class="links">Main
+					Menu</a> &gt; <a href="/items" target="_top" class="links">Items
+					List</a> &gt; <em><strong>Add Item</strong>
+			</em><strong></strong>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	<div id="form_table">
+		<form action="/items" method="post" name="form">
+		<input type="hidden" name="add" value="item"/> 
+			<table width="100%" frame="box" cellspacing="0" id="table">
+				<tr>
+					<td class="header_rows"><div class="header_1">Item
+							Information</div>
+					</td>
+				</tr>
+				<tr>
+					<td><table width="100%" cellspacing="9" frame="box"
+							class="no_border_table" id="table">
+							<tr>
+								<td class="align_right"><br /> *Description:</td>
+								<td><br /> <input name="description" type="text"
+									class="required" id="itemDescription3" maxlength="500" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">*Unit:</td>
+								<td><select name="unit" class="required_menulist"
+									id="itemUnit2">
+										<%
+											for (Unit s : units) {
+										%>
+										<option><%=s%></option>
+										<%
+											}
+										%>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">*Item Category:</td>
+								<td><select name="itemCategory" class="required_menulist"
+									id="itemCategory2">
+										<%
+											for (ItemCategory s : categories) {
+										%>
+										<option><%=s%></option>
+										<%
+											}
+										%>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Price:</td>
+								<td><input name="price" type="text" id="price"
+									maxlength="50" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Date Acquired:</td>
+								<td><input name="date" type="text" id="dateAcquired" /></td>
+							</tr>
+							<tr>
+								<td class="align_right">Stock Number:</td>
+								<td><input name="stockNumber" type="text" id="stockNumber"
+									maxlength="45" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Inventory Item Number:</td>
+								<td><input name="inventoryItemNum" type="text"
+									id="inventoryItemNum3" maxlength="60" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Property Number:</td>
+								<td><input name="propertyNumber" type="text"
+									id="propertyNumber" maxlength="45" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">*Item Status:</td>
+								<td><select name="itemStatus" class="required_menulist"
+									id="itemStatus3">
+										<%
+											for (ItemStatus s : statuses) {
+										%>
+										<option><%=s%></option>
+										<%
+											}
+										%>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">*Item Condition:</td>
+								<td><select name="itemCondition" class="required_menulist"
+									id="itemCondition3">
+										<%
+											for (ItemCondition s : conditions) {
+										%>
+										<option><%=s%></option>
+										<%
+											}
+										%>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">&nbsp;</td>
+								<td><br />
+								
+								 <input name="addItemBtn" type="submit"
+									class="button" id="addItemBtn" value="ADD" /> <br />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="table_footer"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 
-  </table>
-  </form>
-</div>
 
-<!--<div id="footer"></div>-->
+	<!--<div id="footer"></div>-->
 </body>
 </html>

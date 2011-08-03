@@ -38,9 +38,9 @@ public class SearchSuppliersAction implements Action {
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}
-		
-		System.out.println("search: "+searchField);
-		System.out.println("results: "+suppliers.size());
+
+		System.out.println("search: " + searchField);
+		System.out.println("results: " + suppliers.size());
 
 		request.setAttribute("suppliers", suppliers);
 		if (Validator.validField(searchField))

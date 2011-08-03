@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PAR_Line")
-public class PARLine implements Serializable{
+public class PARLine implements Serializable {
 	/**
 	 * 
 	 */

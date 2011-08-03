@@ -48,6 +48,7 @@ public class AccountCreation extends HttpServlet {
 
 	private EntryFormatter entryFormatter = new EntryFormatter();
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
@@ -108,9 +109,8 @@ public class AccountCreation extends HttpServlet {
 	 *      response)
 	 */
 
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
 
@@ -118,14 +118,10 @@ public class AccountCreation extends HttpServlet {
 		employeeNo = request.getParameterValues("employeeNo");
 		divisionOfficeID = request.getParameterValues("divisionOfficeDropdown");
 
-		mobileNumber = entryFormatter.spaceTrimmer(request
-				.getParameter("cellphoneNumber"));
-		landline = entryFormatter
-				.spaceTrimmer(request.getParameter("landline"));
-		emailad = entryFormatter
-				.spaceTrimmer(request.getParameter("e-mail_ad"));
-		username = entryFormatter
-				.spaceTrimmer(request.getParameter("username"));
+		mobileNumber = entryFormatter.spaceTrimmer(request.getParameter("cellphoneNumber"));
+		landline = entryFormatter.spaceTrimmer(request.getParameter("landline"));
+		emailad = entryFormatter.spaceTrimmer(request.getParameter("e-mail_ad"));
+		username = entryFormatter.spaceTrimmer(request.getParameter("username"));
 		password = request.getParameter("password");
 		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
@@ -136,14 +132,11 @@ public class AccountCreation extends HttpServlet {
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
 		for (int i = 0; i < designation.length; i++) {
-			if (designation[i].isEmpty() && !employeeNo[i].isEmpty()
-					&& (entry.check(entry.spaceTrimmer(designation[i])) || entry.check(entry.spaceTrimmer(employeeNo[i]))))
+			if (designation[i].isEmpty() && !employeeNo[i].isEmpty() && (entry.check(entry.spaceTrimmer(designation[i])) || entry.check(entry.spaceTrimmer(employeeNo[i]))))
 				mustFail = true;
 		}
 
-		if (!name.isEmpty() && designation != null && !username.isEmpty()
-				&& !password.isEmpty() && !reenterPassword.isEmpty()
-				&& password.equalsIgnoreCase(reenterPassword) && !mustFail
+		if (!name.isEmpty() && designation != null && !username.isEmpty() && !password.isEmpty() && !reenterPassword.isEmpty() && password.equalsIgnoreCase(reenterPassword) && !mustFail
 				&& entryFormatter.check(name) && entryFormatter.check(username)) {
 			acceptResponse(request, response);
 		} else
@@ -155,8 +148,7 @@ public class AccountCreation extends HttpServlet {
 		AccountManager aManager = new AccountManagerSession();
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		Person person;
-		if (name != null && designation != null && username != null && password != null && reenterPassword != null
-				&& password.equalsIgnoreCase(reenterPassword)) {
+		if (name != null && designation != null && username != null && password != null && reenterPassword != null && password.equalsIgnoreCase(reenterPassword)) {
 			if (title != null && !title.equalsIgnoreCase("null") && !title.isEmpty())
 				person = new Person(title, name);
 			else
@@ -226,8 +218,7 @@ public class AccountCreation extends HttpServlet {
 				aManager.addAccount(account);
 				request.setAttribute("userName", username);
 
-				RequestDispatcher view = request
-						.getRequestDispatcher("ViewAccounts.do");
+				RequestDispatcher view = request.getRequestDispatcher("ViewAccounts.do");
 				view.forward(request, response);
 			} catch (TransactionException e) {
 				failedResponse(request, response);

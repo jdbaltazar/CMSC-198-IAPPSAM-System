@@ -65,7 +65,6 @@ public class SaveEditedEmployeeAction implements Action {
 			landline = request.getParameter("landline");
 			email = request.getParameter("email_ad");
 
-			
 			Person person = pManager.getPerson(Integer.parseInt(personID));
 			if (Validator.validField(title)) {
 				title = title.trim();
@@ -108,64 +107,63 @@ public class SaveEditedEmployeeAction implements Action {
 			}
 			if (!found && Validator.validField(email))
 				person.addContact(new Contact(email, ContactType.EMAIL));
-			
+
 			validAllEmployees = checkAndFormatEmployments(designation, employeeNo, divisionOfficeID);
-			int validFields = countValidFields(designation, employeeNo,divisionOfficeID);
-			List<Employee>employees = pManager.getEmployeeByPerson(person.getId());
-			
-			if(validAllEmployees){
-				
-				//get previous employees
-				//check if the >= in size
-				//if ==, update all
-				//if >, add new employees
-				
-				
-				if(validFields>=employees.size()){
-					for(int i=0; i<validFields; i++){
-						if(!Validator.validField(designation[i])||!Validator.validField(divisionOfficeID[i])){
+			int validFields = countValidFields(designation, employeeNo, divisionOfficeID);
+			List<Employee> employees = pManager.getEmployeeByPerson(person.getId());
+
+			if (validAllEmployees) {
+
+				// get previous employees
+				// check if the >= in size
+				// if ==, update all
+				// if >, add new employees
+
+				if (validFields >= employees.size()) {
+					for (int i = 0; i < validFields; i++) {
+						if (!Validator.validField(designation[i]) || !Validator.validField(divisionOfficeID[i])) {
 							validAllEmployees = false;
 						}
 					}
-				}else{
+				} else {
 					validAllEmployees = false;
 				}
 			}
-			
-			if(validAllEmployees){
-				Set<Employee>emps = person.getEmployments();
-				for(int i=0; i<validFields; i++){
-					if(i<employees.size()){
-						//update old employee
+
+			if (validAllEmployees) {
+				Set<Employee> emps = person.getEmployments();
+				for (int i = 0; i < validFields; i++) {
+					if (i < employees.size()) {
+						// update old employee
 						Employee e = getEmployeeOfPerson(emps, employees.get(i).getId());
-						if(e!=null){
+						if (e != null) {
 							e.setDesignation(designation[i]);
 							DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
 							e.setDivisionOffice(dOffice);
-							if(Validator.validField(employeeNo[i])){
+							if (Validator.validField(employeeNo[i])) {
 								e.setEmployeeNumber(employeeNo[i]);
 							}
 						}
-					}else{
-						//add new employee
+					} else {
+						// add new employee
 						Employee e1 = new Employee();
 						e1.setDesignation(designation[i]);
 						DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
 						e1.setDivisionOffice(dOffice);
-						if(Validator.validField(employeeNo[i])){
+						if (Validator.validField(employeeNo[i])) {
 							e1.setEmployeeNumber(employeeNo[i]);
 						}
 						person.addEmployment(e1);
 					}
 				}
 			}
-			
+
 			if (validAllEmployees && person.validate()) {
 
 				try {
 
 					updatePerson(person, request, response);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Employee \""+name+"\" was updated");
+					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Employee \"" + name + "\" was updated");
 					System.out.println("employee was saved!!!!!!!");
 					return;
 
@@ -188,19 +186,18 @@ public class SaveEditedEmployeeAction implements Action {
 
 	private int countValidFields(String[] designation, String[] employeeNo, String[] divisionOfficeID) {
 		// TODO Auto-generated method stub
-		int count =0;
+		int count = 0;
 		int SIZE = 5;
-		for(int i=0; i<SIZE; i++){
-			if(Validator.validField(designation[i])&&Validator.validField(divisionOfficeID[i])){
+		for (int i = 0; i < SIZE; i++) {
+			if (Validator.validField(designation[i]) && Validator.validField(divisionOfficeID[i])) {
 				count++;
 			}
 		}
-		
+
 		return count;
 	}
 
-	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,
-			IOException, DuplicateEntryException {
+	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException, IOException, DuplicateEntryException {
 		PersonManager pManager = new PersonManagerSession();
 		pManager.updatePerson(person);
 		Action viewAction = new SearchEmployeesAction();
@@ -208,41 +205,40 @@ public class SaveEditedEmployeeAction implements Action {
 		return;
 	}
 
-	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID)
-			throws NumberFormatException, TransactionException {
+	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID) throws NumberFormatException, TransactionException {
 
 		// format all inputs
 
 		int SIZE = 5;
 		boolean valid = true;
-		
-		for(int i=0; i<SIZE; i++){
-			if(Validator.validField(designation[i])&&!Validator.validField(divisionOfficeID[i])){
+
+		for (int i = 0; i < SIZE; i++) {
+			if (Validator.validField(designation[i]) && !Validator.validField(divisionOfficeID[i])) {
 				valid = false;
-			}else if(!Validator.validField(designation[i])&&Validator.validField(divisionOfficeID[i])){
+			} else if (!Validator.validField(designation[i]) && Validator.validField(divisionOfficeID[i])) {
 				valid = false;
-			}else if(Validator.validField(employeeNo[i])&&!Validator.validField(designation[i])&&!Validator.validField(divisionOfficeID[i])){
+			} else if (Validator.validField(employeeNo[i]) && !Validator.validField(designation[i]) && !Validator.validField(divisionOfficeID[i])) {
 				valid = false;
 			}
 		}
-		
-		if(valid){
-			for(int i=0; i<SIZE; i++){
-				designation[i]=designation[i].trim();
-				if(Validator.validField(employeeNo[i])){
+
+		if (valid) {
+			for (int i = 0; i < SIZE; i++) {
+				designation[i] = designation[i].trim();
+				if (Validator.validField(employeeNo[i])) {
 					employeeNo[i] = employeeNo[i].trim();
 				}
 			}
-			
+
 		}
 
 		return valid;
 	}
 
-	private Employee getEmployeeOfPerson(Set<Employee>emps,int employeeID){
+	private Employee getEmployeeOfPerson(Set<Employee> emps, int employeeID) {
 		Employee ret = null;
-		for(Employee e: emps){
-			if(e.getId()==employeeID){
+		for (Employee e : emps) {
+			if (e.getId() == employeeID) {
 				ret = e;
 			}
 		}

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Recapitulation_Line")
-public class RecapitulationLine implements Serializable{
+public class RecapitulationLine implements Serializable {
 	/**
 	 * 
 	 */
@@ -24,7 +24,7 @@ public class RecapitulationLine implements Serializable{
 
 	@Column(name = "Account_Code")
 	private String accountCode;
-	
+
 	@Id
 	@Column(name = "RSMI_ID")
 	private int rsmiID;
@@ -73,5 +73,5 @@ public class RecapitulationLine implements Serializable{
 	public void setRsmiID(int rsmiID) {
 		this.rsmiID = rsmiID;
 	}
-	
+
 }

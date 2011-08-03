@@ -25,7 +25,7 @@ public class ViewEmployeeAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String personID = (String) request.getParameter("personID");
+		String personID = request.getParameter("personID");
 		Employee[] employments = new Employee[5];
 		String mobile = "";
 		String landline = "";

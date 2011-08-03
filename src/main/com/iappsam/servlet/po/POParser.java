@@ -39,7 +39,7 @@ public class POParser extends FormParser {
 
 		if (supplierNameParam != null)
 			po.setSupplierName(pm.getEmployee(Integer.parseInt(supplierNameParam)));
-		
+
 		if (mopParam != null)
 			po.setModeOfProcurement(pom.getModeOfProcurement(Integer.parseInt(mopParam)));
 

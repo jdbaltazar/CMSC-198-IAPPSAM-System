@@ -9,7 +9,6 @@ public interface IEManager {
 
 	void addIE(IE inventoryOfEquipment) throws TransactionException;
 
-
 	void updateIE(IE inventoryOfEquipment) throws TransactionException;
 
 	IE getIE(int id) throws TransactionException;

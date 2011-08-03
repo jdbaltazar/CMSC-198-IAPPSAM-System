@@ -9,23 +9,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ICS_Line")
-public class ICSLine implements Serializable{
-	
+public class ICSLine implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1882633688697555808L;
-	
+
 	@Column(name = "Quantity")
 	private int quantity;
-	
+
 	@Id
 	@Column(name = "Item_ID")
 	private int itemID;
-	
+
 	@Column(name = "Estimated_Useful_Life")
 	private int estimatedusefulLife;
-	
+
 	@Id
 	@Column(name = "ICS_ID")
 	private int icsID;
@@ -74,5 +74,5 @@ public class ICSLine implements Serializable{
 	public void setIcsID(int icsID) {
 		this.icsID = icsID;
 	}
-	
+
 }

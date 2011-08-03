@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Unit;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.util.ApplicationContext;
 
-public class ViewItemUnitsAction implements Action{
+public class ViewItemUnitsAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

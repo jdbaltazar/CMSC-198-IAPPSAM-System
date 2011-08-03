@@ -19,17 +19,18 @@ import com.iappsam.util.ApplicationContext;
 @WebServlet(name = "IIRUPExport.do", urlPatterns = { "/forms/iirup/IIRUPExport.do" })
 public class IIRUPExport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public IIRUPExport() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public IIRUPExport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,26 +38,27 @@ public class IIRUPExport extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String iirup = (String)request.getAttribute("iirupID");
+		String iirup = (String) request.getAttribute("iirupID");
 		int iirupID = Integer.parseInt(iirup);
 		String iirupExport = request.getParameter("exportType");
 		try {
 			IIRUP iirupForm = ApplicationContext.INSTANCE.getIIRUPManager().getIIRUP(iirupID);
-			if(iirupExport.equalsIgnoreCase("pdf")){
+			if (iirupExport.equalsIgnoreCase("pdf")) {
 				System.out.println("Will export to pdf");
-				//PDF Export area use{
-				
-				//}	
+				// PDF Export area use{
+
+				// }
 			}
-			if(iirupExport.equalsIgnoreCase("exce;l")){
+			if (iirupExport.equalsIgnoreCase("exce;l")) {
 				System.out.println("Will export to excel");
-				//Excel Export area use{
-				
-				//}	
+				// Excel Export area use{
+
+				// }
 			}
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block

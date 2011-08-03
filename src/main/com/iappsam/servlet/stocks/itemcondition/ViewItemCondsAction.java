@@ -21,18 +21,18 @@ public class ViewItemCondsAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ItemConditionServlet.VIEW_ITEM_CONDS);
-		
+
 		List<ItemCondition> itemConditions = new ArrayList<ItemCondition>();
-		
+
 		try {
 			itemConditions = itemManager.getAllItemCondition();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("itemConditions", itemConditions);
-		
+
 		view.forward(request, response);
 	}
 

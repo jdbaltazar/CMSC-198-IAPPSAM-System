@@ -50,7 +50,7 @@ public class ModeOfProcServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(MODE_ACTION);
+		String action = request.getParameter(MODE_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_MODES_ACTION))
 			return new ViewModesAction();

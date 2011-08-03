@@ -170,8 +170,8 @@ public class IIRUPForm extends HttpServlet {
 				}
 			}
 			IIRUP iirupForm = new IIRUP(asOfDate, accountableEmployee, requestedByEmployee, approvedByEmployee, inspectedByEmployee, witnessedByEmployee);
-			if(station.getOfficeName()!=null)
-			iirupForm.setStation(station.getDivisionName()+","+station.getOfficeName());
+			if (station.getOfficeName() != null)
+				iirupForm.setStation(station.getDivisionName() + "," + station.getOfficeName());
 			else
 				iirupForm.setStation(station.getDivisionName());
 			ArrayList<Item> item = new ArrayList<Item>();
@@ -185,7 +185,8 @@ public class IIRUPForm extends HttpServlet {
 					disposal = new Disposal(Disposal.DESTROYED);
 				if (disposition.get(i).equalsIgnoreCase(Disposal.SOLD_AT_PRIVATE_SALE))
 					disposal = new Disposal(Disposal.SOLD_AT_PRIVATE_SALE);
-				IIRUPLine line = new IIRUPLine(iirupForm, item.get(i), Integer.parseInt(quantity.get(i)), Integer.parseInt(yearsInService.get(i)), Float.parseFloat(depreciation.get(i)), disposal, orNumber.get(i));
+				IIRUPLine line = new IIRUPLine(iirupForm, item.get(i), Integer.parseInt(quantity.get(i)), Integer.parseInt(yearsInService.get(i)), Float.parseFloat(depreciation.get(i)), disposal,
+						orNumber.get(i));
 				line.setAppraisal(appraisal.get(i));
 
 				iirupForm.addLine(line);

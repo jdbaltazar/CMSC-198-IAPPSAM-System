@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class IOESignatory implements Serializable{
+public class IOESignatory implements Serializable {
 
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class IOESignatory implements Serializable{
 	@Id
 	@Column(name = "Inventory_Of_Equipment_ID")
 	private int ieId;
-	
+
 	@Id
 	@Column(name = "Signatory_ID")
 	private int signatoryId;
@@ -48,5 +48,5 @@ public class IOESignatory implements Serializable{
 	public void setSignatoryId(int signatoryId) {
 		this.signatoryId = signatoryId;
 	}
-	
+
 }

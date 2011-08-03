@@ -11,7 +11,6 @@ public interface APPManager {
 
 	void addAPP(APP annualProcurementPlan) throws TransactionException;
 
-
 	void updateAPP(APP annualProcurementPlan) throws TransactionException;
 
 	APP getAPP(int appID) throws TransactionException;
