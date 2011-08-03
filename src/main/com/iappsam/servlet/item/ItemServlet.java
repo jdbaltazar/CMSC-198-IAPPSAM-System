@@ -20,12 +20,11 @@ public class ItemServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private AddItemAction addItem;
+	private AddUpdateItemAction addItem;
 	private NewItemAction newItem;
 	private ViewItemAction viewItem;
 	private SearchItemsAction searchItems;
 	private ListItemsAction listItems;
-	private UpdateItemAction updateItem;
 
 	public ItemServlet() {
 		this(ApplicationContext.INSTANCE);
@@ -33,11 +32,10 @@ public class ItemServlet extends HttpServlet {
 
 	public ItemServlet(ApplicationContext m) {
 		super();
-		addItem = new AddItemAction(m.getItemManager());
+		addItem = new AddUpdateItemAction(m.getItemManager());
 		newItem = new NewItemAction(m.getItemManager());
 		viewItem = new ViewItemAction(m.getItemManager());
 		listItems = new ListItemsAction(m.getItemManager());
-		updateItem = new UpdateItemAction(m.getItemManager());
 		searchItems = new SearchItemsAction(m.getItemSearcher());
 	}
 
@@ -64,7 +62,7 @@ public class ItemServlet extends HttpServlet {
 		else if (add != null && add.equals("item"))
 			return addItem;
 		else if (update != null && update.equals("item"))
-			return updateItem;
+			return addItem;
 		else if (id != null)
 			return viewItem;
 		else if (q != null)
