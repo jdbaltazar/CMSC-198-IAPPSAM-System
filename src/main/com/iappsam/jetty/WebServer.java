@@ -55,7 +55,7 @@ public class WebServer {
 		Server server = new Server(80);
 
 		context = new WebAppContext();
-		context.setResourceBase("webapp");
+		context.setWar("webapp");
 
 		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
 		addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
