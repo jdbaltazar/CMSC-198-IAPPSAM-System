@@ -35,6 +35,18 @@ div#menu_2 {
 /*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
 
+div#menu_4 {
+  margin:0 auto;
+  width:25%;
+  height:inherit;
+  border:none;
+	position:absolute;
+	top:50%;
+	left:38%;
+/*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
+}
+
+
 div#menu_others {
   margin:0 auto;
   width:28%;
