@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Account;
 import com.iappsam.AccountType;
-import com.iappsam.ContactType;
 import com.iappsam.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.PersonManager;
@@ -42,6 +41,8 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 	 *      response)
 	 */
 	private EntryFormatter entryFormatter = new EntryFormatter();
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
@@ -82,6 +83,7 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String personID = request.getParameter("personID");
 		String password = request.getParameter("password");
@@ -89,8 +91,8 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 		String acctType = request.getParameter("accountType");
 		String userName = entryFormatter.spaceTrimmer(request.getParameter("username"));
 		PersonManager pManager = new PersonManagerSession();
-		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null && reenterPassword != null
-				&& password.equals(reenterPassword)&&entryFormatter.check(userName))
+		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null && reenterPassword != null && password.equals(reenterPassword)
+				&& entryFormatter.check(userName))
 			try {
 				Person p = pManager.getPerson(Integer.parseInt(personID));
 				Account account = new Account();
@@ -112,14 +114,14 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 				view.forward(request, response);
 			} catch (NumberFormatException e) {
 			} catch (TransactionException e) {
-				fail(request, response, personID, userName, acctType,password,reenterPassword);
+				fail(request, response, personID, userName, acctType, password, reenterPassword);
 			}
-			else
-				fail(request,response,personID,userName,acctType,password,reenterPassword);
+		else
+			fail(request, response, personID, userName, acctType, password, reenterPassword);
 
 	}
 
-	protected void fail(HttpServletRequest request, HttpServletResponse response, String personID, String userName, String accountType,String password, String reenterPassword) {
+	protected void fail(HttpServletRequest request, HttpServletResponse response, String personID, String userName, String accountType, String password, String reenterPassword) {
 
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
@@ -148,15 +150,13 @@ public class AccountCreationForExistingEmployee extends HttpServlet {
 			request.setAttribute("persons", availablePersons);
 			request.setAttribute("personSelect", personID);
 			request.setAttribute("username", entryFormatter.spaceTrimmer(userName));
-			if(userName!=null&&!userName.isEmpty()){
+			if (userName != null && !userName.isEmpty()) {
 				request.setAttribute("userNameOK", "true");
-			}
-			else
+			} else
 				request.setAttribute("userNameOK", "false");
-			if(password!=null&&reenterPassword!=null&&password.equals(reenterPassword)){
-				request.setAttribute("passwordOK","true");
-			}
-			else
+			if (password != null && reenterPassword != null && password.equals(reenterPassword)) {
+				request.setAttribute("passwordOK", "true");
+			} else
 				request.setAttribute("passwordOK", "false");
 			request.setAttribute("accounttype", accountType);
 			RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");

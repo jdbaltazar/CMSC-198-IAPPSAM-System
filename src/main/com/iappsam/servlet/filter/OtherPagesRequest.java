@@ -12,8 +12,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class OtherPagesRequest implements Request {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException,
-			TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException, TransactionException {
 		String username = (String) request.getSession().getAttribute("username");
 		if (username != null) {
 			chain.doFilter(request, response);

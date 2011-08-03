@@ -51,7 +51,7 @@ public class IIRUPItemImbed extends HttpServlet {
 			return;
 		}
 		DivisionOffice station = (DivisionOffice) request.getSession().getAttribute("station");
-		System.out.println("Station:  " + station.getDivisionName()+"/"+station.getOfficeName());
+		System.out.println("Station:  " + station.getDivisionName() + "/" + station.getOfficeName());
 		ArrayList<String> trueItemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		if (trueItemList == null || trueItemList.isEmpty()) {
 			trueItemList = new ArrayList<String>();

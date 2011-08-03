@@ -11,7 +11,6 @@ import com.iappsam.Item;
 import com.iappsam.forms.Form;
 import com.iappsam.search.ItemSearcher;
 import com.iappsam.servlet.Action;
-import com.iappsam.util.ApplicationContext;
 
 public class SearchItemAction implements Action {
 

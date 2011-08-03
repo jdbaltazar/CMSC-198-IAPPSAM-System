@@ -50,7 +50,7 @@ public class ItemCategoryServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(ITEM_CAT_ACTION);
+		String action = request.getParameter(ITEM_CAT_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_ITEM_CATS_ACTION))
 			return new ViewItemCatsAction();

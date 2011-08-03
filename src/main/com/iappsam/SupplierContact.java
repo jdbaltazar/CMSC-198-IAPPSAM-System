@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Supplier_Contact")
-public class SupplierContact implements Serializable{
-	
+public class SupplierContact implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -19,7 +19,7 @@ public class SupplierContact implements Serializable{
 	@Id
 	@Column(name = "Person_ID")
 	private int supplierID;
-	
+
 	@Id
 	@Column(name = "Person_ID")
 	private int contactID;

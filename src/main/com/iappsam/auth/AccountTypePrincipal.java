@@ -13,14 +13,17 @@ public class AccountTypePrincipal implements Principal {
 		this.accountType = accountType;
 	}
 
+	@Override
 	public String getName() {
 		return accountType;
 	}
 
+	@Override
 	public String toString() {
 		return "ExamplePrinciapl: " + accountType;
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (obj == null)
 			return false;

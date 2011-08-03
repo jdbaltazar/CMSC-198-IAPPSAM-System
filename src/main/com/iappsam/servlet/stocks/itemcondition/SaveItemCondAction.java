@@ -12,7 +12,6 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.servlet.Action;
-import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Validator;
 
 public class SaveItemCondAction implements Action {

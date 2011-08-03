@@ -18,7 +18,7 @@ public class SaveEditedDivisionAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		RequestDispatcher view = request.getRequestDispatcher(DivisionOfficeServlet.EDIT_DIVISION);
 
 		String dOfficeID = request.getParameter("dOfficeID");

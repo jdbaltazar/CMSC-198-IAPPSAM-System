@@ -22,17 +22,18 @@ import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 @WebServlet("/divisions/AddDivisionOffice.do")
 public class AddDivisionOffice extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddDivisionOffice() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddDivisionOffice() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,22 +41,23 @@ public class AddDivisionOffice extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<DivisionOffice>dos = new ArrayList<DivisionOffice>();
+
+		List<DivisionOffice> dos = new ArrayList<DivisionOffice>();
 		DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
-		
+
 		try {
 			dos = doManager.getAllDivisionOffice();
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("divOffices", dos);
-		
+
 		RequestDispatcher view = request.getRequestDispatcher("../entities/division/AddDivisionOffice.jsp");
 		view.forward(request, response);
 	}

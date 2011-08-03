@@ -55,7 +55,7 @@ public class DivisionOfficeServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(DIVISION_OFFICE_ACTION);
+		String action = request.getParameter(DIVISION_OFFICE_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_DIVISIONS_ACTION))
 			return new ViewDivisionsAction();

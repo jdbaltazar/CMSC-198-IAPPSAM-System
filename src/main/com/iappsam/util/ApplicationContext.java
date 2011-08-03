@@ -98,7 +98,7 @@ public class ApplicationContext {
 	public WMRManager getWMRManager() {
 		return WMR_MANAGER;
 	}
-	
+
 	public IEManager getIEManager() {
 		return IE_MANAGER;
 	}

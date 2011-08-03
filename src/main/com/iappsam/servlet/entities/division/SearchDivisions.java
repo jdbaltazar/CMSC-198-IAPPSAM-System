@@ -55,7 +55,7 @@ public class SearchDivisions extends HttpServlet {
 
 		try {
 			if (query != null && !query.isEmpty()) {
-				
+
 			} else {
 				dos = doManager.getAllDivisionOffice();
 

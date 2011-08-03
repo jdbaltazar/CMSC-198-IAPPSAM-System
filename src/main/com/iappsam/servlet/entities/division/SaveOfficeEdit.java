@@ -14,7 +14,6 @@ import com.iappsam.DivisionOffice;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
-import com.iappsam.util.ApplicationContext;
 
 /**
  * Servlet implementation class SaveDivisionEdit
@@ -63,7 +62,7 @@ public class SaveOfficeEdit extends HttpServlet {
 				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
 				DivisionOffice dOffice = doManager.getDivisionOffice(office.getDivisionName(), null);
 				request.setAttribute("offices", offices);
-				request.setAttribute("dOfficeID", ""+dOffice.getId());
+				request.setAttribute("dOfficeID", "" + dOffice.getId());
 				view = request.getRequestDispatcher("ViewDivisionAndOffices.do");
 			} else {
 				request.setAttribute("office", office);

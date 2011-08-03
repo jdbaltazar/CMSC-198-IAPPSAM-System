@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
 @WebServlet("/stocks/item-unit")
@@ -50,7 +49,7 @@ public class ItemUnitServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(ITEM_UNIT_ACTION);
+		String action = request.getParameter(ITEM_UNIT_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_ITEM_UNITS_ACTION))
 			return new ViewItemUnitsAction();

@@ -23,14 +23,14 @@ public class AccountsView extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 
 		ArrayList<String> userName = new ArrayList<String>();
 		ArrayList<String> acctType = new ArrayList<String>();
 		ArrayList<String> name = new ArrayList<String>();
-		
-		
+
 		try {
 			List<Account> accounts = aManager.getAllAccounts();
 			for (int i = 0; i < accounts.size(); i++) {
@@ -38,7 +38,7 @@ public class AccountsView extends HttpServlet {
 				acctType.add(accounts.get(i).getType().toString());
 				name.add(accounts.get(i).getPerson().getName());
 			}
-			
+
 			request.setAttribute("accounts", accounts);
 		} catch (org.hibernate.TransactionException e) {
 			e.printStackTrace();
@@ -53,9 +53,11 @@ public class AccountsView extends HttpServlet {
 
 		request.getRequestDispatcher("../accounts/ViewAccounts.jsp").forward(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response){
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			doGet(request,response);
+			doGet(request, response);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

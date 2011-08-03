@@ -40,5 +40,4 @@ public interface POManager {
 
 	void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException;
 
-
 }

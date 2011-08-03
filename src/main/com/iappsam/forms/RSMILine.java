@@ -14,7 +14,7 @@ public class RSMILine implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6680944389292444506L;
-	
+
 	@Id
 	@Column(name = "RIS_Number")
 	private int risNumber;
@@ -80,5 +80,5 @@ public class RSMILine implements Serializable {
 	public void setRsmiID(int rsmiID) {
 		this.rsmiID = rsmiID;
 	}
-	
+
 }

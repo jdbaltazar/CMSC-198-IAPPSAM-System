@@ -47,7 +47,7 @@ public class AddModeOfProcurement extends HttpServlet {
 
 			try {
 				poManager.addModeOfProcurement(modeofProc);
-				add= request.getRequestDispatcher("ViewModesOfProcurement.do");
+				add = request.getRequestDispatcher("ViewModesOfProcurement.do");
 				System.out.println("mode was saved!!!!!!!!!!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
@@ -57,7 +57,7 @@ public class AddModeOfProcurement extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
 		add.forward(request, response);
 
 	}

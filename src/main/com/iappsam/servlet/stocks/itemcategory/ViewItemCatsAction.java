@@ -21,16 +21,16 @@ public class ViewItemCatsAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ItemCategoryServlet.VIEW_ITEM_CATS);
-		
+
 		List<ItemCategory> categories = new ArrayList<ItemCategory>();
-		
+
 		try {
 			categories = itemManager.getAllItemCategory();
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("categories", categories);
 		view.forward(request, response);
 	}

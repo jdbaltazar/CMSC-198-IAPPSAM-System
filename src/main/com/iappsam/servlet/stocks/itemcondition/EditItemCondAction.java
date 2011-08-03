@@ -17,18 +17,17 @@ public class EditItemCondAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
+		ItemCondition itemCondition = new ItemCondition();
+		RequestDispatcher edit = request.getRequestDispatcher(ItemConditionServlet.EDIT_ITEM_COND);
+		try {
+			itemCondition = ApplicationContext.INSTANCE.getItemManager().getItemCondition(itemConditionID);
+		} catch (TransactionException e) {
+			e.printStackTrace();
+		}
 
-			int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
-			ItemCondition itemCondition = new ItemCondition();
-			RequestDispatcher edit = request.getRequestDispatcher(ItemConditionServlet.EDIT_ITEM_COND);
-			try {
-				itemCondition = ApplicationContext.INSTANCE.getItemManager().getItemCondition(itemConditionID);
-			} catch (TransactionException e) {
-				e.printStackTrace();
-			}
-
-			request.setAttribute("itemCondition", itemCondition);
-			edit.forward(request, response);
+		request.setAttribute("itemCondition", itemCondition);
+		edit.forward(request, response);
 	}
 
 }

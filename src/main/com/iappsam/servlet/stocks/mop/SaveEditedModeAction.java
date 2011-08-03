@@ -17,7 +17,6 @@ public class SaveEditedModeAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
 		Action action = new EditModeAction();
 
 		int mopID = Integer.parseInt(request.getParameter("mopID"));

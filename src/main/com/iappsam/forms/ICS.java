@@ -8,24 +8,24 @@ import javax.persistence.Id;
 
 @Entity(name = "ICS")
 public class ICS {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ICS_ID", nullable = false)
 	private int icsID;
-	
+
 	@Column(name = "ICS_Number", nullable = true, length = 45)
 	private String icsNumber;
-	
+
 	@Column(name = "Purpose", nullable = true, length = 200)
 	private String purpose;
-	
+
 	@Column(name = "Supplier_ID", nullable = false)
 	private int supplierID;
-	
+
 	@Column(name = "Signatory_ID", nullable = false)
 	private int receivedBySignatoryID;
-	
+
 	@Column(name = "Signatory_ID1", nullable = false)
 	private int receviedFromSignatoryID;
 

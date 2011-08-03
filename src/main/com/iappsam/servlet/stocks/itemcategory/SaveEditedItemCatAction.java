@@ -2,7 +2,6 @@ package com.iappsam.servlet.stocks.itemcategory;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +18,10 @@ public class SaveEditedItemCatAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("inside saveediteditemcategory.java");
 
-		//RequestDispatcher save = request.getRequestDispatcher("EditItemCategory.do");
+		// RequestDispatcher save =
+		// request.getRequestDispatcher("EditItemCategory.do");
 		Action action = new EditItemCatAction();
-		
+
 		int itemCategoryID = Integer.parseInt(request.getParameter("itemCategoryID"));
 		String name = request.getParameter("itemCategory").trim();
 
@@ -43,7 +43,7 @@ public class SaveEditedItemCatAction implements Action {
 			request.setAttribute("itemCategory", itemCategory);
 		}
 
-		request.setAttribute("itemCategoryID", ""+itemCategoryID);
+		request.setAttribute("itemCategoryID", "" + itemCategoryID);
 		action.process(request, response);
 	}
 

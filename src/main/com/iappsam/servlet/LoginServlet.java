@@ -2,7 +2,6 @@ package com.iappsam.servlet;
 
 import java.io.IOException;
 
-import javax.security.auth.login.LoginException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String username = request.getParameter(USERNAME);
-		
+
 		if (loginModule.login(request))
 			forwardToMenuFrameJsp(request, response, username);
 		else
@@ -48,14 +47,14 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private void forwardToMenuFrameJsp(HttpServletRequest request, HttpServletResponse response, String username) throws ServletException, IOException {
-		
+
 		RequestDispatcher view = request.getRequestDispatcher("menu");
 		HttpSession session = request.getSession();
 
 		session.setAttribute("username", username);
-		session.setMaxInactiveInterval(60*30);
+		session.setMaxInactiveInterval(60 * 30);
 
-		System.out.println("user: " + (String)session.getAttribute("username"));
+		System.out.println("user: " + (String) session.getAttribute("username"));
 		view.forward(request, response);
 	}
 

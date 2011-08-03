@@ -1,7 +1,6 @@
 package com.iappsam.servlet.entities.employee;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Contact;
 import com.iappsam.ContactType;
-import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.managers.ContactManager;

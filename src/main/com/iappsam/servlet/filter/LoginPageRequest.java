@@ -7,15 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.LoginModule;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.util.Validator;
 
 public class LoginPageRequest implements Request {
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException,
-			TransactionException {
+	public void process(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException, TransactionException {
 
 		String username = (String) request.getSession().getAttribute("username");
 		if (username == null) // {

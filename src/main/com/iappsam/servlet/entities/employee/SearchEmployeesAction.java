@@ -71,7 +71,7 @@ public class SearchEmployeesAction implements Action {
 						persons.add(p);
 				}
 			}
-			
+
 			request.setAttribute("persons", dummy);
 			request.setAttribute("query", query);
 		}

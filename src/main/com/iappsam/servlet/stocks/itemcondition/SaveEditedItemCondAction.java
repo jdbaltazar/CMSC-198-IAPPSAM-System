@@ -2,7 +2,6 @@ package com.iappsam.servlet.stocks.itemcondition;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +16,11 @@ public class SaveEditedItemCondAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		System.out.println("inside saveediteditemcondition.java");
 
 		Action action = new EditItemCondAction();
-		
+
 		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));
 		String name = request.getParameter("itemCondition").trim();
 
@@ -42,7 +41,7 @@ public class SaveEditedItemCondAction implements Action {
 			request.setAttribute("itemCondition", itemCondition);
 		}
 
-		request.setAttribute("itemConditionID", ""+itemConditionID);
+		request.setAttribute("itemConditionID", "" + itemConditionID);
 		action.process(request, response);
 	}
 

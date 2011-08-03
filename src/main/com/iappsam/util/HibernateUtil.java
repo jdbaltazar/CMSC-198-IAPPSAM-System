@@ -72,7 +72,7 @@ public class HibernateUtil {
 		if (!tryToBuildSessionFactory("root", "123456"))
 			throw new RuntimeException("connection unsuccessful");
 
-//		addDefaulEntities();
+		// addDefaulEntities();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {

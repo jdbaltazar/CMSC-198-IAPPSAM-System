@@ -27,15 +27,17 @@ public class ViewWorkInformation extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		AccountManager am = new AccountManagerSession();
 		PersonManager pm = new PersonManagerSession();
 
-		String userName = (String) request.getParameter("userName");
+		String userName = request.getParameter("userName");
 
 		List<String> designations = new ArrayList<String>();
 		List<String> employeeNumbers = new ArrayList<String>();
