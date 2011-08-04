@@ -9,19 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.servlet.Action;
 
-/**
- * Servlet implementation class BuildingServlet
- */
 @WebServlet("/system-logs")
 public class ViewSystemLogs extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6524025640333074089L;
 
 	public static final String VIEW_SYSTEM_LOGS = "database/ViewSystemLog.jsp";
-	
+
 	public ViewSystemLogs() {
 		super();
 	}

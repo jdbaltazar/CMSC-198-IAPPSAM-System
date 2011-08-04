@@ -106,5 +106,5 @@ public class WMRLine implements Serializable {
 	public void setWasteMaterialsReportId(int wasteMaterialsReportId) {
 		this.wasteMaterialsReportId = wasteMaterialsReportId;
 	}
-	
+
 }

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import com.iappsam.Validatable;
 
 @Entity
-public class Disposal implements Validatable{
+public class Disposal implements Validatable {
 
 	public static final String DESTROYED = "DESTROYED";
 	public static final String SOLD_AT_PRIVATE_SALE = "SOLD_AT_PRIVATE_SALE";
@@ -70,7 +70,7 @@ public class Disposal implements Validatable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public boolean validate() {
 		return name != null && !name.trim().equals("");

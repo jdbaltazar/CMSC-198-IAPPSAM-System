@@ -1,16 +1,11 @@
 package com.iappsam.servlet.entities.supplier;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.Supplier;
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
 public class NewSupplierAction implements Action {

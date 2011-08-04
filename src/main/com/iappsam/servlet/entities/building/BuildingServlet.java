@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
 /**
@@ -55,7 +54,7 @@ public class BuildingServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(BUILDING_ACTION);
+		String action = request.getParameter(BUILDING_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_BUILDINGS_ACTION))
 			return new ViewBuildingsAction();

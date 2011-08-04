@@ -185,8 +185,5 @@ public class EntityRemover {
 
 	public static void reset() throws TransactionException, DuplicateEntryException {
 		removeAll();
-		HibernateUtil.addAdminAccount();
-		HibernateUtil.addItemDependencies();
-		HibernateUtil.addDisposals();
 	}
 }

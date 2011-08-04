@@ -15,7 +15,7 @@ import com.iappsam.forms.IIRUP;
 /**
  * Servlet implementation class IIRUPFlush
  */
-@WebServlet( urlPatterns={"/forms/IIRUPFlush.do","/forms/iirup/IIRUPFlush.do"})
+@WebServlet(urlPatterns = { "/forms/IIRUPFlush.do", "/forms/iirup/IIRUPFlush.do" })
 public class IIRUPFlush extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,12 +50,12 @@ public class IIRUPFlush extends HttpServlet {
 			else
 				continue;
 		}
-		IIRUP iirupForm = (IIRUP)request.getAttribute("iirupForm");
-		
-		if(iirupForm!=null)
-		System.out.println("IIRUPForm ID:!!!!!"+iirupForm.getId());
+		IIRUP iirupForm = (IIRUP) request.getAttribute("iirupForm");
+
+		if (iirupForm != null)
+			System.out.println("IIRUPForm ID:!!!!!" + iirupForm.getId());
 		else
-		System.out.println("Pass fail");
+			System.out.println("Pass fail");
 		request.setAttribute("iirupForm", iirupForm);
 		RequestDispatcher view = request.getRequestDispatcher("IIRUPFormFinalize.jsp");
 		view.forward(request, response);

@@ -2,7 +2,6 @@ package com.iappsam.servlet.stocks.itemunit;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
 import com.iappsam.util.Validator;
 
-public class SaveEditedItemUnitAction implements Action{
+public class SaveEditedItemUnitAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,12 +21,12 @@ public class SaveEditedItemUnitAction implements Action{
 		System.out.println("....inside saveediteditemunit.java");
 
 		Action action = new EditItemUnitAction();
-		
+
 		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));
 		String name = request.getParameter("itemUnit").trim();
 
 		Unit unit = null;
-		
+
 		try {
 			unit = ApplicationContext.INSTANCE.getItemManager().getUnit(itemUnitID);
 			if (Validator.validField(name)) {
@@ -42,9 +41,8 @@ public class SaveEditedItemUnitAction implements Action{
 			e.printStackTrace();
 			request.setAttribute("itemUnit", unit);
 		}
-		
-		
-		request.setAttribute("itemUnitID", ""+itemUnitID);
+
+		request.setAttribute("itemUnitID", "" + itemUnitID);
 		action.process(request, response);
 	}
 

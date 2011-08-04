@@ -9,7 +9,6 @@ public interface IIRUPManager {
 
 	void addIIRUP(IIRUP iirup) throws TransactionException;
 
-
 	void updateIIRUP(IIRUP iirup) throws TransactionException;
 
 	IIRUP getIIRUP(int iirupID) throws TransactionException;

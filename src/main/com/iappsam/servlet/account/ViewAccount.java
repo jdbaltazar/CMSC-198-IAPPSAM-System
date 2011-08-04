@@ -30,8 +30,8 @@ public class ViewAccount extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
 		String userName = request.getParameter("userName");
@@ -43,8 +43,7 @@ public class ViewAccount extends HttpServlet {
 		try {
 			Account account = aManager.getAccount(userName);
 			Set<Contact> contacts = account.getPerson().getContacts();
-			List<Employee> empList = pManager.getEmployeeByPerson(account
-					.getPerson().getId());
+			List<Employee> empList = pManager.getEmployeeByPerson(account.getPerson().getId());
 
 			for (Contact contact : contacts)
 				if (contact.getType() == ContactType.MOBILE)
@@ -62,14 +61,13 @@ public class ViewAccount extends HttpServlet {
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher view = request
-				.getRequestDispatcher("../viewing/ViewAccount.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../viewing/ViewAccount.jsp");
 		view.forward(request, response);
 
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 

@@ -2,11 +2,8 @@ package com.iappsam.servlet.item;
 
 import static com.iappsam.servlet.item.ItemAttribute.CATEGORIES;
 import static com.iappsam.servlet.item.ItemAttribute.CONDITIONS;
-import static com.iappsam.servlet.item.ItemAttribute.DONE;
 import static com.iappsam.servlet.item.ItemAttribute.STATUSES;
 import static com.iappsam.servlet.item.ItemAttribute.UNITS;
-import static com.iappsam.servlet.item.ItemAttribute.VALID_INPUT_FOR_ITEM;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;

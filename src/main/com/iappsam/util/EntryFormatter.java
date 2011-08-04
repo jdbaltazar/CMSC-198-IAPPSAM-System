@@ -1,7 +1,5 @@
 package com.iappsam.util;
 
-
-
 import java.util.ArrayList;
 
 public class EntryFormatter {
@@ -9,8 +7,8 @@ public class EntryFormatter {
 		// TODO Auto-generated constructor stub
 	}
 
-	public  boolean check(String entry) {
-		System.out.println("Entry:" +entry);
+	public boolean check(String entry) {
+		System.out.println("Entry:" + entry);
 		AlphaNumeric[] aN = AlphaNumeric.values();
 		ArrayList<String> alpha = new ArrayList<String>();
 
@@ -20,11 +18,8 @@ public class EntryFormatter {
 		if (entry.length() < 1)
 			return false;
 		for (int i = 0; i < entry.length(); i++) {
-			if (!alpha
-					.contains(""+entry.charAt(i))
-					&& (!("" + entry.charAt(i)).equalsIgnoreCase(" "))) {
-				System.out.println("Error Occoured at letterNo:" + i + ":"
-						+ entry.charAt(i) + ":");
+			if (!alpha.contains("" + entry.charAt(i)) && (!("" + entry.charAt(i)).equalsIgnoreCase(" "))) {
+				System.out.println("Error Occoured at letterNo:" + i + ":" + entry.charAt(i) + ":");
 				return false;
 			}
 		}
@@ -60,8 +55,7 @@ public class EntryFormatter {
 				if (dummy3.charAt(j) == ' ') {
 					for (int k = j; k < dummy3.length(); k++) {
 						if (dummy3.charAt(k) != ' ') {
-							dummy2 = dummy3.substring(0, j)
-									+ dummy3.substring(k - 1, dummy3.length());
+							dummy2 = dummy3.substring(0, j) + dummy3.substring(k - 1, dummy3.length());
 							break;
 						}
 					}

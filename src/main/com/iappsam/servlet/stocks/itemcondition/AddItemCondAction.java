@@ -7,9 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
 
 public class AddItemCondAction implements Action {
 

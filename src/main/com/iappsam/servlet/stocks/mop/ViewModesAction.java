@@ -21,17 +21,17 @@ public class ViewModesAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		POManager poManager = new POManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ModeOfProcServlet.VIEW_MODES);
-		
+
 		List<ModeOfProcurement> modes = new ArrayList<ModeOfProcurement>();
-		
+
 		try {
 			modes = poManager.getAllModeOfProcurement();
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("modes", modes);
-		
+
 		view.forward(request, response);
 	}
 }

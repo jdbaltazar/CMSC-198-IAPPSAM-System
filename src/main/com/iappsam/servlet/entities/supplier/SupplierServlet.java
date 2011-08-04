@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
-import com.iappsam.util.ApplicationContext;
 
 @WebServlet("/supplier")
 public class SupplierServlet extends HttpServlet {
@@ -71,7 +69,7 @@ public class SupplierServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String action = (String) request.getParameter(SUPPLIER_ACTION);
+		String action = request.getParameter(SUPPLIER_ACTION);
 
 		if (action.equalsIgnoreCase(VIEW_SUPPLIERS_ACTION))
 			return new ViewSuppliersAction();

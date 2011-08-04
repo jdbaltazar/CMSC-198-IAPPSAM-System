@@ -7,7 +7,6 @@ import org.hibernate.*;
 import org.hibernate.cfg.*;
 
 import com.iappsam.Account;
-import com.iappsam.AccountType;
 import com.iappsam.Building;
 import com.iappsam.Contact;
 import com.iappsam.ContactType;
@@ -51,13 +50,6 @@ import com.iappsam.forms.RSMILine;
 import com.iappsam.forms.RecapitulationLine;
 import com.iappsam.forms.WMR;
 import com.iappsam.forms.WMRLine;
-import com.iappsam.managers.ItemManager;
-import com.iappsam.managers.WMRManager;
-import com.iappsam.managers.exceptions.DuplicateEntryException;
-import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.AccountManagerSession;
-import com.iappsam.managers.sessions.ItemManagerSession;
-import com.iappsam.managers.sessions.WMRManagerSession;
 import com.iappsam.servlet.filter.SecurityFilter;
 
 public class HibernateUtil {
@@ -70,10 +62,8 @@ public class HibernateUtil {
 
 	public static void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		if (!tryToBuildSessionFactory("root", "123456"))
+		if (!tryToBuildSessionFactory("root", ""))
 			throw new RuntimeException("connection unsuccessful");
-
-//		addDefaulEntities();
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
@@ -81,7 +71,7 @@ public class HibernateUtil {
 			Properties p = new Properties();
 			p.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 			p.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/iappsam");
-			//p.setProperty("hibernate.show_sql", "true");
+			// p.setProperty("hibernate.show_sql", "true");
 			p.setProperty("hibernate.connection.username", username);
 			p.setProperty("hibernate.connection.password", password);
 			p.setProperty("hibernate.search.default.indexBase", "./lucene-index");
@@ -89,7 +79,6 @@ public class HibernateUtil {
 
 			Configuration conf = new Configuration();
 
-			// entities
 			conf.setProperties(p);
 			conf.addAnnotatedClass(IappsamConfig.class);
 			conf.addAnnotatedClass(Account.class);
@@ -111,7 +100,6 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(SupplierContact.class);
 			conf.addAnnotatedClass(Unit.class);
 
-			// //form entities
 			conf.addAnnotatedClass(APP.class);
 			conf.addAnnotatedClass(APPLine.class);
 			conf.addAnnotatedClass(Disposal.class);
@@ -139,7 +127,6 @@ public class HibernateUtil {
 			conf.addAnnotatedClass(WMR.class);
 			conf.addAnnotatedClass(WMRLine.class);
 
-			// filter
 			conf.addAnnotatedClass(SecurityFilter.class);
 
 			sessionFactory = conf.buildSessionFactory();
@@ -150,45 +137,6 @@ public class HibernateUtil {
 			sessionFactory = null;
 			return false;
 		}
-	}
-
-	private static void addDefaulEntities() {
-		try {
-			addAdminAccount();
-			addDisposals();
-			addItemDependencies();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void addItemDependencies() throws TransactionException, DuplicateEntryException {
-		ItemManager im = new ItemManagerSession();
-		im.addUnit("PCS");
-		im.addItemStatus("Not Available");
-		im.addItemStatus("Available");
-		im.addItemCondition("Good Condition");
-		im.addItemCategory("Common Office Supplies");
-		im.addItemCategory("Other Office Supplies");
-		im.addItemCategory("Common Office Supplies (Exclusive Distributorship)");
-		im.addItemCategory("Common Computer Supplies");
-		im.addItemCategory("Common Janitorial Supplies");
-		im.addItemCategory("Common Electrical/Planing Supplies");
-		im.addItemCategory("Office Forms (for Purchasing)");
-		im.addItemCategory("Others");
-	}
-
-	public static void addDisposals() throws TransactionException {
-		WMRManager wmrm = new WMRManagerSession();
-		wmrm.addDisposal("Destroyed");
-		wmrm.addDisposal("Sold at private sale");
-		wmrm.addDisposal("Sold at public auction");
-		wmrm.addDisposal("Transferred Without Cost");
-	}
-
-	public static void addAdminAccount() throws TransactionException {
-		AccountManagerSession am = new AccountManagerSession();
-		am.addAccount(new Account("admin", "admin", AccountType.SYSTEM_ADMIN, new Person("admin")));
 	}
 
 	public static Session startSession() throws HibernateException {

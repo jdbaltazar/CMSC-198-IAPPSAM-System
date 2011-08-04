@@ -13,7 +13,6 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.entities.StockPropertiesServlet;
 import com.iappsam.util.Validator;
 
 public class SaveItemUnitAction implements Action {

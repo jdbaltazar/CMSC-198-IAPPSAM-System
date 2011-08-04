@@ -21,17 +21,17 @@ public class ViewItemStatsAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemManager itemManager = new ItemManagerSession();
 		RequestDispatcher view = request.getRequestDispatcher(ItemStatusServlet.VIEW_ITEM_STATS);
-		
+
 		List<ItemStatus> statuses = new ArrayList<ItemStatus>();
-		
+
 		try {
 			statuses = itemManager.getAllItemStatus();
 		} catch (TransactionException e) {
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("itemStatuses", statuses);
-		
+
 		view.forward(request, response);
 	}
 }

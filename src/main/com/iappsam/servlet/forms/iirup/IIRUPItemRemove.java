@@ -33,8 +33,7 @@ public class IIRUPItemRemove extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -43,12 +42,10 @@ public class IIRUPItemRemove extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] itemList1 = request.getParameterValues("include1");
-		ArrayList<String> itemList = (ArrayList<String>) request.getSession()
-				.getAttribute("itemList");
-		for(int i=0;i<itemList1.length;i++){
+		ArrayList<String> itemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
+		for (int i = 0; i < itemList1.length; i++) {
 			itemList.remove(itemList1[i]);
 		}
 		ArrayList<String> article = new ArrayList<String>();
@@ -58,8 +55,7 @@ public class IIRUPItemRemove extends HttpServlet {
 		try {
 			for (int i = 0; i < itemList.size(); i++) {
 
-				Item item = ApplicationContext.INSTANCE.getItemManager().getItem(Integer
-						.parseInt(itemList.get(i)));
+				Item item = ApplicationContext.INSTANCE.getItemManager().getItem(Integer.parseInt(itemList.get(i)));
 				article.add(item.getDescription());
 				unitCost.add("" + item.getPrice());
 				propertyNo.add(item.getPropertyNumber());
@@ -73,8 +69,7 @@ public class IIRUPItemRemove extends HttpServlet {
 			request.setAttribute("unitCost", unitCost);
 			request.setAttribute("propertyNo", propertyNo);
 			request.setAttribute("dateAcquired", dateAcquired);
-			RequestDispatcher view = request
-					.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/forms/iirup/IIRUPForm2.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e) {
 

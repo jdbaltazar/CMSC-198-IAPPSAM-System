@@ -30,8 +30,7 @@ public class IIRUPForm3 extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -40,8 +39,7 @@ public class IIRUPForm3 extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] yearsInService1 = request.getParameterValues("yearsInService");
 		String[] quantity1 = request.getParameterValues("quantity");
 		String[] depreciation1 = request.getParameterValues("depreciation");
@@ -49,8 +47,7 @@ public class IIRUPForm3 extends HttpServlet {
 		String[] appraisal1 = request.getParameterValues("appraisal");
 		String[] orNumber1 = request.getParameterValues("orNumber");
 
-		ArrayList<String> itemList = (ArrayList<String>) request.getSession()
-				.getAttribute("itemList");
+		ArrayList<String> itemList = (ArrayList<String>) request.getSession().getAttribute("itemList");
 		ArrayList<String> quantity = new ArrayList<String>();
 		ArrayList<String> yearsInService = new ArrayList<String>();
 		ArrayList<String> depreciation = new ArrayList<String>();

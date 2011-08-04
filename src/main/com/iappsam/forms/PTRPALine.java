@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PTRPA_Line")
-public class PTRPALine implements Serializable{
+public class PTRPALine implements Serializable {
 	/**
 	 * 
 	 */
@@ -92,5 +92,5 @@ public class PTRPALine implements Serializable{
 	public void setPtrpaID(int ptrpaID) {
 		this.ptrpaID = ptrpaID;
 	}
-	
+
 }

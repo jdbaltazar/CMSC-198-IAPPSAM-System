@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Account;
 
-/**
- * Servlet Filter implementation class SecurityFilter
- */
 @WebFilter(filterName = "SecurityFilter", urlPatterns = { "/*" })
 public class SecurityFilter implements Filter {
 
@@ -30,6 +27,7 @@ public class SecurityFilter implements Filter {
 	/**
 	 * @see Filter#destroy()
 	 */
+	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
@@ -37,6 +35,7 @@ public class SecurityFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		/*
@@ -48,12 +47,12 @@ public class SecurityFilter implements Filter {
 		Account account = null;
 		String link = "";
 		if (request instanceof HttpServletRequest) {
-			
+
 			account = (Account) httpReq.getSession().getAttribute("account");
-			//username = (String) httpReq.getSession().getAttribute("username");
+			// username = (String) httpReq.getSession().getAttribute("username");
 			link = httpReq.getRequestURI();
-			//System.out.println("username: " + account.getUsername());
-			//System.out.println("link: " + link);
+			// System.out.println("username: " + account.getUsername());
+			// System.out.println("link: " + link);
 
 			if (link.startsWith("/images") || link.startsWith("/css")) {
 				chain.doFilter(request, response);
@@ -79,8 +78,7 @@ public class SecurityFilter implements Filter {
 					return;
 				}
 			} else {
-				
-				
+
 				if (link.equalsIgnoreCase(HOME1) || link.equalsIgnoreCase(HOME2) || link.equalsIgnoreCase(HOME3)) {
 					httpReq.getSession().setAttribute("from", httpReq.getRequestURI());
 					httpResp.sendRedirect("/menu");
@@ -96,6 +94,7 @@ public class SecurityFilter implements Filter {
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */
+	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}
