@@ -28,7 +28,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.EntryFormatter;
 
-public class UpdateAccountAction implements Action{
+public class UpdateOwnAccountAction implements Action{
 	private EntryFormatter entryFormatter = new EntryFormatter();
 
 	private String title;
