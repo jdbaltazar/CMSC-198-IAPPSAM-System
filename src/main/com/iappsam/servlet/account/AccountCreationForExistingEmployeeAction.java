@@ -20,17 +20,17 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.servlet.Action;
 import com.iappsam.util.EntryFormatter;
 
-public class AccountCreationForExistingEmployeeAction{
-	private static final long serialVersionUID = 1L;
+public class AccountCreationForExistingEmployeeAction implements Action{
 
 	public AccountCreationForExistingEmployeeAction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	private EntryFormatter entryFormatter = new EntryFormatter();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		PersonManager pManager = new PersonManagerSession();
@@ -65,42 +65,7 @@ public class AccountCreationForExistingEmployeeAction{
 		RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
 		view.forward(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String personID = request.getParameter("personID");
-		String password = request.getParameter("password");
-		String reenterPassword = request.getParameter("reenterPassword");
-		String acctType = request.getParameter("accountType");
-		String userName = entryFormatter.spaceTrimmer(request.getParameter("username"));
-		PersonManager pManager = new PersonManagerSession();
-		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null && reenterPassword != null
-				&& password.equals(reenterPassword)&&entryFormatter.check(userName))
-			try {
-				Person p = pManager.getPerson(Integer.parseInt(personID));
-				Account account = new Account();
-				account.setUsername(userName);
-				account.setPassword(password);
-				account.setPerson(p);
-				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
-					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
-					account.setType(AccountType.SYSTEM_ADMIN);
-				}
-				AccountManager aManager = new AccountManagerSession();
-				aManager.addAccount(account);
-				RequestDispatcher view = request.getRequestDispatcher("ViewAccounts.do");
-				view.forward(request, response);
-			} catch (NumberFormatException e) {
-			} catch (TransactionException e) {
-				fail(request, response, personID, userName, acctType,password,reenterPassword);
-			}
-			else
-				fail(request,response,personID,userName,acctType,password,reenterPassword);
-
-	}
+	
 
 	protected void fail(HttpServletRequest request, HttpServletResponse response, String personID, String userName, String accountType,String password, String reenterPassword) {
 

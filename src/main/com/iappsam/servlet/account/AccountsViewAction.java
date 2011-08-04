@@ -1,3 +1,4 @@
+
 package com.iappsam.servlet.account;
 
 import java.io.IOException;
@@ -14,16 +15,15 @@ import com.iappsam.Account;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
+import com.iappsam.servlet.Action;
 
-@WebServlet("/accounts/ViewAccounts.do")
-public class AccountsView extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class AccountsViewAction implements Action{
 
-	public AccountsView() {
+	public AccountsViewAction() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 
 		ArrayList<String> userName = new ArrayList<String>();
@@ -40,29 +40,17 @@ public class AccountsView extends HttpServlet {
 			}
 			
 			request.setAttribute("accounts", accounts);
-		} catch (org.hibernate.TransactionException e) {
-			e.printStackTrace();
 		} catch (TransactionException e) {
 			e.printStackTrace();
-		}
+		} 
 
 		request.setAttribute("userName", userName);
 		request.setAttribute("acctType", acctType);
 		request.setAttribute("name", name);
 		request.setAttribute("listSize", "" + userName.size());
 
-		request.getRequestDispatcher("../accounts/ViewAccounts.jsp").forward(request, response);
+		request.getRequestDispatcher(AccountServlet.VIEW_ACCOUNTS).forward(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response){
-		try {
-			doGet(request,response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 
 }

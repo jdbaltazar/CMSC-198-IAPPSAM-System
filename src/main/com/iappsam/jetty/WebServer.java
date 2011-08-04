@@ -14,12 +14,7 @@ import com.iappsam.servlet.LoginServlet;
 import com.iappsam.servlet.LogoutServlet;
 import com.iappsam.servlet.MenuServlet;
 import com.iappsam.servlet.SearchItemList;
-import com.iappsam.servlet.account.AccountCreation;
-import com.iappsam.servlet.account.AccountUpdate;
-import com.iappsam.servlet.account.AccountsView;
-import com.iappsam.servlet.account.UpdateAccount;
-import com.iappsam.servlet.account.ViewAccount;
-import com.iappsam.servlet.account.ViewWorkInformation;
+import com.iappsam.servlet.account.AccountServlet;
 import com.iappsam.servlet.app.APPLineServlet;
 import com.iappsam.servlet.app.APPServlet;
 import com.iappsam.servlet.database.BackupDatabase;
@@ -56,14 +51,8 @@ public class WebServer {
 		context = new WebAppContext();
 		context.setWar("webapp");
 
-		addServlet(new AccountCreation(), "/accounts/CreateAccount.do");
+		addServlet(new AccountServlet(), "/accounts");
 		//addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
-		addServlet(new AccountsView(), "/accounts/ViewAccounts.do");
-		addServlet(new UpdateAccount(), "/accounts/update_account.do");
-		addServlet(new ViewAccount(), "/accounts/viewing/ViewAccount.do");
-		addServlet(new ViewWorkInformation(), "/accounts/viewing/ViewWorkInformation");
-		addServlet(new AccountUpdate(), "/entities/employees/update_account.do");
-
 		addServlet(new BuildingServlet(), "/building");
 		addServlet(new DivisionOfficeServlet(), "/division-office");
 		addServlet(new EmployeeServlet(), "/employee");

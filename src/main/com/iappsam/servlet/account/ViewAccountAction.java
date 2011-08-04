@@ -21,16 +21,15 @@ import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.servlet.Action;
 
-@WebServlet("/accounts/viewing/ViewAccount.do")
-public class ViewAccount extends HttpServlet {
-	private static final long serialVersionUID = 1171906888802134732L;
+public class ViewAccountAction implements Action{
 
-	public ViewAccount() {
+	public ViewAccountAction() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
+	public void process(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		AccountManager aManager = new AccountManagerSession();
 		PersonManager pManager = new PersonManagerSession();
@@ -65,11 +64,6 @@ public class ViewAccount extends HttpServlet {
 		RequestDispatcher view = request
 				.getRequestDispatcher("../viewing/ViewAccount.jsp");
 		view.forward(request, response);
-
-	}
-
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
