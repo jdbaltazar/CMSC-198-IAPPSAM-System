@@ -124,13 +124,13 @@
 				<td colspan="3" class="main_menu_header">Forms</td>
 			</tr>
 			<tr>
-				<td colspan="2"><form id="form14" name="form14" method="post"
-						action="">
+				<td colspan="2"><form id="form14" name="form14" method="get"
+						action="/app">
 						<input name="appBtn2" type="submit" class="menubtn" id="appBtn2"
 							value="Annual Procurement Plan" />
 					</form></td>
 				<td width="18%"><form id="form15" name="form15" method="post"
-						action="">
+						action="/app?new=app">
 						<input name="addAppBtn" type="submit" class="button2"
 							id="addAppBtn" value="Add&gt;&gt;" />
 					</form></td>
@@ -148,35 +148,35 @@
 					</form></td>
 			</tr>
 			<tr>
-				<td colspan="2"><form id="form18" name="form18" method="post"
-						action="">
+				<td colspan="2"><form id="form18" name="form18" method="get"
+						action="/po">
 						<input name="purchaseOrder" type="submit" class="menubtn"
 							id="purchaseOrder" value="Purchase Order" />
 					</form></td>
-				<td><form id="form19" name="form19" method="post"
+				<td><form id="form19" name="form19" method="get"
 						action="/po?new=po">
 						<input name="addPo" type="submit" class="button2" id="addPo"
 							value="Add&gt;&gt;" />
 					</form></td>
 			</tr>
 			<tr>
-				<td colspan="2"><form id="form20" name="form20" method="post"
-						action="">
+				<td colspan="2"><form id="form20" name="form20" method="get"
+						action="/ris">
 						<input name="risBtn" type="submit" class="menubtn" id="risBtn"
 							value="Requisition &amp; Issue Slip" />
 					</form></td>
-				<td><form id="form21" name="form21" method="post" action="">
+				<td><form id="form21" name="form21" method="get" action="/ris?new=ris">
 						<input name="addBtn" type="submit" class="button2" id="addBtn"
 							value="Add&gt;&gt;" />
 					</form></td>
 			</tr>
 			<tr>
-				<td colspan="2"><form id="form22" name="form22" method="post"
-						action="">
+				<td colspan="2"><form id="form22" name="form22" method="get"
+						action="/ie">
 						<input name="ieBtn" type="submit" class="menubtn" id="ieBtn"
 							value="Inventory of Equipment" />
 					</form></td>
-				<td><form id="form23" name="form23" method="post" action="">
+				<td><form id="form23" name="form23" method="get" action="/ie?new=ie">
 						<input name="addIE" type="submit" class="button2" id="addIE"
 							value="Add&gt;&gt;" />
 					</form></td>

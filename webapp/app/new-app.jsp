@@ -38,7 +38,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt; <a href="#" target="_top" class="links">APP List</a> &gt; <em><strong>Fillup APP</strong></em><strong></strong></td>
+    <td id="navigation"><a href="../menu" target="_top" class="links">Main Menu</a> &gt; <a href="/app" target="_top" class="links">APP List</a> &gt; <em><strong>Fillup APP</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>

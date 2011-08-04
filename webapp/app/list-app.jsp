@@ -26,7 +26,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>APP List </strong></em>&gt; <a href="#" target="_self" class="links">Fillup APP Form</a></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>APP List </strong></em>&gt; <a href="/app?new=app" target="_self" class="links">Fillup APP Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>

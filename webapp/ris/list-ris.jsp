@@ -26,7 +26,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>RIS List </strong></em>&gt; <a href="#" target="_self" class="links">Fillup RIS Form</a></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>RIS List </strong></em>&gt; <a href="/ris?new=ris" target="_self" class="links">Fillup RIS Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>

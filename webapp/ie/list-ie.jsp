@@ -26,7 +26,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>IE List </strong></em>&gt; <a href="#" target="_self" class="links">Fillup IE Form</a></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>IE List </strong></em>&gt; <a href="ie?new=ie" target="_self" class="links">Fillup IE Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>
