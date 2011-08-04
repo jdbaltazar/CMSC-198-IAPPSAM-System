@@ -34,7 +34,7 @@ public class SaveBuildingAction implements Action {
 			building.setAddress(address);
 			try {
 				ApplicationContext.INSTANCE.getDivisionOfficeManager().addBuilding(building);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Building \""+name+"\" was added");
+				Logger.log(request, "Building \""+name+"\" was added");
 				Action vAction = new ViewBuildingsAction();
 				vAction.process(request, response);
 				return;

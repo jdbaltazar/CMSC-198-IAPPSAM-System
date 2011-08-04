@@ -31,7 +31,7 @@ public class SaveEditedItemStatAction implements Action {
 			if (Validator.validField(name)) {
 				itemStatus.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemStatus(itemStatus);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Unit \""+name+"\" was updated");
+				Logger.log(request, "Unit \""+name+"\" was updated");
 				Action vAction = new ViewItemStatsAction();
 				vAction.process(request, response);
 				return;

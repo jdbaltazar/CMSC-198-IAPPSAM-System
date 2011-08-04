@@ -33,7 +33,7 @@ public class SaveEditedItemCatAction implements Action {
 			if (Validator.validField(name)) {
 				itemCategory.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCategory(itemCategory);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Category \""+name+"\" was updated");
+				Logger.log(request,  "Item Category \""+name+"\" was updated");
 				Action vAction = new ViewItemCatsAction();
 				vAction.process(request, response);
 				return;

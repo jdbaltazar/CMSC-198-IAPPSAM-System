@@ -29,7 +29,7 @@ public class SaveItemStatAction implements Action {
 			status.setName(statusInput);
 			try {
 				itemManager.addItemStatus(status);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Status \""+statusInput+"\" was added");
+				Logger.log(request, "Status \""+statusInput+"\" was added");
 				Action viewAction = new ViewItemStatsAction();
 				viewAction.process(request, response);
 				return;

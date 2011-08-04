@@ -48,7 +48,7 @@ public class SaveEditedSupplierForExistingAction implements Action {
 				supplier.setSupplierName(supplierName);
 				supplier.setAddress(address);
 				sManager.updateSupplier(supplier);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was updated");
+				Logger.log(request, "Supplier \""+supplierName+"\" was updated");
 				save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				System.out.println("edited was saveD!!!!!!!!!");
 			} else {

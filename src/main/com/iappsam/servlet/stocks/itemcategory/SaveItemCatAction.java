@@ -29,7 +29,7 @@ public class SaveItemCatAction implements Action {
 			category.setName(categoryInput);
 			try {
 				itemManager.addItemCategory(category);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Category \""+categoryInput+"\" was added");
+				Logger.log(request, "Item Category \""+categoryInput+"\" was added");
 				Action viewAction = new ViewItemCatsAction();
 				viewAction.process(request, response);
 				return;

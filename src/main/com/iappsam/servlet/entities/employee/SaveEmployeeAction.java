@@ -104,7 +104,7 @@ public class SaveEmployeeAction implements Action {
 				try {
 
 					savePerson(person, request, response);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Employee \""+name+"\" was added");
+					Logger.log(request, "Employee \""+name+"\" was added");
 					System.out.println("employee was saved!!!!!!!");
 					return;
 

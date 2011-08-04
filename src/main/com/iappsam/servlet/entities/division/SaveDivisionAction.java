@@ -29,7 +29,7 @@ public class SaveDivisionAction implements Action {
 			DivisionOffice dOffice = new DivisionOffice(divisionName, null);
 			try {
 				doManager.addDivisionOffice(dOffice);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Division \""+divisionName+"\" was added");
+				Logger.log(request, "Division \""+divisionName+"\" was added");
 				Action vAction = new ViewDivisionsAction();
 				vAction.process(request, response);
 				return;

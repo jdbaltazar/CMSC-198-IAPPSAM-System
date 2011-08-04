@@ -165,7 +165,7 @@ public class SaveEditedEmployeeAction implements Action {
 				try {
 
 					updatePerson(person, request, response);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Employee \""+name+"\" was updated");
+					Logger.log(request, "Employee \""+name+"\" was updated");
 					System.out.println("employee was saved!!!!!!!");
 					return;
 

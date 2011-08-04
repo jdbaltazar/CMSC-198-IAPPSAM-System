@@ -61,7 +61,7 @@ public class AddItemAction implements Action {
 				throw new RuntimeException();
 
 			itemManager.addItem(item);
-			Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item \"" + description + "\" was added");
+			Logger.log(request,  "Item \"" + description + "\" was added");
 			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
 			try {

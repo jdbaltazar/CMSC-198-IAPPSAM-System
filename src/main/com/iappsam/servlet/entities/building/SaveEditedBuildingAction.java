@@ -35,7 +35,7 @@ public class SaveEditedBuildingAction implements Action {
 				building.setAddress(address);
 				try {
 					ApplicationContext.INSTANCE.getDivisionOfficeManager().updateBuilding(building);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Building \""+name+"\" was updated");
+					Logger.log(request, "Building \""+name+"\" was updated");
 					Action vAction = new ViewBuildingsAction();
 					vAction.process(request, response);
 					return;

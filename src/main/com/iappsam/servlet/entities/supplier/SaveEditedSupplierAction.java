@@ -101,7 +101,7 @@ public class SaveEditedSupplierAction implements Action {
 			if (supplier.validate()) {
 				try {
 					sManager.updateSupplier(supplier);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was updated");
+					Logger.log(request, "Supplier \""+supplierName+"\" was updated");
 					update = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 					System.out.println("edited supplier was saved!!!");
 				} catch (TransactionException e) {

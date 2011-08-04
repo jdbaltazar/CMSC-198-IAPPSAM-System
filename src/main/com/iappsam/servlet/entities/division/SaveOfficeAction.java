@@ -33,7 +33,7 @@ public class SaveOfficeAction implements Action {
 			if (officeName != null && !officeName.equalsIgnoreCase("")) {
 				newOffice = new DivisionOffice(office.getDivisionName(), officeName);
 				doManager.addDivisionOffice(newOffice);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Office \""+officeName+"\" was added");
+				Logger.log(request, "Office \""+officeName+"\" was added");
 				List<DivisionOffice> offices = doManager.getOfficesUnderDivision(office.getDivisionName());
 
 				request.setAttribute("offices", offices);

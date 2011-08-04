@@ -30,7 +30,7 @@ public class SaveItemCondAction implements Action {
 			condition.setName(conditionInput);
 			try {
 				itemManager.addItemCondition(condition);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Condition \""+conditionInput+"\" was added");
+				Logger.log(request, "Item Condition \""+conditionInput+"\" was added");
 				Action vAction = new ViewItemCondsAction();
 				vAction.process(request, response);
 				return;

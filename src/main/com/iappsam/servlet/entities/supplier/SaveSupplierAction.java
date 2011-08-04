@@ -62,7 +62,7 @@ public class SaveSupplierAction implements Action {
 		if (supplier.validate()) {
 			try {
 				sManager.addSupplier(supplier);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was added");
+				Logger.log(request, "Supplier \""+supplierName+"\" was added");
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				System.out.println("supplier was saved!!!");
