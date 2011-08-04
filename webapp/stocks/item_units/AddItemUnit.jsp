@@ -5,9 +5,43 @@
 <title>IAPPSAM::Add Item Unit</title>
 <link href="../../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<!--
+<script src="../../js/prototype.js" type="text/javascript"></script> 
+<script src="../../js/scriptaculous.js" type="text/javascript"></script> 
+ 
+<script src="../../js/gdAlert.js" type="text/javascript"></script> 
+<link href='../../css/gdAlert.css' rel='stylesheet' type='text/css' /> 
+-->
+
+<script type="text/javascript">
+function validateItemUnitForm()
+{
+	var txt="";
+	var x=document.forms["item-unit-form"]["itemUnit"].value;
+
+  txt="There was an error on this page!\n\n";
+  txt+="Make sure required fields are not left blank,\n";
+  txt+="or input is valid for that field.\n\n";
+
+if (x==null || x=="")
+  {
+  alert(txt);
+  return false;
+  }
+}
+</script>
+
 </head>
 
 <body>
+	<div id='alert_message' style='display: none'> 
+			<span> 
+				
+			</span> 
+			<input type='button' value='ok' class='button' onclick='gdAlert.close()' /> 
+			<br style='clear: both' /> 
+	</div> 
+		
 	<div id="headerBkgrnd">
 		<img src="../../images/headerbar.png" width="100%" height="129" />
 	</div>
@@ -45,7 +79,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" method="post" action="../stocks/item-unit">
+		<form id="item-unit-form" onsubmit="return validateItemUnitForm()" name="item-unit-form" method="post" action="../stocks/item-unit">
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
 					<td class="header_rows"><div class="header_1">
@@ -65,7 +99,7 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td><input name="addBtn" type="submit" class="button"
-									id="addBtn" value="ADD" /> <input
+									id="addBtn" value="ADD"/> <input
 									name="item-unit-action" type="hidden" value="save-item-unit" /> <br />
 									<br />
 								</td>

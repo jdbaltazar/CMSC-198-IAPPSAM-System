@@ -6,6 +6,23 @@
 <title>IAPPSAM::Add Building</title>
 <link href="../../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function validateForm()
+{
+	var txt="";
+	var x=document.forms["buildingForm"]["buildingName"].value;
+
+  txt="There was an error on this page!\n\n";
+  txt+="Make sure required fields are not left blank,\n";
+  txt+="or input is valid for that field.\n\n";
+
+if (x==null || x=="")
+  {
+  alert(txt);
+  return false;
+  }
+}
+</script>
 </head>
 
 <body>
@@ -43,7 +60,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="buildingForm" name="buildingForm" method="post"
+		<form id="buildingForm" name="buildingForm" onsubmit="return validateForm()" method="post"
 			action="building">
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
@@ -55,7 +72,7 @@
 					<td><table width="100%" border="0" cellspacing="0" id="table">
 							<tr>
 								<td class="align_right"><br /> *Building Name:</td>
-								<td><br /> <input name="name" type="text" class="required"
+								<td><br /> <input name="buildingName" type="text" class="required"
 									id="buildingName" maxlength="80" />
 								</td>
 							</tr>

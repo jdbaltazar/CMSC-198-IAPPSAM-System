@@ -132,7 +132,7 @@
             </tr>
           <tr>
             <td class="other_fields_label">Plan Ctrl No.:</td>
-            <td class="right_side_table"><input type="text" name="planCtrlNum" id="planCtrlNum" /></td>
+            <td class="right_side_table"><input name="planCtrlNum" type="text" id="planCtrlNum" maxlength="45" /></td>
             </tr>
           <tr>
             <td class="other_fields_label">Division/Office:</td>

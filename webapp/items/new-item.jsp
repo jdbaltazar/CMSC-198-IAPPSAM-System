@@ -16,6 +16,7 @@
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet"
 	type="text/css" />
+
 <script src="../jquery/jquery-1.5.1.min.js"></script>
 <script src="../jquery/ui/jquery.ui.core.js"></script>
 <script src="../jquery/ui/jquery.ui.datepicker.js"></script>
@@ -28,6 +29,26 @@
 			showButtonPanel : true
 		});
 	});
+</script>
+
+<script type="text/javascript">
+
+function validateItemForm()
+{
+	var txt="";
+	var x=document.forms["itemform"]["description"].value;
+
+  txt="There was an error on this page!\n\n";
+  txt+="Make sure required fields are not left blank,\n";
+  txt+="or input is valid for that field.\n\n";
+
+if (x==null || x=="")
+  {
+  alert(txt);
+  return false;
+  }
+}
+
 </script>
 <%
 	List<Unit> units = new ArrayList<Unit>();
@@ -76,7 +97,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form action="/items" method="post" name="form">
+		<form name="itemform" action="/items" onsubmit="return validateItemForm()" method="post">
 		<input type="hidden" name="add" value="item"/> 
 			<table width="100%" frame="box" cellspacing="0" id="table">
 				<tr>

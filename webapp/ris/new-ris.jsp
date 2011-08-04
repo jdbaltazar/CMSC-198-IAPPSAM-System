@@ -85,11 +85,11 @@
             </tr>
           <tr>
             <td class="other_fields_label">Responsibility Center Code.:</td>
-            <td class="right_side_table"><input type="text" name="respCenterCode" id="respCenterCode" /></td>
+            <td class="right_side_table"><input name="respCenterCode" type="text" id="respCenterCode" maxlength="80" /></td>
             </tr>
           <tr>
             <td class="other_fields_label">RIS No.:</td>
-            <td class="right_side_table"><input name="risNo" type="text" class="required" id="risNo" /></td>
+            <td class="right_side_table"><input name="risNo" type="text" class="required" id="risNo" maxlength="45" /></td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
@@ -97,7 +97,7 @@
             </tr>
           <tr>
             <td class="other_fields_label">SAI No.:</td>
-            <td class="right_side_table"><input type="text" name="saiNo" id="saiNo" /></td>
+            <td class="right_side_table"><input name="saiNo" type="text" id="saiNo" maxlength="80" /></td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
@@ -105,7 +105,7 @@
             </tr>
           <tr>
             <td class="other_fields_label">Purpose:</td>
-            <td class="right_side_table"><input name="purpose" type="text" class="required" id="purpose" /></td>
+            <td class="right_side_table"><input name="purpose" type="text" class="required" id="purpose" maxlength="200" /></td>
             </tr>
           <tr>
             <td class="other_fields_label">Requested by:</td>
