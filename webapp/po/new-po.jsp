@@ -126,7 +126,7 @@
 							<tr>
 								<td class="other_fields_label">Supplier:</td>
 								<td class="right_side_table"><select name="supplier"
-									class="menulist" id="supplierList">
+									class="required_menulist" id="supplierList">
 
 										<c:forEach var="supplier" items="${suppliers}">
 											<c:choose>
@@ -143,20 +143,20 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">P.O. No.:</td>
-								<td class="right_side_table"><input type="text"
-									name="po-number" id="PONum" value="${form.poNumber}" />
+								<td class="right_side_table"><input
+									name="po-number" type="text" class="required" id="PONum" value="${form.poNumber}" maxlength="45" />
 								</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table"><input type="text"
-									name="accountant-date" id="poNoDate" value="${form.date}" />
+								<td class="right_side_table"><input
+									name="accountant-date" type="text" class="required" id="poNoDate" value="${form.date}" />
 								</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Mode of Procurement:</td>
 								<td class="right_side_table"><select
-									name="mop" class="menulist"
+									name="mop" class="required_menulist"
 									id="modeOfProcurement">
 
 										<c:forEach var="modeOfProcurement" items="${mops}">
@@ -176,7 +176,7 @@
 							<tr>
 								<td class="other_fields_label">Delivery Place:</td>
 								<td class="right_side_table"><select name="dom"
-									class="menulist" id="deliveryPlace">
+									class="required_menulist" id="deliveryPlace">
 
 										<c:forEach var="divisionOffice" items="${divisionoffices}">
 											<c:choose>
@@ -191,12 +191,12 @@
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
-								</select></td>
+							  </select></td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Delivery Date:</td>
-								<td class="right_side_table"><input type="text"
-									name="date-of-delivery" id="deliveryDate"
+								<td class="right_side_table"><input
+									name="date-of-delivery" type="text" class="required" id="deliveryDate"
 									value="${form.dateOfDelivery}" />
 								</td>
 							</tr>
@@ -209,7 +209,7 @@
 							<tr>
 								<td class="other_fields_label">Supplier Rep.:</td>
 								<td class="right_side_table"><select name="supplier-name"
-									class="menulist" id="supplierRep">
+									class="required_menulist" id="supplierRep">
 
 										<c:forEach var="employee" items="${employees}">
 											<c:choose>
@@ -234,7 +234,7 @@
 							<tr>
 								<td class="other_fields_label">Very Truly Yours:</td>
 								<td class="right_side_table"><select name="dean"
-									class="menulist" id="veryTrulyYours">
+									class="required_menulist" id="veryTrulyYours">
 
 
 										<c:forEach var="employee" items="${employees}">
@@ -255,7 +255,7 @@
 							<tr>
 								<td class="other_fields_label">Accountant:</td>
 								<td class="right_side_table"><select name="accountant"
-									class="menulist" id="accountant">
+									class="required_menulist" id="accountant">
 
 										<c:forEach var="employee" items="${employees}">
 											<c:choose>

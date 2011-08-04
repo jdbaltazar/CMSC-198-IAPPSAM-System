@@ -12,6 +12,24 @@
 <title>IAPPSAM::Add Employee</title>
 <link href="../../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function validateForm()
+{
+	var txt="";
+	var x=document.forms["form1"]["officeName"].value;
+
+  txt="There was an error on this page!\n\n";
+  txt+="Make sure required fields are not left blank,\n";
+  txt+="or input is valid for that field.\n\n";
+
+if (x==null || x=="")
+  {
+  alert(txt);
+  return false;
+  }
+}
+</script>
+
 </head>
 
 <body>
@@ -86,8 +104,8 @@
 									}
 								%>
 								<td class="align_right" id="align_right">Title:</td>
-								<td><input type="text" name="title" id="title"
-									value="<%=title%>" />
+								<td><input name="title" type="text" id="title"
+									value="<%=title%>" maxlength="10" />
 								</td>
 							</tr>
 							<tr>
@@ -98,8 +116,8 @@
 								%>
 								<td class="align_right" id="align_right">*Name:<br />
 								</td>
-								<td><input type="text" name="name" id="name"
-									value="<%=name%>" /> <br />
+								<td><input name="name" type="text" class="required" id="name"
+									value="<%=name%>" maxlength="80" /> <br />
 								</td>
 							</tr>
 						</table>
@@ -123,8 +141,8 @@
 							<tr>
 								<td>
 									<div align="center">
-										<label for="designation1"></label> <input type="text"
-											name="designation1" id="designation1"
+										<label for="designation1"></label> <input
+											name="designation1" type="text" class="required" id="designation1" maxlength="45"
 											<%if (employments[0] != null) {
 				out.print("value=\"" + employments[0].getDesignation() + "\"");
 			}%> />
@@ -134,7 +152,7 @@
 								<td>
 									<div align="center">
 										<input name="employeeNo1" type="text" id="employeeNo1"
-											size="4"
+											size="4" maxlength="45"
 											<%if (employments[0] != null) {
 				out.print("value=\"" + employments[0].getEmployeeNumber() + "\"");
 			}%> />
@@ -166,8 +184,8 @@
 							<tr>
 								<td>
 									<div align="center">
-										<label for="designation2"></label> <input type="text"
-											name="designation2" id="designation2"
+										<label for="designation2"></label> <input
+											name="designation2" type="text" class="required" id="designation2" maxlength="45"
 											<%if (employments[1] != null) {
 				out.print("value=\"" + employments[1].getDesignation() + "\"");
 			}%> />
@@ -177,7 +195,7 @@
 								<td>
 									<div align="center">
 										<input name="employeeNo2" type="text" id="employeeNo2"
-											size="4"
+											size="4" maxlength="45"
 											<%if (employments[1] != null) {
 				out.print("value=\"" + employments[1].getEmployeeNumber() + "\"");
 			}%> />
@@ -210,8 +228,8 @@
 							<tr>
 								<td>
 									<div align="center">
-										<label for="designation3"></label> <input type="text"
-											name="designation3" id="designation3"
+										<label for="designation3"></label> <input
+											name="designation3" type="text" class="required" id="designation3" maxlength="45"
 											<%if (employments[2] != null) {
 				out.print("value=\"" + employments[2].getDesignation() + "\"");
 			}%> />
@@ -222,7 +240,7 @@
 								<td>
 									<div align="center">
 										<input name="employeeNo3" type="text" id="employeeNo3"
-											size="4"
+											size="4" maxlength="45"
 											<%if (employments[2] != null) {
 				out.print("value=\"" + employments[2].getEmployeeNumber() + "\"");
 			}%> />
@@ -255,8 +273,8 @@
 							<tr>
 								<td>
 									<div align="center">
-										<label for="designation4"></label> <input type="text"
-											name="designation4" id="designation4"
+										<label for="designation4"></label> <input
+											name="designation4" type="text" class="required" id="designation4" maxlength="45"
 											<%if (employments[3] != null) {
 				out.print("value=\"" + employments[3].getDesignation() + "\"");
 			}%> />
@@ -266,7 +284,7 @@
 								<td>
 									<div align="center">
 										<input name="employeeNo4" type="text" id="employeeNo4"
-											size="4"
+											size="4" maxlength="45"
 											<%if (employments[3] != null) {
 				out.print("value=\"" + employments[3].getEmployeeNumber() + "\"");
 			}%> />
@@ -299,8 +317,8 @@
 							<tr>
 								<td>
 									<div align="center">
-										<label for="designation5"></label> <input type="text"
-											name="designation5" id="designation5"
+										<label for="designation5"></label> <input
+											name="designation5" type="text" class="required" id="designation5" maxlength="45"
 											<%if (employments[4] != null) {
 				out.print("value=\"" + employments[4].getDesignation() + "\"");
 			}%> />
@@ -310,7 +328,7 @@
 								<td>
 									<div align="center">
 										<input name="employeeNo5" type="text" id="employeeNo5"
-											size="4"
+											size="4" maxlength="45"
 											<%if (employments[4] != null) {
 				out.print("value=\"" + employments[4].getEmployeeNumber() + "\"");
 			}%> />
@@ -354,19 +372,19 @@
 							class="no_border_table">
 							<tr>
 								<td class="align_right">Mobile Number:</td>
-								<td><input type="text" name="mobileNumber"
-									id="mobileNumber" value="<%=mobile%>" /></td>
+								<td><input name="mobileNumber" type="text"
+									id="mobileNumber" value="<%=mobile%>" maxlength="45" /></td>
 							</tr>
 							<tr>
 								<td class="align_right">Landline:</td>
-								<td><input type="text" name="landline" id="landline"
-									value="<%=landline%>" />
+								<td><input name="landline" type="text" id="landline"
+									value="<%=landline%>" maxlength="45" />
 								</td>
 							</tr>
 							<tr>
 								<td class="align_right">Email Address:</td>
-								<td><input type="text" name="email_ad" id="email_ad"
-									value="<%=email%>" /></td>
+								<td><input name="email_ad" type="text" id="email_ad"
+									value="<%=email%>" maxlength="45" /></td>
 							</tr>
 							<tr>
 								<td class="align_right">&nbsp;</td>

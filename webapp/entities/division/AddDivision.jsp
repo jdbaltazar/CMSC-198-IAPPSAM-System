@@ -5,6 +5,23 @@
 <title>IAPPSAM::Add Division</title>
 <link href="../../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function validateForm()
+{
+	var txt="";
+	var x=document.forms["form1"]["divisionName"].value;
+
+  txt="There was an error on this page!\n\n";
+  txt+="Make sure required fields are not left blank,\n";
+  txt+="or input is valid for that field.\n\n";
+
+if (x==null || x=="")
+  {
+  alert(txt);
+  return false;
+  }
+}
+</script>
 </head>
 
 <body>
@@ -28,7 +45,7 @@
   </tr>
 </table>
 <div id="form_table">
-  <form id="form1" name="form1" method="post" action="division-office">
+  <form id="form1" name="form1" method="post" onsubmit="return validateForm()" action="division-office">
     <table width="100%" border="0" cellspacing="0" id="table">
       <tr>
         <td class="header_rows"><div class="header_1"><em>New</em></div></td>
