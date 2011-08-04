@@ -64,11 +64,6 @@ public class HibernateUtil {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		if (!tryToBuildSessionFactory("root", ""))
 			throw new RuntimeException("connection unsuccessful");
-//<<<<<<< HEAD
-
-//		 addDefaulEntities();
-//=======
-//>>>>>>> refs/remotes/github.com/master
 	}
 
 	private static boolean tryToBuildSessionFactory(String username, String password) throws ExceptionInInitializerError {
