@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Fillup IE</title>
+<title>IAPPSAM::View IE</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
@@ -26,10 +26,12 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt; <a href="ie" target="_top" class="links">IE List</a> &gt; <em><strong>Fillup IE</strong></em><strong></strong></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt; <a href="ie" target="_top" class="links">IE List</a> &gt; <em><strong>View IE</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
+<div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
+<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
 <!--<form name="PRForm" method="post" action="">-->
   <div id="items_table">
     
@@ -37,7 +39,6 @@
       <tr>
         <td colspan="2"><table width="100%" border="0" cellspacing="0" class="tableheaders_forms">
           <tr>
-            <td><input type="checkbox" name="selectAllItems" id="selectAllItems" /></td>
             <td>Property No.</td>
             <td>Equipment Property</td>
             <td>Article Code</td>
@@ -46,7 +47,6 @@
             <td>Total Value</td>
           </tr>
           <tr class="tablerow_1">
-            <td><input type="checkbox" name="select" id="select" /></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -55,7 +55,6 @@
             <td>&nbsp;</td>
           </tr>
           <tr class="bkgrnd_white">
-            <td width="4%">&nbsp;</td>
             <td width="9%">&nbsp;</td>
             <td width="47%">&nbsp;</td>
             <td width="11%">&nbsp;</td>
@@ -95,53 +94,39 @@
         </table></td>
        </tr>
       <tr>
-        <td width="50%" align="right" class="same_width"><br />
-          <form id="form5" name="form5" method="post" action="">
-            <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="Add Item&gt;&gt;" />
-          </form>
-        <br /></td>
-        <td align="left" class="same_width"><form id="form6" name="form6" method="post" action="">
-          <input name="removeSelectedItems" type="submit" class="button" id="removeSelectedItems" value="Remove Item" />
-        </form></td>
+        <td width="50%" align="right" class="same_width">&nbsp;</td>
+        <td align="left" class="same_width">&nbsp;</td>
       </tr>
       <tr>
         <td colspan="2"><table width="25%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Division/Office:</td>
-            <td class="right_side_table"><select name="division" class="required_menulist" id="division">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
           </tr>
           <tr>
             <td class="other_fields_label">Building:</td>
-            <td class="right_side_table"><label for="building"></label>
-              <select name="building" class="required_menulist" id="building">
-            </select></td>
+            <td class="right_side_table"><label for="building"></label></td>
           </tr>
           <tr>
             <td class="other_fields_label">Prepared by::</td>
-            <td class="right_side_table"><label for="preparedBy"></label>
-              <select name="preparedBy" class="required_menulist" id="preparedBy">
-            </select></td>
+            <td class="right_side_table"><label for="preparedBy"></label></td>
           </tr>
           <tr>
             <td class="other_fields_label">Date Prepared:</td>
-            <td class="right_side_table"><input name="datePrepared" type="text" class="required" id="datePrepared" /></td>
+            <td class="right_side_table">&nbsp;</td>
           </tr>
           <tr>
             <td class="other_fields_label">Counterchecked by:</td>
-            <td class="right_side_table"><select name="counterchecked" class="required_menulist" id="counterchecked">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Noted:</td>
-            <td class="right_side_table"><select name="noted" class="required_menulist" id="noted">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><br />
-        <input name="submitBtn" type="submit" class="button" value="SUBMIT Form" /></td>
+        <td colspan="2" align="center"><br /></td>
       </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
@@ -155,4 +140,3 @@
 <!--<div id="footer"></div>-->
 </body>
 </html>
-

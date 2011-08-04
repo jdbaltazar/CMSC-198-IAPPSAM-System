@@ -8,7 +8,6 @@
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
 <link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
-<link href="../pr/view-pr.css" rel="stylesheet" type="text/css" />
 <script src="../jquery/jquery-1.5.1.min.js"></script>
 <script src="../jquery/ui/jquery.ui.core.js"></script>
 <script src="../jquery/ui/jquery.ui.datepicker.js"></script>
@@ -61,12 +60,12 @@
 		<td>&nbsp;</td>
 	</tr>
 </table>
-<div id="export">Export to
+<div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
 <a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
 <!--<form name="PRForm" method="post" action="">-->
 <div id="items_table">
 <table width="100%" border="0" cellspacing="0">
-	<tr>
+<tr>
 		<td colspan="2">
 		<table width="100%" border="0" cellspacing="0">
 			<tr>
