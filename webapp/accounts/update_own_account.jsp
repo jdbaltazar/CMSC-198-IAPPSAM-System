@@ -38,7 +38,7 @@
 	<%
 		String userName = request.getParameter("username");
 		if (userName == null)
-			userName = (String) request.getAttribute("userName");
+			userName = (String) request.getAttribute("username");
 		AccountManager aManager = new AccountManagerSession();
 		Account account = aManager.getAccount(userName);
 		PersonManager pManager = new PersonManagerSession();
@@ -291,7 +291,7 @@
 				</tr>
 				<tr>
 					<td class="align_right">*New Password:</td>
-					<td><input type="password" name="newPassword" id="password"
+					<td><input type="password" name="newPassword" id="newPassword"
 						<%passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {

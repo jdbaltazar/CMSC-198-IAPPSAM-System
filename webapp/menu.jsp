@@ -90,7 +90,7 @@
 				<td><form id="form29" name="form29" method="post" action="accounts">
 						<input name="myAcctBtn" type="submit" class="button2"
 							id="myAcctBtn" value="My Account" />
-						<input name="account-action" type="hidden" id="hidden" value="view-accounts"/>
+						<input name="account-action" type="hidden" id="hidden" value="view-own-account"/>
 					</form></td>
 			</tr>
 			<tr>

@@ -211,10 +211,8 @@ public class SaveAccountAction implements Action{
 				}
 				aManager.addAccount(account);
 				request.setAttribute("userName", username);
-
-				RequestDispatcher view = request
-						.getRequestDispatcher("ViewAccounts.do");
-				view.forward(request, response);
+				AccountsViewAction view = new AccountsViewAction();
+				view.process(request, response);
 			} catch (TransactionException e) {
 				failedResponse(request, response);
 			} catch (ServletException e) {

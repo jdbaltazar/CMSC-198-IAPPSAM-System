@@ -42,7 +42,8 @@
 	</tr>
 </table>
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="CreateAccount.do">
+<form id="form1" name="form1" method="post" action="accounts">
+<input type="hidden" name="account-action" value="save-account"/>
 <table width="100%" frame="box" cellspacing="0" id="table">
 
 

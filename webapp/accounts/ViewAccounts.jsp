@@ -74,10 +74,11 @@
 	<tr>
 		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>
 			<%if (!isODD) {%> class="tablerow_2" <%}%>>
-		<form id="form1" name="form1" method="post" action="update_account.jsp"><input
+		<form id="form1" name="form1" method="post" action="/accounts"><input
 			name="editBtn" type="submit" class="button2" id="editBtn"
 			value="View&gt;&gt;" /> <input type="hidden" name="username"
-			value="<%=a.getUsername()%>" /></form>
+			value="<%=a.getUsername()%>" />
+			<input name="account-action" type="hidden" value="view-account"/></form>
 		</td>
 		<td <%if (isODD) {%> class="tablerow_1" <%}%> <%if (!isODD) {%>
 			class="tablerow_2" <%}%>><%=a.getType().toString()%></td>

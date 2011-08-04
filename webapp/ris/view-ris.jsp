@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Fillup RIS</title>
+<title>IAPPSAM::View RIS</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
@@ -26,10 +26,12 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt; <a href="/ris" target="_top" class="links">RIS List</a> &gt; <em><strong>Fillup RIS</strong></em><strong></strong></td>
+    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt; <a href="/ris" target="_top" class="links">RIS List</a> &gt; <em><strong>View RIS</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
+    <div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
+<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
 <!--<form name="PRForm" method="post" action="">-->
   <div id="items_table">
     
@@ -37,7 +39,6 @@
       <tr>
         <td colspan="2"><table width="100%" border="0" cellspacing="0" class="tableheaders_forms">
           <tr>
-            <td><input type="checkbox" name="selectAllItems" id="selectAllItems" /></td>
             <td>Stock No.</td>
             <td>Unit</td>
             <td>Description</td>
@@ -50,13 +51,10 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><input name="qtyRequested" type="text" class="required" id="qtyRequested" size="2" /></td>
-            <td><label for="qtyIssued"></label>
-            <input name="qtyIssued" type="text" class="required" id="qtyIssued" size="2" /></td>
+            <td><label for="qtyIssued"></label></td>
             <td>&nbsp;</td>
           </tr>
           <tr class="bkgrnd_white">
-            <td width="2%">&nbsp;</td>
             <td width="8%">&nbsp;</td>
             <td width="8%">&nbsp;</td>
             <td width="50%">&nbsp;</td>
@@ -67,71 +65,59 @@
         </table></td>
       </tr>
       <tr>
-        <td width="50%" align="right" class="same_width"><br />
-          <form id="form5" name="form5" method="post" action="">
-            <input name="addItemBtn" type="submit" class="button" id="addItemBtn" value="Add Item&gt;&gt;" />
-          </form>
-        <br /></td>
-        <td align="left" class="same_width"><form id="form6" name="form6" method="post" action="">
-          <input name="removeSelectedItems" type="submit" class="button" id="removeSelectedItems" value="Remove Item" />
-        </form></td>
+        <td width="50%" align="right" class="same_width"><br /></td>
+        <td align="left" class="same_width">&nbsp;</td>
       </tr>
       <tr>
         <td colspan="2"><table width="25%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Division/Office:</td>
-            <td class="right_side_table"><select name="department/section" class="required_menulist" id="department/section">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Responsibility Center Code.:</td>
-            <td class="right_side_table"><input name="respCenterCode" type="text" id="respCenterCode" maxlength="80" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">RIS No.:</td>
-            <td class="right_side_table"><input name="risNo" type="text" class="required" id="risNo" maxlength="45" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
-            <td class="right_side_table"><input name="risDate" type="text" class="required" id="risDate" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">SAI No.:</td>
-            <td class="right_side_table"><input name="saiNo" type="text" id="saiNo" maxlength="80" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
-            <td class="right_side_table"><input type="text" name="saiNoDate" id="saiNoDate" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Purpose:</td>
-            <td class="right_side_table"><input name="purpose" type="text" class="required" id="purpose" maxlength="200" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Requested by:</td>
-            <td class="right_side_table"><select name="requestedBy" class="required_menulist" id="requestedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Approved by:</td>
-            <td class="right_side_table"><select name="approvedBy" class="required_menulist" id="approvedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
           </tr>
           <tr>
             <td class="other_fields_label">Issued by:</td>
-            <td class="right_side_table"><select name="issuedBy" class="required_menulist" id="issuedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
           </tr>
           <tr>
             <td class="other_fields_label">Received by:</td>
-            <td class="right_side_table"><select name="receivedBy" class="required_menulist" id="receivedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><br />
-        <input name="submitBtn" type="submit" class="button" value="SUBMIT Form" /></td>
+        <td colspan="2" align="center"><br /></td>
       </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
@@ -145,4 +131,3 @@
 <!--<div id="footer"></div>-->
 </body>
 </html>
-

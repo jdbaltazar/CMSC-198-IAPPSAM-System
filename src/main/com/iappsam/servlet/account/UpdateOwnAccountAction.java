@@ -52,7 +52,9 @@ public class UpdateAccountAction implements Action{
 			HttpServletResponse response) throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
+		oldPassword = request.getParameter("password");
 		password = request.getParameter("newPassword");
+		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		username = request.getParameter("username");
 		mobileNumber = entryFormatter.spaceTrimmer(request
@@ -69,18 +71,22 @@ public class UpdateAccountAction implements Action{
 			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
-		
+		try {
 			if (!name.isEmpty()
 					&& !username.isEmpty()
 					&& !password.isEmpty()
-				
-					 && entryFormatter.check(name)) {
+					&& !reenterPassword.isEmpty()
+					&& password.equalsIgnoreCase(reenterPassword)
+					&& aManager.getAccount(username).comparePassword(
+							oldPassword) && entryFormatter.check(name)) {
 				acceptResponse(request, response);
 			} else {
 
 				failedResponse(request, response);
 			}
-		 
+		} catch (TransactionException e) {
+			failedResponse(request, response);
+		}
 	}
 
 	private void acceptResponse(HttpServletRequest request,
@@ -111,7 +117,10 @@ public class UpdateAccountAction implements Action{
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.updateAccount(account);
-				
+				if(account.comparePassword(password))
+					System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::PASSWORD HAS BEEN UPDATED::::::::::::::::::::::::::::::::::::");
+				else
+					System.out.println("::::::::::::::::::::::::::::::::::::::::::::::::::PASSWORD HAS NOT BEEN UPDATED::::::::::::::::::::::::::::::::::::");
 				person = account.getPerson();
 				request.setAttribute("account", account);
 				Contact[] contacts = new Contact[person.getContacts().size()];
@@ -243,7 +252,7 @@ public class UpdateAccountAction implements Action{
 			request.setAttribute("nameOK", "false");
 		else
 			request.setAttribute("nameOK", "true");
-		if (password.isEmpty())
+		if (password.isEmpty() || !password.equalsIgnoreCase(reenterPassword))
 			request.setAttribute("passwordOK", "false");
 		else
 			request.setAttribute("passwordOK", "true");

@@ -1,8 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>IAPPSAM::Fillup APP</title>
+<title>IAPPSAM::View APP</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
@@ -38,10 +39,12 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="../menu" target="_top" class="links">Main Menu</a> &gt; <a href="/app" target="_top" class="links">APP List</a> &gt; <em><strong>Fillup APP</strong></em><strong></strong></td>
+    <td id="navigation"><a href="../menu" target="_top" class="links">Main Menu</a> &gt; <a href="/app" target="_top" class="links">APP List</a> &gt; <em><strong>View APP</strong></em><strong></strong></td>
     <td>&nbsp;</td>
   </tr>
 </table>
+<div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
+<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
 <!--<form name="APPForm" method="post" action="">-->
   <div id="items_table">
     
@@ -49,10 +52,6 @@
       <tr>
         <td colspan="2"><table width="100%" border="0" cellspacing="0">
           <tr class="tableheaders_forms">
-            <td rowspan="2"><form id="form1" name="form1" method="post" action="">
-              <input type="checkbox" name="selectAll" id="selectAll" />
-              <label for="selectAll"></label>
-              </form></td>
             <td rowspan="2">Stock No.</td>
             <td rowspan="2">ARTICLES &amp; SPECIFICATIONS</td>
             <td rowspan="2">Unit</td>
@@ -75,89 +74,73 @@
             <td>Amount</td>
             </tr>
           <tr class="tablerow_1">
-            <td align="center"><form id="form3" name="form3" method="post" action="">
-              <input type="checkbox" name="selectThis" id="selectThis" />
-              </form></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><input name="qty" type="text" class="required" id="qty" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty1" type="text" class="required" id="qty1" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty2" type="text" class="required" id="qty2" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty3" type="text" class="required" id="qty3" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty4" type="text" class="required" id="qty4" size="2" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr class="tablerow_2">
-            <td align="center"><form id="form4" name="form4" method="post" action="">
-              <input type="checkbox" name="selctThis" id="selctThis" />
-              </form></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><input name="qty5" type="text" class="required" id="qty5" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty6" type="text" class="required" id="qty6" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty7" type="text" class="required" id="qty7" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty8" type="text" class="required" id="qty8" size="2" /></td>
             <td>&nbsp;</td>
-            <td><input name="qty9" type="text" class="required" id="qty9" size="2" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td width="50%" align="right" class="same_width"><br />
-          <form id="form5" name="form5" method="post" action="">
-            <input name="addItem" type="submit" class="button" id="addItem" value="Add Item" />
-          </form>
-        <br /></td>
-        <td class="same_width"><form id="form6" name="form6" method="post" action="">
-          <input name="removeItem" type="submit" class="button" id="removeItem" value="Remove Item" />
-        </form></td>
+        <td width="50%" align="right" class="same_width"><br /></td>
+        <td class="same_width">&nbsp;</td>
       </tr>
       <tr>
         <td colspan="2"><table width="27%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Year:</td>
-            <td class="right_side_table"><input name="year" type="text" class="required" id="year" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Plan Ctrl No.:</td>
-            <td class="right_side_table"><input name="planCtrlNum" type="text" id="planCtrlNum" maxlength="45" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Division/Office:</td>
-            <td class="right_side_table"><select name="division/office" class="required_menulist" id="division/office">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date Scheduled:</td>
-            <td class="right_side_table"><input type="text" name="dateScheduled" id="dateScheduled" /></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Prepared by:</td>
-            <td class="right_side_table"><select name="preparedBy" class="required_menulist" id="preparedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
           <tr>
             <td class="other_fields_label">Recommended by:</td>
-            <td class="right_side_table"><select name="recommendedBy" class="required_menulist" id="recommendedBy">
-            </select></td>
+            <td class="right_side_table">&nbsp;</td>
             </tr>
         </table></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><br />
-        <input name="submitBtn" type="submit" class="button" value="SUBMIT Form" /></td>
+        <td colspan="2" align="center"><br /></td>
       </tr>
       <tr>
         <td colspan="2">&nbsp;</td>
