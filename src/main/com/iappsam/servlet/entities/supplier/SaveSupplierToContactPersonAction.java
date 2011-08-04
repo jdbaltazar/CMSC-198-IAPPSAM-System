@@ -40,7 +40,7 @@ public class SaveSupplierToContactPersonAction implements Action {
 			if (supplier.validate()) {
 				try {
 					sManager.addSupplier(supplier);
-					Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Supplier \""+supplierName+"\" was added");
+					Logger.log(request, "Supplier \""+supplierName+"\" was added");
 					save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
 				} catch (DuplicateEntryException e) {
 					// TODO Auto-generated catch block

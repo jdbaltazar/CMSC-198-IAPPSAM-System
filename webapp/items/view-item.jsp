@@ -47,6 +47,7 @@
 <div id="form_table">
 	<form id="form1" name="form" method="post" action="/items">
 	<input type="hidden" name="id" value="${item.id}" />
+	<input type="hidden" name="update" value="item" />
   <table width="100%" frame="box" cellspacing="0" id="table">
     <tr>
       <td class="header_rows"><div class="header_1">Item Information</div></td>

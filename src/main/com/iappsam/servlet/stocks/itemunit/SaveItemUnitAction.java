@@ -28,7 +28,7 @@ public class SaveItemUnitAction implements Action {
 			unit.setName(unitInput);
 			try {
 				itemManager.addUnit(unit);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Unit \""+unitInput+"\" was added");
+				Logger.log(request, "Unit \""+unitInput+"\" was added");
 				Action vUnits = new ViewItemUnitsAction();
 				vUnits.process(request, response);
 				return;

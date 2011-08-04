@@ -68,6 +68,8 @@
 	<%
 		boolean isODD = true;
 		for (Account a : accounts) {
+			if(a.getUsername().equalsIgnoreCase((String)request.getSession().getAttribute("username")))
+					continue;
 	%>
 	<tr>
 		<td align="center" <%if (isODD) {%> class="tablerow_1" <%}%>

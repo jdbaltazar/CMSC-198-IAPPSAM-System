@@ -30,7 +30,7 @@ public class SaveEditedModeAction implements Action {
 			if (Validator.validField(name)) {
 				mop.setName(name);
 				ApplicationContext.INSTANCE.getPOManager().updateModeOfProcurement(mop);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Mode \""+name+"\" was updated");
+				Logger.log(request, "Mode \""+name+"\" was updated");
 				Action vAction = new ViewModesAction();
 				vAction.process(request, response);
 				return;

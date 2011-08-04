@@ -32,7 +32,7 @@ public class SaveEditedItemUnitAction implements Action {
 			if (Validator.validField(name)) {
 				unit.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateUnit(unit);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Unit \""+name+"\" was updated");
+				Logger.log(request, "Unit \""+name+"\" was updated");
 				Action vAction = new ViewItemUnitsAction();
 				vAction.process(request, response);
 				return;

@@ -29,7 +29,7 @@ public class SaveDisposalAction implements Action {
 			disposal.setName(disposalInput);
 			try {
 				wmrManager.addDisposal(disposal);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Disposal \""+disposalInput+"\" was added");
+				Logger.log(request, "Disposal \""+disposalInput+"\" was added");
 				Action vAction = new ViewDisposalsAction();
 				vAction.process(request, response);
 				return;

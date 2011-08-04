@@ -43,7 +43,7 @@ public class SaveEditedDivisionAction implements Action {
 						}
 						dOffice.setDivisionName(newName);
 						doManager.updateDivisionOffice(dOffice);
-						Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Division \""+newName+"\" was updated");
+						Logger.log(request, "Division \""+newName+"\" was updated");
 						Action vAction = new ViewOfficesAction();
 						vAction.process(request, response);
 						return;

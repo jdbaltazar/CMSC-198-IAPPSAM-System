@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import com.iappsam.database.BackupDatabaseTool;
+import com.iappsam.logging.Logger;
 
 /**
  * Servlet implementation class CreateAccount
@@ -33,7 +34,8 @@ public class BackupDatabase extends HttpServlet {
 			stream = response.getOutputStream();
 			File file = new File(bdTool.initBackUp().getAbsolutePath() + ".sql");
 			String fileName = "IAPPSAMS_DB_Backup_" + (getCurrentDate()) + ".sql";
-
+			Logger.log(request, "Database was backed up ");
+			
 			// set response headers
 			response.setContentType("text/plain");
 			response.addHeader("Content-Disposition", "attachment; filename=" + fileName);

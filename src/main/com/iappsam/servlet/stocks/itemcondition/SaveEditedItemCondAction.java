@@ -32,7 +32,7 @@ public class SaveEditedItemCondAction implements Action {
 			if (Validator.validField(name)) {
 				itemCondition.setName(name);
 				ApplicationContext.INSTANCE.getItemManager().updateItemCondition(itemCondition);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item Condition \""+name+"\" was updated");
+				Logger.log(request, "Item Condition \""+name+"\" was updated");
 				Action vAction = new ViewItemCondsAction();
 				vAction.process(request, response);
 				return;

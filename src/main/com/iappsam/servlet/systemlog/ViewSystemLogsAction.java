@@ -9,16 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iappsam.ItemCategory;
 import com.iappsam.Log;
-import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.LogManager;
 import com.iappsam.managers.exceptions.TransactionException;
-import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.LogManagerSession;
 import com.iappsam.servlet.Action;
-import com.iappsam.servlet.entities.StockPropertiesServlet;
-import com.iappsam.servlet.stocks.itemcategory.ItemCategoryServlet;
 
 public class ViewSystemLogsAction implements Action {
 
@@ -33,7 +28,6 @@ public class ViewSystemLogsAction implements Action {
 		try {
 			logs = l.viewLogs();
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

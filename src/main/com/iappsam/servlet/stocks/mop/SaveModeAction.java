@@ -30,7 +30,7 @@ public class SaveModeAction implements Action {
 			modeofProc.setName(modeofP);
 			try {
 				poManager.addModeOfProcurement(modeofProc);
-				Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Mode \""+modeofP+"\" was added");
+				Logger.log(request, "Mode \""+modeofP+"\" was added");
 				Action vAction = new ViewModesAction();
 				vAction.process(request, response);
 				return;
