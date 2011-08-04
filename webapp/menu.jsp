@@ -75,19 +75,22 @@
 			</tr>
 			<tr>
 				<td colspan="2"><form id="form10" name="form10" method="post"
-						action="accounts/create_account.jsp">
+						action="accounts">
 						<input name="createAcctBtn" type="submit" class="menubtn"
 							id="createAcctBtn" value="Create New" />
+						<input name="account-action" type="hidden" id="account-action" value="add-account"/>
 					</form></td>
 			</tr>
 			<tr>
-				<td><form id="form11" name="form11" method="post" action="">
+				<td><form id="form11" name="form11" method="post" action="accounts">
 						<input name="viewAcctsBtn" type="submit" class="menubtn"
 							id="viewAcctsBtn" value="View Accounts" />
+					<input name="account-action" type="hidden" id="hidden" value="view-accounts"/>
 					</form></td>
-				<td><form id="form29" name="form29" method="post" action="">
+				<td><form id="form29" name="form29" method="post" action="accounts">
 						<input name="myAcctBtn" type="submit" class="button2"
 							id="myAcctBtn" value="My Account" />
+						<input name="account-action" type="hidden" id="hidden" value="view-accounts"/>
 					</form></td>
 			</tr>
 			<tr>
