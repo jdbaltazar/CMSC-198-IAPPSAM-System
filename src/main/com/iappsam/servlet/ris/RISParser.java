@@ -39,7 +39,7 @@ public class RISParser extends FormParser {
 
 		String[] items = req.getParameterValues("items");
 		String[] requested = req.getParameterValues("quantity-requested");
-		String[] issued = req.getParameterValues("quatity-issued");
+		String[] issued = req.getParameterValues("quantity-issued");
 		String[] remarks = req.getParameterValues("remarks");
 
 		for (int i = 0; i < items.length; i++)

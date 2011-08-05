@@ -26,7 +26,7 @@
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>PO List </strong></em>&gt; <a href="#" target="_self" class="links">Fillup PO Form</a></td>
+    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>PO List </strong></em>&gt; <a href="/po?new=po" target="_self" class="links">Fillup PO Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>

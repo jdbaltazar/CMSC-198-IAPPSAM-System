@@ -88,7 +88,7 @@
 			<%
 				int i = 0;
 			%>
-			<form name="AddSelectedItem" action="/pr/line" method="post">
+			<form name="AddSelectedItem" action="/ie/line" method="post">
 
 				<input type="hidden" name="add" value="items" />
 				<c:forEach var="item" items="${items}">

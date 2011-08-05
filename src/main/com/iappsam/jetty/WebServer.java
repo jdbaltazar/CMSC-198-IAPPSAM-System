@@ -28,6 +28,7 @@ import com.iappsam.servlet.forms.iirup.SearchIIRUPForm;
 import com.iappsam.servlet.ie.IELineServlet;
 import com.iappsam.servlet.ie.IEServlet;
 import com.iappsam.servlet.item.ItemServlet;
+import com.iappsam.servlet.po.POLineServlet;
 import com.iappsam.servlet.po.POServlet;
 import com.iappsam.servlet.pr.PRLineServlet;
 import com.iappsam.servlet.pr.PRServlet;
@@ -69,6 +70,7 @@ public class WebServer {
 		addServlet(new POServlet(), "/po");
 		addServlet(new PRServlet(), "/pr");
 		addServlet(new RISServlet(), "/ris");
+		addServlet(new POLineServlet(), "/po/line");
 		addServlet(new RISLineServlet(), "/ris/line");
 		addServlet(new SearchIIRUPForm(), "/forms/iirup/SearchIIRUPForm.do");
 		addServlet(new SearchItemList(), "/forms/iirup/SearchIIRUPItemList.do");
