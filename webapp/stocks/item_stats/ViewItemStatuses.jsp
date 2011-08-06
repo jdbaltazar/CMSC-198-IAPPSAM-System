@@ -42,7 +42,7 @@
 				href="../stocks?stock-properties-action=view-stock-properties"
 				target="_top" class="links">Stock Properties</a> &gt;<em><strong>Item
 						Status List </strong>
-			</em>&gt; <a href="../stocks/item-unit?item-unit-action=add-item-unit" target="_self" class="links">Add
+			</em>&gt; <a href="../stocks/item-stat?item-stat-action=add-item-stat" target="_self" class="links">Add
 					Item Status</a>
 			</td>
 			<td>&nbsp;</td>
@@ -65,12 +65,12 @@
 					<%if (i % 2 == 0)
 					out.println("class=\"tablerow_1\"");%>>
 					<form id="form1" name="form1" method="post"
-						action="../stocks/item-unit">
+						action="../stocks/item-stat">
 						<input name="editBtn" type="submit" class="button2" id="editBtn"
 							value="Edit&gt;&gt;" /> <input type="hidden" name="itemStatusID"
 							value=<%="" + itemStatus.getId()%> />
 							<input type="hidden"
-							name="item-unit-action" value="edit-item-unit" />
+							name="item-stat-action" value="edit-item-stat" />
 					</form></td>
 				<td align="center"
 					<%if (i % 2 == 0)

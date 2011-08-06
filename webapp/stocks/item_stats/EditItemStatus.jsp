@@ -46,7 +46,7 @@
 	</table>
 	<div id="form_table">
 		<form id="form1" name="form1" method="post"
-			action="../stocks/item-unit">
+			action="../stocks/item-stat">
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
 					<td class="header_rows"><div class="header_1">
@@ -69,8 +69,8 @@
 								<td><input name="saveBtn" type="submit" class="button"
 									id="saveBtn" value="SAVE" />
 									<input
-									name="item-unit-action" type="hidden"
-									value="save-edited-item-unit" />
+									name="item-stat-action" type="hidden"
+									value="save-edited-item-stat" />
 									 <br /> <br /></td>
 							</tr>
 						</table></td>
