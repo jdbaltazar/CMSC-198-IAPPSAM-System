@@ -24,8 +24,10 @@ public class AccountServlet extends HttpServlet {
 	public static final String SEARCH_ACCOUNTS = "/account/SearchEmployees.jsp";
 	public static final String ADD_ACCOUNT = "/accounts/create_account.jsp";
 	public static final String VIEW_ACCOUNTS="/accounts/ViewAccounts.jsp";
+
 	public static final String VIEW_ACCOUNT = "/accounts/update_account.jsp";
 	public static final String VIEW_OWN_ACCOUNT="/accounts/view_own_account.jsp";
+
 	
 
 	public static final String ACCOUNT_ACTION = "account-action";
@@ -64,8 +66,10 @@ public class AccountServlet extends HttpServlet {
 	private Action parseAction(HttpServletRequest request) {
 
 		String action = (String) request.getParameter(ACCOUNT_ACTION);
+
 		if(action.equalsIgnoreCase(VIEW_OWN_ACCOUNT_ACTION))
 			return new ViewOwnAccountAction();
+
 		if(action.equalsIgnoreCase(ADD_ACCOUNT_ACTION))
 			return new AccountCreationAction();
 		if(action.equalsIgnoreCase(VIEW_ACCOUNTS_ACTION))

@@ -61,6 +61,33 @@
             <td>Quantity</td>
             <td>Unit Value</td>
             <td>Total Value</td>
+          </tr>
+          <tr class="tablerow_1">
+            <td><input type="checkbox" name="select" id="select" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><input name="qtyRequested" type="text" class="required" id="qtyRequested" size="2" /></td>
+            <td><label for="qtyIssued"></label></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="bkgrnd_white">
+            <td width="4%">&nbsp;</td>
+            <td width="9%">&nbsp;</td>
+            <td width="47%">&nbsp;</td>
+            <td width="11%">&nbsp;</td>
+            <td width="9%">&nbsp;</td>
+            <td width="10%">&nbsp;</td>
+            <td width="10%">&nbsp;</td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+      	<td colspan="2">&nbsp;</td>
+       </tr>
+       <tr>
+      	<td colspan="2"><table width="100%" border="0" cellspacing="0" class="tableheaders_forms">
+          <tr>
             <td>Year Acquired</td>
             <td>How Acquired</td>
             <td>Present Condition</td>

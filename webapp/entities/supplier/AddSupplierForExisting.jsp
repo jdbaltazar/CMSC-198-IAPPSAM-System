@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Supplier to Existing Person</title>
-<link href="css/header.css" rel="stylesheet" type="text/css" />
-<link href="css/form.css" rel="stylesheet" type="text/css" />
+<link href="../../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../../css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,12 +18,15 @@
 		supplier = new Supplier();
 	List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 %>
-<div id="headerBkgrnd"><img src="images/headerbar.png"
-	width="100%" height="129" /></div>
-<div id="logo"><img src="images/headerlogo.png" width="124"
-	height="128" /></div>
-<div id="headerName"><img src="images/headertext.png" width="452"
-	height="44" /></div>
+	<div id="headerBkgrnd">
+		<img src="../../images/headerbar.png" width="100%" height="129" />
+	</div>
+	<div id="logo">
+		<img src="../../images/headerlogo.png" width="124" height="128" />
+	</div>
+	<div id="headerName">
+		<img src="../../images/headertext.png" width="452" height="44" />
+	</div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

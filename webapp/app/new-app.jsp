@@ -226,9 +226,6 @@
 
 	</div>
 	</form>
-
-
-
 <!--<div id="footer"></div>-->
 </body>
 </html>

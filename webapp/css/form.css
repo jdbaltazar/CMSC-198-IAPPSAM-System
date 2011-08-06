@@ -1,6 +1,25 @@
 @charset "utf-8";
 /* CSS Document */
 
+div#export {
+	text-align: right;
+}
+
+.exportlabel{
+	font-weight:bold;
+	font-family:Lucida "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:14px;
+	background-color:#030;
+	color:white;
+}
+
+.exportlabel_2{
+	font-weight:bold;
+	font-family:Lucida "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:14px;
+	background-color:#CD7F32;
+	color:#CD7F32;
+}
 div#form_table {
   /* let's say you want to center this <div id="centerme">Something</div>
 	   and make it 60% wide but centered on the screen.*/
