@@ -10,6 +10,5 @@ Ybañez, Neil Patrick
 
 Deployment
 ----------
-1. Copy /webapp to %SERVLET_CONTAINER%/webapps/ROOT
-2. Run the server
-
+1. Execute database.sql in week/phase-1/
+1. Run WebServer
