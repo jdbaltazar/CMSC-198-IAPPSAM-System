@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Inventory of Equipment" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="7"/>
+	<property name="ireport.zoom" value="1.0245201830476063"/>
+	<property name="ireport.x" value="316"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
@@ -95,6 +95,16 @@
 	<parameter name="Prepared by DESIGNATION" class="java.lang.String"/>
 	<parameter name="PAGE NO." class="java.lang.String"/>
 	<parameter name="TOTAL NO. OF PAGES" class="java.lang.String"/>
+	<parameter name="MEMBER_NAME" class="java.lang.String"/>
+	<parameter name="MEMBER_DESIGNATION" class="java.lang.String"/>
+	<parameter name="MEMBER2_NAME" class="java.lang.String"/>
+	<parameter name="MEMBER2_DESIGNATION" class="java.lang.String"/>
+	<parameter name="COUNTER_CHECK_NAME" class="java.lang.String"/>
+	<parameter name="COUNTER_CHECK_DESIGNATION" class="java.lang.String"/>
+	<parameter name="NOTED_NAME" class="java.lang.String"/>
+	<parameter name="NOTED_DESIGNATION" class="java.lang.String"/>
+	<parameter name="COA_NAME" class="java.lang.String"/>
+	<parameter name="COA_DESIGNATION" class="java.lang.String"/>
 	<field name="Property Number" class="java.lang.String"/>
 	<field name="EQUIPMENT PROPERTY" class="java.lang.String"/>
 	<field name="ARTICLE CODE" class="java.lang.String"/>
@@ -522,6 +532,76 @@ REMARKS]]></text>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{Prepared by DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="55" width="270" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="68" width="270" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="81" width="270" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER2_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="94" width="270" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER2_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="13" width="135" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{COUNTER_CHECK_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="26" width="135" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{COUNTER_CHECK_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="55" width="179" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NOTED_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="68" width="179" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NOTED_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="68" width="148" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{COA_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="81" width="148" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{COA_DESIGNATION}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

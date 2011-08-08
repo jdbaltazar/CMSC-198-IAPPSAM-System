@@ -1,8 +1,10 @@
 package com.iappsam.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.Account;
+import com.iappsam.Building;
 import com.iappsam.Contact;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
@@ -15,6 +17,7 @@ import com.iappsam.Signatory;
 import com.iappsam.Supplier;
 import com.iappsam.Unit;
 import com.iappsam.forms.APP;
+import com.iappsam.forms.IE;
 import com.iappsam.forms.IIRUP;
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.forms.PO;
@@ -23,6 +26,7 @@ import com.iappsam.managers.APPManager;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
+import com.iappsam.managers.IEManager;
 import com.iappsam.managers.IIRUPManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.POManager;
@@ -35,6 +39,7 @@ import com.iappsam.managers.sessions.APPManagerSession;
 import com.iappsam.managers.sessions.AccountManagerSession;
 import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
+import com.iappsam.managers.sessions.IEManagerSession;
 import com.iappsam.managers.sessions.IIRUPManagerSession;
 import com.iappsam.managers.sessions.ItemManagerSession;
 import com.iappsam.managers.sessions.POManagerSession;
@@ -55,8 +60,10 @@ public class EntityRemover {
 	private static SupplierManager sm = new SupplierManagerSession();
 	private static POManager pom = new POManagerSession();
 	private static PRManager prm = new PRManagerSession();
+	private static IEManager iem = new IEManagerSession();
 
 	public static void removeAll() throws TransactionException {
+		removeIEs();
 		removePOs();
 		removePRs();
 		removeAPPs();
@@ -71,6 +78,20 @@ public class EntityRemover {
 		removePersons();
 		removeContacts();
 		removeDivisionOffices();
+		removeBuilidings();
+	}
+
+	private static void removeBuilidings() throws TransactionException {
+		List<Building> buildings = dom.getAllBuildings();
+		for (Building building : buildings)
+			dom.removeBuilding(building);
+
+	}
+
+	private static void removeIEs() throws TransactionException {
+		List<IE> ies = iem.getAllIE();
+		for (IE ie : ies)
+			iem.removeIE(ie);
 	}
 
 	public static void removePRs() throws TransactionException {

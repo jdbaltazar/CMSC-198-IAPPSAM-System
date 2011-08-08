@@ -1,4 +1,3 @@
-
 package com.iappsam.jetty;
 
 import java.util.EnumSet;
@@ -54,7 +53,6 @@ public class WebServer {
 		context.setWar("webapp");
 
 		addServlet(new AccountServlet(), "/accounts");
-		//addServlet(new AccountCreationForExistingEmployee(), "/accounts/create-account-for-employee.do");
 		addServlet(new BuildingServlet(), "/building");
 		addServlet(new DivisionOfficeServlet(), "/division-office");
 		addServlet(new EmployeeServlet(), "/employee");
