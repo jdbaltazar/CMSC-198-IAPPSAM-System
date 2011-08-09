@@ -55,7 +55,11 @@ public class PRManagerSessionTest {
 
 	@Test
 	public void shouldAddPurchaseRequestRequiredFields() throws TransactionException {
+		Item it = Item.create("desc", "cat", "unit", "stat", "con");
+		im.addItem(it);
+		pr.addLine(1, it);
 		prm.addPR(pr);
+
 		assertEquals(pr, prm.getPR(pr));
 	}
 
@@ -68,18 +72,13 @@ public class PRManagerSessionTest {
 		pr.setAlobsNumber("alob num");
 		pr.setAlobsDate(Date.valueOf("2011-01-01"));
 
-		prm.addPR(pr);
-
-		assertEquals(pr, prm.getPR(pr));
-	}
-
-	@Test
-	public void shouldAddPurchaseRequestWithLine() throws TransactionException {
 		Item it = Item.create("desc", "cat", "unit", "stat", "con");
 		im.addItem(it);
 		pr.addLine(1, it);
+
 		prm.addPR(pr);
 
 		assertEquals(pr, prm.getPR(pr));
 	}
+
 }

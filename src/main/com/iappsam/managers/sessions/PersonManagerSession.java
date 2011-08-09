@@ -74,11 +74,9 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	}
 
 	@Override
-	public void addEmployee(Employee employee) throws TransactionException, DuplicateEntryException {
+	public void addEmployee(Employee employee) throws TransactionException {
 		if (!containsEmployee(employee))
 			add(employee);
-		else
-			throw new DuplicateEntryException();
 	}
 
 	@Override

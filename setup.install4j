@@ -21,15 +21,24 @@
       <mountPoint id="23" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="23" file="C:/Users/JDB/workspace/CMSC-198-IAPPSAM-Sytem" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="CMSC-198-IAPPSAM-Sytem" excludeSuffixes="" dirMode="755" overrideDirMode="false">
+      <dirEntry mountPoint="23" file="F:/Projects/Java/CMSC-198-IAPPSAM-System" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="CMSC-198-IAPPSAM-Sytem" excludeSuffixes="" dirMode="755" overrideDirMode="false">
         <exclude>
+          <entry location=".classpath" fileType="regular" />
           <entry location=".git" fileType="regular" />
+          <entry location=".gitignore" fileType="regular" />
+          <entry location=".project" fileType="regular" />
           <entry location=".settings" fileType="regular" />
+          <entry location="build/classes/com/iappsam/test" fileType="regular" />
           <entry location="build.xml" fileType="regular" />
-          <entry location="desktop.ini" fileType="regular" />
           <entry location="dist" fileType="regular" />
+          <entry location="docs" fileType="regular" />
+          <entry location="lib" fileType="regular" />
+          <entry location="lucene-index" fileType="regular" />
+          <entry location="misc" fileType="regular" />
           <entry location="README.md" fileType="regular" />
           <entry location="setup.install4j" fileType="regular" />
+          <entry location="src" fileType="regular" />
+          <entry location="week" fileType="regular" />
         </exclude>
       </dirEntry>
     </entries>
@@ -37,7 +46,7 @@
   </files>
   <launchers>
     <launcher name="server" id="24" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" swtApp="false" fileset="">
-      <executable name="Server" type="1" iconSet="false" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
+      <executable name="Server" type="1" iconSet="false" iconFile="" executableDir="." redirectStderr="false" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="2" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
         <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" />
       </executable>
       <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="" java6SplashScreen="false">
@@ -49,7 +58,12 @@
       <java mainClass="com.iappsam.jetty.WebServer" vmParameters="" arguments="" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true">
         <classPath>
           <directory location="build/classes" failOnError="false" />
-          <scanDirectory location="webapp/WEB-INF/lib" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/jetty" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/hibernate" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/hibernate-search" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/jasper-reports" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/logging" failOnError="false" />
+          <scanDirectory location="webapp/WEB-INF/lib/mysql" failOnError="false" />
         </classPath>
         <nativeLibraryDirectories />
       </java>
@@ -63,6 +77,7 @@
       </customScript>
       <iconImageFiles />
     </launcher>
+    <launcher name="create.bat" id="71" customizedId="" external="true" excludeFromMenu="false" unixMode="755" menuName="Install Database" externalFile="sql\create.bat" />
   </launchers>
   <installerGui installerType="1" addOnAppId="" suggestPreviousLocations="true" autoUpdateDescriptorUrl="" useAutoUpdateBaseUrl="false" autoUpdateBaseUrl="">
     <customCode />
@@ -236,6 +251,18 @@
                   </java>
                 </serializedBean>
                 <condition />
+              </action>
+              <action name="" id="72" customizedId="" beanClass="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction">
+                      <void property="launcherId">
+                        <string>71</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition>!context.isUnattended()</condition>
               </action>
             </actions>
             <formComponents />

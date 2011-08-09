@@ -17,8 +17,9 @@ import com.iappsam.util.HibernateUtil;
 public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
-	public void addPO(PO purchaseOrder) throws TransactionException {
-		add(purchaseOrder);
+	public void addPO(PO po) throws TransactionException {
+		if (po.validate())
+			add(po);
 	}
 
 	@Override

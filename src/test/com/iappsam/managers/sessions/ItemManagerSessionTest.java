@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import com.iappsam.Item;
 import com.iappsam.ItemCategory;
-import com.iappsam.ItemCondition;
 import com.iappsam.ItemStatus;
 import com.iappsam.Unit;
 import com.iappsam.entities.EntityRemover;
@@ -18,12 +17,7 @@ import com.iappsam.managers.exceptions.TransactionException;
 public class ItemManagerSessionTest {
 
 	private static ItemManagerSession im;
-
-	public final ItemCategory category = new ItemCategory("Category");
-	public final Unit unit = new Unit("Unit");
-	public final ItemStatus status = new ItemStatus("Status");
-	public final ItemCondition condition = new ItemCondition("Condition");
-	public final Item item = new Item("Description", category, unit, status, condition);
+	public final Item item = Item.create("Description", "Category", "Unit", "Status", "Condition");
 
 	@BeforeClass
 	public static void initItemManager() {
