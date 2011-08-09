@@ -35,7 +35,7 @@
 	</tr>
 	<tr>
 		<td id="navigation"><a href="../menu.jsp" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.do" target="_top"
+		Menu</a> &gt; <a href="accounts?account-action=view-accounts" target="_top"
 			class="links">Account List</a> &gt; <em><strong>Create
 		Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
@@ -43,7 +43,6 @@
 </table>
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="accounts">
-<input type="hidden" name="account-action" value="save-account"/>
 <table width="100%" frame="box" cellspacing="0" id="table">
 
 
@@ -350,7 +349,8 @@
 				<tr>
 					<td class="align_right">&nbsp;</td>
 					<td><input name="createBtn" type="submit" class="button"
-						id="createBtn" value="CREATE" /></td>
+						id="createBtn" value="CREATE" />
+						<input type="hidden" name="account-action" value="save-account"/></td>
 				</tr>
 			</table>
 			</td>
