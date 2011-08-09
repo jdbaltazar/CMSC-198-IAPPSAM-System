@@ -128,7 +128,7 @@
 			<tr>
 				<td width="50%" align="right" class="same_width"><br /> <input
 					name="addItems" type="submit" class="button" id="addItem"
-					value="Add Item" /> <br /> <br />
+					value="Add Item>>" /> <br /> <br />
 				</td>
 				<td class="same_width"><br /> <input name="removeItems"
 					type="submit" class="button" id="removeItem" value="Remove Item" />

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,6 +9,19 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function emphasize(div) {
+		div.style.backgroundColor = "#dbb4c2";
+	}
+	function deEmphasize(div) {
+		div.style.backgroundColor = "#FFFFFF";
+	}
+	function deEmphasizeEven(div) {
+		div.style.backgroundColor = "#EEE0E5";
+	}
+</script>
+
 </head>
 
 <body>
@@ -49,17 +63,30 @@
       <td width="59%" class="tableheaders_forms">Supplier</td>
       <td width="20%" class="tableheaders_forms">Date</td>
     </tr>
-	<tr>
-	  <td align="center" class="tablerow_1">&nbsp;</td>
-	  <td align="center" class="tablerow_1">&nbsp;</td>
-      <td align="center" class="tablerow_1">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="center">&nbsp;</td>
-      <td align="center">&nbsp;</td>
-      <td align="center">&nbsp;</td>
-    </tr>
-  </table>
+    
+    </table>
+    
+<%int i=0; %>
+<c:forEach var="form" items="${forms}">
+	<a href="/po?id=${form.id}">
+	<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
+	<table width="100%" cellspacing="1" style="table-layout: fixed">
+		<tr <%if(i%2==0)
+      	out.println("class=\"tablerow_1\"");
+      	else
+      		out.println("class=\"tablerow_2\"");
+      %>
+      >
+			<td width="21%">${form.poNumber}</td>
+			<td width="59%">${form.supplierName.person.name}</td>
+			<td width="20%">${form.date}</td>
+		</tr>
+	</table>
+	</div>
+	</a>
+	<%i++; %>
+</c:forEach> 
+    
 </div>
 <!--<div id="footer"></div>-->
 </body>

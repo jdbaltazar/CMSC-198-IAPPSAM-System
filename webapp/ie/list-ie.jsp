@@ -8,6 +8,19 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+
+<script>
+	function emphasize(div) {
+		div.style.backgroundColor = "#dbb4c2";
+	}
+	function deEmphasize(div) {
+		div.style.backgroundColor = "#FFFFFF";
+	}
+	function deEmphasizeEven(div) {
+		div.style.backgroundColor = "#EEE0E5";
+	}
+</script>
+
 </head>
 
 <body>
@@ -49,17 +62,31 @@
       <td width="42%" class="tableheaders_forms">Division/Office</td>
       <td width="38%" class="tableheaders_forms">Prepared by</td>
     </tr>
-	<tr>
-	  <td align="center" class="tablerow_1">&nbsp;</td>
-	  <td align="center" class="tablerow_1">&nbsp;</td>
-      <td align="center" class="tablerow_1">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="center">&nbsp;</td>
-      <td align="center">&nbsp;</td>
-      <td align="center">&nbsp;</td>
-    </tr>
-  </table>
+    
+        </table>
+    
+    
+<%int i=0; %>
+<c:forEach var="form" items="${forms}">
+	<a href="/ie?id=${form.id}">
+	<div onmouseover="emphasize(this)" onmouseout="deEmphasize(this)">
+	<table width="100%" cellspacing="1" style="table-layout: fixed">
+		<tr <%if(i%2==0)
+      	out.println("class=\"tablerow_1\"");
+      	else
+      		out.println("class=\"tablerow_2\"");
+      %>
+      >
+			<td width="20%">&nbsp;</td>
+			<td width="42%">&nbsp;</td>
+			<td width="38%">&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	</a>
+	<%i++; %>
+</c:forEach> 
+
 </div>
 <!--<div id="footer"></div>-->
 </body>
