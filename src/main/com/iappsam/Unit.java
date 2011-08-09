@@ -32,7 +32,7 @@ public class Unit implements Serializable, Validatable {
 
 	public Unit(String name) {
 		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public String getName() {
@@ -48,7 +48,8 @@ public class Unit implements Serializable, Validatable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null)
+			this.name = name.trim();
 	}
 
 	@Override
@@ -83,6 +84,6 @@ public class Unit implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		return name != null && !name.trim().equals("");
+		return name != null && !name.equals("");
 	}
 }

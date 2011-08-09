@@ -13,7 +13,6 @@ public class Validator {
 	}
 
 	public static boolean validUsername(HttpServletRequest request) {
-
 		String username = (String) request.getSession().getAttribute("username");
 		if (username == null)
 			return false;
