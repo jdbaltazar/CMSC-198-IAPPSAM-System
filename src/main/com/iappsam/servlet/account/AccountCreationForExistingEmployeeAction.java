@@ -27,11 +27,9 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 
 	public AccountCreationForExistingEmployeeAction() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	private EntryFormatter entryFormatter = new EntryFormatter();
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
@@ -57,12 +55,10 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 			}
 
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("AvailablePersons" + availablePersons.size());
 		request.setAttribute("persons", availablePersons);
-		RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(AccountServlet.CREATE_ACCOUNT_FOR_EXISTING);
 		view.forward(request, response);
 	}
 	
@@ -110,13 +106,10 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 			RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
 			view.forward(request, response);
 		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

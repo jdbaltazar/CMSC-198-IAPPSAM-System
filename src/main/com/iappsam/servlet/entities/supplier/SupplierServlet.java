@@ -12,6 +12,10 @@ import com.iappsam.servlet.Action;
 @WebServlet("/supplier")
 public class SupplierServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1708851573583969401L;
 	public static final String SEARCH_SUPPLIERS = "/entities/supplier/SearchSuppliers.jsp";
 	public static final String ADD_SUPPLIER = "/entities/supplier/AddSupplier.jsp";
 	public static final String ADD_SUPPLIER_FOR_EXISTING = "/entities/supplier/AddSupplierForExisting.jsp";

@@ -36,9 +36,7 @@
 <p>&nbsp;</p>
 <table width="100%" border="0" cellspacing="0">
 	<%
-		String userName = request.getParameter("username");
-		if (userName == null)
-			userName = (String) request.getAttribute("username");
+		String userName = (String)request.getSession().getAttribute("username");
 		AccountManager aManager = new AccountManagerSession();
 		Account account = aManager.getAccount(userName);
 		PersonManager pManager = new PersonManagerSession();
@@ -56,26 +54,21 @@
 	</tr>
 	<tr>
 		<td id="navigation"><a href="../menu" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.do" target="_top" class="links">Account
-		List</a> &gt; <em><strong>Create Account</strong></em><strong></strong></td>
+		Menu</a> &gt; <a href="/accounts" target="_top" class="links">Account
+		List</a> &gt; <em><strong>View Own Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="/account">
+<form id="form1" name="form1" method="post" action="/accounts">
 <input type="hidden" name="username" value="<%=userName%>" />
-<input type="hidden" name="account-action" value="save-edited-account"/>
+<input type="hidden" name="account-action" value="save-own-edited-account"/>
 <table width="100%" frame="box" cellspacing="0" id="table">
 
 
-	<tr>
-		<td align="right" class="bkgrnd_white"><a
-			href="create-account-for-employee.do" target="_self" class="linkBtn">Create
-		Account For Existing Employee>></a></td>
-	</tr>
+
 
 	<tr>
-		<tr>
 			<td class="bkgrnd_white">&nbsp;</td>
 		</tr>
 		<tr>
@@ -279,7 +272,7 @@
 						value="<%=account.getUsername()%>" disabled="disabled" /></td>
 				</tr>
 				<tr>
-					<td class="align_right">*Old Password:</td>
+					<td class="align_right">*New Password:</td>
 					<td><input type="password" name="password" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
@@ -287,27 +280,6 @@
 							out.print("*");
 						}
 					%>
-					</td>
-				</tr>
-				<tr>
-					<td class="align_right">*New Password:</td>
-					<td><input type="password" name="newPassword" id="newPassword"
-						<%passwordOk = (String) request.getAttribute("passwordOK");%> />
-					<%
-						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
-							out.print("*");
-						}
-					%>
-					</td>
-				</tr>
-				<tr>
-					<td class="align_right">*Re-enter Password:</td>
-					<td><input type="password" name="reenterPassword"
-						id="reenterPassword" /> <%
- 	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
- 		out.print("*");
- 	}
- %>
 					</td>
 				</tr>
 				<tr>

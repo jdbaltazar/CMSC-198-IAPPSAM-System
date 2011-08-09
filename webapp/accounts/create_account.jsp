@@ -35,7 +35,7 @@
 	</tr>
 	<tr>
 		<td id="navigation"><a href="../menu.jsp" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.do" target="_top"
+		Menu</a> &gt; <a href="accounts?account-action=view-accounts" target="_top"
 			class="links">Account List</a> &gt; <em><strong>Create
 		Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
@@ -43,14 +43,13 @@
 </table>
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="accounts">
-<input type="hidden" name="account-action" value="save-account"/>
 <table width="100%" frame="box" cellspacing="0" id="table">
 
 
 	<tr>
 		<td align="right" class="bkgrnd_white"><a
-			href="create-account-for-employee.do" target="_self" class="linkBtn">Create
-		Account For Existing Employee>></a></td>
+			href="/accounts" target="_self" class="linkBtn">Create
+		Account For Existing Employee>></a><input type="hidden" value="create-from-existing" name="account-action2"/></td>
 	</tr>
 
 	<tr>
@@ -73,7 +72,7 @@
 						AccountType[] accountTypes = AccountType.values();
 					%>
 					<td class="align_right" id="align_right">Title:</td>
-					<td><input name="title" type="text" id="title" maxlength="10"
+					<td><input type="text" name="title" id="title"
 						<%String title = (String) request.getAttribute("title");
 			if (title != null && !title.isEmpty())
 				out.print("value=" + '"' + title + '"');%> /></td>
@@ -81,7 +80,7 @@
 				<tr>
 					<td class="align_right" id="align_right">*Name:<br />
 					</td>
-					<td><input name="name" type="text" class="required" id="name" maxlength="80"
+					<td><input type="text" name="name" id="name"
 						<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
 			if (nameOK != null && !nameOK.isEmpty()
@@ -114,8 +113,8 @@
 				</tr>
 				<tr>
 					<td>
-					<div align="center"><label for="designation_1"></label> <input name="designation"
-						type="text" class="required" id="designation_1" maxlength="45"
+					<div align="center"><label for="designation_1"></label> <input
+						type="text" name="designation" id="designation_1"
 						<%String[] designation = (String[]) request
 					.getAttribute("designation");
 			String[] employeeNo = (String[]) request.getAttribute("employeeNo");
@@ -130,13 +129,13 @@
 					</td>
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
-						id="employeeNo._1" size="4" maxlength="45"
+						id="employeeNo._1" size="4"
 						<%if (employeeNo != null && employeeNo[0] != null
 					&& !employeeNo[0].isEmpty())
 				out.print("value=" + '"' + employeeNo[0] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown" class="required_menulist"
+					<div align="center"><select name="divisionOfficeDropdown"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -159,8 +158,8 @@
 				</tr>
 				<tr>
 					<td>
-					<div align="center"><label for="designation_1"></label> <input name="designation"
-						type="text" class="required" id="designation_1" maxlength="45"
+					<div align="center"><label for="designation_1"></label> <input
+						type="text" name="designation" id="designation_1"
 						<%String designation2OK = (String) request
 					.getAttribute("designation2OK");
 			if (designation != null && designation.length > 1
@@ -171,13 +170,13 @@
 					</td>
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
-						id="employeeNo._1" size="4" maxlength="45"
+						id="employeeNo._1" size="4"
 						<%if (employeeNo != null && employeeNo[1] != null
 					&& !employeeNo[1].isEmpty())
 				out.print("value=" + '"' + employeeNo[1] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown" class="required_menulist"
+					<div align="center"><select name="divisionOfficeDropdown"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -200,8 +199,8 @@
 				</tr>
 				<tr>
 					<td>
-					<div align="center"><label for="designation_1"></label> <input name="designation"
-						type="text" class="required" id="designation_1" maxlength="45"
+					<div align="center"><label for="designation_1"></label> <input
+						type="text" name="designation" id="designation_1"
 						<%String designation3OK = (String) request
 					.getAttribute("designation3OK");
 			if (designation != null && designation.length > 2
@@ -212,13 +211,13 @@
 					</td>
 					<td>
 					<div align="center"><input name="employeeNo" type="text"
-						id="employeeNo._1" size="4" maxlength="45" <%%>
+						id="employeeNo._1" size="4" <%%>
 						<%if (employeeNo != null && employeeNo[2] != null
 					&& !employeeNo[2].isEmpty())
 				out.print("value=" + '"' + employeeNo[2] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown" class="required_menulist"
+					<div align="center"><select name="divisionOfficeDropdown"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -253,8 +252,8 @@
 				class="no_border_table">
 				<tr>
 					<td class="align_right">Cellphone Number:</td>
-					<td><input name="cellphoneNumber" type="text"
-						id="cellphoneNumber" maxlength="45"
+					<td><input type="text" name="cellphoneNumber"
+						id="cellphoneNumber"
 						<%String mobileNumber = (String) request.getAttribute("mobileNumber");
 			if (mobileNumber != null && !mobileNumber.isEmpty()) {
 				out.print("value=" + '"' + mobileNumber + '"');
@@ -262,7 +261,7 @@
 				</tr>
 				<tr>
 					<td class="align_right">Landline:</td>
-					<td><input name="landline" type="text" id="landline" maxlength="45"
+					<td><input type="text" name="landline" id="landline"
 						<%String landline = (String) request.getAttribute("landline");
 			if (landline != null && !landline.isEmpty()) {
 				out.print("value=" + '"' + landline + '"');
@@ -270,7 +269,7 @@
 				</tr>
 				<tr>
 					<td class="align_right">E-mail Address:</td>
-					<td><input name="e-mail_ad" type="text" id="e-mail_ad" maxlength="45"
+					<td><input type="text" name="e-mail_ad" id="e-mail_ad"
 						<%String emailad = (String) request.getAttribute("emailad");
 			if (emailad != null && !emailad.isEmpty()) {
 				out.print("value=" + '"' + emailad + '"');
@@ -289,7 +288,7 @@
 			<table width="100%" border="0" cellspacing="9">
 				<tr>
 					<td class="align_right">*Username:</td>
-					<td><input name="username" type="text" class="required" id="username" maxlength="60"
+					<td><input type="text" name="username" id="username"
 						<%String usernameOk = (String) request.getAttribute("usernameOK");
 			String username = (String) request.getAttribute("userName");
 			if (usernameOk != null && !usernameOk.isEmpty()
@@ -306,7 +305,7 @@
 				</tr>
 				<tr>
 					<td class="align_right">*Password:</td>
-					<td><input name="password" type="password" class="required" id="password" maxlength="80"
+					<td><input type="password" name="password" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty()
@@ -318,8 +317,8 @@
 				</tr>
 				<tr>
 					<td class="align_right">*Re-enter Password:</td>
-					<td><input name="reenterPassword" type="password" class="required"
-						id="reenterPassword" maxlength="80" /> <%
+					<td><input type="password" name="reenterPassword"
+						id="reenterPassword" /> <%
  	if (passwordOk != null && !passwordOk.isEmpty()
  			&& passwordOk.equalsIgnoreCase("false")) {
  		out.print("*");
@@ -329,7 +328,7 @@
 				</tr>
 				<tr>
 					<td class="align_right">*Account Type:</td>
-					<td><select name="accountType" class="required_menulist"
+					<td><select name="accountType" class="menulist"
 						id="accountType">
 						<%
 							for (int i = 0; i < accountTypes.length; i++) {
@@ -345,12 +344,13 @@
 						<%
 							}
 						%>
-				  </select></td>
+					</select></td>
 				</tr>
 				<tr>
 					<td class="align_right">&nbsp;</td>
 					<td><input name="createBtn" type="submit" class="button"
-						id="createBtn" value="CREATE" /></td>
+						id="createBtn" value="CREATE" />
+						<input type="hidden" name="account-action" value="save-account"/></td>
 				</tr>
 			</table>
 			</td>

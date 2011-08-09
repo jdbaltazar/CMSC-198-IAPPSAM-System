@@ -72,7 +72,7 @@ public class SaveAccountAction implements Action{
 			designation3OK = "true";
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher("create_account.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(AccountServlet.ADD_ACCOUNT);
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
 		request.setAttribute("designation", designation);
@@ -97,6 +97,9 @@ public class SaveAccountAction implements Action{
 
 	public void process(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("............................................inside save account action!");
+		
 		title = entry.spaceTrimmer(request.getParameter("title"));
 		name = entry.spaceTrimmer(request.getParameter("name"));
 
@@ -210,7 +213,6 @@ public class SaveAccountAction implements Action{
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
-				request.setAttribute("userName", username);
 				AccountsViewAction view = new AccountsViewAction();
 				view.process(request, response);
 			} catch (TransactionException e) {

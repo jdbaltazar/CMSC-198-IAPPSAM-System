@@ -28,7 +28,7 @@ import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.EntryFormatter;
 
-public class UpdateAccountAction implements Action{
+public class UpdateAccountAction implements Action {
 	private EntryFormatter entryFormatter = new EntryFormatter();
 
 	private String title;
@@ -48,8 +48,8 @@ public class UpdateAccountAction implements Action{
 	private String emailad;
 	private AccountManager aManager = new AccountManagerSession();
 
-	public void process(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
 		password = request.getParameter("newPassword");
@@ -65,22 +65,30 @@ public class UpdateAccountAction implements Action{
 		employeeNo = request.getParameterValues("empNo3");
 		divisionOfficeID = request.getParameterValues("divisionOffice");
 
-		for (int i = 0; i < designation.length; i++) {
+		for (int i = 0; designation != null && i < designation.length; i++) {
 			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
-		
+
+		try {
 			if (!name.isEmpty()
 					&& !username.isEmpty()
 					&& !password.isEmpty()
-				
-					 && entryFormatter.check(name)) {
+					&& aManager.getAccount(username).comparePassword(
+							oldPassword)
+					&& password.equalsIgnoreCase(reenterPassword)
+
+					&& entryFormatter.check(name)) {
 				acceptResponse(request, response);
 			} else {
 
 				failedResponse(request, response);
 			}
-		 
+		} catch (TransactionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private void acceptResponse(HttpServletRequest request,
@@ -90,163 +98,179 @@ public class UpdateAccountAction implements Action{
 		Person person;
 		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
 		ContactManager cManager = new ContactManagerSession();
-		
-			try {
 
-				Account account = aManager.getAccount(username);
-				account.setPassword(password);
-				if (acctType
-						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
-								.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType
-						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
-								.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
-						.toString())) {
-					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
-						.toString())) {
-					account.setType(AccountType.SYSTEM_ADMIN);
+		try {
+
+			Account account = aManager.getAccount(username);
+			account.setPassword(password);
+			if (acctType
+					.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
+							.toString())) {
+				account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
+			} else if (acctType
+					.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
+							.toString())) {
+				account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
+			} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
+					.toString())) {
+				account.setType(AccountType.SPSO_PERSONNEL);
+			} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
+					.toString())) {
+				account.setType(AccountType.SYSTEM_ADMIN);
+			}
+			aManager.updateAccount(account);
+
+			person = account.getPerson();
+			request.setAttribute("account", account);
+			Contact[] contacts = new Contact[person.getContacts().size()];
+			person.getContacts().toArray(contacts);
+			ArrayList<Contact> mobileList = new ArrayList<Contact>();
+			ArrayList<Contact> landlineList = new ArrayList<Contact>();
+			ArrayList<Contact> emailList = new ArrayList<Contact>();
+			if (contacts != null) {
+
+				for (int i = 0; i < contacts.length; i++) {
+					if (contacts[i].getType().equals(ContactType.EMAIL))
+						emailList.add(contacts[i]);
+
+					if (contacts[i].getType().equals(ContactType.MOBILE))
+						mobileList.add(contacts[i]);
+
+					if (contacts[i].getType().equals(ContactType.LANDLINE))
+						landlineList.add(contacts[i]);
 				}
-				aManager.updateAccount(account);
-				
-				person = account.getPerson();
-				request.setAttribute("account", account);
-				Contact[] contacts = new Contact[person.getContacts().size()];
-				person.getContacts().toArray(contacts);
-				ArrayList<Contact> mobileList = new ArrayList<Contact>();
-				ArrayList<Contact> landlineList = new ArrayList<Contact>();
-				ArrayList<Contact> emailList = new ArrayList<Contact>();
-				if (contacts != null) {
-
-					for (int i = 0; i < contacts.length; i++) {
-						if (contacts[i].getType().equals(ContactType.EMAIL))
-							emailList.add(contacts[i]);
-
-						if (contacts[i].getType().equals(ContactType.MOBILE))
-							mobileList.add(contacts[i]);
-
-						if (contacts[i].getType().equals(ContactType.LANDLINE))
-							landlineList.add(contacts[i]);
-					}
-				}
-				if (title != null && !title.equalsIgnoreCase("null")
-						&& !title.isEmpty()) {
-					person.setTitle(title);
-					person.setName(name);
-				} else
-					person.setName(name);
-				if (emailad != null && emailList.isEmpty()
+			}
+			if (title != null && !title.equalsIgnoreCase("null")
+					&& !title.isEmpty()) {
+				person.setTitle(title);
+				person.setName(name);
+			} else
+				person.setName(name);
+			if (emailad != null && emailList.isEmpty() && !emailad.isEmpty()) {
+				Contact email = new Contact();
+				email.setData(emailad);
+				email.setType(ContactType.EMAIL);
+				person.addContact(email);
+				cManager.addContact(email);
+			}
+			for (int i = 0; i < emailList.size(); i++)
+				if (emailad != null && !emailad.equalsIgnoreCase("null")
 						&& !emailad.isEmpty()) {
 					Contact email = new Contact();
-					email.setData(emailad);
-					email.setType(ContactType.EMAIL);
-					person.addContact(email);
-				}
-				for (int i = 0; i < emailList.size(); i++)
-					if (emailad != null && !emailad.equalsIgnoreCase("null")
-							&& !emailad.isEmpty()) {
-						Contact email = new Contact();
-						if (i < emailList.size()) {
-							email = emailList.get(i);
-							email.setData(emailad);
-							cManager.addContact(email);
-						}
-
+					if (i < emailList.size()) {
+						email = emailList.get(i);
+						email.setData(emailad);
+						cManager.addContact(email);
 					}
-				if (landline != null && landlineList.isEmpty()
+
+				}
+			if (landline != null && landlineList.isEmpty()
+					&& !landline.isEmpty()) {
+
+				Contact landline2 = new Contact();
+				landline2.setData(landline);
+				landline2.setType(ContactType.LANDLINE);
+				person.addContact(landline2);
+				cManager.addContact(landline2);
+			}
+			for (int i = 0; i < landlineList.size(); i++)
+				if (landline != null && !landline.equalsIgnoreCase("null")
 						&& !landline.isEmpty()) {
-
 					Contact landline2 = new Contact();
-					landline2.setData(landline);
-					landline2.setType(ContactType.LANDLINE);
-					person.addContact(landline2);
-				}
-				for (int i = 0; i < landlineList.size(); i++)
-					if (landline != null && !landline.equalsIgnoreCase("null")
-							&& !landline.isEmpty()) {
-						Contact landline2 = new Contact();
 
-						if (i < landlineList.size()) {
-							landline2 = landlineList.get(i);
-							landline2.setData(landline);
-							landline2.setType(landlineList.get(i).getType());
-							landline2.setId(landlineList.get(i).getContactID());
-							cManager.updateContact(landline2);
-						}
+					if (i < landlineList.size()) {
+						landline2 = landlineList.get(i);
+						landline2.setData(landline);
+						landline2.setType(landlineList.get(i).getType());
+						landline2.setId(landlineList.get(i).getContactID());
+						cManager.updateContact(landline2);
 					}
-				if (mobileNumber != null && mobileList.isEmpty()
+				}
+			if (mobileNumber != null && mobileList.isEmpty()
+					&& !mobileNumber.isEmpty()) {
+				Contact mobile = new Contact();
+				mobile.setData(mobileNumber);
+				mobile.setType(ContactType.MOBILE);
+				person.addContact(mobile);
+				cManager.addContact(mobile);
+			}
+			for (int i = 0; i < mobileList.size(); i++)
+				if (mobileNumber != null
+						&& !mobileNumber.equalsIgnoreCase("null")
 						&& !mobileNumber.isEmpty()) {
 					Contact mobile = new Contact();
-					mobile.setData(mobileNumber);
-					mobile.setType(ContactType.MOBILE);
-					person.addContact(mobile);
-				}
-				for (int i = 0; i < mobileList.size(); i++)
-					if (mobileNumber != null
-							&& !mobileNumber.equalsIgnoreCase("null")
-							&& !mobileNumber.isEmpty()) {
-						Contact mobile = new Contact();
-						if (i < mobileList.size()) {
-							mobile = mobileList.get(i);
-							mobile.setData(mobileNumber);
-							mobile.setType(mobileList.get(i).getType());
-							mobile.setId(mobileList.get(i).getContactID());
-							cManager.updateContact(mobile);
-						}
+					if (i < mobileList.size()) {
+						mobile = mobileList.get(i);
+						mobile.setData(mobileNumber);
+						mobile.setType(mobileList.get(i).getType());
+						mobile.setId(mobileList.get(i).getContactID());
+						cManager.updateContact(mobile);
 					}
-
-				List<Employee> empList = pManager.getEmployeeByPerson(person
-						.getId());
-				System.out.println("EmployeeList Number:" + empList.size());
-				for (int i = 0; i < designation.length; i++) {
-					if (designation[i].isEmpty())
-						continue;
-					Employee employee = new Employee();
-					if (i < empList.size())
-						employee = empList.get(i);
+				}
+			pManager.updatePerson(person);
+			List<Employee> empList = pManager.getEmployeeByPerson(person
+					.getId());
+			for (int i = 0; i < designation.length; i++) {
+				if (designation[i].isEmpty())
+					continue;
+				Employee employee = new Employee();
+				if (i < empList.size())
 					employee = empList.get(i);
-					employee.setDesignation(designation[i]);
-					employee.setEmployeeNumber(employeeNo[i]);
-					try {
-						employee.setDivisionOffice(dManager
-								.getDivisionOffice(Integer
-										.parseInt(divisionOfficeID[i])));
-						pManager.updateEmployee(employee);
-						empList.add(employee);
-					} catch (NumberFormatException e) {
-						failedResponse(request, response);
-					} catch (Exception e) {
-						failedResponse(request, response);
-					}
-					try {
-						pManager.updatePerson(person);
-					} catch (DuplicateEntryException e) {
-						failedResponse(request, response);
-					}
+				employee = empList.get(i);
+				employee.setDesignation(designation[i]);
+				employee.setEmployeeNumber(employeeNo[i]);
+				try {
+					employee.setDivisionOffice(dManager
+							.getDivisionOffice(Integer
+									.parseInt(divisionOfficeID[i])));
+					pManager.updateEmployee(employee);
+					empList.add(employee);
+				} catch (NumberFormatException e) {
+					failedResponse(request, response);
+				} catch (Exception e) {
+					failedResponse(request, response);
 				}
-				request.setAttribute("employeeID", empList.get(0).getId());
-
-				request.setAttribute("person", person);
-				request.setAttribute("userName", username);
-			} catch (TransactionException e) {
-				failedResponse(request, response);
+				try {
+					pManager.updatePerson(person);
+				} catch (DuplicateEntryException e) {
+					failedResponse(request, response);
+				}
 			}
-		
+			request.setAttribute("employeeID", empList.get(0).getId());
+
+			request.setAttribute("person", person);
+			request.setAttribute("userName", username);
+		} catch (TransactionException e) {
+			failedResponse(request, response);
+		} catch (DuplicateEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
+
+	}
+
 	private void failedResponse(HttpServletRequest request,
 			HttpServletResponse response) {
 		if (name.isEmpty())
 			request.setAttribute("nameOK", "false");
 		else
 			request.setAttribute("nameOK", "true");
-		if (password.isEmpty())
-			request.setAttribute("passwordOK", "false");
-		else
-			request.setAttribute("passwordOK", "true");
+		try {
+			if (password != null
+					&& reenterPassword != null
+					&& oldPassword != null
+					&& !(password.isEmpty()
+							&& reenterPassword.isEmpty()
+							&& aManager.getAccount(username).comparePassword(
+									oldPassword) && password
+								.equalsIgnoreCase(reenterPassword)))
+				request.setAttribute("passwordOK", "false");
+			else
+				request.setAttribute("passwordOK", "true");
+		} catch (TransactionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		RequestDispatcher view = request
 				.getRequestDispatcher("update_account.jsp");
