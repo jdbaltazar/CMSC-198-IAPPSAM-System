@@ -72,7 +72,7 @@ public class PR implements Form {
 	@JoinColumn(name = "Approved_by")
 	private Employee approvedBy;
 
-	@OneToMany(mappedBy = "purchaseRequest", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "purchaseRequest", cascade = CascadeType.ALL)
 	private Set<PRLine> lines = new HashSet<PRLine>();
 
 	public PR() {

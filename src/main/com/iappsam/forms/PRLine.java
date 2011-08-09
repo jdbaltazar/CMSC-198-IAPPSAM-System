@@ -41,6 +41,7 @@ public class PRLine implements Validatable {
 
 	public PRLine(PR pr, int quantity, Item item) {
 		super();
+		this.purchaseRequest = pr;
 		this.quantity = quantity;
 		this.item = item;
 	}

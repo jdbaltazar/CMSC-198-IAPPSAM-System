@@ -10,6 +10,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,7 +28,8 @@ import com.iappsam.Supplier;
 public class PO implements Form {
 
 	@Id
-	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
 
 	@Column(name = "PO_Number")
@@ -432,5 +435,4 @@ public class PO implements Form {
 	public int getId() {
 		return id;
 	}
-
 }

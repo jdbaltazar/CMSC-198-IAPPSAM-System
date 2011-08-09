@@ -4,9 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.iappsam.managers.PRManager;
 import com.iappsam.managers.sessions.APPManagerSessionTest;
-import com.iappsam.managers.sessions.IEManagerSession;
 import com.iappsam.managers.sessions.IEManagerSessionTest;
 import com.iappsam.managers.sessions.IIRUPManagerSessionTest;
 import com.iappsam.managers.sessions.ItemManagerSessionTest;

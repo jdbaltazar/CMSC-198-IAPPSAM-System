@@ -83,8 +83,8 @@ public class Item implements Serializable, Validatable {
 		super();
 	}
 
-	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired,
-			String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus, ItemCondition itemCondition) {
+	public Item(String description, String stockNumber, ItemCategory itemCategory, Unit unit, float price, Date dateAcquired, String inventoryItemNumber, String propertyNumber, ItemStatus itemStatus,
+			ItemCondition itemCondition) {
 		super();
 		setDescription(description);
 		this.stockNumber = stockNumber;
@@ -99,7 +99,7 @@ public class Item implements Serializable, Validatable {
 	}
 
 	public Item(String description, ItemCategory itemCategory, Unit unit, ItemStatus itemStatus, ItemCondition itemCondition) {
-		this(description, "", itemCategory, unit, 0.0f, null, null, null, null, itemCondition);
+		this(description, "", itemCategory, unit, 0.0f, null, null, null, itemStatus, itemCondition);
 	}
 
 	public String getDescription() {

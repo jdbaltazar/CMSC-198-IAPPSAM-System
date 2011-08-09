@@ -26,7 +26,7 @@ public class POLine implements Serializable, Validatable {
 	private Item item;
 
 	@ManyToOne
-	@JoinColumn(name = "PO_Id")
+	@JoinColumn(name = "PO_ID")
 	private PO po;
 
 	public POLine() {
@@ -35,8 +35,8 @@ public class POLine implements Serializable, Validatable {
 
 	public POLine(PO po, Item item) {
 		super();
-		this.item = item;
 		this.po = po;
+		this.item = item;
 	}
 
 	public int getId() {

@@ -28,10 +28,17 @@
           <entry location=".gitignore" fileType="regular" />
           <entry location=".project" fileType="regular" />
           <entry location=".settings" fileType="regular" />
+          <entry location="build/classes/com/iappsam/test" fileType="regular" />
           <entry location="build.xml" fileType="regular" />
           <entry location="dist" fileType="regular" />
+          <entry location="docs" fileType="regular" />
+          <entry location="lib" fileType="regular" />
+          <entry location="lucene-index" fileType="regular" />
+          <entry location="misc" fileType="regular" />
           <entry location="README.md" fileType="regular" />
           <entry location="setup.install4j" fileType="regular" />
+          <entry location="src" fileType="regular" />
+          <entry location="week" fileType="regular" />
         </exclude>
       </dirEntry>
     </entries>
@@ -70,7 +77,7 @@
       </customScript>
       <iconImageFiles />
     </launcher>
-    <launcher name="create.bat" id="71" customizedId="" external="true" excludeFromMenu="false" unixMode="755" menuName="CreateDatabase" externalFile="week\phase-3\create.bat" />
+    <launcher name="create.bat" id="71" customizedId="" external="true" excludeFromMenu="false" unixMode="755" menuName="Install Database" externalFile="sql\create.bat" />
   </launchers>
   <installerGui installerType="1" addOnAppId="" suggestPreviousLocations="true" autoUpdateDescriptorUrl="" useAutoUpdateBaseUrl="false" autoUpdateBaseUrl="">
     <customCode />
@@ -390,6 +397,6 @@
     </windows>
   </mediaSets>
   <buildIds buildAll="true" />
-  <buildOptions verbose="false" faster="true" debug="false" />
+  <buildOptions verbose="false" faster="false" debug="false" />
 </install4j>
 
