@@ -22,7 +22,7 @@ public class SaveBuildingAction implements Action {
 
 		RequestDispatcher add = request.getRequestDispatcher(BuildingServlet.ADD_BUILDING);
 		Building building = new Building();
-		String name = request.getParameter("name");
+		String name = request.getParameter("buildingName");
 		if (name != null)
 			name = name.trim();
 		String address = request.getParameter("address");

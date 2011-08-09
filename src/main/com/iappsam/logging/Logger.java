@@ -11,15 +11,13 @@ import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.LogManagerSession;
 
 public class Logger {
-
+	
 	public synchronized static void log(HttpServletRequest request, String description) {
 		try {
 			Account a = (Account) request.getSession().getAttribute("account");
 			LogManager lManager = new LogManagerSession();
-			description = description + " by " + a.getUsername();
-			java.util.Date utilDate = new java.util.Date();
-		   java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-			Log l = new Log(sqlDate, description);
+			description = description + " by " + a.getUsername();		   
+		   Log l = new Log(description);
 			lManager.addLog(l);
 		} catch (TransactionException e) {
 			e.printStackTrace();

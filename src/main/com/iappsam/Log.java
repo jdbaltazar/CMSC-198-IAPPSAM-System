@@ -1,12 +1,14 @@
 package com.iappsam;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Log {
@@ -17,6 +19,8 @@ public class Log {
 	private int id;
 	
 	@Column(name = "Date")
+	@Temporal(TemporalType.TIMESTAMP)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Date date;
 	
 	@Column(name = "Description")
@@ -27,9 +31,8 @@ public class Log {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Log(Date date, String description) {
+	public Log(String description) {
 		super();
-		this.date = date;
 		this.description = description;
 	}
 

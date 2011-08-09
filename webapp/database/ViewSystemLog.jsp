@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.iappsam.Log"%>
 <%@page import="java.util.List"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,7 +49,9 @@
 %>    
         <%
     int i=0;
-    for(Log l: logs){
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy [HH:mm:ss]");
+        for(Log l: logs){
+   	 	
    	%>
    	<tr <%
    	if(i%2==0)
@@ -57,7 +60,7 @@
 	out.println("class=\"tablerow_2\"");
    	%> align="center"> 
    	
-   	<td width="26%"><%=l.getDate().toString() %></td>
+   	<td width="26%"><%=sdf.format(l.getDate()) %></td>
       <td width="74%"><%=l.getDescription() %></td>
    	 <% 
    	 i++;
