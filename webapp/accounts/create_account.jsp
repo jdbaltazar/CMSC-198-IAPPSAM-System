@@ -35,7 +35,7 @@
 	</tr>
 	<tr>
 		<td id="navigation"><a href="../menu.jsp" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.do" target="_top"
+		Menu</a> &gt; <a href="accounts?account-action=view-accounts" target="_top"
 			class="links">Account List</a> &gt; <em><strong>Create
 		Account</strong></em><strong></strong></td>
 		<td>&nbsp;</td>
