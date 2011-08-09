@@ -67,12 +67,11 @@ public class POParser extends FormParser {
 		String[] items = req.getParameterValues("items");
 
 		if (items != null)
-			for (String item : items) {
+			for (String item : items)
 				try {
 					po.addLine(im.getItem(Integer.parseInt(item)));
 				} catch (NumberFormatException e) {
 				}
-			}
 
 		return po;
 	}

@@ -16,4 +16,7 @@ public interface IEManager {
 	boolean containsIE(IE inventoryOfEquipment) throws TransactionException;
 
 	List<IE> getAllIE() throws TransactionException;
+
+	void removeIE(IE ie) throws TransactionException;
+
 }

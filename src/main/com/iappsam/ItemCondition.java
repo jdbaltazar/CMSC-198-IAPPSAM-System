@@ -34,7 +34,7 @@ public class ItemCondition implements Serializable, Validatable {
 
 	public ItemCondition(String name) {
 		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public int getId() {
@@ -50,7 +50,8 @@ public class ItemCondition implements Serializable, Validatable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null)
+			this.name = name.trim();
 	}
 
 	@Override
@@ -85,6 +86,6 @@ public class ItemCondition implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		return name != null && !name.trim().equals("");
+		return name != null && !name.equals("");
 	}
 }

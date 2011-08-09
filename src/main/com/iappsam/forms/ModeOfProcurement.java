@@ -26,8 +26,7 @@ public class ModeOfProcurement implements Validatable {
 	}
 
 	public ModeOfProcurement(String name) {
-		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public String getName() {
@@ -35,7 +34,8 @@ public class ModeOfProcurement implements Validatable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null)
+			this.name = name.trim();
 	}
 
 	public int getId() {

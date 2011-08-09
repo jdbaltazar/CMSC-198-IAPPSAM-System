@@ -311,6 +311,10 @@ public class RIS implements Form {
 	public int getId() {
 		return id;
 	}
+	
+	public Set<RISLine> getLines() {
+		return lines;
+	}
 
 	@Override
 	public int hashCode() {

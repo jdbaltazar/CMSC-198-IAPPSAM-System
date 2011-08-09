@@ -56,5 +56,16 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/infinispan/infinispan-core-4.2.1.FINAL.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/logging/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/logging/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/groovy-all-1.7.5.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-fonts-4.0.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-javaflow-4.0.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/barbecue-1.5-beta1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/barcode4j-2.0.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jfreechart-1.0.12.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jxl-2.6.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

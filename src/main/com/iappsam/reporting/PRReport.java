@@ -40,7 +40,7 @@ public class PRReport extends AbstractReport {
 
 	@Override
 	protected String[] getColumnTitles() {
-		return new String[] { "Quantity", "Unit", "Item Description", "Stock No.", "Estimated Unit Cost", "Estimated Cost" };
+		return new String[] { "Quantity", "Unit of Issue", "Item Description", "Stock No.", "Estimated Unit Cost", "Estimated Cost" };
 	}
 
 	@Override

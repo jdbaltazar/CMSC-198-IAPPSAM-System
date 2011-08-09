@@ -29,8 +29,7 @@ public class Disposal implements Validatable {
 	}
 
 	public Disposal(String name) {
-		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public int getId() {
@@ -46,7 +45,8 @@ public class Disposal implements Validatable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null)
+			this.name = name.trim();
 	}
 
 	@Override
@@ -73,6 +73,6 @@ public class Disposal implements Validatable {
 
 	@Override
 	public boolean validate() {
-		return name != null && !name.trim().equals("");
+		return name != null && !name.equals("");
 	}
 }

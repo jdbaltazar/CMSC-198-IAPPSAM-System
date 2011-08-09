@@ -25,8 +25,7 @@ public class Building implements Validatable {
 	}
 
 	public Building(String name) {
-		super();
-		this.name = name;
+		setName(name);
 	}
 
 	public int getId() {
@@ -42,7 +41,8 @@ public class Building implements Validatable {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null)
+			this.name = name.trim();
 	}
 
 	public String getAddress() {
@@ -86,6 +86,6 @@ public class Building implements Validatable {
 
 	@Override
 	public boolean validate() {
-		return false;
+		return name != null && !name.isEmpty();
 	}
 }
