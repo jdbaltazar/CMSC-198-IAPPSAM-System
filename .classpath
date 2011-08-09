@@ -12,12 +12,6 @@
 	<classpathentry kind="lib" path="lib/junit/junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="lib/mockito/mockito-all-1.8.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/el-api-2.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/el-impl-2.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/jsp-api-2.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/jsp-impl-2.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/jstl-api-1.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp/jstl-impl-1.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-ajp-8.0.0.M2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-annotations-8.0.0.M2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-client-8.0.0.M2.jar"/>
@@ -38,22 +32,10 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-webapp-8.0.0.M2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-websocket-8.0.0.M2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jetty-xml-8.0.0.M2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/jpa/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/javassist-3.12.0.GA.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/required/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/hibernate3.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/required/commons-lang-2.4.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/required/hibernate-commons-annotations-3.2.0.Final.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/required/lucene-core-3.1.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/hibernate-search-3.4.0.Final.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/hibernate-search-infinispan-3.4.0.Final.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasperreports/jasperreports-4.0.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/mysql/mysql-connector-java-5.1.16-bin.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/infinispan/infinispan-core-4.2.1.FINAL.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/logging/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/logging/slf4j-log4j12-1.6.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-logging-1.0.4.jar"/>
@@ -67,5 +49,24 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jdt-compiler-3.1.1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jfreechart-1.0.12.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jxl-2.6.10.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/hibernate-commons-annotations-3.2.0.Final.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/infinispan-core-4.2.1.FINAL.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/hibernate-search/lucene-core-3.1.0.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/el-api-2.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/el-impl-2.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp-api-2.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp-impl-2.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jstl-impl-1.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-4.0.2.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-javaflow-20060411.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

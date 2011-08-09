@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
+import com.iappsam.Item;
 import com.iappsam.Supplier;
 import com.iappsam.forms.ModeOfProcurement;
 import com.iappsam.forms.PO;
@@ -33,6 +34,7 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 	private SupplierManager sm;
 	private POManager pom;
 	private DivisionOfficeManager dom;
+	private ItemManagerSession im;
 
 	@Override
 	@Before
@@ -42,6 +44,7 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		sm = new SupplierManagerSession();
 		pom = new POManagerSession();
 		dom = new DivisionOfficeManagerSession();
+		im = new ItemManagerSession();
 
 		contactPerson = Employee.create("Des", "Title", "Name");
 		supplier = new Supplier("Name", "address", contactPerson);
@@ -50,8 +53,8 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		supplierName = supplier.getContactPerson();
 		accountant = Employee.create("Accountant", "Mr.", "John");
 		dean = Employee.create("Dean", "Mrs", "Dean");
-		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"), supplierName,
-				Date.valueOf("2011-01-01"), accountant, Date.valueOf("2011-01-01"), dean, Date.valueOf("2011-01-01"));
+		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"), supplierName, Date.valueOf("2011-01-01"), accountant,
+				Date.valueOf("2011-01-01"), dean, Date.valueOf("2011-01-01"));
 		pm.addEmployee(contactPerson);
 		pm.addEmployee(accountant);
 		pm.addEmployee(dean);
@@ -69,7 +72,11 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 	}
 
 	@Test
-	public void addPOWithLine() {
-		// po.addLine();
+	public void addPOWithLine() throws TransactionException {
+		Item item = Item.create("des", "Cat", "u", "status", "condition");
+		im.addItem(item);
+
+		po.addLine(item);
+		assertTrue(pom.containsPO(po));
 	}
 }

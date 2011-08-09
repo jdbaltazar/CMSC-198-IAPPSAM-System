@@ -2,7 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-DROP SCHEMA IF EXISTS `IAPPSAM` ;
 CREATE SCHEMA IF NOT EXISTS `IAPPSAM` ;
 SHOW WARNINGS;
 USE `IAPPSAM` ;
@@ -10,9 +9,6 @@ USE `IAPPSAM` ;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Person`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Person` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Person` (
   `Person_ID` INT NOT NULL AUTO_INCREMENT ,
   `Title` VARCHAR(20) NULL ,
@@ -26,9 +22,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Contact` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Contact` (
   `Contact_ID` INT NOT NULL AUTO_INCREMENT ,
   `Data` VARCHAR(45) NOT NULL ,
@@ -41,9 +34,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Employee`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Employee` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee` (
   `Employee_ID` INT NOT NULL AUTO_INCREMENT ,
   `Designation` VARCHAR(45) NOT NULL ,
@@ -63,9 +53,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Supplier`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Supplier` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier` (
   `Supplier_ID` INT NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(80) NOT NULL ,
@@ -86,9 +73,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`DivisionOffice`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Division` VARCHAR(80) NOT NULL ,
@@ -101,9 +85,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Building`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Building` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Building` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(80) NOT NULL ,
@@ -116,9 +97,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Signatory`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Signatory` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Signatory` (
   `Signatory_ID` INT NOT NULL AUTO_INCREMENT ,
   `Description` VARCHAR(45) NOT NULL ,
@@ -138,9 +116,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Purchase_Request`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Purchase_Request` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Request` (
   `Purchase_Request_ID` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
@@ -179,9 +154,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Item_Condition`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Item_Condition` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Condition` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
@@ -194,9 +166,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Item_Status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Item_Status` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Status` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(50) NULL ,
@@ -209,9 +178,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Unit`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Unit` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Unit` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(20) NULL ,
@@ -224,9 +190,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Item_Category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Item_Category` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item_Category` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(200) NULL ,
@@ -239,9 +202,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Item` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Item` (
   `Item_ID` INT NOT NULL AUTO_INCREMENT ,
   `Description` VARCHAR(500) NOT NULL ,
@@ -287,9 +247,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PR_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PR_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PR_Line` (
   `PR_Line_ID` INT NULL AUTO_INCREMENT ,
   `Quantity` INT NOT NULL ,
@@ -316,9 +273,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Mode_Of_Procurement`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Mode_Of_Procurement` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Mode_Of_Procurement` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Name` VARCHAR(80) NOT NULL ,
@@ -330,9 +284,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Purchase_Order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Purchase_Order` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Purchase_Order` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Supplier_ID` INT NOT NULL ,
@@ -396,9 +347,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PO_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PO_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PO_Line` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
@@ -423,9 +371,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PAR`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PAR` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PAR` (
   `PAR_ID` INT NOT NULL AUTO_INCREMENT ,
   `Supplier_ID` INT NOT NULL ,
@@ -457,9 +402,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PAR_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PAR_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PAR_Line` (
   `Item_ID` INT NOT NULL ,
   `Property_Number` VARCHAR(45) NULL ,
@@ -484,9 +426,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`ICS`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`ICS` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`ICS` (
   `ICS_ID` INT NOT NULL AUTO_INCREMENT ,
   `ICS_Number` VARCHAR(45) NULL ,
@@ -520,9 +459,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`ICS_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`ICS_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`ICS_Line` (
   `Quantity` INT NOT NULL ,
   `Item_ID` INT NOT NULL ,
@@ -548,9 +484,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PTRPA`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PTRPA` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PTRPA` (
   `PTRPA_ID` INT NOT NULL AUTO_INCREMENT ,
   `UP_Control_Number` VARCHAR(45) NULL ,
@@ -597,9 +530,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`PTRPA_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`PTRPA_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PTRPA_Line` (
   `Item_ID` INT NOT NULL ,
   `ARE_MR_Number` VARCHAR(45) NULL ,
@@ -626,9 +556,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Waste_Materials_Report`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Waste_Materials_Report` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Waste_Materials_Report` (
   `Waste_Materials_Report_ID` INT NOT NULL AUTO_INCREMENT ,
   `Place_Of_Storage` VARCHAR(80) NULL ,
@@ -669,9 +596,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Disposal`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Disposal` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Disposal` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(80) NOT NULL ,
@@ -683,9 +607,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`WMR_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`WMR_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`WMR_Line` (
   `Item_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
@@ -719,9 +640,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`IIRUP`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`IIRUP` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `As_Of` DATE NOT NULL ,
@@ -769,9 +687,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`IIRUP_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`IIRUP_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IIRUP_Line` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Disposal_ID` INT NOT NULL ,
@@ -808,9 +723,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`APP`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`APP` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Year` INT NOT NULL ,
@@ -845,9 +757,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`APP_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`APP_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
   `APP_Line_ID` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
@@ -877,9 +786,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Inventory_Of_Equipment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Inventory_Of_Equipment` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
@@ -946,9 +852,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`IE_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`IE_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Line` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
@@ -983,9 +886,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Requisition_And_Issue_Slip`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Requisition_And_Issue_Slip` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `DivisionOffice_ID` INT NOT NULL ,
@@ -1041,9 +941,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`RIS_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`RIS_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`RIS_Line` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
@@ -1071,9 +968,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`RSMI`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`RSMI` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`RSMI` (
   `RSMI_ID` INT NOT NULL AUTO_INCREMENT ,
   `Date` DATE NOT NULL ,
@@ -1100,9 +994,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`RSMI_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`RSMI_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`RSMI_Line` (
   `RIS_Number` VARCHAR(45) NOT NULL ,
   `Item_ID` INT NOT NULL ,
@@ -1128,9 +1019,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Recapitulation_Line`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Recapitulation_Line` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Recapitulation_Line` (
   `Item_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
@@ -1156,9 +1044,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Account`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Account` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Account` (
   `Username` VARCHAR(60) NOT NULL ,
   `Password` VARCHAR(80) NOT NULL ,
@@ -1179,9 +1064,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Person_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Person_Contact` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Person_Contact` (
   `Person_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
@@ -1205,9 +1087,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`DivisionOffice_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`DivisionOffice_Contact` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`DivisionOffice_Contact` (
   `DivisionOffice_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
@@ -1231,9 +1110,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Supplier_Contact`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Supplier_Contact` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Supplier_Contact` (
   `Supplier_ID` INT NOT NULL ,
   `Contact_ID` INT NOT NULL ,
@@ -1257,9 +1133,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Employee_DivisionOffice`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Employee_DivisionOffice` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Employee_DivisionOffice` (
   `Employee_ID` INT NOT NULL ,
   `DivisionOffice_ID` INT NOT NULL ,
@@ -1283,9 +1156,6 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 -- Table `IAPPSAM`.`Log`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `IAPPSAM`.`Log` ;
-
-SHOW WARNINGS;
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Log` (
   `Log_ID` INT NOT NULL AUTO_INCREMENT ,
   `Date` DATETIME NOT NULL ,
