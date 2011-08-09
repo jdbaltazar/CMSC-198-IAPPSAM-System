@@ -43,7 +43,6 @@
 </table>
 <div id="form_table">
 <form id="form1" name="form1" method="post" action="accounts">
-<input type="hidden" name="account-action" value="save-account"/>
 <table width="100%" frame="box" cellspacing="0" id="table">
 
 
@@ -350,7 +349,8 @@
 				<tr>
 					<td class="align_right">&nbsp;</td>
 					<td><input name="createBtn" type="submit" class="button"
-						id="createBtn" value="CREATE" /></td>
+						id="createBtn" value="CREATE" />
+						<input type="hidden" name="account-action" value="save-account"/></td>
 				</tr>
 			</table>
 			</td>

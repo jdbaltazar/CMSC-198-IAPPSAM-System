@@ -43,7 +43,7 @@
 			<td id="navigation"><a href="../menu" target="_top"
 				class="links">Main Menu</a> &gt;<em><strong>Account
 						List </strong>
-			</em>&gt; <a href="../accounts" target="_self" class="links">Create
+			</em>&gt; <a href="../accounts?account-action=add-account" target="_self" class="links">Create
 					Account<input type="hidden" value="add-account"
 					name="account-action" />
 			</a>

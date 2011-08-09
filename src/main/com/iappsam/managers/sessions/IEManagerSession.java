@@ -33,4 +33,9 @@ public class IEManagerSession extends AbstractManager implements IEManager {
 	public List<IE> getAllIE() throws TransactionException {
 		return getAll(IE.class);
 	}
+
+	@Override
+	public void removeIE(IE ie) throws TransactionException {
+		remove(ie);
+	}
 }

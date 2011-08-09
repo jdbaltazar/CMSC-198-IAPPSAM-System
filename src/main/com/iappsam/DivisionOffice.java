@@ -32,8 +32,8 @@ public class DivisionOffice implements Validatable {
 
 	public DivisionOffice(String divisionName, String officeName) {
 		super();
-		this.divisionName = divisionName;
-		this.officeName = officeName;
+		setDivisionName(divisionName);
+		setOfficeName(officeName);
 	}
 
 	public int getId() {
@@ -53,11 +53,13 @@ public class DivisionOffice implements Validatable {
 	}
 
 	public void setDivisionName(String divisionName) {
-		this.divisionName = divisionName;
+		if (divisionName != null)
+			this.divisionName = divisionName.trim();
 	}
 
 	public void setOfficeName(String officeName) {
-		this.officeName = officeName;
+		if (officeName != null)
+			this.officeName = officeName.trim();
 	}
 
 	@Override
@@ -98,7 +100,6 @@ public class DivisionOffice implements Validatable {
 
 	@Override
 	public boolean validate() {
-		boolean validDivisionName = divisionName != null && !divisionName.equals("");
-		return validDivisionName;
+		return divisionName != null && !divisionName.isEmpty();
 	}
 }

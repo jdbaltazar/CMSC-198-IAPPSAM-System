@@ -296,7 +296,7 @@ public class Item implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		boolean validDescription = description != null && !description.equals("");
+		boolean validDescription = description != null && !description.isEmpty();
 		boolean validCategory = itemCategory != null && itemCategory.validate();
 		boolean validUnit = unit != null && unit.validate();
 		boolean validStatus = itemStatus != null && itemStatus.validate();

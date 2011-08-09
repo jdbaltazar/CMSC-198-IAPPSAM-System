@@ -55,15 +55,13 @@ public class Employee implements Validatable {
 
 	public Employee(String designation, String employeeNumber, Person person) {
 		super();
-		this.designation = designation;
+		setDesignation(designation);
 		this.employeeNumber = employeeNumber;
 		this.person = person;
 	}
 
 	public Employee(String designation, Person person) {
-		super();
-		this.designation = designation;
-		this.person = person;
+		this(designation, null, person);
 	}
 
 	public int getId() {
@@ -103,7 +101,8 @@ public class Employee implements Validatable {
 	}
 
 	public void setDesignation(String designation) {
-		this.designation = designation;
+		if (designation != null)
+			this.designation = designation.trim();
 	}
 
 	public void setEmployeeNumber(String employeeNumber) {
@@ -186,7 +185,7 @@ public class Employee implements Validatable {
 
 	@Override
 	public boolean validate() {
-		boolean validDesignation = designation != null && !designation.equals("");
+		boolean validDesignation = designation != null && !designation.isEmpty();
 		boolean validPerson = person != null && person.validate();
 		return validDesignation && validPerson;
 	}
