@@ -210,7 +210,6 @@ public class SaveAccountAction implements Action{
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
-				request.setAttribute("userName", username);
 				AccountsViewAction view = new AccountsViewAction();
 				view.process(request, response);
 			} catch (TransactionException e) {
