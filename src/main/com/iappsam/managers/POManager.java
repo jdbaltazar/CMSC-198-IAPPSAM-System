@@ -30,7 +30,7 @@ public interface POManager {
 
 	ModeOfProcurement getModeOfProcurement(int id) throws TransactionException;
 
-	ModeOfProcurement getModeOfProcurement(String name) throws TransactionException;
+	ModeOfProcurement getModeOfProcurement(String id) throws TransactionException;
 
 	boolean containsModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException;
 
@@ -39,5 +39,7 @@ public interface POManager {
 	void removePurchaseOrder(PO po) throws TransactionException;
 
 	void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException;
+
+	ModeOfProcurement getModeOfProcurementByName(String name) throws TransactionException;
 
 }

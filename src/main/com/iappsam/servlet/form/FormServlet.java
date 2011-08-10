@@ -17,8 +17,8 @@ public class FormServlet extends HttpServlet {
 	private FormLinePageAction linePage;
 	private ListFormAction list;
 	private RemoveFormLineAction removeItem;
-	private AddFormAction addPr;
-	private ViewFormAction viewPr;
+	private AddFormAction addForm;
+	private ViewFormAction viewForm;
 	private ExportPdfAction exportPdf;
 	private ExportXlsAction exportXls;
 
@@ -27,8 +27,8 @@ public class FormServlet extends HttpServlet {
 		this.newPage = new NewFormPageAction(utility);
 		this.linePage = new FormLinePageAction(utility);
 		this.removeItem = new RemoveFormLineAction(utility);
-		this.addPr = new AddFormAction(utility);
-		this.viewPr = new ViewFormAction(utility);
+		this.addForm = new AddFormAction(utility);
+		this.viewForm = new ViewFormAction(utility);
 		this.exportPdf = new ExportPdfAction(utility);
 		this.exportXls = new ExportXlsAction(utility);
 	}
@@ -40,8 +40,8 @@ public class FormServlet extends HttpServlet {
 		this.linePage = linePage;
 		this.list = list;
 		this.removeItem = removeItem;
-		this.addPr = addPr;
-		this.viewPr = viewPr;
+		this.addForm = addPr;
+		this.viewForm = viewPr;
 		this.exportPdf = exportPdf;
 		this.exportXls = exportXls;
 	}
@@ -72,15 +72,14 @@ public class FormServlet extends HttpServlet {
 		else if (removeItemParam != null)
 			return removeItem;
 		else if (savePrParam != null)
-			return addPr;
+			return addForm;
 		else if (idParam != null)
-			return viewPr;
+			return viewForm;
 		else if (exportParam != null && exportParam.equals("pdf"))
 			return exportPdf;
 		else if (exportParam != null && exportParam.equals("xls"))
 			return exportXls;
 
-		req.setAttribute("form", null);
 		return list;
 	}
 }

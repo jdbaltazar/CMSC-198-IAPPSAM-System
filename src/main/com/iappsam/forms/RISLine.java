@@ -4,20 +4,24 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.iappsam.Item;
+import com.iappsam.Validatable;
 
 @Entity
 @Table(name = "RIS_Line")
-public class RISLine implements Serializable {
+public class RISLine implements Serializable, Validatable {
 
 	private static final long serialVersionUID = 7888860671840670652L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private int id;
 
@@ -134,5 +138,14 @@ public class RISLine implements Serializable {
 		} else if (!remarks.equals(other.remarks))
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean validate() {
+		boolean vItem = item != null && item.validate();
+		boolean vRequested = quantityRequested >= 0;
+		boolean vIssued = quantityIssued >= 0;
+
+		return vItem && vRequested && vIssued;
 	}
 }

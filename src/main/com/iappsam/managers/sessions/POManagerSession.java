@@ -56,7 +56,7 @@ public class POManagerSession extends AbstractManager implements POManager {
 
 	@Override
 	public void addModeOfProcurement(ModeOfProcurement modeOfProcurement) throws TransactionException, DuplicateEntryException {
-		ModeOfProcurement mop = getModeOfProcurement(modeOfProcurement.getName());
+		ModeOfProcurement mop = getModeOfProcurementByName(modeOfProcurement.getName());
 		if (mop == null)
 			add(modeOfProcurement);
 		else
@@ -84,18 +84,23 @@ public class POManagerSession extends AbstractManager implements POManager {
 	}
 
 	@Override
-	public ModeOfProcurement getModeOfProcurement(String name) throws TransactionException {
+	public void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
+		remove(mop);
+	}
+
+	@Override
+	public ModeOfProcurement getModeOfProcurement(String id) throws TransactionException {
+		return getModeOfProcurement(Integer.parseInt(id));
+	}
+
+	@Override
+	public ModeOfProcurement getModeOfProcurementByName(String name) throws TransactionException {
 		List<ModeOfProcurement> mops = getAllModeOfProcurement();
 		for (ModeOfProcurement m : mops) {
 			if (m.getName().equalsIgnoreCase(name))
 				return m;
 		}
 		return null;
-	}
-
-	@Override
-	public void removeModeOfProcurement(ModeOfProcurement mop) throws TransactionException {
-		remove(mop);
 	}
 
 }

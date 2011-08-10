@@ -190,4 +190,8 @@ public class Employee implements Validatable {
 		return validDesignation && validPerson;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%s, %s", person, designation);
+	}
 }

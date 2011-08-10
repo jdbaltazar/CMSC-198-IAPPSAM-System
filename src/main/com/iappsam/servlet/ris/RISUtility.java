@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
 import com.iappsam.forms.RIS;
@@ -34,9 +35,12 @@ public class RISUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
-		Object ob = req.getAttribute("form");
-		if (!(ob instanceof RIS))
-			req.setAttribute("form", new RIS());
+		Object ob = req.getSession().getAttribute("form");
+		Object ob2 = req.getAttribute("form");
+		if (!(ob instanceof RIS || ob2 instanceof RIS)) {
+			req.getSession().removeAttribute("form");
+			req.removeAttribute("form");
+		}
 		req.setAttribute("items", im.getAllItems());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
 		req.setAttribute("employees", pm.getAllEmployee());

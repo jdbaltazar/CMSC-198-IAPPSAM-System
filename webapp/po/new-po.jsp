@@ -17,21 +17,32 @@
 <script src="../jquery/ui/jquery.ui.widget.js"></script>
 <script>
 	$(function() {
-		$("#deliveryDate").datepicker({
+		$("#date").datepicker({
 			dateFormat : "yy-mm-dd",
 			numberOfMonths : 1,
 			showButtonPanel : true
 		});
-		$("#poNoDate").datepicker({
+		$("#dean-date").datepicker({
 			dateFormat : "yy-mm-dd",
 			numberOfMonths : 1,
 			showButtonPanel : true
 		});
-		$("#signatoryDate").datepicker({
+		$("#accountant-date").datepicker({
 			dateFormat : "yy-mm-dd",
 			numberOfMonths : 1,
 			showButtonPanel : true
 		});
+		$("#supplier-date").datepicker({
+			dateFormat : "yy-mm-dd",
+			numberOfMonths : 1,
+			showButtonPanel : true
+		});
+		$("#date-of-delivery").datepicker({
+			dateFormat : "yy-mm-dd",
+			numberOfMonths : 1,
+			showButtonPanel : true
+		});
+		
 	});
 </script>
 </head>
@@ -103,8 +114,7 @@
 									<td width="50%">${line.item.description}</td>
 									<td width="7%"><input name="quantity" type="text"
 										class="required" id="Quantity" value="${line.quantity}"
-										size="2" maxlength="11" />
-									</td>
+										size="2" maxlength="11" /></td>
 									<td width="9%">&nbsp;</td>
 									<td width="12%">&nbsp;</td>
 								</tr>
@@ -150,7 +160,7 @@
 							<tr>
 								<td class="other_fields_label">Date:</td>
 								<td class="right_side_table"><input
-									name="accountant-date" type="text" class="required" id="poNoDate" value="${form.date}" />
+									name="date" type="text" class="required" id="date" value="${form.date}" />
 								</td>
 							</tr>
 							<tr>
@@ -161,7 +171,7 @@
 
 										<c:forEach var="modeOfProcurement" items="${mops}">
 											<c:choose>
-												<c:when test="${modeOfProcurement.id eq form.mops.id}">
+												<c:when test="${modeOfProcurement.id eq form.modeOfProcurement.id}">
 													<option value="${modeOfProcurement.id}" selected="selected">${modeOfProcurement.name}</option>
 												</c:when>
 												<c:otherwise>
@@ -196,7 +206,7 @@
 							<tr>
 								<td class="other_fields_label">Delivery Date:</td>
 								<td class="right_side_table"><input
-									name="date-of-delivery" type="text" class="required" id="deliveryDate"
+									name="date-of-delivery" type="text" class="required" id="date-of-delivery"
 									value="${form.dateOfDelivery}" />
 								</td>
 							</tr>
@@ -227,7 +237,7 @@
 							<tr>
 								<td class="other_fields_label">Date:</td>
 								<td class="right_side_table"><input type="text"
-									name="dean-date" id="signatoryDate"
+									name="supplier-date" id="supplier-date"
 									value="${form.supplierDate}" />
 								</td>
 							</tr>
@@ -253,6 +263,13 @@
 								</td>
 							</tr>
 							<tr>
+								<td class="other_fields_label">Date:</td>
+								<td class="right_side_table"><input type="text"
+									name="dean-date" id="dean-date"
+									value="${form.deanDate}" />
+								</td>
+							</tr>
+							<tr>
 								<td class="other_fields_label">Accountant:</td>
 								<td class="right_side_table"><select name="accountant"
 									class="required_menulist" id="accountant">
@@ -271,6 +288,14 @@
 								</select>
 								</td>
 							</tr>
+							
+							<tr>
+								<td class="other_fields_label">Date:</td>
+								<td class="right_side_table"><input type="text"
+									name="accountant-date" id="accountant-date"
+									value="${form.accountantDate}" />
+								</td>
+							</tr>
 							<tr>
 								<td class="other_fields_label">OR No.:</td>
 								<td class="right_side_table"><input type="text"
@@ -287,7 +312,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><br /> <input name="submitBtn"
+					<td colspan="2" align="center"><br /> <input name="saveForm"
 						type="submit" class="button" value="SUBMIT Form" />
 					</td>
 				</tr>

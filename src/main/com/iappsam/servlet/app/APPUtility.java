@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
-import com.iappsam.forms.PR;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
@@ -32,9 +31,13 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest request) throws TransactionException {
-		Object ob = request.getAttribute("form");
-		if (!(ob instanceof APP))
-			request.setAttribute("form", new APP());
+		Object ob = request.getSession().getAttribute("form");
+		Object ob2 = request.getAttribute("form");
+
+		if (!(ob instanceof APP || ob2 instanceof APP)) {
+			request.getSession().removeAttribute("form");
+			request.removeAttribute("form");
+		}
 		request.setAttribute("offices", dom.getAllDivisionOffice());
 		request.setAttribute("employees", pm.getAllEmployee());
 	}

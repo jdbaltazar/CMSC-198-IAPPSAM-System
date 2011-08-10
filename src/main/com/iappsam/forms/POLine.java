@@ -29,6 +29,9 @@ public class POLine implements Serializable, Validatable {
 	@JoinColumn(name = "PO_ID")
 	private PO po;
 
+	@Column(name = "quantity")
+	private int quantity;
+
 	public POLine() {
 		super();
 	}
@@ -37,6 +40,14 @@ public class POLine implements Serializable, Validatable {
 		super();
 		this.po = po;
 		this.item = item;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public int getId() {

@@ -41,9 +41,10 @@ public class RISParser extends FormParser {
 		String[] requested = req.getParameterValues("quantity-requested");
 		String[] issued = req.getParameterValues("quantity-issued");
 		String[] remarks = req.getParameterValues("remarks");
-
-		for (int i = 0; i < items.length; i++)
-			ris.addLine(im.getItem(items[0]), requested[0], issued[0], remarks[0]);
+		
+		if (items != null)
+			for (int i = 0; i < items.length; i++)
+				ris.addLine(im.getItem(items[0]), requested[0], issued[0], remarks[0]);
 
 		return ris;
 	}

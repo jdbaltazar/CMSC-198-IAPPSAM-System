@@ -1,10 +1,12 @@
 package com.iappsam.forms;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -62,15 +64,18 @@ public class IE implements Form {
 	@JoinColumn(name = "COARepresentative")
 	private Employee coaRepresentative;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ie")
+	@Column(name = "DatePrepared")
+	private Date datePrepared;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "ie", cascade = CascadeType.ALL)
 	private Set<IELine> lines = new HashSet<IELine>();
 
 	public IE() {
 		super();
 	}
 
-	public IE(DivisionOffice divisionOffice, Building building, Employee preparedBy, Employee committeeMember1, Employee committeeMember2, Employee counterCheckedBy, Employee notedBy,
-			Employee coaRepresentative) {
+	public IE(DivisionOffice divisionOffice, Building building, Employee preparedBy, Employee committeeMember1, Employee committeeMember2,
+			Employee counterCheckedBy, Employee notedBy, Employee coaRepresentative) {
 		super();
 		this.divisionOffice = divisionOffice;
 		this.building = building;
@@ -155,8 +160,20 @@ public class IE implements Form {
 		this.coaRepresentative = coaRepresentative;
 	}
 
-	public void addLine(Item item, String quantity, Employee employee, String howAcquired, String remarks) {
+	public Date getDatePrepared() {
+		return datePrepared;
+	}
+
+	public void setDatePrepared(Date datePrepared) {
+		this.datePrepared = datePrepared;
+	}
+
+	public void addLine(Item item, String quantity, Employee employee, ModeOfProcurement howAcquired, String remarks) {
 		lines.add(new IELine(this, item, quantity, employee, howAcquired, remarks));
+	}
+
+	public Set<IELine> getLines() {
+		return lines;
 	}
 
 	@Override
@@ -251,7 +268,8 @@ public class IE implements Form {
 		for (IELine line : lines)
 			validLines &= line.validate();
 
-		return validDivisionOffice && validBuilding && validPreparedBy && validCommitteeMember1 && validCommitteeMember2 && validCounterCheckBy && validNotedBy && validCoaRep && validLines;
+		return validDivisionOffice && validBuilding && validPreparedBy && validCommitteeMember1 && validCommitteeMember2 && validCounterCheckBy
+				&& validNotedBy && validCoaRep && validLines;
 	}
 
 	@Override
@@ -278,5 +296,12 @@ public class IE implements Form {
 				remove = line;
 
 		lines.remove(remove);
+	}
+
+	public void setDatePrepared(String date) {
+		try {
+			setDatePrepared(java.sql.Date.valueOf(date));
+		} catch (Exception e) {
+		}
 	}
 }

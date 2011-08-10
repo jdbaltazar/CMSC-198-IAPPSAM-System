@@ -71,7 +71,7 @@
 	</table>
     
     <div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
-<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
+<a href="/po?export=pdf">PDF</a> <a href="/po?export=xls">Excel</a></div>
 	<form name="POForm" method="post" action="/po">
 		<div id="items_table">
 			<table width="100%" border="0" cellspacing="0">
@@ -98,7 +98,7 @@
 									<td width="10%">${line.item.stockNumber}</td>
 									<td width="8%">${line.item.unit}</td>
 									<td width="50%">${line.item.description}</td>
-									<td width="7%">&nbsp;</td>
+									<td width="7%">${line.quantity}</td>
 									<td width="9%">&nbsp;</td>
 									<td width="12%">&nbsp;</td>
 								</tr>
@@ -115,56 +115,64 @@
 							cellspacing="0">
 							<tr>
 								<td class="other_fields_label">Supplier:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.supplier}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">P.O. No.:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.poNumber}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.date}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Mode of Procurement:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.modeOfProcurement}</td>
 							</tr>
 
 							<tr>
 								<td class="other_fields_label">Delivery Place:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.divisionOffice.}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Delivery Date:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.dateOfDelivery}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Payment Term:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.paymentTerm}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Supplier Rep.:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.supplierName}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.supplierDate}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Very Truly Yours:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.dean}</td>
+							</tr>
+							<tr>
+								<td class="other_fields_label">Date:</td>
+								<td class="right_side_table">${form.deanDate}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Accountant:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.accountant}</td>
+							</tr>
+							<tr>
+								<td class="other_fields_label">Date:</td>
+								<td class="right_side_table">${form.accountantDate}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">OR No.:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.orNumber}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Amount:</td>
-								<td class="right_side_table">&nbsp;</td>
+								<td class="right_side_table">${form.amount}</td>
 							</tr>
 						</table>
 					</td>

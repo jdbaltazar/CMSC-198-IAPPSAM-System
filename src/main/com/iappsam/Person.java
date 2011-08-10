@@ -150,4 +150,9 @@ public class Person implements Validatable {
 		employment.setPerson(this);
 		employments.add(employment);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s %s", title, name);
+	}
 }

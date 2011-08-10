@@ -108,10 +108,10 @@
 								<td width="8%">${line.item.unit}</td>
 								<td width="50%">${line.item.description}</td>
 								<td width="9%"><input name="quantity-requested" type="text"
-									class="required" id="qtyRequested" size="2" /></td>
+									class="required" id="qtyRequested" size="2" value="${line.quantityRequested}"/></td>
 								<td width="9%"><input name="quantity-issued" type="text"
-									class="required" id="qtyIssued" size="2" /></td>
-								<td width="14%"><input name="remarks" type="text" id="remarks" maxlength="200" /></td>
+									class="required" id="qtyIssued" size="2" value="${line.quantityIssued}"/></td>
+								<td width="14%"><input name="remarks" type="text" id="remarks" maxlength="200" value="${line.remarks}" /></td>
 							</tr>
 						</c:forEach>
 					</table></td>
@@ -277,7 +277,7 @@
 					</table></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><br /> <input name="submitBtn"
+				<td colspan="2" align="center"><br /> <input name="saveForm"
 					type="submit" class="button" value="SUBMIT Form" /></td>
 			</tr>
 			<tr>

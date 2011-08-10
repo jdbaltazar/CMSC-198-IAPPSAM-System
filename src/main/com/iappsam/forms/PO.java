@@ -95,8 +95,8 @@ public class PO implements Form {
 	public PO() {
 	}
 
-	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery, Employee supplierName, Date supplierDate,
-			Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
+	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery,
+			Employee supplierName, Date supplierDate, Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
 		super();
 		this.poNumber = poNumber;
 		this.supplier = supplier;
@@ -265,7 +265,14 @@ public class PO implements Form {
 		this.orNumber = orNumber;
 	}
 
-	public void setAmount(long amount) {
+	public void setAmount(String amountParam) {
+		try {
+			setAmount(Long.parseLong(amountParam));
+		} catch (Exception e) {
+		}
+	}
+
+	private void setAmount(long amount) {
 		this.amount = amount;
 	}
 
@@ -289,6 +296,10 @@ public class PO implements Form {
 
 	public void removeLine(POLine line) {
 		lines.remove(line);
+	}
+
+	public Set<POLine> getLines() {
+		return lines;
 	}
 
 	@Override
@@ -401,8 +412,8 @@ public class PO implements Form {
 		for (POLine line : lines)
 			validLines &= line.validate();
 
-		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName && validSupplierDate && validAccountant && validAccountantDate
-				&& validDean && validDeanDate && validLines;
+		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
+				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validLines;
 	}
 
 	@Override
@@ -434,5 +445,19 @@ public class PO implements Form {
 	@Override
 	public int getId() {
 		return id;
+	}
+
+	public void setSupplierDate(String parameter) {
+		try {
+			setSupplierDate(java.sql.Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
+	}
+
+	public void setDate(String parameter) {
+		try {
+			setDate(java.sql.Date.valueOf(parameter));
+		} catch (Exception e) {
+		}
 	}
 }

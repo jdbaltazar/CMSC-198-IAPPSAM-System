@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PO;
 import com.iappsam.forms.PR;
@@ -34,9 +35,14 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
-		Object ob = req.getAttribute("form");
+		Object ob = req.getSession().getAttribute("form");
 		if (!(ob instanceof PO))
-			req.setAttribute("form", new PO());
+			req.getSession().removeAttribute("form");
+
+		Object formReq = req.getAttribute("form");
+		if (!(formReq instanceof PO))
+			req.removeAttribute("form");
+
 		req.setAttribute("suppliers", sm.getAllSuppliers());
 		req.setAttribute("mops", pom.getAllModeOfProcurement());
 		req.setAttribute("divisionoffices", dom.getAllDivisionOffice());

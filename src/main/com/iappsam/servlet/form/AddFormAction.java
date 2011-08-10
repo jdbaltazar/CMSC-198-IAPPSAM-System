@@ -32,7 +32,6 @@ public class AddFormAction implements Action {
 			form = parser.createForm(request, appContext);
 			if (form.validate()) {
 				utility.add(form);
-				request.removeAttribute("form");
 				response.sendRedirect(onSucessLink());
 			} else
 				response.sendRedirect(onFailureLink());

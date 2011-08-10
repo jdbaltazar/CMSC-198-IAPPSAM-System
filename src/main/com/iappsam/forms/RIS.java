@@ -10,6 +10,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,6 +27,7 @@ import com.iappsam.Item;
 public class RIS implements Form {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 
@@ -90,7 +93,8 @@ public class RIS implements Form {
 	}
 
 	public void setRisNumber(String risNumber) {
-		this.risNumber = risNumber;
+		if (risNumber != null)
+			this.risNumber = risNumber.trim();
 	}
 
 	public DivisionOffice getDivisionOffice() {
@@ -276,7 +280,25 @@ public class RIS implements Form {
 
 	@Override
 	public boolean validate() {
-		return false;
+		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
+		boolean validRISNumber = risNumber != null && !risNumber.isEmpty();
+		boolean validRISDate = risDate != null;
+		boolean validPurpose = purpose != null && !purpose.isEmpty();
+		boolean validRequestedBy = requestedBy != null && requestedBy.validate();
+		boolean validRequestedDate = requestedByDate != null;
+		boolean validApprovedBy = approvedBy != null && approvedBy.validate();
+		boolean validApprovedDate = approvedByDate != null;
+		boolean validIssuedBy = issuedBy != null && issuedBy.validate();
+		boolean validIssuedDate = issuedByDate != null;
+		boolean validReceivedBy = receivedBy != null && receivedBy.validate();
+		boolean validReceivedDate = receivedByDate != null;
+		boolean validLines = !lines.isEmpty();
+
+		for (RISLine line : lines)
+			validLines &= line.validate();
+
+		return validDivisionOffice && validRISNumber && validRISDate && validPurpose && validRequestedBy && validRequestedDate && validApprovedBy
+				&& validApprovedDate && validIssuedBy && validIssuedDate && validReceivedBy && validReceivedDate && validLines;
 	}
 
 	@Override
@@ -311,7 +333,7 @@ public class RIS implements Form {
 	public int getId() {
 		return id;
 	}
-	
+
 	public Set<RISLine> getLines() {
 		return lines;
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,7 +45,7 @@
   </tr>
 </table>
 <div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
-<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
+<a href="/app?export=pdf">PDF</a> <a href="/app?export=xls">Excel</a></div>
 <!--<form name="APPForm" method="post" action="">-->
   <div id="items_table">
     
@@ -73,38 +74,30 @@
             <td>Qty.</td>
             <td>Amount</td>
             </tr>
-          <tr class="tablerow_1">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr class="tablerow_2">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            </tr>
+            
+            <c:forEach var="line" items="${form.lines}" varStatus="loop">
+							<tr class="tablerow_1">
+							
+								<td>${line.item.stockNumber}</td>
+								<td>${line.item.description}</td>
+								<td>${line.item.unit}</td>
+								<td>&nbsp;</td>
+								<td>${line.item.price}</td>
+								<td>${line.quantityQuarter1}
+								</td>
+								<td>&nbsp;</td>
+								<td>${line.quantityQuarter2}
+								</td>
+								<td>&nbsp;</td>
+								<td>${line.quantityQuarter3}
+								</td>
+								<td>&nbsp;</td>
+								<td>${line.quantityQuarter4}
+								</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+			</c:forEach>
         </table></td>
       </tr>
       <tr>

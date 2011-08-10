@@ -41,8 +41,9 @@ public class IELine implements Serializable, Validatable {
 	@JoinColumn(name = "Employee_ID")
 	private Employee employee;
 
-	@Column(name = "How_Acquired")
-	private String howAcquired;
+	@ManyToOne
+	@JoinColumn(name = "How_Acquired")
+	private ModeOfProcurement howAcquired;
 
 	@Column(name = "Remarks")
 	private String remarks;
@@ -51,7 +52,7 @@ public class IELine implements Serializable, Validatable {
 		super();
 	}
 
-	public IELine(IE ie, Item item, String quantity, Employee employee, String howAcquired, String remarks) {
+	public IELine(IE ie, Item item, String quantity, Employee employee, ModeOfProcurement howAcquired, String remarks) {
 		super();
 		this.item = item;
 		this.ie = ie;
@@ -108,11 +109,11 @@ public class IELine implements Serializable, Validatable {
 		this.employee = employee;
 	}
 
-	public String getHowAcquired() {
+	public ModeOfProcurement getHowAcquired() {
 		return howAcquired;
 	}
 
-	public void setHowAcquired(String howAcquired) {
+	public void setHowAcquired(ModeOfProcurement howAcquired) {
 		this.howAcquired = howAcquired;
 	}
 
@@ -175,7 +176,7 @@ public class IELine implements Serializable, Validatable {
 		boolean validItem = item != null && item.validate();
 		boolean validQuantity = quantity > 0;
 		boolean validEmployee = employee != null && employee.validate();
-		boolean validHowAcquired = howAcquired != null && !howAcquired.isEmpty();
+		boolean validHowAcquired = howAcquired != null && howAcquired.validate();
 		return validItem && validQuantity && validEmployee && validHowAcquired;
 	}
 }

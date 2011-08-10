@@ -31,7 +31,7 @@
   </tr>
 </table>
     <div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
-<a href="/pr?export=pdf">PDF</a> <a href="/pr?export=xls">Excel</a></div>
+<a href="/ris?export=pdf">PDF</a> <a href="/ris?export=xls">Excel</a></div>
 <!--<form name="PRForm" method="post" action="">-->
   <div id="items_table">
     
@@ -46,22 +46,17 @@
             <td>Qty. Issued</td>
             <td>Remarks</td>
           </tr>
-          <tr class="tablerow_1">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><label for="qtyIssued"></label></td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr class="bkgrnd_white">
-            <td width="8%">&nbsp;</td>
-            <td width="8%">&nbsp;</td>
-            <td width="50%">&nbsp;</td>
-            <td width="9%">&nbsp;</td>
-            <td width="9%">&nbsp;</td>
-            <td width="14%">&nbsp;</td>
-            </tr>
+          <c:forEach var="line" items="${form.lines}" varStatus="loop">
+							<tr class="tablerow_1">
+								<!-- class="tablerow_1" -->
+								<td>${line.item.stockNumber}</td>
+								<td>${line.item.unit}</td>
+								<td>${line.item.description}</td>
+								<td>${line.quantityRequested}</td>
+								<td>${line.quantityIssued}</td>
+								<td>${line.remarks}</td>
+							</tr>
+						</c:forEach>
         </table></td>
       </tr>
       <tr>
@@ -72,47 +67,63 @@
         <td colspan="2"><table width="25%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Division/Office:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Responsibility Center Code.:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.rcCode}</td>
             </tr>
           <tr>
             <td class="other_fields_label">RIS No.:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.risNumber}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.risDate}</td>
             </tr>
           <tr>
             <td class="other_fields_label">SAI No.:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.saiNumber}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.saiDate}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Purpose:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.purpose}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Requested by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.requestedBy.person.name}</td>
+            </tr>
+          <tr>
+            <td class="other_fields_label">Date:</td>
+            <td class="right_side_table">${form.requestedByDate}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Approved by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.approvedBy.person.name}</td>
           </tr>
+          <tr>
+            <td class="other_fields_label">Date:</td>
+            <td class="right_side_table">${form.approvedByDate}</td>
+            </tr>
           <tr>
             <td class="other_fields_label">Issued by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.issuedBy.person.name}</td>
           </tr>
           <tr>
+            <td class="other_fields_label">Date:</td>
+            <td class="right_side_table">${form.issuedByDate}</td>
+            </tr>
+          <tr>
             <td class="other_fields_label">Received by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.receivedBy.person.name}</td>
+            </tr>
+            <tr>
+            <td class="other_fields_label">Date:</td>
+            <td class="right_side_table">${form.receivedByDate}</td>
             </tr>
         </table></td>
       </tr>

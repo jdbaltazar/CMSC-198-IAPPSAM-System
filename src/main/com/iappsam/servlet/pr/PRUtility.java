@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
@@ -40,9 +39,14 @@ public class PRUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest request) throws TransactionException {
-		Object ob = request.getAttribute("form");
-		if (!(ob instanceof PR))
+		Object ob = request.getSession().getAttribute("form");
+		Object ob2 = request.getAttribute("form");
+
+		if (!(ob instanceof PR || ob2 instanceof PR)) {
+			request.getSession().setAttribute("form", new PR());
 			request.setAttribute("form", new PR());
+		}
+
 		request.setAttribute("itemsDb", im.getAllItems());
 		request.setAttribute("employees", pm.getAllEmployee());
 		request.setAttribute("offices", dom.getAllDivisionOffice());

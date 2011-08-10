@@ -93,10 +93,10 @@
 					out.println("class=\"tablerow_1\"");
 				else
 					out.println("class=\"tablerow_2\"");%>>
-							<td width="14%">${form.year}</td>
-							<td width="47%">${form.dateScheduled}</td>
-							<td width="39%">${form.divisionOffice}</td>
-							<td width="39%">${form.preparedBy.person.name}</td>
+							<td width="6%">${form.year}</td>
+							<td width="21%">${form.dateScheduled}</td>
+							<td width="35%">${form.divisionOffice}</td>
+							<td width="38%">${form.preparedBy.person.name}</td>
 						</tr>
 					</table>
 				</div> </a>
