@@ -153,7 +153,7 @@
 									<td>
 										<div align="center">
 											<input name="empNo3" type="text" id="employeeNo._1" size="4"
-												<%if (employees != null && !employees.isEmpty())
+												<%if (employees != null && !employees.isEmpty()&&employees.get(i).getEmployeeNumber()!=null)
 					out.print("value=" + '"' + employees.get(i).getEmployeeNumber() + '"');%> />
 										</div>
 									</td>
