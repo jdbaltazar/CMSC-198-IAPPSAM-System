@@ -44,12 +44,16 @@ public class UpdateOwnAccountAction implements Action{
 	private String mobileNumber;
 	private String landline;
 	private String emailad;
-
+	private String newPassword;
+	private String reenterPassword;
+	
 	public void process(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
 		password = request.getParameter("password");
+		newPassword = request.getParameter("newPassword");
+		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		username = (String)request.getSession().getAttribute("username");
 		mobileNumber = entryFormatter.spaceTrimmer(request
@@ -66,15 +70,24 @@ public class UpdateOwnAccountAction implements Action{
 			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
-		
-			if (!name.isEmpty()
-					&& !username.isEmpty()
-					&& !password.isEmpty()
-						&& entryFormatter.check(name)) {
-				acceptResponse(request, response);
-			} else {
+		AccountManager aManager = new AccountManagerSession();
+			try {
+				if (!name.isEmpty()
+						&& !username.isEmpty()
+						&& !password.isEmpty()
+						&& !newPassword.isEmpty()
+						&& !reenterPassword.isEmpty()
+						&&newPassword.equalsIgnoreCase(reenterPassword)
+						&& aManager.getAccount(username).comparePassword(password)
+							&& entryFormatter.check(name)) {
+					acceptResponse(request, response);
+				} else {
 
-				failedResponse(request, response);
+					failedResponse(request, response);
+				}
+			} catch (TransactionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		
 	}
@@ -90,7 +103,7 @@ public class UpdateOwnAccountAction implements Action{
 			try {
 
 				Account account = aManager.getAccount(username);
-				account.setPassword(password);
+				account.setPassword(newPassword);
 				if (acctType
 						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
 								.toString())) {

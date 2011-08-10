@@ -25,12 +25,14 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 	private EntryFormatter entryFormatter = new EntryFormatter();
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String personID = request.getParameter("personID");
+		System.out.println("Person ID:"+personID);
 		String password = request.getParameter("password");
+		System.out.println("Password:"+password);
 		String reenterPassword = request.getParameter("reenterPassword");
 		String acctType = request.getParameter("accountType");
 		String userName = entryFormatter.spaceTrimmer(request.getParameter("username"));
 		PersonManager pManager = new PersonManagerSession();
-		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null && reenterPassword != null
+		if (userName != null && !userName.isEmpty() && password != null && !password.isEmpty() && reenterPassword != null
 				&& password.equals(reenterPassword)&&entryFormatter.check(userName))
 			try {
 				Person p = pManager.getPerson(Integer.parseInt(personID));
@@ -41,7 +43,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
 					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
 				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
+					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD); 
 				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
 				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
@@ -49,7 +51,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				}
 				AccountManager aManager = new AccountManagerSession();
 				aManager.addAccount(account);
-				RequestDispatcher view = request.getRequestDispatcher("ViewAccounts.do");
+				RequestDispatcher view = request.getRequestDispatcher("/accounts?account-action=view-accounts");
 				view.forward(request, response);
 			} catch (NumberFormatException e) {
 			} catch (TransactionException e) {
@@ -99,7 +101,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 			else
 				request.setAttribute("passwordOK", "false");
 			request.setAttribute("accounttype", accountType);
-			RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
+			RequestDispatcher view = request.getRequestDispatcher(AccountServlet.CREATE_ACCOUNT_FOR_EXISTING);
 			view.forward(request, response);
 		} catch (TransactionException e) {
 			// TODO Auto-generated catch block

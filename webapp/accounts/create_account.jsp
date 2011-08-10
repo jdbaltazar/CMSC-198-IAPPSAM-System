@@ -48,8 +48,8 @@
 
 	<tr>
 		<td align="right" class="bkgrnd_white"><a
-			href="/accounts" target="_self" class="linkBtn">Create
-		Account For Existing Employee>></a><input type="hidden" value="create-from-existing" name="account-action2"/></td>
+			href='accounts?account-action2=create-from-existing' target="_self" class="linkBtn">Create
+		Account For Existing Employee>></a></td>
 	</tr>
 
 	<tr>
@@ -350,7 +350,8 @@
 					<td class="align_right">&nbsp;</td>
 					<td><input name="createBtn" type="submit" class="button"
 						id="createBtn" value="CREATE" />
-						<input type="hidden" name="account-action" value="save-account"/></td>
+						<input type="hidden" name="account-action" value="save-account"/>
+						</td>
 				</tr>
 			</table>
 			</td>

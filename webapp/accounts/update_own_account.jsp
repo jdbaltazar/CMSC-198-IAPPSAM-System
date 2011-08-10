@@ -271,10 +271,32 @@
 						type="text" name="username" id="username"
 						value="<%=account.getUsername()%>" disabled="disabled" /></td>
 				</tr>
+				
 				<tr>
-					<td class="align_right">*New Password:</td>
+					<td class="align_right">*Old Password:</td>
 					<td><input type="password" name="password" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
+					<%
+						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+							out.print("*");
+						}
+					%>
+					</td>
+				</tr>
+				<tr>
+					<td class="align_right">*New Password:</td>
+					<td><input type="password" name="newPassword" id="newPassword"
+					/>
+					<%
+						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+							out.print("*");
+						}
+					%>
+					</td>
+				</tr>
+				<tr>
+					<td class="align_right">*Reenter Password:</td>
+					<td><input type="password" name="reenterPassword" id="reenterPassword" />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
 							out.print("*");

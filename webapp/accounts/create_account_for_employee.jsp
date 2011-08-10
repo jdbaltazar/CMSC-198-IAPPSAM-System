@@ -41,20 +41,21 @@
 		<td width="41%">&nbsp;</td>
 		<td width="59%">
 		<form id="form2" name="form2" method="post"
-			action="create-account-for-employee.do"><input
+			action=""><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>
 	</tr>
 	<tr>
 		<td id="navigation"><a href="../menu" target="_top" class="links">Main
-		Menu</a> &gt; <a href="ViewAccounts.do" target="_top" class="links">Account
+		Menu</a> &gt; <a href="/accounts?account-action=view-accounts" target="_top" class="links">Account
 		List</a> &gt;<em><strong>Account for Existing Employee</strong></em></td>
 		<td>&nbsp;</td>
 	</tr>
 </table>
 <div id="form_table">
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="/accounts">
+<input type="hidden" name="account-action" value="save-for-existing"></input>
 <table width="100%" border="0" cellspacing="0" id="table">
 	<tr>
 		<td class="header_rows">

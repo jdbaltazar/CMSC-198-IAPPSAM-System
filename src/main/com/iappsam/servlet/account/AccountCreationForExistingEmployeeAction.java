@@ -6,14 +6,10 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Account;
-import com.iappsam.AccountType;
-import com.iappsam.ContactType;
 import com.iappsam.Person;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.PersonManager;
@@ -30,7 +26,6 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 	}
 	private EntryFormatter entryFormatter = new EntryFormatter();
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		PersonManager pManager = new PersonManagerSession();
 		AccountManager aManager = new AccountManagerSession();
 		ArrayList<Person> availablePersons = new ArrayList<Person>();
@@ -58,8 +53,8 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 			e.printStackTrace();
 		}
 		request.setAttribute("persons", availablePersons);
-		RequestDispatcher view = request.getRequestDispatcher(AccountServlet.CREATE_ACCOUNT_FOR_EXISTING);
-		view.forward(request, response);
+		request.getRequestDispatcher(AccountServlet.CREATE_ACCOUNT_FOR_EXISTING).forward(request, response);
+		
 	}
 	
 
@@ -103,7 +98,7 @@ public class AccountCreationForExistingEmployeeAction implements Action{
 			else
 				request.setAttribute("passwordOK", "false");
 			request.setAttribute("accounttype", accountType);
-			RequestDispatcher view = request.getRequestDispatcher("create-account-for-employee.jsp");
+			RequestDispatcher view = request.getRequestDispatcher(AccountServlet.CREATE_ACCOUNT_FOR_EXISTING);
 			view.forward(request, response);
 		} catch (TransactionException e) {
 			e.printStackTrace();

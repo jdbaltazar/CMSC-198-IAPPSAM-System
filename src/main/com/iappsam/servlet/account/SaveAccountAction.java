@@ -98,8 +98,6 @@ public class SaveAccountAction implements Action{
 	public void process(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("............................................inside save account action!");
-		
 		title = entry.spaceTrimmer(request.getParameter("title"));
 		name = entry.spaceTrimmer(request.getParameter("name"));
 

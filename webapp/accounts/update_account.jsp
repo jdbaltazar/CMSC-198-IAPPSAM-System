@@ -55,20 +55,20 @@
 				<form id="form2" name="form2" method="post" action="">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form></td>
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td id="navigation"><a href="../menu" target="_top"
-				class="links">Main Menu</a> &gt; <a href="ViewAccounts.do"
-				target="_top" class="links">Account List</a> &gt; <em><strong>Create
-						Account</strong>
-			</em><strong></strong>
-			</td>
+				class="links">Main Menu</a> &gt; <a
+				href="accounts?account-action=view-accounts" target="_top"
+				class="links">Account List</a> &gt; <em><strong>Create
+						Account</strong> </em><strong></strong></td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" method="post" action="/account">
+		<form id="form1" name="form1" method="post" action="/accounts">
 			<input type="hidden" name="username" value="<%=userName%>" /> <input
 				type="hidden" name="account-action" value="save-edited-account" />
 			<table width="100%" frame="box" cellspacing="0" id="table">
@@ -77,8 +77,7 @@
 				<tr>
 					<td align="right" class="bkgrnd_white"><a
 						href="create-account-for-employee.do" target="_self"
-						class="linkBtn">Create Account For Existing Employee>></a>
-					</td>
+						class="linkBtn">Create Account For Existing Employee>></a></td>
 				</tr>
 
 				<tr>
@@ -87,7 +86,8 @@
 					</tr>
 					<tr>
 						<td class="header_rows">
-							<div class="header_1">Personal Information</div></td>
+							<div class="header_1">Personal Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -102,11 +102,11 @@
 									<td class="align_right" id="align_right">Title:</td>
 									<td><input type="text" name="title" id="title"
 										<%if (person.getTitle() != null) {%>
-										value="<%=person.getTitle()%>" <%}%> />
-									</td>
+										value="<%=person.getTitle()%>" <%}%> /></td>
 								</tr>
 								<tr>
-									<td class="align_right" id="align_right">*Name:<br /></td>
+									<td class="align_right" id="align_right">*Name:<br />
+									</td>
 									<td><input type="text" name="name" id="name"
 										<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
@@ -117,13 +117,16 @@
  	if (nameOK != null && !nameOK.isEmpty() && nameOK.equalsIgnoreCase("false")) {
  		out.print("*");
  	}
- %> <br /></td>
+ %> <br />
+									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr class="header_rows">
 						<td>
-							<div class="header_1">Work Information</div></td>
+							<div class="header_1">Work Information</div>
+						</td>
 					</tr>
 
 					<tr>
@@ -145,13 +148,15 @@
 												<%if (employees != null && !employees.isEmpty())
 					out.print("value=" + '"' + employees.get(i).getDesignation() + '"');%> />
 
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<input name="empNo3" type="text" id="employeeNo._1" size="4"
 												<%if (employees != null && !employees.isEmpty())
 					out.print("value=" + '"' + employees.get(i).getEmployeeNumber() + '"');%> />
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<select name="divisionOffice" class="menulist"
@@ -175,18 +180,21 @@
 															out.print(employees.get(i).getDivisionOffice().getDivisionName() + string);
 												%>
 											</select>
-										</div></td>
+										</div>
+									</td>
 								</tr>
 								<%
 									}
 								%>
 								<tr>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr class="header_rows">
 						<td>
-							<div class="header_1">Contact Information</div></td>
+							<div class="header_1">Contact Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -218,11 +226,12 @@
 										<%
 											if (!mobile.isEmpty()) {
 												for (int i = 0; i < mobile.size(); i++) {
-										%> <input type="text" name="cellphoneNumber" id="cellphoneNumber"
-										value=" <%=mobile.get(i).getData()%>"></input> <%
- 	}
- 	} else {
- %> <input name="cellphoneNumber" size="20" maxlength="20" /> <%
+										%> <input type="text" name="cellphoneNumber"
+										id="cellphoneNumber" value=" <%=mobile.get(i).getData()%>"></input>
+										<%
+											}
+											} else {
+										%> <input name="cellphoneNumber" size="20" maxlength="20" /> <%
  	}
  %>
 									</td>
@@ -263,11 +272,13 @@
  %>
 									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr>
 						<td class="header_rows">
-							<div class="header_1">Account Information</div></td>
+							<div class="header_1">Account Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -276,19 +287,28 @@
 									<td class="align_right">Username:</td>
 									<td><input type="text" name="username" id="username2"
 										input type="text" name="username" id="username"
-										value="<%=account.getUsername()%>" disabled="disabled" />
-									</td>
+										value="<%=account.getUsername()%>" disabled="disabled" /></td>
 								</tr>
 								<tr>
 									<td class="align_right">*New Password:</td>
-									<td><input type="newPassword" name="newPassword"
-										id="newPassword"
+									<td><input type="password" name="password" id="password"
 										<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 										<%
 											if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
 												out.print("*");
 											}
 										%>
+									</td>
+								</tr>
+
+								<tr>
+									<td class="align_right">*Reenter Password:</td>
+									<td><input type="password" name="reenterPassword"
+										id="newPassword" /> <%
+ 	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+ 		out.print("*");
+ 	}
+ %>
 									</td>
 								</tr>
 								<tr>
@@ -303,16 +323,15 @@
 											<%
 												}
 											%>
-									</select>
-									</td>
+									</select></td>
 								</tr>
 								<tr>
 									<td class="align_right">&nbsp;</td>
 									<td><input name="createBtn" type="submit" class="button"
-										id="createBtn" value="UPDATE" />
-									</td>
+										id="createBtn" value="UPDATE" /></td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr>
 						<td class="table_footer"></td>

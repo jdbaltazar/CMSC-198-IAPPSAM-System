@@ -37,7 +37,6 @@ public class UpdateAccountAction implements Action {
 	private String password;
 	private String reenterPassword;
 	private String acctType;
-	private String oldPassword;
 
 	private String[] designation;
 	private String[] employeeNo;
@@ -46,13 +45,13 @@ public class UpdateAccountAction implements Action {
 	private String mobileNumber;
 	private String landline;
 	private String emailad;
-	private AccountManager aManager = new AccountManagerSession();
 
 	public void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
 		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
-		password = request.getParameter("newPassword");
+		password = request.getParameter("password");
+		reenterPassword = request.getParameter("reenterPassword");
 		acctType = request.getParameter("accountType");
 		username = request.getParameter("username");
 		mobileNumber = entryFormatter.spaceTrimmer(request
@@ -70,12 +69,10 @@ public class UpdateAccountAction implements Action {
 			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
 		}
 
-		try {
 			if (!name.isEmpty()
 					&& !username.isEmpty()
 					&& !password.isEmpty()
-					&& aManager.getAccount(username).comparePassword(
-							oldPassword)
+					
 					&& password.equalsIgnoreCase(reenterPassword)
 
 					&& entryFormatter.check(name)) {
@@ -84,12 +81,7 @@ public class UpdateAccountAction implements Action {
 
 				failedResponse(request, response);
 			}
-		} catch (TransactionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+		} 
 
 	private void acceptResponse(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -240,9 +232,17 @@ public class UpdateAccountAction implements Action {
 
 			request.setAttribute("person", person);
 			request.setAttribute("userName", username);
+			AccountsViewAction view = new AccountsViewAction();
+			view.process(request, response);
 		} catch (TransactionException e) {
 			failedResponse(request, response);
 		} catch (DuplicateEntryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -255,29 +255,22 @@ public class UpdateAccountAction implements Action {
 			request.setAttribute("nameOK", "false");
 		else
 			request.setAttribute("nameOK", "true");
-		try {
 			if (password != null
 					&& reenterPassword != null
-					&& oldPassword != null
 					&& !(password.isEmpty()
-							&& reenterPassword.isEmpty()
-							&& aManager.getAccount(username).comparePassword(
-									oldPassword) && password
+							&& reenterPassword.isEmpty() && password
 								.equalsIgnoreCase(reenterPassword)))
 				request.setAttribute("passwordOK", "false");
 			else
 				request.setAttribute("passwordOK", "true");
-		} catch (TransactionException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("update_account.jsp");
+		
 		request.setAttribute("title", title);
 		request.setAttribute("name", name);
+		ViewAccountAction view = new ViewAccountAction();
 		try {
-			view.forward(request, response);
+			view.process(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
