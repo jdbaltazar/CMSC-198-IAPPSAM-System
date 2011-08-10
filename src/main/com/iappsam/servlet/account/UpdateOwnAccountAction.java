@@ -15,6 +15,7 @@ import com.iappsam.Contact;
 import com.iappsam.ContactType;
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
@@ -75,9 +76,6 @@ public class UpdateOwnAccountAction implements Action{
 				if (!name.isEmpty()
 						&& !username.isEmpty()
 						&& !password.isEmpty()
-						&& !newPassword.isEmpty()
-						&& !reenterPassword.isEmpty()
-						&&newPassword.equalsIgnoreCase(reenterPassword)
 						&& aManager.getAccount(username).comparePassword(password)
 							&& entryFormatter.check(name)) {
 					acceptResponse(request, response);
@@ -103,6 +101,7 @@ public class UpdateOwnAccountAction implements Action{
 			try {
 
 				Account account = aManager.getAccount(username);
+				if(!newPassword.isEmpty())
 				account.setPassword(newPassword);
 				if (acctType
 						.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
@@ -208,6 +207,7 @@ public class UpdateOwnAccountAction implements Action{
 						}
 					}
 				pManager.updatePerson(person);
+				Logger.log(request, "Account \""+username+"\" was updated");
 				List<Employee> empList = pManager.getEmployeeByPerson(person
 						.getId());
 				System.out.println("EmployeeList Number:" + empList.size());

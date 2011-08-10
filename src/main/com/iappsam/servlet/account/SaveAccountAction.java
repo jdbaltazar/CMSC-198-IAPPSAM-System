@@ -16,6 +16,7 @@ import com.iappsam.Contact;
 import com.iappsam.ContactType;
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
@@ -211,6 +212,7 @@ public class SaveAccountAction implements Action{
 					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
+				Logger.log(request, "Account  \""+username+"\" was added");
 				AccountsViewAction view = new AccountsViewAction();
 				view.process(request, response);
 			} catch (TransactionException e) {

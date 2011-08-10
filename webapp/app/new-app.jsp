@@ -215,7 +215,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><br /> <input name="submitBtn"
+				<td colspan="2" align="center"><br /> <input name="saveForm"
 					type="submit" class="button" value="SUBMIT Form" />
 				</td>
 			</tr>

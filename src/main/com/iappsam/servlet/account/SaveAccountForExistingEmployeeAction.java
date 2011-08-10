@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.Account;
 import com.iappsam.AccountType;
 import com.iappsam.Person;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -51,6 +52,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				}
 				AccountManager aManager = new AccountManagerSession();
 				aManager.addAccount(account);
+				Logger.log(request, "Account \""+userName+"\" was added");
 				RequestDispatcher view = request.getRequestDispatcher("/accounts?account-action=view-accounts");
 				view.forward(request, response);
 			} catch (NumberFormatException e) {

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.Form;
+import com.iappsam.forms.PR;
 import com.iappsam.forms.RIS;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
@@ -33,6 +34,9 @@ public class RISUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
+		Object ob = req.getAttribute("form");
+		if (!(ob instanceof RIS))
+			req.setAttribute("form", new RIS());
 		req.setAttribute("items", im.getAllItems());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
 		req.setAttribute("employees", pm.getAllEmployee());

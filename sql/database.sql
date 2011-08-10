@@ -768,7 +768,6 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`APP_Line` (
   PRIMARY KEY (`APP_Line_ID`) ,
   INDEX `fk_APP_Line_Item1` (`Item_ID` ASC) ,
   INDEX `fk_APP_Line_APP1` (`APP_ID` ASC) ,
-  UNIQUE INDEX `Item_ID_UNIQUE` (`Item_ID` ASC) ,
   CONSTRAINT `fk_APP_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
@@ -1158,7 +1157,7 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Log` (
   `Log_ID` INT NOT NULL AUTO_INCREMENT ,
-  `Date` DATETIME NOT NULL ,
+  `Date` TIMESTAMP NOT NULL ,
   `Description` VARCHAR(500) NOT NULL ,
   PRIMARY KEY (`Log_ID`) )
 ENGINE = InnoDB;

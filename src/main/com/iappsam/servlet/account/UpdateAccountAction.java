@@ -15,6 +15,7 @@ import com.iappsam.Contact;
 import com.iappsam.ContactType;
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.AccountManager;
 import com.iappsam.managers.ContactManager;
 import com.iappsam.managers.DivisionOfficeManager;
@@ -71,10 +72,7 @@ public class UpdateAccountAction implements Action {
 
 			if (!name.isEmpty()
 					&& !username.isEmpty()
-					&& !password.isEmpty()
-					
 					&& password.equalsIgnoreCase(reenterPassword)
-
 					&& entryFormatter.check(name)) {
 				acceptResponse(request, response);
 			} else {
@@ -200,6 +198,7 @@ public class UpdateAccountAction implements Action {
 					}
 				}
 			pManager.updatePerson(person);
+			Logger.log(request, "Account \""+username+"\" was updated");
 			List<Employee> empList = pManager.getEmployeeByPerson(person
 					.getId());
 			for (int i = 0; i < designation.length; i++) {

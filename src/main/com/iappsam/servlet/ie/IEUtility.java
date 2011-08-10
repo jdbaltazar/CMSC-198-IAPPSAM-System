@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.Form;
 import com.iappsam.forms.IE;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.IEManager;
 import com.iappsam.managers.exceptions.TransactionException;
@@ -27,6 +28,9 @@ public class IEUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
+		Object ob = req.getAttribute("form");
+		if (!(ob instanceof IE))
+			req.setAttribute("form", new IE());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
 		req.setAttribute("buildings", dom.getAllBuildings());
 	}

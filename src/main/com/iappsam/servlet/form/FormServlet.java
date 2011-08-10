@@ -13,7 +13,7 @@ public class FormServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -5790141818408223780L;
 
-	private NewFormPageAction newPr;
+	private NewFormPageAction newPage;
 	private FormLinePageAction linePage;
 	private ListFormAction list;
 	private RemoveFormLineAction removeItem;
@@ -24,7 +24,7 @@ public class FormServlet extends HttpServlet {
 
 	public FormServlet(FormUtility utility) {
 		this.list = new ListFormAction(utility);
-		this.newPr = new NewFormPageAction(utility);
+		this.newPage = new NewFormPageAction(utility);
 		this.linePage = new FormLinePageAction(utility);
 		this.removeItem = new RemoveFormLineAction(utility);
 		this.addPr = new AddFormAction(utility);
@@ -33,10 +33,10 @@ public class FormServlet extends HttpServlet {
 		this.exportXls = new ExportXlsAction(utility);
 	}
 
-	public FormServlet(NewFormPageAction newPr, FormLinePageAction linePage, ListFormAction list, RemoveFormLineAction removeItem, AddFormAction addPr, ViewFormAction viewPr,
-			ExportPdfAction exportPdf, ExportXlsAction exportXls) {
+	public FormServlet(NewFormPageAction newPr, FormLinePageAction linePage, ListFormAction list, RemoveFormLineAction removeItem,
+			AddFormAction addPr, ViewFormAction viewPr, ExportPdfAction exportPdf, ExportXlsAction exportXls) {
 		super();
-		this.newPr = newPr;
+		this.newPage = newPr;
 		this.linePage = linePage;
 		this.list = list;
 		this.removeItem = removeItem;
@@ -65,9 +65,9 @@ public class FormServlet extends HttpServlet {
 		String idParam = req.getParameter("id");
 		String exportParam = req.getParameter("export");
 
-		if (newParam != null)
-			return newPr;
-		else if (addItemParam != null)
+		if (newParam != null) {
+			return newPage;
+		} else if (addItemParam != null)
 			return linePage;
 		else if (removeItemParam != null)
 			return removeItem;
@@ -80,6 +80,7 @@ public class FormServlet extends HttpServlet {
 		else if (exportParam != null && exportParam.equals("xls"))
 			return exportXls;
 
+		req.setAttribute("form", null);
 		return list;
 	}
 }

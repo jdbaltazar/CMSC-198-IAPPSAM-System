@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PO;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
@@ -33,6 +34,9 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
+		Object ob = req.getAttribute("form");
+		if (!(ob instanceof PO))
+			req.setAttribute("form", new PO());
 		req.setAttribute("suppliers", sm.getAllSuppliers());
 		req.setAttribute("mops", pom.getAllModeOfProcurement());
 		req.setAttribute("divisionoffices", dom.getAllDivisionOffice());
