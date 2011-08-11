@@ -98,7 +98,7 @@
 					out.println("class=\"tablerow_2\"");%>>
 							<td width="11%">${form.risNumber}</td>
 							<td width="14%">${form.risDate}</td>
-							<td width="35%">${form.divisionOffice}</td>
+							<td width="35%">${form.divisionOffice.divisionName}</td>
 							<td width="40%">${form.requestedBy.person.name}</td>
 						</tr>
 					</table>

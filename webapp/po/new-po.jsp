@@ -84,7 +84,7 @@
 		<div id="items_table">
 			<table width="100%" border="0" cellspacing="0">
 				<tr>
-					<td colspan="2"><table width="100%" border="1" cellspacing="0"
+					<td colspan="2"><table width="100%" border="0" cellspacing="0"
 							class="tableheaders_forms">
 							<tr>
 								<td width="4%"><input type="checkbox" name="selectAll"
@@ -236,8 +236,8 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table"><input type="text"
-									name="supplier-date" id="supplier-date"
+								<td class="right_side_table"><input
+									name="supplier-date" type="text" class="required" id="supplier-date"
 									value="${form.supplierDate}" />
 								</td>
 							</tr>
@@ -264,8 +264,8 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table"><input type="text"
-									name="dean-date" id="dean-date"
+								<td class="right_side_table"><input
+									name="dean-date" type="text" class="required" id="dean-date"
 									value="${form.deanDate}" />
 								</td>
 							</tr>
@@ -291,8 +291,8 @@
 							
 							<tr>
 								<td class="other_fields_label">Date:</td>
-								<td class="right_side_table"><input type="text"
-									name="accountant-date" id="accountant-date"
+								<td class="right_side_table"><input
+									name="accountant-date" type="text" class="required" id="accountant-date"
 									value="${form.accountantDate}" />
 								</td>
 							</tr>

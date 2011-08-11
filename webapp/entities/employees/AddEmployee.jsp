@@ -185,7 +185,7 @@ if (x==null || x=="")
 								<td>
 									<div align="center">
 										<label for="designation2"></label> <input
-											name="designation2" type="text" class="required" id="designation2" maxlength="45"
+											name="designation2" type="text" id="designation2" maxlength="45"
 											<%if (employments[1] != null) {
 				out.print("value=\"" + employments[1].getDesignation() + "\"");
 			}%> />
@@ -203,7 +203,7 @@ if (x==null || x=="")
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice2" class="required_menulist" id="divisionOffice2">
+										<select name="divisionOffice2" class="menulist" id="divisionOffice2">
 											<option value="0"></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -229,7 +229,7 @@ if (x==null || x=="")
 								<td>
 									<div align="center">
 										<label for="designation3"></label> <input
-											name="designation3" type="text" class="required" id="designation3" maxlength="45"
+											name="designation3" type="text" id="designation3" maxlength="45"
 											<%if (employments[2] != null) {
 				out.print("value=\"" + employments[2].getDesignation() + "\"");
 			}%> />
@@ -248,7 +248,7 @@ if (x==null || x=="")
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice3" class="required_menulist" id="divisionOffice3">
+										<select name="divisionOffice3" class="menulist" id="divisionOffice3">
 											<option value="0"></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -274,7 +274,7 @@ if (x==null || x=="")
 								<td>
 									<div align="center">
 										<label for="designation4"></label> <input
-											name="designation4" type="text" class="required" id="designation4" maxlength="45"
+											name="designation4" type="text" id="designation4" maxlength="45"
 											<%if (employments[3] != null) {
 				out.print("value=\"" + employments[3].getDesignation() + "\"");
 			}%> />
@@ -292,7 +292,7 @@ if (x==null || x=="")
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice4" class="required_menulist" id="divisionOffice4">
+										<select name="divisionOffice4" class="menulist" id="divisionOffice4">
 											<option value="0"></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -318,7 +318,7 @@ if (x==null || x=="")
 								<td>
 									<div align="center">
 										<label for="designation5"></label> <input
-											name="designation5" type="text" class="required" id="designation5" maxlength="45"
+											name="designation5" type="text" id="designation5" maxlength="45"
 											<%if (employments[4] != null) {
 				out.print("value=\"" + employments[4].getDesignation() + "\"");
 			}%> />
@@ -336,7 +336,7 @@ if (x==null || x=="")
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice5" class="required_menulist" id="divisionOffice5">
+										<select name="divisionOffice5" class="menulist" id="divisionOffice5">
 											<option value="0"></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -399,6 +399,11 @@ if (x==null || x=="")
 				<tr>
 					<td class="table_footer"></td>
 				</tr>
+                
+                	<tr>
+		<td class="bkgrnd_white">&nbsp;</td>
+	</tr>
+
 			</table>
 		</form>
 	</div>

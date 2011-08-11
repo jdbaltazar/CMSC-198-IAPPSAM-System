@@ -66,8 +66,8 @@
 		<td>
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
-				<td class="align_right">*Employee Name:</td>
-				<td><select name="personID" class="menulist" id="personID">
+				<td class="align_right">Employee Name:</td>
+				<td><select name="personID" class="required_menulist" id="personID">
 					<%
 						int i = 0;
 						for (Person p : persons) {
@@ -81,15 +81,15 @@
 						i++;
 						}
 					%>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Username:</td>
-				<td><input type="text" name="username" id="username"
+				<td class="align_right">Username:</td>
+				<td><input name="username" type="text" class="required" id="username"
+					value="<%=username2%>"
 					<%String username2 = (String) request.getAttribute("username");
 			String usernameOK = (String) request.getAttribute("userNameOK");
-			if (username2 != null && !username2.isEmpty()) {%>
-					value="<%=username2%>" /> <%
+			if (username2 != null && !username2.isEmpty()) {%> /> <%
  	} else if (usernameOK!=null&&usernameOK.equalsIgnoreCase("false")) {
  		out.print("/>*");
  	}
@@ -100,19 +100,19 @@
 				<td class="align_right"
 					<%String passwordOK = (String) request.getAttribute("passwordOK");
 			if (passwordOK!=null&&passwordOK.equalsIgnoreCase("false")) {%>
-					<%}%>>*Password:</td>
-				<td><input type="password" name="password" id="password" /></td>
+					<%}%>>Password:</td>
+				<td><input name="password" type="password" class="required" id="password" /></td>
 			</tr>
 			<tr>
 				<td class="align_right"
-					<%if (passwordOK!=null&&passwordOK.equalsIgnoreCase("false")) {%> <%}%>>*Re-enter
+					<%if (passwordOK!=null&&passwordOK.equalsIgnoreCase("false")) {%> <%}%>>Re-enter
 				Password:</td>
-				<td><input type="password" name="reenterPassword"
+				<td><input name="reenterPassword" type="password" class="required"
 					id="reenterPassword" /></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Account Type:</td>
-				<td><select name="accountType" class="menulist"
+				<td class="align_right">Account Type:</td>
+				<td><select name="accountType" class="required_menulist"
 					id="accountType">
 					<%
 						for (int j = 0; j < accountTypes.length; j++) {
@@ -131,7 +131,7 @@
 					%>
 
 
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
 				<td class="align_right">&nbsp;</td>

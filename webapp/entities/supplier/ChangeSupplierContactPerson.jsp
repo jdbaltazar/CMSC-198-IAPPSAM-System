@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Change Supplier  Person</title>
-<link href="css/header.css" rel="stylesheet" type="text/css" />
-<link href="css/form.css" rel="stylesheet" type="text/css" />
+<link href="../../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../../css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,11 +18,11 @@
 		supplier = new Supplier();
 	List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 %>
-<div id="headerBkgrnd"><img src="images/headerbar.png"
+<div id="headerBkgrnd"><img src="../../images/headerbar.png"
 	width="100%" height="129" /></div>
-<div id="logo"><img src="images/headerlogo.png" width="124"
+<div id="logo"><img src="../../images/headerlogo.png" width="124"
 	height="128" /></div>
-<div id="headerName"><img src="images/headertext.png" width="452"
+<div id="headerName"><img src="../../images/headertext.png" width="452"
 	height="44" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -59,8 +59,8 @@
 		<td>
 		<table width="100%" cellspacing="9" border="0">
 			<tr>
-				<td class="align_right">*Contact Person:</td>
-				<td><select name="employeeID" class="menulist"
+				<td class="align_right">Contact Person:</td>
+				<td><select name="employeeID" class="required_menulist"
 					id="employeeID">
 					<%
 						for (Employee e : employees) {
@@ -78,19 +78,19 @@
 					<%
 						}
 					%>
-				</select></td>
+			  </select></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier Name:</td>
-				<td><input type="text" name="supplierName" id="supplierName"
-					<%if (supplier.getSupplierName() != null) {%>
-					value="<%=supplier.getSupplierName()%>" <%}%> /></td>
+				<td class="align_right">Supplier Name:</td>
+				<td><input name="supplierName" type="text" class="required" id="supplierName"
+					value="<%=supplier.getSupplierName()%>"
+					<%if (supplier.getSupplierName() != null) {%> <%}%> /></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier Address:</td>
-				<td><input name="address" id="address"
-					<%if (supplier.getAddress() != null) {%>
-					value="<%=supplier.getAddress()%>" <%}%> /></td>
+				<td class="align_right">Supplier Address:</td>
+				<td><input name="address" class="required" id="address"
+					value="<%=supplier.getAddress()%>"
+					<%if (supplier.getAddress() != null) {%> <%}%> /></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>

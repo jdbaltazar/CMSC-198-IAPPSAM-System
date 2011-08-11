@@ -78,9 +78,9 @@
 				out.print("value=" + '"' + title + '"');%> /></td>
 				</tr>
 				<tr>
-					<td class="align_right" id="align_right">*Name:<br />
+					<td class="align_right" id="align_right">Name:<br />
 					</td>
-					<td><input type="text" name="name" id="name"
+					<td><input name="name" type="text" class="required" id="name"
 						<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
 			if (nameOK != null && !nameOK.isEmpty()
@@ -107,14 +107,14 @@
 			<td>
 			<table width="100%" border="0" cellspacing="5">
 				<tr align="center" class="align_center">
-					<td width="40%">*Designation</td>
+					<td width="40%">Designation</td>
 					<td width="25%">Employee No.</td>
-					<td width="35%">*Division/Office</td>
+					<td width="35%">Division/Office</td>
 				</tr>
 				<tr>
 					<td>
-					<div align="center"><label for="designation_1"></label> <input
-						type="text" name="designation" id="designation_1"
+					<div align="center"><label for="designation_1"></label> <input name="designation"
+						type="text" class="required" id="designation_1"
 						<%String[] designation = (String[]) request
 					.getAttribute("designation");
 			String[] employeeNo = (String[]) request.getAttribute("employeeNo");
@@ -135,7 +135,7 @@
 				out.print("value=" + '"' + employeeNo[0] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown"
+					<div align="center"><select name="divisionOfficeDropdown" class="required_menulist"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -176,7 +176,7 @@
 				out.print("value=" + '"' + employeeNo[1] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown"
+					<div align="center"><select name="divisionOfficeDropdown" class="menulist"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -217,7 +217,7 @@
 				out.print("value=" + '"' + employeeNo[2] + '"');%> /></div>
 					</td>
 					<td>
-					<div align="center"><select name="divisionOfficeDropdown"
+					<div align="center"><select name="divisionOfficeDropdown" class="menulist"
 						id="divisionOfficeDropdown">
 
 						<%
@@ -287,8 +287,8 @@
 			<td>
 			<table width="100%" border="0" cellspacing="9">
 				<tr>
-					<td class="align_right">*Username:</td>
-					<td><input type="text" name="username" id="username"
+					<td class="align_right">Username:</td>
+					<td><input name="username" type="text" class="required" id="username"
 						<%String usernameOk = (String) request.getAttribute("usernameOK");
 			String username = (String) request.getAttribute("userName");
 			if (usernameOk != null && !usernameOk.isEmpty()
@@ -304,8 +304,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*Password:</td>
-					<td><input type="password" name="password" id="password"
+					<td class="align_right">Password:</td>
+					<td><input name="password" type="password" class="required" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty()
@@ -316,8 +316,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*Re-enter Password:</td>
-					<td><input type="password" name="reenterPassword"
+					<td class="align_right">Re-enter Password:</td>
+					<td><input name="reenterPassword" type="password" class="required"
 						id="reenterPassword" /> <%
  	if (passwordOk != null && !passwordOk.isEmpty()
  			&& passwordOk.equalsIgnoreCase("false")) {
@@ -327,8 +327,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*Account Type:</td>
-					<td><select name="accountType" class="menulist"
+					<td class="align_right">Account Type:</td>
+					<td><select name="accountType" class="required_menulist"
 						id="accountType">
 						<%
 							for (int i = 0; i < accountTypes.length; i++) {
@@ -344,7 +344,7 @@
 						<%
 							}
 						%>
-					</select></td>
+				  </select></td>
 				</tr>
 				<tr>
 					<td class="align_right">&nbsp;</td>
@@ -355,7 +355,16 @@
 				</tr>
 			</table>
 			</td>
+
 		</tr>
+        <tr>
+		<td class="table_footer"></td>
+	</tr>
+     <tr>
+		<td class="bkgrnd_white">&nbsp;</td>
+	</tr>
+    
+
 </table>
 
 </form>

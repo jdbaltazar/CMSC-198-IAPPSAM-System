@@ -92,15 +92,15 @@
 						value="<%=person.getTitle()%>" <%}%> /></td>
 				</tr>
 				<tr>
-					<td class="align_right" id="align_right">*Name:<br />
+					<td class="align_right" id="align_right">Name:<br />
 					</td>
-					<td><input type="text" name="name" id="name"
+					<td><input name="name" type="text" class="required" id="name"
+						value="<%=person.getName()%>"
 						<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
 			if (nameOK != null && !nameOK.isEmpty() && !nameOK.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + name + '"');
-			} else {%>
-						value="<%=person.getName()%>" <%}%> /> <%
+			} else {%> <%}%> /> <%
  	if (nameOK != null && !nameOK.isEmpty() && nameOK.equalsIgnoreCase("false")) {
  		out.print("*");
  	}
@@ -120,17 +120,17 @@
 			<td>
 			<table width="100%" border="0" cellspacing="5">
 				<tr align="center" class="align_center">
-					<td width="40%">*Designation</td>
+					<td width="40%">Designation</td>
 					<td width="25%">Employee No.</td>
-					<td width="35%">*Division/Office</td>
+					<td width="35%">Division/Office</td>
 				</tr>
 				<%
 					for (int i = 0; i < employees.size(); i++) {
 				%>
 				<tr>
 					<td>
-					<div align="center"><label for="designation_1"></label> <input
-						type="text" name="designation" id="designation_1"
+					<div align="center"><label for="designation_1"></label> <input name="designation"
+						type="text" class="required" id="designation_1"
 						<%if (employees != null && !employees.isEmpty())
 					out.print("value=" + '"' + employees.get(i).getDesignation() + '"');%> />
 
@@ -144,7 +144,7 @@
 					</td>
 					<td>
 					<div align="center"><select name="divisionOffice"
-						class="menulist" id="divisionOffice">
+						class="required_menulist" id="divisionOffice">
 						<%
 							for (int j = 0; j < dList.size(); j++) {
 						%>
@@ -273,8 +273,8 @@
 				</tr>
 				
 				<tr>
-					<td class="align_right">*Old Password:</td>
-					<td><input type="password" name="password" id="password"
+					<td class="align_right">Old Password:</td>
+					<td><input name="password" type="password" class="required" id="password"
 						<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
@@ -284,8 +284,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*New Password:</td>
-					<td><input type="password" name="newPassword" id="newPassword"
+					<td class="align_right">New Password:</td>
+					<td><input name="newPassword" type="password" class="required" id="newPassword"
 					/>
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
@@ -295,8 +295,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*Reenter Password:</td>
-					<td><input type="password" name="reenterPassword" id="reenterPassword" />
+					<td class="align_right">Reenter Password:</td>
+					<td><input name="reenterPassword" type="password" class="required" id="reenterPassword" />
 					<%
 						if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
 							out.print("*");
@@ -305,8 +305,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="align_right">*Account Type:</td>
-					<td><select name="accountType" class="menulist"
+					<td class="align_right">Account Type:</td>
+					<td><select name="accountType" class="required_menulist"
 						id="accountType">
 						<%
 							for (int i = 0; i < accountTypes.length; i++) {
@@ -316,7 +316,7 @@
 						<%
 							}
 						%>
-					</select></td>
+				  </select></td>
 				</tr>
 				<tr>
 					<td class="align_right">&nbsp;</td>
@@ -329,6 +329,9 @@
 		<tr>
 			<td class="table_footer"></td>
 		</tr>
+            	<tr>
+		<td class="bkgrnd_white">&nbsp;</td>
+	</tr>
 </table>
 
 </form>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -79,9 +79,9 @@
       		out.println("class=\"tablerow_2\"");
       %>
       >
-			<td width="20%">&nbsp;</td>
-			<td width="42%">&nbsp;</td>
-			<td width="38%">&nbsp;</td>
+			<td width="20%">${form.datePrepared}</td>
+			<td width="42%">${form.divisionOffice.divisionName},${form.divisionOffice.officeName}</td>
+			<td width="38%">${form.preparedBy.person.name}</td>
 		</tr>
 	</table>
 	</div>

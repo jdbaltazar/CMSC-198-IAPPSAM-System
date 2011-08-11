@@ -60,7 +60,7 @@
 		<td>
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
-				<td class="align_right">*Contact Person:</td>
+				<td class="align_right">Contact Person:</td>
 				<td><select name="employeeID" class="required_menulist" id="employeeID">
 					<%
 						for (Employee e : employees) {
@@ -91,12 +91,12 @@
 				sTin = supplier.getTin();
 			%>
 			<tr>
-				<td class="align_right">*Supplier Name:</td>
+				<td class="align_right">Supplier Name:</td>
 				<td><input name="supplierName" type="text" class="required" id="supplierName"
 					value="<%=sName%>" maxlength="80" /></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier Address:</td>
+				<td class="align_right">Supplier Address:</td>
 				<td><input name="address" class="required" id="address"
 					value="<%=sAddress%>" maxlength="100" /></td>
 			</tr>
