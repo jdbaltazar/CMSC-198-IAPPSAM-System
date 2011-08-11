@@ -99,7 +99,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<table width="25%" border="0" align="center" cellspacing="0">
+					<table width="35%" border="0" align="center" cellspacing="0">
 						<tr>
 							<td class="other_fields_label">Department/Section:</td>
 							<td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName}</td>

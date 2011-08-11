@@ -84,7 +84,7 @@
 				<td align="left" class="same_width">&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2"><table width="25%" border="0" align="center"
+				<td colspan="2"><table width="35%" border="0" align="center"
 						cellspacing="0">
 						<tr>
 							<td class="other_fields_label">Division/Office:</td>
