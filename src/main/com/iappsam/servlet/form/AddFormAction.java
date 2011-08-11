@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.forms.Form;
+import com.iappsam.forms.PR;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 import com.iappsam.util.ApplicationContext;
@@ -32,6 +33,7 @@ public class AddFormAction implements Action {
 			form = parser.createForm(request, appContext);
 			if (form.validate()) {
 				utility.add(form);
+
 				response.sendRedirect(onSucessLink());
 			} else
 				response.sendRedirect(onFailureLink());
@@ -46,6 +48,6 @@ public class AddFormAction implements Action {
 	}
 
 	private String onFailureLink() {
-		return String.format("/%s?new=%s", formName, formName);
+		return String.format("/%s?new=%s&edit=1", formName, formName);
 	}
 }

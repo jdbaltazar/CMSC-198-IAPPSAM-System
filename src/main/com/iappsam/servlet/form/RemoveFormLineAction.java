@@ -43,7 +43,7 @@ public class RemoveFormLineAction implements Action {
 		}
 	}
 
-	protected String getNewFormLink() {
-		return String.format("/%s?new=%s", formName, formName);
+	protected String getNewFormLink(){
+		return String.format("/%s?new=%s&edit=1", formName, formName);
 	}
 }
