@@ -13,11 +13,11 @@ public class APPReport extends AbstractReport {
 
 	public APPReport(APP app) throws ReportException {
 		super("app");
-		setAPP(app);
+		setForm(app);
 		fillReport();
 	}
 
-	private void setAPP(APP app) {
+	private void setForm(APP app) {
 		if (app == null)
 			throw new NullPointerException();
 		this.app = app;
@@ -36,15 +36,15 @@ public class APPReport extends AbstractReport {
 
 	@Override
 	protected String[] getColumnTitles() {
-		return new String[] { "stock_number", "description", "unit", "quantity", "price", "quarter1_quantity", "quarter1_amount", "quarter2_quantity", "quarter2_amount", "quarter3_quantity",
-				"quarter3_amount", "quarter4_quantity", "quarter4_amount", "total_amount" };
+		return new String[] { "stock_number", "description", "unit", "quantity", "price", "quarter1_quantity", "quarter1_amount", "quarter2_quantity",
+				"quarter2_amount", "quarter3_quantity", "quarter3_amount", "quarter4_quantity", "quarter4_amount", "total_amount" };
 	}
 
 	@Override
 	protected void initPropertyMap() {
 		propertyMap.put("YEAR", app.getYear() + "");
-		propertyMap.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber());
-		propertyMap.put("DATE_SCHEDULED", app.getDateScheduled() + "");
+		propertyMap.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber() == null ? "" : app.getPlanControlNumber());
+		propertyMap.put("DATE_SCHEDULED", app.getDateScheduled() == null ? "" : app.getDateScheduled().toString());
 		propertyMap.put("OFFICE", app.getDivisionOffice() + "");
 	}
 
@@ -66,7 +66,7 @@ public class APPReport extends AbstractReport {
 		double amount4 = quantity4 * item.getPrice();
 		double amountTotal = amount1 + amount2 + amount3 + amount4;
 
-		return new Object[] { stockNumber, description, item.getUnit().getName(), quantity + "", price + "", quantity1 + "", amount1 + "", quantity2 + "", amount2 + "", quantity3 + "", amount3 + "",
-				quantity4 + "", amount4 + "", amountTotal + "" };
+		return new Object[] { stockNumber, description, item.getUnit().getName(), quantity + "", price + "", quantity1 + "", amount1 + "",
+				quantity2 + "", amount2 + "", quantity3 + "", amount3 + "", quantity4 + "", amount4 + "", amountTotal + "" };
 	}
 }

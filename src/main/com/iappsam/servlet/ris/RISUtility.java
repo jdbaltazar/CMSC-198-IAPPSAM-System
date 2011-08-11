@@ -14,6 +14,7 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.RISManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.reporting.RISReport;
 import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
 import com.iappsam.util.ApplicationContext;
@@ -63,11 +64,11 @@ public class RISUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new RISReport((RIS) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new RISReport((RIS) form).toXLS();
 	}
 }

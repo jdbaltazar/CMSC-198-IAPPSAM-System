@@ -1,18 +1,26 @@
 package com.iappsam.reporting;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.iappsam.Item;
+import com.iappsam.forms.Form;
 import com.iappsam.forms.RIS;
 import com.iappsam.forms.RISLine;
 
 public class RISReport extends AbstractReport {
-	private RIS form;
+	RIS form;
 
-	public RISReport(RIS form) {
+	public RISReport(RIS form) throws ReportException {
 		super("ris");
+		setForm(form);
+	}
+
+	private void setForm(RIS form) throws ReportException {
 		this.form = form;
+		initPropertyMap();
+		fillReport();
 	}
 
 	@Override
@@ -27,16 +35,16 @@ public class RISReport extends AbstractReport {
 
 	private Object[] toArrayObject(RISLine line) {
 		List<Object> objs = new ArrayList<Object>();
-		
+
 		Item item = line.getItem();
 		objs.add(item.getStockNumber());
 		objs.add(item.getUnit().getName());
 		objs.add(item.getDescription());
-		
+
 		objs.add(line.getQuantityRequested() + "");
 		objs.add(line.getQuantityIssued() + "");
 		objs.add(line.getRemarks());
-		
+
 		return objs.toArray();
 	}
 
@@ -48,11 +56,11 @@ public class RISReport extends AbstractReport {
 	@Override
 	protected void initPropertyMap() {
 		propertyMap.put("Division", form.getDivisionOffice().getDivisionName());
-		propertyMap.put("Responsibility Center Code", form.getRcCode());
+		propertyMap.put("Responsibility Center Code", form.getRcCode() == null ? "" : form.getRcCode());
 		propertyMap.put("RIS No.", form.getRisNumber());
 		propertyMap.put("SAI No.", form.getSaiNumber());
 		propertyMap.put("RIS Date", form.getRisDate().toString());
-		propertyMap.put("SAI Date", form.getSaiDate().toString());
+		propertyMap.put("SAI Date", form.getSaiDate() == null ? "" : form.getSaiDate().toString());
 		propertyMap.put("Purpose", form.getPurpose());
 		propertyMap.put("Requested by Printed Name", form.getRequestedBy().getPerson().getName());
 		propertyMap.put("Requested by Designation", form.getRequestedBy().getDesignation());
