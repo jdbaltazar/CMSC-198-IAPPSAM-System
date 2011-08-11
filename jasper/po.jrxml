@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Purchase Order" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="po" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3636363636363642"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="73"/>
+	<property name="ireport.y" value="90"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
 		<box>
@@ -106,6 +106,8 @@
 	<parameter name="Funds Available DESIGNATION" class="java.lang.String"/>
 	<parameter name="OR No." class="java.lang.String"/>
 	<parameter name="Amount" class="java.lang.String"/>
+	<parameter name="SUPPLIER_NAME" class="java.lang.String"/>
+	<parameter name="SUPPLIER_DATE" class="java.lang.String"/>
 	<field name="Stock No." class="java.lang.String"/>
 	<field name="Unit" class="java.lang.String"/>
 	<field name="Description" class="java.lang.String"/>
@@ -235,14 +237,6 @@
 					<text><![CDATA[ Date of Delivery:]]></text>
 				</staticText>
 				<textField>
-					<reportElement mode="Transparent" x="100" y="0" width="298" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{Place of Delivery}]]></textFieldExpression>
-				</textField>
-				<textField>
 					<reportElement mode="Transparent" x="100" y="12" width="298" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -250,6 +244,13 @@
 					</textElement>
 					<textFieldExpression class="java.lang.String"><![CDATA[$P{Date of Delivery}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement x="100" y="0" width="298" height="12"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Supply and Property Service Office]]></text>
+				</staticText>
 			</frame>
 			<frame>
 				<reportElement style="table" x="398" y="72" width="174" height="24"/>
@@ -557,28 +558,12 @@
 					<text><![CDATA[ Very truly yours,]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Transparent" x="49" y="62" width="180" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[________________________________]]></text>
-				</staticText>
-				<staticText>
 					<reportElement mode="Transparent" x="49" y="74" width="180" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<text><![CDATA[Signature over Printed Name of Supplier]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Transparent" x="49" y="86" width="180" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[______________________]]></text>
 				</staticText>
 				<staticText>
 					<reportElement mode="Transparent" x="49" y="98" width="180" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -612,6 +597,20 @@
 					</textElement>
 					<text><![CDATA[ Conforme:]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="49" y="62" width="180" height="12"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{SUPPLIER_NAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="49" y="86" width="180" height="12"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{SUPPLIER_DATE}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</summary>

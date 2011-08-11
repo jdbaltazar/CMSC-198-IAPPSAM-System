@@ -74,6 +74,10 @@ public class POLine implements Serializable, Validatable {
 		this.po = po;
 	}
 
+	public float getAmount() {
+		return item.getPrice() * quantity;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -108,5 +112,17 @@ public class POLine implements Serializable, Validatable {
 	@Override
 	public boolean validate() {
 		return item != null && item.validate() && po != null;
+	}
+
+	public Object[] toArrayObjects() {
+		Object[] objs = new Object[6];
+		objs[0] = item.getStockNumber();
+		objs[1] = item.getUnit().toString();
+		objs[2] = item.getDescription();
+		objs[3] = quantity + "";
+		objs[4] = item.getPrice() + "";
+		objs[5] = getAmount();
+
+		return objs;
 	}
 }

@@ -5,15 +5,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PO;
-import com.iappsam.forms.PR;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.reporting.POReport;
 import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
 import com.iappsam.util.ApplicationContext;
@@ -66,11 +65,11 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new POReport((PO) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new POReport((PO) form).toXLS();
 	}
 }
