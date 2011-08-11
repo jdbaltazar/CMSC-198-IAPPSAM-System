@@ -153,6 +153,6 @@ public class Person implements Validatable {
 
 	@Override
 	public String toString() {
-		return String.format("%s %s", title, name);
+		return String.format("%s %s", title == null ? "" : title, name);
 	}
 }
