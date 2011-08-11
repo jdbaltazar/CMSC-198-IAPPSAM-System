@@ -1,3 +1,4 @@
+<%@page import="com.iappsam.DivisionOffice"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,7 +42,7 @@
 		<tr>
 			<td width="32%">&nbsp;</td>
 			<td width="68%"><form id="form2" name="form2" method="post"
-					action="">
+					action="/logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
 				</form>

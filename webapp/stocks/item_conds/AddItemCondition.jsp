@@ -43,7 +43,7 @@ if (x==null || x=="")
 		<tr>
 			<td width="35%">&nbsp;</td>
 			<td width="65%"><form id="form2" name="form2" method="post"
-					action="../../logout">
+					action="/logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
 				</form></td>

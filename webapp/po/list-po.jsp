@@ -35,12 +35,12 @@
 <table width="100%" border="0" cellspacing="0">
   <tr>
     <td width="32%">&nbsp;</td>
-    <td width="68%"><form id="form2" name="form2" method="post" action="">
+    <td width="68%"><form id="form2" name="form2" method="post" action="/logout">
       <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
     </form></td>
   </tr>
   <tr>
-    <td id="navigation"><a href="#" target="_top" class="links">Main Menu</a> &gt;<em><strong>PO List </strong></em>&gt; <a href="/po?new=po" target="_self" class="links">Fillup PO Form</a></td>
+    <td id="navigation"><a href="/menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>PO List </strong></em>&gt; <a href="/po?new=po" target="_self" class="links">Fillup PO Form</a></td>
     <td>&nbsp;</td>
   </tr>
 </table>

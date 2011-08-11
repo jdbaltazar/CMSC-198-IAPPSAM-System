@@ -47,7 +47,7 @@
 	<tr>
 		<td width="32%">&nbsp;</td>
 		<td width="68%">
-		<form id="form2" name="form2" method="post" action=""><input
+		<form id="form2" name="form2" method="post" action="/logout"><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>

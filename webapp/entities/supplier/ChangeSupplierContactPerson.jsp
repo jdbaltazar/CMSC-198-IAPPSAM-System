@@ -32,7 +32,7 @@
 	<tr>
 		<td width="46%">&nbsp;</td>
 		<td width="54%">
-		<form id="form2" name="form2" method="post" action="../../logout"><input
+		<form id="form2" name="form2" method="post" action="/logout"><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>

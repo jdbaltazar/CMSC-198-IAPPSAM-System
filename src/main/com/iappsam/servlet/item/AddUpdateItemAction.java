@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Item;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
@@ -60,7 +61,10 @@ public class AddUpdateItemAction implements Action {
 				throw new RuntimeException();
 
 			itemManager.addItem(item);
-//			Logger.log(request, new java.sql.Date((new java.util.Date()).getTime()), "Item \"" + description + "\" was added");
+			if (idParam != null)
+			Logger.log(request, "Item  \""+description+"\" was updated");
+			else
+				Logger.log(request, "Item  \""+description+"\" was added");
 			response.sendRedirect("/items?id=" + item.getId());
 		} catch (Exception e) {
 			try {
