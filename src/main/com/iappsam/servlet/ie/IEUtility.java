@@ -57,7 +57,7 @@ public class IEUtility extends AbstractFormUtility {
 		String division = ""+((IE) form).getDivisionOffice().getDivisionName();
 		if(((IE) form).getDivisionOffice().getOfficeName()!=null)
 			division =division+"/"+((IE) form).getDivisionOffice().getOfficeName();
-		Logger.log(req, "Annual Procurement Plan for "+division+ " was added");
+		Logger.log(req, "Inventory of Equipment for "+division+ " was added");
 	}
 
 	@Override

@@ -84,7 +84,6 @@ public class WebServer {
 		addServlet(new ViewSystemLogs(), "/system-logs");
 
 		addFilter(new SecurityFilter(), "/*");
-
 		server.setHandler(context);
 		server.start();
 		server.join();
