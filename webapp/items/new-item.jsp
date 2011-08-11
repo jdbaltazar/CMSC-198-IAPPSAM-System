@@ -109,13 +109,14 @@ if (x==null || x=="")
 					<td><table width="100%" cellspacing="9" frame="box"
 							class="no_border_table" id="table">
 							<tr>
-								<td class="align_right"><br /> *Description:</td>
+								<td class="align_right"><br /> 
+								Description:</td>
 								<td><br /> <input name="description" type="text"
 									class="required" id="itemDescription3" maxlength="500" />
 								</td>
 							</tr>
 							<tr>
-								<td class="align_right">*Unit:</td>
+								<td class="align_right">Unit:</td>
 								<td><select name="unit" class="required_menulist"
 									id="itemUnit2">
 										<%
@@ -129,7 +130,7 @@ if (x==null || x=="")
 								</td>
 							</tr>
 							<tr>
-								<td class="align_right">*Item Category:</td>
+								<td class="align_right">Item Category:</td>
 								<td><select name="itemCategory" class="required_menulist"
 									id="itemCategory2">
 										<%
@@ -171,7 +172,7 @@ if (x==null || x=="")
 								</td>
 							</tr>
 							<tr>
-								<td class="align_right">*Item Status:</td>
+								<td class="align_right">Item Status:</td>
 								<td><select name="itemStatus" class="required_menulist"
 									id="itemStatus3">
 										<%
@@ -185,7 +186,7 @@ if (x==null || x=="")
 								</td>
 							</tr>
 							<tr>
-								<td class="align_right">*Item Condition:</td>
+								<td class="align_right">Item Condition:</td>
 								<td><select name="itemCondition" class="required_menulist"
 									id="itemCondition3">
 										<%
@@ -212,6 +213,9 @@ if (x==null || x=="")
 				<tr>
 					<td class="table_footer"></td>
 				</tr>
+    	<tr>
+		<td class="bkgrnd_white">&nbsp;</td>
+	</tr>
 			</table>
 		</form>
 	</div>

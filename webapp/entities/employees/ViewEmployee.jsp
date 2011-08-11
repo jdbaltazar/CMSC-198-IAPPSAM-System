@@ -83,9 +83,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="align_right" id="align_right">*Name:<br />
+								<td class="align_right" id="align_right">Name:<br />
 								</td>
-								<td><input type="text" name="name" id="name"
+								<td><input name="name" type="text" class="required" id="name"
 									value="<%=person.getName()%>" /> <br />
 								</td>
 							</tr>
@@ -123,8 +123,8 @@
 								%>
 								<td>
 									<div align="center">
-										<label for="designation1"></label> <input type="text"
-											name="designation1" id="designation1"
+										<label for="designation1"></label> <input
+											name="designation1" type="text" class="required" id="designation1"
 											value="<%=designation1%>" />
 
 									</div>
@@ -193,7 +193,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice2" class="required_menulist" id="divisionOffice2">
+										<select name="divisionOffice2" class="menulist" id="divisionOffice2">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -249,7 +249,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice3" class="required_menulist" id="divisionOffice3">
+										<select name="divisionOffice3" class="menulist" id="divisionOffice3">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -306,7 +306,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice4" class="required_menulist" id="divisionOffice4">
+										<select name="divisionOffice4" class="menulist" id="divisionOffice4">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -362,7 +362,7 @@
 								</td>
 								<td>
 									<div align="center">
-										<select name="divisionOffice5" class="required_menulist" id="divisionOffice5">
+										<select name="divisionOffice5" class="menulist" id="divisionOffice5">
 											<option></option>
 											<%
 												for (DivisionOffice d : divisionOffices) {
@@ -419,8 +419,8 @@
 							<tr>
 								<td class="align_right">&nbsp;</td>
 								<td><input name="saveBtn" type="submit" class="button"
-									id="saveBtn" value="SAVE" /> 
-									<input type="hidden"
+									id="saveBtn" value="UPDATE" /> 
+								  <input type="hidden"
 									name="personID" value="<%=""+person.getId() %>" />
 									<input type="hidden"
 									name="employee-action" value="save-edited-employee" /> <br />
@@ -432,6 +432,10 @@
 				<tr>
 					<td class="table_footer"></td>
 				</tr>
+                	<tr>
+		<td class="bkgrnd_white">&nbsp;</td>
+	</tr>
+
 			</table>
 		</form>
 	</div>

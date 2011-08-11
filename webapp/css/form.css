@@ -21,15 +21,15 @@ div#export {
 	color:#CD7F32;
 }
 div#form_table {
-  /* let's say you want to center this <div id="centerme">Something</div>
+	/* let's say you want to center this <div id="centerme">Something</div>
 	   and make it 60% wide but centered on the screen.*/
  /* background-color:#FFFFCC;*/
   margin:0 auto;
-  width:35%; /* 60% - 4% = 56% */
-  height:inherit; /* see above */
-  border:none;
+	width:35%; /* 60% - 4% = 56% */
+	height:inherit; /* see above */
+	border:none;
 	position:absolute;
-	top:50%; /* 100% - 60% = 40% / 2 = 20% */
+	top:40%; /* 100% - 60% = 40% / 2 = 20% */
 	left:34%;  /* same as above */
 /*	background:url(../Pictures/Capture.PNG) no-repeat top center; */
 }
@@ -209,6 +209,7 @@ color:#7B1113;
 
 .menulist{
 	width:120px;
+	padding:4px;
 }
 
 .header_1{
@@ -384,4 +385,5 @@ font-weight:bold;
 .required_menulist {
 	background-color: #FFC;
 	width:120px;
+	padding:4px;
 }

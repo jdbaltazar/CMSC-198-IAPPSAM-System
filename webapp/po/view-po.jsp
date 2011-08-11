@@ -9,31 +9,6 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
-<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet"
-	type="text/css" />
-<script src="../jquery/jquery-1.5.1.min.js"></script>
-<script src="../jquery/ui/jquery.ui.core.js"></script>
-<script src="../jquery/ui/jquery.ui.datepicker.js"></script>
-<script src="../jquery/ui/jquery.ui.widget.js"></script>
-<script>
-	$(function() {
-		$("#deliveryDate").datepicker({
-			dateFormat : "yy-mm-dd",
-			numberOfMonths : 1,
-			showButtonPanel : true
-		});
-		$("#poNoDate").datepicker({
-			dateFormat : "yy-mm-dd",
-			numberOfMonths : 1,
-			showButtonPanel : true
-		});
-		$("#signatoryDate").datepicker({
-			dateFormat : "yy-mm-dd",
-			numberOfMonths : 1,
-			showButtonPanel : true
-		});
-	});
-</script>
 </head>
 
 <body>
@@ -76,7 +51,7 @@
 		<div id="items_table">
 			<table width="100%" border="0" cellspacing="0">
 				<tr>
-					<td colspan="2"><table width="100%" border="1" cellspacing="0"
+					<td colspan="2"><table width="100%" border="0" cellspacing="0"
 							class="tableheaders_forms">
 							<tr>
 								<td width="10%">Stock No.</td>
@@ -115,7 +90,7 @@
 							cellspacing="0">
 							<tr>
 								<td class="other_fields_label">Supplier:</td>
-								<td class="right_side_table">${form.supplier}</td>
+								<td class="right_side_table">${form.supplier.supplierName}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">P.O. No.:</td>
@@ -132,7 +107,7 @@
 
 							<tr>
 								<td class="other_fields_label">Delivery Place:</td>
-								<td class="right_side_table">${form.divisionOffice.}</td>
+								<td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName} </td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Delivery Date:</td>
@@ -144,7 +119,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Supplier Rep.:</td>
-								<td class="right_side_table">${form.supplierName}</td>
+								<td class="right_side_table">${form.supplierName.person.name}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
@@ -152,7 +127,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Very Truly Yours:</td>
-								<td class="right_side_table">${form.dean}</td>
+								<td class="right_side_table">${form.dean.person.name}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
@@ -160,7 +135,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Accountant:</td>
-								<td class="right_side_table">${form.accountant}</td>
+								<td class="right_side_table">${form.accountant.person.name}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
