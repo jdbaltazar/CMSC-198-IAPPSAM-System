@@ -86,8 +86,8 @@
 					<td class="same_width">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="2"><table width="27%" border="0" align="center"
-							cellspacing="0">
+					<td colspan="2"><table width="35%" border="0" align="center"
+							cellspacing="0" style="table-layout:auto">
 							<tr>
 								<td class="other_fields_label">Supplier:</td>
 								<td class="right_side_table">${form.supplier.supplierName}</td>
@@ -102,7 +102,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Mode of Procurement:</td>
-								<td class="right_side_table">${form.modeOfProcurement}</td>
+								<td class="right_side_table">${form.modeOfProcurement.name}</td>
 							</tr>
 
 							<tr>

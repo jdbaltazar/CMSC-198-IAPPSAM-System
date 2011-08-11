@@ -105,30 +105,30 @@
         <td class="same_width">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="2"><table width="27%" border="0" align="center" cellspacing="0">
+        <td colspan="2"><table width="35%" border="0" align="center" cellspacing="0">
           <tr>
             <td class="other_fields_label">Year:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.year }</td>
             </tr>
           <tr>
             <td class="other_fields_label">Plan Ctrl No.:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.planControlNumber}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Division/Office:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.divisionOffice.divisionName},${form.divisionOffice.officeName }</td>
             </tr>
           <tr>
             <td class="other_fields_label">Date Scheduled:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.dateScheduled}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Prepared by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.preparedBy.person.name}</td>
             </tr>
           <tr>
             <td class="other_fields_label">Recommended by:</td>
-            <td class="right_side_table">&nbsp;</td>
+            <td class="right_side_table">${form.recommendedBy.person.name}</td>
             </tr>
         </table></td>
       </tr>
