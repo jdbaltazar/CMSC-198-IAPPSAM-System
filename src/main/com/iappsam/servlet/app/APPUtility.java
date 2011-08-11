@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
+import com.iappsam.forms.RIS;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.APPManager;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.PersonManager;
@@ -19,6 +21,7 @@ import com.iappsam.util.ApplicationContext;
 
 public class APPUtility extends AbstractFormUtility implements FormUtility {
 
+	private HttpServletRequest request;
 	private PersonManager pm;
 	private DivisionOfficeManager dom;
 	private APPManager appm;
@@ -32,6 +35,7 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest request) throws TransactionException {
+		this.request = request;
 		Object ob = request.getSession().getAttribute("form");
 		Object ob2 = request.getAttribute("form");
 
@@ -46,6 +50,7 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		appm.addAPP((APP) form);
+		Logger.log(request, "Annual Procurement Plan for year "+((APP)form).getYear()+ " was added");
 	}
 
 	@Override

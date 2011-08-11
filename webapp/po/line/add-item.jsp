@@ -77,8 +77,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td width="7%" class="tableheaders_forms"><input
-					type="checkbox" name="selectAll" id="selectAll" />
+				<td width="7%" class="tableheaders_forms">
 				</td>
 				<td width="58%" class="tableheaders_forms">Item Description</td>
 				<td width="35%" class="tableheaders_forms">Item Category</td>

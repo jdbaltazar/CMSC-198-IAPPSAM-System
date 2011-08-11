@@ -6,7 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.Form;
+import com.iappsam.forms.IE;
+import com.iappsam.forms.PO;
 import com.iappsam.forms.PR;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PRManager;
@@ -20,6 +23,7 @@ import com.iappsam.util.ApplicationContext;
 
 public class PRUtility extends AbstractFormUtility {
 
+	private HttpServletRequest request;
 	private ItemManager im;
 	private PersonManager pm;
 	private DivisionOfficeManager dom;
@@ -39,6 +43,7 @@ public class PRUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest request) throws TransactionException {
+		this.request = request;
 		Object ob = request.getSession().getAttribute("form");
 		Object ob2 = request.getAttribute("form");
 
@@ -55,6 +60,10 @@ public class PRUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		prm.addPR((PR) form);
+		String division = ""+((PR) form).getDivisionOffice().getDivisionName();
+		if(((PR) form).getDivisionOffice().getOfficeName()!=null)
+			division =division+"/"+((PR) form).getDivisionOffice().getOfficeName();
+		Logger.log(request, "Purchase Request for "+division+ " was added");
 	}
 
 	@Override

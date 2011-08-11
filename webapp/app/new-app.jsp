@@ -65,8 +65,7 @@
 				<td colspan="2"><table width="100%" border="0" cellspacing="0">
 						<tr class="tableheaders_forms">
 							<td rowspan="2">
-									<input type="checkbox" name="selectAll" id="selectAll" /> <label
-										for="selectAll"></label>
+									
 							</td>
 							<td rowspan="2">Stock No.</td>
 							<td rowspan="2">ARTICLES &amp; SPECIFICATIONS</td>

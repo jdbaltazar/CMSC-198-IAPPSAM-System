@@ -87,8 +87,7 @@
 					<td colspan="2"><table width="100%" border="0" cellspacing="0"
 							class="tableheaders_forms">
 							<tr>
-								<td width="4%"><input type="checkbox" name="selectAll"
-									id="selectAll" /></td>
+								<td width="4%"></td>
 								<td width="10%">Stock No.</td>
 								<td width="8%">Unit</td>
 								<td width="50%">Description</td>

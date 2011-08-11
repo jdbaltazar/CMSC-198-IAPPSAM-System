@@ -47,13 +47,6 @@
 <div id="items_table">
   <table width="100%" border="0" cellspacing="0">
     <tr>
-      <td colspan="3" align="center"><form id="form1" name="form1" method="post" action="">
-        <label for="searchField"><span class="align_right">Search</span>:</label>
-        <input type="text" name="searchField" id="searchField" />
-        <input name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
-      </form></td>
-    </tr>
-    <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>

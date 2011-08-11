@@ -89,8 +89,7 @@
 				<td colspan="2"><table width="100%" border="0" cellspacing="0"
 						class="tableheaders_forms">
 						<tr>
-							<td><input type="checkbox" name="selectAllItems"
-								id="selectAllItems" /></td>
+							<td></td>
 							<td>Stock No.</td>
 							<td>Unit</td>
 							<td>Description</td>

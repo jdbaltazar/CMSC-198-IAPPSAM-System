@@ -9,6 +9,7 @@ import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
 import com.iappsam.forms.RIS;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
@@ -21,6 +22,7 @@ import com.iappsam.util.ApplicationContext;
 
 public class RISUtility extends AbstractFormUtility {
 
+	private HttpServletRequest req;
 	private DivisionOfficeManager dom;
 	private PersonManager pm;
 	private ItemManager im;
@@ -36,6 +38,7 @@ public class RISUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
+		this.req = req;
 		Object ob = req.getSession().getAttribute("form");
 		Object ob2 = req.getAttribute("form");
 		if (!(ob instanceof RIS || ob2 instanceof RIS)) {
@@ -50,6 +53,7 @@ public class RISUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		rism.addRIS((RIS) form);
+		Logger.log(req, "Requisition and Issue Slip with RIS No. "+((RIS)form).getRisNumber()+ " was added");
 	}
 
 	@Override
