@@ -57,7 +57,7 @@ public class IEUtility extends AbstractFormUtility {
 		String division = ""+((IE) form).getDivisionOffice().getDivisionName();
 		if(((IE) form).getDivisionOffice().getOfficeName()!=null)
 			division =division+"/"+((IE) form).getDivisionOffice().getOfficeName();
-		Logger.log(req, "Annual Procurement Plan for "+division+ " was added");
+		Logger.log(req, "Inventory of Equipment for "+division+ " was added");
 	}
 
 	@Override
@@ -72,11 +72,19 @@ public class IEUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
+		String division = ""+((IE) form).getDivisionOffice().getDivisionName();
+		if(((IE) form).getDivisionOffice().getOfficeName()!=null)
+			division =division+"/"+((IE) form).getDivisionOffice().getOfficeName();
+		Logger.log(req, "Inventory of Equipment for "+division+ " was exported in PDF");
 		return new IEReport((IE) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
+		String division = ""+((IE) form).getDivisionOffice().getDivisionName();
+		if(((IE) form).getDivisionOffice().getOfficeName()!=null)
+			division =division+"/"+((IE) form).getDivisionOffice().getOfficeName();
+		Logger.log(req, "Inventory of Equipment for "+division+ " was exported in XLS");
 		return new IEReport((IE) form).toXLS();
 	}
 }

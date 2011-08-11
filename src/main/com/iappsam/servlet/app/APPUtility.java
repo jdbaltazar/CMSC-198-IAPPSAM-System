@@ -65,11 +65,13 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
+		Logger.log(request, "Annual Procurement Plan for year "+((APP)form).getYear()+ " was exported in PDF");
 		return new APPReport((APP) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
+		Logger.log(request, "Annual Procurement Plan for year "+((APP)form).getYear()+ " was exported in XLS");
 		return new APPReport((APP) form).toXLS();
 	}
 }

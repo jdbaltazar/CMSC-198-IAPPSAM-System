@@ -67,14 +67,14 @@
 		<td>
 		<table width="100%" cellspacing="9" border="0">
 			<tr>
-				<td class="align_right">*Supplier Name:</td>
-				<td><input type="text" name="supplierName" id="supplierName"
+				<td class="align_right">Supplier Name:</td>
+				<td><input type="text" name="supplierName" id="supplierName" class="required"
 					<%if (supplier.getSupplierName() != null) {%>
 					value="<%=supplier.getSupplierName()%>" <%}%>></input></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Supplier Address:</td>
-				<td><input type="text" name="supplierAddress"
+				<td class="align_right">Supplier Address:</td>
+				<td><input type="text" name="supplierAddress" class="required"
 					id="supplierAddress" <%if (supplier.getAddress() != null) {%>
 					value="<%=supplier.getAddress()%>" <%}%>></input></td>
 			</tr>
@@ -102,8 +102,8 @@
 					value="<%=supplier.getContactPerson().getPerson().getTitle()%>"<%}%>></input></td>
 			</tr>
 			<tr>
-				<td class="align_right">*Name:</td>
-				<td><input type="text" name="name" id="name"
+				<td class="align_right">Name:</td>
+				<td><input type="text" name="name" id="name" class="required"
 					<%if (supplier.getContactPerson() != null&&supplier.getContactPerson().getPerson().getName() != null) {%>
 					value="<%=supplier.getContactPerson().getPerson().getName()%>"
 					<%}%>></input></td>
@@ -120,8 +120,8 @@
 		<td>
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
-				<td class="align_right">*Designation:</td>
-				<td><input type="text" name="designation" id="designation"
+				<td class="align_right">Designation:</td>
+				<td><input type="text" name="designation" id="designation" class="required"
 					<%if (supplier.getContactPerson() != null&&supplier.getContactPerson().getDesignation() != null) {%>
 					value="<%=supplier.getContactPerson().getDesignation()%>" <%}%>></input></td>
 			</tr>
@@ -184,6 +184,9 @@
 	</tr>
 	<tr>
 		<td class="table_footer"></td>
+	</tr>
+	<tr>
+		<td class="bkgrnd_white"></td>
 	</tr>
 </table>
 </form>

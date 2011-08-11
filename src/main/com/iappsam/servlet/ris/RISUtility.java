@@ -68,11 +68,13 @@ public class RISUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
+		Logger.log(req, "Requisition and Issue Slip with RIS No. "+((RIS)form).getRisNumber()+ " was exported in PDF");
 		return new RISReport((RIS) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
+		Logger.log(req, "Requisition and Issue Slip with RIS No. "+((RIS)form).getRisNumber()+ " was exported in XLS");
 		return new RISReport((RIS) form).toXLS();
 	}
 }
