@@ -78,19 +78,11 @@ public class PRUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		String division = ""+((PR) form).getDivisionOffice().getDivisionName();
-		if(((PR) form).getDivisionOffice().getOfficeName()!=null)
-			division =division+"/"+((PR) form).getDivisionOffice().getOfficeName();
-		Logger.log(request, "Purchase Request for "+division+ " was exported in PDF");
 		return new PRReport((PR) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
-		String division = ""+((PR) form).getDivisionOffice().getDivisionName();
-		if(((PR) form).getDivisionOffice().getOfficeName()!=null)
-			division =division+"/"+((PR) form).getDivisionOffice().getOfficeName();
-		Logger.log(request, "Purchase Request for "+division+ " was exported in XLS");
 		return new PRReport((PR) form).toXLS();
 	}
 }

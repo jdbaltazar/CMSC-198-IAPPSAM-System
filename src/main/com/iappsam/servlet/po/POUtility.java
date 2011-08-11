@@ -70,13 +70,11 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		Logger.log(req, "Purchase Order with PO No. "+((PO)form).getPoNumber()+ " was exported in PDF");
 		return new POReport((PO) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
-		Logger.log(req, "Purchase Order with PO No. "+((PO)form).getPoNumber()+ " was exported in XLS");
 		return new POReport((PO) form).toXLS();
 	}
 }
