@@ -179,4 +179,22 @@ public class IELine implements Serializable, Validatable {
 		boolean validHowAcquired = howAcquired != null && howAcquired.validate();
 		return validItem && validQuantity && validEmployee && validHowAcquired;
 	}
+
+	public Object[] toArrayObject() {
+		Object[] objs = new Object[11];
+
+		objs[0] = item.getPropertyNumber();
+		objs[1] = item.getDescription();
+		objs[2] = "";
+		objs[3] = quantity + "";
+		objs[4] = item.getPrice();
+		objs[5] = (item.getPrice() * quantity) + "";
+		objs[6] = item.getDateAcquired() == null ? "" : item.getDateAcquired().getYear();
+		objs[7] = howAcquired + "";
+		objs[8] = item.getCondition() + "";
+		objs[9] = employee.getPerson().getName();
+		objs[10] = remarks == null ? "" : remarks;
+
+		return objs;
+	}
 }

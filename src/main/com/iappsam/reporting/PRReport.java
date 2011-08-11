@@ -12,6 +12,10 @@ public class PRReport extends AbstractReport {
 
 	public PRReport(PR form) throws ReportException {
 		super("pr");
+		setForm(form);
+	}
+
+	private void setForm(PR form) throws ReportException {
 		this.form = form;
 		initPropertyMap();
 		fillReport();
@@ -22,20 +26,9 @@ public class PRReport extends AbstractReport {
 		List<Object[]> rows = new ArrayList<Object[]>();
 
 		for (PRLine line : form.getLines())
-			rows.add(toObjectArray(line));
+			rows.add(line.toArrayObjects());
 
 		return rows;
-	}
-
-	private Object[] toObjectArray(PRLine line) {
-		Object[] objs = new Object[6];
-		objs[0] = line.getQuantity() + "";
-		objs[1] = line.getItem().getUnit().getName();
-		objs[2] = line.getItem().getDescription();
-		objs[3] = line.getItem().getStockNumber();
-		objs[4] = line.getItem().getPrice() + "";
-		objs[5] = line.getCost() + "";
-		return objs;
 	}
 
 	@Override

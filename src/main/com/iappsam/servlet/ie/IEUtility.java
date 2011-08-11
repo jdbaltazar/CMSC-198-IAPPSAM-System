@@ -14,6 +14,7 @@ import com.iappsam.managers.IEManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
 import com.iappsam.managers.exceptions.TransactionException;
+import com.iappsam.reporting.IEReport;
 import com.iappsam.reporting.ReportException;
 import com.iappsam.servlet.form.AbstractFormUtility;
 import com.iappsam.util.ApplicationContext;
@@ -64,11 +65,11 @@ public class IEUtility extends AbstractFormUtility {
 
 	@Override
 	public File getPdf(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new IEReport((IE) form).toPDF();
 	}
 
 	@Override
 	public File getXls(Form form) throws ReportException {
-		throw new UnsupportedOperationException();
+		return new IEReport((IE) form).toXLS();
 	}
 }

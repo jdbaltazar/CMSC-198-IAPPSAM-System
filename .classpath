@@ -68,5 +68,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jstl-impl-1.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-4.0.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-javaflow-20060411.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/times-new-roman.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
