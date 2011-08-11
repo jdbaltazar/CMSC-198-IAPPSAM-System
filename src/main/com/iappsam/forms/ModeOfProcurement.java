@@ -72,6 +72,11 @@ public class ModeOfProcurement implements Validatable {
 	}
 
 	@Override
+	public String toString() {
+		return name;
+	}
+
+	@Override
 	public boolean validate() {
 		return name != null && !name.isEmpty();
 	}

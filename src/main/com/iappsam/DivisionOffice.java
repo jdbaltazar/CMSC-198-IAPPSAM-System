@@ -64,7 +64,7 @@ public class DivisionOffice implements Validatable {
 
 	@Override
 	public String toString() {
-		return divisionName + ", " + officeName;
+		return divisionName + (officeName == null ? "" : ", " + officeName);
 	}
 
 	@Override

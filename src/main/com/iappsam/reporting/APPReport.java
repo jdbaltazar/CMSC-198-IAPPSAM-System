@@ -46,6 +46,8 @@ public class APPReport extends AbstractReport {
 		propertyMap.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber() == null ? "" : app.getPlanControlNumber());
 		propertyMap.put("DATE_SCHEDULED", app.getDateScheduled() == null ? "" : app.getDateScheduled().toString());
 		propertyMap.put("OFFICE", app.getDivisionOffice() + "");
+		propertyMap.put("PREPARED_BY", app.getPreparedBy().getPerson() + "");
+		propertyMap.put("RECOMMENDED_BY", app.getRecommendedBy().getPerson() + "");
 	}
 
 	static Object[] toArrayObject(APPLine line) {
