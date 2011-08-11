@@ -98,7 +98,7 @@
 									<td>${line.item.price}</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
-									<td><select name="how-acquired" id="howacquired">
+									<td><select name="how-acquired" id="howacquired" class="menulist">
 											<c:forEach var="modeofprocurement"
 												items="${mods}">
 												<c:choose>
@@ -116,7 +116,7 @@
 									</select>
 									</td>
 									<td>&nbsp;</td>
-									<td><select name="employee" id="employee">
+									<td><select name="employee" id="employee" class="menulist">
 											<c:forEach var="employee" items="${employees}">
 												<c:choose>
 													<c:when test="${employee.id eq line.employee.id}">

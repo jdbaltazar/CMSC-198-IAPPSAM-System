@@ -10,16 +10,19 @@
 <script type="text/javascript">
 function validateForm()
 {
-	var txt="";
+	var txt="", txt="";
 	var x=document.forms["form1"]["modeOfProcurementField"].value;
 
+  
   txt="There was an error on this page!\n\n";
   txt+="Make sure required fields are not left blank,\n";
   txt+="or input is valid for that field.\n\n";
 
+  txt2="<div style=\"width:100%; height:100%; background-color:black; opacity: 0.2;\">";
+  txt2+="</div>";
 if (x==null || x=="")
   {
-  alert(txt);
+  var r = alert(txt);
   return false;
   }
 }

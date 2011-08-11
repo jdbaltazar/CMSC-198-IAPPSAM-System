@@ -186,7 +186,7 @@
 		<td class="table_footer"></td>
 	</tr>
 	<tr>
-		<td class="bkgrnd_white"></td>
+		<td class="bkgrnd_white">&nbsp;</td>
 	</tr>
 </table>
 </form>
