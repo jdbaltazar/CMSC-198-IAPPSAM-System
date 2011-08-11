@@ -66,7 +66,7 @@ public class PO implements Form {
 	private String orNumber;
 
 	@Column(name = "Amount")
-	private long amount;
+	private float amount;
 
 	@ManyToOne
 	@JoinColumn(name = "Supplier_Name_ID")
@@ -125,22 +125,22 @@ public class PO implements Form {
 	}
 
 	public String getPaymentTerm() {
-		return paymentTerm;
+		return paymentTerm == null ? "" : paymentTerm;
 	}
 
 	public String getDeliveryTerm() {
-		return deliveryTerm;
+		return deliveryTerm == null ? "" : deliveryTerm;
 	}
 
 	public String getTotalAmountInWords() {
-		return totalAmountInWords;
+		return totalAmountInWords == null ? "" : totalAmountInWords;
 	}
 
 	public String getOrNumber() {
-		return orNumber;
+		return orNumber == null ? "" : orNumber;
 	}
 
-	public long getAmount() {
+	public float getAmount() {
 		return amount;
 	}
 
@@ -267,12 +267,12 @@ public class PO implements Form {
 
 	public void setAmount(String amountParam) {
 		try {
-			setAmount(Long.parseLong(amountParam));
+			setAmount(Float.parseFloat(amountParam));
 		} catch (Exception e) {
 		}
 	}
 
-	private void setAmount(long amount) {
+	private void setAmount(float amount) {
 		this.amount = amount;
 	}
 
@@ -459,5 +459,14 @@ public class PO implements Form {
 			setDate(java.sql.Date.valueOf(parameter));
 		} catch (Exception e) {
 		}
+	}
+
+	public float getTotalAmount() {
+		float totalAmount = 0;
+
+		for (POLine line : lines)
+			totalAmount += line.getAmount();
+
+		return totalAmount;
 	}
 }
