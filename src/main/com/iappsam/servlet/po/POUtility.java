@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.iappsam.forms.APP;
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PO;
+import com.iappsam.logging.Logger;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.POManager;
 import com.iappsam.managers.PersonManager;
@@ -19,6 +21,7 @@ import com.iappsam.util.ApplicationContext;
 
 public class POUtility extends AbstractFormUtility {
 
+	private HttpServletRequest req;
 	private POManager pom;
 	private SupplierManager sm;
 	private DivisionOfficeManager dom;
@@ -34,6 +37,7 @@ public class POUtility extends AbstractFormUtility {
 
 	@Override
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
+		this.req = req;
 		Object ob = req.getSession().getAttribute("form");
 		if (!(ob instanceof PO))
 			req.getSession().removeAttribute("form");
@@ -51,6 +55,7 @@ public class POUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		pom.addPO((PO) form);
+		Logger.log(req, "Purchase Order with PO No. "+((PO)form).getPoNumber()+ " was added");
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class RISManagerSession extends AbstractManager implements RISManager {
 	@Override
 	public void addRIS(RIS requisitionAndIssueSlip) throws TransactionException {
 		add(requisitionAndIssueSlip);
+		
 	}
 
 	@Override
