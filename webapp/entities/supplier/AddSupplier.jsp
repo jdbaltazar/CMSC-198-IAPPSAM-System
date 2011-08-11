@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::Add Supplier</title>
-<link href="../../css/header.css" rel="stylesheet" type="text/css" />
-<link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<link href="css/header.css" rel="stylesheet" type="text/css" />
+<link href="css/form.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -17,11 +17,11 @@
 	if (supplier == null)
 		supplier = new Supplier();
 %>
-<div id="headerBkgrnd"><img src="../../images/headerbar.png"
+<div id="headerBkgrnd"><img src="images/headerbar.png"
 	width="100%" height="129" /></div>
-<div id="logo"><img src="../../images/headerlogo.png" width="124"
+<div id="logo"><img src="images/headerlogo.png" width="124"
 	height="128" /></div>
-<div id="headerName"><img src="../../images/headertext.png" width="452"
+<div id="headerName"><img src="images/headertext.png" width="452"
 	height="44" /></div>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -31,7 +31,7 @@
 	<tr>
 		<td width="32%">&nbsp;</td>
 		<td width="68%">
-		<form id="form2" name="form2" method="post" action="/logout"><input
+		<form id="form2" name="form2" method="post" action=""><input
 			name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 			value="Logout" /></form>
 		</td>
@@ -67,16 +67,16 @@
 		<td>
 		<table width="100%" cellspacing="9" border="0">
 			<tr>
-				<td class="align_right">Supplier Name:</td>
-				<td><input name="supplierName" type="text" class="required" id="supplierName"
-					value="<%=supplier.getSupplierName()%>"
-					<%if (supplier.getSupplierName() != null) {%> <%}%>></input></td>
+				<td class="align_right">*Supplier Name:</td>
+				<td><input type="text" name="supplierName" id="supplierName"
+					<%if (supplier.getSupplierName() != null) {%>
+					value="<%=supplier.getSupplierName()%>" <%}%>></input></td>
 			</tr>
 			<tr>
-				<td class="align_right">Supplier Address:</td>
-				<td><input name="supplierAddress" type="text" class="required"
-					id="supplierAddress"
-					value="<%=supplier.getAddress()%>" <%if (supplier.getAddress() != null) {%> <%}%>></input></td>
+				<td class="align_right">*Supplier Address:</td>
+				<td><input type="text" name="supplierAddress"
+					id="supplierAddress" <%if (supplier.getAddress() != null) {%>
+					value="<%=supplier.getAddress()%>" <%}%>></input></td>
 			</tr>
 			<tr>
 				<td class="align_right">TIN:</td>
@@ -102,10 +102,10 @@
 					value="<%=supplier.getContactPerson().getPerson().getTitle()%>"<%}%>></input></td>
 			</tr>
 			<tr>
-				<td class="align_right">Name:</td>
-				<td><input name="name" type="text" class="required" id="name"
-					value="<%=supplier.getContactPerson().getPerson().getName()%>"
+				<td class="align_right">*Name:</td>
+				<td><input type="text" name="name" id="name"
 					<%if (supplier.getContactPerson() != null&&supplier.getContactPerson().getPerson().getName() != null) {%>
+					value="<%=supplier.getContactPerson().getPerson().getName()%>"
 					<%}%>></input></td>
 			</tr>
 		</table>
@@ -120,10 +120,10 @@
 		<td>
 		<table width="100%" border="0" cellspacing="9">
 			<tr>
-				<td class="align_right">Designation:</td>
-				<td><input name="designation" type="text" class="required" id="designation"
-					value="<%=supplier.getContactPerson().getDesignation()%>"
-					<%if (supplier.getContactPerson() != null&&supplier.getContactPerson().getDesignation() != null) {%> <%}%>></input></td>
+				<td class="align_right">*Designation:</td>
+				<td><input type="text" name="designation" id="designation"
+					<%if (supplier.getContactPerson() != null&&supplier.getContactPerson().getDesignation() != null) {%>
+					value="<%=supplier.getContactPerson().getDesignation()%>" <%}%>></input></td>
 			</tr>
 			<tr>
 				<td class="align_right">Employee Number:</td>
@@ -185,10 +185,6 @@
 	<tr>
 		<td class="table_footer"></td>
 	</tr>
-    	<tr>
-		<td class="bkgrnd_white">&nbsp;</td>
-	</tr>
-
 </table>
 </form>
 </div>
