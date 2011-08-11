@@ -45,6 +45,6 @@ public class AddFormLineAction implements Action {
 	}
 
 	protected String getNewFormLink() {
-		return String.format("/%s?new=%s", formName, formName);
+		return String.format("/%s?new=%s&edit=1", formName, formName);
 	}
 }

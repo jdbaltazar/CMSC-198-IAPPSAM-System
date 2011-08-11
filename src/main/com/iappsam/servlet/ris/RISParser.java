@@ -44,7 +44,7 @@ public class RISParser extends FormParser {
 		
 		if (items != null)
 			for (int i = 0; i < items.length; i++)
-				ris.addLine(im.getItem(items[0]), requested[0], issued[0], remarks[0]);
+				ris.addLine(im.getItem(items[i]), requested[i], issued[i], remarks[i]);
 
 		return ris;
 	}
