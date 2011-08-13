@@ -351,6 +351,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`PO_Line` (
   `Id` INT NOT NULL AUTO_INCREMENT ,
   `Item_ID` INT NOT NULL ,
   `PO_Id` INT NOT NULL ,
+  `Quantity` INT NOT NULL ,
   INDEX `fk_PO_Line_Item1` (`Item_ID` ASC) ,
   PRIMARY KEY (`Id`) ,
   INDEX `fk_PO_Line_Purchase_Order1` (`PO_Id` ASC) ,
@@ -795,6 +796,7 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`Inventory_Of_Equipment` (
   `CounterCheckedBy` INT NOT NULL ,
   `NotedBy` INT NOT NULL ,
   `COARepresentative` INT NOT NULL ,
+  `DatePrepared` DATE NULL ,
   PRIMARY KEY (`ID`) ,
   INDEX `fk_Inventory_Of_Equipment_DivisionOffice1` (`DivisionOffice_ID` ASC) ,
   INDEX `fk_Inventory_Of_Equipment_Building1` (`Building_ID` ASC) ,
@@ -857,12 +859,13 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Line` (
   `IE_ID` INT NOT NULL ,
   `Employee_ID` INT NOT NULL ,
   `Quantity` INT NOT NULL ,
-  `How_Acquired` VARCHAR(100) NOT NULL ,
   `Remarks` VARCHAR(100) NULL ,
+  `How_Acquired` INT NOT NULL ,
   INDEX `fk_IE_Line_Inventory_Of_Equipment1` (`IE_ID` ASC) ,
   INDEX `fk_IE_Line_Employee1` (`Employee_ID` ASC) ,
   INDEX `fk_IE_Line_Item1` (`Item_ID` ASC) ,
   PRIMARY KEY (`ID`) ,
+  INDEX `fk_IE_Line_Mode_Of_Procurement1` (`How_Acquired` ASC) ,
   CONSTRAINT `fk_IE_Line_Inventory_Of_Equipment1`
     FOREIGN KEY (`IE_ID` )
     REFERENCES `IAPPSAM`.`Inventory_Of_Equipment` (`ID` )
@@ -876,6 +879,11 @@ CREATE  TABLE IF NOT EXISTS `IAPPSAM`.`IE_Line` (
   CONSTRAINT `fk_IE_Line_Item1`
     FOREIGN KEY (`Item_ID` )
     REFERENCES `IAPPSAM`.`Item` (`Item_ID` )
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_IE_Line_Mode_Of_Procurement1`
+    FOREIGN KEY (`How_Acquired` )
+    REFERENCES `IAPPSAM`.`Mode_Of_Procurement` (`Id` )
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
