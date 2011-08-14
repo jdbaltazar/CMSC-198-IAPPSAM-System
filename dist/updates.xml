@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<updateDescriptor baseUrl="">
-  <entry targetMediaFileId="25" updatableVersionMin="" updatableVersionMax="" fileName="IAPPSAM-windows-1_0.exe" newVersion="1.0" newMediaFileId="25" fileSize="40651264" bundledJre="" archive="false">
-    <comment language="en" />
-  </entry>
-</updateDescriptor>
-
