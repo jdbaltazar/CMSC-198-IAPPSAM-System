@@ -26,16 +26,16 @@ Remove any Java and MySQL installations before installing the system
 	a. Do not specify password for the root account.
 3. Run iappsam-windows-1_0.exe.
 4. Run Start > Programs > IAPPSAM > Server.
-5. Browse to localhost. The default account is.
+5. Browse to localhost. The default account is:
 	Username: Admin
 	Password: Admin
 
 Backup
 -------
-To backup database, Login into the webapp as Administrator then click Backup 
+To backup database, Login into the webapp as Administrator then click Backup.
 
 Recovery
 --------	
-To recover database , run Start > Programs > IAPPSAM > Recover.
+To recover database, run Start > Programs > IAPPSAM > Recover.
 
 
