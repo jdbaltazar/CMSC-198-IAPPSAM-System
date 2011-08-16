@@ -55,6 +55,8 @@ import com.iappsam.servlet.filter.SecurityFilter;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
+	public static final String USERNAME = "root";
+	public static final String PASSWORD = "";
 
 	static {
 		init();
@@ -62,7 +64,7 @@ public class HibernateUtil {
 
 	public static void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-		if (!tryToBuildSessionFactory("root", ""))
+		if (!tryToBuildSessionFactory(USERNAME, PASSWORD))
 			throw new RuntimeException("connection unsuccessful");
 	}
 

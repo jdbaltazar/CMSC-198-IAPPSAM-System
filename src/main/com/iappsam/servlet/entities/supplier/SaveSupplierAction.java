@@ -44,7 +44,7 @@ public class SaveSupplierAction implements Action {
 		if (Validator.validField(name))
 			person.setName(name);
 		if (Validator.validField(title))
-			person.setName(title);
+			person.setTitle(title);
 		if (Validator.validField(mobileNumber))
 			person.addContact(new Contact(mobileNumber, ContactType.MOBILE));
 		if (Validator.validField(landline))

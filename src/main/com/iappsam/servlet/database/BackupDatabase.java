@@ -34,7 +34,6 @@ public class BackupDatabase extends HttpServlet {
 			stream = response.getOutputStream();
 			File file = new File(bdTool.initBackUp().getAbsolutePath() + ".sql");
 			String fileName = "IAPPSAMS_DB_Backup_" + (getCurrentDate()) + ".sql";
-			Logger.log(request, "Database was backed up");
 			
 			// set response headers
 			response.setContentType("text/plain");
@@ -48,6 +47,8 @@ public class BackupDatabase extends HttpServlet {
 			while ((readBytes = buf.read()) != -1)
 				stream.write(readBytes);
 
+			Logger.log(request, "Database was backed up");
+			
 		} catch (IOException ioe) {
 
 			throw new ServletException(ioe.getMessage());
