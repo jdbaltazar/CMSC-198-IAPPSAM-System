@@ -77,15 +77,30 @@ public class POManagerSessionTest extends ManagerSessionTestCase {
 		pm.addEmployee(dean);
 		sm.addSupplier(supplier);
 
-		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"), supplierName, Date.valueOf("2011-01-01"), accountant,
-				Date.valueOf("2011-01-01"), dean, Date.valueOf("2011-01-01"));
+		po = new PO("num", supplier, Date.valueOf("2011-01-01"), modeOfProcurement, divisionOffice, Date.valueOf("2011-01-01"), supplierName,
+				Date.valueOf("2011-01-01"), accountant, Date.valueOf("2011-01-01"), dean, Date.valueOf("2011-01-01"));
 	}
 
 	@Test
 	public void shouldAddPOwithRequiredFields() throws TransactionException, DuplicateEntryException {
 		Item item = Item.create("des", "Cat", "u", "status", "condition");
 		im.addItem(item);
-		po.addLine(item);
+		po.addLine(item, "1");
+		pom.addPO(po);
+
+		assertTrue(pom.containsPO(po));
+	}
+
+	@Test
+	public void shouldAddWithTwoLines() throws TransactionException {
+		Item item = Item.create("Des", "asd", "ad", "Asd", "Asd");
+		im.addItem(item);
+
+		Item item2 = Item.create("Des2", "asd2", "ad2", "Asd2", "Asd2");
+		im.addItem(item2);
+
+		po.addLine(item, "1");
+		po.addLine(item2, "1");
 		pom.addPO(po);
 
 		assertTrue(pom.containsPO(po));

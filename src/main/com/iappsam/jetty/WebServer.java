@@ -47,7 +47,7 @@ public class WebServer {
 	private static WebAppContext context;
 
 	public static void main(String[] args) throws Exception {
-		Server server = new Server(80);	
+		Server server = new Server(80);
 
 		context = new WebAppContext();
 		context.setWar("webapp");

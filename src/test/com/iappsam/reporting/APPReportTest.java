@@ -38,12 +38,6 @@ public class APPReportTest {
 	}
 
 	@Test
-	public void toArrayObject() {
-		Object[] objs = APPReport.toArrayObject(line);
-		assertArrayEquals(lineObjs, objs);
-	}
-
-	@Test
 	public void exportAPPtoPDF() throws ReportException {
 		File pdf = report.toPDF();
 		assertTrue(pdf.exists());

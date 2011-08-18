@@ -68,11 +68,12 @@ public class POParser extends FormParser {
 		po.setDeanDate(req.getParameter("dean-date"));
 
 		String[] items = req.getParameterValues("items");
+		String[] quantities = req.getParameterValues("quantity");
 
 		if (items != null)
-			for (String item : items)
+			for (int i = 0; i < items.length; i++)
 				try {
-					po.addLine(im.getItem(Integer.parseInt(item)));
+					po.addLine(im.getItem(Integer.parseInt(items[i])), quantities[i]);
 				} catch (NumberFormatException e) {
 				}
 

@@ -64,7 +64,9 @@ public class HibernateUtil {
 
 	public static void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+
 		if (!tryToBuildSessionFactory(USERNAME, PASSWORD))
+
 			throw new RuntimeException("connection unsuccessful");
 	}
 

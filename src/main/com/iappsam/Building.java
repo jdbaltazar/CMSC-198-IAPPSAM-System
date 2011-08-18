@@ -88,4 +88,9 @@ public class Building implements Validatable {
 	public boolean validate() {
 		return name != null && !name.isEmpty();
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

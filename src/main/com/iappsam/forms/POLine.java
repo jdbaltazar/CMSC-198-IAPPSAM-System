@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +20,7 @@ public class POLine implements Serializable, Validatable {
 	private static final long serialVersionUID = 7312439919136440157L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Id")
 	private int id;
 
@@ -36,10 +39,18 @@ public class POLine implements Serializable, Validatable {
 		super();
 	}
 
-	public POLine(PO po, Item item) {
+	public POLine(PO po, Item item, String quantity) {
 		super();
 		this.po = po;
 		this.item = item;
+		setQuantity(quantity);
+	}
+
+	private void setQuantity(String quantity) {
+		try {
+			setQuantity(Integer.parseInt(quantity));
+		} catch (Exception e) {
+		}
 	}
 
 	public int getQuantity() {
@@ -111,7 +122,7 @@ public class POLine implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		return item != null && item.validate() && po != null;
+		return item != null && item.validate() && po != null && quantity > 0;
 	}
 
 	public Object[] toArrayObjects() {

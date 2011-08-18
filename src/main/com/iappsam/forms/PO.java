@@ -276,8 +276,8 @@ public class PO implements Form {
 		this.amount = amount;
 	}
 
-	public void addLine(Item item) {
-		lines.add(new POLine(this, item));
+	public void addLine(Item item, String quantity) {
+		lines.add(new POLine(this, item, quantity));
 	}
 
 	public void addLine(POLine line) {
@@ -428,7 +428,7 @@ public class PO implements Form {
 
 	@Override
 	public void addItem(Item item) {
-		addLine(item);
+		addLine(item, "0");
 	}
 
 	@Override

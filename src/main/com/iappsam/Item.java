@@ -164,7 +164,8 @@ public class Item implements Serializable, Validatable {
 	}
 
 	public void setStockNumber(String stockNumber) {
-		this.stockNumber = stockNumber;
+		if (stockNumber != null)
+		this.stockNumber = stockNumber.trim();
 	}
 
 	public void setPrice(float price) {
@@ -176,11 +177,13 @@ public class Item implements Serializable, Validatable {
 	}
 
 	public void setInventoryItemNumber(String inventoryItemNumber) {
-		this.inventoryItemNumber = inventoryItemNumber;
+		if (inventoryItemNumber != null)
+		this.inventoryItemNumber = inventoryItemNumber.trim();
 	}
 
 	public void setPropertyNumber(String propertyNumber) {
-		this.propertyNumber = propertyNumber;
+		if (propertyNumber!= null)
+		this.propertyNumber = propertyNumber.trim();
 	}
 
 	public int getId() {
@@ -301,6 +304,7 @@ public class Item implements Serializable, Validatable {
 		boolean validUnit = unit != null && unit.validate();
 		boolean validStatus = itemStatus != null && itemStatus.validate();
 		boolean validCondition = itemCondition != null && itemCondition.validate();
-		return validDescription && validCategory && validUnit && validStatus && validCondition;
+		boolean validPrice = price >= 0;
+		return validDescription && validCategory && validUnit && validStatus && validCondition && validPrice;
 	}
 }
