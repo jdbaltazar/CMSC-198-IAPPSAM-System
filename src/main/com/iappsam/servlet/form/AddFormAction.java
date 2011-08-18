@@ -28,12 +28,12 @@ public class AddFormAction implements Action {
 	}
 
 	@Override
-	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void process(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			form = parser.createForm(request, appContext);
+			form = parser.createForm(req, appContext);
+			req.getSession().setAttribute("form", form);
 			if (form.validate()) {
 				utility.add(form);
-
 				response.sendRedirect(onSucessLink());
 			} else
 				response.sendRedirect(onFailureLink());

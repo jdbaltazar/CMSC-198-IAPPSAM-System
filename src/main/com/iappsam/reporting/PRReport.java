@@ -39,17 +39,17 @@ public class PRReport extends AbstractReport {
 	@Override
 	protected void initPropertyMap() {
 		propertyMap.put("PR_NUMBER", form.getPrNumber());
-		propertyMap.put("PR_DATE", form.getPrDate() == null ? "" : form.getPrDate() + "");
-		propertyMap.put("SAI_NUMBER", form.getSaiNumber());
-		propertyMap.put("SAI_DATE", form.getSaiDate() == null ? "" : form.getSaiDate() + "");
-		propertyMap.put("ALOBS_NUMBER", form.getAlobsNumber());
-		propertyMap.put("ALOBS_DATE", form.getAlobsDate() == null ? "" : form.getAlobsDate() + "");
-		propertyMap.put("APPROVED_BY_NAME", form.getApprovedBy().getPerson().getName());
+		propertyMap.put("PR Date", form.getPrDate() == null ? "" : form.getPrDate() + "");
+		propertyMap.put("SAI No.", form.getSaiNumber());
+		propertyMap.put("SAI Date", form.getSaiDate() == null ? "" : form.getSaiDate() + "");
+		propertyMap.put("ALOBS No.", form.getAlobsNumber());
+		propertyMap.put("ALOBS Date", form.getAlobsDate() == null ? "" : form.getAlobsDate() + "");
+		propertyMap.put("Dean", form.getApprovedBy().getPerson().getName());
 		propertyMap.put("APPROVED_BY_DESIGNATION", form.getApprovedBy().getDesignation());
 		propertyMap.put("REQUESTED_BY_NAME", form.getRequestedBy().getPerson().getName());
 		propertyMap.put("REQUESTED_BY_DESIGNATION", form.getRequestedBy().getDesignation());
-		propertyMap.put("PURPOSE", form.getPurpose());
-		propertyMap.put("DEPARTMENT", form.getDivisionOffice().getDivisionName());
-		propertyMap.put("SECTION", form.getDivisionOffice().getOfficeName());
+		propertyMap.put("Purpose", form.getPurpose());
+		propertyMap.put("Department", form.getDivisionOffice().getDivisionName());
+		propertyMap.put("Section", form.getDivisionOffice().getOfficeName() == null? "" : form.getDivisionOffice().getOfficeName());
 	}
 }

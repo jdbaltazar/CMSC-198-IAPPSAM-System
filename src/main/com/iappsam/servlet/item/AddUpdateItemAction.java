@@ -58,25 +58,35 @@ public class AddUpdateItemAction implements Action {
 			item.setCategory(itemManager.getItemCategoryByName(categoryName));
 
 			if (!item.validate())
-				throw new RuntimeException();
-
-			itemManager.addItem(item);
-			if (idParam != null)
-			Logger.log(request, "Item  \""+description+"\" was updated");
+				processInvalidItem(request, response);
 			else
-				Logger.log(request, "Item  \""+description+"\" was added");
-			response.sendRedirect("/items?id=" + item.getId());
+				processValidItem(request, response, item, idParam, description);
+
 		} catch (Exception e) {
 			try {
-				request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());
-				request.setAttribute(UNITS, itemManager.getAllUnits());
-				request.setAttribute(STATUSES, itemManager.getAllItemStatus());
-				request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
-				RequestDispatcher dispatcher = request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
-				dispatcher.forward(request, response);
+				processInvalidItem(request, response);
 			} catch (TransactionException e1) {
-				e1.printStackTrace();
 			}
 		}
+	}
+
+	private void processValidItem(HttpServletRequest request, HttpServletResponse response, Item item, String idParam, String description)
+			throws TransactionException, IOException {
+		itemManager.addItem(item);
+		if (idParam != null)
+			Logger.log(request, "Item  \"" + description + "\" was updated");
+		else
+			Logger.log(request, "Item  \"" + description + "\" was added");
+		response.sendRedirect("/items?id=" + item.getId());
+	}
+
+	private void processInvalidItem(HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,
+			IOException {
+		request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());
+		request.setAttribute(UNITS, itemManager.getAllUnits());
+		request.setAttribute(STATUSES, itemManager.getAllItemStatus());
+		request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
+		RequestDispatcher dispatcher = request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
+		dispatcher.forward(request, response);
 	}
 }

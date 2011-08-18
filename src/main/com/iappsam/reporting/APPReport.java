@@ -29,7 +29,7 @@ public class APPReport extends AbstractReport {
 		List<Object[]> objArrays = new ArrayList<Object[]>();
 
 		for (APPLine line : app.getLines())
-			objArrays.add(toArrayObject(line));
+			objArrays.add(line.toArrayObject());
 
 		return objArrays;
 	}
@@ -50,25 +50,5 @@ public class APPReport extends AbstractReport {
 		propertyMap.put("RECOMMENDED_BY", app.getRecommendedBy().getPerson() + "");
 	}
 
-	static Object[] toArrayObject(APPLine line) {
-		Item item = line.getItem();
-		String description = item.getDescription();
-		String stockNumber = item.getStockNumber();
-		double price = item.getPrice();
-
-		int quantity1 = line.getQuantityQuarter1();
-		int quantity2 = line.getQuantityQuarter2();
-		int quantity3 = line.getQuantityQuarter3();
-		int quantity4 = line.getQuantityQuarter4();
-		int quantity = quantity1 + quantity2 + quantity3 + quantity4;
-
-		double amount1 = quantity1 * item.getPrice();
-		double amount2 = quantity2 * item.getPrice();
-		double amount3 = quantity3 * item.getPrice();
-		double amount4 = quantity4 * item.getPrice();
-		double amountTotal = amount1 + amount2 + amount3 + amount4;
-
-		return new Object[] { stockNumber, description, item.getUnit().getName(), quantity + "", price + "", quantity1 + "", amount1 + "",
-				quantity2 + "", amount2 + "", quantity3 + "", amount3 + "", quantity4 + "", amount4 + "", amountTotal + "" };
-	}
+	
 }

@@ -125,7 +125,8 @@ public class PRLine implements Validatable {
 	public boolean validate() {
 		boolean validItem = item != null && item.validate();
 		boolean validPr = purchaseRequest != null;
-		return validItem && validPr;
+		boolean validQuantity = quantity > 0;
+		return validItem && validPr && validQuantity;
 	}
 
 	public float getCost() {

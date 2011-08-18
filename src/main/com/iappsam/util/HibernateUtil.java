@@ -56,7 +56,7 @@ public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
 	public static final String USERNAME = "root";
-	public static final String PASSWORD = "123456";
+	public static final String PASSWORD = "";
 
 	static {
 		init();

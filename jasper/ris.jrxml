@@ -289,7 +289,7 @@
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="0" y="0" width="52" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="67" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -298,7 +298,7 @@
 No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="52" y="0" width="43" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="67" y="0" width="43" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -306,7 +306,7 @@ No.]]></text>
 				<text><![CDATA[Unit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="95" y="0" width="206" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="110" y="0" width="206" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -314,7 +314,7 @@ No.]]></text>
 				<text><![CDATA[Description]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="301" y="0" width="49" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="316" y="0" width="34" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -322,7 +322,7 @@ No.]]></text>
 				<text><![CDATA[Qty.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="350" y="0" width="52" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="350" y="0" width="34" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -330,7 +330,7 @@ No.]]></text>
 				<text><![CDATA[Qty.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="table" mode="Transparent" x="402" y="0" width="170" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="384" y="0" width="188" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -342,7 +342,7 @@ No.]]></text>
 	<detail>
 		<band height="13" splitType="Stretch">
 			<textField>
-				<reportElement style="table" mode="Transparent" x="0" y="0" width="52" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="0" y="0" width="67" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -350,7 +350,7 @@ No.]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Stock No.}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" mode="Transparent" x="52" y="0" width="43" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="67" y="0" width="43" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -358,7 +358,7 @@ No.]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Unit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" mode="Transparent" x="95" y="0" width="206" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="110" y="0" width="206" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -366,7 +366,7 @@ No.]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" mode="Transparent" x="301" y="0" width="49" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="316" y="0" width="34" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -374,7 +374,7 @@ No.]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Qty. Requested}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" mode="Transparent" x="350" y="0" width="52" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="350" y="0" width="34" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -382,7 +382,7 @@ No.]]></text>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Qty. Issued}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="table" mode="Transparent" x="402" y="0" width="170" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement style="table" mode="Transparent" x="384" y="0" width="188" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
