@@ -14,6 +14,30 @@
 <title>IAPPSAM::Account for Existing</title>
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+	function validateForm() {
+		var txt = "";
+		var personID = document.forms["form1"]["personID"].value;
+		var username = document.forms["form1"]["username"].value;
+		var password = document.forms["form1"]["password"].value;
+		var reenterPassword = document.forms["form1"]["reenterPassword"].value;
+		var accountType = document.forms["form1"]["accountType"].value;
+
+		txt = "There was an error on this page!\n\n";
+		txt += "Make sure required fields are not left blank,\n";
+		txt += "or input is valid for that field.\n\n";
+
+		if (personID == null || personID == "" || username == null
+				|| username == "" || password == null || password == ""
+				|| reenterPassword == null || reenterPassword == ""
+				|| accountType == null || accountType == "") {
+			alert(txt);
+			return false;
+		}
+	}
+</script>
+
 </head>
 
 <body>
@@ -56,7 +80,7 @@
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" method="post" action="/accounts">
+		<form id="form1" name="form1" onsubmit="return validateForm()" method="post" action="/accounts">
 			<input type="hidden" name="account-action" value="save-for-existing"></input>
 			<table width="100%" border="0" cellspacing="0" id="table">
 				<tr>
@@ -85,7 +109,7 @@
 							</tr>
 							<tr>
 								<td class="align_right">Username:</td>
-								<td><input name="username" type="text" class="required" id="username"
+								<td><input name="username" type="text" class="required" id="username" maxlength="60"
 									<%String username2 = (String) request.getAttribute("username");
 			String usernameOK = (String) request.getAttribute("userNameOK");
 			if (username2 != null && !username2.isEmpty()) {%>
@@ -99,12 +123,12 @@
 							<tr>
 								<td class="align_right" <%String passwordOK = (String) request.getAttribute("passwordOK");
 			if (passwordOK != null && passwordOK.equalsIgnoreCase("false")) {%> <%}%>>Password:</td>
-								<td><input name="password" type="password" class="required" id="password" />
+								<td><input name="password" type="password" class="required" id="password" maxlength="80" />
 								</td>
 							</tr>
 							<tr>
 								<td class="align_right" <%if (passwordOK != null && passwordOK.equalsIgnoreCase("false")) {%> <%}%>>Re-enter Password:</td>
-								<td><input name="reenterPassword" type="password" class="required" id="reenterPassword" />
+								<td><input name="reenterPassword" type="password" class="required" id="reenterPassword" maxlength="80" />
 								</td>
 							</tr>
 							<tr>

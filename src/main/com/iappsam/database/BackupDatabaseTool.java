@@ -1,6 +1,5 @@
 package com.iappsam.database;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -9,12 +8,12 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import com.iappsam.util.HibernateUtil;
+
 public class BackupDatabaseTool {
 
 	private File backupfile;
 	private static String MySQLDumpPath = "";//"C:/Program Files (x86)/MySQL/MySQL Server 5.5/bin/mysqldump.exe";
-	private String password = "123456";
-	private String username = "root";
 	String dbname = "iappsam";
 	public String fileName = "IAPPSAMS DB Backup";
 	public String filePath = "C:/IAPPSAMS DB backup/";
@@ -47,14 +46,14 @@ public class BackupDatabaseTool {
 			BufferedReader br = new BufferedReader(new InputStreamReader(dis));
 			while ((MySQLDumpPath = br.readLine()) != null) {
 				// Print the content on the console
-				//	System.out.println(strLine);
+				System.out.println(MySQLDumpPath);
 				break;
 			}
 
 			System.out.println("MySQLDumpPath is::::::::::"+MySQLDumpPath);
 			fw = new FileWriter(backupfile + ".sql");
 			Process child = Runtime.getRuntime().exec(
-					MySQLDumpPath + " -u " + username + "" + (password.equals("") ? " " : " -p" + password + " ") + dbname);
+					MySQLDumpPath + " -u " + HibernateUtil.USERNAME + "" + (HibernateUtil.PASSWORD.equals("") ? " " : " -p" + HibernateUtil.PASSWORD + " ") + dbname);
 			InputStream in = child.getInputStream();
 			InputStreamReader reader = new InputStreamReader(in, "latin1");
 			int ibyte = 0;

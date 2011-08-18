@@ -104,7 +104,7 @@
         
         <tr>
           <td class="align_right">Stock Number:</td>
-          <td><input name="stockNum" type="text" id="stockNum"
+          <td><input name="stockNumber" type="text" id="stockNum"
 			value="${item.stockNumber}" maxlength="45" /></td>
         </tr>
         <tr>

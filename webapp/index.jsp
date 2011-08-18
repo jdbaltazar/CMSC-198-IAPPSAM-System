@@ -21,7 +21,10 @@
     <br />
     <br />
   </p>
-  <p>Please type the Username and password given to you in the appropriate Username and Password boxes at the right then click on the &quot;Enter&quot; button to enter the main menu page.</p></div></td>
+  <p>Please type the Username and password given to you in the appropriate Username and Password boxes at the right then click on the &quot;Enter&quot; button to enter the main menu page.</p>
+  <p>&nbsp;</p>
+  <p><strong>[This site is BEST viewed using <a href="http://www.google.com/chrome/intl/fil/landing_chrome.html?hl=fil" title="Get Google Chrome" target="_new">Google Chrome</a>]</strong></p>
+      </div></td>
       <td width="27%"><table width="100%" border="0" cellspacing="0" id="table">
         <tr>
           <td class="header_rows"><div class="header_1">Login</div></td>
@@ -29,14 +32,14 @@
         <tr>
           <td><table width="100%" border="0" cellspacing="0">
             <tr>
-              <td class="align_right"><br />
+              <td class="align_right" width="50%"><br />
                 Username:</td>
-              <td><br />                <input type="text" name="username" id="username" /></td>
+              <td width="50%"><br />                <input type="text" name="username" id="username" /></td>
               </tr>
             <tr>
-              <td class="align_right"><br />
+              <td class="align_right" width="50%"><br />
                 Password:</td>
-              <td><br />                <input type="password" name="password" id="password" /></td>
+              <td width="50%"><br />                <input type="password" name="password" id="password" /></td>
               </tr>
               
               <%

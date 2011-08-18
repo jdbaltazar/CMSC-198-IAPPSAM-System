@@ -4,9 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>IAPPSAM::List Items</title>
-<link href="../css/header.css" rel="stylesheet" type="text/css" />
-<link href="../css/form.css" rel="stylesheet" type="text/css" />
-<link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+<link href="../../css/header.css" rel="stylesheet" type="text/css" />
+<link href="../../css/form.css" rel="stylesheet" type="text/css" />
+<link href="../../css/item_table.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt;<em><strong>List Items </strong>
 			</em>
-			</td>
+	    &gt; <a href="#" class="links">Fillup PO</a></td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>

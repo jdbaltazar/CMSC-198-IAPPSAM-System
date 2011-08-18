@@ -211,8 +211,8 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Payment Term:</td>
-								<td class="right_side_table"><input type="text"
-									name="payment-term" id="paymentTerm" value="${form.paymentTerm}" />
+								<td class="right_side_table"><input
+									name="payment-term" type="text" id="paymentTerm" value="${form.paymentTerm}" maxlength="80" />
 								</td>
 							</tr>
 							<tr>
@@ -297,14 +297,14 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">OR No.:</td>
-								<td class="right_side_table"><input type="text"
-									name="or-number" id="orNum" value="${form.orNumber}" />
+								<td class="right_side_table"><input
+									name="or-number" type="text" id="orNum" value="${form.orNumber}" maxlength="60" />
 								</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Amount:</td>
-								<td class="right_side_table"><input type="text"
-									name="amount" id="amount" value="${form.amount}" />
+								<td class="right_side_table"><input
+									name="amount" type="text" id="amount" value="${form.amount}" maxlength="50" />
 								</td>
 							</tr>
 						</table>
