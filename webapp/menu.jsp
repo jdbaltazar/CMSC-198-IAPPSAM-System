@@ -107,6 +107,7 @@
 						action="system-logs">
 						<input name="viewSysLog" type="submit" class="menubtn"
 							id="viewSysLog" value="View System Log" />
+							<input name="system-logs-action" type="hidden" id="hidden" value="view-system-logs"/>
 					</form></td>
 			</tr>
 			<tr>

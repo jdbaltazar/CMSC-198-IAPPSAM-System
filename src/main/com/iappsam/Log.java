@@ -10,7 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.search.annotations.DateBridge;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Resolution;
+
 @Entity
+@Indexed
 public class Log {
 	
 	@Id
@@ -18,17 +24,21 @@ public class Log {
 	@Column(name = "Log_ID")
 	private int id;
 	
+	
+	@Field(name = "date")
+	@DateBridge(resolution = Resolution.DAY)
 	@Column(name = "Date")
 	@Temporal(TemporalType.TIMESTAMP)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Date date;
 	
+	
+	@Field(name = "description")
 	@Column(name = "Description")
 	private String description;
 
 	public Log() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Log(String description) {

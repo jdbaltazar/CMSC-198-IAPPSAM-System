@@ -25,7 +25,8 @@
 	AccountManager aManager = new AccountManagerSession();
 	Account account = aManager.getAccount(userName);
 	PersonManager pManager = new PersonManagerSession();
-	List<Employee> employees = pManager.getEmployeeByPerson(account.getPerson().getId());
+	List<Employee> employees = pManager.getEmployeeByPerson(account
+			.getPerson().getId());
 	Person person = account.getPerson();
 	String string = "";
 %>
@@ -78,9 +79,8 @@
 
 				<tr>
 					<td align="right" class="bkgrnd_white"><a
-						href='accounts?account-action2=create-from-existing'
-						target="_self" class="linkBtn">Create Account For Existing
-							Employee>></a>
+						href='accounts?account-action2=create-from-existing' target="_self"
+						class="linkBtn">Create Account For Existing Employee>></a>
 					</td>
 				</tr>
 
@@ -114,11 +114,13 @@
 										id="name" value="<%=person.getName()%>"
 										<%String nameOK = (String) request.getAttribute("nameOK");
 			String name = (String) request.getAttribute("name");
-			if (nameOK != null && !nameOK.isEmpty() && !nameOK.equalsIgnoreCase("false")) {
+			if (nameOK != null && !nameOK.isEmpty()
+					&& !nameOK.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + name + '"');
 			} else {%>
 										<%}%> /> <%
- 	if (nameOK != null && !nameOK.isEmpty() && nameOK.equalsIgnoreCase("false")) {
+ 	if (nameOK != null && !nameOK.isEmpty()
+ 			&& nameOK.equalsIgnoreCase("false")) {
  		out.print("*");
  	}
  %> <br /></td>
@@ -145,62 +147,72 @@
 								<tr>
 									<td>
 										<div align="center">
-											<label for="designation_1"></label> <input
-												name="designation<%=i + 1%>" type="text" class="required"
-												id="designation_1"
+											<label for="designation_1"></label> <input name="designation<%=i+1 %>"
+												type="text" class="required" id="designation_1"
 												<%if (employees != null && !employees.isEmpty())
-					out.print("value=" + '"' + employees.get(i).getDesignation() + '"');%> />
+					out.print("value=" + '"'
+							+ employees.get(i).getDesignation() + '"');%> />
 
 										</div></td>
 									<td>
 										<div align="center">
-											<input name="employeeNo<%=i + 1%>" type="text"
-												id="employeeNo._1" size="4"
-												<%if (employees != null && !employees.isEmpty() && employees.get(i).getEmployeeNumber() != null)
-					out.print("value=" + '"' + employees.get(i).getEmployeeNumber() + '"');%> />
+											<input name="employeeNo<%=i+1 %>" type="text" id="employeeNo._1" size="4"
+												<%if (employees != null && !employees.isEmpty()
+						&& employees.get(i).getEmployeeNumber() != null)
+					out.print("value=" + '"'
+							+ employees.get(i).getEmployeeNumber() + '"');%> />
 										</div></td>
 									<td>
 										<div align="center">
-											<select name="divisionOffice<%=i + 1%>"
-												class="required_menulist" id="divisionOffice">
-												<option></option>
+											<select name="divisionOffice<%=i+1 %>" class="required_menulist"
+												id="divisionOffice">
 												<%
 													for (j = 0; j < dList.size(); j++) {
 												%>
 
 												<option
-													<%if (employees.get(i).getDivisionOffice() != null && dList.get(j).getId() == employees.get(i).getDivisionOffice().getId()) {%>
+													<%if (employees.get(i).getDivisionOffice() != null
+							&& dList.get(j).getId() == employees.get(i)
+									.getDivisionOffice().getId()) {%>
 													selected="selected"
 													<%}
-					if (employees.get(i).getDivisionOffice() != null && employees.get(i).getDivisionOffice().getOfficeName() != null)
-						string = "/" + employees.get(i).getDivisionOffice().getOfficeName();%>
+					if (employees.get(i).getDivisionOffice() != null
+							&& employees.get(i).getDivisionOffice()
+									.getOfficeName() != null)
+						string = "/"
+								+ employees.get(i).getDivisionOffice()
+										.getOfficeName();%>
 													value="<%=dList.get(j).getId()%>"><%=dList.get(j).getDivisionName()%></option>
 												<%
 													}
 												%>
 												<%
 													if (employees.get(i).getDivisionOffice() != null)
-															out.print(employees.get(i).getDivisionOffice().getDivisionName() + string);
+															out.print(employees.get(i).getDivisionOffice()
+																	.getDivisionName()
+																	+ string);
 												%>
 											</select>
 										</div></td>
 								</tr>
 								<%
-										j = i + 1;
+								System.out.println("Value of I:"+i);
+									j = i+1;
 									}
-									String[] designation = (String[]) request.getAttribute("designation");
+									String[] designation = (String[]) request
+											.getAttribute("designation");
 
 									String[] employeeNo = (String[]) request.getAttribute("employeeNo");
 									for (; j < 5; j++) {
-										System.out.println("Value of J:" + j);
+										System.out.println("Value of J:"+j);
 								%>
 								<tr>
 									<td>
 										<div align="center">
-											<label for="designation_1"></label> <input
-												name="designation<%=j + 1%>" type="text" class="required"
-												id="designation_1"
-												<%String designation1OK = (String) request.getAttribute("designation" + (j + 1) + "OK");
+											<label for="designation_1"></label> <input name="designation<%=j+1%>"
+												type="text" class="required" id="designation_1"
+												<%String designation1OK = (String) request
+						.getAttribute("designation" + (j + 1) + "OK");
 				if (designation != null && !designation[j].isEmpty()) {
 					out.print("value=" + '"' + designation[j] + '"');
 				} else if (designation1OK != null)
@@ -209,23 +221,25 @@
 										</div></td>
 									<td>
 										<div align="center">
-											<input name="employeeNo<%=j + 1%>" type="text"
-												id="employeeNo._1" size="4"
-												<%if (employeeNo != null && employeeNo[j] != null && !employeeNo[j].isEmpty())
+											<input name="employeeNo<%=j+1 %>" type="text" id="employeeNo._1"
+												size="4"
+												<%if (employeeNo != null && employeeNo[j] != null
+						&& !employeeNo[j].isEmpty())
 					out.print("value=" + '"' + employeeNo[j] + '"');%> />
 										</div></td>
 									<td>
 										<div align="center">
-											<select name="divisionOffice<%=j + 1%>"
+											<select name="divisionOffice<%=j+1%>"
 												class="required_menulist" id="divisionOfficeDropdown">
-												<option></option>
+
 												<%
 													for (int i = 0; i < dList.size(); i++) {
 												%>
 												<option value="<%=dList.get(i).getId()%>">
 													<%
 														if (dList.get(i).getOfficeName() != null)
-																	out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+																	out.print(dList.get(i).getDivisionName() + ","
+																			+ dList.get(i).getOfficeName());
 																else
 																	out.print(dList.get(i).getDivisionName());
 													%>
@@ -245,155 +259,157 @@
 								</tr>
 							</table></td>
 					</tr>
-					<tr class="header_rows">
-						<td>
-							<div class="header_1">Contact Information</div></td>
-					</tr>
-					<tr>
-						<td>
-							<table width="100%" cellspacing="9" frame="box"
-								class="no_border_table">
-								<tr>
+				<tr class="header_rows">
+					<td>
+						<div class="header_1">Contact Information</div></td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" cellspacing="9" frame="box"
+							class="no_border_table">
+							<tr>
+								<%
+									Contact[] contacts = new Contact[account.getPerson().getContacts()
+											.size()];
+									account.getPerson().getContacts().toArray(contacts);
+									ArrayList<Contact> mobile = new ArrayList<Contact>();
+									ArrayList<Contact> landline = new ArrayList<Contact>();
+									ArrayList<Contact> email = new ArrayList<Contact>();
+									if (contacts != null) {
+
+										for (int i = 0; i < contacts.length; i++) {
+											if (contacts[i].getType().equals(ContactType.EMAIL))
+												email.add(contacts[i]);
+
+											if (contacts[i].getType().equals(ContactType.MOBILE))
+												mobile.add(contacts[i]);
+
+											if (contacts[i].getType().equals(ContactType.LANDLINE))
+												landline.add(contacts[i]);
+										}
+									}
+								%>
+								<td class="align_right">Cellphone Number:</td>
+								<td>
 									<%
-										Contact[] contacts = new Contact[account.getPerson().getContacts().size()];
-										account.getPerson().getContacts().toArray(contacts);
-										ArrayList<Contact> mobile = new ArrayList<Contact>();
-										ArrayList<Contact> landline = new ArrayList<Contact>();
-										ArrayList<Contact> email = new ArrayList<Contact>();
-										if (contacts != null) {
+										if (!mobile.isEmpty()) {
+											for (int i = 0; i < mobile.size(); i++) {
+									%> <input type="text" name="cellphoneNumber"
+									id="cellphoneNumber" value="<%=mobile.get(i).getData()%>"></input>
+									<%
+										}
+										} else {
+									%> <input name="cellphoneNumber" size="20" maxlength="20" id="cellphoneNumber"/> <%
+ 	}
+ %>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Landline:</td>
+								<td>
+									<%
+										if (!landline.isEmpty()) {
 
-											for (int i = 0; i < contacts.length; i++) {
-												if (contacts[i].getType().equals(ContactType.EMAIL))
-													email.add(contacts[i]);
+											for (int i = 0; i < landline.size(); i++) {
+									%> <input type="text" name="landline" id="landline"
+									value="<%=landline.get(i).getData()%>" size="20" maxlength="20"></input>
+									<%
+										}
 
-												if (contacts[i].getType().equals(ContactType.MOBILE))
-													mobile.add(contacts[i]);
+										} else {
+									%> <input name="landline" size="20" maxlength="20" /> <%
+ 	}
+ %>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">E-mail Add:</td>
+								<td>
+									<%
+										if (!email.isEmpty()) {
 
-												if (contacts[i].getType().equals(ContactType.LANDLINE))
-													landline.add(contacts[i]);
-											}
+											for (int i = 0; i < email.size(); i++) {
+									%> <input name="e-mail_ad" id="e-mail_ad"
+									value="<%=email.get(i).getData()%>" size="20" maxlength="20"></input>
+									<%
+										}
+
+										} else {
+									%> <input name="e-mail_ad" size="20" maxlength="20" /> <%
+ 	}
+ %>
+								</td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td class="header_rows">
+						<div class="header_1">Account Information</div></td>
+				</tr>
+				<tr>
+					<td>
+						<table width="100%" border="0" cellspacing="9">
+							<tr>
+								<td class="align_right">Username:</td>
+								<td><input type="text" name="username" id="username2" input
+									type="text" name="username" id="username"
+									value="<%=account.getUsername()%>" disabled="disabled" />
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">New Password:</td>
+								<td><input name="password" type="password" class="required"
+									id="password"
+									<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
+									<%
+										if (passwordOk != null && !passwordOk.isEmpty()
+												&& passwordOk.equalsIgnoreCase("false")) {
+											out.print("*");
 										}
 									%>
-									<td class="align_right">Cellphone Number:</td>
-									<td>
-										<%
-											if (!mobile.isEmpty()) {
-												for (int i = 0; i < mobile.size(); i++) {
-										%> <input type="text" name="cellphoneNumber"
-										id="cellphoneNumber" value="<%=mobile.get(i).getData()%>"></input>
-										<%
-											}
-											} else {
-										%> <input name="cellphoneNumber" size="20" maxlength="20"
-										id="cellphoneNumber" /> <%
- 	}
- %>
-									</td>
-								</tr>
-								<tr>
-									<td class="align_right">Landline:</td>
-									<td>
-										<%
-											if (!landline.isEmpty()) {
+								</td>
+							</tr>
 
-												for (int i = 0; i < landline.size(); i++) {
-										%> <input type="text" name="landline" id="landline"
-										value="<%=landline.get(i).getData()%>" size="20"
-										maxlength="20"></input> <%
- 	}
-
- 	} else {
- %> <input name="landline" size="20" maxlength="20" /> <%
- 	}
- %>
-									</td>
-								</tr>
-								<tr>
-									<td class="align_right">E-mail Add:</td>
-									<td>
-										<%
-											if (!email.isEmpty()) {
-
-												for (int i = 0; i < email.size(); i++) {
-										%> <input name="e-mail_ad" id="e-mail_ad"
-										value="<%=email.get(i).getData()%>" size="20" maxlength="20"></input>
-										<%
-											}
-
-											} else {
-										%> <input name="e-mail_ad" size="20" maxlength="20" /> <%
- 	}
- %>
-									</td>
-								</tr>
-							</table></td>
-					</tr>
-					<tr>
-						<td class="header_rows">
-							<div class="header_1">Account Information</div></td>
-					</tr>
-					<tr>
-						<td>
-							<table width="100%" border="0" cellspacing="9">
-								<tr>
-									<td class="align_right">Username:</td>
-									<td><input type="text" name="username" id="username2"
-										input type="text" name="username" id="username"
-										value="<%=account.getUsername()%>" disabled="disabled" />
-									</td>
-								</tr>
-								<tr>
-									<td class="align_right">New Password:</td>
-									<td><input name="password" type="password"
-										class="required" id="password"
-										<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
-										<%
-											if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
-												out.print("*");
-											}
-										%>
-									</td>
-								</tr>
-
-								<tr>
-									<td class="align_right">Reenter Password:</td>
-									<td><input name="reenterPassword" type="password"
-										class="required" id="newPassword" /> <%
- 	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
+							<tr>
+								<td class="align_right">Reenter Password:</td>
+								<td><input name="reenterPassword" type="password"
+									class="required" id="newPassword" /> <%
+ 	if (passwordOk != null && !passwordOk.isEmpty()
+ 			&& passwordOk.equalsIgnoreCase("false")) {
  		out.print("*");
  	}
  %>
-									</td>
-								</tr>
-								<tr>
-									<td class="align_right">Account Type:</td>
-									<td><select name="accountType" class="required_menulist"
-										id="accountType">
-											<%
-												for (int i = 0; i < accountTypes.length; i++) {
-											%>
-											<option <%if (account.getType().equals(accountTypes[i])) {%>
-												selected="selected" <%}%>><%=accountTypes[i].toString()%></option>
-											<%
-												}
-											%>
-									</select>
-									</td>
-								</tr>
-								<tr>
-									<td class="align_right">&nbsp;</td>
-									<td><input name="createBtn" type="submit" class="button"
-										id="createBtn" value="UPDATE" />
-									</td>
-								</tr>
-							</table></td>
-					</tr>
-					<tr>
-						<td class="table_footer"></td>
-					</tr>
-					<tr>
-						<td class="bkgrnd_white">&nbsp;</td>
-					</tr>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">Account Type:</td>
+								<td><select name="accountType" class="required_menulist"
+									id="accountType">
+										<%
+											for (int i = 0; i < accountTypes.length; i++) {
+										%>
+										<option <%if (account.getType().equals(accountTypes[i])) {%>
+											selected="selected" <%}%>><%=accountTypes[i].toString()%></option>
+										<%
+											}
+										%>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="align_right">&nbsp;</td>
+								<td><input name="createBtn" type="submit" class="button"
+									id="createBtn" value="UPDATE" />
+								</td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td class="table_footer"></td>
+				</tr>
+				<tr>
+					<td class="bkgrnd_white">&nbsp;</td>
+				</tr>
 			</table>
 
 		</form>

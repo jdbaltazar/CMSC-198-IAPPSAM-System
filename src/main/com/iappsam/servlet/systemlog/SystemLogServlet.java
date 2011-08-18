@@ -10,13 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.iappsam.servlet.Action;
 
 @WebServlet("/system-logs")
-public class ViewSystemLogs extends HttpServlet {
+public class SystemLogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 6524025640333074089L;
 
 	public static final String VIEW_SYSTEM_LOGS = "database/ViewSystemLog.jsp";
 
-	public ViewSystemLogs() {
+	public static final String SYSTEM_LOG_ACTION = "system-logs-action";
+	public static final String VIEW_SYSTEM_LOG_ACTION = "view-system-logs";
+	public static final String SEARCH_SYSTEM_LOG_ACTION = "search-system-logs";
+
+	public SystemLogServlet() {
 		super();
 	}
 
@@ -30,6 +34,7 @@ public class ViewSystemLogs extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		Action action = parseAction(request);
 
 		if (action != null)
@@ -37,6 +42,21 @@ public class ViewSystemLogs extends HttpServlet {
 	}
 
 	private Action parseAction(HttpServletRequest request) {
-		return new ViewSystemLogsAction();
+
+		String action = request.getParameter(SYSTEM_LOG_ACTION);
+		if (action.equalsIgnoreCase(VIEW_SYSTEM_LOG_ACTION)) {
+			Action viewAction = new ViewSystemLogsAction();
+			return viewAction;
+		}
+		
+		if (action.equalsIgnoreCase(SEARCH_SYSTEM_LOG_ACTION)) {
+			System.out.println("....................inside search !!");
+			
+			Action searchAction = new SearchSystemLogsAction();
+			return searchAction;
+		}
+		
+		return null;
+	
 	}
 }

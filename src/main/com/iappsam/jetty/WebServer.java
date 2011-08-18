@@ -40,7 +40,7 @@ import com.iappsam.servlet.stocks.itemcondition.ItemConditionServlet;
 import com.iappsam.servlet.stocks.itemstatus.ItemStatusServlet;
 import com.iappsam.servlet.stocks.itemunit.ItemUnitServlet;
 import com.iappsam.servlet.stocks.mop.ModeOfProcServlet;
-import com.iappsam.servlet.systemlog.ViewSystemLogs;
+import com.iappsam.servlet.systemlog.SystemLogServlet;
 
 public class WebServer {
 
@@ -81,7 +81,7 @@ public class WebServer {
 		addServlet(new ItemUnitServlet(), "/stocks/item-unit");
 		addServlet(new ModeOfProcServlet(), "/stocks/mode");
 		addServlet(new SupplierServlet(), "/supplier");
-		addServlet(new ViewSystemLogs(), "/system-logs");
+		addServlet(new SystemLogServlet(), "/system-logs");
 
 		addFilter(new SecurityFilter(), "/*");
 		server.setHandler(context);

@@ -21,7 +21,7 @@ public class ViewSystemLogsAction implements Action {
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		LogManager l = new LogManagerSession();
-		RequestDispatcher view = request.getRequestDispatcher(ViewSystemLogs.VIEW_SYSTEM_LOGS);
+		RequestDispatcher view = request.getRequestDispatcher(SystemLogServlet.VIEW_SYSTEM_LOGS);
 		
 		List<Log> logs = new ArrayList<Log>();
 		

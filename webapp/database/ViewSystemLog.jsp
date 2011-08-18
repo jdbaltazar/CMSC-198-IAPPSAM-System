@@ -13,6 +13,12 @@
 </head>
 
 <body>
+<%
+	List<Log>logs = (List<Log>)request.getAttribute("logs");
+	String searchField = (String)request.getAttribute("searchField");
+	if(searchField==null)
+		searchField = "";
+%>
 <div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
 <div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
 <div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
@@ -36,17 +42,28 @@
 <div id="items_table">
   <table width="100%" border="0" cellspacing="0">
     <tr>
-      <td colspan="4" align="center">&nbsp;</td>
-    </tr>
+				<td colspan="5" align="center"><form id="form4" name="form4"
+						method="get" action="/system-logs">
+						<label for="searchField" class="align_right">Search:</label> <input
+							type="text" name="searchField" id="searchField" value="<%=searchField %>"/> 
+							<input name="system-logs-action" type="hidden" id="hidden" value="search-system-logs"/>
+							<input
+							name="search" type="submit" class="button" id="goBtn" value="GO" />
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
 
     <tr>
       <td class="tableheaders_forms">Date</td>
       <td class="tableheaders_forms">Activities</td>
-    </tr>
-<%
-
-	List<Log>logs = (List<Log>)request.getAttribute("logs");
-%>    
+    </tr>    
         <%
     int i=0;
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy [HH:mm:ss]");

@@ -41,11 +41,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				account.setUsername(userName);
 				account.setPassword(password);
 				account.setPerson(p);
-				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD); 
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
+				if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
 				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
 					account.setType(AccountType.SYSTEM_ADMIN);

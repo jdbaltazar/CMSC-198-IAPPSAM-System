@@ -62,21 +62,21 @@
 				<form id="form2" name="form2" method="post" action="/logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form></td>
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td id="navigation"><a href="../menu.jsp" target="_top"
 				class="links">Main Menu</a> &gt; <a
 				href="accounts?account-action=view-accounts" target="_top"
 				class="links">Account List</a> &gt; <em><strong>Create
-						Account</strong>
-			</em><strong></strong>
-			</td>
+						Account</strong> </em><strong></strong></td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<div id="form_table">
-		<form id="form1" name="form1" onsubmit="return validateForm()" method="post" action="accounts">
+		<form id="form1" name="form1" onsubmit="return validateForm()"
+			method="post" action="accounts">
 			<table width="100%" frame="box" cellspacing="0" id="table">
 
 
@@ -84,8 +84,7 @@
 					<td align="right" class="bkgrnd_white"><a
 						href='accounts?account-action2=create-from-existing'
 						target="_self" class="linkBtn">Create Account For Existing
-							Employee>></a>
-					</td>
+							Employee>></a></td>
 				</tr>
 
 				<tr>
@@ -94,7 +93,8 @@
 					</tr>
 					<tr>
 						<td class="header_rows">
-							<div class="header_1">Personal Information</div></td>
+							<div class="header_1">Personal Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -114,7 +114,8 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="align_right" id="align_right">Name:<br /></td>
+									<td class="align_right" id="align_right">Name:<br />
+									</td>
 									<td><input name="name" type="text" class="required"
 										id="name" maxlength="80"
 										<%String nameOK = (String) request.getAttribute("nameOK");
@@ -126,13 +127,16 @@
 											if (nameOK != null && !nameOK.isEmpty() && nameOK.equalsIgnoreCase("false")) {
 												out.print("*");
 											}
-										%> <br /></td>
+										%> <br />
+									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr class="header_rows">
 						<td>
-							<div class="header_1">Work Information</div></td>
+							<div class="header_1">Work Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -153,22 +157,23 @@
 			String designation1OK = (String) request.getAttribute("designation1OK");
 			if (designation != null && !designation[0].isEmpty()) {
 				out.print("value=" + '"' + designation[0] + '"');
-			} else if (designation1OK != null)
-				out.print("value=" + '"' + "**" + '"');%> />
+			}%> />
 
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<input name="employeeNo" type="text" id="employeeNo._1"
 												size="4"
 												<%if (employeeNo != null && employeeNo[0] != null && !employeeNo[0].isEmpty())
 				out.print("value=" + '"' + employeeNo[0] + '"');%> />
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<select name="divisionOfficeDropdown"
 												class="required_menulist" id="divisionOfficeDropdown">
-
+												<option></option>
 												<%
 													for (int i = 0; i < dList.size(); i++) {
 												%>
@@ -184,7 +189,8 @@
 													}
 												%>
 											</select>
-										</div></td>
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<td>
@@ -194,21 +200,22 @@
 												<%String designation2OK = (String) request.getAttribute("designation2OK");
 			if (designation != null && designation.length > 1 && !designation[1].isEmpty()) {
 				out.print("value=" + '"' + designation[1] + '"');
-			} else if (designation2OK != null)
-				out.print("value=" + '"' + "*" + '"');%> />
-										</div></td>
+			}%> />
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<input name="employeeNo" type="text" id="employeeNo._1"
 												size="4"
 												<%if (employeeNo != null && employeeNo[1] != null && !employeeNo[1].isEmpty())
 				out.print("value=" + '"' + employeeNo[1] + '"');%> />
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<select name="divisionOfficeDropdown" class="menulist"
 												id="divisionOfficeDropdown">
-
+												<option></option>
 												<%
 													for (int i = 0; i < dList.size(); i++) {
 												%>
@@ -224,7 +231,8 @@
 													}
 												%>
 											</select>
-										</div></td>
+										</div>
+									</td>
 								</tr>
 								<tr>
 									<td>
@@ -234,20 +242,107 @@
 												<%String designation3OK = (String) request.getAttribute("designation3OK");
 			if (designation != null && designation.length > 2 && !designation[2].isEmpty()) {
 				out.print("value=" + '"' + designation[2] + '"');
-			} else if (designation3OK != null)
-				out.print("value=" + '"' + "*" + '"');%> />
-										</div></td>
+			}%> />
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<input name="employeeNo" type="text" id="employeeNo._1"
 												size="4" <%%>
 												<%if (employeeNo != null && employeeNo[2] != null && !employeeNo[2].isEmpty())
 				out.print("value=" + '"' + employeeNo[2] + '"');%> />
-										</div></td>
+										</div>
+									</td>
 									<td>
 										<div align="center">
 											<select name="divisionOfficeDropdown" class="menulist"
 												id="divisionOfficeDropdown">
+												<option></option>
+												<%
+													for (int i = 0; i < dList.size(); i++) {
+												%>
+												<option value="<%=dList.get(i).getId()%>">
+													<%
+														if (dList.get(i).getOfficeName() != null)
+																out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+															else
+																out.print(dList.get(i).getDivisionName());
+													%>
+												</option>
+												<%
+													}
+												%>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div align="center">
+											<label for="designation_1"></label> <input type="text"
+												name="designation" id="designation_1"
+												<%String designation4OK = (String) request.getAttribute("designation4OK");
+			if (designation != null && designation.length > 2 && !designation[3].isEmpty()) {
+				out.print("value=" + '"' + designation[3] + '"');
+			}%> />
+										</div>
+									</td>
+									<td>
+										<div align="center">
+											<input name="employeeNo" type="text" id="employeeNo._1"
+												size="4" <%%>
+												<%if (employeeNo != null && employeeNo[3] != null && !employeeNo[3].isEmpty())
+				out.print("value=" + '"' + employeeNo[3] + '"');%> />
+										</div>
+									</td>
+									<td>
+										<div align="center">
+											<select name="divisionOfficeDropdown" class="menulist"
+												id="divisionOfficeDropdown">
+												<option></option>
+												<%
+													for (int i = 0; i < dList.size(); i++) {
+												%>
+												<option value="<%=dList.get(i).getId()%>">
+													<%
+														if (dList.get(i).getOfficeName() != null)
+																out.print(dList.get(i).getDivisionName() + "," + dList.get(i).getOfficeName());
+															else
+																out.print(dList.get(i).getDivisionName());
+													%>
+												</option>
+												<%
+													}
+												%>
+											</select>
+										</div>
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<div align="center">
+											<label for="designation_1"></label> <input type="text"
+												name="designation" id="designation_1"
+												<%String designation5OK = (String) request.getAttribute("designation5OK");
+			if (designation != null && designation.length > 2 && !designation[4].isEmpty()) {
+				out.print("value=" + '"' + designation[4] + '"');
+			}%> />
+										</div>
+									</td>
+									<td>
+										<div align="center">
+											<input name="employeeNo" type="text" id="employeeNo._1"
+												size="4" <%%>
+												<%if (employeeNo != null && employeeNo[4] != null && !employeeNo[4].isEmpty())
+				out.print("value=" + '"' + employeeNo[4] + '"');%> />
+										</div>
+									</td>
+									<td>
+										<div align="center">
+											<select name="divisionOfficeDropdown" class="menulist"
+												id="divisionOfficeDropdown">
+												<option></option>
 
 												<%
 													for (int i = 0; i < dList.size(); i++) {
@@ -264,13 +359,17 @@
 													}
 												%>
 											</select>
-										</div></td>
+										</div>
+									</td>
 								</tr>
-							</table></td>
+
+							</table>
+						</td>
 					</tr>
 					<tr class="header_rows">
 						<td>
-							<div class="header_1">Contact Information</div></td>
+							<div class="header_1">Contact Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -304,17 +403,19 @@
 			}%> />
 									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 					<tr>
 						<td class="header_rows">
-							<div class="header_1">Account Information</div></td>
+							<div class="header_1">Account Information</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
 							<table width="100%" border="0" cellspacing="9">
 								<tr>
-									<td class="align_right">Username:</td>
+									<td class="align_right">Username (final):</td>
 									<td><input name="username" type="text" class="required"
 										id="username" maxlength="60"
 										<%String usernameOk = (String) request.getAttribute("usernameOK");
@@ -322,34 +423,17 @@
 			if (usernameOk != null && !usernameOk.isEmpty() && !usernameOk.equalsIgnoreCase("false")) {
 				out.print("value=" + '"' + username + '"');
 			}%> />
-										<%
-											if (usernameOk != null && !usernameOk.isEmpty() && usernameOk.equalsIgnoreCase("false")) {
-												out.print("*");
-											}
-										%>
 									</td>
 								</tr>
 								<tr>
 									<td class="align_right">Password:</td>
 									<td><input name="password" type="password"
-										class="required" id="password" maxlength="80"
-										<%String passwordOk = (String) request.getAttribute("passwordOK");%> />
-										<%
-											if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
-												out.print("*");
-											}
-										%>
-									</td>
+										class="required" id="password" maxlength="80" /></td>
 								</tr>
 								<tr>
 									<td class="align_right">Re-enter Password:</td>
 									<td><input name="reenterPassword" type="password"
-										class="required" id="reenterPassword" maxlength="80" /> <%
- 	if (passwordOk != null && !passwordOk.isEmpty() && passwordOk.equalsIgnoreCase("false")) {
- 		out.print("*");
- 	}
- %>
-									</td>
+										class="required" id="reenterPassword" maxlength="80" /></td>
 								</tr>
 								<tr>
 									<td class="align_right">Account Type:</td>
@@ -364,16 +448,18 @@
 											<%
 												}
 											%>
-									</select>
-									</td>
+									</select></td>
 								</tr>
 								<tr>
 									<td class="align_right">&nbsp;</td>
 									<td><input name="createBtn" type="submit" class="button"
 										id="createBtn" value="CREATE" /> <input type="hidden"
-										name="account-action" value="save-account" /></td>
+										name="account-action" value="save-account" />
+									</td>
 								</tr>
-							</table></td>
+
+							</table>
+						</td>
 
 					</tr>
 					<tr>

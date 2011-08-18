@@ -72,6 +72,14 @@ public class SaveAccountAction implements Action{
 		if (designation[2].isEmpty() && !employeeNo[2].isEmpty()) {
 			designation3OK = "true";
 		}
+		String designation4OK = null;
+		if (designation[3].isEmpty() && !employeeNo[3].isEmpty()) {
+			designation4OK = "true";
+		}
+		String designation5OK = null;
+		if (designation[4].isEmpty() && !employeeNo[4].isEmpty()) {
+			designation5OK = "true";
+		}
 
 		RequestDispatcher view = request.getRequestDispatcher(AccountServlet.ADD_ACCOUNT);
 		request.setAttribute("title", title);
@@ -80,6 +88,8 @@ public class SaveAccountAction implements Action{
 		request.setAttribute("designation1OK", designation1OK);
 		request.setAttribute("designation2OK", designation2OK);
 		request.setAttribute("designation3OK", designation3OK);
+		request.setAttribute("designation4OK", designation4OK);
+		request.setAttribute("designation5OK", designation5OK);
 		request.setAttribute("employeeNo", employeeNo);
 		request.setAttribute("userName", username);
 		request.setAttribute("mobileNumber", mobileNumber);
@@ -162,7 +172,7 @@ public class SaveAccountAction implements Action{
 
 			if (mobileNumber != null && !mobileNumber.equalsIgnoreCase("null") && !mobileNumber.isEmpty()) {
 				Contact mobile = new Contact(entry.spaceTrimmer(mobileNumber), ContactType.MOBILE);
-
+				System.out.println(mobileNumber);
 				person.addContact(mobile);
 			}
 			try {
@@ -180,6 +190,7 @@ public class SaveAccountAction implements Action{
 					continue;
 				Employee employee = new Employee(entry.spaceTrimmer(designation[i]), entry.spaceTrimmer(employeeNo[i]), person);
 				try {
+					if(!divisionOfficeID[i].isEmpty())
 					employee.setDivisionOffice(dManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i])));
 					pManager.addEmployee(employee);
 					empList.add(employee);
@@ -202,11 +213,7 @@ public class SaveAccountAction implements Action{
 				account.setPassword(password);
 				account.setUsername(username);
 				account.setPerson(person);
-				if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-				} else if (acctType.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD.toString())) {
-					account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-				} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
+				if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
 				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
 					account.setType(AccountType.SYSTEM_ADMIN);

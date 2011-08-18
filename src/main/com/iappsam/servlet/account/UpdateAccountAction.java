@@ -1,10 +1,9 @@
 package com.iappsam.servlet.account;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +12,7 @@ import com.iappsam.Account;
 import com.iappsam.AccountType;
 import com.iappsam.Contact;
 import com.iappsam.ContactType;
+import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.logging.Logger;
@@ -27,255 +27,261 @@ import com.iappsam.managers.sessions.ContactManagerSession;
 import com.iappsam.managers.sessions.DivisionOfficeManagerSession;
 import com.iappsam.managers.sessions.PersonManagerSession;
 import com.iappsam.servlet.Action;
-import com.iappsam.util.EntryFormatter;
+import com.iappsam.util.Validator;
 
 public class UpdateAccountAction implements Action {
-	private EntryFormatter entryFormatter = new EntryFormatter();
 
+	private String personID;
 	private String title;
 	private String name;
+	private String[] designation = new String[5];
+	private String[] employeeNo = new String[5];
+	private String[] divisionOfficeID = new String[5];
+	private String mobile;
+	private String landline;
+	private String email;
+	private boolean validAllEmployees = true;
 	private String username;
 	private String password;
 	private String reenterPassword;
-	private String acctType;
+	private String accountType;
+	@Override
+	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	private String[] designation;
-	private String[] employeeNo;
-	private String[] divisionOfficeID;
+		// get the size of save employments
+		// if the same as old, update all
+		// else update all and add new
 
-	private String mobileNumber;
-	private String landline;
-	private String emailad;
-
-	public void process(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		title = entryFormatter.spaceTrimmer(request.getParameter("title"));
-		name = entryFormatter.spaceTrimmer(request.getParameter("name"));
-		password = request.getParameter("password");
-		reenterPassword = request.getParameter("reenterPassword");
-		acctType = request.getParameter("accountType");
-		username = request.getParameter("username");
-		mobileNumber = entryFormatter.spaceTrimmer(request
-				.getParameter("cellphoneNumber"));
-		landline = entryFormatter
-				.spaceTrimmer(request.getParameter("landline"));
-		emailad = entryFormatter
-				.spaceTrimmer(request.getParameter("e-mail_ad"));
-		designation = request.getParameterValues("designation");
-		employeeNo = request.getParameterValues("empNo3");
-		divisionOfficeID = request.getParameterValues("divisionOffice");
-
-		for (int i = 0; designation != null && i < designation.length; i++) {
-			designation[i] = entryFormatter.spaceTrimmer(designation[i]);
-			employeeNo[i] = entryFormatter.spaceTrimmer(employeeNo[i]);
-		}
-
-			if (!name.isEmpty()
-					&& !username.isEmpty()
-					&& password.equalsIgnoreCase(reenterPassword)
-					&& entryFormatter.check(name)) {
-				acceptResponse(request, response);
-			} else {
-
-				failedResponse(request, response);
-			}
-		} 
-
-	private void acceptResponse(HttpServletRequest request,
-			HttpServletResponse response) {
-		PersonManager pManager = new PersonManagerSession();
-		AccountManager aManager = new AccountManagerSession();
-		Person person;
-		DivisionOfficeManager dManager = new DivisionOfficeManagerSession();
-		ContactManager cManager = new ContactManagerSession();
+		// if valid all, save then view all employees
+		// else, return page and show the inputs except for the wrong ones
 
 		try {
-
-			Account account = aManager.getAccount(username);
-			account.setPassword(password);
-			if (acctType
-					.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE
-							.toString())) {
-				account.setType(AccountType.NON_SPSO_PERSONNEL_EMPLOYEE);
-			} else if (acctType
-					.equalsIgnoreCase(AccountType.NON_SPSO_PERSONNEL_HEAD
-							.toString())) {
-				account.setType(AccountType.NON_SPSO_PERSONNEL_HEAD);
-			} else if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
-					.toString())) {
-				account.setType(AccountType.SPSO_PERSONNEL);
-			} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
-					.toString())) {
-				account.setType(AccountType.SYSTEM_ADMIN);
+			PersonManager pManager = new PersonManagerSession();
+			ContactManager cManager = new ContactManagerSession();
+			DivisionOfficeManager doManager = new DivisionOfficeManagerSession();
+			AccountManager aManager= new AccountManagerSession();
+			username = request.getParameter("username");
+			password = request.getParameter("password");
+			reenterPassword= request.getParameter("reenterPassword");
+			accountType = request.getParameter("accountType");
+			
+			title = request.getParameter("title");
+			name = request.getParameter("name");
+			for (int i = 1; i <= 5; i++) {
+				designation[i - 1] = request.getParameter("designation" + i).trim();
+				employeeNo[i - 1] = request.getParameter("employeeNo" + i).trim();
+				divisionOfficeID[i - 1] = request.getParameter("divisionOffice" + i);
 			}
-			aManager.updateAccount(account);
-
-			person = account.getPerson();
-			request.setAttribute("account", account);
-			Contact[] contacts = new Contact[person.getContacts().size()];
-			person.getContacts().toArray(contacts);
-			ArrayList<Contact> mobileList = new ArrayList<Contact>();
-			ArrayList<Contact> landlineList = new ArrayList<Contact>();
-			ArrayList<Contact> emailList = new ArrayList<Contact>();
-			if (contacts != null) {
-
-				for (int i = 0; i < contacts.length; i++) {
-					if (contacts[i].getType().equals(ContactType.EMAIL))
-						emailList.add(contacts[i]);
-
-					if (contacts[i].getType().equals(ContactType.MOBILE))
-						mobileList.add(contacts[i]);
-
-					if (contacts[i].getType().equals(ContactType.LANDLINE))
-						landlineList.add(contacts[i]);
-				}
-			}
-			if (title != null && !title.equalsIgnoreCase("null")
-					&& !title.isEmpty()) {
+			request.setAttribute("designation", designation);
+			request.setAttribute("employeeNo", employeeNo);
+			request.setAttribute("divisionOfficeID", divisionOfficeID);
+			mobile = request.getParameter("cellphoneNumber");
+			landline = request.getParameter("landline");
+			email = request.getParameter("e-mail_ad");
+			
+			Person person = aManager.getAccount(username).getPerson();
+			if (Validator.validField(title)) {
+				title = title.trim();
 				person.setTitle(title);
+			} else {
+				person.setTitle(title);
+			}
+			if (Validator.validField(name)) {
+				name = name.trim();
 				person.setName(name);
-			} else
-				person.setName(name);
-			if (emailad != null && emailList.isEmpty() && !emailad.isEmpty()) {
-				Contact email = new Contact();
-				email.setData(emailad);
-				email.setType(ContactType.EMAIL);
-				person.addContact(email);
-				cManager.addContact(email);
+
 			}
-			for (int i = 0; i < emailList.size(); i++)
-				if (emailad != null && !emailad.equalsIgnoreCase("null")
-						&& !emailad.isEmpty()) {
-					Contact email = new Contact();
-					if (i < emailList.size()) {
-						email = emailList.get(i);
-						email.setData(emailad);
-						cManager.addContact(email);
-					}
+			Set<Contact> contacts = person.getContacts();
+			boolean found = false;
+			for (Contact c : contacts) {
+				if (c.getType().equals(ContactType.MOBILE)) {
+					found = true;
+					c.setData(mobile);
+					cManager.updateContact(c);
 
 				}
-			if (landline != null && landlineList.isEmpty()
-					&& !landline.isEmpty()) {
-
-				Contact landline2 = new Contact();
-				landline2.setData(landline);
-				landline2.setType(ContactType.LANDLINE);
-				person.addContact(landline2);
-				cManager.addContact(landline2);
 			}
-			for (int i = 0; i < landlineList.size(); i++)
-				if (landline != null && !landline.equalsIgnoreCase("null")
-						&& !landline.isEmpty()) {
-					Contact landline2 = new Contact();
+			if (!found && Validator.validField(mobile)){
+				person.addContact(new Contact(mobile, ContactType.MOBILE));
+			}
+			found = false;
+			for (Contact c : contacts) {
+				if (c.getType().equals(ContactType.LANDLINE)) {
+					found = true;
+					c.setData(landline);
+					cManager.updateContact(c);
 
-					if (i < landlineList.size()) {
-						landline2 = landlineList.get(i);
-						landline2.setData(landline);
-						landline2.setType(landlineList.get(i).getType());
-						landline2.setId(landlineList.get(i).getContactID());
-						cManager.updateContact(landline2);
+				}
+			}
+			if (!found && Validator.validField(landline))
+				person.addContact(new Contact(landline, ContactType.LANDLINE));
+			found = false;
+			for (Contact c : contacts) {
+				if (c.getType().equals(ContactType.EMAIL)) {
+					found = true;
+					c.setData(email);
+					cManager.updateContact(c);
+
+				}
+			}
+			if (!found && Validator.validField(email))
+				person.addContact(new Contact(email, ContactType.EMAIL));
+
+			validAllEmployees = checkAndFormatEmployments(designation, employeeNo, divisionOfficeID);
+			int validFields = countValidFields(designation, employeeNo, divisionOfficeID);
+			List<Employee> employees = pManager.getEmployeeByPerson(person.getId());
+			if (validAllEmployees) {
+
+				// get previous employees
+				// check if the >= in size
+				// if ==, update all
+				// if >, add new employees
+
+				if (validFields >= employees.size()) {
+					for (int i = 0; i < validFields; i++) {
+						if (!Validator.validField(designation[i]) || !Validator.validField(divisionOfficeID[i])) {
+							validAllEmployees = false;
+						}
+					}
+				} else {
+					validAllEmployees = false;
+				}
+			}
+
+			if (validAllEmployees) {
+
+				Set<Employee> emps = person.getEmployments();
+				for (int i = 0; i < validFields; i++) {
+					if (i < employees.size()) {
+						// update old employee
+						Employee e = getEmployeeOfPerson(emps, employees.get(i).getId());
+						if (e != null) {
+							e.setDesignation(designation[i]);
+							DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+							e.setDivisionOffice(dOffice);
+							if (Validator.validField(employeeNo[i])) {
+								e.setEmployeeNumber(employeeNo[i]);
+							}
+						}
+					} else {
+						// add new employee
+						Employee e1 = new Employee();
+						e1.setDesignation(designation[i]);
+						DivisionOffice dOffice = doManager.getDivisionOffice(Integer.parseInt(divisionOfficeID[i]));
+						e1.setDivisionOffice(dOffice);
+						if (Validator.validField(employeeNo[i])) {
+							e1.setEmployeeNumber(employeeNo[i]);
+						}
+						person.addEmployment(e1);
 					}
 				}
-			if (mobileNumber != null && mobileList.isEmpty()
-					&& !mobileNumber.isEmpty()) {
-				Contact mobile = new Contact();
-				mobile.setData(mobileNumber);
-				mobile.setType(ContactType.MOBILE);
-				person.addContact(mobile);
-				cManager.addContact(mobile);
 			}
-			for (int i = 0; i < mobileList.size(); i++)
-				if (mobileNumber != null
-						&& !mobileNumber.equalsIgnoreCase("null")
-						&& !mobileNumber.isEmpty()) {
-					Contact mobile = new Contact();
-					if (i < mobileList.size()) {
-						mobile = mobileList.get(i);
-						mobile.setData(mobileNumber);
-						mobile.setType(mobileList.get(i).getType());
-						mobile.setId(mobileList.get(i).getContactID());
-						cManager.updateContact(mobile);
+
+			if(validAllEmployees && person.validate()){
+				try{
+
+					Account account = aManager.getAccount(username);
+					if(password!=null&&!password.isEmpty()&&reenterPassword!=null&&!reenterPassword.isEmpty()&&password.equalsIgnoreCase(reenterPassword)){
+						account.setPassword(password);
 					}
+					if(AccountType.SPSO_PERSONNEL.toString().equals(accountType))
+					account.setType(AccountType.SPSO_PERSONNEL);
+					else
+					account.setType(AccountType.SYSTEM_ADMIN);
+					
+					aManager.updateAccount(account);
+				
+				}catch(Exception e){
+					e.printStackTrace();
+					Action vAction = new ViewAccountAction();
+					request.setAttribute("username", username);
+					vAction.process(request, response);
+					return;
 				}
-			pManager.updatePerson(person);
-			Logger.log(request, "Account \""+username+"\" was updated");
-			List<Employee> empList = pManager.getEmployeeByPerson(person
-					.getId());
-			for (int i = 0; i < designation.length; i++) {
-				if (designation[i].isEmpty())
-					continue;
-				Employee employee = new Employee();
-				if (i < empList.size())
-					employee = empList.get(i);
-				employee = empList.get(i);
-				employee.setDesignation(designation[i]);
-				employee.setEmployeeNumber(employeeNo[i]);
+			}
+			if (validAllEmployees && person.validate()) {
+
 				try {
-					employee.setDivisionOffice(dManager
-							.getDivisionOffice(Integer
-									.parseInt(divisionOfficeID[i])));
-					pManager.updateEmployee(employee);
-					empList.add(employee);
-				} catch (NumberFormatException e) {
-					failedResponse(request, response);
+
+					updatePerson(person, request, response);
+					Logger.log(request, "Account \""+username+"\" was updated");
+					Action vAction = new AccountsViewAction();
+					vAction.process(request, response);
+
 				} catch (Exception e) {
-					failedResponse(request, response);
+					e.printStackTrace();
+					Action vAction = new ViewAccountAction();
+					request.setAttribute("username", username);
+					vAction.process(request, response);
 				}
-				try {
-					pManager.updatePerson(person);
-				} catch (DuplicateEntryException e) {
-					failedResponse(request, response);
+			} else {
+				Action vAction = new ViewAccountAction();
+				request.setAttribute("username", username);
+				vAction.process(request, response);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	private int countValidFields(String[] designation, String[] employeeNo, String[] divisionOfficeID) {
+		// TODO Auto-generated method stub
+		int count = 0;
+		int SIZE = 5;
+		for (int i = 0; i < SIZE; i++) {
+			if (Validator.validField(designation[i]) && Validator.validField(divisionOfficeID[i])) {
+				count++;
+			}
+		}
+
+		return count;
+	}
+
+	private void updatePerson(Person person, HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException, IOException, DuplicateEntryException {
+		PersonManager pManager = new PersonManagerSession();
+		pManager.updatePerson(person);
+		return;
+	}
+	private boolean checkAndFormatEmployments(String[] designation, String[] employeeNo, String[] divisionOfficeID) throws NumberFormatException, TransactionException {
+
+		// format all inputs
+
+		int SIZE = countValidFields(designation,employeeNo,divisionOfficeID);
+		boolean valid = true;
+
+		for (int i = 0; i < SIZE; i++) {
+			if (Validator.validField(designation[i]) && !Validator.validField(divisionOfficeID[i])) {
+				valid = false;
+			} else if (!Validator.validField(designation[i])  ) {
+				valid = false;
+				
+			} else if (Validator.validField(employeeNo[i]) && !Validator.validField(designation[i]) && !Validator.validField(divisionOfficeID[i])) {
+				valid = false;
+			}
+		}
+
+		if (valid) {
+			for (int i = 0; i < SIZE; i++) {
+				designation[i] = designation[i].trim();
+				if (Validator.validField(employeeNo[i])) {
+					employeeNo[i] = employeeNo[i].trim();
 				}
 			}
-			request.setAttribute("employeeID", empList.get(0).getId());
 
-			request.setAttribute("person", person);
-			request.setAttribute("userName", username);
-			AccountsViewAction view = new AccountsViewAction();
-			view.process(request, response);
-		} catch (TransactionException e) {
-			failedResponse(request, response);
-		} catch (DuplicateEntryException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
+		return valid;
 	}
 
-	private void failedResponse(HttpServletRequest request,
-			HttpServletResponse response) {
-		if (name.isEmpty())
-			request.setAttribute("nameOK", "false");
-		else
-			request.setAttribute("nameOK", "true");
-			if (password != null
-					&& reenterPassword != null
-					&& !(password.isEmpty()
-							&& reenterPassword.isEmpty() && password
-								.equalsIgnoreCase(reenterPassword)))
-				request.setAttribute("passwordOK", "false");
-			else
-				request.setAttribute("passwordOK", "true");
-		
-
-		
-		request.setAttribute("title", title);
-		request.setAttribute("name", name);
-		ViewAccountAction view = new ViewAccountAction();
-		try {
-			view.process(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+	private Employee getEmployeeOfPerson(Set<Employee> emps, int employeeID) {
+		Employee ret = null;
+		for (Employee e : emps) {
+			if (e.getId() == employeeID) {
+				ret = e;
+			}
 		}
-
+		return ret;
 	}
-
 }
