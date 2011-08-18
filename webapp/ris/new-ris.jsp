@@ -107,9 +107,9 @@
 								<td width="8%">${line.item.unit}</td>
 								<td width="50%">${line.item.description}</td>
 								<td width="9%"><input name="quantity-requested" type="text"
-									class="required" id="qtyRequested" size="2" value="${line.quantityRequested}"/></td>
+									class="required" id="qtyRequested" value="${line.quantityRequested}" size="2" maxlength="8"/></td>
 								<td width="9%"><input name="quantity-issued" type="text"
-									class="required" id="qtyIssued" size="2" value="${line.quantityIssued}"/></td>
+									class="required" id="qtyIssued" value="${line.quantityIssued}" size="2" maxlength="8"/></td>
 								<td width="14%"><input name="remarks" type="text" id="remarks" maxlength="200" value="${line.remarks}" /></td>
 							</tr>
 						</c:forEach>

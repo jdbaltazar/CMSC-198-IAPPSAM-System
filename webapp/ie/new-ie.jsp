@@ -92,8 +92,8 @@
 									<td>${line.item.description}</td>
 									<td>${line.item.stockNumber}</td>
 									<td><input name="quantity" type="text" class="required"
-										id="qtyRequested" size="2" />
-									</td>
+										id="qtyRequested" size="2" maxlength="8" />
+								  </td>
 
 									<td>${line.item.price}</td>
 									<td>&nbsp;</td>

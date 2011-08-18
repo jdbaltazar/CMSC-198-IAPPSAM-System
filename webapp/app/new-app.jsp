@@ -102,20 +102,20 @@
 								<td>&nbsp;</td>
 								<td>${line.item.price}</td>
 								<td><input name="q1" type="text"
-									class="required" id="qty1" size="2" />
-								</td>
+									class="required" id="qty1" size="2" maxlength="8" />
+							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q2" type="text"
-									class="required" id="qty2" size="2" />
-								</td>
+									class="required" id="qty2" size="2" maxlength="8" />
+							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q3" type="text"
-									class="required" id="qty3" size="2" />
-								</td>
+									class="required" id="qty3" size="2" maxlength="8" />
+							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q4" type="text"
-									class="required" id="qty4" size="2" />
-								</td>
+									class="required" id="qty4" size="2" maxlength="8" />
+							  </td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
