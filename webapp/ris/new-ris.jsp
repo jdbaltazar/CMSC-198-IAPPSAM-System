@@ -136,12 +136,10 @@
 									<c:forEach var="office" items="${offices}">
 										<c:choose>
 											<c:when test="${office.id eq form.divisionOffice.id}">
-												<option value="${office.id}" selected="selected">${office.divisionName},
-													${office.officeName}</option>
+												<option value="${office.id}" selected="selected">${office}</option>
 											</c:when>
 											<c:otherwise>
-												<option value="${office.id}">${office.divisionName},
-													${office.officeName}</option>
+												<option value="${office.id}">${office}</option>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -188,10 +186,10 @@
 									<c:forEach var="employee" items="${employees}">
 										<c:choose>
 											<c:when test="${employee.id eq form.requestedBy.id}">
-												<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+												<option selected="selected" value="${employee.id}">${employee}</option>
 											</c:when>
 											<c:otherwise>
-												<option value="${employee.id}">${employee.person.name}</option>
+												<option value="${employee.id}">${employee}</option>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -211,10 +209,10 @@
 									<c:forEach var="employee" items="${employees}">
 										<c:choose>
 											<c:when test="${employee.id eq form.approvedBy.id}">
-												<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+												<option selected="selected" value="${employee.id}">${employee}</option>
 											</c:when>
 											<c:otherwise>
-												<option value="${employee.id}">${employee.person.name}</option>
+												<option value="${employee.id}">${employee}</option>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -234,10 +232,10 @@
 									<c:forEach var="employee" items="${employees}">
 										<c:choose>
 											<c:when test="${employee.id eq form.issuedBy.id}">
-												<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+												<option selected="selected" value="${employee.id}">${employee}</option>
 											</c:when>
 											<c:otherwise>
-												<option value="${employee.id}">${employee.person.name}</option>
+												<option value="${employee.id}">${employee}</option>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -257,10 +255,10 @@
 									<c:forEach var="employee" items="${employees}">
 										<c:choose>
 											<c:when test="${employee.id eq form.receivedBy.id}">
-												<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+												<option selected="selected" value="${employee.id}">${employee}</option>
 											</c:when>
 											<c:otherwise>
-												<option value="${employee.id}">${employee.person.name}</option>
+												<option value="${employee.id}">${employee}</option>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>

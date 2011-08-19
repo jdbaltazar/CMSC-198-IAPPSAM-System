@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iappsam.forms.Form;
 import com.iappsam.forms.PR;
+import com.iappsam.forms.PRLine;
 import com.iappsam.managers.DivisionOfficeManager;
 import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.PersonManager;
@@ -43,16 +44,26 @@ public class PRParser extends FormParser {
 			pr.setApprovedBy(pm.getEmployee(Integer.parseInt(aprid)));
 
 		String[] quantities = request.getParameterValues("quantity");
+		String[] estUnitCost = request.getParameterValues("estUnitCost");
 		String[] items = request.getParameterValues("items");
 
 		if (items != null)
 			for (int i = 0; i < items.length; i++) {
 				String q = null;
+				String eUC = null;
 				if (quantities != null)
 					q = quantities[i];
+				if(estUnitCost != null)
+					eUC = estUnitCost[i];
 				if (q == null)
 					q = "0";
-				pr.addLine(Integer.parseInt(q), im.getItem(Integer.parseInt(items[i])));
+				if(eUC==null)
+					eUC = "0";
+				PRLine line = new PRLine();
+				line.setQuantity(Integer.parseInt(q));
+				line.setItem(im.getItem(Integer.parseInt(items[i])));
+				line.setEstimatedUnitCost(Long.parseLong(eUC));
+				pr.addLine(line);
 			}
 		return pr;
 	}

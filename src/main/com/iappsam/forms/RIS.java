@@ -358,6 +358,8 @@ public class RIS implements Form {
 		result = prime * result + ((risNumber == null) ? 0 : risNumber.hashCode());
 		result = prime * result + ((saiDate == null) ? 0 : saiDate.hashCode());
 		result = prime * result + ((saiNumber == null) ? 0 : saiNumber.hashCode());
+		
+		
 		return result;
 	}
 

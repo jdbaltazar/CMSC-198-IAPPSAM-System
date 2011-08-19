@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -60,11 +62,18 @@
 									<td>${line.item.stockNumber}</td>
 									<td>${line.quantity}</td>
 									<td>${line.item.price}</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
+<Script Language="JavaScript">
+  var amount = ${line.quantity}*${line.item.price};
+</Script>									
+									<td>
+									<Script Language="JavaScript">
+  													document.write(amount);
+									</Script>
+									</td>
+									<td>${line.item.dateAcquired}</td>
 									<td>${line.howAcquired.name}</td>
-									<td>&nbsp;</td>
-									<td>${line.employee.person.name}</td>
+									<td>${line.item.condition}</td>
+									<td>${line.employee}</td>
 									<td>${line.remarks}</td>
 								</tr>
 							</c:forEach>        
@@ -80,7 +89,7 @@
 							cellspacing="0">
 							<tr>
 								<td class="other_fields_label">Division/Office:</td>
-								<td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName}</td>
+								<td class="right_side_table">${form.divisionOffice}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Building:</td>
@@ -88,7 +97,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Prepared by:</td>
-								<td class="right_side_table">${form.preparedBy.person.name}</td>
+								<td class="right_side_table">${form.preparedBy}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date Prepared:</td>
@@ -97,27 +106,27 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Counterchecked by:</td>
-								<td class="right_side_table">${form.counterCheckedBy.person.name}</td>
+								<td class="right_side_table">${form.counterCheckedBy}</td>
 							</tr>
 
 							<tr>
 								<td class="other_fields_label">Noted:</td>
-								<td class="right_side_table">${form.notedBy.person.name}</td>
+								<td class="right_side_table">${form.notedBy}</td>
 							</tr>
 
 							<tr>
 								<td class="other_fields_label">Committee Member 1:</td>
-								<td class="right_side_table">${form.committeeMember1.person.name}</td>
+								<td class="right_side_table">${form.committeeMember1}</td>
 							</tr>
 
 							<tr>
 								<td class="other_fields_label">Committee Member 2:</td>
-								<td class="right_side_table">${form.committeeMember2.person.name}</td>
+								<td class="right_side_table">${form.committeeMember2}</td>
 							</tr>
 
 							<tr>
 								<td class="other_fields_label">COA Rep.:</td>
-								<td class="right_side_table">${form.coaRepresentative.person.name}</td>
+								<td class="right_side_table">${form.coaRepresentative}</td>
 							</tr>
         </table>
         </td>

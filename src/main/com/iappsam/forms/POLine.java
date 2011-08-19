@@ -34,7 +34,7 @@ public class POLine implements Serializable, Validatable {
 
 	@Column(name = "quantity")
 	private int quantity;
-
+	
 	public POLine() {
 		super();
 	}
