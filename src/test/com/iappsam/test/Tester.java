@@ -19,7 +19,7 @@ public class Tester {
 
 		Person p = new Person("abc");
 		pManager.addPerson(p);
-		accManager.addAccount(new Account("abc", "abc", AccountType.NON_SPSO_PERSONNEL_EMPLOYEE, p));
+//		accManager.addAccount(new Account("abc", "abc", AccountType.NON_SPSO_PERSONNEL_EMPLOYEE, p));
 
 		// try {
 		//
