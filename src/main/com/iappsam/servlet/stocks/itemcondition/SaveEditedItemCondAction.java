@@ -18,8 +18,6 @@ public class SaveEditedItemCondAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("inside saveediteditemcondition.java");
-
 		Action action = new EditItemCondAction();
 
 		int itemConditionID = Integer.parseInt(request.getParameter("itemConditionID"));

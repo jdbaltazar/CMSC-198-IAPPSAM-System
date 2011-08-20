@@ -164,7 +164,6 @@ public class SaveEditedEmployeeAction implements Action {
 
 					updatePerson(person, request, response);
 					Logger.log(request, "Employee \""+name+"\" was updated");
-					System.out.println("employee was saved!!!!!!!");
 					return;
 
 				} catch (Exception e) {
