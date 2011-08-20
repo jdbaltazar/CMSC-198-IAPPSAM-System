@@ -13,44 +13,55 @@
 </head>
 
 <body>
-<%
-	List<Log>logs = (List<Log>)request.getAttribute("logs");
-	String searchField = (String)request.getAttribute("searchField");
-	if(searchField==null)
-		searchField = "";
-%>
-<div id="headerBkgrnd"><img src="../images/headerbar.png" width="100%" height="129" /></div>
-<div id="logo"><img src="../images/headerlogo.png" width="124" height="128" /></div>
-<div id="headerName"><img src="../images/headertext.png" width="452" height="44" /></div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<table width="100%" border="0" cellspacing="0">
-  <tr>
-    <td width="32%">&nbsp;</td>
-    <td width="68%"><form id="form2" name="form2" method="post" action="/logout"">
-      <input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
-    </form></td>
-  </tr>
-  <tr>
-    <td id="navigation"><a href="menu" target="_top" class="links">Main Menu</a> &gt;<em><strong>View System Log </strong></em></td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
+	<%
+		List<Log> logs = (List<Log>) request.getAttribute("logs");
+		String searchField = (String) request.getAttribute("searchField");
+		if (searchField == null)
+			searchField = "";
+	%>
+	<div id="headerBkgrnd">
+		<img src="../images/headerbar.png" width="100%" height="129" />
+	</div>
+	<div id="logo">
+		<img src="../images/headerlogo.png" width="124" height="128" />
+	</div>
+	<div id="headerName">
+		<img src="../images/headertext.png" width="452" height="44" />
+	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<table width="100%" border="0" cellspacing="0">
+		<tr>
+			<td width="32%">&nbsp;</td>
+			<td width="68%"><form id="form2" name="form2" method="post"
+					action="/logout"">
+					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
+						value="Logout" />
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td id="navigation"><a href="menu" target="_top" class="links">Main
+					Menu</a> &gt;<em><strong>View System Log </strong>
+			</em>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
 
-<div id="items_table">
-  <table width="100%" border="0" cellspacing="0">
-    <tr>
+	<div id="items_table">
+		<table width="100%" border="0" cellspacing="0">
+			<tr>
 				<td colspan="5" align="center"><form id="form4" name="form4"
 						method="get" action="/system-logs">
 						<label for="searchField" class="align_right">Search:</label> <input
-							type="text" name="searchField" id="searchField" value="<%=searchField %>"/> 
-							<input name="system-logs-action" type="hidden" id="hidden" value="search-system-logs"/>
-							<input
+							type="text" name="searchField" id="searchField"
+							value="<%=searchField%>" /> <input name="system-logs-action"
+							type="hidden" id="hidden" value="search-system-logs" /> <input
 							name="search" type="submit" class="button" id="goBtn" value="GO" />
-					</form>
-				</td>
+					</form></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
@@ -60,32 +71,31 @@
 				<td>&nbsp;</td>
 			</tr>
 
-    <tr>
-      <td class="tableheaders_forms">Date</td>
-      <td class="tableheaders_forms">Activities</td>
-    </tr>    
-        <%
-    int i=0;
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy [HH:mm:ss]");
-        for(Log l: logs){
-   	 	
-   	%>
-   	<tr <%
-   	if(i%2==0)
-   		out.println("class=\"tablerow_1\"");
-	else
-	out.println("class=\"tablerow_2\"");
-   	%> align="center"> 
-   	
-   	<td width="26%"><%=sdf.format(l.getDate()) %></td>
-      <td width="74%"><%=l.getDescription() %></td>
-   	 <% 
-   	 i++;
-    }
-    %>    
-    </tr>
-  </table>
-</div>
+			<tr>
+				<td class="tableheaders_forms">Date</td>
+				<td class="tableheaders_forms">Activities</td>
+			</tr>
+			<%
+				int i = 0;
+				SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy [HH:mm:ss]");
+				for (Log l : logs) {
+			%>
+			<tr
+				<%if (i % 2 == 0)
+					out.println("class=\"tablerow_1\"");
+				else
+					out.println("class=\"tablerow_2\"");%>
+				align="center">
+
+				<td width="26%"><%=sdf.format(l.getDate())%></td>
+				<td width="74%"><%=l.getDescription()%></td>
+				<%
+					i++;
+					}
+				%>
+			</tr>
+		</table>
+	</div>
 
 </body>
 </html>
