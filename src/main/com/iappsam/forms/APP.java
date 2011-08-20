@@ -105,15 +105,18 @@ public class APP implements Form {
 	}
 
 	public void addLine(Item item, String q1, String q2, String q3, String q4) {
+		int quantity1 = 0;
+		int quantity2 = 0;
+		int quantity3 = 0;
+		int quantity4 = 0;
 		try {
-			int quantity1 = Integer.parseInt(q1);
-			int quantity2 = Integer.parseInt(q2);
-			int quantity3 = Integer.parseInt(q3);
-			int quantity4 = Integer.parseInt(q4);
-
-			addLine(item, quantity1, quantity2, quantity3, quantity4);
+			quantity1 = Integer.parseInt(q1);
+			quantity2 = Integer.parseInt(q2);
+			quantity3 = Integer.parseInt(q3);
+			quantity4 = Integer.parseInt(q4);
 		} catch (NumberFormatException e) {
 		}
+		addLine(item, quantity1, quantity2, quantity3, quantity4);
 	}
 
 	public void removeLine(APPLine line) {

@@ -87,7 +87,15 @@
 								<td width="42%">${line.item.description}</td>
 								<td width="22%">${line.item.stockNumber}</td>
 								<td width="18%">${line.estimatedUnitCost}</td>
-								<td>&nbsp;</td>
+<Script Language="JavaScript">
+  var amount = ${line.quantity}*${line.estimatedUnitCost};
+</Script>									
+
+								<td>
+									<Script Language="JavaScript">
+  													document.write(amount);
+									</Script>								
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -102,7 +110,7 @@
 					<table width="35%" border="0" align="center" cellspacing="0">
 						<tr>
 							<td class="other_fields_label">Department/Section:</td>
-							<td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName}</td>
+							<td class="right_side_table">${form.divisionOffice.divisionName}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">PR No.:</td>
@@ -134,11 +142,11 @@
 						</tr>
 						<tr>
 							<td class="other_fields_label">Requested by:</td>
-							<td class="right_side_table">${form.requestedBy.person.name}</td>
+							<td class="right_side_table">${form.requestedBy}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Prepared by:</td>
-							<td class="right_side_table">${form.approvedBy.person.name}</td>
+							<td class="right_side_table">${form.approvedBy}</td>
 						</tr>
 					</table>
 				</td>

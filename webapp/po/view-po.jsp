@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +9,7 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -32,21 +33,21 @@
 					action="/logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form>
-			</td>
+				</form></td>
 		</tr>
 		<tr>
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
-					Menu</a> &gt; <a href="/po" target="_top" class="links">PO List</a> &gt;
-				<em><strong>View PO</strong>
-			</em><strong></strong>
-		  </td>
+					Menu</a> &gt; <a href="/po" target="_top" class="links">PO List</a>
+				&gt; <em><strong>View PO</strong> </em><strong></strong></td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
-    
-    <div id="export"><span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight:bold;">Export:</span>
-<a href="/po?export=pdf">PDF</a> <a href="/po?export=xls">Excel</a></div>
+
+	<div id="export">
+		<span class="exportlabel_2">O</span><span class="exportlabel"
+			style="font-weight: bold;">Export:</span> <a href="/po?export=pdf">PDF</a>
+		<a href="/po?export=xls">Excel</a>
+	</div>
 	<form name="POForm" method="post" action="/po">
 		<div id="items_table">
 			<table width="100%" border="0" cellspacing="0">
@@ -61,8 +62,7 @@
 								<td width="9%">Unit Cost</td>
 								<td width="12%">Amount</td>
 							</tr>
-						</table>
-					</td>
+						</table></td>
 				</tr>
 
 				<tr>
@@ -74,20 +74,26 @@
 									<td width="8%">${line.item.unit}</td>
 									<td width="50%">${line.item.description}</td>
 									<td width="7%">${line.quantity}</td>
-									<td width="9%">&nbsp;</td>
-									<td width="12%">&nbsp;</td>
+									<td width="9%">${line.item.price}</td>
+<Script Language="JavaScript">
+  var amount = ${line.quantity}*${line.item.price};
+</Script>
+									<td width="12%"><Script Language="JavaScript">
+  													document.write(amount);
+													</Script>
+									</td>
 								</tr>
 							</c:forEach>
-						</table>
-					</td>
+						</table></td>
 				</tr>
 				<tr>
-					<td width="50%" align="right" class="same_width"><br /></td>
+					<td width="50%" align="right" class="same_width"><br />
+					</td>
 					<td class="same_width">&nbsp;</td>
 				</tr>
 				<tr>
 					<td colspan="2"><table width="35%" border="0" align="center"
-							cellspacing="0" style="table-layout:auto">
+							cellspacing="0" style="table-layout: auto">
 							<tr>
 								<td class="other_fields_label">Supplier:</td>
 								<td class="right_side_table">${form.supplier.supplierName}</td>
@@ -107,7 +113,7 @@
 
 							<tr>
 								<td class="other_fields_label">Delivery Place:</td>
-								<td class="right_side_table">${form.divisionOffice.divisionName}, ${form.divisionOffice.officeName} </td>
+								<td class="right_side_table">${form.divisionOffice.divisionName}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Delivery Date:</td>
@@ -119,7 +125,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Supplier Rep.:</td>
-								<td class="right_side_table">${form.supplierName.person.name}</td>
+								<td class="right_side_table">${form.supplierName}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
@@ -127,7 +133,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Very Truly Yours:</td>
-								<td class="right_side_table">${form.dean.person.name}</td>
+								<td class="right_side_table">${form.dean}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
@@ -135,7 +141,7 @@
 							</tr>
 							<tr>
 								<td class="other_fields_label">Accountant:</td>
-								<td class="right_side_table">${form.accountant.person.name}</td>
+								<td class="right_side_table">${form.accountant}</td>
 							</tr>
 							<tr>
 								<td class="other_fields_label">Date:</td>
@@ -149,11 +155,11 @@
 								<td class="other_fields_label">Amount:</td>
 								<td class="right_side_table">${form.amount}</td>
 							</tr>
-						</table>
-					</td>
+						</table></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><br /></td>
+					<td colspan="2" align="center"><br />
+					</td>
 				</tr>
 			</table>
 		</div>

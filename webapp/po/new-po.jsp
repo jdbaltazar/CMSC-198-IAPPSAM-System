@@ -114,7 +114,7 @@
 									<td width="7%"><input name="quantity" type="text"
 										class="required" id="Quantity" value="${line.quantity}"
 										size="2" maxlength="11" /></td>
-									<td width="9%">&nbsp;</td>
+									<td width="9%">${line.item.price}</td>
 									<td width="12%">&nbsp;</td>
 								</tr>
 							</c:forEach>
@@ -191,12 +191,10 @@
 											<c:choose>
 												<c:when
 													test="${divisionOffice.id eq form.divisionOffice.id}">
-													<option value="${divisionOffice.id}" selected="selected">${divisionOffice.divisionName},
-														${divisionOffice.officeName}</option>
+													<option value="${divisionOffice.id}" selected="selected">${divisionOffice}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${divisionOffice.id}">${divisionOffice.divisionName},
-														${divisionOffice.officeName}</option>
+													<option value="${divisionOffice.id}">${divisionOffice}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
@@ -223,10 +221,10 @@
 										<c:forEach var="employee" items="${employees}">
 											<c:choose>
 												<c:when test="${employee.id eq form.supplierName.id}">
-													<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+													<option selected="selected" value="${employee.id}">${employee}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${employee.id}">${employee.person.name}</option>
+													<option value="${employee.id}">${employee}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
@@ -249,10 +247,10 @@
 										<c:forEach var="employee" items="${employees}">
 											<c:choose>
 												<c:when test="${employee.id eq form.dean.id}">
-													<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+													<option selected="selected" value="${employee.id}">${employee}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${employee.id}">${employee.person.name}</option>
+													<option value="${employee.id}">${employee}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
@@ -276,10 +274,10 @@
 										<c:forEach var="employee" items="${employees}">
 											<c:choose>
 												<c:when test="${employee.id eq form.accountant.id}">
-													<option selected="selected" value="${employee.id}">${employee.person.name}</option>
+													<option selected="selected" value="${employee.id}">${employee}</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${employee.id}">${employee.person.name}</option>
+													<option value="${employee.id}">${employee}</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>

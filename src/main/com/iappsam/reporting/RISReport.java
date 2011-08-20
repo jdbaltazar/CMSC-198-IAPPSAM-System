@@ -70,5 +70,9 @@ public class RISReport extends AbstractReport {
 		propertyMap.put("Issued by Designation", form.getIssuedBy().getDesignation());
 		propertyMap.put("Received by Printed Name", form.getReceivedBy().getPerson().getName());
 		propertyMap.put("Received by Designation", form.getReceivedBy().getDesignation());
+		propertyMap.put("Requested by Date", form.getRequestedByDate().toString());
+		propertyMap.put("Approved by Date", form.getApprovedByDate().toString());
+		propertyMap.put("Issued by Date", form.getIssuedByDate().toString());
+		propertyMap.put("Received by Date", form.getReceivedByDate().toString());
 	}
 }

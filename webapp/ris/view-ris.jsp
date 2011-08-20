@@ -88,8 +88,7 @@
 						cellspacing="0">
 						<tr>
 							<td class="other_fields_label">Division/Office:</td>
-							<td class="right_side_table">${form.divisionOffice.divisionName},
-								${form.divisionOffice.officeName}</td>
+							<td class="right_side_table">${form.divisionOffice.divisionName}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Responsibility Center Code.:</td>
@@ -117,7 +116,7 @@
 						</tr>
 						<tr>
 							<td class="other_fields_label">Requested by:</td>
-							<td class="right_side_table">${form.requestedBy.person.name}</td>
+							<td class="right_side_table">${form.requestedBy}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Date:</td>
@@ -125,7 +124,7 @@
 						</tr>
 						<tr>
 							<td class="other_fields_label">Approved by:</td>
-							<td class="right_side_table">${form.approvedBy.person.name}</td>
+							<td class="right_side_table">${form.approvedBy}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Date:</td>
@@ -133,7 +132,7 @@
 						</tr>
 						<tr>
 							<td class="other_fields_label">Issued by:</td>
-							<td class="right_side_table">${form.issuedBy.person.name}</td>
+							<td class="right_side_table">${form.issuedBy}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Date:</td>
@@ -141,7 +140,7 @@
 						</tr>
 						<tr>
 							<td class="other_fields_label">Received by:</td>
-							<td class="right_side_table">${form.receivedBy.person.name}</td>
+							<td class="right_side_table">${form.receivedBy}</td>
 						</tr>
 						<tr>
 							<td class="other_fields_label">Date:</td>
