@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
-@Indexed
 @Entity
+@Indexed
 public class DivisionOffice implements Validatable {
 
 	@Id

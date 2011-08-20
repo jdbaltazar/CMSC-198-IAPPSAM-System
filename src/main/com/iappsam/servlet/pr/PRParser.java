@@ -53,16 +53,24 @@ public class PRParser extends FormParser {
 				String eUC = null;
 				if (quantities != null)
 					q = quantities[i];
-				if(estUnitCost != null)
+				if (estUnitCost != null)
 					eUC = estUnitCost[i];
 				if (q == null)
 					q = "0";
-				if(eUC==null)
+				if (eUC == null)
 					eUC = "0";
 				PRLine line = new PRLine();
-				line.setQuantity(Integer.parseInt(q));
+				try {
+					line.setQuantity(Integer.parseInt(q));
+				} catch (Exception e) {
+					line.setQuantity(0);
+				}
 				line.setItem(im.getItem(Integer.parseInt(items[i])));
-				line.setEstimatedUnitCost(Long.parseLong(eUC));
+				try {
+					line.setEstimatedUnitCost(Long.parseLong(eUC));
+				} catch (Exception e) {
+					line.setEstimatedUnitCost(-1);
+				}
 				pr.addLine(line);
 			}
 		return pr;

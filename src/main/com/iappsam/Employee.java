@@ -42,6 +42,7 @@ public class Employee implements Validatable {
 	@JoinColumn(name = "Person_ID")
 	private Person person;
 
+	@IndexedEmbedded
 	@ManyToOne
 	@JoinTable(name = "Employee_DivisionOffice", joinColumns = @JoinColumn(name = "Employee_ID"), inverseJoinColumns = @JoinColumn(name = "DivisionOffice_ID"))
 	private DivisionOffice divisionOffice;
