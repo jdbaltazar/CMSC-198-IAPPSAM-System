@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("username", username);
 		session.setMaxInactiveInterval(60 * 30);
 
-		System.out.println("user: " + (String) session.getAttribute("username"));
+		System.out.println((String) session.getAttribute("username")+" has logged in.");
 		view.forward(request, response);
 	}
 
