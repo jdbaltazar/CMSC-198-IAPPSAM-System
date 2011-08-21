@@ -66,6 +66,7 @@ public class IELine implements Serializable, Validatable {
 		try {
 			setQuantity(Integer.parseInt(quantity2));
 		} catch (Exception e) {
+			setQuantity(0);
 		}
 	}
 
@@ -174,6 +175,8 @@ public class IELine implements Serializable, Validatable {
 	@Override
 	public boolean validate() {
 		boolean validItem = item != null && item.validate();
+		if (quantity < 0)
+			quantity = 0;
 		boolean validQuantity = quantity > 0;
 		boolean validEmployee = employee != null && employee.validate();
 		boolean validHowAcquired = howAcquired != null && howAcquired.validate();

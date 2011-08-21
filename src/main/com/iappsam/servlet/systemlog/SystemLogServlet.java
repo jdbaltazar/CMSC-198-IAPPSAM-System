@@ -28,8 +28,13 @@ public class SystemLogServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Action action = parseAction(request);
 
+		System.out.println("before processing in post");
+		
 		if (action != null)
 			action.process(request, response);
+		
+		System.out.println("after processing in post");
+		
 	}
 
 	@Override
@@ -37,9 +42,14 @@ public class SystemLogServlet extends HttpServlet {
 
 		Action action = parseAction(request);
 
+		System.out.println("before processing in get");
+		
 		if (action != null)
 			action.process(request, response);
+	
+		System.out.println("after processing in get");
 	}
+	
 
 	private Action parseAction(HttpServletRequest request) {
 
@@ -50,8 +60,6 @@ public class SystemLogServlet extends HttpServlet {
 		}
 		
 		if (action.equalsIgnoreCase(SEARCH_SYSTEM_LOG_ACTION)) {
-			System.out.println("....................inside search !!");
-			
 			Action searchAction = new SearchSystemLogsAction();
 			return searchAction;
 		}

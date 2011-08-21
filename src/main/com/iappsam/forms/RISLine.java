@@ -143,9 +143,14 @@ public class RISLine implements Serializable, Validatable {
 	@Override
 	public boolean validate() {
 		boolean vItem = item != null && item.validate();
+		if (quantityRequested < 0)
+			quantityRequested = 0;
+		if (quantityIssued < 0)
+			quantityIssued = 0;
 		boolean vRequested = quantityRequested >= 0;
 		boolean vIssued = quantityIssued >= 0;
+		boolean match = !(quantityRequested == 0 && quantityIssued == 0);
 
-		return vItem && vRequested && vIssued;
+		return vItem && vRequested && vIssued && match;
 	}
 }

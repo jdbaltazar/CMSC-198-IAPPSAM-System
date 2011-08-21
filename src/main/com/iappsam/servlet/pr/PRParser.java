@@ -57,7 +57,7 @@ public class PRParser extends FormParser {
 					eUC = estUnitCost[i];
 				if (q == null)
 					q = "0";
-				if (eUC == null)
+				if (eUC == null || eUC == "")
 					eUC = "0";
 				PRLine line = new PRLine();
 				try {

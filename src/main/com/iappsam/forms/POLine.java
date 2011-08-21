@@ -122,6 +122,8 @@ public class POLine implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
+		if(quantity<0)
+			quantity = 0;
 		return item != null && item.validate() && po != null && quantity > 0;
 	}
 

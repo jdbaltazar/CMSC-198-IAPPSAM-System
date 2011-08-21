@@ -111,11 +111,26 @@ public class APP implements Form {
 		int quantity4 = 0;
 		try {
 			quantity1 = Integer.parseInt(q1);
-			quantity2 = Integer.parseInt(q2);
-			quantity3 = Integer.parseInt(q3);
-			quantity4 = Integer.parseInt(q4);
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
+			quantity1 = -1;
 		}
+		try {
+			quantity2 = Integer.parseInt(q2);
+		} catch (Exception e) {
+			quantity2 = -1;
+		}
+		try {
+			quantity3 = Integer.parseInt(q3);
+		} catch (Exception e) {
+			quantity3 = -1;
+		}
+
+		try {
+			quantity4 = Integer.parseInt(q4);
+		} catch (Exception e) {
+			quantity4 = -1;
+		}
+		
 		addLine(item, quantity1, quantity2, quantity3, quantity4);
 	}
 
@@ -208,8 +223,12 @@ public class APP implements Form {
 		boolean validRecommendedBy = recommendedBy != null && recommendedBy.validate();
 		boolean validDivisionOffice = divisionOffice != null && divisionOffice.validate();
 		boolean validPreparedBy = preparedBy != null && preparedBy.validate();
+		boolean validLines = !lines.isEmpty();
 
-		return validYear && validDivisionOffice && validPreparedBy && validRecommendedBy;
+		for (APPLine line : lines)
+			validLines &= line.validate();
+				
+		return validYear && validDivisionOffice && validPreparedBy && validRecommendedBy && validLines;
 	}
 
 	@Override

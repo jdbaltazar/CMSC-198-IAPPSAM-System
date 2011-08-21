@@ -31,23 +31,23 @@ public class SearchSystemLogsAction implements Action {
 		String searchField = request.getParameter("searchField");
 
 		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>searchfield: "+searchField);
 		LogSearcher searcher = new LogSearcher();
-		if (Validator.validField(searchField))
+		if (Validator.validField(searchField)) {
 			logs = searcher.search(searchField);
-		else
+			request.setAttribute("searchField", searchField);
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>searchfield: \'" + searchField + "\"");
+		} else {
 			try {
 				logs = logManager.viewLogs();
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}
+			System.out.println("normal viewing was used!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
 
-		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>size of logs: "+logs.size());
-		request.setAttribute("logs", logs);
-		if (Validator.validField(searchField))
-			request.setAttribute("searchField", searchField);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>size of results: " + logs.size());
 		RequestDispatcher view = request.getRequestDispatcher(SupplierServlet.SEARCH_SUPPLIERS);
+		request.setAttribute("logs", logs);
 		view.forward(request, response);
 
 	}

@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.iappsam.Log"%>
 <%@page import="java.util.List"%>
@@ -15,9 +16,6 @@
 <body>
 	<%
 		List<Log> logs = (List<Log>) request.getAttribute("logs");
-		String searchField = (String) request.getAttribute("searchField");
-		if (searchField == null)
-			searchField = "";
 	%>
 	<div id="headerBkgrnd">
 		<img src="../images/headerbar.png" width="100%" height="129" />
@@ -53,16 +51,6 @@
 
 	<div id="items_table">
 		<table width="100%" border="0" cellspacing="0">
-			<tr>
-				<td colspan="5" align="center"><form id="form4" name="form4"
-						method="get" action="/system-logs">
-						<label for="searchField" class="align_right">Search:</label> <input
-							type="text" name="searchField" id="searchField"
-							value="<%=searchField%>" /> <input name="system-logs-action"
-							type="hidden" id="hidden" value="search-system-logs" /> <input
-							name="search" type="submit" class="button" id="goBtn" value="GO" />
-					</form></td>
-			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
