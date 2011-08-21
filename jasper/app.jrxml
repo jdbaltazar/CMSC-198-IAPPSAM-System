@@ -155,7 +155,7 @@
 					<font fontName="Times New Roman" size="11"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<text><![CDATA[Date Schedule:]]></text>
+				<text><![CDATA[Date Scheduled:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="20" width="100" height="24"/>
@@ -163,7 +163,7 @@
 					<font fontName="Times New Roman" size="11"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<text><![CDATA[Control Number:]]></text>
+				<text><![CDATA[Plan Control No.:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="44" width="100" height="38"/>

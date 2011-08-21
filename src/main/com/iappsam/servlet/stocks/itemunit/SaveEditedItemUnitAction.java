@@ -18,8 +18,6 @@ public class SaveEditedItemUnitAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("....inside saveediteditemunit.java");
-
 		Action action = new EditItemUnitAction();
 
 		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));

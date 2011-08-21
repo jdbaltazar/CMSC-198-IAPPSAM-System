@@ -44,7 +44,6 @@ public class SearchEmployeesAction implements Action {
 					}
 				}
 				request.setAttribute("persons", persons);
-				System.out.println("size of persons: " + persons.size());
 			} catch (TransactionException e) {
 				e.printStackTrace();
 			}

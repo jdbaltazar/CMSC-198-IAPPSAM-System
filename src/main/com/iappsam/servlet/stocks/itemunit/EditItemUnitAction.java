@@ -16,7 +16,6 @@ public class EditItemUnitAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("inside edititemunit.java");
 
 		int itemUnitID = Integer.parseInt(request.getParameter("itemUnitID"));
 		Unit unit = new Unit();

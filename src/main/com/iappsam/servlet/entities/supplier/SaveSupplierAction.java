@@ -65,7 +65,6 @@ public class SaveSupplierAction implements Action {
 				Logger.log(request, "Supplier \""+supplierName+"\" was added");
 				request.setAttribute("supplierID", "" + supplier.getId());
 				view = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
-				System.out.println("supplier was saved!!!");
 			} catch (TransactionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -74,7 +73,6 @@ public class SaveSupplierAction implements Action {
 				e.printStackTrace();
 			}
 		} else {
-			System.out.println("supplier is not valid!!");
 			request.setAttribute("supplier", supplier);
 		}
 

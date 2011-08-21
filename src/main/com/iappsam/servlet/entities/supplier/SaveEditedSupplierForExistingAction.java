@@ -40,18 +40,12 @@ public class SaveEditedSupplierForExistingAction implements Action {
 			supplier.setSupplierName(address);
 			supplier.setTin(tin);
 			if (supplier.validate()) {
-				System.out.println("supplier name: " + supplierName);
-				System.out.println("supplier address: " + address);
-				System.out.println("supplier name b4 save: " + supplier.getSupplierName());
-				System.out.println("supplier address b4 save: " + supplier.getAddress());
 				supplier.setSupplierName(supplierName);
 				supplier.setAddress(address);
 				sManager.updateSupplier(supplier);
 				Logger.log(request, "Supplier \""+supplierName+"\" was updated");
 				save = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
-				System.out.println("edited was saveD!!!!!!!!!");
 			} else {
-				System.out.println("was not saveD!!!!!!!!!");
 
 				Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
 				if (!Validator.validField(supplier.getSupplierName()))

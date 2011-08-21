@@ -89,23 +89,12 @@ public class SaveEmployeeAction implements Action {
 					person.addEmployment(e);
 				}
 			}
-			System.out.println("title: " + person.getTitle());
-			System.out.println("name: " + person.getName());
-			System.out.println("---contacts start here-----");
-			for (Contact c : person.getContacts()) {
-				System.out.println(c.getType().toString() + ": " + c.getData());
-			}
-			System.out.println("---employments start here-----");
-			for (Employee e : person.getEmployments()) {
-				System.out.println(e.getDesignation() + ": " + e.getEmployeeNumber() + ": " + (e.getDivisionOffice() == null ? "" : e.getDivisionOffice().getDivisionName()));
-			}
 			if (validAllEmployees && person.validate()) {
 
 				try {
 
 					savePerson(person, request, response);
 					Logger.log(request, "Employee \""+name+"\" was added");
-					System.out.println("employee was saved!!!!!!!");
 					return;
 
 				} catch (Exception e) {

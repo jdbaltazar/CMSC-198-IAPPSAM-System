@@ -47,8 +47,6 @@ public class SaveEditedSupplierAction implements Action {
 			PersonManager pManager = new PersonManagerSession();
 			RequestDispatcher update = request.getRequestDispatcher(SupplierServlet.VIEW_SUPPLIER);
 			Supplier supplier = sManager.getSupplier(Integer.parseInt(supplierID));
-			System.out.println("name: " + name);
-			System.out.println("title: " + title);
 			Person person = pManager.getPerson(supplier.getContactPerson().getPerson().getId());
 			person.setTitle(title);
 			person.setName(name);
@@ -103,14 +101,11 @@ public class SaveEditedSupplierAction implements Action {
 					sManager.updateSupplier(supplier);
 					Logger.log(request, "Supplier \""+supplierName+"\" was updated");
 					update = request.getRequestDispatcher("supplier?" + SupplierServlet.SUPPLIER_ACTION + "=" + SupplierServlet.VIEW_SUPPLIERS_ACTION);
-					System.out.println("edited supplier was saved!!!");
 				} catch (TransactionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
-				System.out.println("edited supplier is not valid!!");
-				System.out.println("person name: \'" + supplier.getContactPerson().getPerson().getName() + "\'");
 
 				Supplier original = sManager.getSupplier(Integer.parseInt(supplierID));
 				if (!Validator.validField(supplier.getSupplierName()))

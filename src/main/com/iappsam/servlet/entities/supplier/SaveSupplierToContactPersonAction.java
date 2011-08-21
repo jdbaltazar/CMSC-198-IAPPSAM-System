@@ -48,7 +48,6 @@ public class SaveSupplierToContactPersonAction implements Action {
 				}
 
 			} else {
-				System.out.println("was not saveD!!!!!!!!!");
 				request.setAttribute("supplier", supplier);
 				List<Employee> employees = new ArrayList<Employee>();
 				List<Supplier> suppliers = sManager.getAllSuppliers();
