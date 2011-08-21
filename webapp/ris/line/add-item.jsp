@@ -7,6 +7,19 @@
 <link href="../../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../../css/item_table.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	function checkAll() {
+		if (document.AddSelectedItem.all.checked == true) {
+			for ( var i = 0; i < document.AddSelectedItem.itemIds.length; i++) {
+				document.AddSelectedItem.itemIds[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.AddSelectedItem.itemIds.length; i++) {
+				document.AddSelectedItem.itemIds[i].checked = false;
+			}
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -60,16 +73,18 @@
 					</table>
 				</td>
 			</tr>
-
+			<form name="AddSelectedItem" action="/ris/line" method="post">
 			<tr>
 				<td colspan="2"><table width="100%" border="0" cellspacing="6">
 
-					</table></td>
+					</table>
+					<input type="hidden" name="add" value="items" />
+				  <input name="add" type="submit" class="smallbutton" id="add" value="Add Selected Items&gt;&gt;" /></td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td width="7%" class="tableheaders_forms">
-				</td>
+				<td width="7%" class="tableheaders_forms"><input type="checkbox" name="all" id="all" onclick="checkAll()"/>
+		      <label for="all"></label></td>
 				<td width="58%" class="tableheaders_forms">Item Description</td>
 				<td width="35%" class="tableheaders_forms">Item Category</td>
 			</tr>
@@ -77,7 +92,7 @@
 			<%
 				int i = 0;
 			%>
-			<form name="AddSelectedItem" action="/ris/line" method="post">
+
 
 				<input type="hidden" name="add" value="items" />
 				<c:forEach var="item" items="${items}">

@@ -21,6 +21,18 @@
 			showButtonPanel : true
 		});
 	});
+	
+	function checkAll() {
+		if (document.APPForm.all.checked == true) {
+			for ( var i = 0; i < document.APPForm.checkedItems.length; i++) {
+				document.APPForm.checkedItems[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.APPForm.checkedItems.length; i++) {
+				document.APPForm.checkedItems[i].checked = false;
+			}
+		}
+	}
 </script>
 </head>
 
@@ -64,9 +76,8 @@
 			<tr>
 				<td colspan="2"><table width="100%" border="0" cellspacing="0">
 						<tr class="tableheaders_forms">
-							<td rowspan="2">
-									
-							</td>
+							<td rowspan="2"><input type="checkbox" name="all" id="all" onclick="checkAll()" />
+					      <label for="all"></label></td>
 							<td rowspan="2">Stock No.</td>
 							<td rowspan="2">ARTICLES &amp; SPECIFICATIONS</td>
 							<td rowspan="2">Unit</td>

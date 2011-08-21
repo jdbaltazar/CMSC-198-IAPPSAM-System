@@ -44,6 +44,17 @@
 		});
 		
 	});
+	function checkAll() {
+		if (document.POForm.all.checked == true) {
+			for ( var i = 0; i < document.POForm.checkedItems.length; i++) {
+				document.POForm.checkedItems[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.POForm.checkedItems.length; i++) {
+				document.POForm.checkedItems[i].checked = false;
+			}
+		}
+	}
 </script>
 </head>
 
@@ -87,7 +98,8 @@
 					<td colspan="2"><table width="100%" border="0" cellspacing="0"
 							class="tableheaders_forms">
 							<tr>
-								<td width="4%"></td>
+								<td width="4%"><input type="checkbox" name="all" id="all" onclick="checkAll()"/>
+						      <label for="all"></label></td>
 								<td width="10%">Stock No.</td>
 								<td width="8%">Unit</td>
 								<td width="50%">Description</td>

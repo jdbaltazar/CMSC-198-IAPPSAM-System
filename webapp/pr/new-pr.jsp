@@ -31,6 +31,18 @@
 			showButtonPanel : true
 		});
 	});
+	
+	function checkAll() {
+		if (document.PRForm.all.checked == true) {
+			for ( var i = 0; i < document.PRForm.checkedItems.length; i++) {
+				document.PRForm.checkedItems[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.PRForm.checkedItems.length; i++) {
+				document.PRForm.checkedItems[i].checked = false;
+			}
+		}
+	}
 </script>
 </head>
 
@@ -73,7 +85,8 @@
 					<td colspan="2">
 						<table width="100%" border="0" cellspacing="0">
 							<tr class="tableheaders_forms">
-								<td></td>
+								<td><input type="checkbox" name="all" id="all" onclick="checkAll()"/>
+						      <label for="all"></label></td>
 								<td>Quantity</td>
 								<td>Unit of Issue</td>
 								<td>Item Description</td>

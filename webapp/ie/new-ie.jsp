@@ -23,6 +23,18 @@
 			showButtonPanel : true
 		});
 	});
+	
+	function checkAll() {
+		if (document.IEForm.all.checked == true) {
+			for ( var i = 0; i < document.IEForm.checkedItems.length; i++) {
+				document.IEForm.checkedItems[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.IEForm.checkedItems.length; i++) {
+				document.IEForm.checkedItems[i].checked = false;
+			}
+		}
+	}
 </script>
 
 </head>
@@ -67,8 +79,8 @@
 					<td colspan="2"><table width="100%" border="0" cellspacing="0"
 							class="tableheaders_forms">
 							<tr>
-								<td>
-								</td>
+								<td><input type="checkbox" name="all" id="all" onclick="checkAll()" />
+						      <label for="all"></label></td>
 								<td>Property No.</td>
 								<td>Equipment Property</td>
 								<td>Article Code</td>
