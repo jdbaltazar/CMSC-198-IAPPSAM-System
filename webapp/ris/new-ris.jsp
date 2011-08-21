@@ -48,6 +48,18 @@
 			showButtonPanel : true
 		});
 	});
+	
+	function checkAll() {
+		if (document.RISForm.all.checked == true) {
+			for ( var i = 0; i < document.RISForm.checkedItems.length; i++) {
+				document.RISForm.checkedItems[i].checked = true;
+			}
+		} else {
+			for ( var i = 0; i < document.RISForm.checkedItems.length; i++) {
+				document.RISForm.checkedItems[i].checked = false;
+			}
+		}
+	}
 </script>
 </head>
 
@@ -89,7 +101,8 @@
 				<td colspan="2"><table width="100%" border="0" cellspacing="0"
 						class="tableheaders_forms">
 						<tr>
-							<td></td>
+							<td><input type="checkbox" name="all" id="all" onclick="checkAll()"/>
+					      <label for="all"></label></td>
 							<td>Stock No.</td>
 							<td>Unit</td>
 							<td>Description</td>
