@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,21 +9,7 @@
 <link href="../css/header.css" rel="stylesheet" type="text/css" />
 <link href="../css/form.css" rel="stylesheet" type="text/css" />
 <link href="../css/item_table.css" rel="stylesheet" type="text/css" />
-<link href="../jquery/css/jquery-ui-1.8.13.custom.css" rel="stylesheet"
-	type="text/css" />
-<script src="../jquery/jquery-1.5.1.min.js"></script>
-<script src="../jquery/ui/jquery.ui.core.js"></script>
-<script src="../jquery/ui/jquery.ui.datepicker.js"></script>
-<script src="../jquery/ui/jquery.ui.widget.js"></script>
-<script>
-	$(function() {
-		$("#dateScheduled").datepicker({
-			dateFormat : "yy-mm-dd",
-			numberOfMonths : 1,
-			showButtonPanel : true
-		});
-	});
-</script>
+
 </head>
 
 <body>
@@ -52,8 +39,7 @@
 		<tr>
 			<td id="navigation"><a href="../menu" target="_top"
 				class="links">Main Menu</a> &gt; <a href="/app" target="_top"
-				class="links">APP List</a> &gt; <em><strong>View APP</strong>
-			</em><strong></strong>
+				class="links">APP List</a> &gt; <em><strong>View APP</strong> </em><strong></strong>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
@@ -63,7 +49,7 @@
 			style="font-weight: bold;">Export:</span> <a href="/app?export=pdf">PDF</a>
 		<a href="/app?export=xls">Excel</a>
 	</div>
-	<!--<form name="APPForm" method="post" action="">-->
+
 	<div id="items_table">
 
 		<table width="100%" border="0" cellspacing="0">
@@ -94,7 +80,7 @@
 
 						<c:forEach var="line" items="${form.lines}" varStatus="loop">
 							<tr class="tablerow_1">
-<Script Language="JavaScript">
+								<Script Language="JavaScript">
 var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantityQuarter3}+ ${line.quantityQuarter4};
 </Script>
 								<td>${line.item.stockNumber}</td>
@@ -183,16 +169,12 @@ var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantit
 				<td colspan="2" align="center"><br />
 				</td>
 			</tr>
-			<tr>
-				<td colspan="2">&nbsp;</td>
-			</tr>
 		</table>
 
 	</div>
-	<!--</form>
 
 
 
-<!--<div id="footer"></div>-->
+	<!--<div id="footer"></div>-->
 </body>
 </html>
