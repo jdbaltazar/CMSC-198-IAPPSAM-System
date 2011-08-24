@@ -56,7 +56,8 @@ public class POUtility extends AbstractFormUtility {
 		req.setAttribute("suppliers", sm.getAllSuppliers());
 		req.setAttribute("mops", pom.getAllModeOfProcurement());
 		req.setAttribute("divisionoffices", dom.getAllDivisionOffice());
-		req.setAttribute("employees", pm.getAllEmployee());
+		req.setAttribute("employees", pm.getAllNonSupplierEmployee());
+		req.setAttribute("supplierEmployees", pm.getAllSupplierEmployee());
 	}
 
 	@Override

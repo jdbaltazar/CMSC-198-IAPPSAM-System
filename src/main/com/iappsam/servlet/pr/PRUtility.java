@@ -56,7 +56,7 @@ public class PRUtility extends AbstractFormUtility {
 		}
 
 		request.setAttribute("itemsDb", im.getAllItems());
-		request.setAttribute("employees", pm.getAllEmployee());
+		request.setAttribute("employees", pm.getAllNonSupplierEmployee());
 		request.setAttribute("offices", dom.getAllDivisionOffice());
 	}
 

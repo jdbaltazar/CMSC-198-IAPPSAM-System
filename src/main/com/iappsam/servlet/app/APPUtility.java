@@ -47,7 +47,7 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 			}
 		}
 		request.setAttribute("offices", dom.getAllDivisionOffice());
-		request.setAttribute("employees", pm.getAllEmployee());
+		request.setAttribute("employees", pm.getAllNonSupplierEmployee());
 	}
 
 	@Override

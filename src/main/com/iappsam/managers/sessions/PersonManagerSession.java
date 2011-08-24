@@ -10,8 +10,10 @@ import org.hibernate.Transaction;
 import com.iappsam.Employee;
 import com.iappsam.Person;
 import com.iappsam.Signatory;
+import com.iappsam.Supplier;
 import com.iappsam.managers.AbstractManager;
 import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.DuplicateEntryException;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.util.HibernateUtil;
@@ -126,6 +128,28 @@ public class PersonManagerSession extends AbstractManager implements PersonManag
 	@Override
 	public List<Employee> getAllEmployee() throws TransactionException {
 		return getAll(Employee.class);
+	}
+
+	@Override
+	public List<Employee> getAllNonSupplierEmployee() throws TransactionException {
+		List<Employee> all = getAll(Employee.class);
+		SupplierManager sManager = new SupplierManagerSession();
+		List<Supplier> suppliers = sManager.getAllSuppliers();
+		for (Supplier s : suppliers) {
+			all.remove(s.getContactPerson());
+		}
+		return all;
+	}
+
+	@Override
+	public List<Employee> getAllSupplierEmployee() throws TransactionException {
+		List<Employee> all = new ArrayList<Employee>();
+		SupplierManager sManager = new SupplierManagerSession();
+		List<Supplier> suppliers = sManager.getAllSuppliers();
+		for (Supplier s : suppliers) {
+			all.add(s.getContactPerson());
+		}
+		return all;
 	}
 
 	@Override

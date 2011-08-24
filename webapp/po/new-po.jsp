@@ -230,7 +230,7 @@
 								<td class="right_side_table"><select name="supplier-name"
 									class="required_menulist" id="supplierRep">
 
-										<c:forEach var="employee" items="${employees}">
+										<c:forEach var="employee" items="${supplierEmployees}">
 											<c:choose>
 												<c:when test="${employee.id eq form.supplierName.id}">
 													<option selected="selected" value="${employee.id}">${employee}</option>

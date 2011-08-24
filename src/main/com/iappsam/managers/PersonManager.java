@@ -48,6 +48,10 @@ public interface PersonManager extends Manager {
 	boolean containsEmployee(Employee employee) throws TransactionException;
 
 	List<Employee> getAllEmployee() throws TransactionException;
+	
+	List<Employee> getAllNonSupplierEmployee() throws TransactionException;
+	
+	List<Employee> getAllSupplierEmployee() throws TransactionException;
 
 	// Signatory
 

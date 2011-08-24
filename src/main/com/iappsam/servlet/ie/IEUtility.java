@@ -48,7 +48,7 @@ public class IEUtility extends AbstractFormUtility {
 				req.removeAttribute("form");
 			}
 		}
-		req.setAttribute("employees", pm.getAllEmployee());
+		req.setAttribute("employees", pm.getAllNonSupplierEmployee());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
 		req.setAttribute("buildings", dom.getAllBuildings());
 		req.setAttribute("mods", pom.getAllModeOfProcurement());

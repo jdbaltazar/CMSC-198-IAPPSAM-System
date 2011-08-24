@@ -50,7 +50,7 @@ public class RISUtility extends AbstractFormUtility {
 		}
 		req.setAttribute("items", im.getAllItems());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
-		req.setAttribute("employees", pm.getAllEmployee());
+		req.setAttribute("employees", pm.getAllNonSupplierEmployee());
 	}
 
 	@Override
