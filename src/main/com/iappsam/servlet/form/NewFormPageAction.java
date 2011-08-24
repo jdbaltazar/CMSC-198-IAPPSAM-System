@@ -29,8 +29,11 @@ public class NewFormPageAction implements Action {
 				Object ob2 = request.getAttribute("form");
 
 				if (!(ob instanceof PR && ob2 instanceof PR)) {
-					request.getSession().removeAttribute("form");
-					request.removeAttribute("form");
+					String retain = (String) request.getParameter("retain");
+					if (retain == null) {
+						request.getSession().removeAttribute("form");
+						request.removeAttribute("form");
+					}
 				}
 			}
 

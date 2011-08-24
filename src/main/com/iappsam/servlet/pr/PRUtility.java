@@ -48,8 +48,11 @@ public class PRUtility extends AbstractFormUtility {
 		Object ob2 = request.getAttribute("form");
 
 		if (!(ob instanceof PR || ob2 instanceof PR)) {
-			request.getSession().setAttribute("form", new PR());
-			request.setAttribute("form", new PR());
+			String retain = (String) request.getParameter("retain");
+			if (retain == null) {
+				request.getSession().setAttribute("form", new PR());
+				request.setAttribute("form", new PR());
+			}
 		}
 
 		request.setAttribute("itemsDb", im.getAllItems());
@@ -60,10 +63,10 @@ public class PRUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		prm.addPR((PR) form);
-		String division = ""+((PR) form).getDivisionOffice().getDivisionName();
-		if(((PR) form).getDivisionOffice().getOfficeName()!=null)
-			division =division+"/"+((PR) form).getDivisionOffice().getOfficeName();
-		Logger.log(request, "Purchase Request for "+division+ " was added");
+		String division = "" + ((PR) form).getDivisionOffice().getDivisionName();
+		if (((PR) form).getDivisionOffice().getOfficeName() != null)
+			division = division + "/" + ((PR) form).getDivisionOffice().getOfficeName();
+		Logger.log(request, "Purchase Request for " + division + " was added");
 	}
 
 	@Override

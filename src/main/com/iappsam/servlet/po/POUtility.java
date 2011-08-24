@@ -39,13 +39,20 @@ public class POUtility extends AbstractFormUtility {
 	public void beforeNewForm(HttpServletRequest req) throws TransactionException {
 		this.req = req;
 		Object ob = req.getSession().getAttribute("form");
-		if (!(ob instanceof PO))
-			req.getSession().removeAttribute("form");
-
 		Object formReq = req.getAttribute("form");
-		if (!(formReq instanceof PO))
-			req.removeAttribute("form");
 
+		if (!(ob instanceof PO)) {
+			String retain = (String) req.getParameter("retain");
+			if (retain == null) {
+				req.getSession().removeAttribute("form");
+			}
+		}
+		if (!(formReq instanceof PO)) {
+			String retain = (String) req.getParameter("retain");
+			if (retain == null) {
+				req.removeAttribute("form");
+			}
+		}
 		req.setAttribute("suppliers", sm.getAllSuppliers());
 		req.setAttribute("mops", pom.getAllModeOfProcurement());
 		req.setAttribute("divisionoffices", dom.getAllDivisionOffice());
@@ -55,7 +62,7 @@ public class POUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		pom.addPO((PO) form);
-		Logger.log(req, "Purchase Order with PO No. "+((PO)form).getPoNumber()+ " was added");
+		Logger.log(req, "Purchase Order with PO No. " + ((PO) form).getPoNumber() + " was added");
 	}
 
 	@Override

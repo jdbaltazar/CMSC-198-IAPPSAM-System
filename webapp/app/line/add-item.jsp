@@ -48,7 +48,7 @@
 		<tr>
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt;<em><strong>List Items </strong> </em> &gt; <a
-				href="/app?new=app " class="links">Fillup APP</a>
+				href="/app?new=app&retain=retain" class="links">Fillup APP</a>
 			</td>
 
 			<td>&nbsp;</td>

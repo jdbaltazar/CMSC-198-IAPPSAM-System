@@ -42,8 +42,11 @@ public class RISUtility extends AbstractFormUtility {
 		Object ob = req.getSession().getAttribute("form");
 		Object ob2 = req.getAttribute("form");
 		if (!(ob instanceof RIS || ob2 instanceof RIS)) {
-			req.getSession().removeAttribute("form");
-			req.removeAttribute("form");
+			String retain = (String) req.getParameter("retain");
+			if (retain == null) {
+				req.getSession().removeAttribute("form");
+				req.removeAttribute("form");
+			}
 		}
 		req.setAttribute("items", im.getAllItems());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
@@ -53,7 +56,7 @@ public class RISUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		rism.addRIS((RIS) form);
-		Logger.log(req, "Requisition and Issue Slip with RIS No. "+((RIS)form).getRisNumber()+ " was added");
+		Logger.log(req, "Requisition and Issue Slip with RIS No. " + ((RIS) form).getRisNumber() + " was added");
 	}
 
 	@Override

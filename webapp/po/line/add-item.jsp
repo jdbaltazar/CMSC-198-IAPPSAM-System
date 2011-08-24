@@ -50,7 +50,7 @@
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt;<em><strong>List Items </strong>
 			</em>
-	    &gt; <a href="#" class="links">Fillup PO</a></td>
+	    &gt; <a href="../po?new=po&retain=retain" class="links">Fillup PO</a></td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>

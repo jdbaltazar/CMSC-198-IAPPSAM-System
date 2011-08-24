@@ -42,8 +42,11 @@ public class IEUtility extends AbstractFormUtility {
 		Object ob = req.getSession().getAttribute("form");
 		Object ob2 = req.getAttribute("form");
 		if (!(ob instanceof IE || ob2 instanceof IE)) {
-			req.getSession().removeAttribute("form");
-			req.removeAttribute("form");
+			String retain = (String) req.getParameter("retain");
+			if (retain == null) {
+				req.getSession().removeAttribute("form");
+				req.removeAttribute("form");
+			}
 		}
 		req.setAttribute("employees", pm.getAllEmployee());
 		req.setAttribute("offices", dom.getAllDivisionOffice());
@@ -54,10 +57,10 @@ public class IEUtility extends AbstractFormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		iem.addIE((IE) form);
-		String division = ""+((IE) form).getDivisionOffice().getDivisionName();
-		if(((IE) form).getDivisionOffice().getOfficeName()!=null)
-			division =division+"/"+((IE) form).getDivisionOffice().getOfficeName();
-		Logger.log(req, "Inventory of Equipment for "+division+ " was added");
+		String division = "" + ((IE) form).getDivisionOffice().getDivisionName();
+		if (((IE) form).getDivisionOffice().getOfficeName() != null)
+			division = division + "/" + ((IE) form).getDivisionOffice().getOfficeName();
+		Logger.log(req, "Inventory of Equipment for " + division + " was added");
 	}
 
 	@Override

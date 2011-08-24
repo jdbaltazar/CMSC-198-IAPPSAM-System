@@ -40,8 +40,12 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 		Object ob2 = request.getAttribute("form");
 
 		if (!(ob instanceof APP || ob2 instanceof APP)) {
-			request.getSession().removeAttribute("form");
-			request.removeAttribute("form");
+			String retain = (String) request.getParameter("retain");
+			if (retain == null) {
+				System.out.println("cleaned!");
+				request.getSession().removeAttribute("form");
+				request.removeAttribute("form");
+			}
 		}
 		request.setAttribute("offices", dom.getAllDivisionOffice());
 		request.setAttribute("employees", pm.getAllEmployee());
@@ -50,7 +54,7 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 	@Override
 	public void add(Form form) throws TransactionException {
 		appm.addAPP((APP) form);
-		Logger.log(request, "Annual Procurement Plan for year "+((APP)form).getYear()+ " was added");
+		Logger.log(request, "Annual Procurement Plan for year " + ((APP) form).getYear() + " was added");
 	}
 
 	@Override

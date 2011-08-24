@@ -50,7 +50,7 @@
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt;<em><strong>List Items </strong>
 			</em>
-      &gt; <a href="#" class="links">Fillup RIS</a></td>
+      &gt; <a href="../ris?new=ris&retain=retain" class="links">Fillup RIS</a></td>
 
 			<td>&nbsp;</td>
 		</tr>
