@@ -16,8 +16,8 @@
 	function validateForm() {
 		var txt = "";
 		var name = document.forms["form1"]["name"].value;
-		var designation = document.forms["form1"]["designation"].value;
-		var divisionOfficeDropdown = document.forms["form1"]["divisionOfficeDropdown"].value;
+		var designation = document.forms["form1"]["designation1"].value;
+		var divisionOfficeDropdown = document.forms["form1"]["divisionOfficeDropdown1"].value;
 		var username = document.forms["form1"]["username"].value;
 		var password = document.forms["form1"]["password"].value;
 		var reenterPassword = document.forms["form1"]["reenterPassword"].value;
@@ -27,12 +27,12 @@
 		txt += "Make sure required fields are not left blank,\n";
 		txt += "or input is valid for that field.\n\n";
 
-		if (name == null || name == "" || designation == null
-				|| designation == "" || divisionOfficeDropdown == null
-				|| divisionOfficeDropdown == "" || username == null
-				|| username == "" || password == null || password == ""
-				|| reenterPassword == null || reenterPassword == ""
-				|| accountType == null || accountType == "") {
+		if (name == null || designation == null
+				|| divisionOfficeDropdown == null
+				||  username == null
+				||  password == null 
+				|| reenterPassword == null 
+				|| accountType == null) {
 			alert(txt);
 			return false;
 		}
@@ -149,7 +149,7 @@
 								<tr>
 									<td>
 										<div align="center">
-											<label for="designation_1"></label> <input name="designation"
+											<label for="designation_1"></label> <input name="designation1"
 												type="text" class="required" id="designation_1"
 												maxlength="45"
 												<%String[] designation = (String[]) request.getAttribute("designation");
@@ -163,7 +163,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<input name="employeeNo" type="text" id="employeeNo._1"
+											<input name="employeeNo1" type="text" id="employeeNo._1"
 												size="4"
 												<%if (employeeNo != null && employeeNo[0] != null && !employeeNo[0].isEmpty())
 				out.print("value=" + '"' + employeeNo[0] + '"');%> />
@@ -171,7 +171,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<select name="divisionOfficeDropdown"
+											<select name="divisionOfficeDropdown1"
 												class="required_menulist" id="divisionOfficeDropdown">
 												<option></option>
 												<%
@@ -196,7 +196,7 @@
 									<td>
 										<div align="center">
 											<label for="designation_1"></label> <input type="text"
-												name="designation" id="designation_1"
+												name="designation2" id="designation_2"
 												<%String designation2OK = (String) request.getAttribute("designation2OK");
 			if (designation != null && designation.length > 1 && !designation[1].isEmpty()) {
 				out.print("value=" + '"' + designation[1] + '"');
@@ -205,7 +205,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<input name="employeeNo" type="text" id="employeeNo._1"
+											<input name="employeeNo2" type="text" id="employeeNo._2"
 												size="4"
 												<%if (employeeNo != null && employeeNo[1] != null && !employeeNo[1].isEmpty())
 				out.print("value=" + '"' + employeeNo[1] + '"');%> />
@@ -213,8 +213,8 @@
 									</td>
 									<td>
 										<div align="center">
-											<select name="divisionOfficeDropdown" class="menulist"
-												id="divisionOfficeDropdown">
+											<select name="divisionOfficeDropdown2" class="menulist"
+												id="divisionOfficeDropdown2">
 												<option></option>
 												<%
 													for (int i = 0; i < dList.size(); i++) {
@@ -238,7 +238,7 @@
 									<td>
 										<div align="center">
 											<label for="designation_1"></label> <input type="text"
-												name="designation" id="designation_1"
+												name="designation3" id="designation_3"
 												<%String designation3OK = (String) request.getAttribute("designation3OK");
 			if (designation != null && designation.length > 2 && !designation[2].isEmpty()) {
 				out.print("value=" + '"' + designation[2] + '"');
@@ -247,7 +247,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<input name="employeeNo" type="text" id="employeeNo._1"
+											<input name="employeeNo3" type="text" id="employeeNo._3"
 												size="4" <%%>
 												<%if (employeeNo != null && employeeNo[2] != null && !employeeNo[2].isEmpty())
 				out.print("value=" + '"' + employeeNo[2] + '"');%> />
@@ -255,8 +255,8 @@
 									</td>
 									<td>
 										<div align="center">
-											<select name="divisionOfficeDropdown" class="menulist"
-												id="divisionOfficeDropdown">
+											<select name="divisionOfficeDropdown3" class="menulist"
+												id="divisionOfficeDropdown3">
 												<option></option>
 												<%
 													for (int i = 0; i < dList.size(); i++) {
@@ -280,7 +280,7 @@
 									<td>
 										<div align="center">
 											<label for="designation_1"></label> <input type="text"
-												name="designation" id="designation_1"
+												name="designation4" id="designation_4"
 												<%String designation4OK = (String) request.getAttribute("designation4OK");
 			if (designation != null && designation.length > 2 && !designation[3].isEmpty()) {
 				out.print("value=" + '"' + designation[3] + '"');
@@ -289,7 +289,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<input name="employeeNo" type="text" id="employeeNo._1"
+											<input name="employeeNo4" type="text" id="employeeNo._4"
 												size="4" <%%>
 												<%if (employeeNo != null && employeeNo[3] != null && !employeeNo[3].isEmpty())
 				out.print("value=" + '"' + employeeNo[3] + '"');%> />
@@ -297,8 +297,8 @@
 									</td>
 									<td>
 										<div align="center">
-											<select name="divisionOfficeDropdown" class="menulist"
-												id="divisionOfficeDropdown">
+											<select name="divisionOfficeDropdown4" class="menulist"
+												id="divisionOfficeDropdown4">
 												<option></option>
 												<%
 													for (int i = 0; i < dList.size(); i++) {
@@ -323,7 +323,7 @@
 									<td>
 										<div align="center">
 											<label for="designation_1"></label> <input type="text"
-												name="designation" id="designation_1"
+												name="designation5" id="designation_5"
 												<%String designation5OK = (String) request.getAttribute("designation5OK");
 			if (designation != null && designation.length > 2 && !designation[4].isEmpty()) {
 				out.print("value=" + '"' + designation[4] + '"');
@@ -332,7 +332,7 @@
 									</td>
 									<td>
 										<div align="center">
-											<input name="employeeNo" type="text" id="employeeNo._1"
+											<input name="employeeNo5" type="text" id="employeeNo._5"
 												size="4" <%%>
 												<%if (employeeNo != null && employeeNo[4] != null && !employeeNo[4].isEmpty())
 				out.print("value=" + '"' + employeeNo[4] + '"');%> />
@@ -340,8 +340,8 @@
 									</td>
 									<td>
 										<div align="center">
-											<select name="divisionOfficeDropdown" class="menulist"
-												id="divisionOfficeDropdown">
+											<select name="divisionOfficeDropdown5" class="menulist"
+												id="divisionOfficeDropdown5">
 												<option></option>
 
 												<%
