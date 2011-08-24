@@ -113,19 +113,19 @@
 								<td>&nbsp;</td>
 								<td>${line.item.price}</td>
 								<td><input name="q1" type="text"
-									class="required" id="qty1" size="2" maxlength="8" />
+									class="required" id="qty1" size="2" maxlength="8" value="${line.quantityQuarter1}"/>
 							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q2" type="text"
-									class="required" id="qty2" size="2" maxlength="8" />
+									class="required" id="qty2" size="2" maxlength="8" value="${line.quantityQuarter2}"/>
 							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q3" type="text"
-									class="required" id="qty3" size="2" maxlength="8" />
+									class="required" id="qty3" size="2" maxlength="8" value="${line.quantityQuarter3}"/>
 							  </td>
 								<td>&nbsp;</td>
 								<td><input name="q4" type="text"
-									class="required" id="qty4" size="2" maxlength="8" />
+									class="required" id="qty4" size="2" maxlength="8" value="${line.quantityQuarter4}"/>
 							  </td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

@@ -42,7 +42,6 @@ public class APPUtility extends AbstractFormUtility implements FormUtility {
 		if (!(ob instanceof APP || ob2 instanceof APP)) {
 			String retain = (String) request.getParameter("retain");
 			if (retain == null) {
-				System.out.println("cleaned!");
 				request.getSession().removeAttribute("form");
 				request.removeAttribute("form");
 			}

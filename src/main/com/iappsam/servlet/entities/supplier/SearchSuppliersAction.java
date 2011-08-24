@@ -29,8 +29,16 @@ public class SearchSuppliersAction implements Action {
 		List<Supplier> suppliers = new ArrayList<Supplier>();
 		String searchField = request.getParameter("searchField");
 		SupplierSearcher searcher = new SupplierSearcher();
-		if (Validator.validField(searchField))
-			suppliers = searcher.search(searchField);
+		if (Validator.validField(searchField)){
+			List<Supplier>s = searcher.search(searchField);
+			List<Supplier>u = new ArrayList<Supplier>();
+			for(Supplier su: s){
+				if(!u.contains(su))
+					u.add(su);
+			}
+			
+			suppliers = u;
+		}
 		else
 			try {
 				suppliers = sManager.getAllSuppliers();

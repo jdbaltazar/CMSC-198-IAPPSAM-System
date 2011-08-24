@@ -271,11 +271,23 @@ public class RIS implements Form {
 		int req = 0;
 		int issued = 0;
 		try {
-			req = Integer.parseInt(quantityReq);
-			issued = Integer.parseInt(quantityIssued);
+			req = checkNum(quantityReq);
+			issued = checkNum(quantityIssued);
 		} catch (Exception e) {
 		}
 		addLine(item, req, issued, remarks);
+	}
+	
+	private int checkNum(String value) {
+		int num;
+		try {
+			num = Integer.parseInt(value);
+			if (num < 0)
+				return 0;
+		} catch (Exception e) {
+			return 0;
+		}
+		return num;
 	}
 
 	@Override

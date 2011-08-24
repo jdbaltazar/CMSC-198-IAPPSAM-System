@@ -60,19 +60,37 @@ public class PRParser extends FormParser {
 				if (eUC == null || eUC == "")
 					eUC = "0";
 				PRLine line = new PRLine();
-				try {
-					line.setQuantity(Integer.parseInt(q));
-				} catch (Exception e) {
-					line.setQuantity(0);
-				}
+
+				line.setQuantity(checkNum(q));
 				line.setItem(im.getItem(Integer.parseInt(items[i])));
-				try {
-					line.setEstimatedUnitCost(Long.parseLong(eUC));
-				} catch (Exception e) {
-					line.setEstimatedUnitCost(-1);
-				}
+				line.setEstimatedUnitCost(checkNum2(eUC));
+
 				pr.addLine(line);
 			}
 		return pr;
+	}
+
+	private int checkNum(String value) {
+		int num;
+		try {
+			num = Integer.parseInt(value);
+			if (num < 0)
+				return 0;
+		} catch (Exception e) {
+			return 0;
+		}
+		return num;
+	}
+
+	private long checkNum2(String value) {
+		long num;
+		try {
+			num = Long.parseLong(value);
+			if (num < 0)
+				return 0;
+		} catch (Exception e) {
+			return 0;
+		}
+		return num;
 	}
 }

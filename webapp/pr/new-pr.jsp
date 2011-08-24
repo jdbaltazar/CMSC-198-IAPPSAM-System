@@ -108,7 +108,7 @@
 									<td width="41%">${line.item.description}</td>
 									<td width="21%">${line.item.stockNumber}</td>
 									<td width="13%"><input type="text" name="estUnitCost"
-										id="estUnitCost" size="5" maxlength="11" />
+										id="estUnitCost" size="5" maxlength="11" value="${line.estimatedUnitCost}"/>
 									</td>
 									<td>&nbsp;</td>
 								</tr>

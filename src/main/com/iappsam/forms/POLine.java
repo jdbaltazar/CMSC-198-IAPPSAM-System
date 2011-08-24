@@ -34,7 +34,7 @@ public class POLine implements Serializable, Validatable {
 
 	@Column(name = "quantity")
 	private int quantity;
-	
+
 	public POLine() {
 		super();
 	}
@@ -47,10 +47,19 @@ public class POLine implements Serializable, Validatable {
 	}
 
 	private void setQuantity(String quantity) {
+		setQuantity(checkNum(quantity));
+	}
+
+	private int checkNum(String value) {
+		int num;
 		try {
-			setQuantity(Integer.parseInt(quantity));
+			num = Integer.parseInt(value);
+			if (num < 0)
+				return 0;
 		} catch (Exception e) {
+			return 0;
 		}
+		return num;
 	}
 
 	public int getQuantity() {
@@ -122,7 +131,7 @@ public class POLine implements Serializable, Validatable {
 
 	@Override
 	public boolean validate() {
-		if(quantity<0)
+		if (quantity < 0)
 			quantity = 0;
 		return item != null && item.validate() && po != null && quantity > 0;
 	}

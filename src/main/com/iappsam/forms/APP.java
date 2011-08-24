@@ -109,29 +109,25 @@ public class APP implements Form {
 		int quantity2 = 0;
 		int quantity3 = 0;
 		int quantity4 = 0;
-		try {
-			quantity1 = Integer.parseInt(q1);
-		} catch (Exception e) {
-			quantity1 = -1;
-		}
-		try {
-			quantity2 = Integer.parseInt(q2);
-		} catch (Exception e) {
-			quantity2 = -1;
-		}
-		try {
-			quantity3 = Integer.parseInt(q3);
-		} catch (Exception e) {
-			quantity3 = -1;
-		}
 
-		try {
-			quantity4 = Integer.parseInt(q4);
-		} catch (Exception e) {
-			quantity4 = -1;
-		}
-		
+		quantity1 = checkNum(q1);
+		quantity2 = checkNum(q2);
+		quantity3 = checkNum(q3);
+		quantity4 = checkNum(q4);
+
 		addLine(item, quantity1, quantity2, quantity3, quantity4);
+	}
+
+	private int checkNum(String value) {
+		int num;
+		try {
+			num = Integer.parseInt(value);
+			if (num < 0)
+				return 0;
+		} catch (Exception e) {
+			return 0;
+		}
+		return num;
 	}
 
 	public void removeLine(APPLine line) {
@@ -227,7 +223,7 @@ public class APP implements Form {
 
 		for (APPLine line : lines)
 			validLines &= line.validate();
-				
+
 		return validYear && validDivisionOffice && validPreparedBy && validRecommendedBy && validLines;
 	}
 

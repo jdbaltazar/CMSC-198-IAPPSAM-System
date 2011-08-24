@@ -63,11 +63,19 @@ public class IELine implements Serializable, Validatable {
 	}
 
 	private void setQuantity(String quantity2) {
+		setQuantity(checkNum(quantity2));
+	}
+
+	private int checkNum(String value) {
+		int num;
 		try {
-			setQuantity(Integer.parseInt(quantity2));
+			num = Integer.parseInt(value);
+			if (num < 0)
+				return 0;
 		} catch (Exception e) {
-			setQuantity(0);
+			return 0;
 		}
+		return num;
 	}
 
 	public int getId() {

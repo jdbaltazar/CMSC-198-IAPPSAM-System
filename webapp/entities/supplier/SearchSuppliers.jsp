@@ -14,7 +14,6 @@
 <%
 	List<Supplier> suppliers = (List<Supplier>) request.getAttribute("suppliers");
 	String searchField = (String) request.getAttribute("searchField");
-	System.out.println("s: "+searchField);
 	
 	if (searchField == null)
 		searchField = "";
