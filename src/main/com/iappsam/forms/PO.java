@@ -266,10 +266,19 @@ public class PO implements Form {
 	}
 
 	public void setAmount(String amountParam) {
+		setAmount(checkNum(amountParam));
+	}
+
+	private float checkNum(String value) {
+		float num;
 		try {
-			setAmount(Float.parseFloat(amountParam));
+			num = Float.parseFloat(value);
+			if (num < 0)
+				return 0;
 		} catch (Exception e) {
+			return 0;
 		}
+		return num;
 	}
 
 	private void setAmount(float amount) {
@@ -407,13 +416,14 @@ public class PO implements Form {
 		boolean validAccountantDate = accountantDate != null;
 		boolean validDean = dean != null && dean.validate();
 		boolean validDeanDate = deanDate != null;
+		boolean validAmount = amount >= 0;
 		boolean validLines = !lines.isEmpty();
 
 		for (POLine line : lines)
 			validLines &= line.validate();
 
 		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
-				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validLines;
+				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validAmount && validLines;
 	}
 
 	@Override

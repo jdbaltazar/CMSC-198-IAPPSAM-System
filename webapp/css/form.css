@@ -387,3 +387,15 @@ font-weight:bold;
 	width:120px;
 	padding:4px;
 }
+
+.help{
+	text-align:right;
+	font-family:Lucida "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:14px;
+	text-decoration:none;
+	color:#030;
+}
+
+.help a:hover{
+	text-decoration:underline;
+}

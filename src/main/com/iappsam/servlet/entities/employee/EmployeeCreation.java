@@ -112,7 +112,6 @@ public class EmployeeCreation extends HttpServlet {
 			}
 		}
 		if (!name.isEmpty() && designation != null && !isFail && entryFormatter.check(name)) {
-			System.out.println("Designation Lenght:" + designation.length);
 			acceptResponse(request, response);
 		} else {
 			failedResponse(request, response);
