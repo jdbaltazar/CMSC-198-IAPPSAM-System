@@ -2,7 +2,7 @@ package com.iappsam;
 
 public enum AccountType {
 
-	SYSTEM_ADMIN("System Administrator"), SPSO_PERSONNEL("SPSO Personnel");
+	SPSO_PERSONNEL("SPSO Personnel");
 
 	private String name;
 

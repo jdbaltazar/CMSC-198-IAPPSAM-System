@@ -45,7 +45,6 @@
 	<%
 		ArrayList<Person> persons = (ArrayList<Person>) request.getAttribute("persons");
 		AccountType[] accountTypes = AccountType.values();
-		System.out.println(accountTypes.length);
 		String personID = (String) request.getAttribute("personSelect");
 		String username = (String) request.getAttribute("username");
 		String accountType = (String) request.getAttribute("accounttype");
@@ -96,7 +95,6 @@
 										<%
 											int i = 0;
 											for (Person p : persons) {
-												System.out.println(p.getName());
 										%>
 
 										<option value="<%=p.getId()%>" <%if (("" + p.getId()).equals(personID)) {%> selected="selected" <%}%>><%=p.getName()%></option>

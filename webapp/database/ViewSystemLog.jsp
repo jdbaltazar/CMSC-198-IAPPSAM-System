@@ -58,7 +58,7 @@
 
 			<tr>
 				<td class="tableheaders_forms">Date</td>
-				<td class="tableheaders_forms">Activities</td>
+				<td class="tableheaders_forms">Action</td>
 			</tr>
 			<%
 				int i = 0;

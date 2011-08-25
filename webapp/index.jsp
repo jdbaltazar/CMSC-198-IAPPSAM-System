@@ -38,14 +38,14 @@
 							can span across multiple other departments/ offices in UPVTC. <br />
 							<br />
 						</p>
-						<p>Please type the Username and password given to you in the
+						<p>Please type the username and password given to you in the
 							appropriate Username and Password boxes at the right then click
 							on the &quot;Enter&quot; button to enter the main menu page.</p>
 						<p>&nbsp;</p>
 						<p>
-							<strong>[This site is BEST viewed using <a
+							[This site is best viewed using <a
 								href="http://www.google.com/chrome/intl/fil/landing_chrome.html?hl=fil"
-								title="Get Google Chrome" target="_new">Google Chrome</a>]</strong>
+								title="Get Google Chrome" target="_new">Google Chrome</a>]
 						</p>
 					</div>
 				</td>

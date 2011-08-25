@@ -31,8 +31,6 @@ public class ViewEmployeeAction implements Action {
 		String landline = "";
 		String email = "";
 
-		System.out.println("personID: " + personID);
-
 		PersonManager pManager = new PersonManagerSession();
 		Person person;
 		try {

@@ -192,7 +192,6 @@
 
 									String[] employeeNo = (String[]) request.getAttribute("employeeNo");
 									for (; j < 5; j++) {
-										System.out.println("Value of J:" + j);
 								%>
 								<tr>
 									<td>

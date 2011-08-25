@@ -26,9 +26,7 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 	private EntryFormatter entryFormatter = new EntryFormatter();
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String personID = request.getParameter("personID");
-		System.out.println("Person ID:"+personID);
 		String password = request.getParameter("password");
-		System.out.println("Password:"+password);
 		String reenterPassword = request.getParameter("reenterPassword");
 		String acctType = request.getParameter("accountType");
 		String userName = entryFormatter.spaceTrimmer(request.getParameter("username"));
@@ -43,8 +41,6 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				account.setPerson(p);
 				if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN.toString())) {
-					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				AccountManager aManager = new AccountManagerSession();
 				aManager.addAccount(account);
@@ -84,7 +80,6 @@ public class SaveAccountForExistingEmployeeAction implements Action{
 				dontAdd = false;
 			}
 
-			System.out.println("AvailablePersons" + availablePersons.size());
 			request.setAttribute("persons", availablePersons);
 			request.setAttribute("personSelect", personID);
 			request.setAttribute("username", entryFormatter.spaceTrimmer(userName));

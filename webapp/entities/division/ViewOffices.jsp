@@ -98,7 +98,10 @@
 
 						<tr
 							<%if (i % 2 == 0)
-					out.print("class=\"tablerow_1\"");%>>
+					out.print("class=\"tablerow_1\"");
+					else
+						out.print("class=\"tablerow_2\"");
+					%>>
 							<td align="center"><%=office.getOfficeName()%></td>
 							<td>
 								<form id="form3" name="form3" method="get"

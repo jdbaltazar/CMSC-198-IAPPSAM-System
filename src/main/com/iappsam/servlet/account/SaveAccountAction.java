@@ -147,8 +147,6 @@ public class SaveAccountAction implements Action {
 					entry.spaceTrimmer(designation.get(i)));
 			employeeNo.get(i).replaceAll(employeeNo.get(i),
 					entry.spaceTrimmer(employeeNo.get(i)));
-			System.out.println("Designation No"+i+":"+designation.get(i));
-			System.out.println("Employee No"+i+":"+employeeNo.get(i));
 		}
 		for (int i = 0; i < designation.size(); i++) {
 			if (designation.get(i).isEmpty()
@@ -200,7 +198,6 @@ public class SaveAccountAction implements Action {
 					&& !mobileNumber.isEmpty()) {
 				Contact mobile = new Contact(entry.spaceTrimmer(mobileNumber),
 						ContactType.MOBILE);
-				System.out.println(mobileNumber);
 				person.addContact(mobile);
 			}
 			try {
@@ -247,9 +244,6 @@ public class SaveAccountAction implements Action {
 				if (acctType.equalsIgnoreCase(AccountType.SPSO_PERSONNEL
 						.toString())) {
 					account.setType(AccountType.SPSO_PERSONNEL);
-				} else if (acctType.equalsIgnoreCase(AccountType.SYSTEM_ADMIN
-						.toString())) {
-					account.setType(AccountType.SYSTEM_ADMIN);
 				}
 				aManager.addAccount(account);
 				Logger.log(request, "Account  \"" + username + "\" was added");

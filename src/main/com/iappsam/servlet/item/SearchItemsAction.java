@@ -3,6 +3,7 @@ package com.iappsam.servlet.item;
 import static com.iappsam.servlet.item.ItemAttribute.ITEMS;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,12 @@ public class SearchItemsAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Item> items = searcher.search(request.getParameter(ItemParameter.QUERY));
-		request.setAttribute(ITEMS, items);
+		List<Item> uniqueItems = new ArrayList<Item>();
+		for (Item i : items) {
+			if (!uniqueItems.contains(i))
+				uniqueItems.add(i);
+		}
+		request.setAttribute(ITEMS, uniqueItems);
 		request.setAttribute("query", request.getParameter(ItemParameter.QUERY));
 		request.getRequestDispatcher(ItemServlet.LIST_ITEMS_JSP).forward(request, response);
 	}

@@ -223,9 +223,6 @@ public class UpdateOwnAccountAction implements Action {
 					if (AccountType.SPSO_PERSONNEL.toString().equals(
 							accountType))
 						account.setType(AccountType.SPSO_PERSONNEL);
-					else
-						account.setType(AccountType.SYSTEM_ADMIN);
-
 					aManager.updateAccount(account);
 
 				} catch (Exception e) {

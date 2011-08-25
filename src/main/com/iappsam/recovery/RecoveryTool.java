@@ -140,7 +140,7 @@ public class RecoveryTool extends javax.swing.JFrame {
 			if (jfc.showDialog(this, "Select Database File(.sql)") == javax.swing.JFileChooser.APPROVE_OPTION && jfc.getSelectedFile() != null) {
 				AddLog("Opening file: " + (file = jfc.getSelectedFile()).getAbsoluteFile());
 				loadingThread = new com.iappsam.recovery.util.LoadThread((javax.swing.JFrame) this, true, "Restoring Database.");
-				loadingThread.start();
+				//loadingThread.start();
 				Thread recstart = new Thread(rec);
 				recstart.start();
 			} else
@@ -269,7 +269,7 @@ public class RecoveryTool extends javax.swing.JFrame {
 				PopMsg("Database Restoration Failed. Database File Possibly Invalid.");
 			}
 		}
-		loadingThread.closeLoading();
+		//loadingThread.closeLoading();
 		invoke("insert into log(description) values('Database was restored using the file " + file.getName() + " by " + username + "');");
 
 		AddLog("Reindexing.");

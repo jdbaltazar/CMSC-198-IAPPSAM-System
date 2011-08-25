@@ -196,15 +196,12 @@
 										</div></td>
 								</tr>
 								<%
-								System.out.println("Value of I:"+i);
 									j = i+1;
 									}
 									String[] designation = (String[]) request
 											.getAttribute("designation");
 
 									String[] employeeNo = (String[]) request.getAttribute("employeeNo");
-									for (; j < 5; j++) {
-										System.out.println("Value of J:"+j);
 								%>
 								<tr>
 									<td>

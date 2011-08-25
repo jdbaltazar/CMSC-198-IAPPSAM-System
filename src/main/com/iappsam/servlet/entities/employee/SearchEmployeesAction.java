@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.iappsam.Employee;
 import com.iappsam.Person;
+import com.iappsam.Supplier;
 import com.iappsam.managers.PersonManager;
+import com.iappsam.managers.SupplierManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.managers.sessions.PersonManagerSession;
+import com.iappsam.managers.sessions.SupplierManagerSession;
 import com.iappsam.search.EmployeeSearcher;
 import com.iappsam.servlet.Action;
 
@@ -78,6 +81,19 @@ public class SearchEmployeesAction implements Action {
 					if (upEmployee)
 						persons.add(p);
 				}
+			}
+
+			SupplierManager sManager = new SupplierManagerSession();
+			List<Supplier> spplrs = new ArrayList<Supplier>();
+			try {
+				spplrs = sManager.getAllSuppliers();
+			} catch (TransactionException e1) {
+				e1.printStackTrace();
+			}
+
+			for (Supplier s : spplrs) {
+				if (dummy.contains(s.getContactPerson().getPerson()))
+					dummy.remove(s.getContactPerson().getPerson());
 			}
 
 			request.setAttribute("persons", dummy);
