@@ -24,12 +24,12 @@
 	<p>&nbsp;</p>
 	<table width="100%" border="0" cellspacing="0">
 		<tr>
-			<td width="32%">&nbsp;</td>
+			<td width="32%"><a href="help.html" target="_new" class="help"><img src="images/HelpIcon.gif" width="13" height="16" /> Help</a></td>
 			<td width="68%"><form id="form2" name="form2" method="post"
 					action="logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form></td>
+				</form> </td>
 		</tr>
 		<tr>
 			<td class="welcomeNote">Welcome, ${account.username}!</td>

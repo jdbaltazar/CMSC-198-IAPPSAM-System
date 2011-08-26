@@ -206,7 +206,6 @@ public class EmployeeUpdate extends HttpServlet {
 					}
 
 				List<Employee> empList = pManager.getEmployeeByPerson(person.getId());
-				System.out.println("EmployeeList Number:" + empList.size());
 				for (int i = 0; i < designation.length; i++) {
 					if (designation[i].isEmpty())
 						continue;
