@@ -8,7 +8,6 @@ public class EntryFormatter {
 	}
 
 	public boolean check(String entry) {
-		System.out.println("Entry:" + entry);
 		AlphaNumeric[] aN = AlphaNumeric.values();
 		ArrayList<String> alpha = new ArrayList<String>();
 
@@ -19,7 +18,6 @@ public class EntryFormatter {
 			return false;
 		for (int i = 0; i < entry.length(); i++) {
 			if (!alpha.contains("" + entry.charAt(i)) && (!("" + entry.charAt(i)).equalsIgnoreCase(" "))) {
-				System.out.println("Error Occoured at letterNo:" + i + ":" + entry.charAt(i) + ":");
 				return false;
 			}
 		}
