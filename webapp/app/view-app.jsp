@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,25 +28,19 @@
 	<table width="100%" border="0" cellspacing="0">
 		<tr>
 			<td width="32%">&nbsp;</td>
-			<td width="68%"><form id="form2" name="form2" method="post"
-					action="/logout">
-					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
-						value="Logout" />
+			<td width="68%"><form id="form2" name="form2" method="post" action="/logout">
+					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn" value="Logout" />
 				</form>
 			</td>
 		</tr>
 		<tr>
-			<td id="navigation"><a href="../menu" target="_top"
-				class="links">Main Menu</a> &gt; <a href="/app" target="_top"
-				class="links">APP List</a> &gt; <em><strong>View APP</strong> </em><strong></strong>
+			<td id="navigation"><a href="../menu" target="_top" class="links">Main Menu</a> &gt; <a href="/app" target="_top" class="links">APP List</a> &gt; <em><strong>View APP</strong> </em><strong></strong>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<div id="export">
-		<span class="exportlabel_2">O</span><span class="exportlabel"
-			style="font-weight: bold;">Export:</span> <a href="/app?export=pdf">PDF</a>
-		<a href="/app?export=xls">Excel</a>
+		<span class="exportlabel_2">O</span><span class="exportlabel" style="font-weight: bold;">Export:</span> <a href="/app?export=pdf">PDF</a> <a href="/app?export=xls">Excel</a>
 	</div>
 
 	<div id="items_table">
@@ -91,12 +84,10 @@ var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantit
 									</Script></td>
 								<td>${line.item.price}</td>
 								<td>${line.quantityQuarter1}</td>
-								<Script Language="JavaScript">
-  var amount1 = ${line.quantityQuarter1}*${line.item.price};
-</Script>
-								<td><Script Language="JavaScript">
-  													document.write(amount1);
-									</Script></td>
+								<td><script>
+ 	 var amount1 = ${line.quantityQuarter1}*${line.item.price};
+  										document.write(amount1);
+									</script></td>
 								<td>${line.quantityQuarter2}</td>
 								<Script Language="JavaScript">
   var amount2 = ${line.quantityQuarter2}*${line.item.price};
@@ -136,8 +127,7 @@ var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantit
 				<td class="same_width">&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2"><table width="35%" border="0" align="center"
-						cellspacing="0">
+				<td colspan="2"><table width="35%" border="0" align="center" cellspacing="0">
 						<tr>
 							<td class="other_fields_label">Year:</td>
 							<td class="right_side_table">${form.year }</td>

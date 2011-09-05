@@ -75,13 +75,7 @@
 									<td width="50%">${line.item.description}</td>
 									<td width="7%">${line.quantity}</td>
 									<td width="9%">${line.item.price}</td>
-<Script Language="JavaScript">
-  var amount = ${line.quantity}*${line.item.price};
-</Script>
-									<td width="12%"><Script Language="JavaScript">
-  													document.write(amount);
-													</Script>
-									</td>
+									<td width="12%">${line.amount}</td>
 								</tr>
 							</c:forEach>
 						</table></td>
