@@ -36,8 +36,8 @@ public class APPReport extends AbstractReport {
 
 	@Override
 	protected String[] getColumnTitles() {
-		return new String[] { "stock_number", "description", "unit", "quantity", "price", "quarter1_quantity", "quarter1_amount", "quarter2_quantity",
-				"quarter2_amount", "quarter3_quantity", "quarter3_amount", "quarter4_quantity", "quarter4_amount", "total_amount" };
+		return new String[] { "Stock No.", "ARTICLES and SPECIFICATIONS", "Unit", "Qty.", "Price", "1stQ Qty.", "1stQ Amount", "2ndQ Qty.",
+				"2ndQ Amount", "3rdQ Qty.", "3rdQ Amount", "4thQ Qty.", "4thQ Amount", "Total Amount" };
 	}
 
 	@Override
@@ -45,10 +45,15 @@ public class APPReport extends AbstractReport {
 		propertyMap.put("YEAR", app.getYear() + "");
 		propertyMap.put("PLAN_CONTROL_NUMBER", app.getPlanControlNumber() == null ? "" : app.getPlanControlNumber());
 		propertyMap.put("DATE_SCHEDULED", app.getDateScheduled() == null ? "" : app.getDateScheduled().toString());
-		propertyMap.put("OFFICE", app.getDivisionOffice() + "");
-		propertyMap.put("PREPARED_BY", app.getPreparedBy().getPerson() + "");
-		propertyMap.put("RECOMMENDED_BY", app.getRecommendedBy().getPerson() + "");
+		propertyMap.put("DEPARTMENT/OFFICE", app.getDivisionOffice() + "");
+		propertyMap.put("PREPARED_BY_NAME", app.getPreparedBy().getPerson() + "");
+		propertyMap.put("PREPARED_BY_DESIGNATION", app.getPreparedBy().getDesignation());
+		propertyMap.put("RECOMMENDED_BY_NAME", app.getRecommendedBy().getPerson() + "");
+		propertyMap.put("RECOMMENDED_BY_DESIGNATION", app.getRecommendedBy().getDesignation());
+		propertyMap.put("1stQ_TOTAL", app.get1stQuarterTotal() + "");
+		propertyMap.put("2ndQ_TOTAL", app.get2ndQuarterTotal() + "");
+		propertyMap.put("3rdQ_TOTAL", app.get3rdQuarterTotal() + "");
+		propertyMap.put("4thQ TOTAL", app.get4thQuarterTotal() + "");
+		propertyMap.put("GRAND_TOTAL_AMOUNT", app.getTotal() + "");
 	}
-
-	
 }

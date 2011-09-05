@@ -80,6 +80,51 @@ public class APP implements Form {
 		return year;
 	}
 
+	public float get1stQuarterTotal() {
+
+		float total = 0;
+		for (APPLine line : lines)
+			total += line.getAmount1();
+
+		return total;
+	}
+
+	public float get2ndQuarterTotal() {
+
+		float total = 0;
+		for (APPLine line : lines)
+			total += line.getAmount2();
+
+		return total;
+	}
+
+	public float get3rdQuarterTotal() {
+
+		float total = 0;
+		for (APPLine line : lines)
+			total += line.getAmount3();
+
+		return total;
+	}
+
+	public float get4thQuarterTotal() {
+
+		float total = 0;
+		for (APPLine line : lines)
+			total += line.getAmount4();
+
+		return total;
+	}
+
+	public float getTotal() {
+		float total = 0;
+
+		for (APPLine line : lines)
+			total += line.getAmount();
+
+		return total;
+	}
+
 	public String getPlanControlNumber() {
 		return planControlNumber;
 	}
