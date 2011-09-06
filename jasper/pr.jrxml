@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pr" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.6528925619834711"/>
+	<property name="ireport.x" value="92"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
@@ -155,14 +155,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$P{Department}]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement mode="Transparent" x="-95" y="-121" width="58" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
-						<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[  Section:]]></text>
-				</staticText>
 				<textField>
 					<reportElement mode="Transparent" x="58" y="24" width="86" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
@@ -496,20 +488,20 @@
 				<textFieldExpression><![CDATA[$P{APPROVED_BY_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="36" width="257" height="12"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{REQUESTED_BY_NAME}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="110" y="48" width="257" height="12"/>
+				<reportElement style="table" x="110" y="48" width="257" height="12"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{REQUESTED_BY_DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="110" y="36" width="257" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REQUESTED_BY_NAME}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

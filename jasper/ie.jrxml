@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ie" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.0245201830476063"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.6500000000000106"/>
+	<property name="ireport.x" value="557"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
@@ -119,8 +119,118 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="85" splitType="Stretch">
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="78" width="50" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[UNIT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="92" width="104" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PREPARED BY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="106" width="104" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DATE PREPARED:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="518" y="78" width="66" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BUILDING:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="518" y="92" width="87" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DESIGNATION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="518" y="106" width="66" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PAGE NO.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="670" y="106" width="131" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTAL NO. OF PAGES:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="50" y="78" width="468" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Unit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="104" y="106" width="414" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Date Prepared}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="584" y="78" width="384" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BUILDING}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="104" y="92" width="414" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Prepared by NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="605" y="92" width="363" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Prepared by DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="584" y="106" width="86" height="14"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="801" y="106" width="167" height="14"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="968" height="10"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -144,128 +254,21 @@
 				<text><![CDATA[Supply and Property Services Office]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="47" width="968" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+				<reportElement mode="Transparent" x="0" y="33" width="968" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[INVENTORY OF EQUIPMENT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="60" width="968" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+				<reportElement mode="Transparent" x="0" y="60" width="968" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[SEMI-EXPENDABLE AND NON-EXPENDABLE PROPERTY]]></text>
 			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="42" splitType="Stretch">
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="0" width="50" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[UNIT:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="14" width="104" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[PREPARED BY:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="28" width="104" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[DATE PREPARED:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="518" y="0" width="66" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[BUILDING:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="518" y="14" width="85" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[DESIGNATION:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="518" y="28" width="66" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[PAGE NO.:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="670" y="28" width="131" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[TOTAL NO. OF PAGES:]]></text>
-			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="50" y="0" width="486" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Unit}]]></textFieldExpression>
-			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement mode="Transparent" x="104" y="28" width="432" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Date Prepared}]]></textFieldExpression>
-			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement mode="Transparent" x="584" y="0" width="384" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{BUILDING}]]></textFieldExpression>
-			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement mode="Transparent" x="104" y="14" width="432" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Prepared by NAME}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement mode="Transparent" x="603" y="14" width="365" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Prepared by DESIGNATION}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="584" y="28" width="86" height="14"/>
-				<textElement>
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -383,7 +386,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Property Number}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Property Number}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="68" y="0" width="193" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -391,7 +394,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{EQUIPMENT PROPERTY}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{EQUIPMENT PROPERTY}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="261" y="0" width="77" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -399,7 +402,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ARTICLE CODE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ARTICLE CODE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="338" y="0" width="61" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -407,7 +410,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{QUANTITY}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{QUANTITY}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="399" y="0" width="59" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -415,7 +418,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{UNIT VALUE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{UNIT VALUE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="458" y="0" width="60" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -423,7 +426,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{TOTAL VALUE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{TOTAL VALUE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="518" y="0" width="51" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -431,7 +434,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{YEAR Acquired}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{YEAR Acquired}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="569" y="0" width="68" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -439,7 +442,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{HOW ACQUIRED}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{HOW ACQUIRED}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="637" y="0" width="70" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -447,7 +450,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{PRESENT CONDITION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRESENT CONDITION}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="707" y="0" width="94" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -455,7 +458,7 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{PERSON ACCOUNTABLE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PERSON ACCOUNTABLE}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="801" y="0" width="167" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -463,14 +466,14 @@ REMARKS]]></text>
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{REMARKS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{REMARKS}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<summary>
-		<band height="143" splitType="Stretch">
+	<pageFooter>
+		<band height="132">
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="55" width="68" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="0" y="57" width="68" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -478,30 +481,7 @@ REMARKS]]></text>
 				<text><![CDATA[Witnessed by:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="13" width="68" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Prepared by:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="68" y="13" width="270" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Prepared by NAME}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="399" y="13" width="103" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Counterchecked by:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="399" y="55" width="59" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="399" y="57" width="59" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -509,7 +489,7 @@ REMARKS]]></text>
 				<text><![CDATA[N O T E D :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="707" y="68" width="94" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="707" y="57" width="94" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -517,83 +497,105 @@ REMARKS]]></text>
 				<text><![CDATA[Witnessed by:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="68" y="26" width="270" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Times New Roman" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Prepared by DESIGNATION}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="68" y="55" width="270" height="13"/>
+				<reportElement x="68" y="57" width="270" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{MEMBER_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="68" y="68" width="270" height="13"/>
+				<reportElement x="68" y="70" width="270" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{MEMBER_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="68" y="81" width="270" height="13"/>
+				<reportElement x="68" y="104" width="270" height="13"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER2_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{MEMBER2_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="68" y="94" width="270" height="13"/>
+				<reportElement x="68" y="117" width="270" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{MEMBER2_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{MEMBER2_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="502" y="13" width="135" height="13"/>
+				<reportElement x="458" y="57" width="179" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{COUNTER_CHECK_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{NOTED_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="502" y="26" width="135" height="13"/>
+				<reportElement x="458" y="70" width="179" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{COUNTER_CHECK_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{NOTED_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="458" y="55" width="179" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="801" y="70" width="167" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{NOTED_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{COA_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="458" y="68" width="179" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="801" y="83" width="167" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{NOTED_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{COA_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="801" y="68" width="148" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="10" isBold="true"/>
+				<reportElement x="68" y="5" width="270" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{COA_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Prepared by NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="801" y="81" width="148" height="13"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="8"/>
+				<reportElement x="68" y="18" width="270" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{COA_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Prepared by DESIGNATION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="5" width="68" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Prepared by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="399" y="5" width="119" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Counterchecked by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="518" y="5" width="189" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COUNTER_CHECK_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="518" y="18" width="189" height="13"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{COUNTER_CHECK_DESIGNATION}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</pageFooter>
 </jasperReport>

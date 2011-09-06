@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="app" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="32"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
 		<box>
@@ -144,7 +144,7 @@
 					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{YEAR}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{YEAR}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -164,15 +164,17 @@
 					<reportElement x="0" y="13" width="101" height="13"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="11"/>
+						<paragraph rightIndent="5"/>
 					</textElement>
-					<text><![CDATA[Plan Control No.:    ]]></text>
+					<text><![CDATA[Plan Control No.:]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="0" y="39" width="101" height="13"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="Times New Roman" size="11"/>
+						<paragraph rightIndent="5"/>
 					</textElement>
-					<text><![CDATA[Department/Office:   ]]></text>
+					<text><![CDATA[Department/Office:]]></text>
 				</staticText>
 				<textField pattern="" isBlankWhenNull="false">
 					<reportElement mode="Transparent" x="101" y="13" width="353" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -180,7 +182,7 @@
 						<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{PLAN_CONTROL_NUMBER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{PLAN_CONTROL_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField pattern="" isBlankWhenNull="false">
 					<reportElement mode="Transparent" x="101" y="39" width="353" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -188,7 +190,7 @@
 						<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{DEPARTMENT/OFFICE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{DEPARTMENT/OFFICE}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<staticText>
@@ -239,7 +241,7 @@
 						<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{DATE_SCHEDULED}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{DATE_SCHEDULED}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
@@ -424,7 +426,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ARTICLES and SPECIFICATIONS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ARTICLES and SPECIFICATIONS}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="360" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -432,7 +434,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Unit}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Unit}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="413" y="0" width="41" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -440,7 +442,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Qty.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Qty.}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="454" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -448,7 +450,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Price}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="507" y="0" width="35" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -456,7 +458,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{1stQ Qty.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{1stQ Qty.}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="542" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -464,7 +466,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{1stQ Amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{1stQ Amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="595" y="0" width="35" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -472,7 +474,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{2ndQ Qty.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{2ndQ Qty.}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="859" y="0" width="109" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -480,7 +482,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Total Amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Total Amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="630" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -488,7 +490,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{2ndQ Amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{2ndQ Amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="683" y="0" width="35" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -496,7 +498,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{3rdQ Qty.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{3rdQ Qty.}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="718" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -504,7 +506,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{3rdQ Amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{3rdQ Amount}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="771" y="0" width="35" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -512,7 +514,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{4thQ Qty.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{4thQ Qty.}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="806" y="0" width="53" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -520,14 +522,14 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{4thQ Amount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{4thQ Amount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="0" y="0" width="101" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Stock No.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Stock No.}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -564,9 +566,9 @@
 				<reportElement style="table" mode="Transparent" x="0" y="0" width="507" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-					<paragraph lineSpacing="Single"/>
+					<paragraph lineSpacing="Single" rightIndent="5"/>
 				</textElement>
-				<text><![CDATA[TOTAL AMOUNT      ]]></text>
+				<text><![CDATA[TOTAL AMOUNT]]></text>
 			</staticText>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="507" y="0" width="88" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -574,7 +576,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{1stQ_TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{1stQ_TOTAL}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="595" y="0" width="88" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -582,7 +584,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{2ndQ_TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{2ndQ_TOTAL}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="683" y="0" width="88" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -590,7 +592,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{3rdQ_TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{3rdQ_TOTAL}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="771" y="0" width="88" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -598,7 +600,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{4thQ TOTAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{4thQ TOTAL}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement style="table" mode="Transparent" x="859" y="0" width="109" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -606,7 +608,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{GRAND_TOTAL_AMOUNT}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{GRAND_TOTAL_AMOUNT}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="101" y="70" width="259" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -614,7 +616,7 @@
 					<font fontName="Times New Roman" size="11" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{PREPARED_BY_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{PREPARED_BY_NAME}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="101" y="85" width="259" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -622,7 +624,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{PREPARED_BY_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{PREPARED_BY_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="683" y="70" width="285" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -630,7 +632,7 @@
 					<font fontName="Times New Roman" size="11" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{RECOMMENDED_BY_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{RECOMMENDED_BY_NAME}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement mode="Transparent" x="683" y="85" width="285" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -638,7 +640,7 @@
 					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{RECOMMENDED_BY_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{RECOMMENDED_BY_DESIGNATION}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
