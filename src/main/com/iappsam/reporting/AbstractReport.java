@@ -20,7 +20,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 
 public abstract class AbstractReport {
 
-	protected Map<String, String> propertyMap = new HashMap<String, String>();
+	protected Map<String, Object> propertyMap = new HashMap<String, Object>();
 	private String fileName;
 
 	public AbstractReport(String fileName) {

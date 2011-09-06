@@ -3,7 +3,6 @@ package com.iappsam.reporting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iappsam.Item;
 import com.iappsam.forms.RIS;
 import com.iappsam.forms.RISLine;
 
@@ -26,24 +25,9 @@ public class RISReport extends AbstractReport {
 		List<Object[]> objArrays = new ArrayList<Object[]>();
 
 		for (RISLine line : form.getLines())
-			objArrays.add(toArrayObject(line));
+			objArrays.add(line.toArrayObject());
 
 		return objArrays;
-	}
-
-	private Object[] toArrayObject(RISLine line) {
-		List<Object> objs = new ArrayList<Object>();
-
-		Item item = line.getItem();
-		objs.add(item.getStockNumber());
-		objs.add(item.getUnit().getName());
-		objs.add(item.getDescription());
-
-		objs.add(line.getQuantityRequested() + "");
-		objs.add(line.getQuantityIssued() + "");
-		objs.add(line.getRemarks());
-
-		return objs.toArray();
 	}
 
 	@Override

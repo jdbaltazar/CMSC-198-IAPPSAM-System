@@ -88,6 +88,23 @@ public class RIS implements Form {
 		super();
 	}
 
+	public RIS(String risNumber, DivisionOffice divisionOffice, Date risDate, String purpose, Employee requestedBy, Date requestedByDate, Employee approvedBy, Date approvedByDate, Employee issuedBy,
+			Date issuedByDate, Employee receivedBy, Date receivedByDate) {
+		super();
+		this.risNumber = risNumber;
+		this.divisionOffice = divisionOffice;
+		this.risDate = risDate;
+		this.purpose = purpose;
+		this.requestedBy = requestedBy;
+		this.requestedByDate = requestedByDate;
+		this.approvedBy = approvedBy;
+		this.approvedByDate = approvedByDate;
+		this.issuedBy = issuedBy;
+		this.issuedByDate = issuedByDate;
+		this.receivedBy = receivedBy;
+		this.receivedByDate = receivedByDate;
+	}
+
 	public String getRisNumber() {
 		return risNumber;
 	}
@@ -277,7 +294,7 @@ public class RIS implements Form {
 		}
 		addLine(item, req, issued, remarks);
 	}
-	
+
 	private int checkNum(String value) {
 		int num;
 		try {
@@ -309,8 +326,8 @@ public class RIS implements Form {
 		for (RISLine line : lines)
 			validLines &= line.validate();
 
-		return validDivisionOffice && validRISNumber && validRISDate && validPurpose && validRequestedBy && validRequestedDate && validApprovedBy
-				&& validApprovedDate && validIssuedBy && validIssuedDate && validReceivedBy && validReceivedDate && validLines;
+		return validDivisionOffice && validRISNumber && validRISDate && validPurpose && validRequestedBy && validRequestedDate && validApprovedBy && validApprovedDate && validIssuedBy
+				&& validIssuedDate && validReceivedBy && validReceivedDate && validLines;
 	}
 
 	@Override
@@ -370,8 +387,7 @@ public class RIS implements Form {
 		result = prime * result + ((risNumber == null) ? 0 : risNumber.hashCode());
 		result = prime * result + ((saiDate == null) ? 0 : saiDate.hashCode());
 		result = prime * result + ((saiNumber == null) ? 0 : saiNumber.hashCode());
-		
-		
+
 		return result;
 	}
 

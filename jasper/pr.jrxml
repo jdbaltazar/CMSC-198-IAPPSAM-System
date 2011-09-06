@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PR" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pr" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="459"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<style name="table">
@@ -153,7 +153,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{Department}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{Department}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Transparent" x="-95" y="-121" width="58" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -169,7 +169,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{Section}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{Section}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Transparent" x="0" y="24" width="58" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -196,7 +196,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single" leftIndent="5"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{ALOBS No.}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{ALOBS No.}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<frame>
@@ -207,7 +207,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single" leftIndent="5"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{SAI No.}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{SAI No.}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="61" height="12"/>
@@ -234,7 +234,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single" leftIndent="5"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{PR Date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{PR Date}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<frame>
@@ -253,7 +253,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single" leftIndent="5"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{SAI Date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{SAI Date}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<frame>
@@ -272,7 +272,7 @@
 						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single" leftIndent="5"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{ALOBS Date}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{ALOBS Date}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<staticText>
@@ -289,7 +289,7 @@
 					<font fontName="Times New Roman"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{PR_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{PR_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -346,42 +346,42 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Quantity}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Quantity}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="58" y="0" width="52" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Unit of Issue}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Unit of Issue}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="110" y="0" width="257" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Item Description}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Item Description}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="367" y="0" width="60" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Stock No.}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Stock No.}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="427" y="0" width="63" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Unit Cost}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Estimated Unit Cost}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" x="490" y="0" width="65" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Estimated Cost}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Estimated Cost}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -472,7 +472,7 @@
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Dean}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Dean}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="table" x="0" y="0" width="58" height="12"/>
@@ -486,14 +486,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{Purpose}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Purpose}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="table" mode="Opaque" x="367" y="48" width="188" height="12"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{APPROVED_BY_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{APPROVED_BY_DESIGNATION}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="110" y="36" width="257" height="12"/>
@@ -501,7 +501,7 @@
 					<font fontName="Times New Roman"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{REQUESTED_BY_NAME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{REQUESTED_BY_NAME}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="110" y="48" width="257" height="12"/>
@@ -509,7 +509,7 @@
 					<font fontName="Times New Roman"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{REQUESTED_BY_DESIGNATION}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{REQUESTED_BY_DESIGNATION}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
