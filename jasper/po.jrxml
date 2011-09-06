@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="po" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.2396694214876045"/>
+	<property name="ireport.zoom" value="1.1269722013523682"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
@@ -394,7 +394,7 @@
 	</columnHeader>
 	<detail>
 		<band height="12" splitType="Stretch">
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement style="table" mode="Transparent" x="100" y="0" width="51" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -402,7 +402,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Unit}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement style="table" mode="Transparent" x="151" y="0" width="277" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -410,7 +410,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Description}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement style="table" mode="Transparent" x="0" y="0" width="100" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -465,7 +465,7 @@
 				<textField>
 					<reportElement mode="Transparent" x="100" y="0" width="381" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle" rotation="None" markup="none">
-						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{Total Amount in Words}]]></textFieldExpression>

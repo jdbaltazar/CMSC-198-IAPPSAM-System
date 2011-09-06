@@ -95,8 +95,8 @@ public class POLine implements Serializable, Validatable {
 	}
 
 	public float getAmount() {
-		float amount = item.getPrice() * quantity;
-		return amount;
+		double amount = item.getPrice() * quantity;
+		return Float.parseFloat(Double.toString(amount));
 	}
 
 	@Override
