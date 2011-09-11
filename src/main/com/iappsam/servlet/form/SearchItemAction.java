@@ -1,6 +1,7 @@
 package com.iappsam.servlet.form;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -24,10 +25,16 @@ public class SearchItemAction implements Action {
 
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Item> items = searcher.search(request.getParameter("q"));
+		List<Item> all = searcher.search(request.getParameter("q"));
+		List<Item> items = new ArrayList<Item>();
+		for (Item i : all) {
+			if (!items.contains(i))
+				items.add(i);
+		}
 		Form form = (Form) request.getSession().getAttribute("form");
 		items.removeAll(form.getItems());
 		request.setAttribute("items", items);
+		request.setAttribute("q", request.getParameter("q"));
 		request.getRequestDispatcher(getListItemJsp()).forward(request, response);
 	}
 

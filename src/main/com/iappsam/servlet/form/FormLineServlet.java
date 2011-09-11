@@ -41,7 +41,7 @@ public class FormLineServlet extends HttpServlet {
 	}
 
 	private Action parseAction(HttpServletRequest req) {
-		if (req.getParameter("q") != null)
+		if (req.getParameter("q") != null&&!req.getParameter("q").trim().equalsIgnoreCase(""))
 			return searchItem;
 		else if (req.getParameter("add") != null && req.getParameter("add").equals("items"))
 			return addFormLine;

@@ -43,78 +43,94 @@
 					action="/logout">
 					<input name="logoutBtn" type="submit" class="logout" id="logoutBtn"
 						value="Logout" />
-				</form></td>
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt;<em><strong>List Items </strong> </em> &gt; <a
-				href="/app?new=app&retain=retain" class="links">Fillup APP</a>
-			</td>
+				href="/app?new=app&retain=retain" class="links">Fillup APP</a></td>
 
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<div id="items_table">
 		<table width="100%" border="0" cellspacing="0">
-
+			<%
+				String q = (String) request.getAttribute("q");
+				if (q == null)
+					q = "";
+			%>
+			<tr>
+				<td colspan="3" align="center"><form id="form4" name="form4"
+						method="post" action="">
+						<label for="q"><span class="align_right">Search</span>:</label>
+						<input type="text" name="q" id="q" value="<%=q%>"/> <input
+							name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
+					</form>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="3"><table width="100%" border="0" cellspacing="6">
-						<tr>
+						<tr>	
 							<td align="center"><span class="importantNotice"><em>Item
 										Not Found?</em> </span>
 								<form id="form3" name="form3" method="get" action="/items">
 									<input type="hidden" name="new" value="item" /> <input
 										name="NewItemButton" type="submit" class="smallbutton"
 										id="addNewItem" value="Add New>>" />
-								</form></td>
+								</form>
+							</td>
 						</tr>
-					</table></td>
+					</table>
+				</td>
 			</tr>
 			<form name="AddSelectedItem" action="/app/line" method="post">
-			<tr>
-				<td colspan="2"><table width="100%" border="0" cellspacing="6">
+				<tr>
+					<td colspan="2"><table width="100%" border="0" cellspacing="6">
 
-					</table> <input type="hidden" name="add" value="items" /> <input
-					name="add" type="submit" class="smallbutton" id="addAllBtn"
-					value="Add Selected Items&gt;&gt;" />
-				</td>
-				<td>&nbsp;</td>
-			</tr>
+						</table> <input type="hidden" name="add" value="items" /> <input
+						name="add" type="submit" class="smallbutton" id="addAllBtn"
+						value="Add Selected Items&gt;&gt;" /></td>
+					<td>&nbsp;</td>
+				</tr>
 
-			<tr>
-				<td width="7%" class="tableheaders_forms"><input
-					type="checkbox" name="all" id="all" onclick="checkAll()" /> <label for="all"></label>
-				</td>
-				<td width="58%" class="tableheaders_forms">Item Description</td>
-				<td width="35%" class="tableheaders_forms">Item Category</td>
-			</tr>
+				<tr>
+					<td width="7%" class="tableheaders_forms"><input
+						type="checkbox" name="all" id="all" onclick="checkAll()" /> <label
+						for="all"></label></td>
+					<td width="58%" class="tableheaders_forms">Item Description</td>
+					<td width="35%" class="tableheaders_forms">Item Category</td>
+				</tr>
 
-			<%
-				int i = 0;
-			%>
+				<%
+					int i = 0;
+				%>
 
 
-			<input type="hidden" name="add" value="items" />
-			<c:forEach var="item" items="${items}">
+				<input type="hidden" name="add" value="items" />
+				<c:forEach var="item" items="${items}">
 
-				<tr
-					<%if (i % 2 == 0)
+					<tr
+						<%if (i % 2 == 0)
 					out.println("class=\"tablerow_1\"");
 				else
 					out.println("class=\"tablerow_2\"");%>>
-					<td width="9%" align="center"><input type="checkbox"
-						name="itemIds" id="items" value="${item.id}" /></td>
-					<td width="54%">${item.description}</td>
-					<td width="37%">${item.category}</td>
+						<td width="9%" align="center"><input type="checkbox"
+							name="itemIds" id="items" value="${item.id}" />
+						</td>
+						<td width="54%">${item.description}</td>
+						<td width="37%">${item.category}</td>
+					</tr>
+					<%
+						i++;
+					%>
+				</c:forEach>
+				<tr>
+					<td><input name="add" type="submit" class="smallbutton"
+						id="addAllBtn" value="Add Selected Items&gt;&gt;" />
+					</td>
 				</tr>
-				<%
-					i++;
-				%>
-			</c:forEach>
-			<tr>
-				<td><input name="add" type="submit" class="smallbutton"
-					id="addAllBtn" value="Add Selected Items&gt;&gt;" /></td>
-			</tr>
 			</form>
 
 

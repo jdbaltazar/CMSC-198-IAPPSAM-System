@@ -55,6 +55,20 @@
 	</table>
 	<div id="items_table">
 		<table width="100%" border="0" cellspacing="0">
+		<%
+				String q = (String) request.getAttribute("q");
+				if (q == null)
+					q = "";
+			%>
+			<tr>
+				<td colspan="3" align="center"><form id="form4" name="form4"
+						method="post" action="">
+						<label for="q"><span class="align_right">Search</span>:</label>
+						<input type="text" name="q" id="q" value="<%=q%>"/> <input
+							name="goBtn" type="submit" class="button" id="goBtn" value="GO" />
+					</form>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="3"><table width="100%" border="0" cellspacing="6">
 						<tr>
