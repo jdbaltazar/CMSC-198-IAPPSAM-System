@@ -179,6 +179,7 @@ public class IELine implements Serializable, Validatable {
 			return false;
 		return true;
 	}
+	
 
 	@Override
 	public boolean validate() {
@@ -207,5 +208,9 @@ public class IELine implements Serializable, Validatable {
 		objs[10] = remarks == null ? "" : remarks;
 
 		return objs;
+	}
+
+	public double getTotalAmount() {
+		return item.getPrice() * quantity;
 	}
 }

@@ -41,8 +41,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-logging-1.0.4.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-digester-1.7.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/groovy-all-1.7.5.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-fonts-4.0.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-javaflow-4.0.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/barbecue-1.5-beta1.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/barcode4j-2.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/iText-2.1.7.jar"/>
@@ -66,8 +64,10 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jsp-impl-2.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jetty/jstl-impl-1.2.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-4.0.2.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/commons-javaflow-20060411.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/times-new-roman.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-4.1.1.jar" sourcepath="G:/Java Libraries/JasperReports 4.1.1/jasperreports-4.1.1-project.zip"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-fonts-4.1.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/jasper-reports/jasperreports-javaflow-4.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

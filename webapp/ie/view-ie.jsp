@@ -62,7 +62,7 @@
 									<td>${line.item.stockNumber}</td>
 									<td>${line.quantity}</td>
 									<td>${line.item.price}</td>
-<Script Language="JavaScript">
+									<Script Language="JavaScript">
   var amount = ${line.quantity}*${line.item.price};
 </Script>									
 									<td>

@@ -22,6 +22,7 @@ import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
 import com.iappsam.Supplier;
+import com.iappsam.util.AmountInWords;
 
 @Entity
 @Table(name = "Purchase_Order")
@@ -59,9 +60,6 @@ public class PO implements Form {
 	@Column(name = "Delivery_Term")
 	private String deliveryTerm;
 
-	@Column(name = "Total_Amount_In_Words")
-	private String totalAmountInWords;
-
 	@Column(name = "OR_Number")
 	private String orNumber;
 
@@ -95,8 +93,8 @@ public class PO implements Form {
 	public PO() {
 	}
 
-	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery,
-			Employee supplierName, Date supplierDate, Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
+	public PO(String poNumber, Supplier supplier, Date date, ModeOfProcurement modeOfProcurement, DivisionOffice divisionOffice, Date dateOfDelivery, Employee supplierName, Date supplierDate,
+			Employee accountant, Date accountantDate, Employee dean, Date deanDate) {
 		super();
 		this.poNumber = poNumber;
 		this.supplier = supplier;
@@ -133,7 +131,7 @@ public class PO implements Form {
 	}
 
 	public String getTotalAmountInWords() {
-		return totalAmountInWords == null ? "" : totalAmountInWords;
+		return AmountInWords.convert(getTotalAmount());
 	}
 
 	public String getOrNumber() {
@@ -255,10 +253,6 @@ public class PO implements Form {
 
 	public void setDeliveryTerm(String deliveryTerm) {
 		this.deliveryTerm = deliveryTerm;
-	}
-
-	public void setTotalAmountInWords(String totalAmountInWords) {
-		this.totalAmountInWords = totalAmountInWords;
 	}
 
 	public void setOrNumber(String orNumber) {
@@ -422,8 +416,8 @@ public class PO implements Form {
 		for (POLine line : lines)
 			validLines &= line.validate();
 
-		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName
-				&& validSupplierDate && validAccountant && validAccountantDate && validDean && validDeanDate && validAmount && validLines;
+		return validPoNumber && validSupplier && validDate && validMop && validDivisionOffice && validDateOfDelivery && validSupplierName && validSupplierDate && validAccountant && validAccountantDate
+				&& validDean && validDeanDate && validAmount && validLines;
 	}
 
 	@Override

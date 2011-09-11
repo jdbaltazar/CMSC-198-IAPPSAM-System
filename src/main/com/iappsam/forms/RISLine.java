@@ -1,6 +1,8 @@
 package com.iappsam.forms;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -101,6 +103,21 @@ public class RISLine implements Serializable, Validatable {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public Object[] toArrayObject() {
+		List<Object> objs = new ArrayList<Object>();
+
+		Item item = getItem();
+		objs.add(item.getStockNumber());
+		objs.add(item.getUnit().getName());
+		objs.add(item.getDescription());
+
+		objs.add(getQuantityRequested() + "");
+		objs.add(getQuantityIssued() + "");
+		objs.add(getRemarks());
+
+		return objs.toArray();
 	}
 
 	@Override

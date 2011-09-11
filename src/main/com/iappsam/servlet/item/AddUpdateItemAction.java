@@ -77,7 +77,7 @@ public class AddUpdateItemAction implements Action {
 			Logger.log(request, "Item  \"" + description + "\" was updated");
 		else
 			Logger.log(request, "Item  \"" + description + "\" was added");
-		response.sendRedirect("/items?id=" + item.getId());
+		response.sendRedirect("/items");
 	}
 
 	private void processInvalidItem(HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,

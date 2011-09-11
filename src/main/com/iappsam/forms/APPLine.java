@@ -61,19 +61,19 @@ public class APPLine implements Validatable {
 	}
 
 	public float getAmount1() {
-		return quantityQuarter1 * item.getPrice();
+		return (float) (quantityQuarter1 * item.getPrice());
 	}
 
 	public float getAmount2() {
-		return quantityQuarter2 * item.getPrice();
+		return (float) (quantityQuarter2 * item.getPrice());
 	}
 
 	public float getAmount3() {
-		return quantityQuarter3 * item.getPrice();
+		return (float) (quantityQuarter3 * item.getPrice());
 	}
 
 	public float getAmount4() {
-		return quantityQuarter4 * item.getPrice();
+		return (float) (quantityQuarter4 * item.getPrice());
 	}
 
 	public float getAmount() {
@@ -187,7 +187,7 @@ public class APPLine implements Validatable {
 	public Object[] toArrayObject() {
 		String description = item.getDescription();
 		String stockNumber = item.getStockNumber();
-		double price = item.getPrice();
+		float price = item.getPrice();
 
 		int quantity1 = getQuantityQuarter1();
 		int quantity2 = getQuantityQuarter2();
@@ -195,11 +195,11 @@ public class APPLine implements Validatable {
 		int quantity4 = getQuantityQuarter4();
 		int quantity = getQuantity();
 
-		double amount1 = getAmount1();
-		double amount2 = getAmount2();
-		double amount3 = getAmount3();
-		double amount4 = getAmount4();
-		double amountTotal = amount1 + amount2 + amount3 + amount4;
+		float amount1 = getAmount1();
+		float amount2 = getAmount2();
+		float amount3 = getAmount3();
+		float amount4 = getAmount4();
+		float amountTotal = amount1 + amount2 + amount3 + amount4;
 
 		return new Object[] { stockNumber, description, item.getUnit().getName(), quantity + "", price + "", quantity1 + "", amount1 + "",
 				quantity2 + "", amount2 + "", quantity3 + "", amount3 + "", quantity4 + "", amount4 + "", amountTotal + "" };

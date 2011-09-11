@@ -131,7 +131,7 @@ public class PRLine implements Validatable {
 	}
 
 	public float getCost() {
-		return quantity * item.getPrice();
+		return (float) (quantity * item.getPrice());
 	}
 
 	public Object[] toArrayObjects() {

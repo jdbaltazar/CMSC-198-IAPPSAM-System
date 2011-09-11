@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.iappsam.LoginModuleTest;
 import com.iappsam.reporting.APPReportTest;
+import com.iappsam.reporting.ReportTestSuite;
 import com.iappsam.util.HibernateUtilTest;
 
 @RunWith(Suite.class)
@@ -14,7 +15,7 @@ import com.iappsam.util.HibernateUtilTest;
 		EntityTestSuite.class, //
 		SessionTestSuite.class, //
 		SearcherTestSuite.class, //
-		APPReportTest.class, // Report
+		ReportTestSuite.class,
 		ServletTestSuite.class })
 public class TestSuite {
 

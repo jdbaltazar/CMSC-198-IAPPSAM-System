@@ -21,6 +21,15 @@
 			showButtonPanel : true
 		});
 	});
+	
+	
+	function limitText(limitField, limitCount, limitNum) {
+		if (limitField.value.length > limitNum) {
+			limitField.value = limitField.value.substring(0, limitNum);
+		} else {
+			limitCount.value = limitNum - limitField.value.length;
+		}
+	}
 </script>
 </head>
 
@@ -57,7 +66,11 @@
         <tr>
           <td class="align_right"><br />
             Description:</td>
-          <td><br /><input name="description" type="text" class="required" id="description" value="${item.description}" maxlength="500" /></td>
+          <td><br /><textarea name="description" 
+										onKeyDown="limitText(this.form.description,this.form.countdown,500);"
+										onKeyUp="limitText(this.form.description,this.form.countdown,500);"
+										class="required" id="itemDescription3"
+										>${item.description}</textarea></td>
         </tr>
         <tr>
           <td class="align_right">Unit:</td>

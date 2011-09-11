@@ -49,6 +49,14 @@ if (x==null || x=="")
   }
 }
 
+function limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
+
 </script>
 <%
 	List<Unit> units = new ArrayList<Unit>();
@@ -90,15 +98,15 @@ if (x==null || x=="")
 		<tr>
 			<td id="navigation"><a href="/menu" target="_top" class="links">Main
 					Menu</a> &gt; <a href="/items" target="_top" class="links">Items
-					List</a> &gt; <em><strong>Add Item</strong>
-			</em><strong></strong>
+					List</a> &gt; <em><strong>Add Item</strong> </em><strong></strong>
 			</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
 	<div id="form_table">
-		<form name="itemform" action="/items" onsubmit="return validateItemForm()" method="post">
-		<input type="hidden" name="add" value="item"/> 
+		<form name="itemform" action="/items"
+			onsubmit="return validateItemForm()" method="post">
+			<input type="hidden" name="add" value="item" />
 			<table width="100%" frame="box" cellspacing="0" id="table">
 				<tr>
 					<td class="header_rows"><div class="header_1">Item
@@ -109,10 +117,12 @@ if (x==null || x=="")
 					<td><table width="100%" cellspacing="9" frame="box"
 							class="no_border_table" id="table">
 							<tr>
-								<td class="align_right"><br /> 
-								Description:</td>
-								<td><br /> <input name="description" type="text"
-									class="required" id="itemDescription3" maxlength="500" />
+								<td class="align_right"><br /> Description:</td>
+								<td><br /> <textarea name="description"
+										onKeyDown="limitText(this.form.description,this.form.countdown,500);"
+										onKeyUp="limitText(this.form.description,this.form.countdown,500);"
+										class="required" id="itemDescription3"
+										></textarea>
 								</td>
 							</tr>
 							<tr>
@@ -146,7 +156,7 @@ if (x==null || x=="")
 							<tr>
 								<td class="align_right">Price:</td>
 								<td><input name="price" type="text" id="price"
-									maxlength="50" />
+									maxlength="12" />
 								</td>
 							</tr>
 							<tr>
@@ -201,9 +211,7 @@ if (x==null || x=="")
 							</tr>
 							<tr>
 								<td class="align_right">&nbsp;</td>
-								<td><br />
-								
-								 <input name="addItemBtn" type="submit"
+								<td><br /> <input name="addItemBtn" type="submit"
 									class="button" id="addItemBtn" value="ADD" /> <br />
 								</td>
 							</tr>
@@ -213,9 +221,9 @@ if (x==null || x=="")
 				<tr>
 					<td class="table_footer"></td>
 				</tr>
-    	<tr>
-		<td class="bkgrnd_white">&nbsp;</td>
-	</tr>
+				<tr>
+					<td class="bkgrnd_white">&nbsp;</td>
+				</tr>
 			</table>
 		</form>
 	</div>

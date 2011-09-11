@@ -165,7 +165,7 @@ public class Item implements Serializable, Validatable {
 
 	public void setStockNumber(String stockNumber) {
 		if (stockNumber != null)
-		this.stockNumber = stockNumber.trim();
+			this.stockNumber = stockNumber.trim();
 	}
 
 	public void setPrice(float price) {
@@ -178,12 +178,12 @@ public class Item implements Serializable, Validatable {
 
 	public void setInventoryItemNumber(String inventoryItemNumber) {
 		if (inventoryItemNumber != null)
-		this.inventoryItemNumber = inventoryItemNumber.trim();
+			this.inventoryItemNumber = inventoryItemNumber.trim();
 	}
 
 	public void setPropertyNumber(String propertyNumber) {
-		if (propertyNumber!= null)
-		this.propertyNumber = propertyNumber.trim();
+		if (propertyNumber != null)
+			this.propertyNumber = propertyNumber.trim();
 	}
 
 	public int getId() {
@@ -194,6 +194,7 @@ public class Item implements Serializable, Validatable {
 		this.id = itemID;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -296,6 +297,8 @@ public class Item implements Serializable, Validatable {
 		} catch (Exception e) {
 		}
 	}
+
+	
 
 	@Override
 	public boolean validate() {

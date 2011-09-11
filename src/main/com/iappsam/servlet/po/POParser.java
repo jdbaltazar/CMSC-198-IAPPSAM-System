@@ -49,7 +49,6 @@ public class POParser extends FormParser {
 		po.setDateOfDelivery(req.getParameter("date-of-delivery"));
 		po.setPaymentTerm(req.getParameter("payment-term"));
 		po.setDeliveryTerm(req.getParameter("delivery-term"));
-		po.setTotalAmountInWords(req.getParameter("total-amount-in-words"));
 		po.setOrNumber(req.getParameter("or-number"));
 
 		String amountParam = req.getParameter("amount");

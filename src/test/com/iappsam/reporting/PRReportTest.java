@@ -24,7 +24,7 @@ public class PRReportTest {
 	}
 
 	@Test
-	public void toPdf() throws ReportException {
+	public void canExportPDF() throws ReportException {
 		assertTrue(report.toPDF().exists());
 	}
 }

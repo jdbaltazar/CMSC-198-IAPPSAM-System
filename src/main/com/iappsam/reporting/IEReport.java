@@ -3,6 +3,8 @@ package com.iappsam.reporting;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.jasperreports.engine.JRVariable;
+
 import com.iappsam.forms.IE;
 import com.iappsam.forms.IELine;
 
@@ -55,5 +57,4 @@ public class IEReport extends AbstractReport {
 		propertyMap.put("COA_NAME", form.getCoaRepresentative().getPerson().getName());
 		propertyMap.put("COA_DESIGNATION", form.getCoaRepresentative().getDesignation());
 	}
-
 }
