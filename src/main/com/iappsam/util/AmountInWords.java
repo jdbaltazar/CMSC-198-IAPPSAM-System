@@ -98,20 +98,12 @@ public class AmountInWords {
 	}
 
 	public static String convert(float n) {
-		
+
 		double number = Double.parseDouble(Float.toString(n));
-		
+
 		int pesos = (int) Math.floor(number);
 		int centavos = (int) Math.floor((number - pesos) * 100.0f);
 		return convert(pesos) + " pesos and " + convert(centavos) + " centavos only";
 	}
 
-	/**
-	 * testing
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		System.out.println(AmountInWords.convert(21999));
-	}
 }

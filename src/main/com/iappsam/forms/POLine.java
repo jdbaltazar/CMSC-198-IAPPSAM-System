@@ -97,7 +97,7 @@ public class POLine implements Serializable, Validatable {
 
 	public float getAmount() {
 		double amount = item.getPrice() * quantity;
-		return DecimalRounder.roundOff(Float.parseFloat(Double.toString(amount)), 2);
+		return DecimalRounder.roundOff(amount, 2);
 	}
 
 	@Override
