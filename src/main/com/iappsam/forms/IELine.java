@@ -201,7 +201,7 @@ public class IELine implements Serializable, Validatable {
 		objs[2] = "";
 		objs[3] = quantity + "";
 		objs[4] = item.getPrice();
-		objs[5] = (item.getPrice() * quantity) + "";
+		objs[5] = getTotalValue() + "";
 		objs[6] = item.getDateAcquired() == null ? "" : item.getDateAcquired().getYear();
 		objs[7] = howAcquired + "";
 		objs[8] = item.getCondition() + "";
@@ -211,7 +211,7 @@ public class IELine implements Serializable, Validatable {
 		return objs;
 	}
 
-	public float getTotalAmount() {
+	public float getTotalValue() {
 		return DecimalRounder.roundOff(item.getPrice() * quantity, 2);
 	}
 }
