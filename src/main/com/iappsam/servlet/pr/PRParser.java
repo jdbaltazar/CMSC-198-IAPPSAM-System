@@ -64,8 +64,6 @@ public class PRParser extends FormParser {
 				line.setQuantity(checkNum(q));
 				line.setItem(im.getItem(Integer.parseInt(items[i])));
 				line.setEstimatedUnitCost(checkNum2(eUC));
-
-				System.out.println("estimated unit cost: "+checkNum2(eUC));
 				pr.addLine(line);
 			}
 		return pr;

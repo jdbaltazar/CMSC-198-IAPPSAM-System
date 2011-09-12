@@ -73,15 +73,10 @@
 
 						<c:forEach var="line" items="${form.lines}" varStatus="loop">
 							<tr class="tablerow_1">
-								<Script Language="JavaScript">
-var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantityQuarter3}+ ${line.quantityQuarter4};
-</Script>
 								<td>${line.item.stockNumber}</td>
 								<td>${line.item.description}</td>
 								<td>${line.item.unit}</td>
-								<td><Script Language="JavaScript">
-  													document.write(totalQ);
-									</Script></td>
+								<td>${line.quantity}</td>
 								<td>${line.item.price}</td>
 								<td>${line.quantityQuarter1}</td>
 								<td>${line.amount1}</td>

@@ -57,10 +57,6 @@ public class APPLine implements Validatable {
 		this.quantityQuarter4 = quantityQ4;
 	}
 
-	public int getQuantityQuarter1() {
-		return quantityQuarter1;
-	}
-
 	public float getAmount1() {
 		return (float) DecimalRounder.roundOff((quantityQuarter1 * item.getPrice()), 2);
 	}
@@ -79,6 +75,10 @@ public class APPLine implements Validatable {
 
 	public float getAmount() {
 		return DecimalRounder.roundOff(getAmount1() + getAmount2() + getAmount3() + getAmount4(),2);
+	}
+	
+	public int getQuantityQuarter1() {
+		return quantityQuarter1;
 	}
 
 	public int getQuantityQuarter2() {

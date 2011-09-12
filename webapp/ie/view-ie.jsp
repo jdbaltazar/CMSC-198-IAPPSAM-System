@@ -61,16 +61,9 @@
 									<td>${line.item.description}</td>
 									<td>${line.item.stockNumber}</td>
 									<td>${line.quantity}</td>
-									<td>${line.item.price}</td>
-									<Script Language="JavaScript">
-  var amount = ${line.quantity}*${line.item.price};
-</Script>									
-									<td>
-									<Script Language="JavaScript">
-  													document.write(amount);
-									</Script>
-									</td>
-									<td>${line.item.dateAcquired}</td>
+								<td>${line.item.price}</td>
+								<td>${line.totalValue}</td>
+								<td>${line.item.dateAcquired}</td>
 									<td>${line.howAcquired.name}</td>
 									<td>${line.item.condition}</td>
 									<td>${line.employee}</td>
