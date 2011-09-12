@@ -21,7 +21,7 @@
       <mountPoint id="23" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="23" file="F:/Projects/Java/CMSC-198-IAPPSAM-System" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="CMSC-198-IAPPSAM-System" excludeSuffixes="" dirMode="755" overrideDirMode="false">
+      <dirEntry mountPoint="23" file="C:/Users/JDB/workspace/CMSC-198-IAPPSAM-System" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="CMSC-198-IAPPSAM-System" excludeSuffixes="" dirMode="755" overrideDirMode="false">
         <exclude>
           <entry location=".classpath" fileType="regular" />
           <entry location=".git" fileType="regular" />
@@ -34,7 +34,6 @@
           <entry location="docs" fileType="regular" />
           <entry location="lib" fileType="regular" />
           <entry location="misc" fileType="regular" />
-          <entry location="README.md" fileType="regular" />
           <entry location="setup.install4j" fileType="regular" />
           <entry location="src" fileType="regular" />
           <entry location="week" fileType="regular" />
@@ -75,7 +74,7 @@
         <content />
       </customScript>
       <iconImageFiles>
-        <file path="F:/Projects/Java/CMSC-198-IAPPSAM-System/icon.png" />
+        <file path="C:/Users/JDB/workspace/CMSC-198-IAPPSAM-System/icon.png" />
       </iconImageFiles>
     </launcher>
     <launcher name="create.bat" id="71" customizedId="" external="true" excludeFromMenu="false" unixMode="755" menuName="Install Database" externalFile="sql\create.bat" />
@@ -105,7 +104,7 @@
         <content />
       </customScript>
       <iconImageFiles>
-        <file path="F:/Projects/Java/CMSC-198-IAPPSAM-System/icon.png" />
+        <file path="C:/Users/JDB/workspace/CMSC-198-IAPPSAM-System/icon.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
