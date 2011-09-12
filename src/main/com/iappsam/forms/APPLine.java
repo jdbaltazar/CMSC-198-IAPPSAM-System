@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.iappsam.Item;
 import com.iappsam.Validatable;
+import com.iappsam.util.DecimalRounder;
 
 @Entity
 @Table(name = "APP_Line")
@@ -61,23 +62,23 @@ public class APPLine implements Validatable {
 	}
 
 	public float getAmount1() {
-		return (float) (quantityQuarter1 * item.getPrice());
+		return (float) DecimalRounder.roundOff((quantityQuarter1 * item.getPrice()), 2);
 	}
 
 	public float getAmount2() {
-		return (float) (quantityQuarter2 * item.getPrice());
+		return (float) DecimalRounder.roundOff((quantityQuarter2 * item.getPrice()), 2);
 	}
 
 	public float getAmount3() {
-		return (float) (quantityQuarter3 * item.getPrice());
+		return (float) DecimalRounder.roundOff((quantityQuarter3 * item.getPrice()), 2);
 	}
 
 	public float getAmount4() {
-		return (float) (quantityQuarter4 * item.getPrice());
+		return (float) DecimalRounder.roundOff((quantityQuarter4 * item.getPrice()), 2);
 	}
 
 	public float getAmount() {
-		return getAmount1() + getAmount2() + getAmount3() + getAmount4();
+		return DecimalRounder.roundOff(getAmount1() + getAmount2() + getAmount3() + getAmount4(),2);
 	}
 
 	public int getQuantityQuarter2() {
@@ -199,7 +200,7 @@ public class APPLine implements Validatable {
 		float amount2 = getAmount2();
 		float amount3 = getAmount3();
 		float amount4 = getAmount4();
-		float amountTotal = amount1 + amount2 + amount3 + amount4;
+		float amountTotal = getAmount();
 
 		return new Object[] { stockNumber, description, item.getUnit().getName(), quantity + "", price + "", quantity1 + "", amount1 + "",
 				quantity2 + "", amount2 + "", quantity3 + "", amount3 + "", quantity4 + "", amount4 + "", amountTotal + "" };

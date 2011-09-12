@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import com.iappsam.DivisionOffice;
 import com.iappsam.Employee;
 import com.iappsam.Item;
+import com.iappsam.util.DecimalRounder;
 
 @Entity
 @Table(name = "APP")
@@ -86,7 +87,7 @@ public class APP implements Form {
 		for (APPLine line : lines)
 			total += line.getAmount1();
 
-		return total;
+		return DecimalRounder.roundOff(total, 2);
 	}
 
 	public float get2ndQuarterTotal() {
@@ -95,7 +96,7 @@ public class APP implements Form {
 		for (APPLine line : lines)
 			total += line.getAmount2();
 
-		return total;
+		return DecimalRounder.roundOff(total, 2);
 	}
 
 	public float get3rdQuarterTotal() {
@@ -104,7 +105,7 @@ public class APP implements Form {
 		for (APPLine line : lines)
 			total += line.getAmount3();
 
-		return total;
+		return DecimalRounder.roundOff(total, 2);
 	}
 
 	public float get4thQuarterTotal() {
@@ -113,7 +114,7 @@ public class APP implements Form {
 		for (APPLine line : lines)
 			total += line.getAmount4();
 
-		return total;
+		return DecimalRounder.roundOff(total, 2);
 	}
 
 	public float getTotal() {
@@ -122,7 +123,7 @@ public class APP implements Form {
 		for (APPLine line : lines)
 			total += line.getAmount();
 
-		return total;
+		return DecimalRounder.roundOff(total, 2);
 	}
 
 	public String getPlanControlNumber() {

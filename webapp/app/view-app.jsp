@@ -84,38 +84,14 @@ var totalQ = ${line.quantityQuarter1} + ${line.quantityQuarter2}+ ${line.quantit
 									</Script></td>
 								<td>${line.item.price}</td>
 								<td>${line.quantityQuarter1}</td>
-								<td><script>
- 	 var amount1 = ${line.quantityQuarter1}*${line.item.price};
-  										document.write(amount1);
-									</script></td>
+								<td>${line.amount1}</td>
 								<td>${line.quantityQuarter2}</td>
-								<Script Language="JavaScript">
-  var amount2 = ${line.quantityQuarter2}*${line.item.price};
-</Script>
-
-								<td><Script Language="JavaScript">
-  													document.write(amount2);
-									</Script></td>
+								<td>${line.amount2}</td>
 								<td>${line.quantityQuarter3}</td>
-								<Script Language="JavaScript">
-  var amount3 = ${line.quantityQuarter3}*${line.item.price};
-</Script>
-								<td><Script Language="JavaScript">
-  													document.write(amount3);
-									</Script></td>
+								<td>${line.amount3}</td>
 								<td>${line.quantityQuarter4}</td>
-								<Script Language="JavaScript">
-  var amount4 = ${line.quantityQuarter4}*${line.item.price};
-</Script>
-								<td><Script Language="JavaScript">
-  													document.write(amount4);
-									</Script></td>
-								<Script Language="JavaScript">
-  var total = amount1+amount2+amount3+amount4;
-</Script>
-								<td><Script Language="JavaScript">
-  													document.write(total);
-									</Script></td>
+								<td>${line.amount4}</td>
+								<td>${line.amount}</td>
 							</tr>
 						</c:forEach>
 					</table>
