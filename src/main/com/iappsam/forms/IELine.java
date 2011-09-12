@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import com.iappsam.Employee;
 import com.iappsam.Item;
 import com.iappsam.Validatable;
+import com.iappsam.util.DecimalRounder;
 
 @Entity
 @Table(name = "IE_Line")
@@ -210,7 +211,7 @@ public class IELine implements Serializable, Validatable {
 		return objs;
 	}
 
-	public double getTotalAmount() {
-		return item.getPrice() * quantity;
+	public float getTotalAmount() {
+		return DecimalRounder.roundOff(item.getPrice() * quantity, 2);
 	}
 }

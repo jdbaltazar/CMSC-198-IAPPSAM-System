@@ -58,6 +58,10 @@ public class PRLine implements Validatable {
 		return estimatedUnitCost;
 	}
 
+	public long getEstimatedCost() {
+		return estimatedUnitCost * quantity;
+	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
@@ -130,18 +134,14 @@ public class PRLine implements Validatable {
 		return validItem && validPr && validQuantity && validEstUnitCost;
 	}
 
-	public float getCost() {
-		return (float) (quantity * item.getPrice());
-	}
-
 	public Object[] toArrayObjects() {
 		Object[] objs = new Object[6];
 		objs[0] = quantity + "";
 		objs[1] = item.getUnit().getName();
 		objs[2] = item.getDescription();
 		objs[3] = item.getStockNumber();
-		objs[4] = item.getPrice() + "";
-		objs[5] = getCost() + "";
+		objs[4] = getEstimatedUnitCost() + "";
+		objs[5] = getEstimatedCost() + "";
 		return objs;
 	}
 }

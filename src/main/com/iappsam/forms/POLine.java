@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.iappsam.Item;
 import com.iappsam.Validatable;
+import com.iappsam.util.DecimalRounder;
 
 @Entity
 @Table(name = "PO_Line")
@@ -96,7 +97,7 @@ public class POLine implements Serializable, Validatable {
 
 	public float getAmount() {
 		double amount = item.getPrice() * quantity;
-		return Float.parseFloat(Double.toString(amount));
+		return DecimalRounder.roundOff(Float.parseFloat(Double.toString(amount)), 2);
 	}
 
 	@Override
