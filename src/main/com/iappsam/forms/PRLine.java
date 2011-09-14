@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.iappsam.Item;
 import com.iappsam.Validatable;
+import com.iappsam.util.DecimalRounder;
 
 @Entity
 @Table(name = "PR_Line")
@@ -29,7 +30,7 @@ public class PRLine implements Validatable {
 	private Item item;
 
 	@Column(name = "Estimated_Unit_Cost")
-	private long estimatedUnitCost;
+	private float estimatedUnitCost;
 
 	@ManyToOne
 	@JoinColumn(name = "Purchase_Request_ID")
@@ -54,12 +55,12 @@ public class PRLine implements Validatable {
 		return item.getDescription();
 	}
 
-	public long getEstimatedUnitCost() {
-		return estimatedUnitCost;
+	public float getEstimatedUnitCost() {
+		return DecimalRounder.roundOff(estimatedUnitCost, 2);
 	}
 
-	public long getEstimatedCost() {
-		return estimatedUnitCost * quantity;
+	public float getEstimatedCost() {
+		return DecimalRounder.roundOff(estimatedUnitCost * quantity, 2);
 	}
 
 	public void setQuantity(int quantity) {
@@ -90,7 +91,7 @@ public class PRLine implements Validatable {
 		this.item = item;
 	}
 
-	public void setEstimatedUnitCost(long estimatedUnitCost) {
+	public void setEstimatedUnitCost(float estimatedUnitCost) {
 		this.estimatedUnitCost = estimatedUnitCost;
 	}
 
@@ -98,7 +99,7 @@ public class PRLine implements Validatable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (estimatedUnitCost ^ (estimatedUnitCost >>> 32));
+		result = prime * result + Float.floatToIntBits(estimatedUnitCost);
 		result = prime * result + ((item == null) ? 0 : item.hashCode());
 		result = prime * result + quantity;
 		return result;
@@ -113,7 +114,7 @@ public class PRLine implements Validatable {
 		if (getClass() != obj.getClass())
 			return false;
 		PRLine other = (PRLine) obj;
-		if (estimatedUnitCost != other.estimatedUnitCost)
+		if (Float.floatToIntBits(estimatedUnitCost) != Float.floatToIntBits(other.estimatedUnitCost))
 			return false;
 		if (item == null) {
 			if (other.item != null)

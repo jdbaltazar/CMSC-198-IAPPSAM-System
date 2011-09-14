@@ -81,10 +81,10 @@ public class PRParser extends FormParser {
 		return num;
 	}
 
-	private long checkNum2(String value) {
-		long num;
+	private float checkNum2(String value) {
+		float num;
 		try {
-			num = Long.parseLong(value);
+			num = Float.parseFloat(value);
 			if (num < 0)
 				return 0;
 		} catch (Exception e) {
