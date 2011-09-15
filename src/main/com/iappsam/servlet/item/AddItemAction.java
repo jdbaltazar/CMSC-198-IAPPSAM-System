@@ -17,6 +17,10 @@ public class AddItemAction implements Action {
 
 	private ItemManager itemManager;
 
+	protected ItemManager getItemManager() {
+		return itemManager;
+	}
+
 	public AddItemAction(ItemManager itemManager) {
 		this.itemManager = itemManager;
 	}
@@ -24,7 +28,7 @@ public class AddItemAction implements Action {
 	@Override
 	public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Item item = new Item();
+		Item item = getItem(request, response);
 
 		String idParam = request.getParameter("id");
 		String description = request.getParameter("description");
@@ -62,6 +66,10 @@ public class AddItemAction implements Action {
 			} catch (TransactionException e1) {
 			}
 		}
+	}
+
+	protected Item getItem(HttpServletRequest req, HttpServletResponse res) {
+		return new Item();
 	}
 
 	private void processValidItem(HttpServletRequest request, HttpServletResponse response, Item item, String idParam, String description)

@@ -79,6 +79,8 @@ public class Item implements Serializable, Validatable {
 	@JoinColumn(name = "Item_Category_ID")
 	private ItemCategory itemCategory;
 
+	private transient boolean dirty = false;
+
 	public Item() {
 		super();
 	}
@@ -170,6 +172,7 @@ public class Item implements Serializable, Validatable {
 
 	public void setPrice(float price) {
 		this.price = price;
+		dirty = false;
 	}
 
 	public void setDateAcquired(Date dateAcquired) {
@@ -194,7 +197,6 @@ public class Item implements Serializable, Validatable {
 		this.id = itemID;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -293,12 +295,11 @@ public class Item implements Serializable, Validatable {
 
 	public void setPrice(String string) {
 		try {
-			price = Float.parseFloat(string);
+			setPrice(Float.parseFloat(string));
 		} catch (Exception e) {
+			dirty = true;
 		}
 	}
-
-	
 
 	@Override
 	public boolean validate() {
@@ -308,6 +309,7 @@ public class Item implements Serializable, Validatable {
 		boolean validStatus = itemStatus != null && itemStatus.validate();
 		boolean validCondition = itemCondition != null && itemCondition.validate();
 		boolean validPrice = price >= 0;
-		return validDescription && validCategory && validUnit && validStatus && validCondition && validPrice;
+
+		return validDescription && validCategory && validUnit && validStatus && validCondition && validPrice && !dirty;
 	}
 }
