@@ -53,9 +53,9 @@ public class ItemServlet extends HttpServlet {
 
 	private Action parseAction(HttpServletRequest request) {
 
-		String newParam = request.getParameter(ItemParameter.NEW_ITEM);
+		String newParam = request.getParameter("new");
 		String id = request.getParameter("id");
-		String q = request.getParameter(ItemParameter.QUERY);
+		String q = request.getParameter("q");
 		String add = request.getParameter("add");
 		String update = request.getParameter("update");
 
