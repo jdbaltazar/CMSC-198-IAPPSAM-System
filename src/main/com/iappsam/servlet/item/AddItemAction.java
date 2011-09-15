@@ -1,10 +1,5 @@
 package com.iappsam.servlet.item;
 
-import static com.iappsam.servlet.item.ItemAttribute.CATEGORIES;
-import static com.iappsam.servlet.item.ItemAttribute.CONDITIONS;
-import static com.iappsam.servlet.item.ItemAttribute.STATUSES;
-import static com.iappsam.servlet.item.ItemAttribute.UNITS;
-
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,11 +13,11 @@ import com.iappsam.managers.ItemManager;
 import com.iappsam.managers.exceptions.TransactionException;
 import com.iappsam.servlet.Action;
 
-public class AddUpdateItemAction implements Action {
+public class AddItemAction implements Action {
 
 	private ItemManager itemManager;
 
-	public AddUpdateItemAction(ItemManager itemManager) {
+	public AddItemAction(ItemManager itemManager) {
 		this.itemManager = itemManager;
 	}
 
@@ -58,13 +53,12 @@ public class AddUpdateItemAction implements Action {
 			item.setCategory(itemManager.getItemCategoryByName(categoryName));
 
 			if (!item.validate())
-				processInvalidItem(request, response);
+				processInvalidItem(request, response, item);
 			else
 				processValidItem(request, response, item, idParam, description);
-
 		} catch (Exception e) {
 			try {
-				processInvalidItem(request, response);
+				processInvalidItem(request, response, item);
 			} catch (TransactionException e1) {
 			}
 		}
@@ -80,13 +74,21 @@ public class AddUpdateItemAction implements Action {
 		response.sendRedirect("/items");
 	}
 
-	private void processInvalidItem(HttpServletRequest request, HttpServletResponse response) throws TransactionException, ServletException,
+	private void processInvalidItem(HttpServletRequest req, HttpServletResponse response, Item item) throws TransactionException, ServletException,
 			IOException {
-		request.setAttribute(CATEGORIES, itemManager.getAllItemCategory());
-		request.setAttribute(UNITS, itemManager.getAllUnits());
-		request.setAttribute(STATUSES, itemManager.getAllItemStatus());
-		request.setAttribute(CONDITIONS, itemManager.getAllItemCondition());
-		RequestDispatcher dispatcher = request.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
-		dispatcher.forward(request, response);
+
+		req.setAttribute("description", req.getParameter("description"));
+		req.setAttribute("categories", itemManager.getAllItemCategory());
+		req.setAttribute("units", itemManager.getAllUnits());
+		req.setAttribute("statuses", itemManager.getAllItemStatus());
+		req.setAttribute("conditions", itemManager.getAllItemCondition());
+		req.setAttribute("item", item);
+
+		forward(req, response);
+	}
+
+	protected void forward(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = req.getRequestDispatcher(ItemServlet.NEW_ITEM_JSP);
+		dispatcher.forward(req, response);
 	}
 }
