@@ -47,7 +47,8 @@ public class AddItemAction implements Action {
 				item.setId(Integer.parseInt(idParam));
 			item.setDescription(description);
 			item.setStockNumber(stockNumber);
-			item.setPrice(price);
+			if (price != null && !price.equalsIgnoreCase(""))
+				item.setPrice(price);
 			item.setDateAcquired(date);
 			item.setInventoryItemNumber(inventoryItemNumber);
 			item.setPropertyNumber(propertyNumber);

@@ -17,6 +17,10 @@ import com.iappsam.util.Indexer;
 
 public class RecoveryTool extends javax.swing.JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1195903592010299995L;
 	private javax.swing.JTextArea LogTextArea;
 	private javax.swing.JPasswordField PasswordField;
 	private javax.swing.JLabel PasswordLabel;

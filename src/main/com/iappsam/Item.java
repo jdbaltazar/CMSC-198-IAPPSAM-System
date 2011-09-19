@@ -295,7 +295,12 @@ public class Item implements Serializable, Validatable {
 
 	public void setPrice(String string) {
 		try {
-			setPrice(Float.parseFloat(string));
+			float p = Float.parseFloat(string);
+			if (p >= 0) {
+				setPrice(p);
+			} else {
+				dirty = true;
+			}
 		} catch (Exception e) {
 			dirty = true;
 		}
